@@ -11,12 +11,12 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/work/${project.slug}`} className="workpage-card">
-      {/* Image — CSS handles zoom + darken on hover */}
+      {/* Image - CSS handles zoom + darken on hover */}
       <div className="workpage-card__image-wrap">
         <div className="workpage-card__image-inner">
           <Image
             src={project.image}
-            alt={`${project.client} — ${project.title}`}
+            alt={`${project.client} - ${project.title}`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="workpage-card__image"
@@ -25,7 +25,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="workpage-card__overlay" />
       </div>
 
-      {/* Arrow — top right */}
+      {/* Arrow - top right */}
       <span className="workpage-card__arrow">
         <svg
           width="20"
@@ -42,7 +42,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </svg>
       </span>
 
-      {/* Content — slides up on hover */}
+      {/* Content - slides up on hover */}
       <div className="workpage-card__content">
         <span className="workpage-card__client">{project.client}</span>
         <h3 className="workpage-card__title">{project.title}</h3>

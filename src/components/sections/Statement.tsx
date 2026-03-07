@@ -26,7 +26,7 @@ export default function Statement() {
           <p className="text-[#4A4A46] text-xl story-description mb-8">
             Since 2006, we have partnered with UNICEF, governments, and global
             organisations to design and deliver evidence-based programmes that
-            shift behaviours, transform communities, and save lives — across
+            shift behaviours, transform communities, and save lives - across
             47 countries and counting.
           </p>
         </ScrollReveal>
@@ -35,7 +35,7 @@ export default function Statement() {
           <p className="text-[#4A4A46] text-lg story-description">
             From frontline health worker training in remote villages to
             national behaviour change campaigns, early childhood development
-            programmes, and award-winning films — we work at the intersection
+            programmes, and award-winning films - we work at the intersection
             of science, culture, and community to create lasting change at scale.
           </p>
         </ScrollReveal>

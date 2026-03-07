@@ -20,7 +20,7 @@ export default function Hero() {
     >
       {/* Background video with parallax */}
       <motion.div style={{ y }} className="absolute inset-0 scale-110">
-        {/* Gradient fallback — sits behind the video */}
+        {/* Gradient fallback - sits behind the video */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0D2B45] via-[#1B4F72] to-[#0A3D2B]" />
 
         <video
@@ -60,7 +60,7 @@ export default function Hero() {
         >
           <div className="h-px w-10 bg-[#C9922A]" />
           <span className="label-caps text-[#F0D080]">
-            2006 — 2026 · 20 Years of Impact
+            2006 - 2026 · 20 Years of Impact
           </span>
           <div className="h-px w-10 bg-[#C9922A]" />
         </motion.div>

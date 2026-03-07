@@ -43,6 +43,10 @@ export interface CaseStudyData {
     heading: string;
     body: string;
     deliverables: string[];
+    downloadLink?: {
+      label: string;
+      url: string;
+    };
   };
 
   impact: {
@@ -60,6 +64,12 @@ export interface CaseStudyData {
     heading: string;
     images: GalleryImage[];
   };
+
+  video?: {
+    heading: string;
+    src: string;
+    caption?: string;
+  };
 }
 
 /* ─── All 20 Case Studies ────────────────────────────────────────── */
@@ -72,7 +82,7 @@ export const caseStudies: CaseStudyData[] = [
     tags: ["Maternal Health", "Community Media", "SBC"],
     challenge: {
       heading: "The Challenge",
-      body: "In rural Pakistan, critical maternal and newborn health messages often fail to reach the women who need them most. Traditional top-down communication approaches struggle to overcome cultural barriers, limited literacy, and deeply rooted community beliefs.\n\nPVMS needed a way to deliver life-saving health messaging that communities would trust, internalise, and act upon — moving beyond awareness to genuine behaviour change.",
+      body: "In rural Pakistan, critical maternal and newborn health messages often fail to reach the women who need them most. Traditional top-down communication approaches struggle to overcome cultural barriers, limited literacy, and deeply rooted community beliefs.\n\nPVMS needed a way to deliver life-saving health messaging that communities would trust, internalise, and act upon - moving beyond awareness to genuine behaviour change.",
     },
     strategy: {
       heading: "Our Approach",
@@ -97,15 +107,17 @@ export const caseStudies: CaseStudyData[] = [
         { value: 800, suffix: "+", label: "Facilitators Trained" },
         { value: 92, suffix: "%", label: "Recall Rate" },
       ],
-      quote: { text: "The story circles created a safe space where mothers could share and learn — it changed how we think about health communication.", attribution: "PVMS Programme Lead" },
+      quote: { text: "The story circles created a safe space where mothers could share and learn - it changed how we think about health communication.", attribution: "PVMS Programme Lead" },
     },
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/work-misali-ma.jpg", alt: "Misali Ma community session", span: "wide" },
-        { src: "/images/timeline/2023/parenting-hero.jpg", alt: "Mothers in a story circle", span: "normal" },
-        { src: "/images/timeline/2023/parenting-session.jpg", alt: "Health worker facilitating discussion", span: "normal" },
-        { src: "/images/timeline/2023/parenting-screening.jpg", alt: "Community screening event", span: "wide" },
+        { src: "/images/misali-ma/misali-ma01.jpg", alt: "Mothers and children raising hands during a Misali Ma StoryCircle session", span: "wide" },
+        { src: "/images/misali-ma/misali-ma02.jpg", alt: "Mother holding her child - portrait from a StoryCircle community", span: "normal" },
+        { src: "/images/misali-ma/misali-ma03.jpg", alt: "Outdoor community gathering with Misali Ma banner and discussion materials", span: "normal" },
+        { src: "/images/misali-ma/misali-ma04.jpg", alt: "Toddler smiling on a colourful traditional rug during a community session", span: "wide" },
+        { src: "/images/misali-ma/misali-ma05.jpg", alt: "Women using StoryCircle materials during a facilitated health discussion", span: "normal" },
+        { src: "/images/misali-ma/misali-ma06.jpg", alt: "Community health worker engaging with a mother during a field visit", span: "normal" },
       ],
     },
   },
@@ -113,28 +125,28 @@ export const caseStudies: CaseStudyData[] = [
   /* 2 ─ Alif Ailaan */
   {
     slug: "alif-ailaan-education",
-    year: "2013 — 2018",
+    year: "2013 - 2018",
     tags: ["Education", "Social Mobilisation", "Policy Advocacy", "Gender Equity", "SDG 4"],
     challenge: {
       heading: "The Challenge",
-      body: "Pakistan had over 25 million children out of school — but the crisis wasn't invisible. It was normalised. Dropout was woven into everyday life, rationalised by economic necessity, entrenched gender norms, and the belief that school systems weren't built for children like theirs.\n\nPoliticians cited education in speeches but rarely in budgets. What was missing was not awareness — it was a shared conviction that the status quo was intolerable and that change was demanded.",
+      body: "Pakistan had over 25 million children out of school - but the crisis wasn't invisible. It was normalised. Dropout was woven into everyday life, rationalised by economic necessity, entrenched gender norms, and the belief that school systems weren't built for children like theirs.\n\nPoliticians cited education in speeches but rarely in budgets. What was missing was not awareness - it was a shared conviction that the status quo was intolerable and that change was demanded.",
       quote: {
-        text: "The barrier was not access alone — it was a deeply held social norm that made non-enrolment feel acceptable, even rational.",
+        text: "The barrier was not access alone - it was a deeply held social norm that made non-enrolment feel acceptable, even rational.",
       },
     },
     strategy: {
       heading: "The Strategy",
-      intro: "The strategy was built on one insight: lasting change doesn't travel top-down. It is negotiated — through trusted voices, collective action, and structured accountability at every level of the socio-ecological system.",
+      intro: "The strategy was built on one insight: lasting change doesn't travel top-down. It is negotiated - through trusted voices, collective action, and structured accountability at every level of the socio-ecological system.",
       steps: [
-        { number: "01", title: "Community-Led Mobilisation", description: "Parents, children, teachers, religious leaders as co-architects — not audiences. Trust is infrastructure." },
-        { number: "02", title: "Norm Disruption via Credible Voices", description: "Elders, scholars, educators as norm ambassadors — shifting what communities publicly value." },
-        { number: "03", title: "Political Accountability at Election Time", description: "Election cycles as strategic windows — community demand converted into binding budget commitments." },
-        { number: "04", title: "Media as Accountability Architecture", description: "Media as a structural force — tracking commitments, surfacing failures, amplifying community voice." },
+        { number: "01", title: "Community-Led Mobilisation", description: "Parents, children, teachers, religious leaders as co-architects - not audiences. Trust is infrastructure." },
+        { number: "02", title: "Norm Disruption via Credible Voices", description: "Elders, scholars, educators as norm ambassadors - shifting what communities publicly value." },
+        { number: "03", title: "Political Accountability at Election Time", description: "Election cycles as strategic windows - community demand converted into binding budget commitments." },
+        { number: "04", title: "Media as Accountability Architecture", description: "Media as a structural force - tracking commitments, surfacing failures, amplifying community voice." },
       ],
     },
     work: {
       heading: "The Intervention",
-      body: "Alif Ailan was a true 360-degree movement. White Rice built and led the full creative and communications architecture — activating simultaneously across all four tiers of the socio-ecological model. White Rice built Alif Ailan from the ground up — the name, the brand, the strategic positioning, and the full communications ecosystem.",
+      body: "Alif Ailan was a true 360-degree movement. White Rice built and led the full creative and communications architecture - activating simultaneously across all four tiers of the socio-ecological model. White Rice built Alif Ailan from the ground up - the name, the brand, the strategic positioning, and the full communications ecosystem.",
       deliverables: [
         "Brand Naming & Identity",
         "Massive Digital Campaign",
@@ -150,23 +162,24 @@ export const caseStudies: CaseStudyData[] = [
     },
     impact: {
       heading: "The Impact",
-      body: "Over five years, Alif Ailan produced measurable change at every level it targeted — household behaviour, community norms, political accountability, and national narrative.",
+      body: "Over five years, Alif Ailan produced measurable change at every level it targeted - household behaviour, community norms, political accountability, and national narrative.",
       metrics: [
         { value: 100000, suffix: "+", label: "Children Returned to School" },
         { value: 12000, suffix: "", label: "Decision-Makers Engaged" },
         { value: 750, suffix: "+", label: "Community Visioning Boards" },
         { value: 4, suffix: "", label: "Provinces Mobilised" },
       ],
-      quote: { text: "We coined 'educational emergency' — and when the Prime Minister used those words in a national address, the narrative had permanently shifted.", attribution: "White Rice Impact" },
-      closingNote: "Alif Ailan established a replicable model for behaviour-change-led social mobilisation — one that has since informed SDG programming across health, climate, and gender equity in Pakistan and beyond.",
+      quote: { text: "We coined 'educational emergency' - and when the Prime Minister used those words in a national address, the narrative had permanently shifted.", attribution: "White Rice Impact" },
+      closingNote: "Alif Ailan established a replicable model for behaviour-change-led social mobilisation - one that has since informed SDG programming across health, climate, and gender equity in Pakistan and beyond.",
     },
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/timeline/2015.png", alt: "Community visioning exercise with students", span: "wide" },
-        { src: "/images/timeline/2013.png", alt: "Alif Ailan campaign mobilisation event", span: "normal" },
-        { src: "/images/timeline/2014.png", alt: "Education advocacy workshop", span: "normal" },
-        { src: "/images/timeline/2013-b.png", alt: "Campaign materials and district leaderboards", span: "wide" },
+        { src: "/images/alif-ailaan/alif-ailaan01.jpg", alt: "Alif Ailaan education rights march with campaign banner", span: "wide" },
+        { src: "/images/alif-ailaan/alif-ailaan02.jpg", alt: "School children in blue uniforms gathering for an Alif Ailaan event", span: "normal" },
+        { src: "/images/alif-ailaan/alif-ailaan06.jpg", alt: "Alif Ailaan town hall with packed audience for education awareness", span: "normal" },
+        { src: "/images/alif-ailaan/alif-ailaan03.jpg", alt: "Community mobilisation march for education enrolment", span: "wide" },
+        { src: "/images/alif-ailaan/alif-ailaan04.jpg", alt: "National Teachers Conference in Islamabad - education leaders on stage", span: "wide" },
       ],
     },
   },
@@ -174,7 +187,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 3 ─ UNICEF ECD */
   {
     slug: "unicef-ecd",
-    year: "2023 — 2024",
+    year: "2023 - 2024",
     tags: ["Early Childhood", "UNICEF", "Behaviour Change"],
     challenge: {
       heading: "The Challenge",
@@ -251,17 +264,25 @@ export const caseStudies: CaseStudyData[] = [
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/timeline/2023/parenting-hero.jpg", alt: "Parental engagement workshop", span: "wide" },
-        { src: "/images/timeline/2023/parenting-session.jpg", alt: "Group parenting session", span: "normal" },
-        { src: "/images/timeline/2023/parenting-screening.jpg", alt: "Mobile content screening", span: "normal" },
+        { src: "/images/peie/unicef-peie02.jpg", alt: "Father engaging with children in a hands-on learning activity at home", span: "wide" },
+        { src: "/images/peie/unicef-peie05.jpg", alt: "Parent-Teacher Meeting being filmed at a school in Peshawar", span: "normal" },
+        { src: "/images/peie/unicef-peie04.jpg", alt: "Team members reviewing educational visioning materials outdoors", span: "normal" },
+        { src: "/images/peie/unicef-peie01.jpg", alt: "Family portrait with UNICEF parental engagement team member", span: "wide" },
+        { src: "/images/peie/unicef-peie03.jpg", alt: "School girls gathered with programme team members in a park", span: "normal" },
+        { src: "/images/peie/unicef-peie07.jpg", alt: "Mother and daughter studying together at home", span: "normal" },
       ],
+    },
+    video: {
+      heading: "See It in Action",
+      src: "/videos/unicef-peie.mp4",
+      caption: "UNICEF Parental Engagement in Education - community impact across Pakistan",
     },
   },
 
   /* 5 ─ UNICEF WASH Film Screenings */
   {
     slug: "unicef-wash-film",
-    year: "2022 — 2023",
+    year: "2022 - 2023",
     tags: ["WASH", "Film", "Punjab", "UNICEF"],
     challenge: {
       heading: "The Challenge",
@@ -304,7 +325,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 6 ─ UNICEF PlayLab */
   {
     slug: "unicef-playlab",
-    year: "2022 — 2024",
+    year: "2022 - 2024",
     tags: ["ECD", "Play-Based Learning", "UNICEF"],
     challenge: {
       heading: "The Challenge",
@@ -312,17 +333,17 @@ export const caseStudies: CaseStudyData[] = [
     },
     strategy: {
       heading: "Our Approach",
-      intro: "We designed Pakistan's first scalable PlayLab model — a community-owned, play-based early learning space.",
+      intro: "We designed Pakistan's first scalable PlayLab model - a community-owned, play-based early learning space.",
       steps: [
         { number: "01", title: "Model Design", description: "Developing a low-cost PlayLab kit with locally sourced, culturally appropriate play materials." },
         { number: "02", title: "Facilitator Training", description: "Training community members as PlayLab facilitators through an intensive, practice-based curriculum." },
-        { number: "03", title: "Community Embedding", description: "Establishing PlayLabs within existing community spaces — mosques, community centres, homes." },
+        { number: "03", title: "Community Embedding", description: "Establishing PlayLabs within existing community spaces - mosques, community centres, homes." },
         { number: "04", title: "Scale & Systems", description: "Building government and partner pathways for district-wide and provincial PlayLab rollout." },
       ],
     },
     work: {
       heading: "Our Work",
-      body: "We designed, piloted, and scaled Pakistan's first PlayLab network — community-owned early learning spaces that bring structured play-based development to children in the most resource-constrained settings.",
+      body: "We designed, piloted, and scaled Pakistan's first PlayLab network - community-owned early learning spaces that bring structured play-based development to children in the most resource-constrained settings.",
       deliverables: ["PlayLab design kit and materials list", "Facilitator training curriculum", "Community setup and sustainability guide", "Government scaling strategy document"],
     },
     impact: {
@@ -333,15 +354,19 @@ export const caseStudies: CaseStudyData[] = [
         { value: 300, suffix: "+", label: "Facilitators Trained" },
         { value: 3, suffix: "", label: "Provinces Scaled" },
       ],
-      quote: { text: "PlayLab showed us that world-class early learning doesn't require world-class budgets — it requires world-class design.", attribution: "UNICEF ECD Specialist" },
+      quote: { text: "PlayLab showed us that world-class early learning doesn't require world-class budgets - it requires world-class design.", attribution: "UNICEF ECD Specialist" },
     },
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/timeline/2022/playlabs-hero.jpg", alt: "PlayLab session with children", span: "wide" },
-        { src: "/images/timeline/2022/playlabs-community.jpg", alt: "Community PlayLab setup", span: "normal" },
-        { src: "/images/timeline/2022/playlabs-session.jpg", alt: "Play-based learning activity", span: "normal" },
-        { src: "/images/playlabs.jpg", alt: "PlayLab materials and space", span: "wide" },
+        { src: "/images/play-lab/play-lab09.jpeg", alt: "Children engaged in hands-on clay play at a community PlayLab", span: "wide" },
+        { src: "/images/play-lab/play-lab08.jpeg", alt: "Completed UNICEF ECD PlayLab building with hand-painted murals", span: "normal" },
+        { src: "/images/play-lab/play-lab07.jpeg", alt: "UNICEF PlayLab exterior with colourful Urdu signage and community artwork", span: "normal" },
+        { src: "/images/play-lab/play-lab01.jpeg", alt: "Women crafting play-based learning materials with colourful yarn", span: "wide" },
+        { src: "/images/play-lab/play-lab06.jpeg", alt: "Community members setting up a PlayLab building with UNICEF branding", span: "normal" },
+        { src: "/images/play-lab/play-lab03.jpeg", alt: "Facilitators hanging community-made embroidered learning art on the wall", span: "normal" },
+        { src: "/images/play-lab/play-lab10.jpeg", alt: "Village-wide effort painting a PlayLab building exterior", span: "wide" },
+        { src: "/images/play-lab/play-lab04.jpeg", alt: "Community members painting a colourful mural on a PlayLab wall", span: "normal" },
       ],
     },
   },
@@ -349,7 +374,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 7 ─ UNFPA Transgender */
   {
     slug: "unfpa-transgender",
-    year: "2020 — 2021",
+    year: "2020 - 2021",
     tags: ["Inclusion", "Animation", "UNFPA"],
     challenge: {
       heading: "The Challenge",
@@ -357,7 +382,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     strategy: {
       heading: "Our Approach",
-      intro: "We chose animation as the medium — it lowers defensive barriers and allows audiences to engage with difficult topics through empathy rather than confrontation.",
+      intro: "We chose animation as the medium - it lowers defensive barriers and allows audiences to engage with difficult topics through empathy rather than confrontation.",
       steps: [
         { number: "01", title: "Community Consultation", description: "Working with transgender activists and community leaders to ensure authentic, dignified representation." },
         { number: "02", title: "Script Development", description: "Crafting narratives that centre the universal human experiences of transgender individuals." },
@@ -392,7 +417,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 8 ─ UNICEF Clean and Green */
   {
     slug: "unicef-clean-green",
-    year: "2019 — 2020",
+    year: "2019 - 2020",
     tags: ["Environment", "UNICEF", "Community Mobilisation"],
     challenge: {
       heading: "The Challenge",
@@ -435,7 +460,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 9 ─ FAO Road Safety */
   {
     slug: "fao-road-safety",
-    year: "2018 — 2019",
+    year: "2018 - 2019",
     tags: ["Road Safety", "FAO", "Rural Communities"],
     challenge: {
       heading: "The Challenge",
@@ -453,7 +478,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "Our Work",
-      body: "We produced a comprehensive road safety communication package tailored for rural audiences, distributed through the channels they trust most — from market stalls to mosque announcements.",
+      body: "We produced a comprehensive road safety communication package tailored for rural audiences, distributed through the channels they trust most - from market stalls to mosque announcements.",
       deliverables: ["Road safety awareness films", "Visual signage for hotspot areas", "Community announcement scripts", "Agricultural extension integration guide"],
     },
     impact: {
@@ -478,11 +503,11 @@ export const caseStudies: CaseStudyData[] = [
   /* 10 ─ UKAID TearFund */
   {
     slug: "ukaid-tearfund",
-    year: "2017 — 2018",
+    year: "2017 - 2018",
     tags: ["Disaster Resilience", "UKAID", "Faith-Based"],
     challenge: {
       heading: "The Challenge",
-      body: "Communities in disaster-prone regions of Pakistan were repeatedly devastated by floods and natural disasters, yet preparedness remained dangerously low. Top-down disaster messaging failed to resonate with local beliefs and practices.\n\nTearFund needed a community-owned resilience model that worked through trusted local structures — particularly faith-based networks.",
+      body: "Communities in disaster-prone regions of Pakistan were repeatedly devastated by floods and natural disasters, yet preparedness remained dangerously low. Top-down disaster messaging failed to resonate with local beliefs and practices.\n\nTearFund needed a community-owned resilience model that worked through trusted local structures - particularly faith-based networks.",
     },
     strategy: {
       heading: "Our Approach",
@@ -521,7 +546,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 11 ─ UNICEF MHH */
   {
     slug: "unicef-mhh",
-    year: "2021 — 2022",
+    year: "2021 - 2022",
     tags: ["Menstrual Health", "UNICEF", "Co-Creation"],
     challenge: {
       heading: "The Challenge",
@@ -539,7 +564,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "Our Work",
-      body: "We facilitated a groundbreaking co-creation process where adolescent girls designed their own MHH interventions — from communication materials to product distribution models — resulting in solutions with significantly higher adoption rates.",
+      body: "We facilitated a groundbreaking co-creation process where adolescent girls designed their own MHH interventions - from communication materials to product distribution models - resulting in solutions with significantly higher adoption rates.",
       deliverables: ["Co-creation methodology guide", "Girl-designed MHH communication kit", "School integration toolkit", "Product distribution model"],
     },
     impact: {
@@ -550,7 +575,7 @@ export const caseStudies: CaseStudyData[] = [
         { value: 200, suffix: "+", label: "Co-Creators" },
         { value: 88, suffix: "%", label: "Solution Adoption" },
       ],
-      quote: { text: "When girls design their own solutions, adoption isn't a challenge — it's a natural outcome.", attribution: "UNICEF WASH Officer" },
+      quote: { text: "When girls design their own solutions, adoption isn't a challenge - it's a natural outcome.", attribution: "UNICEF WASH Officer" },
     },
     gallery: {
       heading: "Gallery",
@@ -565,11 +590,11 @@ export const caseStudies: CaseStudyData[] = [
   /* 12 ─ Nike Girls Effect */
   {
     slug: "nike-girls-effect",
-    year: "2012 — 2014",
+    year: "2012 - 2014",
     tags: ["Youth Empowerment", "Nike", "Sport"],
     challenge: {
       heading: "The Challenge",
-      body: "Adolescent girls in Pakistan faced systemic barriers to participation in public life — from limited mobility and social restrictions to a lack of safe spaces for physical activity and self-expression.\n\nNike's Girls Effect initiative needed a local partner to design culturally appropriate empowerment programming that used sport and media as vehicles for social change.",
+      body: "Adolescent girls in Pakistan faced systemic barriers to participation in public life - from limited mobility and social restrictions to a lack of safe spaces for physical activity and self-expression.\n\nNike's Girls Effect initiative needed a local partner to design culturally appropriate empowerment programming that used sport and media as vehicles for social change.",
     },
     strategy: {
       heading: "Our Approach",
@@ -608,7 +633,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 13 ─ SPRING */
   {
     slug: "spring-program",
-    year: "2014 — 2016",
+    year: "2014 - 2016",
     tags: ["Nutrition", "SBC", "Global Health"],
     challenge: {
       heading: "The Challenge",
@@ -626,7 +651,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "Our Work",
-      body: "We designed a comprehensive nutrition SBC package that transformed how frontline workers communicated about infant feeding, complementary foods, and maternal nutrition — making the science of nutrition culturally accessible.",
+      body: "We designed a comprehensive nutrition SBC package that transformed how frontline workers communicated about infant feeding, complementary foods, and maternal nutrition - making the science of nutrition culturally accessible.",
       deliverables: ["Nutrition SBC communication package", "Health worker counselling cards", "Community group facilitation guide", "Household behaviour monitoring tool"],
     },
     impact: {
@@ -651,7 +676,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 14 ─ Oxfam IKEA HCD */
   {
     slug: "oxfam-ikea-hcd",
-    year: "2016 — 2017",
+    year: "2016 - 2017",
     tags: ["Human-Centered Design", "Oxfam", "IKEA"],
     challenge: {
       heading: "The Challenge",
@@ -694,7 +719,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 15 ─ Sightsavers Film */
   {
     slug: "sightsavers-film",
-    year: "2024 — 2025",
+    year: "2024 - 2025",
     tags: ["Disability Inclusion", "Film", "Sightsavers"],
     challenge: {
       heading: "The Challenge",
@@ -705,14 +730,14 @@ export const caseStudies: CaseStudyData[] = [
       intro: "We designed a national film movement that centred the agency, talent, and lived experiences of people with disabilities.",
       steps: [
         { number: "01", title: "Story Discovery", description: "Identifying powerful stories of people with disabilities who are challenging stereotypes through their achievements." },
-        { number: "02", title: "Inclusive Production", description: "Ensuring people with disabilities were involved in production — as subjects, crew members, and creative consultants." },
+        { number: "02", title: "Inclusive Production", description: "Ensuring people with disabilities were involved in production - as subjects, crew members, and creative consultants." },
         { number: "03", title: "Cinema Release", description: "Securing mainstream cinema and broadcast distribution to reach mass audiences." },
         { number: "04", title: "Advocacy Integration", description: "Connecting film screenings with policy advocacy moments and public commitment campaigns." },
       ],
     },
     work: {
       heading: "Our Work",
-      body: "We produced and distributed a series of films that showcased the capabilities, dreams, and contributions of people with disabilities — creating a national movement for inclusive visibility.",
+      body: "We produced and distributed a series of films that showcased the capabilities, dreams, and contributions of people with disabilities - creating a national movement for inclusive visibility.",
       deliverables: ["Documentary film series", "Cinema distribution package", "School screening programme", "Advocacy integration toolkit"],
     },
     impact: {
@@ -737,7 +762,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 16 ─ Johns Hopkins Animation */
   {
     slug: "johns-hopkins-animation",
-    year: "2021 — 2022",
+    year: "2021 - 2022",
     tags: ["Last Mile Training", "Animation", "Johns Hopkins"],
     challenge: {
       heading: "The Challenge",
@@ -755,7 +780,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "Our Work",
-      body: "We produced a comprehensive animated training series that equipped frontline health workers with essential clinical skills — from newborn care to vaccination protocols — in a format they could watch repeatedly on mobile devices.",
+      body: "We produced a comprehensive animated training series that equipped frontline health workers with essential clinical skills - from newborn care to vaccination protocols - in a format they could watch repeatedly on mobile devices.",
       deliverables: ["Animated training episode series", "Companion discussion guides", "Mobile distribution platform", "Knowledge assessment tools"],
     },
     impact: {
@@ -771,9 +796,8 @@ export const caseStudies: CaseStudyData[] = [
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/timeline/2021.png", alt: "Animation training episode still", span: "wide" },
-        { src: "/images/timeline/2021-b.png", alt: "Health worker watching training", span: "normal" },
-        { src: "/images/last-mile-training.jpg", alt: "Last mile training session", span: "normal" },
+        { src: "/images/digital-training/digital-training01.JPG", alt: "Facilitator leading a classroom training session with students at desks", span: "wide" },
+        { src: "/images/digital-training/digital-training02.JPG", alt: "Camera operator filming a digital training session for frontline health workers", span: "wide" },
       ],
     },
   },
@@ -781,7 +805,7 @@ export const caseStudies: CaseStudyData[] = [
   /* 17 ─ ICRC Bharosa */
   {
     slug: "icrc-bharosa",
-    year: "2017 — 2018",
+    year: "2017 - 2018",
     tags: ["Humanitarian", "Trust-Building", "ICRC"],
     challenge: {
       heading: "The Challenge",
@@ -789,7 +813,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     strategy: {
       heading: "Our Approach",
-      intro: "We designed the Bharosa Karein (Trust Us) campaign — a community-led trust-building initiative centred on transparency, consistency, and local voice.",
+      intro: "We designed the Bharosa Karein (Trust Us) campaign - a community-led trust-building initiative centred on transparency, consistency, and local voice.",
       steps: [
         { number: "01", title: "Trust Mapping", description: "Understanding the specific trust barriers, grievances, and information needs of conflict-affected populations." },
         { number: "02", title: "Community Ambassadors", description: "Identifying and training trusted community members as ICRC information ambassadors." },
@@ -799,7 +823,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "Our Work",
-      body: "We created and deployed the Bharosa Karein campaign — combining mass media with community ambassador networks to rebuild trust between conflict-affected populations and humanitarian services.",
+      body: "We created and deployed the Bharosa Karein campaign - combining mass media with community ambassador networks to rebuild trust between conflict-affected populations and humanitarian services.",
       deliverables: ["Bharosa Karein campaign materials", "Community ambassador training programme", "Trust measurement framework", "Service connection facilitation guide"],
     },
     impact: {
@@ -828,7 +852,7 @@ export const caseStudies: CaseStudyData[] = [
     tags: ["Food Safety", "European Union", "Supply Chain"],
     challenge: {
       heading: "The Challenge",
-      body: "Food safety practices across Pakistan's supply chains — from farm to market to table — fell far below international standards. Contamination, improper handling, and lack of awareness contributed to widespread foodborne illness affecting millions.\n\nThe European Union's GRASP programme needed behaviour change interventions that could improve food safety practices across the entire supply chain.",
+      body: "Food safety practices across Pakistan's supply chains - from farm to market to table - fell far below international standards. Contamination, improper handling, and lack of awareness contributed to widespread foodborne illness affecting millions.\n\nThe European Union's GRASP programme needed behaviour change interventions that could improve food safety practices across the entire supply chain.",
     },
     strategy: {
       heading: "Our Approach",
@@ -842,7 +866,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "Our Work",
-      body: "We developed a comprehensive food safety behaviour change programme spanning the entire supply chain — from farm-level handling protocols to market-level vendor training to consumer awareness campaigns.",
+      body: "We developed a comprehensive food safety behaviour change programme spanning the entire supply chain - from farm-level handling protocols to market-level vendor training to consumer awareness campaigns.",
       deliverables: ["Supply chain food safety communication package", "Vendor training curriculum", "Visual safety standards posters", "Consumer awareness campaign materials"],
     },
     impact: {
@@ -867,42 +891,60 @@ export const caseStudies: CaseStudyData[] = [
   /* 19 ─ SBC Cricket */
   {
     slug: "sbc-cricket",
-    year: "2019 — 2020",
-    tags: ["Sport for Development", "SBC", "Cricket"],
+    year: "2019 - 2020",
+    tags: ["Sport for Development", "SBC", "UNICEF", "Training Design", "Cricket"],
     challenge: {
       heading: "The Challenge",
-      body: "Social and behaviour change practitioners lacked practical, engaging tools for applying SBC principles in community settings. Existing guides were academic, dense, and disconnected from the cultural realities of South Asian communities.\n\nThere was a need for a practical SBC guide that used cricket — the region's most beloved sport — as a vehicle for teaching behaviour change concepts.",
+      body: "Social and behaviour change (SBC) practitioners across Pakistan and South Asia lacked practical, engaging tools for applying SBC principles in community settings. Existing training resources were academic, dense, and disconnected from the cultural realities of the communities they were meant to serve.\n\nThe gap was not a shortage of theory - it was a failure of translation. Complex frameworks like the Socio-Ecological Model, Behaviour Change Techniques, and theories of change needed to be made tangible, participatory, and memorable for frontline practitioners who operate in resource-constrained environments.",
+      quote: {
+        text: "The challenge wasn't teaching SBC - it was making it stick. We needed a language that everyone already spoke.",
+      },
     },
     strategy: {
-      heading: "Our Approach",
-      intro: "We used cricket as a universal metaphor to make social behaviour change principles accessible, memorable, and fun to apply.",
+      heading: "The Strategy",
+      intro: "We used cricket - the region's most beloved sport - as a universal metaphor to make social behaviour change principles accessible, memorable, and genuinely fun to apply in the field.",
       steps: [
-        { number: "01", title: "Concept Mapping", description: "Mapping SBC theory concepts to cricket analogies — from team strategy to match conditions to player roles." },
-        { number: "02", title: "Guide Development", description: "Writing a practical, visually rich guide that used cricket metaphors to teach real SBC methodology." },
-        { number: "03", title: "Workshop Design", description: "Creating interactive workshop formats where participants learned SBC through cricket-themed exercises." },
-        { number: "04", title: "Field Testing", description: "Testing the guide with practitioners across multiple countries to validate clarity and applicability." },
+        { number: "01", title: "Concept Mapping", description: "Mapping core SBC theory to cricket analogies - from team strategy (stakeholder analysis) to match conditions (enabling environment) to player roles (community actors)." },
+        { number: "02", title: "Toolkit Development", description: "Designing a suite of practical, visually rich tools - scorecards, prompt cards, facilitator guides - that made real SBC methodology hands-on and participatory." },
+        { number: "03", title: "Workshop Design", description: "Creating interactive workshop formats where participants learned SBC through cricket-themed exercises, group scoring, and competitive team challenges." },
+        { number: "04", title: "Master Trainer Cascade", description: "Training master trainers to deliver the SBC Cricket workshop independently - building sustainable capacity across UNICEF country offices and partner organisations." },
       ],
     },
     work: {
-      heading: "Our Work",
-      body: "We created a first-of-its-kind SBC practitioner guide that used cricket as a framework for understanding and applying behaviour change — making complex methodology accessible to a wide range of practitioners.",
-      deliverables: ["SBC Cricket practitioner guide", "Workshop facilitation toolkit", "Cricket-themed SBC exercise cards", "Training of trainers curriculum"],
+      heading: "The Intervention",
+      body: "White Rice designed and produced a complete SBC Cricket training ecosystem for UNICEF - from the core facilitator guidebook to cricket-themed scorecards, prompt cards, and behaviour change technique posters in both English and Urdu. Every tool was designed for active, hands-on use in workshop settings.",
+      deliverables: [
+        "SBC Facilitators Guidebook",
+        "SBC Cricket Scorecard (English & Urdu)",
+        "Behaviour Change Technique Prompt Cards",
+        "BCT Posters (English & Urdu)",
+        "Master Trainer Workshop Curriculum",
+        "SBC Scoreboard Examples & Templates",
+        "Training of Trainers Facilitation Pack",
+        "Workshop Exercise Card Deck",
+      ],
+      downloadLink: {
+        label: "Download SBC Facilitators Guidebook",
+        url: "/downloads/SBC-Facilitators-Guidebook.pdf",
+      },
     },
     impact: {
-      heading: "Impact",
+      heading: "The Impact",
+      body: "The SBC Cricket toolkit transformed how practitioners engage with behaviour change methodology - making abstract theory actionable in the field. The toolkit has been adopted across UNICEF country offices and partner organisations across South Asia.",
       metrics: [
         { value: 2000, suffix: "+", label: "Practitioners Trained" },
         { value: 12, suffix: "", label: "Countries Reached" },
-        { value: 500, suffix: "+", label: "Guides Distributed" },
+        { value: 500, suffix: "+", label: "Toolkits Distributed" },
         { value: 91, suffix: "%", label: "Usefulness Rating" },
       ],
+      quote: { text: "For the first time, my team could explain behaviour change theory to community health workers - using a language they already loved.", attribution: "UNICEF SBC Specialist" },
+      closingNote: "The SBC Cricket model established a replicable framework for making complex development methodology accessible through culturally resonant metaphor - a principle White Rice has since applied across health, nutrition, WASH, and education programming.",
     },
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/timeline/2010.png", alt: "SBC Cricket guide materials", span: "wide" },
-        { src: "/images/timeline/2019.png", alt: "SBC workshop session", span: "normal" },
-        { src: "/images/timeline/2019-b.png", alt: "Cricket-themed exercise", span: "normal" },
+        { src: "/images/sbc-cricket/workshop-scoreboard.jpg", alt: "Workshop participants working with SBC Scoreboard and Behaviour Change Technique materials", span: "wide" },
+        { src: "/images/sbc-cricket/cricket-snapshot.jpg", alt: "SBC Cricket methodology - four-step behaviour change framework in English and Urdu", span: "wide" },
       ],
     },
   },
@@ -910,11 +952,11 @@ export const caseStudies: CaseStudyData[] = [
   /* 20 ─ World Bank ECS */
   {
     slug: "world-bank-ecs",
-    year: "2024 — 2025",
+    year: "2024 - 2025",
     tags: ["Early Childhood", "World Bank", "Rural"],
     challenge: {
       heading: "The Challenge",
-      body: "In Pakistan's most rural communities, children under five received minimal cognitive stimulation. Caregivers — overwhelmed by poverty, labour, and lack of knowledge — did not engage in the responsive caregiving practices critical for early brain development.\n\nThe World Bank needed a village-level programme that could transform caregiver-child interaction without requiring infrastructure or expensive materials.",
+      body: "In Pakistan's most rural communities, children under five received minimal cognitive stimulation. Caregivers - overwhelmed by poverty, labour, and lack of knowledge - did not engage in the responsive caregiving practices critical for early brain development.\n\nThe World Bank needed a village-level programme that could transform caregiver-child interaction without requiring infrastructure or expensive materials.",
     },
     strategy: {
       heading: "Our Approach",
@@ -928,7 +970,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "Our Work",
-      body: "We developed and delivered a village-level early childhood stimulation programme that required zero infrastructure — only caregivers, their children, and everyday household items — to create transformative developmental outcomes.",
+      body: "We developed and delivered a village-level early childhood stimulation programme that required zero infrastructure - only caregivers, their children, and everyday household items - to create transformative developmental outcomes.",
       deliverables: ["Village-level ECS programme manual", "Caregiver session facilitation guide", "Home practice activity cards", "Peer group establishment toolkit"],
     },
     impact: {
@@ -939,7 +981,7 @@ export const caseStudies: CaseStudyData[] = [
         { value: 450, suffix: "+", label: "Facilitators Trained" },
         { value: 70, suffix: "%", label: "Interaction Improvement" },
       ],
-      quote: { text: "You don't need expensive toys to stimulate a child's brain — you need an engaged caregiver. This programme proved that.", attribution: "World Bank ECD Specialist" },
+      quote: { text: "You don't need expensive toys to stimulate a child's brain - you need an engaged caregiver. This programme proved that.", attribution: "World Bank ECD Specialist" },
     },
     gallery: {
       heading: "Gallery",

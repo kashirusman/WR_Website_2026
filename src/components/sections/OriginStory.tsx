@@ -27,7 +27,7 @@ export default function OriginStory() {
           In 2006, a small team set out to prove that storytelling, design, and
           behavioural science could drive real social change. What started as an
           experiment in gamified learning and animated films grew into a movement
-          — reaching millions of people across Pakistan and beyond. This is the
+          - reaching millions of people across Pakistan and beyond. This is the
           story of that journey, told in four chapters.
         </p>
       </motion.div>

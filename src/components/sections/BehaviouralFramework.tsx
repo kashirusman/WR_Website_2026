@@ -81,7 +81,7 @@ export default function BehaviouralFramework() {
             </h2>
             <p className="text-[#4A4A46] text-lg sem-subtitle">
               We use the Social Ecological Model to design interventions that
-              work across every layer of influence — from the individual to
+              work across every layer of influence - from the individual to
               national systems.
             </p>
           </div>

@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "White Rice Impact — 20 Years of Behavior Change",
+  title: "White Rice Impact - 20 Years of Behavior Change",
   description:
-    "Celebrating 20 years of social and behavioral change work with UNICEF and global partners — transforming lives through evidence-based behavior change at scale.",
+    "Celebrating 20 years of social and behavioral change work with UNICEF and global partners - transforming lives through evidence-based behavior change at scale.",
   keywords: [
     "behavior change",
     "UNICEF",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "White Rice Impact",
   ],
   openGraph: {
-    title: "White Rice Impact — 20 Years of Behavior Change",
+    title: "White Rice Impact - 20 Years of Behavior Change",
     description:
       "20 years of evidence-based behavior change work with UNICEF and global partners.",
     type: "website",

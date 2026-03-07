@@ -36,7 +36,7 @@ export default function NextProject({ project }: NextProjectProps) {
             >
               <Image
                 src={project.image}
-                alt={`${project.client} — ${project.title}`}
+                alt={`${project.client} - ${project.title}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="next-project__image"

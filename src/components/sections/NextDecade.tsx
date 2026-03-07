@@ -23,7 +23,7 @@ export default function NextDecade() {
           The Next Decade of Behaviour Change
         </h2>
         <p className="next-decade-text">
-          Twenty years of evidence have taught us one thing — behaviour change
+          Twenty years of evidence have taught us one thing - behaviour change
           at scale is possible when you combine science with storytelling. The
           next chapter is about taking that further. AI-powered nudge systems,
           immersive VR experiences, real-time behavioural data, and

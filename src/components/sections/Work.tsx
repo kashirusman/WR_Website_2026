@@ -30,8 +30,8 @@ const projects: Project[] = [
     title: "Misali Ma Project",
     description:
       "Reaching 11,000 mothers with life-saving health messaging through mobile-first content.",
-    image: "/images/timeline/2023/parenting-hero.jpg",
-    alt: "Health worker sharing maternal health content with mothers in a community setting",
+    image: "/images/misali-ma/misali-ma01.jpg",
+    alt: "Mothers and children raising hands during a Misali Ma StoryCircle session",
   },
   {
     id: "community-visioning",
@@ -39,15 +39,15 @@ const projects: Project[] = [
     title: "Largest Community Visioning Exercise",
     description:
       "750 visioning boards shaping local education priorities across Pakistan.",
-    image: "/images/timeline/2015.png",
-    alt: "Girls engaged in a participatory visioning exercise with educational cards",
+    image: "/images/peie/unicef-peie02.jpg",
+    alt: "Father engaging with children in a learning activity at home",
   },
   {
     id: "award-films",
     tag: "Film & Storytelling",
     title: "Award-Winning Films",
     description:
-      "12 Hours and Noor — driving national discourse on health and education.",
+      "12 Hours and Noor - driving national discourse on health and education.",
     image: "/images/timeline/2023/parenting-session.jpg",
     alt: "Cinematic still from an award-winning behaviour change film broadcast on national television",
     featured: true,
@@ -58,8 +58,8 @@ const projects: Project[] = [
     title: "Pakistan's First PlayLab",
     description:
       "Play-based early learning reaching resource-constrained communities.",
-    image: "/images/timeline/2023/parenting-screening.jpg",
-    alt: "UNICEF Bachpan Bemisaal children's educational programme screening",
+    image: "/images/play-lab/play-lab09.jpeg",
+    alt: "Children engaged in hands-on clay play at a community PlayLab",
     featured: true,
   },
   {
@@ -68,8 +68,8 @@ const projects: Project[] = [
     title: "Digital Last Mile Training",
     description:
       "Mobile-first training platform for frontline health workers across districts.",
-    image: "/images/timeline/2021-b.png",
-    alt: "Digital training session being recorded in a community classroom",
+    image: "/images/digital-training/digital-training02.JPG",
+    alt: "Camera operator filming a digital training session in a classroom",
   },
 ];
 

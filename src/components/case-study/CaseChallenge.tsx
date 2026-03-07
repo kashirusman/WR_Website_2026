@@ -39,7 +39,7 @@ export default function CaseChallenge({ data }: CaseChallengeProps) {
               <span className="case-challenge__quote-mark">&ldquo;</span>
               <p>{data.quote.text}</p>
               {data.quote.attribution && (
-                <cite>— {data.quote.attribution}</cite>
+                <cite>- {data.quote.attribution}</cite>
               )}
             </blockquote>
           </ScrollReveal>

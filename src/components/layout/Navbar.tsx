@@ -114,7 +114,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-[#0C0C0B] font-medium py-1"
+              className="text-[#0C0C0B] font-bold py-1"
             >
               {link.label}
             </a>

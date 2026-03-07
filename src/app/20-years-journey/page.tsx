@@ -8,9 +8,9 @@ import NextDecade from "@/components/sections/NextDecade";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "20-Year Journey — White Rice Impact",
+  title: "20-Year Journey - White Rice Impact",
   description:
-    "Explore 20 years of social impact, behaviour change, and human-centered design. From 2006 to 2026 — the White Rice story.",
+    "Explore 20 years of social impact, behaviour change, and human-centered design. From 2006 to 2026 - the White Rice story.",
 };
 
 export default function TwentyYearJourneyPage() {

@@ -185,7 +185,7 @@ export default function Ecosystem() {
                     />
                   )}
 
-                  {/* Label — ring name */}
+                  {/* Label - ring name */}
                   <text
                     x={CX} y={labelY}
                     textAnchor="middle"

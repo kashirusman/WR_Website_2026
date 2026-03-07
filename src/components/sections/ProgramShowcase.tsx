@@ -11,14 +11,14 @@ interface Pillar {
 
 const pillars: Pillar[] = [
   {
-    image: "/images/last-mile.jpeg",
+    image: "/images/child-smiling.jpg",
     title: "Last Mile Training",
     description:
       "Training frontline health workers to deliver life-saving services in remote communities.",
     impact: "800+ frontline workers trained",
   },
   {
-    image: "/images/sbc-community.jpeg",
+    image: "/images/sbc-commumnity.jpg",
     title: "SBC Community Interventions",
     description:
       "Evidence-based campaigns that shift behaviours and social norms at scale.",
@@ -51,7 +51,7 @@ export default function ProgramShowcase() {
           </h2>
           <p className="text-[#4A4A46] text-lg services-description">
             From training the last-mile health worker to designing national
-            SBC campaigns and nurturing early childhood development — our
+            SBC campaigns and nurturing early childhood development - our
             integrated approach creates durable behaviour change at scale.
           </p>
         </ScrollReveal>

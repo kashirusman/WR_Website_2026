@@ -55,7 +55,7 @@ export default function CaseImpact({ data }: CaseImpactProps) {
           <ScrollReveal delay={0.3}>
             <blockquote className="case-impact__quote">
               <p>&ldquo;{data.quote.text}&rdquo;</p>
-              <cite>— {data.quote.attribution}</cite>
+              <cite>- {data.quote.attribution}</cite>
             </blockquote>
           </ScrollReveal>
         )}

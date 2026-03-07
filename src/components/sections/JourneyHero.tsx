@@ -23,7 +23,7 @@ export default function JourneyHero() {
           </h1>
           <p className="journey-hero-subtitle">
             From a small studio in Islamabad to a force for social impact across
-            Asia, Africa, and Europe — this is the story of how design and
+            Asia, Africa, and Europe - this is the story of how design and
             storytelling changed millions of lives.
           </p>
           <div className="scroll-indicator">

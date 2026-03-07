@@ -25,18 +25,32 @@ export default function CaseHero({ project, caseStudy }: CaseHeroProps) {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.45], ["0px", "60px"]);
 
+  const hasVideo = !!caseStudy.video;
+
   return (
     <section ref={sectionRef} className="case-hero">
-      {/* Parallax image */}
+      {/* Parallax background - video or image */}
       <motion.div className="case-hero__bg" style={{ y: imageY }}>
-        <Image
-          src={project.image}
-          alt={`${project.client} — ${project.title}`}
-          fill
-          priority
-          sizes="100vw"
-          className="case-hero__image"
-        />
+        {hasVideo ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="case-hero__video"
+          >
+            <source src={caseStudy.video!.src} type="video/mp4" />
+          </video>
+        ) : (
+          <Image
+            src={project.image}
+            alt={`${project.client} - ${project.title}`}
+            fill
+            priority
+            sizes="100vw"
+            className="case-hero__image"
+          />
+        )}
       </motion.div>
 
       {/* Gradient overlay */}

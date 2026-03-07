@@ -55,7 +55,7 @@ export default function Framework() {
             <span className="text-[#C9922A]">behaviour change</span>
           </h2>
           <p className="text-[#4A4A46] text-lg framework-description">
-            A proven three-step process that moves from insight to impact —
+            A proven three-step process that moves from insight to impact -
             grounded in evidence, shaped by communities, built to scale.
           </p>
         </ScrollReveal>

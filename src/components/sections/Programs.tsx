@@ -22,7 +22,7 @@ const programs: Program[] = [
     id: "last-mile",
     label: "Last Mile Training",
     headline: "Reaching the Unreachable",
-    body: "In the world's hardest-to-reach communities — remote villages, fragile states, and urban slums — behaviour change is the last mile. Our training programmes equip frontline health workers with practical skills and culturally resonant tools to drive adoption of critical health practices at the household level.",
+    body: "In the world's hardest-to-reach communities - remote villages, fragile states, and urban slums - behaviour change is the last mile. Our training programmes equip frontline health workers with practical skills and culturally resonant tools to drive adoption of critical health practices at the household level.",
     stats: [
       { value: "1,200+", label: "Trainers Certified" },
       { value: "30+", label: "Countries" },
@@ -37,7 +37,7 @@ const programs: Program[] = [
     id: "sbc",
     label: "SBC Community Interventions",
     headline: "Science Meets Community",
-    body: "Our Social and Behaviour Change interventions blend rigorous behavioural science with deep community engagement. From formative research to campaign design, interpersonal communication, and community mobilisation — we design programmes that shift social norms, address barriers, and sustain change over time.",
+    body: "Our Social and Behaviour Change interventions blend rigorous behavioural science with deep community engagement. From formative research to campaign design, interpersonal communication, and community mobilisation - we design programmes that shift social norms, address barriers, and sustain change over time.",
     stats: [
       { value: "47", label: "Country Programmes" },
       { value: "35M+", label: "People Reached" },
@@ -51,7 +51,7 @@ const programs: Program[] = [
   {
     id: "ecd",
     label: "ECD & PlayLabs",
-    headline: "The First 1,000 Days — and Beyond",
+    headline: "The First 1,000 Days - and Beyond",
     body: "Early childhood is where lifelong outcomes are forged. Our PlayLabs model creates stimulating, play-based learning environments in the most resource-constrained settings. By working with caregivers, educators and communities, we transform the early years into a foundation for wellbeing, resilience and future learning.",
     stats: [
       { value: "50+", label: "PlayLabs Established" },
@@ -174,7 +174,7 @@ export default function Programs() {
             </h2>
             <p className="text-[#4A4A46] text-xl max-w-2xl mx-auto leading-relaxed">
               From training the last-mile health worker to designing national
-              SBC campaigns and nurturing early childhood development — our
+              SBC campaigns and nurturing early childhood development - our
               integrated approach creates durable behaviour change at scale.
             </p>
           </ScrollReveal>

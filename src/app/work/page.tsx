@@ -26,7 +26,7 @@ export default function WorkPage() {
               one project at a time
             </h1>
             <p className="workpage-hero-subtitle">
-              From community-level interventions to national campaigns — explore
+              From community-level interventions to national campaigns - explore
               the projects that define two decades of social and behavioural
               change.
             </p>

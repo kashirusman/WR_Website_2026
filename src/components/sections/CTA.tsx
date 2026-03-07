@@ -42,7 +42,7 @@ export default function CTA() {
         <div className="anniversary">
           <span className="anniversary-label">Celebrating</span>
           <div className="anniversary-number">20</div>
-          <span className="anniversary-years">Years · 2006 — 2026</span>
+          <span className="anniversary-years">Years · 2006 - 2026</span>
         </div>
       </ScrollReveal>
     </section>

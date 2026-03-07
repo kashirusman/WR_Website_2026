@@ -9,9 +9,9 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "misali-ma-storycircle",
-    title: "Misali Ma — PVMS StoryCircle",
+    title: "Misali Ma - PVMS StoryCircle",
     client: "PVMS",
-    image: "/images/work-misali-ma.jpg",
+    image: "/images/misali-ma/misali-ma03.jpg",
     description:
       "Community-led story circles empowering mothers with life-saving health messaging through participatory media.",
   },
@@ -19,7 +19,7 @@ export const projects: Project[] = [
     slug: "alif-ailaan-education",
     title: "Education for All",
     client: "Alif Ailaan",
-    image: "/images/timeline/2015.png",
+    image: "/images/alif-ailaan/alif-ailaan01.jpg",
     description:
       "A nationwide advocacy campaign mobilising communities and policymakers to prioritise quality education across Pakistan.",
   },
@@ -35,13 +35,13 @@ export const projects: Project[] = [
     slug: "unicef-parental-engagement",
     title: "Parental Engagement Project",
     client: "UNICEF",
-    image: "/images/timeline/2023/parenting-hero.jpg",
+    image: "/images/peie/unicef-peie02.jpg",
     description:
       "Strengthening caregiver practices through interactive workshops and mobile-first parenting content.",
   },
   {
     slug: "unicef-wash-film",
-    title: "WASH — Film Screenings Punjab",
+    title: "WASH - Film Screenings Punjab",
     client: "UNICEF",
     image: "/images/timeline/2023/parenting-screening.jpg",
     description:
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     slug: "unicef-playlab",
     title: "PlayLab at Scale",
     client: "UNICEF",
-    image: "/images/timeline/2022/playlabs-hero.jpg",
+    image: "/images/play-lab/play-lab09.jpeg",
     description:
       "Scaling Pakistan's first play-based early learning model to reach resource-constrained communities nationwide.",
   },
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     slug: "johns-hopkins-animation",
     title: "Last Mile Animation Training",
     client: "Johns Hopkins",
-    image: "/images/timeline/2021.png",
+    image: "/images/digital-training/digital-training01.JPG",
     description:
       "Animated training series equipping frontline health workers with last-mile service delivery skills.",
   },
@@ -145,7 +145,7 @@ export const projects: Project[] = [
   },
   {
     slug: "eu-grasp-food-safety",
-    title: "GRASP — Food Safety Project",
+    title: "GRASP - Food Safety Project",
     client: "European Union",
     image: "/images/timeline/2024/food-safety-hero.jpg",
     description:
@@ -153,9 +153,9 @@ export const projects: Project[] = [
   },
   {
     slug: "sbc-cricket",
-    title: "SBC Cricket — Social Behaviour Change Guide",
-    client: "SBC",
-    image: "/images/timeline/2010.png",
+    title: "SBC Cricket - Social Behaviour Change Guide",
+    client: "UNICEF",
+    image: "/images/sbc-cricket/workshop-scoreboard.jpg",
     description:
       "A practical guide leveraging cricket as a platform to apply social and behaviour change communication.",
   },
