@@ -33,8 +33,8 @@ const steps: Step[] = [
     title: "Community Engagement Model",
     description:
       "Scalable frameworks that embed lasting change through local ownership, peer networks, and sustained follow-through.",
-    image: "/images/timeline/2022/playlabs-community.jpg",
-    alt: "Community members laughing and clapping together during an engagement session",
+    image: "/images/community-engagement.jpg",
+    alt: "Team members sitting in a circle during a participatory community engagement activity",
   },
 ];
 

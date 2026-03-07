@@ -33,9 +33,9 @@ export default function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="container-wide flex h-16 items-center justify-between md:h-20">
+      <div className="container-wide relative flex h-16 items-center justify-between md:h-20">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5 group">
+        <a href="/" className="relative z-10 flex items-center gap-2.5 group">
           <span
             className={cn(
               "font-bold text-lg tracking-tight transition-colors",
@@ -56,8 +56,8 @@ export default function Navbar() {
           </span>
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Desktop nav - absolutely centered */}
+        <nav className="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -73,9 +73,6 @@ export default function Navbar() {
             </a>
           ))}
         </nav>
-
-        {/* Spacer to balance layout */}
-        <div className="hidden md:block w-0" />
 
         {/* Mobile hamburger */}
         <button
