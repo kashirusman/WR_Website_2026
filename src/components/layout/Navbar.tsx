@@ -74,6 +74,9 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Spacer to balance layout */}
+        <div className="hidden md:block w-0" />
+
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
