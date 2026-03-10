@@ -68,6 +68,39 @@ export interface CaseStudyData {
   };
   impactCells?: ImpactCell[];
 
+  /* Custom band sections (case-study-specific) */
+  divider?: {
+    stat: string;
+    text: string;
+  };
+  cocreation?: {
+    eyebrow: string;
+    heading: string;
+    workshopSteps: { num: string; name: string; body: string }[];
+    provinceCards: { name: string; city: string; stat: string; breakdown: string }[];
+  };
+  reframe?: {
+    eyebrow: string;
+    challenge: string;
+    note: string;
+  };
+  touchpoints?: {
+    eyebrow: string;
+    heading: string;
+    cards: { num: string; title: string; body: string; scale: string; color: string }[];
+  };
+  verbatims?: {
+    eyebrow: string;
+    heading: string;
+    cards: { quote: string; source: string }[];
+  };
+  reach?: {
+    eyebrow: string;
+    heading: string;
+    numbers: { label: string; big: string; sub: string }[];
+    platforms?: { name: string; reach: string; impressions: string }[];
+  };
+
   /* Existing fields */
   challenge: {
     heading: string;
@@ -508,7 +541,73 @@ export const caseStudies: CaseStudyData[] = [
       { big: "550+ Vision Boards", desc: "Pakistan\u2019s largest-ever visioning exercise \u2014 transforming the aspiration gap into the motivation engine for the entire programme." },
       { big: "Cultural Shift", desc: "Fathers from Sujawal and Multan sharing programme content on social media. A Multan father discussing Walidain HumQadam on live television. Behaviour changed publicly, not just privately." },
       { big: "4,200+ Community", desc: "A lasting WhatsApp community of parents, teachers, and educators \u2014 providing the infrastructure for sustained engagement long after the formal programme concluded." },
+      { big: "AI-Integrated", desc: "First government-school SBC programme in Pakistan to integrate ChatGPT and Khan Academy as accessible learning tools within a WhatsApp-native delivery model." },
+      { big: "Scale-Ready", desc: "A 4-week WhatsApp programme, refined through six cities and four provinces, that is fully validated and ready for national deployment across thousands of schools." },
     ],
+    divider: {
+      stat: "58% of<br>10-year-olds<br>can\u2019t read.",
+      text: "Pakistan faces a dual crisis \u2014 25.3 million children out of school, and a learning poverty rate where 58% of 10-year-olds cannot read or comprehend simple texts. Fewer than 30% of parents actively engage with teachers or participate in school activities. The evidence is clear: limited parental involvement is one of the most critical yet least-addressed factors in Pakistan\u2019s education emergency. Walidain HumQadam was designed to change that \u2014 not through mandate, but through behaviour change.",
+    },
+    cocreation: {
+      eyebrow: "Co-Creation Process \u00b7 Designed With, Not For",
+      heading: "Four provinces. Four workshops.<br><em>One programme shaped entirely by the communities it would serve.</em>",
+      workshopSteps: [
+        { num: "Step 1", name: "Visioning", body: "Participants imagined a transformative future 10 years ahead \u2014 setting aspirational tone and emotional investment before any problem-solving" },
+        { num: "Step 2", name: "Challenge Framing", body: "Stakeholders articulated barriers from their own perspectives \u2014 building empathy and identifying root causes of parental disengagement" },
+        { num: "Step 3", name: "Persona Mapping", body: "Participants created profiles of average Pakistani parents \u2014 exploring challenges, opportunities, and aspirations to deepen empathy with the target audience" },
+        { num: "Step 4", name: "Ideation & Prototyping", body: "Creative solution generation followed by detailed implementation plans \u2014 translating ideas into actionable, community-tested blueprints" },
+        { num: "Step 5", name: "Pre-Mortem", body: "Participants critically evaluated proposed solutions \u2014 identifying potential failure points before implementation to build robustness and sustainability" },
+      ],
+      provinceCards: [
+        { name: "Sindh", city: "Karachi", stat: "32", breakdown: "4 students \u00b7 9 teachers \u00b7 5 parents \u00b7 14 influencers" },
+        { name: "Punjab", city: "Lahore", stat: "33", breakdown: "8 students \u00b7 14 teachers \u00b7 8 parents \u00b7 10 influencers" },
+        { name: "KPK", city: "Peshawar", stat: "21", breakdown: "6 students \u00b7 5 teachers \u00b7 6 parents \u00b7 4 influencers" },
+        { name: "Balochistan", city: "Quetta", stat: "25", breakdown: "7 students \u00b7 5 teachers \u00b7 4 parents \u00b7 9 influencers" },
+      ],
+    },
+    reframe: {
+      eyebrow: "The Reframed Challenge Statement \u00b7 Emerging from Co-Creation",
+      challenge: "\u201CHow might we reimagine parental engagement as a dynamic force for realising future aspirations and collective dreams \u2014 by empowering parents, students, and teachers to co-create personalised learning journeys?\u201D",
+      note: "The original challenge \u2014 \u201Chow might we improve parental engagement at home and school?\u201D \u2014 was transformed through co-creation into something more meaningful: a question not about compliance, but about shared ambition. This reframing became the north star for every intervention design decision that followed.",
+    },
+    touchpoints: {
+      eyebrow: "Programme Intervention Design \u00b7 Five Integrated Touchpoints",
+      heading: "Every touchpoint designed to <em>build on the last.</em>",
+      cards: [
+        { num: "01", title: "Teacher Training & Orientation", body: "Full-day activity-based training sessions introduced programme objectives, built teacher confidence, and positioned educators as Champion Teachers central to the programme\u2019s success.", scale: "<strong>250 teachers</strong> \u00b7 52 schools \u00b7 4 provinces", color: "#4A6ACA" },
+        { num: "02", title: "Future Visioning", body: "Pakistan\u2019s largest-ever visioning exercise \u2014 parents, teachers, and students co-created 550+ vision canvases representing 10-year aspirations for their child\u2019s future, building intrinsic motivation before any instructional content.", scale: "<strong>500+ parents</strong> \u00b7 <strong>550+ vision canvases</strong>", color: "#E8C84A" },
+        { num: "03", title: "WhatsApp Remote Learning", body: "A 30-day habit challenge delivered via WhatsApp \u2014 separate programmes for parents and teachers. Bite-sized microlearning, gamification, polls, voice notes, and 50+ role model videos. Built on COM-B, EAST, and behavioural nudge science. Integrated with ChatGPT and Khan Academy.", scale: "<strong>4,200+ community</strong> \u00b7 35% high-performing parents", color: "#5AAA8A" },
+        { num: "04", title: "Peer-to-Peer Gatherings", body: "Community-based P2P sessions gave parents a safe space to connect, share experiences, and learn from one another \u2014 reinforcing programme behaviours through peer normalisation and collective accountability.", scale: "<strong>3,080 parents</strong> reached through P2P gatherings", color: "#CA6A4A" },
+        { num: "05", title: "Redesigned PTMs", body: "Parent-Teacher Meetings were transformed from formal reporting events into collaborative partnership sessions \u2014 with structured agendas, student reflection templates, collaborative action plans, and post-PTM follow-up protocols.", scale: "<strong>4,457 parents</strong> reached through PTMs", color: "#9A6ACA" },
+      ],
+    },
+    verbatims: {
+      eyebrow: "In Their Own Words",
+      heading: "Parents and teachers who <em>changed their minds</em> \u2014 and then changed their habits.",
+      cards: [
+        { quote: "As soon as I see the vision board, I remember to ask the children what they learned today. That\u2019s why we pasted it on the wall \u2014 so we remember to give our child time every day.", source: "Parent \u00b7 Visioning Exercise" },
+        { quote: "We realised the importance of bridging the gap between parents, teachers, and students. Working together as a united triangle improves children\u2019s performance and ensures they feel supported.", source: "Teacher \u00b7 Training Session \u00b7 Lahore" },
+        { quote: "What we used to think about taking out time but couldn\u2019t manage \u2014 became much easier. When a message came, it reminded us and made it simpler to act.", source: "Parent \u00b7 WhatsApp Programme" },
+        { quote: "We now feel that if their dreams come true, ours will too.", source: "Parent \u00b7 Vision Board Session" },
+        { quote: "Parents also noticed the difference in this PTM compared to previous ones. This time, we heard more positive things. Apart from academics, we had the opportunity to learn about their personality and behavior.", source: "Parent \u00b7 Redesigned PTM" },
+        { quote: "We got to learn many different things \u2014 very innovative things \u2014 in just one day. Creativity sparked in our minds.", source: "Teacher \u00b7 Training Session" },
+      ],
+    },
+    reach: {
+      eyebrow: "Reach & Impact \u00b7 By the Numbers",
+      heading: "From 500 parents to <em>14 million impressions.</em>",
+      numbers: [
+        { label: "Total Parents Reached", big: "13,998", sub: "Across P2P, PTM, WhatsApp, digital forwarding, and direct teacher outreach" },
+        { label: "Teachers Trained", big: "250", sub: "Across 52 schools in 6 cities and 4 provinces \u2014 as Champion Teachers" },
+        { label: "Digital Reach", big: "6.4M+", sub: "Individuals reached across Facebook, Instagram, YouTube, and TikTok" },
+        { label: "Digital Impressions", big: "14.7M+", sub: "Total campaign impressions \u2014 with a Balochistan role model story aired on national television" },
+      ],
+      platforms: [
+        { name: "Facebook & Instagram", reach: "5,377,689 reach", impressions: "11,908,859 impressions" },
+        { name: "YouTube", reach: "816,536 reach", impressions: "2,391,231 impressions" },
+        { name: "TikTok", reach: "213,049 reach", impressions: "464,283 impressions" },
+      ],
+    },
     challenge: {
       heading: "The <em>Challenge</em>",
       body: "Parental engagement in Pakistan's public school system is structurally limited at every tier. Economic pressure means parents prioritise immediate survival over school activities. Low literacy \u2014 particularly among mothers \u2014 creates deep insecurity about their ability to meaningfully contribute to their child's education. Public school teachers managing classrooms of 50+ students have minimal capacity to build parent relationships. And communication between schools and families remains almost entirely paper-based.\n\nFathers in particular are largely absent from the educational lives of their children \u2014 viewing it as the mother's responsibility. And mothers, despite their proximity to children, often lack the confidence, literacy, or mobility to advocate effectively at the school level.\n\nUnderlying all of this is a belief \u2014 reinforced by real economic reality \u2014 that formal education may not reliably lead to better outcomes. Before any behaviour change programme could work, it needed to address this foundational question of value. Walidain HumQadam began not by telling parents what to do, but by helping them remember why they hoped.",
