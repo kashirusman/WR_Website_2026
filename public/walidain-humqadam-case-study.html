@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Walidain HumQadam — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:        #12100A;
+      --parchment:  #F5F0E8;
+      --sand:       #E2D9C8;
+      --muted:      #7A7065;
+      --indigo:     #1A2A6A;
+      --indigo-lt:  #4A6ACA;
+      --indigo-pale:#D8DEF5;
+      --saffron:    #C49A1A;
+      --saffron-lt: #E8C84A;
+      --saffron-pale:#FBF2D0;
+      --night:      #0A0C18;
+      --slate:      #1E2840;
+      --warm-white: #FDFAF5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--night);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 85% 8%,  rgba(196,154,26,.5)  0%, transparent 58%),
+        radial-gradient(ellipse 50% 60% at 5%  88%,  rgba(26,42,106,.7)   0%, transparent 58%),
+        radial-gradient(ellipse 35% 45% at 45% 50%,  rgba(10,12,24,.5)    0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Walking-alongside chevron pattern */
+    .hero-chevrons {
+      position: absolute; top: 0; right: 0;
+      width: 55%; height: 100%;
+      overflow: hidden; pointer-events: none; z-index: 1; opacity: .045;
+    }
+    .hero-chevrons::before,
+    .hero-chevrons::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+    }
+    .hero-chevrons::before {
+      background: repeating-linear-gradient(
+        60deg, transparent, transparent 40px,
+        rgba(196,154,26,1) 40px, rgba(196,154,26,1) 41px
+      );
+    }
+    .hero-chevrons::after {
+      background: repeating-linear-gradient(
+        120deg, transparent, transparent 40px,
+        rgba(74,106,202,1) 40px, rgba(74,106,202,1) 41px
+      );
+      opacity: .5;
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--saffron-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .urdu-title {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1.4rem, 2.5vw, 2rem); color: rgba(255,255,255,.18);
+      font-weight: 300; margin-bottom: .75rem; direction: rtl;
+      animation: fadeUp .65s .04s both;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--saffron-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--saffron); }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 7.5vw, 8rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--saffron-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.7rem);
+      font-weight: 300; color: rgba(255,255,255,.42); font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.07); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--saffron-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--saffron-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(196,154,26,.15); border: 1px solid rgba(196,154,26,.35); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--saffron-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--indigo); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'ہمقدم'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(7rem, 18vw, 20rem); font-weight: 700; color: rgba(255,255,255,.04); pointer-events: none; line-height: 1; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.62); font-weight: 300; }
+
+    /* ── DIVIDER ── */
+    .divider-band { background: var(--saffron-pale); padding: 3.5rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--indigo); line-height: 1.1; }
+    .divider-text { font-size: .95rem; line-height: 1.8; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--indigo); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--indigo); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--indigo); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--indigo); background: rgba(26,42,106,.05); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--night); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── CO-CREATION BAND ── */
+    .cocreation-band { background: var(--slate); padding: 5rem 3.5rem; }
+    .cocreation-inner { max-width: 1200px; margin: 0 auto; }
+    .cocreation-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .cocreation-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .cocreation-heading em { font-style: italic; color: var(--saffron-lt); }
+    /* Workshop flow */
+    .workshop-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5px; background: rgba(255,255,255,.06); margin-bottom: 3rem; }
+    .workshop-step { background: var(--slate); padding: 2.5rem 1.5rem; text-align: center; }
+    .ws-icon { width: 3.5rem; height: 3.5rem; border-radius: 50%; background: rgba(196,154,26,.12); border: 1px solid rgba(196,154,26,.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .ws-icon svg { width: 1.15rem; height: 1.15rem; }
+    .ws-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .78rem; color: var(--saffron-lt); margin-bottom: .3rem; }
+    .ws-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .ws-body { font-size: .75rem; line-height: 1.55; color: rgba(255,255,255,.4); font-weight: 300; }
+    /* Province cards */
+    .province-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .province-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); padding: 1.75rem; }
+    .province-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: .3rem; }
+    .province-city { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--saffron-lt); margin-bottom: .75rem; }
+    .province-stat { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: rgba(255,255,255,.15); line-height: 1; margin-bottom: .4rem; }
+    .province-breakdown { font-size: .75rem; line-height: 1.6; color: rgba(255,255,255,.4); }
+
+    /* ── REFRAMED CHALLENGE ── */
+    .reframe-band { background: var(--saffron); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .reframe-band::before { content: '"'; position: absolute; left: -1rem; top: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(15rem, 35vw, 40rem); color: rgba(255,255,255,.06); line-height: 1; pointer-events: none; }
+    .reframe-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; text-align: center; }
+    .reframe-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 1.5rem; }
+    .reframe-challenge { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3.5vw, 2.8rem); font-weight: 300; font-style: italic; line-height: 1.35; color: #fff; margin-bottom: 2rem; }
+    .reframe-note { font-size: .9rem; line-height: 1.75; color: rgba(255,255,255,.6); font-weight: 300; max-width: 55ch; margin: 0 auto; }
+
+    /* ── 5 TOUCHPOINTS ── */
+    .touchpoints-band { background: var(--night); padding: 5rem 3.5rem; }
+    .touchpoints-inner { max-width: 1200px; margin: 0 auto; }
+    .touchpoints-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .touchpoints-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .touchpoints-heading em { font-style: italic; color: var(--saffron-lt); }
+    .touchpoints-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); }
+    .touchpoint-card { background: var(--night); padding: 2.5rem 1.75rem; position: relative; overflow: hidden; }
+    .touchpoint-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+    .tc1::after { background: var(--indigo-lt); }
+    .tc2::after { background: var(--saffron-lt); }
+    .tc3::after { background: #5AAA8A; }
+    .tc4::after { background: #CA6A4A; }
+    .tc5::after { background: #9A6ACA; }
+    .tp-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: rgba(255,255,255,.06); line-height: 1; margin-bottom: .75rem; }
+    .tp-icon { width: 3rem; height: 3rem; border-radius: 50%; background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .tp-icon svg { width: 1.15rem; height: 1.15rem; }
+    .tp-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: .6rem; line-height: 1.2; }
+    .tp-body { font-size: .78rem; line-height: 1.65; color: rgba(255,255,255,.42); font-weight: 300; }
+    .tp-scale { margin-top: 1rem; padding-top: .75rem; border-top: 1px solid rgba(255,255,255,.07); font-size: .7rem; color: rgba(255,255,255,.3); }
+    .tp-scale strong { color: rgba(255,255,255,.6); }
+
+    /* ── VERBATIMS BAND ── */
+    .verbatims-band { background: var(--indigo-pale); padding: 5rem 3.5rem; }
+    .verbatims-inner { max-width: 1200px; margin: 0 auto; }
+    .verbatims-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--indigo); margin-bottom: .75rem; }
+    .verbatims-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--ink); margin-bottom: 3rem; }
+    .verbatims-heading em { font-style: italic; color: var(--indigo); }
+    .verbatims-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .verbatim-card { background: #fff; padding: 2rem; border-top: 3px solid var(--indigo); }
+    .verbatim-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; line-height: 1.6; color: var(--ink); margin-bottom: 1rem; }
+    .verbatim-source { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--indigo); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── REACH BAND ── */
+    .reach-band { background: var(--indigo); padding: 5rem 3.5rem; }
+    .reach-inner { max-width: 1200px; margin: 0 auto; }
+    .reach-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .reach-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .reach-heading em { font-style: italic; color: var(--saffron-lt); }
+    .reach-numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(255,255,255,.08); margin-bottom: 2rem; }
+    .reach-card { background: var(--indigo); padding: 2rem 1.75rem; }
+    .reach-big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .4rem; }
+    .reach-label { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: .5rem; }
+    .reach-sub { font-size: .78rem; line-height: 1.55; color: rgba(255,255,255,.38); font-weight: 300; }
+    .digital-bar { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+    .digital-platform { padding: 1.25rem 1.5rem; background: rgba(255,255,255,.05); border-left: 2px solid rgba(196,154,26,.5); }
+    .dp-name { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .35rem; }
+    .dp-reach { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: #fff; margin-bottom: .2rem; }
+    .dp-imp { font-size: .75rem; color: rgba(255,255,255,.38); }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--night); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,154,26,.1) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--saffron-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.45); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .cocreation-band, .touchpoints-band, .verbatims-band, .reach-band, .reframe-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .verbatims-grid, .province-grid, .reach-numbers, .digital-bar, .touchpoints-grid, .workshop-flow { grid-template-columns: 1fr; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--indigo); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-chevrons"></div>
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Parental Engagement in Education · SBC · National Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="urdu-title">والدین ہمقدم</div>
+    <div class="eyebrow">UNICEF Pakistan · 4 Provinces · 52 Schools</div>
+    <h1>
+      Parents<br><em>Walking</em><br>Alongside.
+      <span class="sub-title">Walidain HumQadam — Pakistan's First Remote SBC Programme for Parental Engagement in Education</span>
+    </h1>
+    <p class="hero-sub">A pioneering SBC initiative co-designed with parents, teachers, and communities across Pakistan — using WhatsApp, vision boards, and peer-to-peer learning to transform parental engagement from a mandatory obligation into a sustained, meaningful practice.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">UNICEF Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Scale</span><span class="meta-value">4 Provinces · 6 Cities · 52 Schools</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">Parental Engagement in Education (SBC)</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">SBC Design, Co-Creation &amp; Content Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">SBC Design, Research &amp; <em>Full Programme Architecture</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice partnered with UNICEF Pakistan to design, co-create, and deliver Walidain HumQadam — Pakistan's first remotely-delivered SBC programme specifically targeting parental engagement in education. Our role spanned the entire programme lifecycle: from formative research and co-creation workshops across four provinces, through intervention design using the Behavioural Driver Model and Theory of Change, to content production for five integrated programme touchpoints and a 6.4-million-reach digital campaign.</p>
+      <div class="role-services">
+        <span class="role-tag">Formative Research</span>
+        <span class="role-tag">4-Province Co-Creation Workshops</span>
+        <span class="role-tag">SBC Theory of Change</span>
+        <span class="role-tag">Behavioural Driver Model</span>
+        <span class="role-tag">WhatsApp Programme Design</span>
+        <span class="role-tag">Vision Board Methodology</span>
+        <span class="role-tag">Teacher Training Programme</span>
+        <span class="role-tag">PTM Framework Redesign</span>
+        <span class="role-tag">P2P Community Sessions</span>
+        <span class="role-tag">Digital Campaign (6.4M reach)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">13,998</div>
+      <div class="outcome-desc">Total parents reached — through WhatsApp, P2P gatherings, PTMs, digital sharing, and direct teacher outreach across six cities in four provinces.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">6.4 Million+</div>
+      <div class="outcome-desc">Individuals reached through the digital campaign across Facebook, Instagram, YouTube, and TikTok — generating over 14.7 million impressions.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">550+ Canvases</div>
+      <div class="outcome-desc">Vision canvases created by parents, teachers, and students across 52 schools — Pakistan's largest ever visioning exercise in education.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">250 Teachers</div>
+      <div class="outcome-desc">Trained as Champion Teachers across 52 schools in Islamabad, Lahore, Peshawar, Karachi, Quetta, Sujawal, and Multan.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4,200+ Community</div>
+      <div class="outcome-desc">A sustained WhatsApp community of parents and teachers — built for long-term engagement beyond the programme's formal timeline.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">58% of<br>10-year-olds<br>can't read.</div>
+  <div class="divider-text">Pakistan faces a dual crisis — 25.3 million children out of school, and a learning poverty rate where 58% of 10-year-olds cannot read or comprehend simple texts. Fewer than 30% of parents actively engage with teachers or participate in school activities. The evidence is clear: limited parental involvement is one of the most critical yet least-addressed factors in Pakistan's education emergency. Walidain HumQadam was designed to change that — not through mandate, but through behaviour change.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Parental engagement in Pakistan's public school system is structurally limited at every tier. Economic pressure means parents prioritise immediate survival over school activities. Low literacy — particularly among mothers — creates deep insecurity about their ability to meaningfully contribute to their child's education. Public school teachers managing classrooms of 50+ students have minimal capacity to build parent relationships. And communication between schools and families remains almost entirely paper-based.</p>
+        <div class="pull-quote">
+          <p>"Parents consider education a fruitless effort — there are examples in every home where someone who completed their MA or BS is unemployed, so they pay more attention to a shop or other work."</p>
+        </div>
+        <p>Fathers in particular are largely absent from the educational lives of their children — viewing it as the mother's responsibility. And mothers, despite their proximity to children, often lack the confidence, literacy, or mobility to advocate effectively at the school level.</p>
+        <p>Underlying all of this is a belief — reinforced by real economic reality — that formal education may not reliably lead to better outcomes. Before any behaviour change programme could work, it needed to address this foundational question of value. Walidain HumQadam began not by telling parents what to do, but by helping them remember why they hoped.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The programme's SBC strategy was built around the Socio-Ecological Model — addressing parental disengagement at the individual, interpersonal, community, and institutional levels simultaneously. The Behavioural Driver Model framed the programme's design across three intersecting forces: psychology (internal beliefs and self-efficacy), sociology (social norms, peer influence), and environment (tools, platforms, and access).</p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div>
+              <div class="pillar-title">Start with Aspiration, Not Instruction</div>
+              <div class="pillar-body">The programme's entry point was a Future Visioning exercise — asking parents to imagine their child's life 10 years ahead. Before any knowledge transfer or behaviour nudge, the programme rebuilt parents' emotional investment in their child's education as the foundation for everything else.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+            <div>
+              <div class="pillar-title">WhatsApp as the Programme's Backbone</div>
+              <div class="pillar-body">WhatsApp — already deeply embedded in Pakistani daily life — became the delivery platform for a 30-day habit challenge: bite-sized microlearning, gamification, peer discussion, voice notes, polls, and role model stories. Accessible anywhere, any time, on any phone.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+            <div>
+              <div class="pillar-title">Teachers as Programme Champions</div>
+              <div class="pillar-body">Teachers were not implementers of someone else's design — they were trained as Champion Teachers, equipped with practical tools, confidence, and a new understanding of their role as bridges between school and home. The PTM was redesigned from a reporting exercise into a genuine collaborative partnership session.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div>
+              <div class="pillar-title">Peer-to-Peer as the Sustaining Force</div>
+              <div class="pillar-body">P2P gatherings built communities of parents who could learn from each other — sharing experiences, normalising engagement, and creating the social permission for fathers to become involved in ways that Pakistani norms had historically not expected of them.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CO-CREATION WORKSHOPS ══ -->
+<section class="cocreation-band">
+  <div class="cocreation-inner">
+    <div class="cocreation-eyebrow">Co-Creation Process · Designed With, Not For</div>
+    <h2 class="cocreation-heading">Four provinces. Four workshops.<br><em>One programme shaped entirely by the communities it would serve.</em></h2>
+
+    <div class="workshop-flow">
+      <div class="workshop-step">
+        <div class="ws-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C84A" stroke-width="1.6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="ws-num">Step 1</div>
+        <div class="ws-name">Visioning</div>
+        <div class="ws-body">Participants imagined a transformative future 10 years ahead — setting aspirational tone and emotional investment before any problem-solving</div>
+      </div>
+      <div class="workshop-step">
+        <div class="ws-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C84A" stroke-width="1.6"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <div class="ws-num">Step 2</div>
+        <div class="ws-name">Challenge Framing</div>
+        <div class="ws-body">Stakeholders articulated barriers from their own perspectives — building empathy and identifying root causes of parental disengagement</div>
+      </div>
+      <div class="workshop-step">
+        <div class="ws-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C84A" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="ws-num">Step 3</div>
+        <div class="ws-name">Persona Mapping</div>
+        <div class="ws-body">Participants created profiles of average Pakistani parents — exploring challenges, opportunities, and aspirations to deepen empathy with the target audience</div>
+      </div>
+      <div class="workshop-step">
+        <div class="ws-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C84A" stroke-width="1.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div class="ws-num">Step 4</div>
+        <div class="ws-name">Ideation &amp; Prototyping</div>
+        <div class="ws-body">Creative solution generation followed by detailed implementation plans — translating ideas into actionable, community-tested blueprints</div>
+      </div>
+      <div class="workshop-step">
+        <div class="ws-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C84A" stroke-width="1.6"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="ws-num">Step 5</div>
+        <div class="ws-name">Pre-Mortem</div>
+        <div class="ws-body">Participants critically evaluated proposed solutions — identifying potential failure points before implementation to build robustness and sustainability</div>
+      </div>
+    </div>
+
+    <div class="province-grid">
+      <div class="province-card">
+        <div class="province-name">Sindh</div>
+        <div class="province-city">Karachi</div>
+        <div class="province-stat">32</div>
+        <div class="province-breakdown">4 students · 9 teachers · 5 parents · 14 influencers</div>
+      </div>
+      <div class="province-card">
+        <div class="province-name">Punjab</div>
+        <div class="province-city">Lahore</div>
+        <div class="province-stat">33</div>
+        <div class="province-breakdown">8 students · 14 teachers · 8 parents · 10 influencers</div>
+      </div>
+      <div class="province-card">
+        <div class="province-name">KPK</div>
+        <div class="province-city">Peshawar</div>
+        <div class="province-stat">21</div>
+        <div class="province-breakdown">6 students · 5 teachers · 6 parents · 4 influencers</div>
+      </div>
+      <div class="province-card">
+        <div class="province-name">Balochistan</div>
+        <div class="province-city">Quetta</div>
+        <div class="province-stat">25</div>
+        <div class="province-breakdown">7 students · 5 teachers · 4 parents · 9 influencers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REFRAMED CHALLENGE ══ -->
+<section class="reframe-band">
+  <div class="reframe-inner">
+    <div class="reframe-eyebrow">The Reframed Challenge Statement · Emerging from Co-Creation</div>
+    <div class="reframe-challenge">"How might we reimagine parental engagement as a dynamic force for realising future aspirations and collective dreams — by empowering parents, students, and teachers to co-create personalised learning journeys?"</div>
+    <p class="reframe-note">The original challenge — "how might we improve parental engagement at home and school?" — was transformed through co-creation into something more meaningful: a question not about compliance, but about shared ambition. This reframing became the north star for every intervention design decision that followed.</p>
+  </div>
+</section>
+
+<!-- ══ FIVE TOUCHPOINTS ══ -->
+<section class="touchpoints-band">
+  <div class="touchpoints-inner">
+    <div class="touchpoints-eyebrow">Programme Intervention Design · Five Integrated Touchpoints</div>
+    <h2 class="touchpoints-heading">Every touchpoint designed to <em>build on the last.</em></h2>
+    <div class="touchpoints-grid">
+      <div class="touchpoint-card tc1">
+        <div class="tp-num">01</div>
+        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A6ACA" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="tp-title">Teacher Training &amp; Orientation</div>
+        <div class="tp-body">Full-day activity-based training sessions introduced programme objectives, built teacher confidence, and positioned educators as Champion Teachers central to the programme's success.</div>
+        <div class="tp-scale"><strong>250 teachers</strong> · 52 schools · 4 provinces</div>
+      </div>
+      <div class="touchpoint-card tc2">
+        <div class="tp-num">02</div>
+        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C84A" stroke-width="1.6"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="tp-title">Future Visioning</div>
+        <div class="tp-body">Pakistan's largest-ever visioning exercise — parents, teachers, and students co-created 550+ vision canvases representing 10-year aspirations for their child's future, building intrinsic motivation before any instructional content.</div>
+        <div class="tp-scale"><strong>500+ parents</strong> · <strong>550+ vision canvases</strong></div>
+      </div>
+      <div class="touchpoint-card tc3">
+        <div class="tp-num">03</div>
+        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5AAA8A" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="tp-title">WhatsApp Remote Learning</div>
+        <div class="tp-body">A 30-day habit challenge delivered via WhatsApp — separate programmes for parents and teachers. Bite-sized microlearning, gamification, polls, voice notes, and 50+ role model videos. Built on COM-B, EAST, and behavioural nudge science. Integrated with ChatGPT and Khan Academy.</div>
+        <div class="tp-scale"><strong>4,200+ community</strong> · 35% high-performing parents</div>
+      </div>
+      <div class="touchpoint-card tc4">
+        <div class="tp-num">04</div>
+        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#CA6A4A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div class="tp-title">Peer-to-Peer Gatherings</div>
+        <div class="tp-body">Community-based P2P sessions gave parents a safe space to connect, share experiences, and learn from one another — reinforcing programme behaviours through peer normalisation and collective accountability.</div>
+        <div class="tp-scale"><strong>3,080 parents</strong> reached through P2P gatherings</div>
+      </div>
+      <div class="touchpoint-card tc5">
+        <div class="tp-num">05</div>
+        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#9A6ACA" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="tp-title">Redesigned PTMs</div>
+        <div class="tp-body">Parent-Teacher Meetings were transformed from formal reporting events into collaborative partnership sessions — with structured agendas, student reflection templates, collaborative action plans, and post-PTM follow-up protocols.</div>
+        <div class="tp-scale"><strong>4,457 parents</strong> reached through PTMs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VERBATIMS ══ -->
+<section class="verbatims-band">
+  <div class="verbatims-inner">
+    <div class="verbatims-eyebrow">In Their Own Words</div>
+    <h2 class="verbatims-heading">Parents and teachers who <em>changed their minds</em> — and then changed their habits.</h2>
+    <div class="verbatims-grid">
+      <div class="verbatim-card">
+        <div class="verbatim-quote">As soon as I see the vision board, I remember to ask the children what they learned today. That's why we pasted it on the wall — so we remember to give our child time every day.</div>
+        <div class="verbatim-source">Parent · Visioning Exercise</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">We realised the importance of bridging the gap between parents, teachers, and students. Working together as a united triangle improves children's performance and ensures they feel supported.</div>
+        <div class="verbatim-source">Teacher · Training Session · Lahore</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">What we used to think about taking out time but couldn't manage — became much easier. When a message came, it reminded us and made it simpler to act.</div>
+        <div class="verbatim-source">Parent · WhatsApp Programme</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">We now feel that if their dreams come true, ours will too.</div>
+        <div class="verbatim-source">Parent · Vision Board Session</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">Parents also noticed the difference in this PTM compared to previous ones. This time, we heard more positive things. Apart from academics, we had the opportunity to learn about their personality and behavior.</div>
+        <div class="verbatim-source">Parent · Redesigned PTM</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">We got to learn many different things — very innovative things — in just one day. Creativity sparked in our minds.</div>
+        <div class="verbatim-source">Teacher · Training Session</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REACH ══ -->
+<section class="reach-band">
+  <div class="reach-inner">
+    <div class="reach-eyebrow">Reach &amp; Impact · By the Numbers</div>
+    <h2 class="reach-heading">From 500 parents to <em>14 million impressions.</em></h2>
+    <div class="reach-numbers">
+      <div class="reach-card">
+        <div class="reach-label">Total Parents Reached</div>
+        <div class="reach-big">13,998</div>
+        <div class="reach-sub">Across P2P, PTM, WhatsApp, digital forwarding, and direct teacher outreach</div>
+      </div>
+      <div class="reach-card">
+        <div class="reach-label">Teachers Trained</div>
+        <div class="reach-big">250</div>
+        <div class="reach-sub">Across 52 schools in 6 cities and 4 provinces — as Champion Teachers</div>
+      </div>
+      <div class="reach-card">
+        <div class="reach-label">Digital Reach</div>
+        <div class="reach-big">6.4M+</div>
+        <div class="reach-sub">Individuals reached across Facebook, Instagram, YouTube, and TikTok</div>
+      </div>
+      <div class="reach-card">
+        <div class="reach-label">Digital Impressions</div>
+        <div class="reach-big">14.7M+</div>
+        <div class="reach-sub">Total campaign impressions — with a Balochistan role model story aired on national television</div>
+      </div>
+    </div>
+    <div class="digital-bar">
+      <div class="digital-platform">
+        <div class="dp-name">Facebook &amp; Instagram</div>
+        <div class="dp-reach">5,377,689 reach</div>
+        <div class="dp-imp">11,908,859 impressions</div>
+      </div>
+      <div class="digital-platform">
+        <div class="dp-name">YouTube</div>
+        <div class="dp-reach">816,536 reach</div>
+        <div class="dp-imp">2,391,231 impressions</div>
+      </div>
+      <div class="digital-platform">
+        <div class="dp-name">TikTok</div>
+        <div class="dp-reach">213,049 reach</div>
+        <div class="dp-imp">464,283 impressions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Walidain HumQadam was the first programme of its kind in Pakistan — a remotely-delivered, WhatsApp-native SBC intervention specifically designed to shift parental engagement in education at scale. The results demonstrated both the viability of the model and its readiness for national rollout.</p>
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">Pakistan's First</div>
+            <div class="desc">Remotely-delivered SBC programme for parental engagement in education — establishing a tested, validated framework ready for national implementation.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">550+ Vision Boards</div>
+            <div class="desc">Pakistan's largest-ever visioning exercise — transforming the aspiration gap into the motivation engine for the entire programme.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Cultural Shift</div>
+            <div class="desc">Fathers from Sujawal and Multan sharing programme content on social media. A Multan father discussing Walidain HumQadam on live television. Behaviour changed publicly, not just privately.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">4,200+ Community</div>
+            <div class="desc">A lasting WhatsApp community of parents, teachers, and educators — providing the infrastructure for sustained engagement long after the formal programme concluded.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">AI-Integrated</div>
+            <div class="desc">First government-school SBC programme in Pakistan to integrate ChatGPT and Khan Academy as accessible learning tools within a WhatsApp-native delivery model.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Scale-Ready</div>
+            <div class="desc">A 4-week WhatsApp programme, refined through six cities and four provinces, that is fully validated and ready for national deployment across thousands of schools.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>Parents who remember<br>why they hoped<br><em>show up differently.</em></h3>
+    <p>Walidain HumQadam proved that parental engagement in education is not an infrastructure problem. It is a behaviour change problem — one that starts with aspiration, is sustained through habit, and is scaled through technology. Pakistan now has a tested blueprint. What it needs next is the national commitment to use it.</p>
+    <div class="tag-pills">
+      <span class="pill">Parental Engagement</span>
+      <span class="pill">Walidain HumQadam</span>
+      <span class="pill">SBC</span>
+      <span class="pill">WhatsApp Learning</span>
+      <span class="pill">Future Visioning</span>
+      <span class="pill">Teacher Training</span>
+      <span class="pill">PTM Redesign</span>
+      <span class="pill">Co-Creation</span>
+      <span class="pill">UNICEF Pakistan</span>
+      <span class="pill">4 Provinces</span>
+      <span class="pill">Remote Delivery</span>
+      <span class="pill">SDG 4</span>
+      <span class="pill">Pakistan</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, DM_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,6 +7,21 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+  weight: ["300", "400", "500"],
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  display: "swap",
+  weight: ["300", "400", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -37,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${dmSans.variable} ${cormorant.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

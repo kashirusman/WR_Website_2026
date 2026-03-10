@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clean & Green Punjab — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --clay:      #C4602A;
+      --clay-lt:   #E8845A;
+      --ink:       #1A1612;
+      --parchment: #F5F0E8;
+      --sand:      #E2D9C8;
+      --moss:      #3D5A4C;
+      --pine:      #2A4A35;
+      --leaf:      #5A8A4A;
+      --leaf-lt:   #8AB87A;
+      --muted:     #7A7065;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      position: relative;
+      overflow: hidden;
+      background: var(--pine);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 90% 15%, rgba(90,138,74,.5)  0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 0%  85%,  rgba(196,96,42,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 50%,  rgba(26,22,18,.3)   0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Leaf-vein texture overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 45%; height: 70%;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(90,138,74,.06) 40px,
+          rgba(90,138,74,.06) 41px
+        );
+      pointer-events: none;
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.45); font-weight: 300; }
+    .brand span { color: var(--leaf-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem;
+      position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--leaf-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--leaf); }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--leaf-lt); }
+    h1 .sub-title {
+      display: block;
+      font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 300; color: rgba(255,255,255,.45);
+      font-style: italic; margin-top: .6rem;
+    }
+
+    .hero-sub {
+      margin-top: 2rem; max-width: 56ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8;
+      color: rgba(255,255,255,.55);
+      animation: fadeUp .8s .38s both;
+    }
+
+    .hero-meta {
+      padding: 2rem 3.5rem;
+      display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.08);
+      position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.72); font-weight: 300; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; border-top: 1px solid rgba(255,255,255,.05); }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--leaf-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--leaf-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.52); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(90,138,74,.15); border: 1px solid rgba(90,138,74,.3); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--leaf-lt); font-weight: 500; }
+
+    /* ── FIVE BEHAVIOURS BAND ── */
+    .behaviours-band { background: var(--leaf); padding: 4rem 3.5rem; }
+    .behaviours-inner { max-width: 1200px; margin: 0 auto; }
+    .behaviours-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 2.5rem; }
+    .behaviours-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+    .behaviour-item { display: flex; flex-direction: column; align-items: flex-start; }
+    .behaviour-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(255,255,255,.25); line-height: 1; margin-bottom: .5rem; }
+    .behaviour-icon { width: 2.8rem; height: 2.8rem; border-radius: 50%; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; margin-bottom: .75rem; }
+    .behaviour-icon svg { width: 1.2rem; height: 1.2rem; }
+    .behaviour-name { font-size: .85rem; font-weight: 500; color: #fff; line-height: 1.4; }
+    .behaviour-sub { font-size: .75rem; color: rgba(255,255,255,.55); font-weight: 300; margin-top: .3rem; line-height: 1.5; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--pine); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'PUNJAB'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 14vw, 16rem); font-weight: 700; color: rgba(255,255,255,.04); pointer-events: none; white-space: nowrap; letter-spacing: -.02em; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.18); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.58); font-weight: 300; }
+
+    /* ── DIVIDER BAND ── */
+    .divider-band { background: var(--sand); padding: 3rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--leaf); line-height: 1; white-space: nowrap; }
+    .divider-text { font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--leaf); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--leaf); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--leaf); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--leaf); background: rgba(90,138,74,.07); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--pine); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── MITTI 2 PERSONA CARD ── */
+    .persona-card {
+      margin: 2rem 0;
+      background: var(--pine);
+      padding: 2.5rem;
+      border-radius: 2px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .persona-icon {
+      width: 5rem; height: 5rem; border-radius: 50%;
+      background: rgba(90,138,74,.3); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .persona-icon svg { width: 2.2rem; height: 2.2rem; }
+    .persona-label { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--leaf-lt); margin-bottom: .5rem; }
+    .persona-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: #fff; margin-bottom: .5rem; }
+    .persona-body { font-size: .9rem; line-height: 1.75; color: rgba(255,255,255,.55); font-weight: 300; }
+
+    /* ── CAMPAIGN TAGS ── */
+    .c-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0; }
+    .c-tag { display: flex; align-items: center; gap: .4rem; padding: .45rem .9rem; background: var(--sand); border-radius: 2px; font-size: .8rem; color: var(--ink); }
+    .c-tag::before { content: '→'; color: var(--leaf); font-size: .7rem; }
+
+    /* ── COVID BAND ── */
+    .covid-band {
+      background: var(--ink);
+      padding: 3.5rem 3.5rem;
+      position: relative; overflow: hidden;
+    }
+    .covid-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; }
+    .covid-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .covid-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 300; color: #fff; line-height: 1.2; }
+    .covid-heading em { font-style: italic; color: var(--leaf-lt); }
+    .covid-body p { font-size: .95rem; line-height: 1.8; color: rgba(255,255,255,.52); font-weight: 300; margin-bottom: 1rem; }
+    .covid-body p:last-child { margin-bottom: 0; }
+    .digital-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+    .d-tag { padding: .3rem .85rem; background: rgba(90,138,74,.15); border: 1px solid rgba(90,138,74,.25); border-radius: 2px; font-size: .7rem; letter-spacing: .08em; color: var(--leaf-lt); }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--leaf); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--pine); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(90,138,74,.2) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--leaf-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.5); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.15); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+
+    /* ── TOC BAND ── */
+    .toc-band { background: var(--moss); padding: 4rem 3.5rem; }
+    .toc-inner { max-width: 1200px; margin: 0 auto; }
+    .toc-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 2.5rem; }
+    .toc-flow { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; }
+    .toc-flow::before { content: ''; position: absolute; top: 2rem; left: 12%; right: 12%; height: 1px; background: linear-gradient(to right, rgba(255,255,255,.1), rgba(90,138,74,.5), rgba(255,255,255,.1)); }
+    .toc-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem; }
+    .toc-dot { width: 4rem; height: 4rem; border-radius: 50%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+    .toc-dot svg { width: 1.3rem; height: 1.3rem; }
+    .toc-step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .toc-step-body { font-size: .75rem; line-height: 1.6; color: rgba(255,255,255,.45); font-weight: 300; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .toc-band, .divider-band, .behaviours-band, .covid-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .covid-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .behaviours-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .toc-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .toc-flow::before { display: none; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--leaf); padding-top: 1.5rem; }
+      .persona-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — WASH, Environment &amp; Behaviour Change · Punjab, Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">Punjab Government &amp; UNICEF · Punjab · 2019–2021</div>
+    <h1>
+      Clean &amp; <em>Green</em>
+      <span class="sub-title">Punjab Behaviour Change Programme</span>
+    </h1>
+    <p class="hero-sub">A province-wide social behaviour change intervention across five critical environmental and hygiene behaviours — designed to reach 2 million people directly, and 34 million more through digital platforms, including through the height of COVID-19.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Partners</span><span class="meta-value">Punjab Government &amp; UNICEF</span></div>
+    <div class="meta-item"><span class="meta-label">Scale</span><span class="meta-value">Province-Wide · Punjab, Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">WASH · Environment · Sanitation</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">SBC Strategy &amp; Programme Design Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">SBC Strategy &amp; <em>Programme Design Lead</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice designed and led the social behaviour change architecture for the Punjab government's Clean &amp; Green programme — working alongside UNICEF and building on the government's existing community mobiliser network. Our mandate covered the full design cycle: formative research, SBC strategy, the Mitti 2 behavioural persona framework, FLW training, community activation, digital engagement, and village watch committee formation.</p>
+      <div class="role-services">
+        <span class="role-tag">Design &amp; Formative Research</span>
+        <span class="role-tag">SBC Strategy</span>
+        <span class="role-tag">Behavioural Persona Design</span>
+        <span class="role-tag">FLW Training Programme</span>
+        <span class="role-tag">Community Activation</span>
+        <span class="role-tag">Digital Media Strategy</span>
+        <span class="role-tag">Village Watch Committees</span>
+        <span class="role-tag">COVID-19 Digital Pivot</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FIVE BEHAVIOURS ══ -->
+<section class="behaviours-band">
+  <div class="behaviours-inner">
+    <div class="behaviours-label">The Five Target Behaviours</div>
+    <div class="behaviours-grid">
+      <div class="behaviour-item">
+        <div class="behaviour-num">01</div>
+        <div class="behaviour-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 9a6 6 0 1 1 12 0c0 4-6 11-6 11S6 13 6 9z"/><circle cx="12" cy="9" r="2"/></svg>
+        </div>
+        <div class="behaviour-name">Handwashing with Soap</div>
+        <div class="behaviour-sub">At critical hygiene moments throughout the day</div>
+      </div>
+      <div class="behaviour-item">
+        <div class="behaviour-num">02</div>
+        <div class="behaviour-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="3" y="11" width="18" height="10" rx="1"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>
+        </div>
+        <div class="behaviour-name">End Open Defecation</div>
+        <div class="behaviour-sub">Construction and use of latrines at household level</div>
+      </div>
+      <div class="behaviour-item">
+        <div class="behaviour-num">03</div>
+        <div class="behaviour-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 8v8M8 12h8"/></svg>
+        </div>
+        <div class="behaviour-name">Safe Drinking Water</div>
+        <div class="behaviour-sub">Safe access, treatment, and hygienic storage of water</div>
+      </div>
+      <div class="behaviour-item">
+        <div class="behaviour-num">04</div>
+        <div class="behaviour-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 22V12M12 12C12 7 7 3 2 5c5 0 10 3 10 7zM12 12c0-5 5-9 10-7-5 0-10 3-10 7z"/></svg>
+        </div>
+        <div class="behaviour-name">Tree Plantation</div>
+        <div class="behaviour-sub">Community-led greening and environmental stewardship</div>
+      </div>
+      <div class="behaviour-item">
+        <div class="behaviour-num">05</div>
+        <div class="behaviour-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6M9 6V4h6v2M10 11v6M14 11v6"/></svg>
+        </div>
+        <div class="behaviour-name">Waste Disposal</div>
+        <div class="behaviour-sub">Responsible household and community waste management</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">2M+</div>
+      <div class="outcome-desc">People directly reached through the programme's community-level interventions across Punjab.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">34M+</div>
+      <div class="outcome-desc">People engaged through digital platforms — a figure that grew dramatically when COVID-19 forced a digital pivot.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">5 Behaviours</div>
+      <div class="outcome-desc">Targeted simultaneously across WASH and environment — the first province-wide multi-behaviour SBC programme of its kind in Punjab.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Open Defecation ↓</div>
+      <div class="outcome-desc">Measurable decline in open defecation across Punjab — with this programme as a core contributing intervention.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Latrine Built</div>
+      <div class="outcome-desc">Millions of households reported constructing latrines — even amid the economic constraints of the COVID-19 pandemic.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">Jugaad</div>
+  <div class="divider-text">The principle at the heart of the programme's design. Jugaad — frugal innovation using what's already available — shaped not just the community strategy, but the entire philosophy of how change was expected to happen: from within communities, using local resources, through human agency rather than government provision.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Punjab's Clean &amp; Green programme had a clear mandate: shift five critical environmental and hygiene behaviours across one of Pakistan's most populous provinces. But the challenge was not simply scale. It was the deeper problem that every SBC practitioner eventually confronts — <em>one-time behaviour change is easy. Long-term behaviour change is hard.</em></p>
+        <div class="pull-quote">
+          <p>"Getting a community to wash their hands once is a trick. Getting them to wash their hands every day for the rest of their lives — that requires changing what feels normal."</p>
+        </div>
+        <p>The government had an existing network of community mobilisers — but they lacked an SBC framework capable of driving durable change. The intervention had to be designed not just for reach, but for sustainability. And then COVID-19 arrived, threatening to make in-person community work impossible at precisely the moment the programme was gaining momentum.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>White Rice began with an intensive design research phase — going far beyond interviews and surveys. The team used immersive observational methods, spending days and nights with beneficiary households to map the full lifecycle of each target behaviour: where it happened, who influenced it, where it broke down, and what would make it stick.</p>
+
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div>
+              <div class="pillar-title">Immersive Design Research</div>
+              <div class="pillar-body">Observational, co-habitation, and visual documentation methods — understanding behaviour in the actual context in which it needs to occur, not in a focus group.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+            <div>
+              <div class="pillar-title">Sustainability Over Reach</div>
+              <div class="pillar-body">Design for long-term habit formation, not awareness. Every touchpoint was built to make the target behaviour the path of least resistance over time.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div>
+              <div class="pillar-title">Community as the Engine</div>
+              <div class="pillar-body">Leverage the power of communities to drive change from within — using local, indigenous methods and human agency rather than external provision.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+            <div>
+              <div class="pillar-title">Digital as a Core Channel</div>
+              <div class="pillar-body">Integrate digital and mobile tools from the outset — not as a backup, but as a primary engagement layer that could reach deep into communities even when physical access was constrained.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MITTI 2 PERSONA -->
+        <div class="persona-card">
+          <div class="persona-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8AB87A" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M19 3l-6 6M13 3l6 6"/></svg>
+          </div>
+          <div>
+            <div class="persona-label">Central Behavioural Persona</div>
+            <div class="persona-name">Mitti 2 — The Jugaad Innovator</div>
+            <div class="persona-body">Research insights led White Rice to design around a central persona: Mitti 2 — a community member with a <em>jugaad</em> mindset. Frugal, resourceful, and solutions-oriented. Someone who knows how to create change with limited resources, who doesn't wait for the government to solve their problems, and whose agency inspires others. Mitti 2 became the behavioural archetype that the programme's training, messaging, and community activation were built around — making aspirational change feel locally achievable.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ THEORY OF CHANGE ══ -->
+<section class="toc-band">
+  <div class="toc-inner">
+    <div class="toc-label">Theory of Change · Socio-Ecological Model</div>
+    <div class="toc-flow">
+      <div class="toc-step">
+        <div class="toc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#8AB87A" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0 1 12 0v1"/></svg></div>
+        <div class="toc-step-title">Individual</div>
+        <div class="toc-step-body">Build knowledge, pride, and a Jugaad sense of agency around the five target behaviours</div>
+      </div>
+      <div class="toc-step">
+        <div class="toc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#8AB87A" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="toc-step-title">Household</div>
+        <div class="toc-step-body">Align families around shared environmental and hygiene practices as expressions of household pride</div>
+      </div>
+      <div class="toc-step">
+        <div class="toc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#8AB87A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div class="toc-step-title">Community</div>
+        <div class="toc-step-body">Village watch committees as custodians — monitoring, championing, and sustaining the programme from within</div>
+      </div>
+      <div class="toc-step">
+        <div class="toc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#8AB87A" stroke-width="1.6"><path d="M3 3h18v13H3z"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="toc-step-title">Enabling Environment</div>
+        <div class="toc-step-body">Government mobiliser network, digital infrastructure, and local cable media amplifying behaviour norms at scale</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- INTERVENTION -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">04</span><span class="line"></span></div>
+        <h2>The <em>Intervention</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The intervention was built on the Punjab government's existing community mobiliser infrastructure — but transformed it. White Rice trained the mobilisers on a comprehensive SBC methodology grounded in the Mitti 2 persona and the socio-ecological model, equipping them with tools and facilitation skills that the programme had never previously had access to.</p>
+
+        <div class="c-tags">
+          <span class="c-tag">Group Facilitation Sessions</span>
+          <span class="c-tag">Home Visits</span>
+          <span class="c-tag">Behaviour Demonstrations</span>
+          <span class="c-tag">Community Influencer Mapping</span>
+          <span class="c-tag">Village Watch Committees</span>
+          <span class="c-tag">Local Cable TV</span>
+          <span class="c-tag">Digital &amp; Social Media</span>
+          <span class="c-tag">Mobile Phone Content Delivery</span>
+          <span class="c-tag">Youth Digital Ambassadors</span>
+        </div>
+
+        <p>Village watch committees were formed in communities across Punjab — becoming the custodians of the entire programme. These were not passive beneficiary groups; they were monitors, champions, and accountability mechanisms. Their formation ensured that the programme had a structural home within communities long after any formal intervention activities had concluded.</p>
+
+        <div class="pull-quote">
+          <p>"We didn't install behaviour change in communities. We activated the capacity for change that was already there — and then built the structures to keep it alive."</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ COVID PIVOT BAND ══ -->
+<section class="covid-band">
+  <div class="covid-inner">
+    <div>
+      <div class="covid-label">The COVID-19 Pivot</div>
+      <h2 class="covid-heading">When the world locked down, the programme <em>went digital.</em></h2>
+    </div>
+    <div class="covid-body">
+      <p>COVID-19 arrived mid-programme, making in-person community access near-impossible. Rather than pausing, White Rice redesigned the delivery model in real time. Young people within communities were identified and trained as digital access points — using mobile phones to deliver content, gather insights, and keep communities engaged when facilitators could no longer visit in person.</p>
+      <p>This was not a contingency. It became a strategic advantage. The digital layer reached audiences that physical programming never could — and the 34 million figure reflects the scale of what became possible when digital was treated as a primary channel, not a fallback.</p>
+      <div class="digital-tags">
+        <span class="d-tag">Youth Digital Ambassadors</span>
+        <span class="d-tag">Mobile Phone Content</span>
+        <span class="d-tag">Social Media Campaigns</span>
+        <span class="d-tag">Local Cable TV</span>
+        <span class="d-tag">Community Insight Gathering via Digital</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The programme reached at a scale that few SBC interventions in Pakistan have achieved — but scale alone was not the measure of success. The programme's most significant impact was behavioural: communities constructed latrines and ended open defecation practices in measurable numbers, even during the economic strain of COVID-19.</p>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">2 Million</div>
+            <div class="desc">People directly reached through community-level sessions, home visits, and mobiliser engagement across Punjab.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">34 Million</div>
+            <div class="desc">People engaged through digital platforms — a number that grew exponentially when the digital pivot was made during COVID-19.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Open Defecation ↓</div>
+            <div class="desc">Measurable, province-wide decline in open defecation — with this SBC programme as a core contributing intervention within a broader government strategy.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">COVID-Proof</div>
+            <div class="desc">The programme not only survived COVID-19 — it scaled through it, demonstrating that a well-designed digital layer can sustain community behaviour change programming under the most adverse conditions.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">The Clean &amp; Green Punjab programme demonstrated what becomes possible when SBC is designed for sustainability from the outset — when communities are treated as the engine of change, not the audience for it. The Mitti 2 framework, the village watch committee model, and the digital-first pivot represent replicable design innovations that have direct application to multi-behaviour, large-scale government programming across Pakistan and beyond.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>One-time change is a trick.<br><em>Lasting</em> change is a design problem.</h3>
+    <p>Clean &amp; Green Punjab proved that with the right behavioural framework, the right community infrastructure, and the right digital strategy — lasting change is achievable, even at provincial scale, even in a pandemic.</p>
+    <div class="tag-pills">
+      <span class="pill">WASH</span>
+      <span class="pill">Behaviour Change</span>
+      <span class="pill">Sanitation</span>
+      <span class="pill">Open Defecation</span>
+      <span class="pill">Tree Plantation</span>
+      <span class="pill">Waste Management</span>
+      <span class="pill">Digital SBC</span>
+      <span class="pill">COVID-19 Response</span>
+      <span class="pill">Punjab Government</span>
+      <span class="pill">UNICEF</span>
+      <span class="pill">SDG 3</span>
+      <span class="pill">SDG 6</span>
+      <span class="pill">SDG 13</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

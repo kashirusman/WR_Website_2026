@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2,000 Villages — World Bank Punjab WASH · White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:         #080C0A;
+      --parchment:   #F5F0E8;
+      --sand:        #E2D9C8;
+      --muted:       #7A7065;
+      --water:       #1A4A6A;
+      --water-lt:    #3A8AAA;
+      --water-pale:  #D0E8F5;
+      --earth:       #8A5A1A;
+      --ochre:       #C4881A;
+      --ochre-lt:    #E8B84A;
+      --ochre-pale:  #FBF0D0;
+      --leaf:        #2A5A2A;
+      --leaf-lt:     #5A9A5A;
+      --night:       #040810;
+      --deep:        #081018;
+      --slate:       #0E1820;
+      --warm-white:  #FDFAF5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--night);
+    }
+    /* Water drop ripple motif */
+    .water-rings {
+      position: absolute;
+      right: -8%; top: 48%; transform: translateY(-50%);
+      width: clamp(380px, 52vw, 780px); aspect-ratio: 1;
+      pointer-events: none; z-index: 1;
+    }
+    .wring {
+      position: absolute; border-radius: 50%;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      border-style: solid; animation: wripple 5s ease-out infinite;
+    }
+    .wring:nth-child(1) { width: 8%;   height: 8%;   border-width: 2px;   border-color: rgba(58,138,170,.85); animation-delay: 0s; }
+    .wring:nth-child(2) { width: 20%;  height: 20%;  border-width: 1.5px; border-color: rgba(58,138,170,.62); animation-delay: .6s; }
+    .wring:nth-child(3) { width: 35%;  height: 35%;  border-width: 1px;   border-color: rgba(58,138,170,.42); animation-delay: 1.2s; }
+    .wring:nth-child(4) { width: 52%;  height: 52%;  border-width: 1px;   border-color: rgba(58,138,170,.28); animation-delay: 1.8s; }
+    .wring:nth-child(5) { width: 68%;  height: 68%;  border-width: 1px;   border-color: rgba(58,138,170,.16); animation-delay: 2.4s; }
+    .wring:nth-child(6) { width: 84%;  height: 84%;  border-width: 1px;   border-color: rgba(58,138,170,.08); animation-delay: 3s; }
+    .wring:nth-child(7) { width: 100%; height: 100%; border-width: 1px;   border-color: rgba(58,138,170,.04); animation-delay: 3.6s; }
+    .wring-drop {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%);
+      width: 14px; height: 18px;
+      background: var(--water-lt);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: dropPulse 5s ease-in-out infinite;
+    }
+    @keyframes wripple {
+      0%   { opacity: 1; transform: translate(-50%, -50%) scale(.95); }
+      80%  { opacity: .7; }
+      100% { opacity: .5; transform: translate(-50%, -50%) scale(1.02); }
+    }
+    @keyframes dropPulse {
+      0%, 100% { transform: translate(-50%, -60%) scale(1); opacity: .7; }
+      50%       { transform: translate(-50%, -65%) scale(1.1); opacity: 1; }
+    }
+    /* Ground/earth horizon line */
+    .hero-ground {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 25%;
+      background: linear-gradient(to top, rgba(138,90,26,.2) 0%, transparent 100%);
+      pointer-events: none; z-index: 1;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 60% at 6%  30%, rgba(26,74,106,.85) 0%, transparent 58%),
+        radial-gradient(ellipse 35% 40% at 88% 80%, rgba(196,136,26,.2) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 55% at 48% 52%, rgba(4,8,16,.5)     0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative; z-index: 4;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--water-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.2); }
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 4; max-width: 62%;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--water-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--water); }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 8rem);
+      font-weight: 300; line-height: .9; color: #fff; letter-spacing: -.015em;
+      animation: fadeUp .8s .2s both;
+    }
+    h1 em { font-style: italic; color: var(--water-lt); }
+    h1 .sub-line {
+      display: block; font-size: clamp(.92rem, 1.7vw, 1.45rem);
+      font-weight: 300; color: rgba(255,255,255,.38); font-style: italic; margin-top: .8rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 52ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.5);
+      animation: fadeUp .8s .36s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.06); position: relative; z-index: 4;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--slate); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--water-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--water-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(26,74,106,.25); border: 1px solid rgba(58,138,170,.3); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--water-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--water); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: '2000'; position: absolute; right: -1rem; bottom: -1rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(6rem, 16vw, 18rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; line-height: 1; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.65); font-weight: 300; }
+
+    /* ── SCALE STATEMENT ── */
+    .scale-band { background: var(--ochre); padding: 4.5rem 3.5rem; display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: center; position: relative; overflow: hidden; }
+    .scale-band::before { content: ''; position: absolute; right: -4rem; top: -4rem; width: 22rem; height: 22rem; border-radius: 50%; border: 1px solid rgba(255,255,255,.1); pointer-events: none; }
+    .scale-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(6rem, 13vw, 11rem); font-weight: 300; color: rgba(255,255,255,.14); line-height: 1; flex-shrink: 0; }
+    .scale-text { }
+    .scale-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: .6rem; }
+    .scale-body { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.4vw, 2.1rem); font-weight: 300; font-style: italic; color: #fff; line-height: 1.35; }
+
+    /* ── CONTENT ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--water); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--water); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--water); background: rgba(26,74,106,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── PRMAC BAND ── */
+    .prmac-band { background: var(--deep); padding: 5rem 3.5rem; }
+    .prmac-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: start; }
+    .prmac-left { }
+    .prmac-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .75rem; }
+    .prmac-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 1.5rem; }
+    .prmac-heading em { font-style: italic; color: var(--water-lt); }
+    .prmac-left p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.48); font-weight: 300; margin-bottom: 1.25rem; }
+    .infra-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: rgba(255,255,255,.05); margin-top: 2.5rem; }
+    .infra-pill { background: var(--deep); padding: 1.75rem 1.5rem; }
+    .ip-icon { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: rgba(26,74,106,.2); border: 1px solid rgba(58,138,170,.3); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .ip-icon svg { width: 1rem; height: 1rem; }
+    .ip-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: .3rem; }
+    .ip-body  { font-size: .75rem; line-height: 1.6; color: rgba(255,255,255,.38); font-weight: 300; }
+    .prmac-right { }
+    .prmac-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); padding: 2.5rem; }
+    .pc-eyebrow { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--water-lt); margin-bottom: .6rem; }
+    .pc-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: #fff; margin-bottom: .5rem; }
+    .pc-full { font-size: .8rem; color: rgba(255,255,255,.35); margin-bottom: 1.25rem; }
+    .pc-body { font-size: .88rem; line-height: 1.75; color: rgba(255,255,255,.48); font-weight: 300; }
+    .pc-mandate { margin-top: 1.5rem; display: grid; gap: .75rem; }
+    .pcm { display: flex; gap: .75rem; align-items: flex-start; }
+    .pcm-dot { width: .4rem; height: .4rem; border-radius: 50%; background: var(--water-lt); flex-shrink: 0; margin-top: .6rem; }
+    .pcm-text { font-size: .8rem; line-height: 1.55; color: rgba(255,255,255,.45); font-weight: 300; }
+
+    /* ── SEM BAND — Socio-Ecological Model ── */
+    .sem-band { background: var(--ochre-pale); padding: 5.5rem 3.5rem; }
+    .sem-inner { max-width: 1200px; margin: 0 auto; }
+    .sem-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--water); margin-bottom: .75rem; }
+    .sem-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--ink); margin-bottom: 3.5rem; }
+    .sem-heading em { font-style: italic; color: var(--water); }
+    .sem-levels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--sand); }
+    .sem-level { background: var(--warm-white); padding: 2.5rem 2rem; position: relative; overflow: hidden; }
+    .sem-level::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .sl-1::before { background: linear-gradient(90deg, #1A4A6A, #3A8AAA); }
+    .sl-2::before { background: linear-gradient(90deg, #C4881A, #E8B84A); }
+    .sl-3::before { background: linear-gradient(90deg, #2A5A2A, #5A9A5A); }
+    .sl-4::before { background: linear-gradient(90deg, #4A1A6A, #8A5ACA); }
+    .sl-bg { position: absolute; right: .5rem; bottom: .25rem; font-family: 'Cormorant Garamond', serif; font-size: 6rem; font-weight: 700; color: rgba(0,0,0,.04); line-height: 1; pointer-events: none; }
+    .sl-icon { width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .sl-1 .sl-icon { background: rgba(26,74,106,.1);  border: 1px solid rgba(58,138,170,.3); }
+    .sl-2 .sl-icon { background: rgba(196,136,26,.1); border: 1px solid rgba(196,136,26,.3); }
+    .sl-3 .sl-icon { background: rgba(42,90,42,.1);   border: 1px solid rgba(90,154,90,.3); }
+    .sl-4 .sl-icon { background: rgba(74,26,106,.08); border: 1px solid rgba(138,90,202,.25); }
+    .sl-icon svg { width: 1.1rem; height: 1.1rem; }
+    .sl-scale { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+    .sl-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: .6rem; }
+    .sl-body { font-size: .82rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+    .sl-behaviours { margin-top: 1rem; display: grid; gap: .35rem; }
+    .slb { font-size: .74rem; color: var(--muted); display: flex; gap: .5rem; align-items: flex-start; font-weight: 300; }
+    .slb::before { content: '—'; color: var(--water); flex-shrink: 0; font-size: .7rem; line-height: 1.5; }
+
+    /* ── FOCUS AREAS ── */
+    .focus-band { background: var(--slate); padding: 5.5rem 3.5rem; }
+    .focus-inner { max-width: 1200px; margin: 0 auto; }
+    .focus-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .75rem; }
+    .focus-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .focus-heading em { font-style: italic; color: var(--ochre-lt); }
+    .focus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: rgba(255,255,255,.05); }
+    .focus-card { background: var(--slate); padding: 3rem 2.5rem; }
+    .fc-tag { display: inline-block; padding: .25rem .7rem; border-radius: 2rem; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; margin-bottom: 1.25rem; }
+    .fc-wash { background: rgba(26,74,106,.25); color: var(--water-lt); border: 1px solid rgba(58,138,170,.3); }
+    .fc-ecd  { background: rgba(196,136,26,.15); color: var(--ochre-lt); border: 1px solid rgba(196,136,26,.3); }
+    .fc-tariff { background: rgba(42,90,42,.15); color: #7ACA7A; border: 1px solid rgba(90,154,90,.3); }
+    .fc-norms  { background: rgba(74,26,106,.15); color: #AA7ACA; border: 1px solid rgba(138,90,202,.25); }
+    .fc-icon { width: 3.5rem; height: 3.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .fc-wash-icon { background: rgba(26,74,106,.2); border: 1px solid rgba(58,138,170,.35); }
+    .fc-ecd-icon  { background: rgba(196,136,26,.12); border: 1px solid rgba(196,136,26,.35); }
+    .fc-tariff-icon { background: rgba(42,90,42,.15); border: 1px solid rgba(90,154,90,.3); }
+    .fc-norms-icon  { background: rgba(74,26,106,.12); border: 1px solid rgba(138,90,202,.25); }
+    .fc-icon svg { width: 1.3rem; height: 1.3rem; }
+    .fc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: #fff; margin-bottom: .6rem; line-height: 1.15; }
+    .fc-body  { font-size: .88rem; line-height: 1.75; color: rgba(255,255,255,.45); font-weight: 300; }
+    .fc-behaviours { margin-top: 1.5rem; display: grid; gap: .5rem; }
+    .fcb { display: flex; gap: .75rem; align-items: flex-start; font-size: .78rem; line-height: 1.5; color: rgba(255,255,255,.4); font-weight: 300; }
+    .fcb-dot { width: .35rem; height: .35rem; border-radius: 50%; flex-shrink: 0; margin-top: .55rem; }
+    .dot-water { background: var(--water-lt); }
+    .dot-ochre { background: var(--ochre-lt); }
+    .dot-leaf  { background: #7ACA7A; }
+    .dot-violet { background: #AA7ACA; }
+
+    /* ── 1000 AGENTS BAND ── */
+    .agents-band { background: var(--water); padding: 5.5rem 3.5rem; position: relative; overflow: hidden; }
+    .agents-band::after { content: '1000'; position: absolute; right: -1rem; bottom: -1rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(7rem, 18vw, 20rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; line-height: 1; }
+    .agents-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .agents-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.42); margin-bottom: .75rem; }
+    .agents-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 1.5rem; }
+    .agents-heading em { font-style: italic; color: rgba(255,255,255,.65); }
+    .agents-body { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.55); font-weight: 300; max-width: 60ch; margin-bottom: 3rem; }
+    .cascade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,.1); }
+    .cascade-step { background: var(--water); padding: 2rem 1.75rem; position: relative; }
+    .cs-arrow { position: absolute; right: -1.25rem; top: 50%; transform: translateY(-50%); width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; z-index: 2; }
+    .cs-arrow svg { width: 1rem; height: 1rem; }
+    .cs-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(255,255,255,.08); line-height: 1; margin-bottom: -.3rem; }
+    .cs-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .cs-sub { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); margin-bottom: .6rem; }
+    .cs-body { font-size: .78rem; line-height: 1.6; color: rgba(255,255,255,.48); font-weight: 300; }
+
+    /* ── MATERIALS BAND ── */
+    .materials-band { background: var(--night); padding: 5.5rem 3.5rem; }
+    .materials-inner { max-width: 1200px; margin: 0 auto; }
+    .mat-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .75rem; }
+    .mat-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .mat-heading em { font-style: italic; color: var(--water-lt); }
+    .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); }
+    .mat-card { background: var(--night); padding: 2.25rem 2rem; }
+    .mc-icon { width: 3rem; height: 3rem; border-radius: 50%; background: rgba(26,74,106,.2); border: 1px solid rgba(58,138,170,.3); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .mc-icon svg { width: 1.1rem; height: 1.1rem; }
+    .mc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .mc-body  { font-size: .78rem; line-height: 1.65; color: rgba(255,255,255,.4); font-weight: 300; }
+
+    /* ── ROLLOUT BAND ── */
+    .rollout-band { background: var(--ochre-pale); padding: 5.5rem 3.5rem; }
+    .rollout-inner { max-width: 1200px; margin: 0 auto; }
+    .ro-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--water); margin-bottom: .75rem; }
+    .ro-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--ink); margin-bottom: 3rem; }
+    .ro-heading em { font-style: italic; color: var(--water); }
+    .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--sand); }
+    .tl-phase { background: var(--warm-white); padding: 2.5rem 1.75rem; }
+    .tl-quarter { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--water); margin-bottom: .5rem; }
+    .tl-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); margin-bottom: .5rem; }
+    .tl-body { font-size: .78rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+    .tl-bar { height: 3px; background: linear-gradient(90deg, var(--water), var(--water-lt)); margin-bottom: 1.25rem; border-radius: 2px; }
+    .tl-phase:nth-child(2) .tl-bar { background: linear-gradient(90deg, #3A6A1A, #6AAA3A); }
+    .tl-phase:nth-child(3) .tl-bar { background: linear-gradient(90deg, var(--ochre), var(--ochre-lt)); }
+    .tl-phase:nth-child(4) .tl-bar { background: linear-gradient(90deg, #3A1A6A, #7A5ACA); }
+
+    /* ── IMPACT ── */
+    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--water); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--night); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: clamp(300px, 55vw, 720px); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(26,74,106,.08); pointer-events: none; }
+    .closing::after  { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: clamp(180px, 35vw, 460px); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(196,136,26,.05); pointer-events: none; }
+    .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; color: #fff; line-height: 1.15; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--water-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.42); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+
+    @media (max-width: 900px) {
+      .hero-body { max-width: 100%; }
+      .water-rings { display: none; }
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .prmac-band, .sem-band, .focus-band, .agents-band, .materials-band, .rollout-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .prmac-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .sem-levels, .focus-grid, .cascade, .materials-grid, .timeline, .infra-pillars, .impact-grid { grid-template-columns: 1fr; }
+      .scale-band { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="water-rings" aria-hidden="true">
+    <div class="wring"></div><div class="wring"></div><div class="wring"></div>
+    <div class="wring"></div><div class="wring"></div><div class="wring"></div>
+    <div class="wring"></div>
+    <div class="wring-drop"></div>
+  </div>
+  <div class="hero-ground"></div>
+
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — WASH · ECD · Nutrition · SBC Strategy · World Bank · Punjab</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">World Bank · PRMAC · Punjab Pakistan · 2,000 Villages</div>
+    <h1>
+      Water.<br>Health.<br><em>Behaviour.</em>
+      <span class="sub-line">Designing the Social Behaviour Change Architecture for 2,000 Villages Across Punjab — WASH, Early Childhood Development &amp; Community Sustainability</span>
+    </h1>
+    <p class="hero-sub">The World Bank has invested massively in building WASH infrastructure across 2,000 remote villages in Punjab. The physical infrastructure is there — the pipes, the drainage, the facilities. White Rice's mandate is to design the behaviour change strategy that makes those investments last: the community behaviours, norms, and practices that turn infrastructure into a sustainable way of life.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">World Bank · PRMAC</span></div>
+    <div class="meta-item"><span class="meta-label">Geography</span><span class="meta-value">2,000 Villages · Punjab, Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">WASH · ECD · Nutrition · Tariff Sustainability</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">SBC Strategy · Community Programme · 2-Year Rollout</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">The Behaviour Change<br><em>Architecture for Punjab's<br>Largest WASH Programme</em></h2>
+    </div>
+    <div class="role-body">
+      <p>The World Bank's investment in Punjab's WASH infrastructure represents one of the largest physical development programmes in the province's history. White Rice has been engaged as the social behaviour change partner responsible for what comes after the construction — the community engagement strategy, training architecture, communication programme, and two-year behaviour change rollout plan that will determine whether the infrastructure becomes a permanent feature of community life or gradually falls into disuse. Our work spans WASH behaviour adoption, early childhood development and nutrition, and the financial sustainability of the services through community tariff uptake.</p>
+      <div class="role-services">
+        <span class="role-tag">SBC Strategy Design</span>
+        <span class="role-tag">Socio-Ecological Model</span>
+        <span class="role-tag">WASH Behaviour Change</span>
+        <span class="role-tag">ECD &amp; Nutrition SBC</span>
+        <span class="role-tag">Tariff Adoption Programme</span>
+        <span class="role-tag">Agent of Change Training</span>
+        <span class="role-tag">Master Trainer Curriculum</span>
+        <span class="role-tag">Community Mobilisation Toolkit</span>
+        <span class="role-tag">Mobile Content</span>
+        <span class="role-tag">Community Branding</span>
+        <span class="role-tag">2-Year Rollout Plan</span>
+        <span class="role-tag">Co-Design with Communities</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Programme Scale</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">2,000</div>
+      <div class="outcome-desc">Villages across Punjab — the full geographic scope of White Rice's SBC strategy and community programme design.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">1,000+</div>
+      <div class="outcome-desc">Agents of Change to be trained and deployed — community frontline workers carrying the behaviour change programme directly into villages.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4 Focus Areas</div>
+      <div class="outcome-desc">WASH practices, early childhood development, stunting prevention through nutrition, and tariff payment for service sustainability — addressed simultaneously through a single integrated SBC architecture.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4 Levels</div>
+      <div class="outcome-desc">Individual, household, community, and social norm — the full socio-ecological model, with behaviour change designed at every level of the system simultaneously.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">2-Year Plan</div>
+      <div class="outcome-desc">A complete, phased rollout strategy grounded in behaviour change science — designed for sustained community engagement and long-term adoption across all 2,000 villages.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SCALE ══ -->
+<div class="scale-band">
+  <div class="scale-num">2,000</div>
+  <div class="scale-text">
+    <div class="scale-label">Programme Scale · Punjab, Pakistan</div>
+    <div class="scale-body">"The pipes are there. The facilities are there. The investment has been made. The question now is whether the community will use them, maintain them, pay for them — and pass the habit to their children. That is entirely a behaviour change question."</div>
+  </div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Infrastructure investment without behaviour change is infrastructure that fails slowly. The World Bank's WASH programme in Punjab represents an enormous investment in physical assets — clean water systems, proper drainage, sanitation facilities, waste collection infrastructure. But the research evidence on WASH programmes globally is clear: infrastructure alone rarely produces lasting behaviour change. Communities adopt, use incorrectly, or gradually abandon services when the behaviour change component is absent or inadequate.</p>
+        <div class="pull-quote">
+          <p>"A tap that is never turned on is not clean water. A latrine that is used only occasionally is not sanitation. The behaviour is the programme. Everything else is the precondition."</p>
+        </div>
+        <p>White Rice's challenge is to design a behaviour change programme that operates across multiple domains simultaneously — WASH practices, early childhood development and nutrition, and the financial sustainability of the services through community tariff payment — in 2,000 villages with a single, coherent architecture. The programme must be deliverable by community-level agents of change, who themselves need to be trained, motivated, and equipped to sustain this work over a two-year implementation period.</p>
+        <p>The additional complexity is the inter-relationship between the behaviour domains. WASH practices connect directly to child health outcomes. Child health outcomes connect to stunting. Stunting connects to early childhood nutrition and stimulation. Service sustainability connects to community ownership — which connects to all of the above. The strategy must hold all of this together without overwhelming either the communities or the frontline workers who will deliver it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRMAC ══ -->
+<section class="prmac-band">
+  <div class="prmac-inner">
+    <div class="prmac-left">
+      <div class="prmac-eyebrow">The Delivery Architecture · World Bank &amp; PRMAC</div>
+      <h2 class="prmac-heading">A dedicated organisation<br>built to <em>make services<br>last.</em></h2>
+      <p>The World Bank's recognition that infrastructure sustainability requires dedicated institutional capacity led to the establishment of PRMAC — a purpose-built body responsible for the uptake, maintenance, and long-term operation of WASH services across the 2,000-village programme area. White Rice's SBC strategy is designed to work in partnership with PRMAC's institutional mandate, creating the community-facing behaviour change programme that complements PRMAC's operational and technical functions.</p>
+      <div class="infra-pillars">
+        <div class="infra-pill">
+          <div class="ip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><path d="M12 22V12M12 12C12 12 8 10 5 7c-2-2-1-5 2-5s6 3 5 10zM12 12c0 0 4-2 7-5 2-2 1-5-2-5s-6 3-5 10z"/></svg></div>
+          <div class="ip-title">Clean Water Systems</div>
+          <div class="ip-body">Piped clean water access across 2,000 villages — the physical infrastructure requiring adoption and maintenance behaviours</div>
+        </div>
+        <div class="infra-pill">
+          <div class="ip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <div class="ip-title">Drainage &amp; Sewerage</div>
+          <div class="ip-body">Proper drainage and sewage infrastructure eliminating the conditions that create disease burden — requiring community hygiene norm shifts</div>
+        </div>
+        <div class="infra-pill">
+          <div class="ip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><path d="M22 12H2M5 12V5l7-3 7 3v7M5 12v7h14v-7"/></svg></div>
+          <div class="ip-title">Sanitation Facilities</div>
+          <div class="ip-body">Latrine construction and sanitation facilities ending open defecation — requiring the most significant norm change in the programme</div>
+        </div>
+        <div class="infra-pill">
+          <div class="ip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+          <div class="ip-title">Waste Collection</div>
+          <div class="ip-body">Organised waste collection infrastructure — requiring household-level waste management behaviours and community coordination</div>
+        </div>
+      </div>
+    </div>
+    <div class="prmac-right">
+      <div class="prmac-card">
+        <div class="pc-eyebrow">Institutional Partner</div>
+        <div class="pc-name">PRMAC</div>
+        <div class="pc-full">Punjab Rural Municipal Administration Corporation — dedicated programme delivery body</div>
+        <div class="pc-body">Established specifically to manage the long-term delivery, maintenance, and institutional sustainability of WASH services across the 2,000-village programme area. PRMAC is the institutional backbone that White Rice's SBC strategy is designed to support — creating the community demand, adoption behaviours, and financial sustainability that allow PRMAC to function effectively over the long term.</div>
+        <div class="pc-mandate">
+          <div class="pcm"><div class="pcm-dot"></div><div class="pcm-text">Service delivery and technical maintenance across 2,000 villages</div></div>
+          <div class="pcm"><div class="pcm-dot"></div><div class="pcm-text">Community tariff collection for financial sustainability of operations</div></div>
+          <div class="pcm"><div class="pcm-dot"></div><div class="pcm-text">Monitoring of service uptake, quality, and community satisfaction</div></div>
+          <div class="pcm"><div class="pcm-dot"></div><div class="pcm-text">Long-term institutional management beyond the World Bank programme period</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOCIO-ECOLOGICAL MODEL ══ -->
+<section class="sem-band">
+  <div class="sem-inner">
+    <div class="sem-eyebrow">Strategy Architecture · Socio-Ecological Model</div>
+    <h2 class="sem-heading">Behaviour change at every level.<br><em>Individual to institution — all at once.</em></h2>
+    <div class="sem-levels">
+      <div class="sem-level sl-1">
+        <div class="sl-bg">I</div>
+        <div class="sl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+        <div class="sl-scale">Level 1</div>
+        <div class="sl-title">Individual</div>
+        <div class="sl-body">Knowledge, attitudes, and personal practices — shifting what individuals know, believe, and do around WASH, hygiene, nutrition, and child development.</div>
+        <div class="sl-behaviours">
+          <div class="slb">Handwashing at critical moments</div>
+          <div class="slb">Safe water storage and handling</div>
+          <div class="slb">Latrine use and maintenance</div>
+          <div class="slb">Responsive caregiving practices</div>
+          <div class="slb">Diverse nutrition during early years</div>
+        </div>
+      </div>
+      <div class="sem-level sl-2">
+        <div class="sl-bg">H</div>
+        <div class="sl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C4881A" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="sl-scale">Level 2</div>
+        <div class="sl-title">Household</div>
+        <div class="sl-body">Family dynamics, gender roles, and household decision-making — ensuring that fathers, mothers, grandparents, and other household members collectively adopt and sustain new practices.</div>
+        <div class="sl-behaviours">
+          <div class="slb">Household waste segregation and disposal</div>
+          <div class="slb">Fathers' involvement in child stimulation</div>
+          <div class="slb">Joint household decision to pay service tariff</div>
+          <div class="slb">Household hygiene environment maintenance</div>
+        </div>
+      </div>
+      <div class="sem-level sl-3">
+        <div class="sl-bg">C</div>
+        <div class="sl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2A5A2A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="sl-scale">Level 3</div>
+        <div class="sl-title">Community</div>
+        <div class="sl-body">Collective action, peer accountability, and community ownership — mobilising the social infrastructure of the village to reinforce and sustain behaviours beyond the individual and household.</div>
+        <div class="sl-behaviours">
+          <div class="slb">Community custodianship of WASH facilities</div>
+          <div class="slb">Peer accountability for open defecation elimination</div>
+          <div class="slb">Collective tariff payment culture</div>
+          <div class="slb">Community-led early childhood spaces</div>
+        </div>
+      </div>
+      <div class="sem-level sl-4">
+        <div class="sl-bg">N</div>
+        <div class="sl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6A3AAA" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="sl-scale">Level 4</div>
+        <div class="sl-title">Social Norms</div>
+        <div class="sl-body">The deep community expectations, beliefs, and shared standards that make new behaviours self-reinforcing — turning adopted practices into the expected and normal way things are done in these villages.</div>
+        <div class="sl-behaviours">
+          <div class="slb">WASH as community pride and identity</div>
+          <div class="slb">Stigma around open defecation normalised</div>
+          <div class="slb">Early child stimulation seen as fathers' role</div>
+          <div class="slb">Service payment as community responsibility</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOUR FOCUS AREAS ══ -->
+<section class="focus-band">
+  <div class="focus-inner">
+    <div class="focus-eyebrow">Four Focus Areas · Integrated SBC Architecture</div>
+    <h2 class="focus-heading">WASH. Nutrition. Child Development.<br><em>Service Sustainability.</em> Together.</h2>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="fc-tag fc-wash">WASH</div>
+        <div class="fc-icon fc-wash-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <div class="fc-title">Water, Sanitation &amp; Hygiene</div>
+        <div class="fc-body">Turning the World Bank's WASH infrastructure investment into lasting community behaviour — ensuring that clean water, sanitation facilities, and hygiene services are used consistently, maintained by communities, and passed to the next generation as normal life practice.</div>
+        <div class="fc-behaviours">
+          <div class="fcb"><div class="fcb-dot dot-water"></div>Handwashing with soap at critical moments — before eating, after defecation, before feeding children</div>
+          <div class="fcb"><div class="fcb-dot dot-water"></div>Consistent latrine use and end of open defecation across all community members</div>
+          <div class="fcb"><div class="fcb-dot dot-water"></div>Safe drinking water treatment, storage, and use at household level</div>
+          <div class="fcb"><div class="fcb-dot dot-water"></div>Household and community waste disposal through organised collection systems</div>
+        </div>
+      </div>
+      <div class="focus-card">
+        <div class="fc-tag fc-ecd">ECD &amp; Nutrition</div>
+        <div class="fc-icon fc-ecd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="fc-title">Early Childhood Development &amp; Stunting Prevention</div>
+        <div class="fc-body">Going beyond WASH to address child stunting — Punjab's most pressing child health challenge. The SBC programme integrates nutrition, feeding practice, and early childhood stimulation across the same community infrastructure being built for WASH, reaching caregivers at the moments that matter most.</div>
+        <div class="fc-behaviours">
+          <div class="fcb"><div class="fcb-dot dot-ochre"></div>Diverse diet and appropriate complementary feeding from 6 months — addressing food diversity, not just quantity</div>
+          <div class="fcb"><div class="fcb-dot dot-ochre"></div>Exclusive breastfeeding for the first 6 months — addressing mixed feeding practices that increase stunting risk</div>
+          <div class="fcb"><div class="fcb-dot dot-ochre"></div>Early childhood stimulation — responsive play, reading, conversation — particularly targeting fathers as active participants</div>
+          <div class="fcb"><div class="fcb-dot dot-ochre"></div>Antenatal and postnatal nutrition practices — reaching mothers before, during, and after pregnancy</div>
+        </div>
+      </div>
+      <div class="focus-card">
+        <div class="fc-tag fc-tariff">Service Sustainability</div>
+        <div class="fc-icon fc-tariff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7ACA7A" stroke-width="1.6"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="fc-title">Tariff Payment &amp; Community Ownership</div>
+        <div class="fc-body">The financial sustainability of WASH services depends on communities understanding and accepting the value of paying for them. This is a behaviour change challenge — shifting the perception of water and sanitation from a government gift to a community-owned service worth maintaining and paying for.</div>
+        <div class="fc-behaviours">
+          <div class="fcb"><div class="fcb-dot dot-leaf"></div>Regular, timely tariff payment — building the financial habit that makes PRMAC's operations viable</div>
+          <div class="fcb"><div class="fcb-dot dot-leaf"></div>Perceived value of services — helping communities understand the economic and health returns on their tariff investment</div>
+          <div class="fcb"><div class="fcb-dot dot-leaf"></div>Community stewardship — the sense of ownership that makes communities report problems, maintain facilities, and advocate for service quality</div>
+        </div>
+      </div>
+      <div class="focus-card">
+        <div class="fc-tag fc-norms">Community Norms</div>
+        <div class="fc-icon fc-norms-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#AA7ACA" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="fc-title">Exemplary Village Status &amp; Social Identity</div>
+        <div class="fc-body">The programme's highest ambition — to make these 2,000 villages exemplary. Communities that others look to. Villages where WASH is not a programme outcome but an identity. Where early childhood development is a community priority. Where paying for services is a matter of pride, not obligation.</div>
+        <div class="fc-behaviours">
+          <div class="fcb"><div class="fcb-dot dot-violet"></div>Village-level pride and competition around cleanliness, child health outcomes, and service adoption</div>
+          <div class="fcb"><div class="fcb-dot dot-violet"></div>Community leaders and influencers as champions — actively reinforcing norms from within</div>
+          <div class="fcb"><div class="fcb-dot dot-violet"></div>Intergenerational transfer — children growing up in programme villages as the new normal baseline</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 1000 AGENTS ══ -->
+<section class="agents-band">
+  <div class="agents-inner">
+    <div class="agents-eyebrow">The Delivery Engine · 1,000+ Agents of Change</div>
+    <h2 class="agents-heading">Behaviour change doesn't reach<br><em>2,000 villages by satellite.</em><br>It reaches them person by person.</h2>
+    <p class="agents-body">The behaviour change programme's delivery mechanism is a trained, motivated, and equipped workforce of over 1,000 community Agents of Change — frontline workers embedded in villages, trained by master trainers, and supported by the full suite of communication and engagement materials White Rice is designing. The cascade architecture ensures that quality, consistency, and community relevance are maintained at scale.</p>
+    <div class="cascade">
+      <div class="cascade-step">
+        <div class="cs-num">01</div>
+        <div class="cs-title">Master Trainers</div>
+        <div class="cs-sub">Programme Core · Curriculum Design</div>
+        <div class="cs-body">Senior programme staff trained to the highest level — responsible for training and supporting the community Agent of Change cohort. White Rice designs the master trainer curriculum, facilitation guides, and quality assurance tools.</div>
+        <div class="cs-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="cascade-step">
+        <div class="cs-num">02</div>
+        <div class="cs-title">Agents of Change</div>
+        <div class="cs-sub">1,000+ Frontline · Village-Level</div>
+        <div class="cs-body">Community members — ideally women from within the villages — trained as full-time behaviour change facilitators. Armed with the mobilisation toolkit, session materials, mobile content, and community branding tools. The human interface between the programme and the community.</div>
+        <div class="cs-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="cascade-step">
+        <div class="cs-num">03</div>
+        <div class="cs-title">2,000 Villages</div>
+        <div class="cs-sub">Community Level · Group &amp; Individual</div>
+        <div class="cs-body">The full community — reached through group sessions, household visits, community events, mobile content, and environmental branding. Behaviour change delivered at individual, household, and community level simultaneously across the full two-year programme period.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MATERIALS ══ -->
+<section class="materials-band">
+  <div class="materials-inner">
+    <div class="mat-eyebrow">Programme Materials · What White Rice Is Building</div>
+    <h2 class="mat-heading">Every tool the Agent of Change<br><em>needs to change a village.</em></h2>
+    <div class="materials-grid">
+      <div class="mat-card">
+        <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="mc-title">Community Mobilisation Toolkit</div>
+        <div class="mc-body">The Agent of Change's primary field resource — group session guides, discussion facilitation tools, community mapping activities, and participatory engagement frameworks. Designed for low-literacy contexts in Punjabi and Urdu.</div>
+      </div>
+      <div class="mat-card">
+        <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="mc-title">Master Trainer Curriculum</div>
+        <div class="mc-body">Complete training programme for master trainers — content, facilitation methodology, quality assurance tools, and cascading protocols to ensure consistency across 1,000+ Agents of Change across 2,000 villages.</div>
+      </div>
+      <div class="mat-card">
+        <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <div class="mc-title">Mobile Phone Content</div>
+        <div class="mc-body">Short-form video, audio, and messaging content for delivery through community mobile phones — reaching households that Agents of Change may not physically visit, and providing on-demand reference materials for continued behaviour reinforcement.</div>
+      </div>
+      <div class="mat-card">
+        <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="mc-title">Group Session Materials</div>
+        <div class="mc-body">Structured community group sessions for WASH, ECD, and nutrition — visual aids, discussion cards, demonstration tools, and participatory exercises designed to work in community spaces with mixed literacy levels.</div>
+      </div>
+      <div class="mat-card">
+        <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="mc-title">Community Branding</div>
+        <div class="mc-body">Environmental behaviour change — wall murals, community signage, nudge installations at key touchpoints (water points, latrine facilities, community gathering spaces) — making the desired behaviours visible, normal, and celebrated in the village environment.</div>
+      </div>
+      <div class="mat-card">
+        <div class="mc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8AAA" stroke-width="1.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="mc-title">2-Year Rollout Plan</div>
+        <div class="mc-body">A complete, phased implementation roadmap — quarterly milestones, behaviour change sequence design, community engagement calendar, monitoring and adaptation framework — grounded in behaviour change science and designed for the full 2,000-village programme context.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 2-YEAR ROLLOUT ══ -->
+<section class="rollout-band">
+  <div class="rollout-inner">
+    <div class="ro-eyebrow">Two-Year Rollout Plan · Phased Behaviour Change Strategy</div>
+    <h2 class="ro-heading">Change built to last<br><em>beyond the programme.</em></h2>
+    <div class="timeline">
+      <div class="tl-phase">
+        <div class="tl-bar"></div>
+        <div class="tl-quarter">Phase 1 · Months 1–6</div>
+        <div class="tl-title">Awareness &amp; Norm Seeding</div>
+        <div class="tl-body">Community mobilisation, Agent of Change deployment, first group sessions across WASH and ECD. Building awareness, establishing trust, identifying community champions and positive deviants. Setting the social conversation in motion.</div>
+      </div>
+      <div class="tl-phase">
+        <div class="tl-bar"></div>
+        <div class="tl-quarter">Phase 2 · Months 7–12</div>
+        <div class="tl-title">Behaviour Practice &amp; Reinforcement</div>
+        <div class="tl-body">Moving from knowledge to practice — household visits, behaviour demonstration, community accountability structures, mobile content reinforcing session learning. First tariff payment campaigns. Community branding installation.</div>
+      </div>
+      <div class="tl-phase">
+        <div class="tl-bar"></div>
+        <div class="tl-quarter">Phase 3 · Months 13–18</div>
+        <div class="tl-title">Norm Consolidation &amp; Social Proof</div>
+        <div class="tl-body">Documenting and celebrating change — community champions, exemplary households, village-level progress. Peer-to-peer advocacy activated. Social proof mechanisms amplifying the new norm. Tariff payment becoming community expectation.</div>
+      </div>
+      <div class="tl-phase">
+        <div class="tl-bar"></div>
+        <div class="tl-quarter">Phase 4 · Months 19–24</div>
+        <div class="tl-title">Exemplary Village &amp; Self-Sustaining Norms</div>
+        <div class="tl-body">Graduating villages to exemplary status — the programme's highest achievement. Community-led maintenance of behaviours. PRMAC's long-term sustainability enabled by embedded financial habits. Intergenerational transfer underway.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Approach</em></h2>
+      </div>
+      <div class="section-right">
+        <p>White Rice's approach to this programme is grounded in the principle that communities are not passive recipients of behaviour change — they are the designers of it. The SBC strategy is being co-created with communities and partners on the ground, ensuring that every session, every material, and every engagement tool reflects the actual context, language, concerns, and aspirations of the villages it is designed for.</p>
+        <p>The integration of WASH, ECD, nutrition, and tariff sustainability in a single SBC architecture is deliberate — because these challenges are not separate in communities. A mother who learns proper handwashing is also learning about child health. A father who attends an ECD session is also hearing about the water system his family depends on. A community that takes pride in its cleanliness is a community that will pay to maintain it. The strategy treats these connections as assets, not complications.</p>
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">2,000 Villages</div>
+            <div class="desc">Complete SBC programme coverage across Punjab — the full programme geography addressed through a single, coherent architecture.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">1,000+ Agents</div>
+            <div class="desc">Community-level Agents of Change — trained, equipped, and deployed across 2,000 villages for a two-year sustained behaviour change programme.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">4 Domains</div>
+            <div class="desc">WASH, ECD, nutrition, and service sustainability — addressed simultaneously through a single integrated SBC framework across all socio-ecological levels.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>The infrastructure<br>was always the<br><em>beginning,<br>not the answer.</em></h3>
+    <p>Two thousand villages. One thousand agents of change. Four behaviour domains. A two-year plan. And one understanding that the World Bank's investment in Punjab's WASH infrastructure only realises its full value when the communities who live with it decide, together, that it is worth using, worth maintaining, and worth paying for. That decision is not made in a project document. It is made in a community session, a household conversation, a child's first glass of clean water, and a father who learned to play with his children. That is the work White Rice is here to do.</p>
+    <div class="tag-pills">
+      <span class="pill">World Bank</span>
+      <span class="pill">PRMAC</span>
+      <span class="pill">Punjab Pakistan</span>
+      <span class="pill">WASH</span>
+      <span class="pill">Early Childhood Development</span>
+      <span class="pill">Nutrition</span>
+      <span class="pill">Stunting Prevention</span>
+      <span class="pill">2,000 Villages</span>
+      <span class="pill">Agents of Change</span>
+      <span class="pill">Community Mobilisation</span>
+      <span class="pill">Tariff Sustainability</span>
+      <span class="pill">Socio-Ecological Model</span>
+      <span class="pill">2-Year Rollout</span>
+      <span class="pill">SBC</span>
+      <span class="pill">Co-Design</span>
+      <span class="pill">Community Branding</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saaf Karachi Meri Zimmedari — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:        #1A1612;
+      --parchment:  #F5F0E8;
+      --sand:       #E2D9C8;
+      --muted:      #7A7065;
+      --slate:      #2A3A4A;
+      --slate-lt:   #4A6A8A;
+      --lime:       #5A8A1A;
+      --lime-lt:    #8AB84A;
+      --lime-pale:  #D8EAB8;
+      --cobalt:     #1A4A6A;
+      --amber:      #C4821A;
+      --amber-lt:   #E8B84A;
+      --charcoal:   #141E28;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--charcoal);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 85% 15%, rgba(90,138,26,.55) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 55% at 5%  90%, rgba(26,74,106,.4)  0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 55%, rgba(20,30,40,.5)   0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Recycling-inspired circular arcs */
+    .hero-arc {
+      position: absolute;
+      top: -25%; right: -18%;
+      width: 70%; aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(90,138,26,.12);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-arc::before {
+      content: '';
+      position: absolute; inset: 15%;
+      border-radius: 50%;
+      border: 1px dashed rgba(90,138,26,.07);
+    }
+    .hero-arc::after {
+      content: '';
+      position: absolute; inset: 32%;
+      border-radius: 50%;
+      border: 1px solid rgba(196,130,26,.07);
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--lime-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--lime-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--lime); }
+    .campaign-name {
+      font-size: .9rem; letter-spacing: .08em; color: rgba(255,255,255,.35);
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      animation: fadeUp .7s .05s both; margin-bottom: .75rem;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 7.5vw, 8rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--lime-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 300; color: rgba(255,255,255,.42);
+      font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 56ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.07); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--lime-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--lime-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(90,138,26,.15); border: 1px solid rgba(90,138,26,.3); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--lime-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--lime); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'KARACHI'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 14vw, 16rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; white-space: nowrap; letter-spacing: -.02em; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.6); font-weight: 300; }
+
+    /* ── RECYCLING CHAIN BAND ── */
+    .chain-band { background: var(--slate); padding: 4rem 3.5rem; }
+    .chain-inner { max-width: 1200px; margin: 0 auto; }
+    .chain-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 2.5rem; }
+    .chain-flow { display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; gap: 0; }
+    .chain-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 .75rem; position: relative; }
+    .chain-step:not(:last-child)::after {
+      content: '→';
+      position: absolute; right: -.5rem; top: 1.7rem;
+      color: rgba(255,255,255,.2); font-size: 1rem;
+    }
+    .chain-dot { width: 3.5rem; height: 3.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,.12); }
+    .chain-dot svg { width: 1.2rem; height: 1.2rem; }
+    .chain-dot.c1 { background: rgba(90,138,26,.25); }
+    .chain-dot.c2 { background: rgba(26,74,106,.3); }
+    .chain-dot.c3 { background: rgba(196,130,26,.2); }
+    .chain-dot.c4 { background: rgba(90,138,26,.2); }
+    .chain-dot.c5 { background: rgba(74,42,90,.2); }
+    .chain-title { font-size: .82rem; font-weight: 500; color: #fff; margin-bottom: .3rem; line-height: 1.3; }
+    .chain-body { font-size: .72rem; line-height: 1.5; color: rgba(255,255,255,.38); font-weight: 300; }
+
+    /* ── DIVIDER ── */
+    .divider-band { background: var(--sand); padding: 3rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--lime); line-height: 1.1; white-space: nowrap; }
+    .divider-text { font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--lime); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--lime); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--lime); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--lime); background: rgba(90,138,26,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── SEGMENT GRID ── */
+    .segment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin: 2rem 0; }
+    .segment-card { padding: 1.5rem; background: var(--charcoal); border-radius: 2px; position: relative; overflow: hidden; }
+    .segment-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+    .segment-card.s1::before { background: var(--lime-lt); }
+    .segment-card.s2::before { background: var(--amber-lt); }
+    .segment-card.s3::before { background: var(--slate-lt); }
+    .segment-card.s4::before { background: #9A7ABA; }
+    .segment-icon { width: 2.2rem; height: 2.2rem; border-radius: 50%; background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .segment-icon svg { width: 1rem; height: 1rem; }
+    .segment-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .segment-body { font-size: .75rem; line-height: 1.6; color: rgba(255,255,255,.4); font-weight: 300; }
+
+    /* ── HOUSEHOLD TOOLS BAND ── */
+    .household-band { background: var(--lime-pale); padding: 5rem 3.5rem; }
+    .household-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
+    .household-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem; }
+    .household-heading em { font-style: italic; color: var(--lime); }
+    .household-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--lime); margin-bottom: 1rem; }
+    .household-intro { font-size: .95rem; line-height: 1.8; color: var(--muted); font-weight: 300; }
+    .hh-tools { display: grid; gap: 1rem; }
+    .hh-tool { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem; background: #fff; border-left: 3px solid var(--lime); }
+    .hh-tool-icon { width: 2rem; height: 2rem; border-radius: 50%; background: var(--lime); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: .1rem; }
+    .hh-tool-icon svg { width: .9rem; height: .9rem; }
+    .hh-tool-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: .3rem; }
+    .hh-tool-body { font-size: .8rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── INCENTIVE BAND ── */
+    .incentive-band { background: var(--charcoal); padding: 5rem 3.5rem; }
+    .incentive-inner { max-width: 1200px; margin: 0 auto; }
+    .incentive-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .incentive-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .incentive-heading em { font-style: italic; color: var(--lime-lt); }
+    .incentive-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(255,255,255,.06); }
+    .incentive-card { background: var(--charcoal); padding: 2rem 1.75rem; }
+    .incentive-who { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--lime-lt); margin-bottom: .6rem; }
+    .incentive-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: .6rem; }
+    .incentive-desc { font-size: .78rem; line-height: 1.65; color: rgba(255,255,255,.4); font-weight: 300; }
+
+    /* ── MEDIA CHANNELS BAND ── */
+    .channels-band { background: var(--slate); padding: 4.5rem 3.5rem; }
+    .channels-inner { max-width: 1200px; margin: 0 auto; }
+    .channels-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .channels-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 300; color: #fff; margin-bottom: 2.5rem; }
+    .channels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .channel-card { padding: 1.5rem; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 2px; }
+    .channel-cat { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--amber-lt); margin-bottom: .75rem; }
+    .channel-list { display: flex; flex-direction: column; gap: .4rem; }
+    .channel-item { font-size: .8rem; color: rgba(255,255,255,.5); padding-left: .75rem; position: relative; }
+    .channel-item::before { content: '—'; position: absolute; left: 0; color: rgba(255,255,255,.2); font-size: .65rem; }
+
+    /* ── CAMPAIGN TAGS ── */
+    .c-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0; }
+    .c-tag { display: flex; align-items: center; gap: .4rem; padding: .45rem .9rem; background: var(--sand); border-radius: 2px; font-size: .8rem; color: var(--ink); }
+    .c-tag::before { content: '→'; color: var(--lime); font-size: .7rem; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--lime); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--charcoal); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(90,138,26,.18) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .closing-urdu { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 3vw, 2.2rem); font-style: italic; color: rgba(255,255,255,.25); margin-bottom: 1.5rem; letter-spacing: .05em; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--lime-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.45); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .chain-band, .household-band, .incentive-band, .channels-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .household-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .segment-grid, .incentive-grid, .channels-grid { grid-template-columns: 1fr; }
+      .chain-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .chain-step::after { display: none; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--lime); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-arc"></div>
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Recycling &amp; Waste Management Behaviour Change · Karachi, Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="campaign-name">صاف کراچی میری ذمہ داری — Saaf Karachi Meri Zimmedari</div>
+    <div class="eyebrow">Tier Fund · Karachi · Multi-Community</div>
+    <h1>
+      Clean Karachi<br>Is <em>My</em> Responsibility
+      <span class="sub-title">Recycling &amp; Waste Segregation Behaviour Change Campaign</span>
+    </h1>
+    <p class="hero-sub">A full-spectrum community behaviour change campaign designed to shift Karachi's waste practices from household to hub — turning dry–wet segregation, collection, and recycling into a community movement, not a government mandate.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Tier Fund</span></div>
+    <div class="meta-item"><span class="meta-label">Location</span><span class="meta-value">Karachi · Low-Income Communities</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">Waste Segregation &amp; Recycling Behaviour Change</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">SBC Strategy, Campaign &amp; Creative Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">SBC Strategy, Campaign Design &amp; <em>Creative Lead</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice designed the complete behaviour change strategy and communication campaign for the Saaf Karachi Meri Zimmedari initiative — from formative research and community engagement, through to household nudge design, social mobiliser toolkits, animation production, mass media, incentive architecture, and community recognition programmes. Working alongside local government, collection teams, and the Hariali Hub recycling centre, we built a campaign that touched every actor in the recycling chain.</p>
+      <div class="role-services">
+        <span class="role-tag">Formative Research</span>
+        <span class="role-tag">SBC Strategy</span>
+        <span class="role-tag">Campaign Design &amp; Branding</span>
+        <span class="role-tag">Community Mobilisation</span>
+        <span class="role-tag">Household Nudge Design</span>
+        <span class="role-tag">Animation Production</span>
+        <span class="role-tag">Social Media &amp; Influencers</span>
+        <span class="role-tag">Incentive &amp; Rewards Architecture</span>
+        <span class="role-tag">Youth Clubs &amp; Events</span>
+        <span class="role-tag">FLW Toolkit Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RECYCLING CHAIN ══ -->
+<section class="chain-band">
+  <div class="chain-inner">
+    <div class="chain-label">The Recycling Chain — How the System Was Designed to Work</div>
+    <div class="chain-flow">
+      <div class="chain-step">
+        <div class="chain-dot c1"><svg viewBox="0 0 24 24" fill="none" stroke="#8AB84A" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <div class="chain-title">Household Segregation</div>
+        <div class="chain-body">Families separate dry and wet waste at source using colour-coded bins and kitchen nudges</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-dot c2"><svg viewBox="0 0 24 24" fill="none" stroke="#4A6A8A" stroke-width="1.6"><path d="M1 3h15v13H1zM16 8l4 2v3h-4z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div class="chain-title">Collection Vehicles</div>
+        <div class="chain-body">Government-run segregated collection vehicles pick up pre-sorted waste from communities</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-dot c3"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"/></svg></div>
+        <div class="chain-title">Hariali Hub</div>
+        <div class="chain-body">Local recycling centre receives and further sorts the collected material by type</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-dot c4"><svg viewBox="0 0 24 24" fill="none" stroke="#8AB84A" stroke-width="1.6"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+        <div class="chain-title">Recycled Products</div>
+        <div class="chain-body">Dry waste processed into driveways, construction materials, and reusable products</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-dot c5"><svg viewBox="0 0 24 24" fill="none" stroke="#9A7ABA" stroke-width="1.6"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div>
+        <div class="chain-title">Organic Fertiliser</div>
+        <div class="chain-body">Wet waste converted into compost and fertiliser — closing the loop from kitchen to soil</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">Multi-Community</div>
+      <div class="outcome-desc">Campaign deployed across low-income communities in Karachi — reaching women, men, youth, and community influencers simultaneously.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Behaviour Shift</div>
+      <div class="outcome-desc">Measurable change in household waste segregation practices — dry from wet — as a routine daily behaviour.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Full Chain</div>
+      <div class="outcome-desc">First campaign to incentivise every actor in the recycling chain — households, collectors, social mobilisers, and communities — simultaneously.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Social Movement</div>
+      <div class="outcome-desc">Youth clubs, tournaments, festivals, and community recognition programmes turned recycling from a chore into a community identity.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Mass Reach</div>
+      <div class="outcome-desc">TikTok, WhatsApp, influencer networks, outdoor branding, and branded collection vehicles amplified the campaign from community to city-level visibility.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">Segregate.<br>Collect.<br>Recycle.</div>
+  <div class="divider-text">Three simple behaviours. But in low-income communities where recycling was a new concept, where waste bins were absent from homes, and where the government's collection infrastructure was invisible to residents, none of them could be taken for granted. The campaign had to create the knowledge, the tools, the motivation, and the social permission for all three — at once, across an entire city.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Recycling was not part of how Karachi's low-income communities understood waste. Waste was disposed of — often wherever was most convenient — not sorted, segregated, and handed to a collection vehicle for a journey to a recycling hub. The concept of a Hariali Hub, of dry versus wet waste, of plastics being turned into driveways — all of it was genuinely new.</p>
+        <div class="pull-quote">
+          <p>"In a community that has never encountered recycling as a practice, the first job is not to motivate the behaviour. It is to make the behaviour imaginable."</p>
+        </div>
+        <p>The campaign had to work across multiple segments simultaneously — women managing household waste, men and youth who influenced community norms, local influencers and religious leaders whose endorsement could shift social permission, waste collectors who needed to be part of the solution rather than bypassed by it, and government partners whose collection infrastructure only worked if households had already done their part.</p>
+        <p>Behaviour change in this context also meant confronting deeply ingrained norms in communities where open dumping was normalised, where waste bins at home were uncommon, and where the connection between household practice and city-level cleanliness had never been made visible. White Rice's role was to make that connection — and to make it feel urgent, achievable, and personally meaningful.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>White Rice began with in-context qualitative research — observations, one-on-one interviews, and focus group discussions across target communities — mapping current waste disposal practices, identifying the moments where behaviour broke down, and understanding what would make long-term change possible rather than just compliance in the short term.</p>
+        <p>The strategic framework that emerged was built around four simultaneous layers of activation: the household, the community, mass media channels, and the incentive architecture that connected and rewarded performance across all of them.</p>
+
+        <!-- FOUR SEGMENTS -->
+        <div class="segment-grid">
+          <div class="segment-card s1">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8AB84A" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+            <div class="segment-name">Women at Home</div>
+            <div class="segment-body">Primary waste managers — targeted through household visits, kitchen nudges, and waste bin design for daily habit formation.</div>
+          </div>
+          <div class="segment-card s2">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+            <div class="segment-name">Men &amp; Youth</div>
+            <div class="segment-body">Social norm influencers — engaged through sports tournaments, youth clubs, festivals, and TikTok-led peer campaigns.</div>
+          </div>
+          <div class="segment-card s3">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A6A8A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+            <div class="segment-name">Community Influencers</div>
+            <div class="segment-body">Trusted voices — local leaders and respected figures — brought in as champions to create social permission for behaviour change.</div>
+          </div>
+          <div class="segment-card s4">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#9A7ABA" stroke-width="1.6"><path d="M1 3h15v13H1zM16 8l4 2v3h-4z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+            <div class="segment-name">Waste Collectors</div>
+            <div class="segment-body">Frontline system actors — incentivised, recognised, and equipped as programme champions, not just operatives.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ HOUSEHOLD TOOLS ══ -->
+<section class="household-band">
+  <div class="household-inner">
+    <div>
+      <div class="household-eyebrow">Household-Level Design</div>
+      <h2 class="household-heading">Where <em>behaviour change</em> begins — in the kitchen.</h2>
+      <p class="household-intro">The household was the first and most critical site of intervention. Before any community session or media campaign could take effect, the home needed to have the physical tools and environmental nudges to make the new behaviour the path of least resistance.</p>
+    </div>
+    <div class="hh-tools">
+      <div class="hh-tool">
+        <div class="hh-tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M9 6V4h6v2"/></svg></div>
+        <div>
+          <div class="hh-tool-title">Colour-Coded Waste Bins</div>
+          <div class="hh-tool-body">Designated bins for dry and wet waste — making segregation a physical act built into the daily kitchen routine, not a decision that required thinking each time.</div>
+        </div>
+      </div>
+      <div class="hh-tool">
+        <div class="hh-tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div>
+          <div class="hh-tool-title">Kitchen Nudges &amp; Doorstickers</div>
+          <div class="hh-tool-body">Visual reminders placed at the point of behaviour — on bin lids, refrigerators, and above waste disposal areas — reinforcing the habit at the exact moment it needed to happen.</div>
+        </div>
+      </div>
+      <div class="hh-tool">
+        <div class="hh-tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div>
+          <div class="hh-tool-title">"I Am a Clean Champion" Identity Sticker</div>
+          <div class="hh-tool-body">A household identity marker that connected the family's private practice to a larger community movement — turning domestic behaviour into a public statement of values and belonging.</div>
+        </div>
+      </div>
+      <div class="hh-tool">
+        <div class="hh-tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <div>
+          <div class="hh-tool-title">WhatsApp Behaviour Nudges</div>
+          <div class="hh-tool-body">Regular reminder messages and animated content delivered directly to household members — keeping the behaviour salient between social mobiliser visits and community sessions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INCENTIVE ARCHITECTURE ══ -->
+<section class="incentive-band">
+  <div class="incentive-inner">
+    <div class="incentive-eyebrow">Incentive Architecture · Everyone Has a Role. Everyone Gets Recognised.</div>
+    <h2 class="incentive-heading">A rewards system designed to <em>motivate every actor</em> in the chain.</h2>
+    <div class="incentive-grid">
+      <div class="incentive-card">
+        <div class="incentive-who">Top Performers</div>
+        <div class="incentive-name">Champion Households</div>
+        <div class="incentive-desc">Families with the highest and most consistent segregation performance recognised publicly — creating social aspiration around the behaviour and peer competition as a driver of change.</div>
+      </div>
+      <div class="incentive-card">
+        <div class="incentive-who">Best Performers</div>
+        <div class="incentive-name">Top Communities</div>
+        <div class="incentive-desc">Whole communities recognised and celebrated for collective performance — making clean neighbourhoods a source of community pride, not just individual compliance.</div>
+      </div>
+      <div class="incentive-card">
+        <div class="incentive-who">Frontline Staff</div>
+        <div class="incentive-name">Social Mobiliser Scorecards</div>
+        <div class="incentive-desc">Performance tracking and recognition for social mobilisers — acknowledging frontline effort and creating accountability with appreciation rather than just monitoring.</div>
+      </div>
+      <div class="incentive-card">
+        <div class="incentive-who">Collection Teams</div>
+        <div class="incentive-name">Collector Awards</div>
+        <div class="incentive-desc">Recognition for top-performing waste collectors — treating them as essential programme champions and giving their contribution the visibility and dignity it deserved.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MEDIA CHANNELS ══ -->
+<section class="channels-band">
+  <div class="channels-inner">
+    <div class="channels-eyebrow">360° Campaign Architecture</div>
+    <h2 class="channels-heading" style="color:#fff; font-family:'Cormorant Garamond',serif; font-weight:300;">Every channel working together — from the kitchen wall to TikTok.</h2>
+    <div class="channels-grid">
+      <div class="channel-card">
+        <div class="channel-cat">Community &amp; Outdoor</div>
+        <div class="channel-list">
+          <div class="channel-item">Wall chalkings as community reminders and nudges</div>
+          <div class="channel-item">Shop fascia branding across target areas</div>
+          <div class="channel-item">Branded collection vehicles — moving billboards for the campaign</div>
+          <div class="channel-item">Community sessions and social mobiliser outreach</div>
+          <div class="channel-item">Sports tournaments &amp; youth festivals</div>
+          <div class="channel-item">Youth clubs as ongoing community infrastructure</div>
+        </div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-cat">Digital &amp; Social Media</div>
+        <div class="channel-list">
+          <div class="channel-item">Animated social media content series</div>
+          <div class="channel-item">TikTok influencer engagement — community-level creators</div>
+          <div class="channel-item">Online PR and news media coverage</div>
+          <div class="channel-item">Celebrity endorsement videos</div>
+          <div class="channel-item">WhatsApp nudges and animated reminders</div>
+          <div class="channel-item">Local social media influencer partnerships</div>
+        </div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-cat">Field &amp; Household</div>
+        <div class="channel-list">
+          <div class="channel-item">Social mobiliser engagement toolkit</div>
+          <div class="channel-item">Animation series for community session facilitation</div>
+          <div class="channel-item">Colour-coded household waste bins</div>
+          <div class="channel-item">Kitchen nudges and doorstickers</div>
+          <div class="channel-item">Clean Champion identity stickers</div>
+          <div class="channel-item">Scorecard and incentive documentation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Saaf Karachi Meri Zimmedari succeeded in doing what most recycling campaigns fail to do: making waste segregation feel like a community movement rather than a government instruction. By incentivising every actor in the recycling chain — from the household to the collector — and by making the behaviour visible, celebrated, and competitively desirable, the campaign created momentum that institutional programming alone cannot generate.</p>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">Full Chain</div>
+            <div class="desc">Every actor incentivised — households, communities, social mobilisers, and collectors — creating aligned motivation across the entire recycling system for the first time.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">360° Reach</div>
+            <div class="desc">From kitchen nudges to TikTok — the campaign reached community members through every relevant channel, in their homes, their streets, and their phones.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Social Norm Shift</div>
+            <div class="desc">Youth clubs, tournaments, and community recognition events transformed recycling from an individual chore into a collective identity — something Karachi's communities owned.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Hariali Hub</div>
+            <div class="desc">The campaign made the recycling chain legible to communities for the first time — connecting household action to a physical outcome they could see: products made from their own sorted waste.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">What made this programme distinctive was the decision to treat recycling not as an environmental message but as a civic identity. Saaf Karachi Meri Zimmedari gave communities something to be proud of — a claim of ownership over their city that could be expressed every time they sorted their waste. That is the shift that lasts beyond any campaign cycle.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="closing-urdu">صاف کراچی — میری ذمہ داری</div>
+    <h3>When a city takes<br><em>ownership</em> of its own cleanliness,<br>no campaign is needed.</h3>
+    <p>Saaf Karachi Meri Zimmedari set out to make recycling possible in communities that had never practised it. What it created instead was something larger: a shared civic pride in a city that belongs to its people — and a responsibility they chose to carry.</p>
+    <div class="tag-pills">
+      <span class="pill">Recycling</span>
+      <span class="pill">Waste Management</span>
+      <span class="pill">Behaviour Change</span>
+      <span class="pill">Waste Segregation</span>
+      <span class="pill">Community Mobilisation</span>
+      <span class="pill">Youth Engagement</span>
+      <span class="pill">Digital Campaign</span>
+      <span class="pill">Incentive Design</span>
+      <span class="pill">Karachi</span>
+      <span class="pill">Tier Fund</span>
+      <span class="pill">SDG 11</span>
+      <span class="pill">SDG 12</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

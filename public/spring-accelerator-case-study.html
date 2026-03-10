@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spring Accelerator — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:        #1A1612;
+      --parchment:  #F5F0E8;
+      --sand:       #E2D9C8;
+      --muted:      #7A7065;
+      --ocean:      #1A5A7A;
+      --ocean-lt:   #4A9ABA;
+      --ocean-pale: #D0EAF5;
+      --coral:      #C45A2A;
+      --coral-lt:   #E88A5A;
+      --slate:      #2A3A4A;
+      --slate-lt:   #4A6A8A;
+      --gold:       #C4921A;
+      --gold-lt:    #E8C05A;
+      --midnight:   #0A1A2A;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--midnight);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 88% 12%, rgba(26,90,122,.7)   0%, transparent 60%),
+        radial-gradient(ellipse 45% 55% at 5%  90%, rgba(196,92,42,.3)   0%, transparent 60%),
+        radial-gradient(ellipse 35% 40% at 48% 52%, rgba(10,26,42,.5)    0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Four-country connection lines */
+    .hero-lines {
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%; height: 100%;
+      opacity: .06;
+      background:
+        repeating-linear-gradient(
+          35deg,
+          transparent,
+          transparent 50px,
+          rgba(74,154,186,1) 50px,
+          rgba(74,154,186,1) 51px
+        );
+      pointer-events: none;
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--ocean-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--ocean-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--ocean); }
+    .funder-note {
+      font-size: .78rem; color: rgba(255,255,255,.28); font-weight: 300;
+      font-style: italic; margin-bottom: .75rem;
+      animation: fadeUp .7s .05s both;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--ocean-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 300; color: rgba(255,255,255,.42); font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.07); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--ocean-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--ocean-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(26,90,122,.2); border: 1px solid rgba(26,90,122,.4); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ocean-lt); font-weight: 500; }
+
+    /* ── FOUR COUNTRIES BAND ── */
+    .countries-band { background: var(--ocean); padding: 4rem 3.5rem; }
+    .countries-inner { max-width: 1200px; margin: 0 auto; }
+    .countries-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 2.5rem; }
+    .countries-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(255,255,255,.1); }
+    .country-card { background: var(--ocean); padding: 2rem; text-align: center; }
+    .country-flag { font-size: 2.2rem; margin-bottom: .75rem; }
+    .country-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .country-role { font-size: .72rem; line-height: 1.5; color: rgba(255,255,255,.5); font-weight: 300; }
+    .country-card.pakistan { background: rgba(255,255,255,.08); }
+    .country-card.pakistan .country-name { color: var(--gold-lt); }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--slate); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'SPRING'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 14vw, 16rem); font-weight: 700; color: rgba(255,255,255,.04); pointer-events: none; white-space: nowrap; letter-spacing: -.02em; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.18); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.58); font-weight: 300; }
+
+    /* ── DIVIDER ── */
+    .divider-band { background: var(--sand); padding: 3rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--ocean); line-height: 1.1; white-space: nowrap; }
+    .divider-text { font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--ocean); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--ocean); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--ocean); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--ocean); background: rgba(26,90,122,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── HCD PROCESS BAND ── */
+    .process-band { background: var(--midnight); padding: 5rem 3.5rem; }
+    .process-inner { max-width: 1200px; margin: 0 auto; }
+    .process-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .process-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .process-heading em { font-style: italic; color: var(--ocean-lt); }
+    .process-flow { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
+    .process-flow::before { content: ''; position: absolute; top: 1.7rem; left: 10%; right: 10%; height: 1px; background: linear-gradient(to right, transparent, rgba(74,154,186,.5), transparent); }
+    .process-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 .75rem; }
+    .process-dot { width: 3.5rem; height: 3.5rem; border-radius: 50%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; position: relative; z-index: 1; }
+    .process-dot svg { width: 1.15rem; height: 1.15rem; }
+    .process-step-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .78rem; color: var(--ocean-lt); margin-bottom: .3rem; }
+    .process-step-title { font-size: .82rem; font-weight: 500; color: #fff; margin-bottom: .3rem; line-height: 1.3; }
+    .process-step-body { font-size: .72rem; line-height: 1.5; color: rgba(255,255,255,.38); font-weight: 300; }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--midnight); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── STARTUPS BAND ── */
+    .startups-band { background: var(--ocean-pale); padding: 5rem 3.5rem; }
+    .startups-inner { max-width: 1200px; margin: 0 auto; }
+    .startups-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--ocean); margin-bottom: .75rem; }
+    .startups-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--ink); margin-bottom: 2.5rem; }
+    .startups-heading em { font-style: italic; color: var(--ocean); }
+    .startups-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .startup-card { background: #fff; padding: 2rem; border-radius: 2px; border-top: 3px solid var(--ocean); position: relative; }
+    .startup-sector { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ocean); margin-bottom: .6rem; }
+    .startup-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--ink); margin-bottom: .6rem; }
+    .startup-body { font-size: .85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+    .startup-focus { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+    .startup-tag { padding: .2rem .65rem; background: var(--ocean-pale); border-radius: 2px; font-size: .68rem; color: var(--ocean); }
+    .startups-note { margin-top: 2rem; padding: 1.5rem 2rem; background: rgba(26,90,122,.08); border-left: 3px solid var(--ocean); }
+    .startups-note p { font-size: .9rem; line-height: 1.75; color: var(--muted); font-weight: 300; font-style: italic; }
+
+    /* ── NEPAL BAND ── */
+    .nepal-band { background: var(--slate); padding: 4rem 3.5rem; }
+    .nepal-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: center; }
+    .nepal-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 1rem; }
+    .nepal-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .nepal-heading em { font-style: italic; color: var(--ocean-lt); }
+    .nepal-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 300; color: rgba(255,255,255,.1); line-height: 1; margin-top: 1.5rem; }
+    .nepal-right p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.52); font-weight: 300; margin-bottom: 1.25rem; }
+    .nepal-phases { display: grid; gap: 1rem; margin-top: 1.5rem; }
+    .nepal-phase { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,.04); border-left: 2px solid var(--ocean-lt); }
+    .np-num { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--ocean-lt); min-width: 1.5rem; }
+    .np-text { font-size: .82rem; line-height: 1.6; color: rgba(255,255,255,.5); font-weight: 300; }
+    .np-text strong { color: rgba(255,255,255,.78); font-weight: 500; }
+
+    /* ── C-TAGS ── */
+    .c-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0; }
+    .c-tag { display: flex; align-items: center; gap: .4rem; padding: .45rem .9rem; background: var(--sand); border-radius: 2px; font-size: .8rem; color: var(--ink); }
+    .c-tag::before { content: '→'; color: var(--ocean); font-size: .7rem; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--ocean); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--midnight); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(26,90,122,.25) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--ocean-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.45); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .process-band, .startups-band, .nepal-band, .countries-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .nepal-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .startups-grid, .countries-row { grid-template-columns: 1fr; }
+      .process-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-flow::before { display: none; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--ocean); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Startup Acceleration &amp; HCD · Pakistan · 4-Country Programme</div>
+  </div>
+  <div class="hero-body">
+    <div class="funder-note">Funded by USAID · Consortium with Proportion Netherlands · Pakistan, Nepal, Kenya, Tanzania</div>
+    <div class="eyebrow">Spring Accelerator · Pakistan · Girls 10–19</div>
+    <h1>
+      Designing for<br><em>Girls.</em><br>Building for Scale.
+      <span class="sub-title">Spring Accelerator — Human-Centred Design for Girls-Focused Startups</span>
+    </h1>
+    <p class="hero-sub">A four-country USAID-funded accelerator programme — where White Rice led Pakistan's cohort of seven startups through deep human-centred design research, user testing, and value proposition development, helping ventures targeting girls aged 10–19 become genuinely user-ready.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Funder</span><span class="meta-value">USAID</span></div>
+    <div class="meta-item"><span class="meta-label">Consortium Partner</span><span class="meta-value">Proportion (Netherlands)</span></div>
+    <div class="meta-item"><span class="meta-label">Countries</span><span class="meta-value">Pakistan · Nepal · Kenya · Tanzania</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">HCD Research &amp; Design Partner · Pakistan Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">HCD Research, Prototyping &amp; <em>Startup Design Partner</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice served as the human-centred design partner for Spring Accelerator's Pakistan cohort — working directly alongside seven startups to map user journeys, prototype solutions, conduct live user testing, and sharpen value propositions for products and services targeting girls aged 10 to 19. As part of a four-country global consortium led by Proportion Netherlands, we also contributed to cross-country learning exchanges, including a team visit to Nepal for methodology sharing and cohort showcasing.</p>
+      <div class="role-services">
+        <span class="role-tag">User Journey Mapping</span>
+        <span class="role-tag">Co-Creation with End Users</span>
+        <span class="role-tag">Prototype Development</span>
+        <span class="role-tag">Live User Testing</span>
+        <span class="role-tag">Mockup &amp; Demo Design</span>
+        <span class="role-tag">Value Proposition Development</span>
+        <span class="role-tag">Iterative Design Cycles</span>
+        <span class="role-tag">Cross-Country Knowledge Exchange</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOUR COUNTRIES ══ -->
+<section class="countries-band">
+  <div class="countries-inner">
+    <div class="countries-label">Global Consortium · Four Countries · One Mission</div>
+    <div class="countries-row">
+      <div class="country-card pakistan">
+        <div class="country-flag">🇵🇰</div>
+        <div class="country-name">Pakistan</div>
+        <div class="country-role">White Rice as HCD Partner · 7 startups · Led by White Rice</div>
+      </div>
+      <div class="country-card">
+        <div class="country-flag">🇳🇵</div>
+        <div class="country-name">Nepal</div>
+        <div class="country-role">Cross-learning hub · White Rice team visited for methodology training and cohort showcase</div>
+      </div>
+      <div class="country-card">
+        <div class="country-flag">🇰🇪</div>
+        <div class="country-name">Kenya</div>
+        <div class="country-role">Parallel cohort · Regional insights fed into cross-country programme learning</div>
+      </div>
+      <div class="country-card">
+        <div class="country-flag">🇹🇿</div>
+        <div class="country-name">Tanzania</div>
+        <div class="country-role">Parallel cohort · East Africa programme partner within the USAID consortium</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">7 Startups</div>
+      <div class="outcome-desc">Pakistan cohort supported through the full HCD cycle — research, prototyping, user testing, iteration, and value proposition development.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4 Countries</div>
+      <div class="outcome-desc">A global consortium spanning Pakistan, Nepal, Kenya, and Tanzania — with cross-learning, shared methodology, and joint cohort showcasing.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Girls 10–19</div>
+      <div class="outcome-desc">Every startup in the cohort targeted adolescent girls as their primary end user — with HCD ensuring the product actually fitted the girl, not the other way around.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">User-Ready</div>
+      <div class="outcome-desc">Startups exited the programme with tested, iterated products — not just ideas — backed by real user insights and validated value propositions.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Credible Ventures</div>
+      <div class="outcome-desc">Several cohort startups — including EDCASA, Sabak, and LearnerBots — went on to become credible, operating organisations in Pakistan's education and girls' empowerment sector.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">7 startups.<br>1 audience.<br>Real girls.</div>
+  <div class="divider-text">The common thread across every startup in the Pakistan cohort was a product or service aimed at adolescent girls — but designed largely without them. White Rice's role was to close that gap: to bring the actual end users into the design process so that by the time a startup pitched its value proposition, it was built on what girls genuinely needed, not what founders assumed they did.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The startups entering the Spring Accelerator cohort were not short on ambition or potential. Many had initial prototypes and a clear sense of the problem they were trying to solve. What they often lacked was the deep, contextual understanding of their actual end users — adolescent girls aged 10 to 19 in Pakistan — that would determine whether their product succeeded or failed at the point of adoption.</p>
+        <div class="pull-quote">
+          <p>"A prototype built for a girl you imagine is very different from a product built for a girl you have actually sat with, listened to, and watched try to use what you've made."</p>
+        </div>
+        <p>The challenge for White Rice was to compress the user research and iteration cycle that most startups take years to complete into a structured, supported programme — while simultaneously operating as part of a four-country global consortium with shared methodology, cross-learning obligations, and international showcasing requirements.</p>
+        <p>The diversity of the cohort added its own complexity: startups working in formal education technology sat alongside those developing vocational content, STEM tools, and digital platforms — each requiring different user research approaches and different types of prototype testing. White Rice had to be a credible design partner for all of them.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>White Rice's approach was grounded in human-centred design methodology — applied not as a theoretical framework, but as a practical, iterative process that startups could experience alongside their users in real time. The process was designed to move fast and iterate often.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div>
+              <div class="pillar-title">Start with the User, Not the Product</div>
+              <div class="pillar-body">User journey mapping before any prototype refinement — understanding how a girl actually moved through the problem space, not how founders assumed she did.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div>
+              <div class="pillar-title">Prototype, Test, Repeat</div>
+              <div class="pillar-body">Multiple rounds of prototyping and testing with actual users — mock-ups, live demos, and in-context observation — so that each iteration was grounded in real feedback rather than internal assumption.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div>
+              <div class="pillar-title">Value Proposition as the Final Test</div>
+              <div class="pillar-body">The programme culminated in a value proposition pitch — which only landed if it was built on verified user insight. The pitch was the proof point; the HCD process was how startups earned the right to make it.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div>
+              <div class="pillar-title">Global Learning, Local Depth</div>
+              <div class="pillar-body">Cross-country learning exchanges — including the Nepal visit — ensured that methodology was shared and refined across all four country contexts, while White Rice maintained deep contextual specificity for Pakistan.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ HCD PROCESS ══ -->
+<section class="process-band">
+  <div class="process-inner">
+    <div class="process-eyebrow">The HCD Methodology · Applied to Startup Acceleration</div>
+    <h2 class="process-heading">From prototype to <em>proven value proposition</em> — in five stages.</h2>
+    <div class="process-flow">
+      <div class="process-step">
+        <div class="process-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#4A9ABA" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="process-step-num">Stage 1</div>
+        <div class="process-step-title">User Journey Mapping</div>
+        <div class="process-step-body">Map how target girls actually experienced the problem — context, barriers, touchpoints, motivations</div>
+      </div>
+      <div class="process-step">
+        <div class="process-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#4A9ABA" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div class="process-step-num">Stage 2</div>
+        <div class="process-step-title">Co-Creation with Users</div>
+        <div class="process-step-body">Girls participate directly in solution design — not just as testers but as active contributors to the product concept</div>
+      </div>
+      <div class="process-step">
+        <div class="process-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#4A9ABA" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <div class="process-step-num">Stage 3</div>
+        <div class="process-step-title">Prototype &amp; Mockup Testing</div>
+        <div class="process-step-body">Live demos and mock-ups tested with actual end users — capturing what works, what confuses, what's missing</div>
+      </div>
+      <div class="process-step">
+        <div class="process-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#4A9ABA" stroke-width="1.6"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+        <div class="process-step-num">Stage 4</div>
+        <div class="process-step-title">Iteration &amp; Refinement</div>
+        <div class="process-step-body">Multiple design cycles — applying insights from each testing round to sharpen product-user fit before the next</div>
+      </div>
+      <div class="process-step">
+        <div class="process-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#4A9ABA" stroke-width="1.6"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="process-step-num">Stage 5</div>
+        <div class="process-step-title">Value Proposition Pitch</div>
+        <div class="process-step-body">A verified, user-grounded value proposition — the output of the full HCD cycle, ready for investor and stakeholder presentation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STARTUPS ══ -->
+<section class="startups-band">
+  <div class="startups-inner">
+    <div class="startups-eyebrow">Pakistan Cohort · Selected Startups</div>
+    <h2 class="startups-heading">Seven ventures. One audience.<br><em>Designed around girls who are still using them today.</em></h2>
+    <div class="startups-grid">
+      <div class="startup-card">
+        <div class="startup-sector">EdTech · Higher Education</div>
+        <div class="startup-name">EDCASA</div>
+        <div class="startup-body">Developing high-quality educational content for higher education students — with HCD work focused on understanding how girls navigated academic content access and what made digital learning feel credible and usable for them.</div>
+        <div class="startup-focus">
+          <span class="startup-tag">Higher Education</span>
+          <span class="startup-tag">Digital Learning</span>
+          <span class="startup-tag">Girls</span>
+        </div>
+      </div>
+      <div class="startup-card">
+        <div class="startup-sector">EdTech · Primary &amp; Secondary</div>
+        <div class="startup-name">Sabak</div>
+        <div class="startup-body">Educational content platform for primary and secondary school students — HCD work mapped the learning journey of out-of-school and in-school girls to ensure content was relevant to both, not just the formally enrolled.</div>
+        <div class="startup-focus">
+          <span class="startup-tag">Primary School</span>
+          <span class="startup-tag">Secondary School</span>
+          <span class="startup-tag">Content</span>
+        </div>
+      </div>
+      <div class="startup-card">
+        <div class="startup-sector">STEM Education · Girls &amp; Robotics</div>
+        <div class="startup-name">LearnerBots</div>
+        <div class="startup-body">A robotics institution encouraging STEM education for children and girls in particular — HCD work addressed the specific barriers that made robotics feel inaccessible to girls and the design changes that would make it feel like it belonged to them.</div>
+        <div class="startup-focus">
+          <span class="startup-tag">STEM</span>
+          <span class="startup-tag">Robotics</span>
+          <span class="startup-tag">Girls in Tech</span>
+        </div>
+      </div>
+    </div>
+    <div class="startups-note">
+      <p>EDCASA, Sabak, and LearnerBots represent a selection of the seven-startup Pakistan cohort. Several ventures from the Spring Accelerator programme went on to become credible, operating organisations — carrying the insights from their HCD work into their ongoing product development and user engagement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEPAL EXCHANGE BAND ══ -->
+<section class="nepal-band">
+  <div class="nepal-inner">
+    <div>
+      <div class="nepal-eyebrow">Global Learning Exchange</div>
+      <h2 class="nepal-heading">Learning across <em>borders.</em></h2>
+      <div class="nepal-stat">Pakistan ↔ Nepal</div>
+    </div>
+    <div class="nepal-right">
+      <p>One of the programme's distinctive features was its global architecture. As part of the four-country consortium, White Rice's team travelled to Nepal for two structured cross-learning exchanges — connecting the Pakistan cohort with teams and startups from other programme countries.</p>
+      <div class="nepal-phases">
+        <div class="nepal-phase">
+          <div class="np-num">1</div>
+          <div class="np-text"><strong>Methodology Training Phase</strong> — White Rice team trained in Nepal on specific HCD research methodologies being applied across the global programme, ensuring consistency of approach while preserving country-specific contextualisation.</div>
+        </div>
+        <div class="nepal-phase">
+          <div class="np-num">2</div>
+          <div class="np-text"><strong>Cohort Showcase Phase</strong> — Pakistan's startups presented to a larger international cohort — giving ventures exposure beyond the domestic market and allowing cross-country peer learning on product development and user research approaches.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The most durable measure of the Spring Accelerator's success in Pakistan is the cohort itself. Startups that entered the programme with early-stage prototypes exited with user-validated products, tested value propositions, and the research infrastructure to continue iterating. Several — including EDCASA, Sabak, and LearnerBots — became credible operating organisations that are still active today.</p>
+        <div class="c-tags">
+          <span class="c-tag">User Journey Maps</span>
+          <span class="c-tag">Prototypes Tested with Real Users</span>
+          <span class="c-tag">Validated Value Propositions</span>
+          <span class="c-tag">International Cohort Showcase</span>
+          <span class="c-tag">Cross-Country Methodology Sharing</span>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">7 Startups</div>
+            <div class="desc">Pakistan cohort taken through the full HCD cycle — user research, co-creation, prototype testing, iteration, and value proposition development.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">4 Countries</div>
+            <div class="desc">A global consortium — Pakistan's learning fed into a shared methodology across Nepal, Kenya, and Tanzania, and vice versa.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Lasting Ventures</div>
+            <div class="desc">EDCASA, Sabak, and LearnerBots among the ventures that went on to operate as credible organisations — carrying HCD principles into their ongoing work.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Girls at the Centre</div>
+            <div class="desc">Every product decision in every cohort startup was tested with the girls it was supposed to serve — ensuring that "designed for girls" was not a marketing claim but a verifiable design fact.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">Spring Accelerator demonstrated the power of applying rigorous human-centred design within an accelerator context — not just as a workshop exercise but as the engine of product development itself. The startups that embraced the process most fully were the ones that built something girls actually wanted to use. That remains the most reliable test of whether a product for girls is actually designed for girls.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>A product for girls<br>has to be designed<br><em>by them.</em></h3>
+    <p>Spring Accelerator Pakistan proved that human-centred design is not a luxury add-on for startup development — it is the difference between a product that works and one that doesn't. Seven ventures went in with prototypes. They came out with something girls actually wanted.</p>
+    <div class="tag-pills">
+      <span class="pill">Startup Acceleration</span>
+      <span class="pill">Human-Centred Design</span>
+      <span class="pill">Girls 10–19</span>
+      <span class="pill">EdTech</span>
+      <span class="pill">STEM</span>
+      <span class="pill">Prototyping</span>
+      <span class="pill">User Testing</span>
+      <span class="pill">USAID</span>
+      <span class="pill">4-Country Programme</span>
+      <span class="pill">Pakistan</span>
+      <span class="pill">SDG 4</span>
+      <span class="pill">SDG 5</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -592,7 +592,7 @@
   <div class="slide slide-hero active" data-slide="0">
     <div class="section-label fade-up">White Rice Impact</div>
     <div class="mega-title fade-up">Meet <span class="gold">Sarah</span></div>
-    <div class="subtitle fade-up-delay">Your AI Project Manager. Always on. Never forgets. Keeps the team on track while making everyone's life easier.</div>
+    <div class="subtitle fade-up-delay">The best colleague you dream to have. Always on. Never judges. Dedicated to making you better every day.</div>
     <div class="stats-row fade-up-delay2">
       <div class="stat">
         <div class="stat-number" style="color:var(--wri-gold)">24/7</div>
@@ -967,10 +967,58 @@
     </div>
   </div>
 
-  <!-- SLIDE 12: Finale -->
-  <div class="slide slide-finale" data-slide="11">
+  <!-- SLIDE 12: The Vision -->
+  <div class="slide slide-purple" data-slide="11">
+    <div class="section-label fade-up">The Vision</div>
+    <div class="big-title fade-up">Sarah as Your <span class="gold">Thinking Partner</span></div>
+    <div class="rules-list fade-up-delay" style="max-width:800px;">
+      <div class="rule-item">
+        <div class="rule-number" style="color:#C77DFF">&#129504;</div>
+        <div class="rule-text"><strong>Socratic Method.</strong> She won't spoon-feed answers. She'll challenge you to think deeper and find smarter solutions.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number" style="color:#C77DFF">&#128218;</div>
+        <div class="rule-text"><strong>Background Research.</strong> During brainstorms, she independently pulls up research to elevate the conversation.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number" style="color:#C77DFF">&#127891;</div>
+        <div class="rule-text"><strong>Managerial Coach.</strong> Trained on leadership models to coach on delegation, feedback, and team dynamics.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number" style="color:#C77DFF">&#128172;</div>
+        <div class="rule-text"><strong>The Whisper Nudge.</strong> Before meetings, she'll privately remind you of behaviors to improve. After, she asks what was achieved.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: AI Playbook -->
+  <div class="slide slide-dark align-left" data-slide="12">
+    <div class="section-label fade-up">The Bigger Picture</div>
+    <div class="big-title fade-up">The White Rice <span class="gold">AI Playbook</span></div>
+    <div class="cards-grid fade-up-delay">
+      <div class="card">
+        <span class="card-icon">&#128736;</span>
+        <h3>Individual Tasks</h3>
+        <p>AI-powered project lifecycle: proposals, scoping, research (Agent R), creative strategy (AI Creative Director), testing with digital twins, training design.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#129309;</span>
+        <h3>Team Tasks</h3>
+        <p>PM dashboards, client management, performance tracking, managerial coaching (FranklinCovey), and behavioral nudges before and after meetings.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#128640;</span>
+        <h3>Growth Plan</h3>
+        <p>Become an AI-native agency. Package and sell the playbook B2B. Lease specialized agents. Run consulting and ideation workshops.</p>
+      </div>
+    </div>
+    <div style="margin-top:24px;font-size:0.95rem;opacity:0.5;max-width:900px;" class="fade-up-delay2">Sarah is Step 1 of this playbook. She proves the model works. Then we scale it across every function in the company, and eventually, sell it to others.</div>
+  </div>
+
+  <!-- SLIDE 14: Finale -->
+  <div class="slide slide-finale" data-slide="13">
     <div class="mega-title fade-up">Sarah is <span class="gold">Ready</span></div>
-    <div class="subtitle fade-up-delay" style="font-size:1.6rem;max-width:800px;text-align:center;">She never sleeps. She never forgets. She never judges. She's here to make your work life easier.</div>
+    <div class="subtitle fade-up-delay" style="font-size:1.6rem;max-width:800px;text-align:center;">The best colleague you dream to have. Always listening. Always learning. Never judging. Here to make you better every day.</div>
     <div style="margin-top:40px;font-size:1.1rem;opacity:0.5;" class="fade-up-delay2">Text her now: <strong style="color:var(--wri-gold);opacity:1;">+92 331 8808793</strong></div>
     <div style="margin-top:30px;font-size:0.9rem;opacity:0.3;" class="fade-up-delay2">Sarah, your pal &#9996; powered by kashirusman</div>
   </div>
@@ -981,7 +1029,7 @@
 <div class="progress-bar" id="progressBar"></div>
 
 <!-- Slide Counter -->
-<div class="slide-counter" id="slideCounter">1 / 12</div>
+<div class="slide-counter" id="slideCounter">1 / 14</div>
 
 <!-- Nav Hint -->
 <div class="nav-hint">&#8592; &#8594; Arrow keys to navigate</div>
@@ -989,6 +1037,7 @@
 <script>
   const slides = document.querySelectorAll('.slide');
   const total = slides.length;
+  // Update total for new slide count
   let current = 0;
 
   function goTo(n) {

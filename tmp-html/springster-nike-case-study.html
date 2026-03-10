@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Springster — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:        #1A1612;
+      --parchment:  #F5F0E8;
+      --sand:       #E2D9C8;
+      --muted:      #7A7065;
+      --violet:     #5A1A8A;
+      --violet-lt:  #9A5ACA;
+      --violet-pale:#EAD8F8;
+      --fuchsia:    #C41A7A;
+      --fuchsia-lt: #E85AAA;
+      --night:      #0F0A1A;
+      --electric:   #3A1A6A;
+      --citrus:     #C4A21A;
+      --citrus-lt:  #E8CC5A;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--night);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 85% 10%, rgba(196,26,122,.55)  0%, transparent 60%),
+        radial-gradient(ellipse 50% 55% at 0%  85%, rgba(90,26,138,.5)    0%, transparent 60%),
+        radial-gradient(ellipse 35% 40% at 48% 52%, rgba(15,10,26,.5)     0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Mobile screen grid — references the mobile-first platform */
+    .hero-grid {
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%; height: 100%;
+      opacity: .04;
+      background-image:
+        linear-gradient(rgba(196,26,122,1) 1px, transparent 1px),
+        linear-gradient(to right, rgba(90,26,138,1) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    /* Starburst accent — youthful energy */
+    .hero-burst {
+      position: absolute;
+      top: 8%; right: 6%;
+      width: 18rem; height: 18rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,26,122,.12) 0%, transparent 70%);
+      pointer-events: none; z-index: 1;
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--fuchsia-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--fuchsia-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--fuchsia); }
+    .funders-note {
+      font-size: .78rem; color: rgba(255,255,255,.28); font-weight: 300;
+      font-style: italic; margin-bottom: .75rem;
+      animation: fadeUp .7s .05s both;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--fuchsia-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 300; color: rgba(255,255,255,.42); font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.07); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--fuchsia-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--fuchsia-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(196,26,122,.15); border: 1px solid rgba(196,26,122,.35); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--fuchsia-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--fuchsia); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'GIRLS'; position: absolute; right: -1rem; bottom: -3rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(7rem, 20vw, 22rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; letter-spacing: -.02em; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.65); font-weight: 300; }
+
+    /* ── DIVIDER ── */
+    .divider-band { background: var(--sand); padding: 3rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--violet); line-height: 1.1; white-space: nowrap; }
+    .divider-text { font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--fuchsia); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--fuchsia); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--fuchsia); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--fuchsia); background: rgba(196,26,122,.05); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── TOPICS BAND ── */
+    .topics-band { background: var(--electric); padding: 5rem 3.5rem; }
+    .topics-inner { max-width: 1200px; margin: 0 auto; }
+    .topics-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .topics-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .topics-heading em { font-style: italic; color: var(--fuchsia-lt); }
+    .topics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(255,255,255,.06); }
+    .topic-card { background: var(--electric); padding: 2.5rem 2rem; position: relative; overflow: hidden; }
+    .topic-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; }
+    .topic-card.t1::before { background: var(--fuchsia-lt); }
+    .topic-card.t2::before { background: var(--citrus-lt); }
+    .topic-card.t3::before { background: var(--violet-lt); }
+    .topic-card.t4::before { background: #6ABADA; }
+    .topic-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: rgba(255,255,255,.06); line-height: 1; margin-bottom: .75rem; }
+    .topic-icon { width: 3rem; height: 3rem; border-radius: 50%; background: rgba(255,255,255,.07); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .topic-icon svg { width: 1.2rem; height: 1.2rem; }
+    .topic-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: .65rem; }
+    .topic-body { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.42); font-weight: 300; }
+    .topic-count { margin-top: 1.25rem; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .topic-count strong { color: rgba(255,255,255,.5); }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--night); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── CO-CREATION BAND ── */
+    .cocreation-band { background: var(--violet-pale); padding: 5rem 3.5rem; }
+    .cocreation-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; }
+    .cocreation-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--violet); margin-bottom: 1rem; }
+    .cocreation-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem; }
+    .cocreation-heading em { font-style: italic; color: var(--fuchsia); }
+    .cocreation-intro { font-size: .95rem; line-height: 1.85; color: var(--muted); font-weight: 300; }
+    .co-methods { display: grid; gap: 1rem; }
+    .co-method { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem; background: #fff; border-left: 3px solid var(--fuchsia); }
+    .co-method-icon { width: 2rem; height: 2rem; border-radius: 50%; background: var(--fuchsia); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .co-method-icon svg { width: .85rem; height: .85rem; }
+    .co-method-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; margin-bottom: .3rem; color: var(--ink); }
+    .co-method-body { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── PLATFORM BAND ── */
+    .platform-band { background: var(--night); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .platform-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 30% 50%, rgba(90,26,138,.3) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .platform-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: center; }
+    .platform-left { position: relative; z-index: 1; }
+    .platform-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 1rem; }
+    .platform-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.2; color: #fff; margin-bottom: 1.5rem; }
+    .platform-heading em { font-style: italic; color: var(--fuchsia-lt); }
+    .platform-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 7vw, 6.5rem); font-weight: 300; color: rgba(255,255,255,.12); line-height: 1; }
+    .platform-right { position: relative; z-index: 1; }
+    .platform-right p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.52); font-weight: 300; margin-bottom: 1.25rem; }
+    .platform-features { display: grid; gap: .75rem; margin-top: 1.5rem; }
+    .platform-feature { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); }
+    .pf-dot { width: .6rem; height: .6rem; border-radius: 50%; background: var(--fuchsia-lt); flex-shrink: 0; margin-top: .35rem; }
+    .pf-text { font-size: .82rem; line-height: 1.6; color: rgba(255,255,255,.48); font-weight: 300; }
+    .pf-text strong { color: rgba(255,255,255,.75); font-weight: 500; }
+
+    /* ── DIVERSITY BAND ── */
+    .diversity-band { background: var(--violet); padding: 4rem 3.5rem; }
+    .diversity-inner { max-width: 1200px; margin: 0 auto; }
+    .diversity-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: .75rem; }
+    .diversity-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; color: #fff; margin-bottom: 2rem; }
+    .diversity-heading em { font-style: italic; color: var(--fuchsia-lt); }
+    .diversity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .diversity-card { padding: 1.75rem; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 2px; }
+    .diversity-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .6rem; }
+    .diversity-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: .6rem; }
+    .diversity-body { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.48); font-weight: 300; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--fuchsia); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--night); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,26,122,.18) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--fuchsia-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.45); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .topics-band, .cocreation-band, .platform-band, .diversity-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .cocreation-inner, .platform-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .topics-grid, .diversity-grid { grid-template-columns: 1fr; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--fuchsia); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-burst"></div>
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Girls' Empowerment &amp; Digital Content · Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="funders-note">Funded by the Nike Foundation · Built on Internet.org (Facebook)</div>
+    <div class="eyebrow">Girl Effect / Springster · National · Mobile-First</div>
+    <h1>
+      A Million <em>Girls</em><br>Given a Voice
+      <span class="sub-title">Springster — Mobile-First Digital Content for Girls' Empowerment in Pakistan</span>
+    </h1>
+    <p class="hero-sub">100+ co-created stories. A free mobile platform. One million girls in Pakistan — many of whom had never had a trusted space to explore the questions that shaped their lives — finally able to access one.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Funder</span><span class="meta-value">Nike Foundation (Girl Effect)</span></div>
+    <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Internet.org — Free Mobile Access</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">Girls' Empowerment · Digital Content</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">Research, Co-Creation &amp; Content Design Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">Human-Centred Design, Co-Creation &amp; <em>Content Lead</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice led the full creative and research cycle for Springster Pakistan — from in-school human-centred design research and co-creation sessions with girls across religious and socioeconomic backgrounds, through to the development of over 100 unique mobile-first content stories spanning financial wellbeing, safety, health, voice, and agency. Every story was designed with the girls who would read it.</p>
+      <div class="role-services">
+        <span class="role-tag">Human-Centred Design Research</span>
+        <span class="role-tag">In-School Co-Creation Sessions</span>
+        <span class="role-tag">Brand &amp; Platform Identity</span>
+        <span class="role-tag">100+ Content Stories</span>
+        <span class="role-tag">Mobile-First Design</span>
+        <span class="role-tag">Visual &amp; Illustrative Design</span>
+        <span class="role-tag">Moodboarding &amp; Concept Development</span>
+        <span class="role-tag">Multi-Community Contextualisation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">1 Million+</div>
+      <div class="outcome-desc">Girls in Pakistan reached through the Springster platform — many for the first time accessing trusted, culturally relevant content on the issues shaping their lives.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">100+ Stories</div>
+      <div class="outcome-desc">Unique mobile-first content pieces co-created with girls from diverse religious, cultural, and socioeconomic backgrounds across Pakistan.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Free Access</div>
+      <div class="outcome-desc">Published on Internet.org — meaning any girl, on anyone's phone, with zero mobile data, could access the platform at no cost.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4 Topics</div>
+      <div class="outcome-desc">Financial wellbeing, voice &amp; agency, safety, and health — covering the most critical and least-discussed dimensions of adolescent girls' lives in Pakistan.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Multi-Faith</div>
+      <div class="outcome-desc">Content designed with and for both Muslim and Christian girls from diverse regional and socioeconomic backgrounds — one of Pakistan's first explicitly multi-faith digital girl empowerment platforms.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">Zero data.<br>Zero cost.<br>One million girls.</div>
+  <div class="divider-text">Internet.org gave the platform something no paid app could: the ability to reach girls who had no data, no personal phone, and no money — but who could borrow a phone for five minutes and access content specifically made for them. The zero-cost model was not a technical detail. It was the difference between a platform that reached a million girls and one that reached a few thousand.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Pakistan's adolescent girls face a particular kind of information poverty. The questions that matter most — about their bodies, their safety, their money, their right to speak — are precisely the questions that home, school, and community offer the least trustworthy or least available answers to. The topics are too sensitive for open conversation, too personal for the classroom, and too complex for the internet content that does exist to address with cultural nuance.</p>
+        <div class="pull-quote">
+          <p>"They don't lack curiosity. They lack a space that feels safe enough to be curious in — and content that feels like it was actually made for them."</p>
+        </div>
+        <p>The Nike Foundation's global Springster programme had an answer: a mobile-first content platform built specifically for adolescent girls, designed to be their trusted companion on the topics that matter. White Rice's challenge was to bring that platform to life in Pakistan — in a way that reflected the full diversity of Pakistani girls, not a single imagined composite of who they were supposed to be.</p>
+        <p>That meant designing content that could speak authentically to a Muslim girl from Lahore and a Christian girl from Karachi's inner city; to a girl in school and one who had dropped out; to a girl whose mother allowed her to use a phone and one who had to borrow one secretly. The platform had to be genuinely universal — which meant starting not with assumptions, but with the girls themselves.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Before a single story was written or a single illustration sketched, White Rice spent significant time in schools and communities — conducting human-centred design research across diverse populations of girls in Pakistan. The methodology was immersive and participatory: girls were not research subjects, they were co-designers.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+            <div>
+              <div class="pillar-title">Girls as Designers, Not Research Subjects</div>
+              <div class="pillar-body">Co-creation sessions in schools gave girls the tools to define what they wanted to see — through moodboards, visual design, storytelling, theme selection, and artwork — before White Rice designed anything.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+            <div>
+              <div class="pillar-title">Mobile-First by Design</div>
+              <div class="pillar-body">Every story was conceived for a small screen, short attention span, and potentially borrowed device. Visual appeal, cultural resonance, and brevity were not trade-offs — they were the design brief.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+            <div>
+              <div class="pillar-title">Storytelling as the Medium, Not Information Delivery</div>
+              <div class="pillar-body">The platform succeeded where information-only content fails because it used narrative — characters, situations, dilemmas, resolutions — to carry meaning. Girls didn't read facts. They read stories they recognised.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div>
+              <div class="pillar-title">Diversity as a Non-Negotiable Design Principle</div>
+              <div class="pillar-body">Christian and Muslim girls. Rural and urban. Punjabi, Sindhi, Pakhtun backgrounds. The content was stress-tested across this diversity — if a story only resonated with one type of girl, it was redesigned.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CO-CREATION ══ -->
+<section class="cocreation-band">
+  <div class="cocreation-inner">
+    <div>
+      <div class="cocreation-eyebrow">The Co-Creation Process</div>
+      <h2 class="cocreation-heading">Built <em>by girls.</em><br>For girls.</h2>
+      <p class="cocreation-intro">The co-creation sessions were held in schools across different communities — bringing together girls from Muslim and Christian backgrounds, from different regional and class contexts, to design the platform alongside White Rice's team. Not as feedback providers, but as authors.</p>
+    </div>
+    <div class="co-methods">
+      <div class="co-method">
+        <div class="co-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <div>
+          <div class="co-method-title">Moodboarding &amp; Visual Concept Development</div>
+          <div class="co-method-body">Girls selected visuals, colours, characters, and aesthetics that felt like them — directly shaping the brand identity, illustration style, and visual language of the platform.</div>
+        </div>
+      </div>
+      <div class="co-method">
+        <div class="co-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+        <div>
+          <div class="co-method-title">Story &amp; Theme Co-Creation</div>
+          <div class="co-method-body">Girls chose the topics they most needed content on, the characters they wanted to follow, and the situations that felt most true to their real lives. Storylines were shaped by their narratives, not imagined by external writers.</div>
+        </div>
+      </div>
+      <div class="co-method">
+        <div class="co-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div>
+          <div class="co-method-title">Live Artwork &amp; Design Collaboration</div>
+          <div class="co-method-body">Girls contributed to illustration concepts and reviewed design elements in session — ensuring that when a character appeared on screen, it looked like someone they could be, not someone they were supposed to aspire to.</div>
+        </div>
+      </div>
+      <div class="co-method">
+        <div class="co-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div>
+          <div class="co-method-title">Real-Time Testing &amp; Validation</div>
+          <div class="co-method-body">Draft stories were tested back with communities in session — if the response was wrong, the story was rewritten. Multiple iteration rounds ensured that cultural resonance was verified, not assumed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOUR TOPICS ══ -->
+<section class="topics-band">
+  <div class="topics-inner">
+    <div class="topics-eyebrow">Content Architecture · What the Platform Covered</div>
+    <h2 class="topics-heading">The four topics Pakistani girls <em>most needed</em> — and least had access to.</h2>
+    <div class="topics-grid">
+      <div class="topic-card t1">
+        <div class="topic-num">01</div>
+        <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E85AAA" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="M16 2l-4 4-4-4M8 22l4-4 4 4"/></svg></div>
+        <div class="topic-name">Financial Wellbeing</div>
+        <div class="topic-body">Understanding money, saving, economic independence, and girls' right to financial agency — in a context where financial decisions were rarely made by or for them.</div>
+        <div class="topic-count">Stories covering <strong>saving, earning, spending, and economic rights</strong></div>
+      </div>
+      <div class="topic-card t2">
+        <div class="topic-num">02</div>
+        <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8CC5A" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="topic-name">Voice &amp; Agency</div>
+        <div class="topic-body">How to speak up, participate in decisions, advocate for yourself, and claim a right to be heard — at home, at school, and in the community.</div>
+        <div class="topic-count">Stories covering <strong>speaking up, confidence, leadership, and participation</strong></div>
+      </div>
+      <div class="topic-card t3">
+        <div class="topic-num">03</div>
+        <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#9A5ACA" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="topic-name">Safety</div>
+        <div class="topic-body">Personal safety, recognising unsafe situations, knowing what to do and who to tell — content designed to inform without alarming, and to empower without exposing girls to risk.</div>
+        <div class="topic-count">Stories covering <strong>personal safety, trust, boundaries, and getting help</strong></div>
+      </div>
+      <div class="topic-card t4">
+        <div class="topic-num">04</div>
+        <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6ABADA" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="topic-name">Health &amp; Transitions</div>
+        <div class="topic-body">Teenage body changes, menstrual health, emotional wellbeing, and the questions about growing up that girls were too shy to ask anyone else — addressed honestly, warmly, and without shame.</div>
+        <div class="topic-count">Stories covering <strong>puberty, menstrual health, mental wellbeing, and self-care</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLATFORM BAND ══ -->
+<section class="platform-band">
+  <div class="platform-inner">
+    <div class="platform-left">
+      <div class="platform-eyebrow">The Platform · Internet.org</div>
+      <h2 class="platform-heading">No data.<br>No cost.<br><em>No barriers.</em></h2>
+      <div class="platform-stat">Free.<br>Always.</div>
+    </div>
+    <div class="platform-right">
+      <p>At the time of the programme, Facebook's Internet.org initiative provided free mobile access to a curated set of platforms — without requiring a data plan. For Pakistani girls, this was transformative. A girl who had no personal phone, no data, and no money could borrow a family member's handset, open Internet.org, and access Springster — for as long as she needed, at zero cost.</p>
+      <p>The platform's mobile-first design was not a stylistic choice. It was the fundamental design constraint that shaped every decision: how long a story could be, how much text could appear on screen, how images had to load, and how navigation had to work for someone who might be using the phone quickly, in private, with limited time before it was needed back.</p>
+      <div class="platform-features">
+        <div class="platform-feature">
+          <div class="pf-dot"></div>
+          <div class="pf-text"><strong>Zero data required</strong> — accessible on any phone, on any network, including 2G</div>
+        </div>
+        <div class="platform-feature">
+          <div class="pf-dot"></div>
+          <div class="pf-text"><strong>Culturally resonant visuals</strong> — illustrations co-created with Pakistani girls to reflect who they actually are</div>
+        </div>
+        <div class="platform-feature">
+          <div class="pf-dot"></div>
+          <div class="pf-text"><strong>Story-led content</strong> — not listicles or fact sheets, but narratives with characters and emotional truth</div>
+        </div>
+        <div class="platform-feature">
+          <div class="pf-dot"></div>
+          <div class="pf-text"><strong>Designed for sharing</strong> — content that girls could send to friends, making the platform self-spreading within peer networks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVERSITY BAND ══ -->
+<section class="diversity-band">
+  <div class="diversity-inner">
+    <div class="diversity-eyebrow">Community Representation · Who Was in the Room</div>
+    <h2 class="diversity-heading">Pakistan's girls are not one girl.<br><em>The platform was designed to know that.</em></h2>
+    <div class="diversity-grid">
+      <div class="diversity-card">
+        <div class="diversity-label">Faith</div>
+        <div class="diversity-title">Muslim &amp; Christian Girls</div>
+        <div class="diversity-body">Co-creation sessions deliberately included both Muslim and Christian girls from Pakistan's urban communities — ensuring that the platform's content and characters reflected the country's religious diversity, not just its majority.</div>
+      </div>
+      <div class="diversity-card">
+        <div class="diversity-label">Background</div>
+        <div class="diversity-title">Diverse Socioeconomic &amp; Regional Contexts</div>
+        <div class="diversity-body">Girls from different regions and class backgrounds — bringing different relationships to education, family, money, and mobility — ensured the content was stress-tested against the real range of girls' lives in Pakistan.</div>
+      </div>
+      <div class="diversity-card">
+        <div class="diversity-label">Setting</div>
+        <div class="diversity-title">School-Based Co-Creation</div>
+        <div class="diversity-body">Sessions were held in schools — a setting that gave girls relative safety, peer support, and a structured creative environment in which to express their actual needs and ideas, rather than what they thought adults wanted to hear.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Over one million girls in Pakistan accessed Springster. That number would be remarkable for any digital platform in Pakistan. For one specifically targeting adolescent girls from low-income communities — on a free, zero-data platform, covering topics that Pakistani society rarely offered them any trusted space to explore — it was extraordinary.</p>
+
+        <div class="pull-quote">
+          <p>"Girls who would never have talked to anyone about these topics found something they could read privately, share with a friend, and return to again and again."</p>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">1 Million+</div>
+            <div class="desc">Girls in Pakistan reached through the Springster platform — accessing content on financial wellbeing, voice, safety, and health that they had never had trusted access to before.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">100+ Stories</div>
+            <div class="desc">Unique mobile-first content pieces — each co-designed with Pakistani girls, visually distinct, culturally resonant, and rigorously tested before publication.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Trusted Space</div>
+            <div class="desc">The feedback from girls consistently returned to one theme: Springster was a place where they could be curious about the things that actually mattered to them, without shame, judgement, or the risk of a difficult conversation.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Power of Story</div>
+            <div class="desc">The programme validated a core White Rice conviction — that entertainment-driven, narrative-first content reaches audiences that information-only approaches cannot. Girls didn't read the platform because they had to. They read it because they wanted to.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">Springster Pakistan demonstrated what becomes possible when you design digital content with radical fidelity to who the audience actually is — not who funders imagine them to be, not who they are supposed to become, but who they are right now: curious, capable, and hungry for a space that takes them seriously.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>A million girls.<br>One question each.<br><em>Finally somewhere to ask it.</em></h3>
+    <p>Springster worked not because it was a platform, but because it was a companion. A trusted voice in a girl's pocket, available at any hour, on any phone, with zero data — covering the things that actually mattered. That is what co-creation makes possible. And that is what a million Pakistani girls found.</p>
+    <div class="tag-pills">
+      <span class="pill">Girls' Empowerment</span>
+      <span class="pill">Digital Content</span>
+      <span class="pill">Mobile-First</span>
+      <span class="pill">Storytelling</span>
+      <span class="pill">Co-Creation</span>
+      <span class="pill">Financial Wellbeing</span>
+      <span class="pill">Voice &amp; Agency</span>
+      <span class="pill">Adolescent Girls</span>
+      <span class="pill">Internet.org</span>
+      <span class="pill">Nike Foundation</span>
+      <span class="pill">Springster</span>
+      <span class="pill">SDG 4</span>
+      <span class="pill">SDG 5</span>
+      <span class="pill">Pakistan</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

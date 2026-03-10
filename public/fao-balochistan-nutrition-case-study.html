@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dastarkhwan — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:       #1A1612;
+      --parchment: #F5F0E8;
+      --sand:      #E2D9C8;
+      --muted:     #7A7065;
+      --earth:     #7A4A1A;
+      --earth-lt:  #B07A4A;
+      --saffron:   #C4862A;
+      --saffron-lt:#E8B86A;
+      --herb:      #4A6A2A;
+      --herb-lt:   #7AA05A;
+      --rust:      #8A3A1A;
+      --dusk:      #2A1A0A;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--dusk);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 90% 10%, rgba(196,134,42,.5)  0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 0%  90%, rgba(74,106,42,.35)  0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(42,26,10,.5)    0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Spice pattern — geometric dots evoking Balochi embroidery */
+    .hero-pattern {
+      position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      opacity: .07;
+      background-image:
+        radial-gradient(circle, var(--saffron-lt) 1.5px, transparent 1.5px),
+        radial-gradient(circle, var(--herb-lt) 1px, transparent 1px);
+      background-size: 28px 28px, 14px 14px;
+      background-position: 0 0, 7px 7px;
+      pointer-events: none;
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--saffron-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--saffron-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--saffron); }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--saffron-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 300; color: rgba(255,255,255,.42);
+      font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.07); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; border-top: 1px solid rgba(255,255,255,.04); }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--saffron-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--saffron-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(196,134,42,.15); border: 1px solid rgba(196,134,42,.3); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--saffron-lt); font-weight: 500; }
+
+    /* ── THREE COMMUNITIES ── */
+    .communities-band { background: var(--earth); padding: 4rem 3.5rem; position: relative; overflow: hidden; }
+    .communities-band::after { content: 'بلوچستان'; position: absolute; right: 1rem; bottom: -1.5rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 12vw, 13rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; white-space: nowrap; }
+    .communities-inner { max-width: 1200px; margin: 0 auto; }
+    .communities-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 2.5rem; }
+    .communities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,.1); }
+    .community-card { background: var(--earth); padding: 2.5rem 2rem; }
+    .community-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: #fff; margin-bottom: .5rem; }
+    .community-name em { font-style: italic; color: var(--saffron-lt); }
+    .community-region { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 1rem; }
+    .community-desc { font-size: .85rem; line-height: 1.7; color: rgba(255,255,255,.55); font-weight: 300; }
+    .community-challenge { margin-top: 1rem; padding: .75rem 1rem; background: rgba(0,0,0,.2); border-left: 2px solid var(--saffron); font-size: .78rem; line-height: 1.6; color: rgba(255,255,255,.45); font-style: italic; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--herb); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'HARVEST'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 13vw, 15rem); font-weight: 700; color: rgba(255,255,255,.04); pointer-events: none; white-space: nowrap; letter-spacing: -.02em; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.6); font-weight: 300; }
+
+    /* ── DIVIDER BAND ── */
+    .divider-band { background: var(--sand); padding: 3rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--earth); line-height: 1.1; white-space: nowrap; }
+    .divider-text { font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--saffron); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--saffron); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--saffron); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--saffron); background: rgba(196,134,42,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--dusk); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── 12-WEEK PROGRAMME BAND ── */
+    .programme-band { background: var(--dusk); padding: 5rem 3.5rem; }
+    .programme-inner { max-width: 1200px; margin: 0 auto; }
+    .programme-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .programme-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .programme-heading em { font-style: italic; color: var(--saffron-lt); }
+    .week-flow { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); }
+    .week-card { background: var(--dusk); padding: 2rem; }
+    .week-badge { display: inline-block; font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: var(--saffron-lt); border: 1px solid rgba(196,134,42,.3); padding: .2rem .75rem; border-radius: 2rem; margin-bottom: 1rem; }
+    .week-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: .5rem; }
+    .week-body { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.42); font-weight: 300; }
+
+    /* ── KITCHEN GARDEN BAND ── */
+    .garden-band { background: var(--herb); padding: 4rem 3.5rem; }
+    .garden-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: center; }
+    .garden-left { }
+    .garden-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 1rem; }
+    .garden-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: #fff; line-height: 1.15; }
+    .garden-heading em { font-style: italic; color: var(--saffron-lt); }
+    .garden-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 7vw, 6rem); font-weight: 300; color: rgba(255,255,255,.15); line-height: 1; margin-top: 1.5rem; }
+    .garden-right p { font-size: .98rem; line-height: 1.85; color: rgba(255,255,255,.58); font-weight: 300; margin-bottom: 1.25rem; }
+    .garden-right p:last-child { margin-bottom: 0; }
+
+    /* ── CAMPAIGN TAGS ── */
+    .c-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0; }
+    .c-tag { display: flex; align-items: center; gap: .4rem; padding: .45rem .9rem; background: var(--sand); border-radius: 2px; font-size: .8rem; color: var(--ink); }
+    .c-tag::before { content: '→'; color: var(--saffron); font-size: .7rem; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--saffron); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--dusk); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,134,42,.12) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--saffron-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.45); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .programme-band, .garden-band, .communities-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .garden-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .communities-grid, .week-flow { grid-template-columns: 1fr; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--saffron); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Food Diversity, Nutrition &amp; Stunting Prevention · Balochistan, Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">FAO Pakistan · Balochistan · Multi-District</div>
+    <h1>
+      The Diverse <em>Dastarkhwan</em>
+      <span class="sub-title">Food Diversity &amp; Nutrition Behaviour Change Programme</span>
+    </h1>
+    <p class="hero-sub">A 12-week behaviour change programme designed to shift the food and nutrition practices of three culturally distinct communities in Balochistan — through cooking demonstrations, kitchen gardens, and peer-led change — reaching 11,000 families and 100,000 people.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">FAO Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Location</span><span class="meta-value">Balochistan · Multi-District</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">Food Diversity · Nutrition · Stunting Prevention</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">SBC Strategy &amp; Programme Design Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">SBC Design &amp; <em>Programme Lead</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice designed and led the full behaviour change programme for FAO — from formative research across three culturally distinct community contexts through to the 12-week field facilitator methodology, cooking demonstration sessions, kitchen garden integration, communication tools, and positive deviance peer educator model. A programme designed to work with existing food cultures, not against them.</p>
+      <div class="role-services">
+        <span class="role-tag">Formative Research</span>
+        <span class="role-tag">SBC Strategy</span>
+        <span class="role-tag">Field Facilitator Training</span>
+        <span class="role-tag">12-Week Programme Design</span>
+        <span class="role-tag">Cooking Demo Methodology</span>
+        <span class="role-tag">Kitchen Garden Integration</span>
+        <span class="role-tag">Communication Materials</span>
+        <span class="role-tag">Positive Deviance Model</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THREE COMMUNITIES ══ -->
+<section class="communities-band">
+  <div class="communities-inner">
+    <div class="communities-label">Three Communities · Three Cultural Contexts · One Programme</div>
+    <div class="communities-grid">
+      <div class="community-card">
+        <div class="community-name"><em>Baloch</em> Communities</div>
+        <div class="community-region">Central Balochistan</div>
+        <div class="community-desc">Predominantly pastoral communities with strong traditions around meat-centred cuisine, hospitality food customs, and specific seasonal eating patterns deeply tied to cultural identity.</div>
+        <div class="community-challenge">Vegetables rarely featured in daily cooking — integration required without disrupting deeply held food traditions.</div>
+      </div>
+      <div class="community-card">
+        <div class="community-name"><em>Pashtun</em> Communities</div>
+        <div class="community-region">Northern Balochistan</div>
+        <div class="community-desc">Communities with distinct culinary traditions, strong gender norms around food preparation, and specific beliefs around nutrition during pregnancy and lactation that shaped feeding practices from the earliest stages.</div>
+        <div class="community-challenge">Antenatal and postnatal nutrition practices required culturally sensitive reframing rather than direct replacement.</div>
+      </div>
+      <div class="community-card">
+        <div class="community-name"><em>Makrani</em> Communities</div>
+        <div class="community-region">Southern Balochistan (Coastal)</div>
+        <div class="community-desc">Coastal communities with access to a distinct set of local ingredients — fish, specific grains, coastal produce — and food preparation practices shaped by geography as much as culture.</div>
+        <div class="community-challenge">Existing ingredient diversity underutilised — the programme worked with what was already available, not what needed to be imported.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">11,000</div>
+      <div class="outcome-desc">Families directly reached through the 12-week programme across multiple districts of Balochistan.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">100,000</div>
+      <div class="outcome-desc">People reached within those families — mothers, fathers, children, grandparents — through a ripple effect by design.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">3 Cultures</div>
+      <div class="outcome-desc">One programme successfully contextualised for Baloch, Pashtun, and Makrani communities — culturally distinct, behaviourally aligned.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Kitchen Gardens</div>
+      <div class="outcome-desc">Community kitchen gardens established to provide free, accessible vegetables — removing the procurement barrier that would have undermined behaviour change.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Scaled</div>
+      <div class="outcome-desc">The programme was further scaled across additional districts of Balochistan following successful implementation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">1 in 2<br>children.<br>Stunted.</div>
+  <div class="divider-text">Balochistan has a child stunting rate of approximately 50% — one of the highest in the world. The leading driver is not food scarcity, but food diversity: children are not receiving the range of nutrients their brains and bodies need in the critical window of the first 1,000 days. Families were often protein-rich but vegetable-poor — and had never been shown how to change that without abandoning the food cultures they held dear.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Balochistan's stunting crisis is rooted in a paradox: these communities are not food insecure in a simple sense. Many families — particularly in Baloch and Pashtun areas — have strong food traditions, adequate caloric intake from meat and staples, and deep cultural pride in how they cook and eat. The problem is dietary diversity. Vegetables, legumes, and the micronutrient-rich foods that underpin child brain development and physical growth are largely absent from the daily dastarkhwan.</p>
+        <div class="pull-quote">
+          <p>"You cannot ask a mother to change how she feeds her family without first understanding why she feeds them the way she does — and what that food means to her."</p>
+        </div>
+        <p>The added complexity here was that this was not one community but three — Baloch, Pashtun, and Makrani — each with distinct languages, food customs, gender dynamics, and conceptions of what good nutrition looks like. A single standardised programme would have failed all three. The challenge was to design something universal in its behavioural goals but deeply contextual in its delivery.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>White Rice began with intensive qualitative research across all three community contexts — mapping current food practices, cooking rituals, prevailing beliefs about nutrition, and the specific moments in pregnancy, lactation, and early childhood when behaviour change was most possible and most impactful.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 2a10 10 0 0 1 0 20A10 10 0 0 1 12 2z"/><path d="M12 6v6l4 2"/></svg></div>
+            <div>
+              <div class="pillar-title">Integrate, Don't Replace</div>
+              <div class="pillar-body">Design for addition, not substitution. Show mothers how new ingredients and recipes can sit alongside existing food traditions — not threaten them.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div>
+            <div>
+              <div class="pillar-title">Work with What's Already There</div>
+              <div class="pillar-body">Identify locally available ingredients — especially vegetables — that can be the building blocks of nutritional diversity, without requiring communities to import or purchase unfamiliar foods.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+            <div>
+              <div class="pillar-title">Make Behaviour Change Visible and Joyful</div>
+              <div class="pillar-body">Live cooking demonstrations — not lectures — as the primary change mechanism. Knowledge changes minds; cooking together changes habits.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <div>
+              <div class="pillar-title">Peer-Led Change at Every Stage</div>
+              <div class="pillar-body">Identify positive deviants within each community — women already practicing nutritional diversity — and position them as the living proof that change is possible here, in this context, by people like us.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ 12-WEEK PROGRAMME ══ -->
+<section class="programme-band">
+  <div class="programme-inner">
+    <div class="programme-eyebrow">The Intervention · Structured Programme Design</div>
+    <h2 class="programme-heading">A <em>12-Week Journey</em> from Knowledge to Kitchen</h2>
+    <div class="week-flow">
+      <div class="week-card">
+        <div class="week-badge">Weeks 1–3 · Foundation</div>
+        <div class="week-title">Understanding Nutrition in Community Language</div>
+        <div class="week-body">Field facilitators conducted household visits to establish trust, understand current practices, and introduce the concept of dietary diversity using locally meaningful language and culturally familiar reference points — not clinical nutrition terminology.</div>
+      </div>
+      <div class="week-card">
+        <div class="week-badge">Weeks 4–6 · Demonstration</div>
+        <div class="week-title">The Community Cooking Demo</div>
+        <div class="week-body">The best cooks from within each community were trained to lead live cooking demonstrations every alternate week. Using locally available vegetables alongside familiar ingredients, they created new recipes that felt like natural extensions of existing cuisine — not foreign impositions.</div>
+      </div>
+      <div class="week-card">
+        <div class="week-badge">Weeks 7–9 · Practice</div>
+        <div class="week-title">Women as Recipe Innovators</div>
+        <div class="week-body">Mothers were encouraged to experiment — adapting the new ingredients and methods into their own family recipes. The cooking session became a community space for creativity, sharing, and peer encouragement, with each woman developing personalised versions of the target behaviours.</div>
+      </div>
+      <div class="week-card">
+        <div class="week-badge">Weeks 10–12 · Habit &amp; Scale</div>
+        <div class="week-title">Positive Deviants Lead the Way</div>
+        <div class="week-body">Women who had most successfully integrated new practices became peer educators — sharing their stories, demonstrating their recipes, and inspiring their neighbours. The programme ended by building the community infrastructure for change to continue without external facilitation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KITCHEN GARDEN BAND ══ -->
+<section class="garden-band">
+  <div class="garden-inner">
+    <div class="garden-left">
+      <div class="garden-eyebrow">Programme Innovation</div>
+      <h2 class="garden-heading">The Kitchen Garden — <em>Removing the Barrier</em> at the Root</h2>
+      <div class="garden-stat">Free. Fresh.<br>From the ground.</div>
+    </div>
+    <div class="garden-right">
+      <p>One of the most significant design insights from the research was deceptively simple: telling families to eat more vegetables is useless if accessing vegetables requires money they don't have, or a journey they cannot make. The behaviour change programme could not succeed if the enabling environment didn't exist.</p>
+      <p>White Rice designed the kitchen garden as a structural solution — not an add-on. Every community was supported to establish its own kitchen garden, providing a free, organic, on-demand source of the very vegetables the cooking demonstrations were using. The garden removed the procurement barrier entirely.</p>
+      <p>The result was that the behaviour being taught — integrating vegetables into daily cooking — was immediately practicable. Mothers didn't have to wait until the next market trip or budget windfall. They could walk to the garden, pick what they needed, and cook it that evening. The kitchen garden turned an aspiration into an immediate possibility.</p>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- INTERVENTION -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">04</span><span class="line"></span></div>
+        <h2>The <em>Intervention</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The programme operated simultaneously at the household level — through field facilitator visits — and at the community level, through cooking demonstrations that became weekly social events. The combination was deliberate: private coaching for individual behaviour change, and public cooking sessions for social norm reinforcement.</p>
+
+        <div class="c-tags">
+          <span class="c-tag">12-Week Field Facilitator Programme</span>
+          <span class="c-tag">Household 1-on-1 Visits</span>
+          <span class="c-tag">Bi-Weekly Cooking Demonstrations</span>
+          <span class="c-tag">Community Kitchen Gardens</span>
+          <span class="c-tag">Positive Deviance Peer Educators</span>
+          <span class="c-tag">Pregnancy &amp; Lactation Nutrition Guidance</span>
+          <span class="c-tag">Illustrated Communication Tools</span>
+          <span class="c-tag">Multi-Culture Contextualisation</span>
+        </div>
+
+        <p>The cooking demonstrations were the programme's most distinctive feature — and its most powerful. The best cooks from each community were not just demonstrators; they were co-designers. They adapted the nutritional guidance into recipes that their communities would actually make and enjoy. Vegetables were introduced not as a health intervention, but as ingredients that made the food taste better, stretch further, and nourish more deeply.</p>
+
+        <div class="pull-quote">
+          <p>"When the best cook in the village says this is how she makes it — and people taste it and love it — no amount of health messaging can compete with that moment."</p>
+        </div>
+
+        <p>Communication materials were developed specifically for each community context — using local language, local imagery, and literacy-sensitive visual design. Materials focused particularly on the critical windows of pregnancy and lactation, where maternal nutrition has the most direct impact on child development outcomes. The guidance was framed not as clinical advice but as practical, actionable, culturally resonant knowledge about how to take care of yourself and your child.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The programme reached 11,000 families — 100,000 people — across Balochistan's most culturally complex and geographically challenging communities. The reach figure matters, but the behavioural figure matters more: women who had never cooked with particular vegetables were growing them in community gardens, preparing them in new recipes, and teaching their neighbours to do the same.</p>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">11,000</div>
+            <div class="desc">Families directly reached through the 12-week programme — with cooking demonstrations, household visits, and kitchen garden access at the core.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">100,000</div>
+            <div class="desc">People reached within target families — a ripple effect built into the programme's design through peer educators and community cooking sessions.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">3 Cultures</div>
+            <div class="desc">A single behaviour change methodology successfully adapted for Baloch, Pashtun, and Makrani communities — proving that cultural specificity and programme scale are not mutually exclusive.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Scaled</div>
+            <div class="desc">The programme was extended to additional districts of Balochistan following successful implementation — with the model replicable at low cost precisely because it was built on community assets, not external inputs.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">The Dastarkhwan programme demonstrated a principle that applies far beyond nutrition: when you design behaviour change around what a community already has — its cooks, its crops, its social gatherings, its food pride — the intervention feels less like a programme and more like a community discovering what it was always capable of. That is the most durable form of change there is.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>The change was always<br>on the <em>dastarkhwan.</em><br>It just needed to be seen.</h3>
+    <p>The Diverse Dastarkhwan programme showed that food behaviour change is not about introducing the foreign. It is about revealing the possible — using what communities already have, celebrating how they already cook, and expanding what they believe belongs on their table.</p>
+    <div class="tag-pills">
+      <span class="pill">Food Diversity</span>
+      <span class="pill">Nutrition</span>
+      <span class="pill">Stunting Prevention</span>
+      <span class="pill">Behaviour Change</span>
+      <span class="pill">Kitchen Gardens</span>
+      <span class="pill">Cooking Demonstrations</span>
+      <span class="pill">Positive Deviance</span>
+      <span class="pill">Balochistan</span>
+      <span class="pill">FAO</span>
+      <span class="pill">SDG 2</span>
+      <span class="pill">SDG 3</span>
+      <span class="pill">Pakistan</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>First 8 Years — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --clay:      #C4602A;
+      --clay-lt:   #E8845A;
+      --ink:       #1A1612;
+      --parchment: #F5F0E8;
+      --sand:      #E2D9C8;
+      --moss:      #3D5A4C;
+      --gold:      #C4962A;
+      --gold-lt:   #E8C05A;
+      --saffron:   #D4763A;
+      --plum:      #4A2A5A;
+      --plum-lt:   #8A6A9A;
+      --muted:     #7A7065;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--plum);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 90% 10%, rgba(196,150,42,.4) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 0%  90%, rgba(196,96,42,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 35% 40% at 45% 50%, rgba(74,42,90,.5)   0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Soft concentric rings — childhood, growth */
+    .hero-ring {
+      position: absolute; top: -20%; right: -15%;
+      width: 70%; aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(232,192,90,.08);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-ring::before {
+      content: '';
+      position: absolute; inset: 12%;
+      border-radius: 50%;
+      border: 1px solid rgba(232,192,90,.06);
+    }
+    .hero-ring::after {
+      content: '';
+      position: absolute; inset: 25%;
+      border-radius: 50%;
+      border: 1px solid rgba(232,192,90,.05);
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--gold-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--gold-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--gold); }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--gold-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 300; color: rgba(255,255,255,.45);
+      font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.55);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.08); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.72); font-weight: 300; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; border-top: 1px solid rgba(255,255,255,.05); }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--gold-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.52); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(196,150,42,.13); border: 1px solid rgba(196,150,42,.28); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--plum); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'ECD'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(8rem, 20vw, 22rem); font-weight: 700; color: rgba(255,255,255,.04); pointer-events: none; white-space: nowrap; letter-spacing: -.02em; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.18); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.58); font-weight: 300; }
+
+    /* ── DIVIDER BAND ── */
+    .divider-band { background: var(--sand); padding: 3rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--plum); line-height: 1; white-space: nowrap; }
+    .divider-text { font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--plum); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--gold); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--gold); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--gold); background: rgba(196,150,42,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--plum); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── FOUR LAYERS BAND ── */
+    .layers-band { background: var(--ink); padding: 5rem 3.5rem; }
+    .layers-inner { max-width: 1200px; margin: 0 auto; }
+    .layers-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; color: #fff; margin-bottom: .5rem; }
+    .layers-sub { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 3rem; }
+    .layers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(255,255,255,.06); }
+    .layer-card { background: var(--ink); padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: background .2s; }
+    .layer-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .layer-card.l1::before { background: var(--gold); }
+    .layer-card.l2::before { background: var(--clay); }
+    .layer-card.l3::before { background: var(--moss); }
+    .layer-card.l4::before { background: var(--plum-lt); }
+    .layer-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; line-height: 1; color: rgba(255,255,255,.08); margin-bottom: .75rem; }
+    .layer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: .6rem; }
+    .layer-desc { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.45); font-weight: 300; margin-bottom: 1.25rem; }
+    .layer-items { display: flex; flex-direction: column; gap: .45rem; }
+    .layer-item { font-size: .75rem; color: rgba(255,255,255,.35); padding-left: .75rem; position: relative; line-height: 1.4; }
+    .layer-item::before { content: '—'; position: absolute; left: 0; color: rgba(255,255,255,.2); font-size: .65rem; }
+
+    /* ── FLAGSHIP CARDS ── */
+    .flagship-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    .flagship-card { padding: 2rem; border: 1px solid var(--sand); border-radius: 2px; position: relative; overflow: hidden; }
+    .flagship-card::after { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; }
+    .flagship-card.fc-gold::after { background: var(--gold); }
+    .flagship-card.fc-plum::after { background: var(--plum-lt); }
+    .flagship-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: .6rem; }
+    .flagship-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: .75rem; line-height: 1.25; }
+    .flagship-body { font-size: .85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+
+    /* ── CAMPAIGN TAGS ── */
+    .c-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0; }
+    .c-tag { display: flex; align-items: center; gap: .4rem; padding: .45rem .9rem; background: var(--sand); border-radius: 2px; font-size: .8rem; color: var(--ink); }
+    .c-tag::before { content: '→'; color: var(--gold); font-size: .7rem; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--plum); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--plum); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,150,42,.12) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--gold-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.5); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.15); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .layers-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .flagship-grid { grid-template-columns: 1fr; }
+      .layers-grid { grid-template-columns: 1fr 1fr; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--plum); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Early Childhood Development &amp; Positive Parenting · National, Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">UNICEF Pakistan · National · Multi-Year</div>
+    <h1>
+      The <em>First</em> 8 Years
+      <span class="sub-title">National ECD &amp; Positive Parenting Programme</span>
+    </h1>
+    <p class="hero-sub">A national social behaviour change programme designed to transform how Pakistan's parents, caregivers, and institutions show up in the first eight years of a child's life — built to reach 20 million families by the end of 2026.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">UNICEF Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Scale</span><span class="meta-value">National · All Provinces</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">ECD · Positive Parenting · Play &amp; Stimulation</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">SBC Design Lead &amp; Creative Partner</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">National SBC Architecture &amp; <em>Creative Lead</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice led the design of a comprehensive, multi-year national behaviour change programme for UNICEF — covering everything from co-creation research and SBC strategy to national policy inputs, flagship creative productions, digital FLW training, community play labs, and household-level coaching toolkits. A programme designed at every layer of the socio-ecological model, with the ambition to reach 20 million families.</p>
+      <div class="role-services">
+        <span class="role-tag">Formative &amp; Co-Creation Research</span>
+        <span class="role-tag">National SBC Strategy</span>
+        <span class="role-tag">Policy Framework Input</span>
+        <span class="role-tag">National Creative Campaign</span>
+        <span class="role-tag">Film Production</span>
+        <span class="role-tag">Digital FLW Training</span>
+        <span class="role-tag">Play Lab Design</span>
+        <span class="role-tag">Household Coaching Toolkit</span>
+        <span class="role-tag">WhatsApp Behaviour Nudges</span>
+        <span class="role-tag">Media &amp; Influencer Engagement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">20M</div>
+      <div class="outcome-desc">Families targeted by end of 2026 — through a national programme now adopted and being scaled across Pakistan.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">1,000</div>
+      <div class="outcome-desc">Frontline workers trained remotely via a 12-week digital learning programme — the first of its kind in Pakistan's ECD sector.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">National Policy</div>
+      <div class="outcome-desc">Programme insights directly shaped the National ECD Policy and Framework — moving the work from intervention to institution.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Pakistan's 1st</div>
+      <div class="outcome-desc">Feature film on parenting and fatherhood — launched on Geo Network on International Father's Day, reaching millions.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">10+ ClayLabs</div>
+      <div class="outcome-desc">Community play labs scaled across the country — embedding play and stimulation as a routine in homes and communities.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">Conception<br>to 8</div>
+  <div class="divider-text">The programme's core focus: the window from conception to a child's eighth birthday. Pakistan's ECD indicators are among the most concerning in the region — affecting cognitive development, school readiness, and lifelong health outcomes. This is the most important, and most neglected, window for intervention in a child's life.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Pakistan's ECD crisis is not a knowledge gap — it is a behaviour gap. The research is clear: the first eight years of a child's life determine cognitive development, emotional health, and educational outcomes for decades to come. Yet the behaviours that shape those years — responsive caregiving, play and stimulation, reading together, engaging fathers — remain profoundly absent in millions of Pakistani households.</p>
+        <div class="pull-quote">
+          <p>"Parents in Pakistan are not indifferent to their children's development. They simply have never been shown what it looks like — or been given the tools, the permission, and the social support to do it."</p>
+        </div>
+        <p>Existing ECD programmes were fragmented, inconsistent across provinces, and unable to scale. They targeted mothers in isolation, excluded fathers entirely, and relied on frontline workers who had received little meaningful training. The challenge White Rice was asked to solve was not small: design a national behaviour change system — grounded in evidence, co-created with communities, and capable of reaching millions — that could eventually be owned and operated by government.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Before a single session was designed, White Rice led a massive co-creation exercise across all provinces — bringing together government stakeholders, frontline workers, community members, mothers, and fathers to audit what existed, identify gaps, and co-design what a comprehensive national programme could look like. This was not consultation. It was design partnership.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div>
+              <div class="pillar-title">Co-Creation Across All Provinces</div>
+              <div class="pillar-body">Research that brought all stakeholders to the table — not to validate a pre-designed solution, but to build one together from lived experience and community insight.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+            <div>
+              <div class="pillar-title">Design for the Full Socio-Ecological System</div>
+              <div class="pillar-body">Intervene simultaneously at every layer — policy, community, household, and individual — so that change at one level is reinforced, not undermined, by the others.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 22V12M12 12C12 7 7 3 2 5c5 0 10 3 10 7zM12 12c0-5 5-9 10-7-5 0-10 3-10 7z"/></svg></div>
+            <div>
+              <div class="pillar-title">Built to Be Owned, Not Just Delivered</div>
+              <div class="pillar-body">Every design decision was made with government adoption in mind — so that the programme could eventually be taken over by the state and scaled independently of any external partner.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <div>
+              <div class="pillar-title">Bring Fathers In</div>
+              <div class="pillar-body">Pakistani ECD programming had historically targeted mothers alone. This programme was designed from the outset to engage fathers as active, equal participants in their children's early years.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ FOUR LAYERS OF INTERVENTION ══ -->
+<section class="layers-band">
+  <div class="layers-inner">
+    <h2 class="layers-title" style="color:#fff; font-family:'Cormorant Garamond',serif; font-weight:300;">Designed at Every Layer</h2>
+    <div class="layers-sub">The Socio-Ecological Model in Practice</div>
+    <div class="layers-grid">
+
+      <div class="layer-card l1">
+        <div class="layer-num">01</div>
+        <div class="layer-name">Enabling Environment</div>
+        <div class="layer-desc">National policy, systemic advocacy, and flagship creative productions to shift the cultural narrative around ECD at the highest level.</div>
+        <div class="layer-items">
+          <div class="layer-item">National ECD Policy &amp; Framework inputs</div>
+          <div class="layer-item">National creative campaign</div>
+          <div class="layer-item">Pakistan's first parenting film — Geo Network</div>
+          <div class="layer-item">Dedicated ECD series with Peeka Boo</div>
+          <div class="layer-item">Media &amp; influencer partnerships</div>
+        </div>
+      </div>
+
+      <div class="layer-card l2">
+        <div class="layer-num">02</div>
+        <div class="layer-name">Community</div>
+        <div class="layer-desc">Social norms work — creating the public conversation and community permission structures that make positive parenting feel normal and expected.</div>
+        <div class="layer-items">
+          <div class="layer-item">Interactive film screenings in communities</div>
+          <div class="layer-item">Community influencer engagement</div>
+          <div class="layer-item">Wall chalkings &amp; community branding</div>
+          <div class="layer-item">ECD awareness mailers &amp; events</div>
+          <div class="layer-item">Digital remote FLW training (1,000 workers)</div>
+        </div>
+      </div>
+
+      <div class="layer-card l3">
+        <div class="layer-num">03</div>
+        <div class="layer-name">Family &amp; Household</div>
+        <div class="layer-desc">Group sessions, play labs, and structured programming that brought mothers, fathers, and extended family into the ECD journey together.</div>
+        <div class="layer-items">
+          <div class="layer-item">Mother &amp; father group sessions</div>
+          <div class="layer-item">ClayLabs — community play lab programme</div>
+          <div class="layer-item">8–12 week structured play curriculum</div>
+          <div class="layer-item">Sessions for mothers-in-law &amp; grandparents</div>
+          <div class="layer-item">Parent-led home practice</div>
+        </div>
+      </div>
+
+      <div class="layer-card l4">
+        <div class="layer-num">04</div>
+        <div class="layer-name">Individual</div>
+        <div class="layer-desc">One-to-one coaching, digital nudges, and a resource toolkit designed for the individual caregiver — meeting them where they are, in the language they speak.</div>
+        <div class="layer-items">
+          <div class="layer-item">WhatsApp-based behaviour nudges</div>
+          <div class="layer-item">Coaching-style FLW toolkit (22 milestones)</div>
+          <div class="layer-item">Animated video content &amp; milestone guides</div>
+          <div class="layer-item">PCT-based counselling approach</div>
+          <div class="layer-item">Literacy-sensitive design throughout</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- INTERVENTION -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">04</span><span class="line"></span></div>
+        <h2>The <em>Intervention</em></h2>
+      </div>
+      <div class="section-right">
+
+        <p>The programme produced a series of groundbreaking firsts for Pakistan — flagship interventions that created new cultural space for conversations about ECD and fatherhood at national scale, while simultaneously building the community and household infrastructure for durable behaviour change.</p>
+
+        <!-- Flagship creative productions -->
+        <div class="flagship-grid">
+          <div class="flagship-card fc-gold">
+            <div class="flagship-label">Pakistan's First · Launched on Geo Network</div>
+            <div class="flagship-name">Role of the Father — A Film on Fatherhood &amp; the Early Years</div>
+            <div class="flagship-body">The first film ever developed in Pakistan on parenting with a specific focus on fathers. Launched on International Father's Day on Geo Network — Pakistan's largest TV channel — and its digital platform, which has over 62 million subscribers, the highest in Asia. Designed to reach fathers at scale and demonstrate the irreplaceable role they play in their child's earliest years.</div>
+          </div>
+          <div class="flagship-card fc-plum">
+            <div class="flagship-label">Pakistan's First ECD Series · Peeka Boo</div>
+            <div class="flagship-name">Sesame-Style Puppet Series on Play &amp; Stimulation</div>
+            <div class="flagship-body">A dedicated partnership with Peeka Boo — Pakistan's first Sesame Street-style puppet series — to produce the country's first dedicated ECD content series. Songs, storytelling, and interactive scripts made key developmental milestones joyful and accessible for children and parents alike, bringing play-based learning into living rooms across Pakistan.</div>
+          </div>
+        </div>
+
+        <p>At the community level, film screenings became an unexpected catalyst. Showing the fatherhood film in community settings — mosques, schools, community halls — created a neutral, emotionally engaging platform for conversations that communities had never had publicly before. Influencer engagement brought local leaders, religious figures, and respected community members into the movement as champions rather than bystanders.</p>
+
+        <div class="pull-quote">
+          <p>"We needed to make play feel serious. And we needed to make seriousness feel playful. The ClayLab did both."</p>
+        </div>
+
+        <p>The <strong>ClayLab</strong> — White Rice's community play lab concept — was perhaps the programme's most distinctive innovation. Parents arrived weekly for an 8–12 week structured programme in which every session introduced a different form of play: creative, imaginative, structured, musical, storytelling, object-based. Fathers had their own dedicated sessions. Mothers-in-law and grandparents were eventually brought in. The design principle was simple but radical: parents had to experience play themselves before they could take it home to their children.</p>
+
+        <div class="c-tags">
+          <span class="c-tag">ClayLabs (Community Play Labs)</span>
+          <span class="c-tag">12-Week Digital FLW Training</span>
+          <span class="c-tag">Father-Specific Sessions</span>
+          <span class="c-tag">WhatsApp Behaviour Nudges</span>
+          <span class="c-tag">22-Milestone Coaching Toolkit</span>
+          <span class="c-tag">Animated Video Resources</span>
+          <span class="c-tag">Community Film Screenings</span>
+          <span class="c-tag">Wall Chalkings &amp; Community Branding</span>
+          <span class="c-tag">PCT Counselling Approach</span>
+        </div>
+
+        <p>For frontline workers, White Rice developed Pakistan's first <strong>digital remote learning programme</strong> for ECD last-mile workers — a 12-week, bite-sized daily learning journey that took 1,000 workers from foundational ECD concepts through to programme delivery skills, entirely via mobile phone. Designed for low-connectivity, low-literacy contexts, it demonstrated that professional development for remote field workers does not have to wait for in-person training.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The programme's most significant measure of success is not a number — it is adoption. A national behaviour change programme, designed by White Rice, is now being scaled by the Pakistani government across the country. That is the definition of a programme built to last.</p>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">20 Million</div>
+            <div class="desc">Families targeted by end of 2026 through the nationally adopted programme — built on the SBC architecture White Rice designed.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">National Policy</div>
+            <div class="desc">Programme insights embedded directly into the National ECD Policy and Framework — moving the work from pilot to permanent.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">10+ ClayLabs</div>
+            <div class="desc">Scaling from a single pilot to community play labs across the country — with play and stimulation becoming a practised household routine.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">62M+ Reach</div>
+            <div class="desc">The fatherhood film launched on Geo Network's digital platform — the highest-subscribed media platform in Asia — on International Father's Day.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">This is White Rice's most ambitious and most impactful programme to date. It demonstrated that social behaviour change, when designed with sufficient depth, creativity, and systemic thinking, can shift how an entire nation understands the first eight years of a child's life. And that the right design, from the very beginning, can be built to be handed over — and to outlast any single project cycle.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>The first eight years shape<br>the next <em>eighty.</em></h3>
+    <p>The First 8 Years programme is proof that a behaviour change system — when designed at every layer, co-created with communities, and built to be owned by government — can reach the scale that Pakistan's children deserve.</p>
+    <div class="tag-pills">
+      <span class="pill">Early Childhood Development</span>
+      <span class="pill">Positive Parenting</span>
+      <span class="pill">Fatherhood</span>
+      <span class="pill">Play &amp; Stimulation</span>
+      <span class="pill">Social Behaviour Change</span>
+      <span class="pill">Digital Learning</span>
+      <span class="pill">National Policy</span>
+      <span class="pill">ClayLab</span>
+      <span class="pill">UNICEF</span>
+      <span class="pill">SDG 4</span>
+      <span class="pill">SDG 3</span>
+      <span class="pill">Pakistan</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

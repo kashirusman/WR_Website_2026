@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The CRICKET Playbook — UNICEF · White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:         #080A06;
+      --parchment:   #F5F0E8;
+      --sand:        #E2D9C8;
+      --muted:       #7A7065;
+      --pitch:       #1A4A1A;
+      --pitch-lt:    #3A8A3A;
+      --pitch-pale:  #D0EAD0;
+      --ball:        #C4781A;
+      --ball-lt:     #E8A84A;
+      --ball-pale:   #FBF0D0;
+      --cream:       #F5F0E0;
+      --stumps:      #6A4A1A;
+      --night:       #040806;
+      --grove:       #0A120A;
+      --turf:        #0E1C0E;
+      --warm-white:  #FDFAF5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--night);
+    }
+    /* Cricket pitch lines — overhead view */
+    .pitch-lines {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      overflow: hidden;
+    }
+    .pitch-lines svg {
+      position: absolute; right: -5%; top: 0; bottom: 0;
+      width: 55%; height: 100%;
+      opacity: .4;
+    }
+    /* Floating card silhouettes */
+    .hero-cards {
+      position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+      width: clamp(180px, 24vw, 360px); height: clamp(220px, 30vw, 440px);
+      pointer-events: none; z-index: 2;
+    }
+    .hc {
+      position: absolute; border-radius: .75rem;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      transition: transform .3s;
+    }
+    .hc:nth-child(1) { inset: 0; transform: rotate(-8deg) translateX(-1.5rem); background: rgba(196,120,26,.08); border-color: rgba(196,120,26,.2); }
+    .hc:nth-child(2) { inset: 0; transform: rotate(-3deg) translateX(-.5rem); background: rgba(26,74,26,.1); border-color: rgba(58,138,58,.2); }
+    .hc:nth-child(3) { inset: 0; transform: rotate(2deg); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.15); }
+    .hc-inner { padding: 1.75rem 1.5rem; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+    .hc-badge { display: inline-block; padding: .25rem .7rem; background: rgba(196,120,26,.2); border: 1px solid rgba(196,120,26,.4); border-radius: 2rem; font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: var(--ball-lt); }
+    .hc-letter { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 300; color: rgba(255,255,255,.85); line-height: 1; }
+    .hc-urdu { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 3vw, 2.5rem); color: rgba(255,255,255,.25); direction: rtl; line-height: 1; }
+    .hc-title { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .hc-desc  { font-size: .78rem; line-height: 1.5; color: rgba(255,255,255,.45); font-weight: 300; }
+    /* Dots — game/dice motif */
+    .hero-dots {
+      position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%);
+      display: flex; gap: .6rem; pointer-events: none; z-index: 2;
+    }
+    .hero-dot { width: .45rem; height: .45rem; border-radius: 50%; background: rgba(255,255,255,.1); }
+    .hero-dot.on { background: var(--ball-lt); }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 60% at 5% 32%, rgba(26,74,26,.85)  0%, transparent 56%),
+        radial-gradient(ellipse 35% 42% at 85% 78%, rgba(196,120,26,.22) 0%, transparent 55%),
+        radial-gradient(ellipse 52% 55% at 46% 52%, rgba(4,8,6,.5)       0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative; z-index: 4;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--pitch-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.2); }
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 4; max-width: 56%;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--pitch-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--pitch); }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 8rem);
+      font-weight: 300; line-height: .9; color: #fff; letter-spacing: -.015em;
+      animation: fadeUp .8s .2s both;
+    }
+    h1 em { font-style: italic; color: var(--ball-lt); }
+    h1 .sub-line {
+      display: block; font-size: clamp(.9rem, 1.6vw, 1.4rem);
+      font-weight: 300; color: rgba(255,255,255,.38); font-style: italic; margin-top: .8rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 50ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.5);
+      animation: fadeUp .8s .36s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.06); position: relative; z-index: 4;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--turf); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--pitch-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--ball-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(26,74,26,.25); border: 1px solid rgba(58,138,58,.3); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pitch-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--pitch); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: '21'; position: absolute; right: -1rem; bottom: -1rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(10rem, 25vw, 28rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; line-height: 1; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.65); font-weight: 300; }
+
+    /* ── PROBLEM STATEMENT ── */
+    .problem-band { background: var(--ball); padding: 4.5rem 3.5rem; position: relative; overflow: hidden; }
+    .problem-band::before { content: '"'; position: absolute; right: -2rem; top: -4rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(12rem, 28vw, 36rem); color: rgba(255,255,255,.06); line-height: 1; pointer-events: none; }
+    .problem-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .problem-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 1rem; }
+    .problem-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 300; font-style: italic; line-height: 1.25; color: #fff; margin-bottom: 1.5rem; }
+    .problem-body { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.6); font-weight: 300; max-width: 60ch; }
+
+    /* ── THE CRICKET NAME BAND ── */
+    .name-band { background: var(--cream); padding: 5rem 3.5rem; }
+    .name-inner { max-width: 1200px; margin: 0 auto; }
+    .name-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--pitch); margin-bottom: .75rem; }
+    .name-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--ink); margin-bottom: 1rem; }
+    .name-heading em { font-style: italic; color: var(--pitch); }
+    .name-sub { font-size: .9rem; line-height: 1.7; color: var(--muted); font-weight: 300; max-width: 60ch; margin-bottom: 3rem; }
+    /* The big CRICKET letters */
+    .cricket-letters { display: flex; gap: 1.5px; background: var(--sand); margin-bottom: 1.5px; }
+    .cl { flex: 1; background: var(--warm-white); padding: 2.5rem 1.5rem; text-align: center; }
+    .cl-urdu { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; color: rgba(0,0,0,.06); direction: rtl; line-height: 1; }
+    .cl-roman { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 6.5vw, 6rem); font-weight: 600; line-height: 1; margin-bottom: .25rem; }
+    .cl-1 .cl-roman { color: var(--pitch); }
+    .cl-2 .cl-roman { color: var(--ball); }
+    .cl-3 .cl-roman { color: var(--pitch); }
+    .cl-4 .cl-roman { color: var(--ball); }
+    .cl-word { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: .35rem; }
+    .cl-meaning { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--ink); font-weight: 300; }
+
+    /* ── THE 4 STEPS FULL ── */
+    .steps-band { background: var(--grove); padding: 5.5rem 3.5rem; }
+    .steps-inner { max-width: 1200px; margin: 0 auto; }
+    .steps-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .75rem; }
+    .steps-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3.5rem; }
+    .steps-heading em { font-style: italic; color: var(--ball-lt); }
+    .step-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); }
+    .step-card { background: var(--grove); padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: background .3s; }
+    .step-card:hover { background: #121E12; }
+    .sc-bg { position: absolute; right: .5rem; bottom: -1rem; font-family: 'Cormorant Garamond', serif; font-size: 9rem; font-weight: 700; color: rgba(255,255,255,.03); line-height: 1; pointer-events: none; direction: rtl; }
+    .sc-step { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; margin-bottom: .6rem; }
+    .sc-1 .sc-step { color: var(--pitch-lt); }
+    .sc-2 .sc-step { color: var(--ball-lt); }
+    .sc-3 .sc-step { color: var(--pitch-lt); }
+    .sc-4 .sc-step { color: var(--ball-lt); }
+    .sc-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 300; line-height: 1; margin-bottom: .25rem;
+    }
+    .sc-1 .sc-letter, .sc-3 .sc-letter { color: var(--pitch-lt); }
+    .sc-2 .sc-letter, .sc-4 .sc-letter { color: var(--ball-lt); }
+    .sc-urdu { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: rgba(255,255,255,.07); direction: rtl; line-height: 1; margin-bottom: 1.25rem; }
+    .sc-word { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: #fff; margin-bottom: .3rem; }
+    .sc-translation { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .85rem; }
+    .sc-body { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.42); font-weight: 300; }
+    .sc-prompt { margin-top: 1.25rem; padding: 1rem; background: rgba(255,255,255,.04); border-top: 1px solid rgba(255,255,255,.07); }
+    .sc-prompt-label { font-size: .58rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: .35rem; }
+    .sc-prompt-text { font-size: .75rem; line-height: 1.55; color: rgba(255,255,255,.38); font-weight: 300; font-style: italic; }
+
+    /* ── 21 CARDS BAND ── */
+    .cards-band { background: var(--ball); padding: 5.5rem 3.5rem; position: relative; overflow: hidden; }
+    .cards-band::after { content: '21'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(12rem, 28vw, 32rem); font-weight: 700; color: rgba(255,255,255,.06); pointer-events: none; line-height: 1; }
+    .cards-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .cards-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.48); margin-bottom: .75rem; }
+    .cards-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: #fff; line-height: 1.15; margin-bottom: 1.5rem; }
+    .cards-heading em { font-style: italic; color: rgba(255,255,255,.65); }
+    .cards-body { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.6); font-weight: 300; max-width: 55ch; margin-bottom: 3.5rem; }
+    /* Card deck display */
+    .deck-display { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .mini-card {
+      width: 4.5rem; height: 6rem; border-radius: .5rem; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem;
+      transition: transform .2s, background .2s;
+      cursor: default;
+    }
+    .mini-card:hover { transform: translateY(-4px) scale(1.05); background: rgba(255,255,255,.15); }
+    .mc-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: #fff; line-height: 1; }
+    .mc-dot { width: .35rem; height: .35rem; border-radius: 50%; }
+    .mc-dot.green { background: var(--pitch-lt); }
+    .mc-dot.amber { background: rgba(255,255,255,.5); }
+    /* Technique categories */
+    .technique-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,.1); }
+    .tc { background: var(--ball); padding: 1.75rem 1.5rem; }
+    .tc-label { font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: .4rem; }
+    .tc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: .35rem; }
+    .tc-body { font-size: .75rem; line-height: 1.6; color: rgba(255,255,255,.48); font-weight: 300; }
+
+    /* ── CONTENT ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--pitch); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--pitch); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--pitch); background: rgba(26,74,26,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── CHANNELS BAND ── */
+    .channels-band { background: var(--turf); padding: 5.5rem 3.5rem; }
+    .channels-inner { max-width: 1200px; margin: 0 auto; }
+    .ch-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .75rem; }
+    .ch-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .ch-heading em { font-style: italic; color: var(--ball-lt); }
+    .channels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); }
+    .channel-card { background: var(--turf); padding: 2rem 1.75rem; }
+    .cc-icon { width: 3rem; height: 3rem; border-radius: 50%; background: rgba(58,138,58,.12); border: 1px solid rgba(58,138,58,.3); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .cc-icon svg { width: 1.1rem; height: 1.1rem; }
+    .cc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .cc-body { font-size: .78rem; line-height: 1.65; color: rgba(255,255,255,.42); font-weight: 300; }
+
+    /* ── CASCADE BAND ── */
+    .cascade-band { background: var(--pitch-pale); padding: 5rem 3.5rem; }
+    .cascade-inner { max-width: 1200px; margin: 0 auto; }
+    .casc-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--pitch); margin-bottom: .75rem; }
+    .casc-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--ink); margin-bottom: 3rem; }
+    .casc-heading em { font-style: italic; color: var(--pitch); }
+    .cascade-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--sand); }
+    .cs { background: var(--warm-white); padding: 2.5rem 2rem; position: relative; }
+    .cs::after { content: '→'; position: absolute; right: -.75rem; top: 50%; transform: translateY(-50%); font-size: 1.2rem; color: var(--muted); z-index: 1; }
+    .cs:last-child::after { display: none; }
+    .cs-num-bg { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(0,0,0,.04); line-height: 1; margin-bottom: -.75rem; }
+    .cs-icon { width: 3rem; height: 3rem; border-radius: 50%; background: var(--pitch-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .cs-icon svg { width: 1.1rem; height: 1.1rem; }
+    .cs-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; }
+    .cs-body { font-size: .8rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── IMPACT ── */
+    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--pitch); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--night); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: clamp(300px, 55vw, 720px); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(26,74,26,.07); pointer-events: none; }
+    .closing::after  { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: clamp(180px, 35vw, 460px); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(196,120,26,.05); pointer-events: none; }
+    .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; color: #fff; line-height: 1.15; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--ball-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.42); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+
+    @media (max-width: 900px) {
+      .hero-body { max-width: 100%; }
+      .hero-cards { display: none; }
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .steps-band, .cards-band, .channels-band, .cascade-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .cricket-letters, .step-cards, .cascade-steps, .channels-grid, .technique-cats, .impact-grid { grid-template-columns: 1fr 1fr; }
+      .name-band, .problem-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <!-- Cricket pitch lines -->
+  <div class="pitch-lines" aria-hidden="true">
+    <svg viewBox="0 0 600 900" fill="none" preserveAspectRatio="xMidYMid slice">
+      <!-- Pitch rectangle -->
+      <rect x="200" y="100" width="200" height="700" stroke="rgba(58,138,58,.15)" stroke-width="1" fill="none"/>
+      <!-- Crease lines -->
+      <line x1="160" y1="200" x2="440" y2="200" stroke="rgba(58,138,58,.2)" stroke-width="1.5"/>
+      <line x1="160" y1="700" x2="440" y2="700" stroke="rgba(58,138,58,.2)" stroke-width="1.5"/>
+      <!-- Return creases -->
+      <line x1="220" y1="200" x2="220" y2="165" stroke="rgba(58,138,58,.2)" stroke-width="1"/>
+      <line x1="380" y1="200" x2="380" y2="165" stroke="rgba(58,138,58,.2)" stroke-width="1"/>
+      <line x1="220" y1="700" x2="220" y2="735" stroke="rgba(58,138,58,.2)" stroke-width="1"/>
+      <line x1="380" y1="700" x2="380" y2="735" stroke="rgba(58,138,58,.2)" stroke-width="1"/>
+      <!-- Stumps top -->
+      <line x1="278" y1="155" x2="278" y2="200" stroke="rgba(196,120,26,.3)" stroke-width="1.5"/>
+      <line x1="298" y1="152" x2="298" y2="200" stroke="rgba(196,120,26,.3)" stroke-width="1.5"/>
+      <line x1="318" y1="155" x2="318" y2="200" stroke="rgba(196,120,26,.3)" stroke-width="1.5"/>
+      <!-- Stumps bottom -->
+      <line x1="278" y1="700" x2="278" y2="745" stroke="rgba(196,120,26,.3)" stroke-width="1.5"/>
+      <line x1="298" y1="700" x2="298" y2="748" stroke="rgba(196,120,26,.3)" stroke-width="1.5"/>
+      <line x1="318" y1="700" x2="318" y2="745" stroke="rgba(196,120,26,.3)" stroke-width="1.5"/>
+      <!-- Cricket ball -->
+      <circle cx="298" cy="450" r="18" stroke="rgba(196,120,26,.25)" stroke-width="1.5" fill="rgba(196,120,26,.05)"/>
+      <path d="M286 438 Q298 450 286 462" stroke="rgba(196,120,26,.2)" stroke-width="1" fill="none"/>
+      <path d="M310 438 Q298 450 310 462" stroke="rgba(196,120,26,.2)" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+  <!-- Stacked card silhouettes -->
+  <div class="hero-cards" aria-hidden="true">
+    <div class="hc"></div>
+    <div class="hc"></div>
+    <div class="hc">
+      <div class="hc-inner">
+        <div class="hc-badge">Technique Card · 07</div>
+        <div>
+          <div class="hc-urdu">ک</div>
+          <div class="hc-letter">K</div>
+        </div>
+        <div>
+          <div class="hc-title">Karta · How We Change</div>
+          <div class="hc-desc">Select a behaviour change technique from the deck and apply it to your identified barrier</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots" aria-hidden="true">
+    <div class="hero-dot on"></div><div class="hero-dot on"></div>
+    <div class="hero-dot on"></div><div class="hero-dot on"></div>
+    <div class="hero-dot"></div><div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+  </div>
+
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — SBC Toolkit · Gamified Learning · UNICEF · Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">UNICEF Pakistan · Social Behaviour Change · Learning Toolkit</div>
+    <h1>
+      Play the<br><em>CRICKET</em><br>Playbook.
+      <span class="sub-line">Making Behaviour Science Playable — Pakistan's First Gamified SBC Design Toolkit for Frontline Workers &amp; Programme Teams</span>
+    </h1>
+    <p class="hero-sub">Behaviour science is powerful. But it is also dense, academic, and inaccessible to the frontline workers, field partners, and community teams who need it most. In partnership with UNICEF, White Rice designed the CRICKET Playbook — a gamified, card-based toolkit that lets anyone design a behaviour change intervention, no PhD required.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">UNICEF Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Product</span><span class="meta-value">CRICKET SBC Playbook · کرکٹ</span></div>
+    <div class="meta-item"><span class="meta-label">Format</span><span class="meta-value">Gamified Card-Based Toolkit · 21 Technique Cards</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">Concept · Design · Training Architecture</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">Designing the <em>Game</em> That Teaches Behaviour Change</h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice conceived, designed, and produced the CRICKET Playbook in partnership with UNICEF Pakistan — a first-of-its-kind gamified learning tool that demystifies social behaviour change for practitioners at every level of a programme. We designed the complete toolkit architecture, the four-step CRICKET framework, the 21 behaviour change technique cards, all prompt sheets and facilitation tools, and the training cascade that has since reached hundreds of practitioners across Pakistan's provinces. The goal: make the science of behaviour change as intuitive and accessible as playing a card game.</p>
+      <div class="role-services">
+        <span class="role-tag">SBC Toolkit Design</span>
+        <span class="role-tag">CRICKET Framework</span>
+        <span class="role-tag">21 Technique Cards</span>
+        <span class="role-tag">Prompt Sheet Design</span>
+        <span class="role-tag">Channel Selection Tool</span>
+        <span class="role-tag">Gamification Design</span>
+        <span class="role-tag">Master Trainer Curriculum</span>
+        <span class="role-tag">Training Cascade Architecture</span>
+        <span class="role-tag">Facilitation Guides</span>
+        <span class="role-tag">UNICEF Training Programme</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">21 Cards</div>
+      <div class="outcome-desc">Behaviour change technique cards — a complete deck of intervention approaches that participants can physically pick up, play with, and apply to any behaviour change challenge.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4 Steps</div>
+      <div class="outcome-desc">The CRICKET framework — Kaun, Rukawat, Karta, Test — a complete behaviour change design process in four intuitive steps that anyone can follow.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Hundreds Trained</div>
+      <div class="outcome-desc">UNICEF teams, SBC staff, and provincial partners trained on the methodology — with the cascade now reaching practitioners across multiple provinces of Pakistan.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">National Cascade</div>
+      <div class="outcome-desc">Master trainers trained and deployed to cascade the CRICKET methodology to provincial teams — a self-sustaining training architecture that grows with every cohort.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Zero Background</div>
+      <div class="outcome-desc">Required knowledge of behaviour science for a participant to use the toolkit effectively — designed from the ground up for frontline workers with context but no formal SBC training.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ══ -->
+<section class="problem-band">
+  <div class="problem-inner">
+    <div class="problem-eyebrow">The Problem the Playbook Solves</div>
+    <div class="problem-headline">"The people who understand the community best are never in the room where the behaviour change strategy is designed. The people in that room have never visited the community."</div>
+    <p class="problem-body">Behaviour change science is concentrated in specialist teams, academic literature, and programme design documents that frontline workers and field partners rarely see — and wouldn't know how to apply even if they did. Meanwhile, the rich contextual knowledge that community workers carry — who influences whom, what the real barriers are, what actually matters in this village — rarely makes it into programme design. The CRICKET Playbook was designed to close this gap: bringing behaviour science to the people with context, so that interventions are designed by the people who understand the problem best.</p>
+  </div>
+</section>
+
+<!-- ══ THE CRICKET NAME ══ -->
+<section class="name-band">
+  <div class="name-inner">
+    <div class="name-eyebrow">The Name · کرکٹ · Four Letters. Four Steps.</div>
+    <h2 class="name-heading">Cricket in Urdu is written<br>in <em>four letters.</em><br>The playbook has four steps.</h2>
+    <p class="name-sub">When written in Urdu, "Cricket" — کرکٹ — has exactly four letters. Each letter became a step in the behaviour change design process. A framework named after the game Pakistanis love most, structured around an alphabet whose four parts map perfectly onto the science of behaviour change design.</p>
+    <div class="cricket-letters">
+      <div class="cl cl-1">
+        <div class="cl-urdu">ک</div>
+        <div class="cl-roman">K</div>
+        <div class="cl-word">Step 1 · Kaun</div>
+        <div class="cl-meaning">Who are we designing for?</div>
+      </div>
+      <div class="cl cl-2">
+        <div class="cl-urdu">ر</div>
+        <div class="cl-roman">R</div>
+        <div class="cl-word">Step 2 · Rukawat</div>
+        <div class="cl-meaning">What are the barriers?</div>
+      </div>
+      <div class="cl cl-3">
+        <div class="cl-urdu">ک</div>
+        <div class="cl-roman">K</div>
+        <div class="cl-word">Step 3 · Karta</div>
+        <div class="cl-meaning">How do we change this?</div>
+      </div>
+      <div class="cl cl-4">
+        <div class="cl-urdu">ٹ</div>
+        <div class="cl-roman">T</div>
+        <div class="cl-word">Step 4 · Test</div>
+        <div class="cl-meaning">Does it work?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4 STEPS DEEP ══ -->
+<section class="steps-band">
+  <div class="steps-inner">
+    <div class="steps-eyebrow">The CRICKET Framework · Four Steps in Depth</div>
+    <h2 class="steps-heading">From blank page to<br><em>field-tested intervention</em> — in one session.</h2>
+    <div class="step-cards">
+      <div class="step-card sc-1">
+        <div class="sc-bg">ک</div>
+        <div class="sc-step">Step 01 · K</div>
+        <div class="sc-letter">Kaun</div>
+        <div class="sc-urdu">کون</div>
+        <div class="sc-word">Who Are We Designing For?</div>
+        <div class="sc-translation">Audience Identification</div>
+        <div class="sc-body">The starting point of every behaviour change intervention: who is the person whose behaviour we want to change? Not a demographic category — a real human being, with motivations, constraints, relationships, and a context. Kaun forces the team to be specific about their target.</div>
+        <div class="sc-prompt">
+          <div class="sc-prompt-label">Prompt Sheet Guides</div>
+          <div class="sc-prompt-text">Who exactly is the person? What are their daily routines? Who influences their decisions? What do they care about most? What does their day look like?</div>
+        </div>
+      </div>
+      <div class="step-card sc-2">
+        <div class="sc-bg">ر</div>
+        <div class="sc-step">Step 02 · R</div>
+        <div class="sc-letter">Rukawat</div>
+        <div class="sc-urdu">رکاوٹ</div>
+        <div class="sc-word">What Is Stopping Them?</div>
+        <div class="sc-translation">Barrier Identification</div>
+        <div class="sc-body">Understanding why the desired behaviour is not already happening. Rukawat surfaces the real barriers — knowledge gaps, social norms, access constraints, motivation deficits, habit inertia — at the individual, household, and community level. The prompt sheets map barrier types systematically.</div>
+        <div class="sc-prompt">
+          <div class="sc-prompt-label">Prompt Sheet Guides</div>
+          <div class="sc-prompt-text">Is this a knowledge barrier? A motivation barrier? A social norm? An access or resource constraint? Does the person know what to do but not how? Or know how but face external constraints?</div>
+        </div>
+      </div>
+      <div class="step-card sc-3">
+        <div class="sc-bg">ک</div>
+        <div class="sc-step">Step 03 · K</div>
+        <div class="sc-letter">Karta</div>
+        <div class="sc-urdu">کرتا</div>
+        <div class="sc-word">How Do We Change This?</div>
+        <div class="sc-translation">Intervention Design · 21 Cards</div>
+        <div class="sc-body">The heart of the toolkit — the ideation step. Participants select from the 21 behaviour change technique cards to design an intervention matched to the specific barriers identified in Rukawat. Pick a card. Discuss. Play. Combine. Prototype. The cards make the infinite landscape of behaviour science navigable by anyone.</div>
+        <div class="sc-prompt">
+          <div class="sc-prompt-label">21 Technique Cards + Channel Sheet</div>
+          <div class="sc-prompt-text">Which technique addresses this barrier? Which channel will reach this person? Community engagement? Frontline workers? Digital? TV? Combination? How do we deliver this intervention?</div>
+        </div>
+      </div>
+      <div class="step-card sc-4">
+        <div class="sc-bg">ٹ</div>
+        <div class="sc-step">Step 04 · T</div>
+        <div class="sc-letter">Test</div>
+        <div class="sc-urdu">ٹیسٹ</div>
+        <div class="sc-word">Does It Work?</div>
+        <div class="sc-translation">Prototype · Field Test · Iterate</div>
+        <div class="sc-body">The final step brings behaviour change design back to the real world. Test guides participants through a practical prototyping and field testing process — turning ideas from Karta into rapid prototypes, testing them with real community members, and using the results to refine before scaling.</div>
+        <div class="sc-prompt">
+          <div class="sc-prompt-label">Prompt Sheet Guides</div>
+          <div class="sc-prompt-text">What is the simplest version of this intervention we can test? Who will we test it with? What change are we looking for? How will we know if it worked? What will we change if it doesn't?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 21 CARDS ══ -->
+<section class="cards-band">
+  <div class="cards-inner">
+    <div class="cards-eyebrow">The Technique Deck · 21 Behaviour Change Cards</div>
+    <h2 class="cards-heading">The entire science of<br>behaviour change —<br><em>in a hand you can hold.</em></h2>
+    <p class="cards-body">The 21 behaviour change technique cards are the playbook's most distinctive and powerful feature. Each card describes a specific, evidence-based behaviour change approach — drawn from decades of behavioural science research — translated into plain language, illustrated with examples, and designed to be physically picked up, shuffled, combined, and played with. Participants are not reading about behaviour change. They are designing it, in real time, with their hands.</p>
+    <!-- Mini card deck display -->
+    <div class="deck-display">
+      <div class="mini-card"><div class="mc-num">01</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">02</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">03</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">04</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">05</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">06</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">07</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">08</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">09</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">10</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">11</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">12</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">13</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">14</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">15</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">16</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">17</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">18</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">19</div><div class="mc-dot green"></div></div>
+      <div class="mini-card"><div class="mc-num">20</div><div class="mc-dot amber"></div></div>
+      <div class="mini-card"><div class="mc-num">21</div><div class="mc-dot green"></div></div>
+    </div>
+    <div class="technique-cats">
+      <div class="tc">
+        <div class="tc-label">Card Category 1</div>
+        <div class="tc-title">Motivation Techniques</div>
+        <div class="tc-body">Cards addressing the "why" of behaviour — aspiration-building, consequence demonstration, goal-setting, values alignment, social identity activation, and peer comparison techniques that address motivational barriers.</div>
+      </div>
+      <div class="tc">
+        <div class="tc-label">Card Category 2</div>
+        <div class="tc-title">Capability Techniques</div>
+        <div class="tc-body">Cards addressing the "how" of behaviour — skill-building, demonstration, modelling, habit formation, implementation intentions, simplification, and resource provision techniques that address knowledge and skill barriers.</div>
+      </div>
+      <div class="tc">
+        <div class="tc-label">Card Category 3</div>
+        <div class="tc-title">Opportunity Techniques</div>
+        <div class="tc-body">Cards addressing the "context" of behaviour — environmental nudges, social norm activation, cue design, choice architecture, access improvement, and community accountability techniques that address structural and environmental barriers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHANNELS ══ -->
+<section class="channels-band">
+  <div class="channels-inner">
+    <div class="ch-eyebrow">The Channel Prompt Sheet · From Strategy to Delivery</div>
+    <h2 class="ch-heading">Once you've decided what to do,<br><em>decide how to reach them.</em></h2>
+    <div class="channels-grid">
+      <div class="channel-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8A3A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="cc-title">Community Engagement</div>
+        <div class="cc-body">Group sessions, community events, social mobilisers, public demonstrations, and peer-to-peer community channels — for norm-level change requiring collective participation</div>
+      </div>
+      <div class="channel-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8A3A" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="cc-title">Frontline &amp; Community-Based Staff</div>
+        <div class="cc-body">Health workers, social mobilisers, teachers, religious leaders, and other trusted community-embedded staff — for interventions requiring personal trust, household access, and individual behaviour support</div>
+      </div>
+      <div class="channel-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8A3A" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <div class="cc-title">Digital &amp; Mobile</div>
+        <div class="cc-body">WhatsApp, social media, mobile content, SMS, and digital platforms — for reaching individuals between community touchpoints, providing on-demand information, and reinforcing messages from other channels</div>
+      </div>
+      <div class="channel-card">
+        <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A8A3A" stroke-width="1.6"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+        <div class="cc-title">Mass Media · TV &amp; Radio</div>
+        <div class="cc-body">Television, radio, and broadcast media — for awareness, norm signalling, and campaign amplification reaching beyond the programme's direct community footprint to the broader public</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>How the <em>Playbook<br>Works</em> in a Room</h2>
+      </div>
+      <div class="section-right">
+        <p>A CRICKET Playbook session feels nothing like a behaviour change training. There are no slide decks and no lectures. Participants sit around a table with the cards, the prompt sheets, and a real challenge — a behaviour they are trying to change in a community they know. The facilitator walks them through four steps, but the tools do most of the teaching.</p>
+        <div class="pull-quote">
+          <p>"A community health worker who has never heard the word 'behavioural economics' was designing nudge interventions by the end of her first CRICKET session. The framework didn't simplify the science. It made the science feel like common sense."</p>
+        </div>
+        <p>At Kaun, participants identify who they are designing for — often discovering in discussion that they had been designing for the wrong person, or had never been specific enough about the person they were trying to reach. At Rukawat, the barrier prompt sheet surfaces assumptions and challenges them — what teams think is a knowledge barrier often turns out to be a norm or access barrier in disguise. At Karta, the 21 cards open up a landscape of intervention options that participants would never have generated on their own. And at Test, the prototyping section teaches the discipline of learning before scaling — the single most valuable habit a development programme team can build.</p>
+        <p>The toolkit is designed to work across contexts — with high-literacy programme staff in a conference room, with frontline workers in a village meeting, and with mixed groups who have radically different educational backgrounds but share a deep knowledge of the community. The common language is the cards, the prompts, and the four steps. Everything else adapts.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CASCADE ══ -->
+<section class="cascade-band">
+  <div class="cascade-inner">
+    <div class="casc-eyebrow">Training Cascade · From UNICEF HQ to the Field</div>
+    <h2 class="casc-heading">A self-propagating<br><em>methodology.</em></h2>
+    <div class="cascade-steps">
+      <div class="cs">
+        <div class="cs-num-bg">01</div>
+        <div class="cs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1A4A1A" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="cs-title">UNICEF Team Training</div>
+        <div class="cs-body">White Rice trains UNICEF's own SBC and programme teams — building internal ownership of the CRICKET methodology and the facilitation skills to deliver it.</div>
+      </div>
+      <div class="cs">
+        <div class="cs-num-bg">02</div>
+        <div class="cs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1A4A1A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="cs-title">Master Trainer Certification</div>
+        <div class="cs-body">Selected participants trained to the master trainer level — equipped to independently deliver CRICKET Playbook sessions and train the next cohort of facilitators.</div>
+      </div>
+      <div class="cs">
+        <div class="cs-num-bg">03</div>
+        <div class="cs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1A4A1A" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="cs-title">Provincial Cascade</div>
+        <div class="cs-body">Master trainers deploy independently to provincial teams — cascading the methodology across Pakistan's provinces without requiring White Rice's continued direct involvement.</div>
+      </div>
+      <div class="cs">
+        <div class="cs-num-bg">04</div>
+        <div class="cs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1A4A1A" stroke-width="1.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="cs-title">Hundreds Trained &amp; Growing</div>
+        <div class="cs-body">Hundreds of practitioners trained and still growing — a self-propagating methodology that expands every time a master trainer facilitates a new session, in a new province, with a new team.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMPACT ══ -->
+<div class="content-wrap">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The CRICKET Playbook's impact is measured not in campaigns or reach figures, but in the number of people who can now design a behaviour change intervention who couldn't before. Every master trainer who delivers a provincial session multiplies that capacity. Every frontline worker who picks up the cards and designs an intervention for their community becomes, in that moment, a behaviour change practitioner — grounded not in theory, but in context and the right tools.</p>
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">Hundreds Trained</div>
+            <div class="desc">Practitioners across UNICEF Pakistan and partner organisations trained on the CRICKET methodology — a number that grows every time a master trainer runs a session.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Multi-Province</div>
+            <div class="desc">The methodology has been cascaded across multiple provinces by UNICEF-trained master trainers — without requiring White Rice's ongoing facilitation.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">A Living Toolkit</div>
+            <div class="desc">The CRICKET Playbook continues to grow — with every application in the field generating new insights, new use cases, and new opportunities to take the methodology further.</div>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem;">What makes the CRICKET Playbook exceptional is not what it teaches. It is what it makes possible. A community health worker designing a behaviour nudge for her village. A district officer identifying the real barrier behind low vaccination rates. A programme manager who finally understands why the messages aren't working. That shift — from reading about behaviour change to doing it — is the toolkit's most important outcome. And it is repeating, multiplying, and spreading across Pakistan as this is written.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>Behaviour science is<br>only powerful if the<br>right people <em>can play it.</em></h3>
+    <p>CRICKET gave Pakistan's frontline workers, programme teams, and field partners the ability to design behaviour change interventions themselves — grounded in the science, anchored in their community knowledge, and tested in the real world before they were scaled. That is not a training. That is a capability. And unlike a training, a capability compounds.</p>
+    <div class="tag-pills">
+      <span class="pill">CRICKET Playbook</span>
+      <span class="pill">UNICEF Pakistan</span>
+      <span class="pill">SBC Toolkit</span>
+      <span class="pill">Gamified Learning</span>
+      <span class="pill">Behaviour Change Design</span>
+      <span class="pill">21 Technique Cards</span>
+      <span class="pill">Kaun</span>
+      <span class="pill">Rukawat</span>
+      <span class="pill">Karta</span>
+      <span class="pill">Test</span>
+      <span class="pill">Master Trainers</span>
+      <span class="pill">Capacity Building</span>
+      <span class="pill">Frontline Workers</span>
+      <span class="pill">Multi-Province Cascade</span>
+      <span class="pill">Pakistan</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

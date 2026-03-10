@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sightsavers — When They Can See — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:         #0A0C10;
+      --parchment:   #F5F0E8;
+      --sand:        #E2D9C8;
+      --muted:       #7A7065;
+      --amber:       #C4881A;
+      --amber-lt:    #E8B84A;
+      --amber-pale:  #FBF0D0;
+      --sapphire:    #1A3A6A;
+      --sapphire-lt: #3A6AB0;
+      --sapphire-pale:#D0DCEE;
+      --charcoal:    #14181E;
+      --smoke:       #1E2530;
+      --warm-white:  #FDFAF5;
+      --gold-cannes: #D4AA50;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--ink);
+    }
+
+    /* Iris / aperture ring — the centrepiece motif */
+    .iris {
+      position: absolute;
+      right: -10%; top: 50%; transform: translateY(-50%);
+      width: clamp(400px, 55vw, 780px);
+      aspect-ratio: 1;
+      pointer-events: none; z-index: 1;
+    }
+    .iris-ring {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      animation: irisRotate 40s linear infinite;
+    }
+    @keyframes irisRotate {
+      to { transform: rotate(360deg); }
+    }
+    .iris-r1 {
+      border: 1px solid rgba(196,136,26,.35);
+      animation-duration: 80s;
+    }
+    .iris-r2 {
+      inset: 6%; border: 1px solid rgba(196,136,26,.22);
+      animation-duration: 60s; animation-direction: reverse;
+    }
+    .iris-r3 {
+      inset: 12%; border: 1px solid rgba(196,136,26,.14);
+      animation-duration: 100s;
+    }
+    .iris-r4 {
+      inset: 20%; border: 1px solid rgba(196,136,26,.1);
+      animation-duration: 45s; animation-direction: reverse;
+    }
+    /* Iris spokes */
+    .iris-spokes {
+      position: absolute; inset: 0; border-radius: 50%;
+      animation: irisRotate 120s linear infinite;
+    }
+    .iris-spokes::before,
+    .iris-spokes::after {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(196,136,26,.08) 40%, rgba(196,136,26,.08) 60%, transparent 100%);
+      transform-origin: 0 0;
+    }
+    .iris-spokes::before { transform: rotate(0deg) translateY(-0.5px); }
+    .iris-spokes::after  { transform: rotate(45deg) translateY(-0.5px); }
+    /* Pupil glow */
+    .iris-pupil {
+      position: absolute;
+      inset: 35%; border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(196,136,26,.18) 0%, transparent 70%);
+    }
+    /* Background atmo */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 50% at 80% 50%, rgba(196,136,26,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 55% at 5%  20%, rgba(26,58,106,.45)  0%, transparent 55%),
+        radial-gradient(ellipse 30% 40% at 30% 80%, rgba(10,12,16,.6)    0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Film grain overlay */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: .55; pointer-events: none; z-index: 0;
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative; z-index: 3;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--amber-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.2); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 3;
+      max-width: 60%;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--amber-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--amber); }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 7.5vw, 8.5rem);
+      font-weight: 300; line-height: .9; color: #fff; letter-spacing: -.015em;
+      animation: fadeUp .8s .2s both;
+    }
+    h1 em { font-style: italic; color: var(--amber-lt); }
+    h1 .sub-line {
+      display: block; font-size: clamp(1rem, 1.8vw, 1.5rem);
+      font-weight: 300; color: rgba(255,255,255,.4); font-style: italic; margin-top: .7rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 50ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.5);
+      animation: fadeUp .8s .36s both;
+    }
+
+    /* Cannes badge */
+    .cannes-badge {
+      display: inline-flex; align-items: center; gap: 1.25rem;
+      margin-top: 2.5rem; padding: 1rem 1.5rem;
+      background: rgba(212,170,80,.1); border: 1px solid rgba(212,170,80,.3);
+      animation: fadeUp .8s .5s both;
+    }
+    .cannes-icon { flex-shrink: 0; }
+    .cannes-icon svg { width: 2rem; height: 2rem; }
+    .cannes-text { font-size: .75rem; line-height: 1.5; }
+    .cannes-text strong { display: block; font-size: .95rem; font-weight: 500; color: var(--gold-cannes); font-family: 'Cormorant Garamond', serif; letter-spacing: .05em; }
+    .cannes-text span { color: rgba(255,255,255,.45); font-weight: 300; }
+
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.06); position: relative; z-index: 3;
+      animation: fadeUp .8s .55s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── PARTNERSHIP BAND ── */
+    .partner-band { background: var(--charcoal); padding: 4rem 3.5rem; }
+    .partner-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .partner-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--amber-lt); margin-bottom: 1rem; }
+    .partner-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .partner-heading em { font-style: italic; color: var(--amber-lt); }
+    .partner-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(196,136,26,.12); border: 1px solid rgba(196,136,26,.3); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--amber-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--sapphire); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: ''; position: absolute; right: -5rem; bottom: -5rem; width: clamp(200px, 30vw, 400px); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(255,255,255,.05); pointer-events: none; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.3); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.18); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-stat.gold { color: var(--gold-cannes); }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.6); font-weight: 300; }
+
+    /* ── VISION BAND — 20 YEARS ── */
+    .vision-band { background: var(--amber); padding: 4rem 3.5rem; display: grid; grid-template-columns: auto 1fr; gap: 4rem; align-items: center; position: relative; overflow: hidden; }
+    .vision-band::before { content: ''; position: absolute; right: -3rem; top: -3rem; width: 18rem; height: 18rem; border-radius: 50%; border: 1px solid rgba(255,255,255,.1); pointer-events: none; }
+    .vision-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(6rem, 12vw, 11rem); font-weight: 300; color: rgba(255,255,255,.18); line-height: 1; flex-shrink: 0; }
+    .vision-text { }
+    .vision-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: .6rem; }
+    .vision-body { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 300; font-style: italic; color: #fff; line-height: 1.35; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--amber); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--amber); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--amber); background: rgba(196,136,26,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── PROCESS TIMELINE ── */
+    .process-band { background: var(--smoke); padding: 5rem 3.5rem; }
+    .process-inner { max-width: 1200px; margin: 0 auto; }
+    .process-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .process-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .process-heading em { font-style: italic; color: var(--amber-lt); }
+    .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 2.75rem; left: 2rem; right: 2rem; height: 1px;
+      background: linear-gradient(90deg, rgba(196,136,26,.3) 0%, rgba(196,136,26,.6) 50%, rgba(196,136,26,.3) 100%);
+      pointer-events: none;
+    }
+    .process-step { padding: 0 1.25rem 2.5rem; position: relative; }
+    .ps-dot { width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1px solid var(--amber); background: var(--smoke); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+    .ps-dot::before { content: ''; width: .5rem; height: .5rem; border-radius: 50%; background: var(--amber-lt); }
+    .ps-num { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--amber-lt); margin-bottom: .5rem; }
+    .ps-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: .5rem; line-height: 1.2; }
+    .ps-body { font-size: .78rem; line-height: 1.6; color: rgba(255,255,255,.42); font-weight: 300; }
+    .ps-scale { margin-top: .75rem; font-size: .7rem; color: var(--amber); font-weight: 500; }
+
+    /* ── FILM STAT BAND ── */
+    .stat-band { background: var(--ink); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .stat-band::before {
+      content: '';
+      position: absolute; right: -8rem; top: 50%; transform: translateY(-50%);
+      width: 35rem; height: 35rem; border-radius: 50%;
+      border: 1px solid rgba(196,136,26,.07);
+      pointer-events: none;
+    }
+    .stat-band::after {
+      content: '';
+      position: absolute; right: -5rem; top: 50%; transform: translateY(-50%);
+      width: 25rem; height: 25rem; border-radius: 50%;
+      border: 1px solid rgba(196,136,26,.05);
+      pointer-events: none;
+    }
+    .stat-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 6rem; align-items: center; position: relative; z-index: 1; }
+    .stat-left { }
+    .stat-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 1rem; }
+    .stat-big { font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 11vw, 10rem); font-weight: 300; color: #fff; line-height: .9; }
+    .stat-big span { display: block; font-style: italic; color: var(--amber-lt); font-size: .5em; }
+    .stat-body { margin-top: 1.5rem; font-size: .95rem; line-height: 1.8; color: rgba(255,255,255,.5); font-weight: 300; }
+    .stat-right { }
+    .film-facts { display: grid; gap: 1.5rem; }
+    .film-fact { display: flex; gap: 1.25rem; align-items: flex-start; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .film-fact:last-child { border-bottom: none; padding-bottom: 0; }
+    .ff-icon { width: 2.25rem; height: 2.25rem; flex-shrink: 0; border-radius: 50%; background: rgba(196,136,26,.12); border: 1px solid rgba(196,136,26,.25); display: flex; align-items: center; justify-content: center; }
+    .ff-icon svg { width: .9rem; height: .9rem; }
+    .ff-text { }
+    .ff-label { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .3rem; }
+    .ff-value { font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.72); font-weight: 300; }
+
+    /* ── CANNES BAND ── */
+    .cannes-band { background: var(--gold-cannes); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .cannes-band::before { content: '"'; position: absolute; right: -2rem; top: -3rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(16rem, 35vw, 42rem); color: rgba(255,255,255,.07); line-height: 1; pointer-events: none; }
+    .cannes-inner { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .cannes-trophy { width: 4rem; height: 4rem; border-radius: 50%; background: rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; }
+    .cannes-trophy svg { width: 1.75rem; height: 1.75rem; }
+    .cannes-eyebrow { font-size: .68rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 1rem; }
+    .cannes-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 1.5rem; }
+    .cannes-body { font-size: .95rem; line-height: 1.8; color: rgba(255,255,255,.65); font-weight: 300; max-width: 55ch; margin: 0 auto; }
+
+    /* ── LIVING FILM ── */
+    .living-band { background: var(--charcoal); padding: 5rem 3.5rem; }
+    .living-inner { max-width: 1200px; margin: 0 auto; }
+    .living-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .living-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .living-heading em { font-style: italic; color: var(--amber-lt); }
+    .living-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); }
+    .living-card { background: var(--charcoal); padding: 2.5rem 2rem; position: relative; }
+    .living-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
+    .living-card:hover::before { transform: scaleX(1); }
+    .lc-icon { width: 3rem; height: 3rem; border-radius: 50%; background: rgba(196,136,26,.1); border: 1px solid rgba(196,136,26,.25); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .lc-icon svg { width: 1.2rem; height: 1.2rem; }
+    .lc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: .6rem; }
+    .lc-body { font-size: .82rem; line-height: 1.7; color: rgba(255,255,255,.42); font-weight: 300; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--sapphire); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--ink); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before {
+      content: '';
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: clamp(300px, 50vw, 700px); aspect-ratio: 1; border-radius: 50%;
+      border: 1px solid rgba(196,136,26,.06); pointer-events: none;
+    }
+    .closing::after {
+      content: '';
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: clamp(200px, 35vw, 500px); aspect-ratio: 1; border-radius: 50%;
+      border: 1px solid rgba(196,136,26,.04); pointer-events: none;
+    }
+    .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; color: #fff; line-height: 1.15; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--amber-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.42); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-body { max-width: 100%; }
+      .iris { display: none; }
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .partner-band, .process-band, .stat-band, .cannes-band, .living-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .partner-inner, .stat-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .living-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-steps::before { display: none; }
+      .vision-band { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <!-- Iris motif -->
+  <div class="iris" aria-hidden="true">
+    <div class="iris-ring iris-r1"></div>
+    <div class="iris-ring iris-r2"></div>
+    <div class="iris-ring iris-r3"></div>
+    <div class="iris-ring iris-r4"></div>
+    <div class="iris-spokes iris-ring"></div>
+    <div class="iris-pupil"></div>
+  </div>
+
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Eye Health · Film · Pakistan · Cannes Lions Health Winner</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">Sightsavers International · 20+ Year Partnership</div>
+    <h1>
+      When<br>They Can<br><em>See.</em>
+      <span class="sub-line">Pakistan's First Celebrity Eye Health Film — 1 Million Views · Cannes Lions Health</span>
+    </h1>
+    <p class="hero-sub">A data-driven short film that began with 100 interviews, was shaped by communities, brought to life by Pakistan's finest actors, and went on to win at Cannes — and is still showing up in schools and communities across Pakistan, sparking conversations that save children's sight.</p>
+    <div class="cannes-badge">
+      <div class="cannes-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#D4AA50" stroke-width="1.4">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      </div>
+      <div class="cannes-text">
+        <strong>Cannes Lions Health — Winner</strong>
+        <span>International Film Festival · Health &amp; Wellness Category · Pakistan</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Sightsavers International</span></div>
+    <div class="meta-item"><span class="meta-label">Format</span><span class="meta-value">Short Film / Behaviour Change Campaign</span></div>
+    <div class="meta-item"><span class="meta-label">Partnership</span><span class="meta-value">C Prime Productions</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">Creative Strategy, Research &amp; Scriptwriting Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ PARTNERSHIP BAND ══ -->
+<section class="partner-band">
+  <div class="partner-inner">
+    <div>
+      <div class="partner-eyebrow">Our Role</div>
+      <h2 class="partner-heading">Two Decades of Making <em>Eye Health Visible</em> in Pakistan</h2>
+    </div>
+    <div class="partner-body">
+      <p>White Rice's relationship with Sightsavers International spans over 20 years — one of the longest-running partnerships in the White Rice portfolio. Across two decades, we have supported Sightsavers Pakistan with creative campaigns, research, short films, communication strategy, and disability inclusion advocacy. Together, our work has contributed to a measurable decline in preventable blindness and eye disease in Pakistan.</p>
+      <p>This particular project — Pakistan's first celebrity-fronted short film on children's eye health — represents the creative pinnacle of that partnership. It was not only a film. It was a research project, a co-creation process, a production achievement, an award-winning piece of communication, and a community health tool that continues to operate long after its premiere.</p>
+      <div class="role-services">
+        <span class="role-tag">20+ Year Partnership</span>
+        <span class="role-tag">Research &amp; Data Collection</span>
+        <span class="role-tag">Scriptwriting</span>
+        <span class="role-tag">Community Pre-Testing</span>
+        <span class="role-tag">Celebrity Collaboration</span>
+        <span class="role-tag">Film Production Strategy</span>
+        <span class="role-tag">Campaign Launch Design</span>
+        <span class="role-tag">School &amp; Community Rollout</span>
+        <span class="role-tag">Government Stakeholder Engagement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat gold">Cannes</div>
+      <div class="outcome-desc">Winner — Cannes Lions International Film Festival, Health &amp; Wellness category. Pakistan's most recognised creative achievement in health communication.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">1 Million+</div>
+      <div class="outcome-desc">Views on C Prime's digital platform — and still accumulating. Pakistan's most-watched short film on children's eye health.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">100+ Interviews</div>
+      <div class="outcome-desc">Real stories collected from families across Pakistan — distilled into two powerful story arcs that became the film's emotional core.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Pakistan's First</div>
+      <div class="outcome-desc">Celebrity-fronted short film specifically focused on early detection of vision problems in children at the school level.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Still Active</div>
+      <div class="outcome-desc">The film continues to be screened in schools and communities as a conversation-starter tool — years after its original launch. A living intervention.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 20 YEARS ══ -->
+<div class="vision-band">
+  <div class="vision-num">20</div>
+  <div class="vision-text">
+    <div class="vision-label">Years of Partnership · Sightsavers &amp; White Rice</div>
+    <div class="vision-body">Twenty years of campaigns, research, films, and advocacy — contributing to a measurable decline in preventable blindness in Pakistan. A partnership built on the conviction that better communication saves sight.</div>
+  </div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Vision problems in children are among the most reversible causes of learning difficulty — and among the most consistently undetected. In Pakistan, the combination of low parental awareness, limited school-level screening, and cultural barriers around seeking eye care means that millions of children are struggling to see the board, the book, the face of their teacher — and no one in their lives has noticed.</p>
+        <div class="pull-quote">
+          <p>"A child who cannot see cannot learn. But a child who cannot see clearly often doesn't know they are supposed to see differently. The problem is invisible — until a film makes it unmissable."</p>
+        </div>
+        <p>The challenge was not about information. Parents and communities in Pakistan are not unaware that children's eyes can have problems. The barrier is behavioural: the gap between vague awareness and the specific, urgent decision to take a child to an eye health provider for a test. Crossing that gap requires emotional connection, not statistics. It requires a story that feels like your story.</p>
+        <p>Sightsavers needed something that could work at scale — reaching parents, schools, and communities across Pakistan — while feeling intimate and personal enough to move each individual viewer to action. A short film was the answer. But it had to be the right film: grounded in truth, shaped by community, and carried by faces Pakistanis already trusted.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The creative strategy rested on one conviction: that the most powerful health communication is not invented — it is discovered. Real stories, told truthfully, with the emotional craft they deserve, move audiences in ways that no scripted health message can.</p>
+        <p>White Rice designed a three-stage approach: deep research to find the stories; rigorous co-creation to ensure the script was community-true; and a production and distribution strategy that paired Pakistan's best creative talent with a platform large enough to give the film the audience it deserved.</p>
+        <p>The partnership with C Prime — one of Pakistan's most prominent production and digital media houses — was a deliberate strategic choice. It brought production excellence and a ready-made digital audience together with Sightsavers' credibility and White Rice's research and creative depth. The government and sector stakeholders were engaged from the beginning, ensuring the film's launch became a sector event rather than a single organisation's campaign.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ PROCESS TIMELINE ══ -->
+<section class="process-band">
+  <div class="process-inner">
+    <div class="process-eyebrow">Creative Process · From Real Lives to an Award-Winning Film</div>
+    <h2 class="process-heading">100 interviews.<br>Two stories. <em>One film that changed everything.</em></h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="ps-dot"></div>
+        <div class="ps-num">Phase 1</div>
+        <div class="ps-title">Deep Field Research</div>
+        <div class="ps-body">White Rice conducted 100+ in-depth interviews with families, children, teachers, and eye health workers across Pakistan — collecting real experiences of undetected vision problems, delayed care, and the moments that changed a family's understanding of their child's sight.</div>
+        <div class="ps-scale">100+ interviews · multiple cities</div>
+      </div>
+      <div class="process-step">
+        <div class="ps-dot"></div>
+        <div class="ps-num">Phase 2</div>
+        <div class="ps-title">Story Identification</div>
+        <div class="ps-body">From the 100+ interviews, two core stories emerged — each carrying distinct emotional truth. These were not chosen for their drama, but for their universality: every parent in Pakistan would recognise themselves in these stories.</div>
+        <div class="ps-scale">2 stories · data-driven selection</div>
+      </div>
+      <div class="process-step">
+        <div class="ps-dot"></div>
+        <div class="ps-num">Phase 3</div>
+        <div class="ps-title">Script &amp; Community Testing</div>
+        <div class="ps-body">The script was woven from real verbatims and narrative arcs drawn directly from the field research. Before production, it was tested with community members — a co-creation process that ensured every line rang true to the people whose lives had inspired it.</div>
+        <div class="ps-scale">Community pre-tested · co-created</div>
+      </div>
+      <div class="process-step">
+        <div class="ps-dot"></div>
+        <div class="ps-num">Phase 4</div>
+        <div class="ps-title">Production with C Prime</div>
+        <div class="ps-body">In partnership with C Prime, Pakistan's leading production house, the film was brought to life with well-known Pakistani actors — lending it the cultural weight and emotional resonance that only familiar, trusted faces can provide. Production quality was uncompromising.</div>
+        <div class="ps-scale">Celebrity talent · C Prime production</div>
+      </div>
+      <div class="process-step">
+        <div class="ps-dot"></div>
+        <div class="ps-num">Phase 5</div>
+        <div class="ps-title">Launch &amp; Amplification</div>
+        <div class="ps-body">Premiered at a major stakeholder launch event with government representatives, sector partners, and media. Simultaneously released on C Prime's digital platform — delivering both institutional credibility and mass audience reach from day one.</div>
+        <div class="ps-scale">1M+ views · government &amp; media launch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 1 MILLION VIEWS ══ -->
+<section class="stat-band">
+  <div class="stat-inner">
+    <div class="stat-left">
+      <div class="stat-eyebrow">Reach · C Prime Digital Platform</div>
+      <div class="stat-big">1M+<span>and counting.</span></div>
+      <p class="stat-body">Pakistan's most-watched short film on children's eye health. The partnership with C Prime — one of Pakistan's largest digital media houses — gave the film an audience that no traditional health campaign could reach. And unlike a campaign, the film keeps working: every view is a potential behaviour change.</p>
+    </div>
+    <div class="stat-right">
+      <div class="film-facts">
+        <div class="film-fact">
+          <div class="ff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <div class="ff-text">
+            <div class="ff-label">Film Type</div>
+            <div class="ff-value">Data-driven short film — two real stories woven from 100+ field interviews into a single cinematic narrative</div>
+          </div>
+        </div>
+        <div class="film-fact">
+          <div class="ff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="ff-text">
+            <div class="ff-label">Talent</div>
+            <div class="ff-value">Well-known Pakistani actors — Pakistan's first celebrity-fronted film on early childhood vision screening</div>
+          </div>
+        </div>
+        <div class="film-fact">
+          <div class="ff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div class="ff-text">
+            <div class="ff-label">Platform Partner</div>
+            <div class="ff-value">C Prime — major Pakistani production house and digital media platform, providing both production excellence and a mass digital audience</div>
+          </div>
+        </div>
+        <div class="film-fact">
+          <div class="ff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="ff-text">
+            <div class="ff-label">Launch</div>
+            <div class="ff-value">National premiere event with government representatives, sector partners, NGOs, and media — positioning the film as a national health initiative from day one</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CANNES BAND ══ -->
+<section class="cannes-band">
+  <div class="cannes-inner">
+    <div class="cannes-trophy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" width="28" height="28">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+    </div>
+    <div class="cannes-eyebrow">Global Recognition · Cannes Lions International Film Festival</div>
+    <div class="cannes-headline">The world's most prestigious film festival<br>recognised what Pakistan's communities already knew.</div>
+    <p class="cannes-body">The Cannes Lions Health award is not given for good intentions or impressive statistics. It is given for creative work that genuinely moves people. Winning it confirmed what White Rice and Sightsavers had built from the beginning — that the most effective health communication is the kind that makes you feel something before it asks you to do something. Pakistan's eye health film earned its place among the world's best health communication because it was made by listening first.</p>
+  </div>
+</section>
+
+<!-- ══ THE FILM'S SECOND LIFE ══ -->
+<section class="living-band">
+  <div class="living-inner">
+    <div class="living-eyebrow">The Film After the Film · A Living Health Intervention</div>
+    <h2 class="living-heading">Most campaigns end at the premiere.<br><em>This one was just beginning.</em></h2>
+    <div class="living-grid">
+      <div class="living-card">
+        <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="lc-title">School Screenings</div>
+        <div class="lc-body">The film is screened in schools across Pakistan — bringing the message directly to the environment where children's vision problems most often first go unnoticed. Teachers, students, and parents are shown the film together, making early detection a school-community priority.</div>
+      </div>
+      <div class="living-card">
+        <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div class="lc-title">Community Conversation Tool</div>
+        <div class="lc-body">Parents and community members are invited to screenings in their neighbourhoods — with the film serving as the conversation opener, not the message itself. After the screening, community health workers and Sightsavers facilitators lead structured dialogues on children's eye health, roles, and action.</div>
+      </div>
+      <div class="living-card">
+        <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B84A" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="lc-title">Deeper Conversations on Care</div>
+        <div class="lc-body">The film creates the emotional permission for conversations that health messaging alone cannot open — about parents' roles as the first screeners of their children's vision, about what to look for, when to act, and where to go. It bridges awareness and behaviour in a single screening.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMPACT ══ -->
+<div class="content-wrap">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The film's impact operates on three levels simultaneously — and all three are still active. As a digital film, it has reached over one million viewers on C Prime's platform. As a Cannes-winning piece of creative work, it has positioned Pakistan's eye health advocacy on the global map. And as a community tool, it continues to be used by Sightsavers, schools, and health workers across the country — its work unfinished, its conversations still unfolding.</p>
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">1M+ Views</div>
+            <div class="desc">Online views on C Prime's platform — Pakistan's most-watched short film on children's eye health, continuing to grow.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Cannes Lions</div>
+            <div class="desc">International recognition — Health category winner at the world's most prestigious film and creative communications festival.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">20 Years</div>
+            <div class="desc">Of partnership work contributing to a measurable decline in preventable blindness and eye disease in Pakistan.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Still Screening</div>
+            <div class="desc">The film remains in active use in schools and communities — a living health intervention with no end date and no expiry.</div>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem;">The film's greatest impact may be unmeasurable — the children whose parents, after a school screening, booked an eye test they had never thought to arrange. The ones who can now read the board. The ones for whom a film that took months to make changed the next decade of their lives.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>A child who can<br>finally see clearly<br><em>doesn't know the film did it.</em><br>That's how it should be.</h3>
+    <p>Great health communication disappears into action. The Sightsavers film worked because it was made from truth, tested by communities, and trusted by the audiences it was made for. That is the standard White Rice has built with Sightsavers across twenty years. And it is the standard that won at Cannes.</p>
+    <div class="tag-pills">
+      <span class="pill">Eye Health</span>
+      <span class="pill">Short Film</span>
+      <span class="pill">Cannes Lions Health</span>
+      <span class="pill">Data-Driven Storytelling</span>
+      <span class="pill">Early Detection</span>
+      <span class="pill">Children's Vision</span>
+      <span class="pill">Sightsavers International</span>
+      <span class="pill">C Prime</span>
+      <span class="pill">20-Year Partnership</span>
+      <span class="pill">Community Screening</span>
+      <span class="pill">Schools</span>
+      <span class="pill">Pakistan</span>
+      <span class="pill">Disability Inclusion</span>
+      <span class="pill">SBC</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

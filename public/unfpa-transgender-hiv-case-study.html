@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apni Kahani — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:       #1A1612;
+      --parchment: #F5F0E8;
+      --sand:      #E2D9C8;
+      --muted:     #7A7065;
+      --teal:      #1A6B6B;
+      --teal-lt:   #3A9B9B;
+      --teal-pale: #D0EAEA;
+      --rose:      #B84A6A;
+      --rose-lt:   #D87A9A;
+      --amber:     #C48A2A;
+      --amber-lt:  #E8B85A;
+      --night:     #0F2A2A;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--night);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 85% 15%, rgba(26,107,107,.7)  0%, transparent 65%),
+        radial-gradient(ellipse 45% 55% at 5%  85%, rgba(184,74,106,.3)  0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 50% 55%, rgba(15,42,42,.6)    0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Subtle film-frame lines */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--teal-lt) 0px, var(--teal-lt) 20px,
+        transparent 20px, transparent 28px,
+        var(--rose-lt) 28px, var(--rose-lt) 48px,
+        transparent 48px, transparent 56px
+      );
+      opacity: .5;
+      pointer-events: none;
+    }
+
+    .hero-label {
+      padding: 2.5rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--teal-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--teal-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--teal); }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--teal-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 300; color: rgba(255,255,255,.42);
+      font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.07); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; border-top: 1px solid rgba(255,255,255,.04); }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--teal-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(26,107,107,.2); border: 1px solid rgba(26,107,107,.4); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--teal); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'APNI KAHANI'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 10vw, 12rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; white-space: nowrap; letter-spacing: -.02em; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.6); font-weight: 300; }
+
+    /* ── DIVIDER BAND ── */
+    .divider-band { background: var(--sand); padding: 3rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--teal); line-height: 1.1; white-space: nowrap; }
+    .divider-text { font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--teal); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--teal); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--teal); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--teal); background: rgba(26,107,107,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── RESEARCH METHODS ── */
+    .research-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin: 2rem 0; }
+    .research-card { padding: 1.5rem; background: var(--night); border-radius: 2px; }
+    .research-icon { width: 2.2rem; height: 2.2rem; border-radius: 50%; background: rgba(26,107,107,.3); border: 1px solid rgba(58,155,155,.3); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .research-icon svg { width: 1rem; height: 1rem; }
+    .research-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .research-body { font-size: .78rem; line-height: 1.65; color: rgba(255,255,255,.45); font-weight: 300; }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--night); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── EPISODE BAND ── */
+    .episode-band { background: var(--night); padding: 5rem 3.5rem; }
+    .episode-inner { max-width: 1200px; margin: 0 auto; }
+    .episode-header { margin-bottom: 3rem; }
+    .episode-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .episode-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; color: #fff; }
+    .episode-title em { font-style: italic; color: var(--teal-lt); }
+    .episode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); }
+    .episode-card { background: var(--night); padding: 2rem 1.75rem; position: relative; }
+    .episode-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300;
+      line-height: 1; color: rgba(255,255,255,.06); position: absolute; top: 1rem; right: 1.25rem;
+    }
+    .episode-tag { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: .75rem; }
+    .episode-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: .6rem; line-height: 1.3; }
+    .episode-desc { font-size: .78rem; line-height: 1.65; color: rgba(255,255,255,.42); font-weight: 300; }
+    .episode-note { margin-top: 2.5rem; padding: 1.5rem 2rem; background: rgba(26,107,107,.15); border: 1px solid rgba(26,107,107,.25); border-radius: 2px; }
+    .episode-note p { font-size: .88rem; line-height: 1.75; color: rgba(255,255,255,.55); font-weight: 300; }
+    .episode-note strong { color: rgba(255,255,255,.8); font-weight: 500; }
+
+    /* ── CO-CREATION BAND ── */
+    .cocreation-band { background: rgba(26,107,107,.08); border-top: 1px solid rgba(26,107,107,.15); border-bottom: 1px solid rgba(26,107,107,.15); padding: 4rem 3.5rem; }
+    .cocreation-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .cocreation-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem; }
+    .cocreation-heading em { font-style: italic; color: var(--teal); }
+    .cocreation-body p { font-size: .95rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1rem; }
+    .cocreation-body p:last-child { margin-bottom: 0; }
+    .cocreation-list { display: flex; flex-direction: column; gap: 1rem; }
+    .co-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem; background: #fff; border-left: 3px solid var(--teal); }
+    .co-item-label { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: .3rem; }
+    .co-item-body { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CAMPAIGN TAGS ── */
+    .c-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0; }
+    .c-tag { display: flex; align-items: center; gap: .4rem; padding: .45rem .9rem; background: var(--sand); border-radius: 2px; font-size: .8rem; color: var(--ink); }
+    .c-tag::before { content: '→'; color: var(--teal); font-size: .7rem; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--teal); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--night); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(26,107,107,.2) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--teal-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.45); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .episode-band, .cocreation-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .cocreation-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .research-grid, .episode-grid { grid-template-columns: 1fr; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--teal); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — HIV Prevention &amp; Behaviour Change · Transgender Community · Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">UNFPA Pakistan · Lahore &amp; Karachi · Multi-City</div>
+    <h1>
+      Apni <em>Kahani</em>
+      <span class="sub-title">HIV Prevention Animation Series for Pakistan's Transgender Community</span>
+    </h1>
+    <p class="hero-sub">A six-part animation drama series, built on 90 days of ethnographic co-creation with Pakistan's Khawaja Sira community — designed not to lecture, but to open a conversation that had never been possible before.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">UNFPA Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Community</span><span class="meta-value">Khawaja Sira (Transgender) Community</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">HIV Prevention &amp; Safe Behaviour Change</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">Research, Co-Creation &amp; Creative Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">Human-Centred Design &amp; <em>Creative Lead</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice led the full design and production cycle — from 90 days of immersive ethnographic research and co-creation with the Khawaja Sira community, through to scripting, illustration, animation production, voiceover casting, and peer educator facilitation design. Every element of the series was built with the community, not for them.</p>
+      <div class="role-services">
+        <span class="role-tag">Ethnographic Research</span>
+        <span class="role-tag">Human-Centred Design</span>
+        <span class="role-tag">Community Co-Creation</span>
+        <span class="role-tag">Script &amp; Storyline Development</span>
+        <span class="role-tag">Animation Production</span>
+        <span class="role-tag">Illustration &amp; Visual Design</span>
+        <span class="role-tag">Peer Educator Facilitation Guide</span>
+        <span class="role-tag">Behaviour Change Strategy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">6 Episodes</div>
+      <div class="outcome-desc">A complete animation drama series — Pakistan's first culturally grounded HIV prevention content for the Khawaja Sira community.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">90 Days</div>
+      <div class="outcome-desc">Of immersive ethnographic research across Lahore and Karachi — 50+ days of direct observation, shadowing, and in-community co-creation.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">30–40 Min</div>
+      <div class="outcome-desc">Average peer-facilitated conversation triggered by each 5–6 minute episode — with concrete commitments and action agreements by participants.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">National Standard</div>
+      <div class="outcome-desc">The series became the standard conversation-starter tool for HIV prevention engagement with the Khawaja Sira community across Pakistan.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Community Voice</div>
+      <div class="outcome-desc">All voiceovers performed by actual Khawaja Sira community members — creating an authenticity no external production could replicate.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTEXT DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">High<br>Prevalence.<br>Deep<br>Silence.</div>
+  <div class="divider-text">At the time of this programme, HIV prevalence among Pakistan's transgender community was critically high — and safe practice rates were critically low. The barrier was not access to information. It was a combination of deep social taboo, community mistrust of health systems, the shame associated with open discussion, and the absence of any content that felt like it was made for — and by — this community.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Pakistan's Khawaja Sira community lives at the intersection of multiple vulnerabilities — social marginalisation, economic precarity, and a healthcare system that has historically failed to serve them with dignity or cultural competence. HIV prevention programming aimed at this community had repeatedly failed — not because the information was wrong, but because the approach was fundamentally broken.</p>
+        <div class="pull-quote">
+          <p>"Standard awareness campaigns don't work when the community has never seen themselves represented, has no reason to trust the messenger, and carries a lifetime of shame around the subject being discussed."</p>
+        </div>
+        <p>Existing materials were generic, clinical, and created entirely without community input. They used neither the community's own language — Farsi — nor their cultural references, social dynamics, or the specific scenarios in which unsafe behaviours actually occurred. Myths were widespread. Screening was avoided. Peer conversations on the subject were almost nonexistent.</p>
+        <p>The challenge was not a communications problem. It was a trust problem, a representation problem, and a shame problem — all of which required a fundamentally different design approach.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Before a single frame was drawn or a line of script written, White Rice spent three months inside the community. The research phase was not a needs assessment — it was an act of deep listening. The team used immersive human-centred design and ethnographic methods across Lahore and Karachi to understand the community not as a health target group, but as a complex social world with its own culture, language, relationships, and logic.</p>
+
+        <div class="research-grid">
+          <div class="research-card">
+            <div class="research-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A9B9B" stroke-width="1.6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div class="research-title">Ethnographic Observation</div>
+            <div class="research-body">50+ days of direct shadowing — observing daily life, social dynamics, and the real contexts in which behaviour decisions were made.</div>
+          </div>
+          <div class="research-card">
+            <div class="research-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A9B9B" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div class="research-title">In-Depth Interviews</div>
+            <div class="research-body">Deep qualitative conversations exploring beliefs, myths, barriers, peer dynamics, and the emotional landscape around HIV and safe practice.</div>
+          </div>
+          <div class="research-card">
+            <div class="research-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3A9B9B" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="research-title">Co-Creation Sessions</div>
+            <div class="research-body">Community members as active design partners — contributing storylines, scenarios, characters, language (Farsi), and real-life experiences.</div>
+          </div>
+        </div>
+
+        <p>The research produced insights that completely reoriented the design. The community did not want to be educated — they wanted to be <em>seen</em>. Entertainment-driven content outperformed instructional content by every measure of engagement. Peer support was the most trusted channel. And the community's own language — Farsi — was not a detail; it was the entire basis of cultural credibility.</p>
+
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+            <div>
+              <div class="pillar-title">Entertainment Over Instruction</div>
+              <div class="pillar-body">Drama and storytelling to create emotional engagement first — making the content something the community wanted to watch, not something they were made to sit through.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+            <div>
+              <div class="pillar-title">Peer-Led Facilitation</div>
+              <div class="pillar-body">A community peer educator — not a health worker or outsider — as the bridge between the content and the conversation it needed to unlock.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div>
+              <div class="pillar-title">Radical Cultural Authenticity</div>
+              <div class="pillar-body">Farsi language in the script. Real-life community scenarios. Illustrations co-created with the community. Voiceovers performed by community members themselves.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+            <div>
+              <div class="pillar-title">Indirect Approach to a Taboo Subject</div>
+              <div class="pillar-body">Tackle HIV and safe practice through the side door — showing real scenarios, letting characters navigate real dilemmas, and allowing the facilitated conversation to do the work of direct discussion.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ THE SERIES ══ -->
+<section class="episode-band">
+  <div class="episode-inner">
+    <div class="episode-header">
+      <div class="episode-eyebrow">The Intervention · Six-Part Animation Series</div>
+      <h2 class="episode-title"><em>Apni Kahani</em> — A Drama in Six Episodes</h2>
+    </div>
+    <div class="episode-grid">
+      <div class="episode-card">
+        <div class="episode-num">01</div>
+        <div class="episode-tag">Episode One</div>
+        <div class="episode-name">Community &amp; Belonging</div>
+        <div class="episode-desc">Establishes the world — the dera, the guru-chela relationship, the social fabric of community life — through characters the audience immediately recognise as their own.</div>
+      </div>
+      <div class="episode-card">
+        <div class="episode-num">02</div>
+        <div class="episode-tag">Episode Two</div>
+        <div class="episode-name">The Myth and the Fear</div>
+        <div class="episode-desc">A character encounters misinformation about HIV transmission. The episode dramatises how myths spread — and the real cost of leaving them unchallenged.</div>
+      </div>
+      <div class="episode-card">
+        <div class="episode-num">03</div>
+        <div class="episode-tag">Episode Three</div>
+        <div class="episode-name">The Moment of Choice</div>
+        <div class="episode-desc">A real-life scenario in which a character faces a decision about safe practice — showing the social pressures, the hesitation, and what support from a peer can change.</div>
+      </div>
+      <div class="episode-card">
+        <div class="episode-num">04</div>
+        <div class="episode-tag">Episode Four</div>
+        <div class="episode-name">Seeking Help</div>
+        <div class="episode-desc">The journey of accessing screening — the fear, the stigma, the barriers — and the relief of a peer who has been through it guiding the way forward.</div>
+      </div>
+      <div class="episode-card">
+        <div class="episode-num">05</div>
+        <div class="episode-tag">Episode Five</div>
+        <div class="episode-name">What We Don't Say</div>
+        <div class="episode-desc">A story about silence — within the community — and the cost of not talking. Designed to surface the conversations the facilitated session then brings into the open.</div>
+      </div>
+      <div class="episode-card">
+        <div class="episode-num">06</div>
+        <div class="episode-tag">Episode Six</div>
+        <div class="episode-name">Our Responsibility</div>
+        <div class="episode-desc">A forward-looking close — showing collective action, peer support, and what a community looks like when it decides to protect itself together.</div>
+      </div>
+    </div>
+    <div class="episode-note">
+      <p>Each episode ran <strong>5–6 minutes</strong> and was followed by a <strong>peer educator-facilitated session</strong> using a structured question guide co-designed with the community. What began as a short screening consistently became a <strong>30–40 minute conversation</strong> — with participants identifying specific actions, making personal commitments, and agreeing on collective next steps. The episode was not the intervention. <strong>The conversation it opened was.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CO-CREATION BAND ══ -->
+<section class="cocreation-band">
+  <div class="cocreation-inner">
+    <div>
+      <h2 class="cocreation-heading">Built <em>with</em> the community.<br>Not for them.</h2>
+      <div class="cocreation-body">
+        <p>Every design decision in this programme — from the storylines to the visual style to the language used — was validated, iterated, and approved by the Khawaja Sira community through multiple rounds of real-time co-creation and testing.</p>
+        <p>This was not a token consultation. It was the design methodology.</p>
+      </div>
+    </div>
+    <div class="cocreation-list">
+      <div class="co-item">
+        <div>
+          <div class="co-item-label">Farsi Language Integration</div>
+          <div class="co-item-body">The Khawaja Sira community has its own distinct language — Farsi. Scripts were developed with community members to ensure authentic use of vocabulary, idiom, and tone that the audience would immediately recognise as their own.</div>
+        </div>
+      </div>
+      <div class="co-item">
+        <div>
+          <div class="co-item-label">Community Voiceovers</div>
+          <div class="co-item-body">All character voiceovers were performed by actual Khawaja Sira community members — not professional voice actors. This single decision transformed the content's credibility from the first moment of screening.</div>
+        </div>
+      </div>
+      <div class="co-item">
+        <div>
+          <div class="co-item-label">Illustrations Co-Created in Community</div>
+          <div class="co-item-body">Visual characters, settings, and design elements were developed iteratively with community input — ensuring that when members watched the animation, they saw themselves, not a generic approximation.</div>
+        </div>
+      </div>
+      <div class="co-item">
+        <div>
+          <div class="co-item-label">Real Stories, Real Scenarios</div>
+          <div class="co-item-body">Storylines were drawn directly from real experiences shared during the research phase — grounding every episode in situations the community had actually lived, not scenarios imagined by external designers.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The most important measure of this programme's success is not reach — it is what happened in the room. A six-minute episode, shown to a group of Khawaja Sira community members facilitated by a peer they trusted, consistently produced thirty to forty minutes of open, substantive conversation about a subject that had previously been unspeakable in community settings.</p>
+
+        <div class="pull-quote">
+          <p>"The episode was five minutes. The conversation that followed was forty. That is the gap this programme was designed to open."</p>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">National Tool</div>
+            <div class="desc">The series became the standard HIV prevention conversation-starter for the Khawaja Sira community across Pakistan — adopted and used consistently across all outreach and engagement.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">30–40 Min</div>
+            <div class="desc">Average peer-facilitated conversation per 5–6 minute episode — with community members identifying actions and making personal and collective commitments.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Trust Built</div>
+            <div class="desc">By ensuring community members voiced their own characters and co-created every element, the content achieved an immediate authenticity that broke down barriers no external campaign had managed.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Conversation Opened</div>
+            <div class="desc">For the first time, community groups across Pakistan had a structured, emotionally safe, peer-led format for talking openly about HIV, safe practice, and screening.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">Apni Kahani demonstrated a principle that sits at the heart of White Rice's work: that the most powerful behaviour change tool is not a message — it is a mirror. When a marginalised community sees itself represented, with honesty, dignity, and cultural depth, the conversation that has always needed to happen finally can. The design challenge is to make that mirror, and to trust the community to do the rest.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>You cannot change a behaviour<br>you cannot yet <em>talk about.</em></h3>
+    <p>Apni Kahani created the conditions for a conversation that had never been possible before — built on three months of deep listening, radical co-creation, and the conviction that a community's own voice is the most powerful behaviour change tool there is.</p>
+    <div class="tag-pills">
+      <span class="pill">HIV Prevention</span>
+      <span class="pill">Behaviour Change</span>
+      <span class="pill">Transgender Community</span>
+      <span class="pill">Khawaja Sira</span>
+      <span class="pill">Animation</span>
+      <span class="pill">Human-Centred Design</span>
+      <span class="pill">Ethnographic Research</span>
+      <span class="pill">Peer Education</span>
+      <span class="pill">Co-Creation</span>
+      <span class="pill">UNFPA</span>
+      <span class="pill">SDG 3</span>
+      <span class="pill">Pakistan</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

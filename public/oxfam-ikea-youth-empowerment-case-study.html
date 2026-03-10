@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empowering Youth for Work — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:        #1A1612;
+      --parchment:  #F5F0E8;
+      --sand:       #E2D9C8;
+      --muted:      #7A7065;
+      --amber:      #C4821A;
+      --amber-lt:   #E8B45A;
+      --amber-pale: #FBF0D8;
+      --forest:     #2A4A2A;
+      --forest-lt:  #4A7A4A;
+      --forest-pale:#D8EAD8;
+      --earth:      #5A3A1A;
+      --earth-lt:   #8A6A4A;
+      --night:      #0F1A0F;
+      --rust:       #8A3A1A;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--night);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 88% 12%, rgba(196,130,26,.45) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 0%  88%, rgba(42,74,42,.65)   0%, transparent 60%),
+        radial-gradient(ellipse 35% 40% at 45% 50%, rgba(15,26,15,.4)    0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* 18-month timeline rings */
+    .hero-rings {
+      position: absolute; top: 50%; right: -8%;
+      transform: translateY(-50%);
+      width: 55%; aspect-ratio: 1;
+      pointer-events: none; z-index: 1;
+    }
+    .hero-rings span {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(196,130,26,.07);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+    .hero-rings span:nth-child(1) { width: 30%;  height: 30%; }
+    .hero-rings span:nth-child(2) { width: 52%;  height: 52%; }
+    .hero-rings span:nth-child(3) { width: 72%;  height: 72%; }
+    .hero-rings span:nth-child(4) { width: 90%;  height: 90%; }
+    .hero-rings span:nth-child(5) { width: 110%; height: 110%; }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--amber-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--amber-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--amber); }
+    .funder-note {
+      font-size: .78rem; color: rgba(255,255,255,.28); font-weight: 300;
+      font-style: italic; margin-bottom: .75rem;
+      animation: fadeUp .7s .05s both;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 7.5vw, 8rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--amber-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.7rem);
+      font-weight: 300; color: rgba(255,255,255,.42); font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.07); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--amber-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--amber-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(196,130,26,.15); border: 1px solid rgba(196,130,26,.35); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--amber-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--amber); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: '18'; position: absolute; right: -1rem; bottom: -4rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(10rem, 28vw, 32rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; letter-spacing: -.04em; line-height: 1; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.22); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.65); font-weight: 300; }
+
+    /* ── 18-MONTH TIMELINE ── */
+    .timeline-band { background: var(--forest); padding: 5rem 3.5rem; }
+    .timeline-inner { max-width: 1200px; margin: 0 auto; }
+    .timeline-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .timeline-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3.5rem; }
+    .timeline-heading em { font-style: italic; color: var(--amber-lt); }
+    .timeline-track { position: relative; padding-left: 2.5rem; }
+    .timeline-track::before { content: ''; position: absolute; left: .75rem; top: .5rem; bottom: .5rem; width: 1px; background: linear-gradient(to bottom, rgba(232,180,90,.6), rgba(232,180,90,.1)); }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot { position: absolute; left: -1.85rem; top: .35rem; width: .85rem; height: .85rem; border-radius: 50%; background: var(--amber); border: 2px solid var(--forest); }
+    .tl-phase { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--amber-lt); margin-bottom: .35rem; }
+    .tl-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .tl-body { font-size: .85rem; line-height: 1.65; color: rgba(255,255,255,.48); font-weight: 300; }
+
+    /* ── DIVIDER ── */
+    .divider-band { background: var(--sand); padding: 3rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--amber); line-height: 1.1; white-space: nowrap; }
+    .divider-text { font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--amber); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--amber); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--amber); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--amber); background: rgba(196,130,26,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── DESIGN PROCESS BAND ── */
+    .process-band { background: var(--night); padding: 5rem 3.5rem; }
+    .process-inner { max-width: 1200px; margin: 0 auto; }
+    .process-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .process-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .process-heading em { font-style: italic; color: var(--amber-lt); }
+    .process-cycle { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); margin-bottom: 2.5rem; }
+    .cycle-card { background: var(--night); padding: 2.5rem 1.5rem; text-align: center; }
+    .cycle-icon { width: 3.5rem; height: 3.5rem; border-radius: 50%; background: rgba(196,130,26,.1); border: 1px solid rgba(196,130,26,.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .cycle-icon svg { width: 1.2rem; height: 1.2rem; }
+    .cycle-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .cycle-body { font-size: .75rem; line-height: 1.55; color: rgba(255,255,255,.4); font-weight: 300; }
+    .cycle-arrow { display: flex; align-items: center; justify-content: center; }
+    .process-note { padding: 1.5rem 2rem; background: rgba(196,130,26,.08); border-left: 2px solid var(--amber); }
+    .process-note p { font-size: .88rem; line-height: 1.7; color: rgba(255,255,255,.5); font-weight: 300; font-style: italic; }
+    .process-note p strong { color: rgba(255,255,255,.8); font-style: normal; }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--night); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── HUBS BAND ── */
+    .hubs-band { background: var(--forest-pale); padding: 5rem 3.5rem; }
+    .hubs-inner { max-width: 1200px; margin: 0 auto; }
+    .hubs-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--forest); margin-bottom: .75rem; }
+    .hubs-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--ink); margin-bottom: .75rem; }
+    .hubs-heading em { font-style: italic; color: var(--amber); }
+    .hubs-intro { font-size: .95rem; line-height: 1.8; color: var(--muted); font-weight: 300; max-width: 65ch; margin-bottom: 3rem; }
+    .hubs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+    .hub-card { background: #fff; padding: 2.5rem; border-top: 4px solid var(--forest); }
+    .hub-province { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--forest); margin-bottom: .5rem; }
+    .hub-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--ink); margin-bottom: .75rem; }
+    .hub-desc { font-size: .88rem; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 1.25rem; }
+    .hub-context { font-size: .78rem; color: var(--amber); font-style: italic; }
+
+    /* ── YOUTH SEGMENTS ── */
+    .segments-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; color: var(--ink); margin-bottom: 1.5rem; }
+    .segments-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .segment-card { padding: 1.5rem; background: #fff; border-radius: 2px; border-left: 3px solid var(--amber); }
+    .segment-icon { width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--amber-pale); display: flex; align-items: center; justify-content: center; margin-bottom: .75rem; }
+    .segment-icon svg { width: .9rem; height: .9rem; }
+    .segment-label { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: .35rem; }
+    .segment-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; }
+    .segment-body { font-size: .8rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── WHAT MADE IT DIFFERENT ── */
+    .different-band { background: var(--earth); padding: 5rem 3.5rem; }
+    .different-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
+    .different-left { }
+    .different-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 1rem; }
+    .different-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.15; color: #fff; }
+    .different-heading em { font-style: italic; color: var(--amber-lt); }
+    .different-right { }
+    .different-right p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.52); font-weight: 300; margin-bottom: 1.25rem; }
+    .compare-table { display: grid; gap: 2px; background: rgba(255,255,255,.08); margin-top: 1.5rem; }
+    .compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,.08); }
+    .compare-cell { padding: 1.25rem 1.5rem; background: var(--earth); }
+    .compare-cell.header { background: rgba(0,0,0,.3); }
+    .compare-label { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: .4rem; }
+    .compare-label.conventional { color: rgba(255,255,255,.25); }
+    .compare-label.spring { color: var(--amber-lt); }
+    .compare-text { font-size: .85rem; line-height: 1.6; font-weight: 300; }
+    .compare-text.conventional { color: rgba(255,255,255,.4); }
+    .compare-text.spring { color: rgba(255,255,255,.75); }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--amber); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--night); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,130,26,.12) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--amber-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.45); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .process-band, .hubs-band, .timeline-band, .different-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .different-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .hubs-grid, .segments-grid, .process-cycle { grid-template-columns: 1fr; }
+      .compare-row { grid-template-columns: 1fr; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--amber); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-rings">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Youth Empowerment, HCD &amp; Innovation · Punjab &amp; Sindh, Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="funder-note">Oxfam Pakistan · Funded by IKEA Foundation · Multi-Country Programme</div>
+    <div class="eyebrow">Youth Empowerment for Work · 18 Months · 5-Year Programme Design</div>
+    <h1>
+      Designed<br>before it was<br><em>built.</em>
+      <span class="sub-title">Empowering Youth for Work — Oxfam's Flagship Human-Centred Design Journey</span>
+    </h1>
+    <p class="hero-sub">An 18-month HCD consulting engagement — the longest in White Rice's history — in which we compressed a 5-year programme into a living design laboratory: empathising, prototyping, failing productively, and iterating until Oxfam had something genuinely built for the youth it was trying to reach.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Oxfam Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Funder</span><span class="meta-value">IKEA Foundation</span></div>
+    <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-value">18 Months HCD · 5-Year Programme</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">HCD Design Partner — Strategy to Prototype</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">End-to-End HCD Partner — <em>18 Months of Designed Learning</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice served as Oxfam's human-centred design partner for the full 18-month design and prototyping phase of their IKEA-funded Youth Empowerment for Work programme — one of the most rigorous and sustained HCD engagements in Pakistan's development sector. Our role was not just to research, but to embed design thinking across Oxfam's implementing partner network: running quarterly workshops, facilitating live prototyping cycles, and guiding field teams through the iterative process of learning, failing, and redesigning until the programme was genuinely ready to scale.</p>
+      <div class="role-services">
+        <span class="role-tag">HCD Strategy &amp; Facilitation</span>
+        <span class="role-tag">Quarterly Design Workshops</span>
+        <span class="role-tag">Empathy &amp; Field Research</span>
+        <span class="role-tag">Challenge Definition</span>
+        <span class="role-tag">Ideation &amp; Co-Creation</span>
+        <span class="role-tag">Prototyping</span>
+        <span class="role-tag">Live User Testing</span>
+        <span class="role-tag">Iteration &amp; Programme Refinement</span>
+        <span class="role-tag">Innovation Hub Design</span>
+        <span class="role-tag">Implementing Partner Capacity Building</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">18 Months</div>
+      <div class="outcome-desc">The longest single HCD consulting engagement White Rice has undertaken — compressing a 5-year programme into an 18-month design, test, and adapt cycle before scale.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">10,000+</div>
+      <div class="outcome-desc">Young entrepreneurs and youth enabled in semi-urban and rural communities across climate-affected areas of Punjab and Sindh.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">2 Innovation Hubs</div>
+      <div class="outcome-desc">Flagship youth innovation hubs established — one in Punjab, one in Sindh — offering customised programmes for entrepreneurs, agri-tech youth, and employability tracks.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4 Countries</div>
+      <div class="outcome-desc">Pakistan was one of four countries running the programme simultaneously — with cross-country learning feeding into programme refinement across the entire global initiative.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Quarterly Cycles</div>
+      <div class="outcome-desc">Six design sprints over 18 months — each one building on the last, moving through empathy, definition, ideation, prototyping, and testing in a live programme context.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 18-MONTH TIMELINE ══ -->
+<section class="timeline-band">
+  <div class="timeline-inner">
+    <div class="timeline-eyebrow">The 18-Month Design Journey</div>
+    <h2 class="timeline-heading">Every quarter, a new <em>design sprint.</em><br>Every sprint, a better programme.</h2>
+    <div class="timeline-track">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-phase">Months 1–3 · Sprint 1</div>
+        <div class="tl-title">Empathy — Understanding the Youth</div>
+        <div class="tl-body">Immersive field research with young people in climate-affected areas of Punjab and Sindh. Understanding their relationship with work, aspiration, barriers, and the economic realities shaping their choices. Implementing partners trained in empathy methods and deployed with field guides.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-phase">Months 4–6 · Sprint 2</div>
+        <div class="tl-title">Define — Reframing the Challenge</div>
+        <div class="tl-body">Cross-partner workshops to synthesise field insights and reframe the core challenge. What did "youth empowerment for work" actually mean for a young woman in Rajanpur versus a young man in Karachi's peri-urban fringe? The programme's assumptions were stress-tested against the evidence.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-phase">Months 7–9 · Sprint 3</div>
+        <div class="tl-title">Ideate — Co-Creating Solutions</div>
+        <div class="tl-body">Facilitated ideation workshops with implementing partners and youth co-designers. Multiple programme concepts generated — including the innovation hub model, differentiated youth pathways, and agri-tech integration — with rapid filtering against real-world feasibility and community fit.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-phase">Months 10–12 · Sprint 4</div>
+        <div class="tl-title">Prototype — Building to Learn</div>
+        <div class="tl-body">First live prototypes deployed in communities. Not polished — deliberately rough, designed to generate learning. Innovation hub concepts tested at small scale. Youth pathway programmes piloted with real cohorts. Implementing partners embedded in the testing process as co-observers.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-phase">Months 13–15 · Sprint 5</div>
+        <div class="tl-title">Test &amp; Learn — What Worked, What Didn't</div>
+        <div class="tl-body">Rigorous feedback capture across all prototype sites. Structured failure analysis — not to assign blame, but to understand mechanism. What assumptions were wrong? Which user segments responded differently? What programme adjustments were required before scale? Partners returned to refine.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="tl-phase">Months 16–18 · Sprint 6</div>
+        <div class="tl-title">Adapt &amp; Scale — A Programme Ready to Deploy</div>
+        <div class="tl-body">Final programme design — region-specific, evidence-grounded, and co-created with the communities it was built for. Innovation hubs formally established in Punjab and Sindh. Implementing partners equipped with tools, training, and programme frameworks to drive the 5-year rollout with confidence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">18 months<br>to get it<br>right.</div>
+  <div class="divider-text">The conventional development model is: research the baseline, write the programme, fund the implementation. White Rice and Oxfam did something different. For 18 months, they treated the programme itself as a prototype — running it, breaking it, learning from it, and redesigning it — before committing to scale. That is why 10,000 young people were reached by something that genuinely worked, not something that sounded good in a proposal.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Youth unemployment and underemployment in Pakistan's semi-urban and rural areas — particularly in climate-affected regions of Punjab and Sindh — is not a simple skills gap problem. It is a system of interconnected barriers: limited market access, weak connectivity between skills supply and employer demand, entrenched gender norms restricting girls' economic participation, climate disruption undermining agricultural livelihoods, and programme designs that rarely reflect the actual lives of the young people they target.</p>
+        <div class="pull-quote">
+          <p>"Every programme that had tried to empower these youth before had been designed for them, not with them. White Rice's task was to make that distinction matter."</p>
+        </div>
+        <p>Oxfam and the IKEA Foundation had the ambition and the funding for a 5-year programme to change this. What they needed was the confidence that the programme design was actually right before deploying it at scale. That confidence could only come from one source: real evidence from the communities it was built to serve.</p>
+        <p>The added complexity was the parallel nature of the programme — running simultaneously in four countries, each with its own context, partner network, and implementation challenges. White Rice had to operate as a rigorous, facilitated design partner while contributing to a shared methodology and global learning ecosystem.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>White Rice's strategy was to treat the entire 5-year programme as something that needed to be designed before it was built. Rather than consulting, writing a framework, and handing it over, White Rice embedded itself in Oxfam's implementation process — running quarterly workshops that moved through the full design thinking arc, and returning every three months to review what the field had taught, what needed to change, and how to improve.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <div>
+              <div class="pillar-title">Partners as Designers, Not Implementers</div>
+              <div class="pillar-body">Oxfam's implementing partners weren't handed a programme to execute — they were trained in design thinking and brought into each quarterly workshop as co-designers. Their field knowledge was the raw material for every sprint.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+            <div>
+              <div class="pillar-title">Productive Failure as Programme Intelligence</div>
+              <div class="pillar-body">Each prototype round was designed to fail instructively — surfacing the assumptions that were wrong before they were embedded at scale. The question was never "did it work?" but "what did we learn that changes the design?"</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+            <div>
+              <div class="pillar-title">Region-Specific Programme Design</div>
+              <div class="pillar-body">Punjab and Sindh have different economic ecologies, labour markets, and cultural contexts. The programme that emerged was not one national model — it was two region-specific designs, each grounded in the evidence from its own context.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div>
+              <div class="pillar-title">Scale Only When Ready</div>
+              <div class="pillar-body">The entire HCD phase was in service of one question: is this programme ready to deploy at the scale Oxfam and IKEA intended? The answer had to be earned — through iteration — not assumed from good intentions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ DESIGN PROCESS BAND ══ -->
+<section class="process-band">
+  <div class="process-inner">
+    <div class="process-eyebrow">The Design Thinking Framework · Applied Every Quarter</div>
+    <h2 class="process-heading">Five stages. Six rounds.<br><em>Eighteen months of designed programme intelligence.</em></h2>
+    <div class="process-cycle">
+      <div class="cycle-card">
+        <div class="cycle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B45A" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="cycle-name">Empathise</div>
+        <div class="cycle-body">Deep field immersion — understanding youth lives, aspirations, and barriers as they actually are</div>
+      </div>
+      <div class="cycle-card">
+        <div class="cycle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B45A" stroke-width="1.6"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <div class="cycle-name">Define</div>
+        <div class="cycle-body">Reframe the challenge from the evidence — not the assumption that was written in the original proposal</div>
+      </div>
+      <div class="cycle-card">
+        <div class="cycle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B45A" stroke-width="1.6"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <div class="cycle-name">Ideate</div>
+        <div class="cycle-body">Co-create solutions with partners and communities — generating range before narrowing to what is feasible and relevant</div>
+      </div>
+      <div class="cycle-card">
+        <div class="cycle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B45A" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <div class="cycle-name">Prototype</div>
+        <div class="cycle-body">Build rough versions of the programme — deliberately imperfect, designed to generate real feedback from real communities</div>
+      </div>
+      <div class="cycle-card">
+        <div class="cycle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8B45A" stroke-width="1.6"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="cycle-name">Test &amp; Iterate</div>
+        <div class="cycle-body">Learn from what the prototype revealed — document failure, adapt the design, and return to the field with something better</div>
+      </div>
+    </div>
+    <div class="process-note">
+      <p><strong>The key innovation:</strong> This cycle ran not once, but six times over 18 months — with each round building on the evidence of the last. Implementing partners participated in every workshop, carrying the learnings back to their field teams and returning with real observations from the next testing round. This is what genuine programme co-design looks like.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INNOVATION HUBS ══ -->
+<section class="hubs-band">
+  <div class="hubs-inner">
+    <div class="hubs-eyebrow">The Programme Output · Innovation Hubs &amp; Youth Pathways</div>
+    <h2 class="hubs-heading">Two hubs. Three pathways.<br><em>One bespoke programme per region.</em></h2>
+    <p class="hubs-intro">The 18-month HCD process produced two flagship innovation hubs — one in Punjab, one in Sindh — each designed around the specific economic context, labour market, and youth profile of its region. Within each hub, three differentiated pathways served different types of young people, rather than expecting one model to fit all.</p>
+    <div class="hubs-grid">
+      <div class="hub-card">
+        <div class="hub-province">Innovation Hub · Punjab</div>
+        <div class="hub-name">Punjab Hub</div>
+        <div class="hub-desc">Serving semi-urban and rural youth in climate-affected districts of Punjab — with a particular focus on agricultural livelihood diversification, agri-tech integration, and connecting youth to Punjab's growing light manufacturing and services markets.</div>
+        <div class="hub-context">Climate-affected region · Agricultural economy · Strong male youth participation</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-province">Innovation Hub · Sindh</div>
+        <div class="hub-name">Sindh Hub</div>
+        <div class="hub-desc">Serving peri-urban and rural youth in Sindh — with emphasis on women's economic participation, skills for the digital economy, and enterprise development adapted to Sindh's specific market conditions and mobility constraints for girls.</div>
+        <div class="hub-context">Climate-affected region · Peri-urban economy · Focus on women's economic participation</div>
+      </div>
+    </div>
+    <div class="segments-heading">Three Youth Pathways — Designed from Evidence, Not Assumption</div>
+    <div class="segments-grid">
+      <div class="segment-card">
+        <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C4821A" stroke-width="1.7"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div class="segment-label">Pathway 1</div>
+        <div class="segment-title">Entrepreneurs</div>
+        <div class="segment-body">Young people pursuing their own ventures — supported through business ideation, market access, seed financing literacy, and peer learning networks within the hub ecosystem.</div>
+      </div>
+      <div class="segment-card">
+        <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C4821A" stroke-width="1.7"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="segment-label">Pathway 2</div>
+        <div class="segment-title">Agri-Tech Youth</div>
+        <div class="segment-body">Young farmers and agricultural workers learning to integrate technology into their practices — bringing precision agriculture, mobile tools, and market connectivity to communities whose livelihoods depend on a changing climate.</div>
+      </div>
+      <div class="segment-card">
+        <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C4821A" stroke-width="1.7"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="segment-label">Pathway 3</div>
+        <div class="segment-title">Employability</div>
+        <div class="segment-body">Youth seeking employment in skilled markets — equipped with market-relevant skills, soft skills, job-readiness training, and direct linkages to employers in sectors identified through the HCD research as offering genuine, accessible opportunity.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT MADE IT DIFFERENT ══ -->
+<section class="different-band">
+  <div class="different-inner">
+    <div class="different-left">
+      <div class="different-eyebrow">The Methodology Difference</div>
+      <h2 class="different-heading">Not how development programmes are usually <em>designed.</em></h2>
+    </div>
+    <div class="different-right">
+      <p>What made this engagement singular in Pakistan's development sector was the commitment to design before scale — not as a principle, but as an 18-month practice. Most programmes don't work this way. White Rice's role was to make sure this one did.</p>
+      <div class="compare-table">
+        <div class="compare-row">
+          <div class="compare-cell header"><div class="compare-label conventional">Conventional Approach</div></div>
+          <div class="compare-cell header"><div class="compare-label spring">The Oxfam / White Rice Approach</div></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell"><div class="compare-text conventional">Baseline research → programme design → implement at scale</div></div>
+          <div class="compare-cell"><div class="compare-text spring">Empathy → define → ideate → prototype → test → iterate — six times over 18 months — before scale</div></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell"><div class="compare-text conventional">Programme assumptions embedded at the start and rarely revisited</div></div>
+          <div class="compare-cell"><div class="compare-text spring">Assumptions actively challenged every quarter — with field evidence as the arbiter</div></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell"><div class="compare-text conventional">Implementing partners execute a pre-designed programme</div></div>
+          <div class="compare-cell"><div class="compare-text spring">Implementing partners trained as designers — and co-created every iteration</div></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell"><div class="compare-text conventional">One national programme model deployed uniformly</div></div>
+          <div class="compare-cell"><div class="compare-text spring">Two bespoke regional programmes — Punjab and Sindh — each shaped by its own evidence base</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The proof of the 18-month investment was in the programme's eventual reach and effectiveness. Over 10,000 young entrepreneurs and youth were enabled across semi-urban and rural communities in climate-affected areas of Punjab and Sindh. The programme was considered one of Oxfam's most successful youth economic empowerment interventions — and a significant part of that success was attributable to the rigour of the design process that preceded it.</p>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">10,000+</div>
+            <div class="desc">Young people — entrepreneurs, agri-tech youth, and job seekers — reached across semi-urban and rural communities in climate-affected Punjab and Sindh.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">2 Hubs</div>
+            <div class="desc">Innovation hubs established — one per province — each offering region-specific programmes for three distinct youth pathways, designed from evidence not assumption.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">6 Sprints</div>
+            <div class="desc">Six quarterly design cycles — each one compressing a phase of the 5-year programme into a real-world prototype, testing it with actual youth, and learning before scaling.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">A Replicable Model</div>
+            <div class="desc">The HCD methodology White Rice developed for Oxfam became a replicable model — proving that sustained design investment before programme scale is not a luxury, but the most cost-effective path to impact.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">This project has not been done before in this way, because the development sector rarely allows the time or budget to genuinely interrogate a programme before deploying it. Oxfam and IKEA Foundation made a different bet. White Rice helped them win it.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>The best programmes<br>are the ones that<br><em>fail first.</em></h3>
+    <p>Eighteen months. Six design cycles. Countless iterations. And then a 5-year programme that worked — because it had already been run, tested, broken, and rebuilt before it was ever deployed at scale. That is what human-centred design looks like when an organisation has the courage to use it fully.</p>
+    <div class="tag-pills">
+      <span class="pill">Youth Empowerment</span>
+      <span class="pill">Human-Centred Design</span>
+      <span class="pill">Innovation Hubs</span>
+      <span class="pill">Oxfam</span>
+      <span class="pill">IKEA Foundation</span>
+      <span class="pill">Entrepreneurship</span>
+      <span class="pill">Agri-Tech</span>
+      <span class="pill">Employability</span>
+      <span class="pill">Punjab</span>
+      <span class="pill">Sindh</span>
+      <span class="pill">Climate-Affected Communities</span>
+      <span class="pill">4-Country Programme</span>
+      <span class="pill">SDG 8</span>
+      <span class="pill">SDG 13</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

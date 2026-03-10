@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Last Mile — Johns Hopkins CCP · White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:        #090E12;
+      --parchment:  #F5F0E8;
+      --sand:       #E2D9C8;
+      --muted:      #7A7065;
+      --teal:       #0D6B6B;
+      --teal-lt:    #3AACAC;
+      --teal-pale:  #D0ECEC;
+      --coral:      #C45A2A;
+      --coral-lt:   #E07A4A;
+      --coral-pale: #FAEBE2;
+      --night:      #080C10;
+      --slate:      #101A22;
+      --deep:       #0A1A1A;
+      --warm-white: #FDFAF5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--night);
+    }
+    /* Dot-grid world map feel */
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(58,172,172,.18) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: 0 0;
+      pointer-events: none; z-index: 1;
+      mask-image: radial-gradient(ellipse 85% 75% at 65% 50%, rgba(0,0,0,.7) 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 75% at 65% 50%, rgba(0,0,0,.7) 0%, transparent 70%);
+    }
+    /* Connection arcs — CSS-only flight paths */
+    .hero-arcs {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    }
+    .arc {
+      position: absolute;
+      border: 1px solid rgba(58,172,172,.12);
+      border-radius: 50%;
+      animation: arcPulse 6s ease-in-out infinite;
+    }
+    .arc:nth-child(1) { width: 60vw; height: 60vw; top: -15vw; right: -10vw; animation-delay: 0s; }
+    .arc:nth-child(2) { width: 40vw; height: 40vw; top: 5vw;  right: 5vw;  animation-delay: 1.5s; border-color: rgba(196,90,42,.1); }
+    .arc:nth-child(3) { width: 25vw; height: 25vw; top: 18vw; right: 15vw; animation-delay: 3s; }
+    @keyframes arcPulse {
+      0%, 100% { opacity: .4; }
+      50%       { opacity: 1; }
+    }
+    /* Dot nodes representing global cities */
+    .nodes {
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    }
+    .node {
+      position: absolute;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal-lt);
+      animation: nodePulse 3s ease-in-out infinite;
+    }
+    .node::after {
+      content: '';
+      position: absolute; top: -4px; left: -4px;
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 1px solid rgba(58,172,172,.3);
+      animation: ripple 2s ease-out infinite;
+    }
+    .node.coral { background: var(--coral-lt); }
+    .node.coral::after { border-color: rgba(196,90,42,.3); }
+    /* Node positions - scattered like a world map */
+    .n1  { top: 28%; left: 22%; animation-delay: 0s; }
+    .n2  { top: 38%; left: 60%; animation-delay: .5s; }
+    .n3  { top: 52%; left: 72%; animation-delay: 1s; }
+    .n4  { top: 20%; left: 50%; animation-delay: 1.5s; }
+    .n5  { top: 60%; left: 48%; animation-delay: 2s; }
+    .n6  { top: 42%; left: 35%; animation-delay: 2.5s; }
+    .n7  { top: 32%; left: 78%; animation-delay: .8s; }
+    .n8  { top: 68%; left: 30%; animation-delay: 1.8s; }
+    @keyframes nodePulse {
+      0%, 100% { opacity: .5; transform: scale(1); }
+      50%       { opacity: 1; transform: scale(1.3); }
+    }
+    @keyframes ripple {
+      0%   { transform: scale(1); opacity: .8; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 55% at 8%  30%, rgba(13,107,107,.55) 0%, transparent 58%),
+        radial-gradient(ellipse 40% 40% at 85% 75%, rgba(196,90,42,.2)   0%, transparent 55%),
+        radial-gradient(ellipse 60% 60% at 50% 50%, rgba(8,12,16,.4)     0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative; z-index: 4;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--teal-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.2); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 4;
+      max-width: 62%;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--teal-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--teal); }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.4rem, 7.5vw, 8.5rem);
+      font-weight: 300; line-height: .9; color: #fff; letter-spacing: -.015em;
+      animation: fadeUp .8s .2s both;
+    }
+    h1 em { font-style: italic; color: var(--teal-lt); }
+    h1 .sub-line {
+      display: block; font-size: clamp(1rem, 1.8vw, 1.5rem);
+      font-weight: 300; color: rgba(255,255,255,.4); font-style: italic; margin-top: .7rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 52ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.5);
+      animation: fadeUp .8s .36s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.06); position: relative; z-index: 4;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--slate); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--teal-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(13,107,107,.2); border: 1px solid rgba(58,172,172,.3); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--teal); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: '250K'; position: absolute; right: -1rem; bottom: -1rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(8rem, 20vw, 22rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; line-height: 1; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.62); font-weight: 300; }
+
+    /* ── REACH MAP BAND ── */
+    .reach-band { background: var(--deep); padding: 5rem 3.5rem; }
+    .reach-inner { max-width: 1200px; margin: 0 auto; }
+    .reach-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .75rem; }
+    .reach-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .reach-heading em { font-style: italic; color: var(--teal-lt); }
+    .regions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); }
+    .region { background: var(--deep); padding: 2.5rem 2rem; position: relative; overflow: hidden; }
+    .region::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+    .r-africa::before  { background: linear-gradient(90deg, #C45A2A, #E07A4A); }
+    .r-asia::before    { background: linear-gradient(90deg, #0D6B6B, #3AACAC); }
+    .r-gulf::before    { background: linear-gradient(90deg, #C4881A, #E8C84A); }
+    .r-europe::before  { background: linear-gradient(90deg, #3A4A6A, #6A8ACC); }
+    .region-icon { width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .r-africa  .region-icon { background: rgba(196,90,42,.12); border: 1px solid rgba(196,90,42,.3); }
+    .r-asia    .region-icon { background: rgba(13,107,107,.18); border: 1px solid rgba(58,172,172,.3); }
+    .r-gulf    .region-icon { background: rgba(196,136,26,.12); border: 1px solid rgba(196,136,26,.3); }
+    .r-europe  .region-icon { background: rgba(58,74,106,.18); border: 1px solid rgba(106,138,204,.3); }
+    .region-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: #fff; margin-bottom: .3rem; }
+    .region-sub  { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .region-body { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.42); font-weight: 300; }
+
+    /* ── DIVIDER ── */
+    .divider-band { background: var(--coral-pale); padding: 3.5rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 300; color: var(--teal); line-height: 1.05; flex-shrink: 0; }
+    .divider-text { font-size: .95rem; line-height: 1.8; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--coral); padding-left: 2rem; }
+
+    /* ── CONTENT ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--teal); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--teal); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--teal); background: rgba(13,107,107,.05); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── 6-PART SERIES ── */
+    .series-band { background: var(--slate); padding: 5.5rem 3.5rem; }
+    .series-inner { max-width: 1200px; margin: 0 auto; }
+    .series-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .75rem; }
+    .series-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3.5rem; }
+    .series-heading em { font-style: italic; color: var(--teal-lt); }
+    .series-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,.05); }
+    .episode-card { background: var(--slate); padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: background .3s ease; }
+    .episode-card:hover { background: #172230; }
+    .ep-num-bg { position: absolute; right: 1rem; bottom: .5rem; font-family: 'Cormorant Garamond', serif; font-size: 7rem; font-weight: 700; color: rgba(255,255,255,.03); line-height: 1; pointer-events: none; }
+    .ep-num { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: .6rem; }
+    .ep-dot { width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid rgba(58,172,172,.3); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; background: rgba(13,107,107,.1); }
+    .ep-dot svg { width: 1rem; height: 1rem; }
+    .ep-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: #fff; margin-bottom: .5rem; line-height: 1.2; }
+    .ep-scenario { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .ep-body { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.42); font-weight: 300; }
+
+    /* ── LANGUAGES BAND ── */
+    .lang-band { background: var(--teal); padding: 4rem 3.5rem; }
+    .lang-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: center; }
+    .lang-left { }
+    .lang-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: .75rem; }
+    .lang-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: #fff; line-height: 1.15; }
+    .lang-heading em { font-style: italic; color: rgba(255,255,255,.65); }
+    .lang-big { font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 10vw, 9rem); font-weight: 300; color: rgba(255,255,255,.1); line-height: 1; }
+    .lang-right { }
+    .lang-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5px; background: rgba(255,255,255,.1); }
+    .lang-card { background: var(--teal); padding: 2rem 1.75rem; }
+    .lc-flag { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.38); margin-bottom: .5rem; }
+    .lc-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: #fff; margin-bottom: .35rem; }
+    .lc-body { font-size: .78rem; line-height: 1.55; color: rgba(255,255,255,.45); font-weight: 300; }
+
+    /* ── DESIGN CHALLENGE BAND ── */
+    .design-band { background: var(--coral); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .design-band::before { content: '"'; position: absolute; right: -2rem; top: -3rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(14rem, 32vw, 40rem); color: rgba(255,255,255,.07); line-height: 1; pointer-events: none; }
+    .design-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .design-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 1rem; }
+    .design-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 300; font-style: italic; line-height: 1.3; color: #fff; margin-bottom: 2rem; }
+    .design-body { font-size: .95rem; line-height: 1.8; color: rgba(255,255,255,.62); font-weight: 300; max-width: 60ch; }
+    .design-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .design-pillar { padding: 1.5rem; background: rgba(255,255,255,.1); border-top: 2px solid rgba(255,255,255,.2); }
+    .dp-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .dp-body  { font-size: .78rem; line-height: 1.6; color: rgba(255,255,255,.55); font-weight: 300; }
+
+    /* ── DISTRIBUTION BAND ── */
+    .dist-band { background: var(--night); padding: 5rem 3.5rem; }
+    .dist-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .dist-left { }
+    .dist-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .75rem; }
+    .dist-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: #fff; line-height: 1.15; margin-bottom: 1.5rem; }
+    .dist-heading em { font-style: italic; color: var(--teal-lt); }
+    .dist-left p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.48); font-weight: 300; margin-bottom: 1.25rem; }
+    .dist-right { }
+    .dist-features { display: grid; gap: 1.25rem; }
+    .dist-feature { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.25rem 1.5rem; background: rgba(255,255,255,.04); border-left: 2px solid rgba(58,172,172,.4); }
+    .df-icon { width: 2.25rem; height: 2.25rem; flex-shrink: 0; border-radius: 50%; background: rgba(13,107,107,.2); border: 1px solid rgba(58,172,172,.25); display: flex; align-items: center; justify-content: center; }
+    .df-icon svg { width: .9rem; height: .9rem; }
+    .df-text { }
+    .df-label { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .3rem; }
+    .df-value { font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.68); font-weight: 300; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 300; color: var(--teal); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--deep); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before {
+      content: '';
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: clamp(300px, 55vw, 800px); aspect-ratio: 1; border-radius: 50%;
+      border: 1px solid rgba(58,172,172,.05); pointer-events: none;
+    }
+    .closing::after {
+      content: '';
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: clamp(180px, 35vw, 500px); aspect-ratio: 1; border-radius: 50%;
+      border: 1px solid rgba(58,172,172,.04); pointer-events: none;
+    }
+    .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; color: #fff; line-height: 1.15; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--teal-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.42); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+
+    @media (max-width: 900px) {
+      .hero-body { max-width: 100%; }
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .reach-band, .series-band, .lang-band, .design-band, .dist-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .lang-inner, .dist-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .regions, .series-grid, .lang-cards, .design-pillars, .impact-grid { grid-template-columns: 1fr; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--coral); padding-top: 1.5rem; }
+      .arc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-arcs">
+    <div class="arc"></div>
+    <div class="arc"></div>
+    <div class="arc"></div>
+  </div>
+  <div class="nodes">
+    <div class="node n1"></div>
+    <div class="node coral n2"></div>
+    <div class="node n3"></div>
+    <div class="node coral n4"></div>
+    <div class="node n5"></div>
+    <div class="node coral n6"></div>
+    <div class="node n7"></div>
+    <div class="node n8"></div>
+  </div>
+
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Global Health · Animation · FLW Training · Johns Hopkins CCP</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">Johns Hopkins CCP · Global Immunization Initiative</div>
+    <h1>
+      The Last<br><em>Mile.</em>
+      <span class="sub-line">A 6-Part Global Animation Series for 250,000 Frontline Immunization Workers — Africa · Asia · Gulf · Europe</span>
+    </h1>
+    <p class="hero-sub">Johns Hopkins Center for Communication Programs commissioned White Rice to create a globally deployable, culturally resonant training animation series for the world's frontline immunization workforce — people working at the last mile of healthcare, where vaccines reach the children who need them most.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Johns Hopkins CCP, USA</span></div>
+    <div class="meta-item"><span class="meta-label">Programme</span><span class="meta-value">Global FLW Immunization Training</span></div>
+    <div class="meta-item"><span class="meta-label">Scale</span><span class="meta-value">250,000 Frontline Workers · 4 Regions</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">Creative &amp; Communication Design Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">Creative &amp; Communication Design for a <em>Global Health System</em></h2>
+    </div>
+    <div class="role-body">
+      <p>Johns Hopkins Center for Communication Programs — one of the world's leading health communication institutions — engaged White Rice as their creative partner and communication design firm for a landmark global initiative: building a comprehensive animation-based training package for frontline immunization workers spanning four continents. Our mandate was to conceive, design, and produce content that could work everywhere — culturally representative, scenario-grounded, and powerful enough to train, challenge, and equip health workers operating in radically different settings.</p>
+      <div class="role-services">
+        <span class="role-tag">Creative Strategy</span>
+        <span class="role-tag">Communication Design</span>
+        <span class="role-tag">Scenario Development</span>
+        <span class="role-tag">6-Part Animation Series</span>
+        <span class="role-tag">FLW Training Content</span>
+        <span class="role-tag">4-Language Localisation</span>
+        <span class="role-tag">Mobile-First Delivery</span>
+        <span class="role-tag">Global Stakeholder Collaboration</span>
+        <span class="role-tag">UNICEF Aligned Content</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">250,000</div>
+      <div class="outcome-desc">Frontline immunization workers given access to and trained through the animation series — as part of Johns Hopkins CCP's global training package.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">6 Episodes</div>
+      <div class="outcome-desc">A complete scenario-based animation series — each episode targeting a distinct challenge situation frontline workers face in the field.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4 Languages</div>
+      <div class="outcome-desc">Full localisation across four languages — ensuring the training content was accessible and culturally resonant in every deployment region.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4 Continents</div>
+      <div class="outcome-desc">Deployed across Africa, Asia, the Gulf, and Western Europe — a single creative framework that holds meaning across radically different community and cultural contexts.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Mobile-First</div>
+      <div class="outcome-desc">The series was converted into a hands-on mobile reference guide — giving health workers on-demand access to training content in the field, not only in classrooms.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOUR REGIONS ══ -->
+<section class="reach-band">
+  <div class="reach-inner">
+    <div class="reach-eyebrow">Global Deployment · One Framework, Four Worlds</div>
+    <h2 class="reach-heading">The same vaccine. The same child. <em>Four entirely different communities.</em></h2>
+    <div class="regions">
+      <div class="region r-africa">
+        <div class="region-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E07A4A" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="region-name">Africa</div>
+        <div class="region-sub">Sub-Saharan · Last-Mile Communities</div>
+        <div class="region-body">Rural and peri-urban communities where trust in health systems is hard-won, infrastructure is limited, and FLWs navigate significant cultural and logistical barriers to reach every child on their list.</div>
+      </div>
+      <div class="region r-asia">
+        <div class="region-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="region-name">Asia</div>
+        <div class="region-sub">South &amp; Southeast Asia · Dense &amp; Dispersed</div>
+        <div class="region-body">From densely packed urban settlements to geographically remote villages — FLWs in South and Southeast Asia encounter everything from vaccine hesitancy among educated parents to access challenges in mountainous and flood-prone terrain.</div>
+      </div>
+      <div class="region r-gulf">
+        <div class="region-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C84A" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="region-name">Gulf</div>
+        <div class="region-sub">Middle East · Migrant &amp; Mixed Communities</div>
+        <div class="region-body">Complex multi-cultural and migrant community contexts where religious norms, language diversity, and community trust all shape FLW interactions in ways that demand specific cultural competency and communication sensitivity.</div>
+      </div>
+      <div class="region r-europe">
+        <div class="region-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6A8ACC" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="region-name">Europe</div>
+        <div class="region-sub">Western Europe · Diaspora &amp; Underserved</div>
+        <div class="region-body">Underserved migrant and diaspora communities where FLWs encounter vaccine misinformation, language barriers, and deep distrust of government health systems — requiring entirely different negotiation and communication strategies.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">250,000<br>workers.<br>One child<br>at a time.</div>
+  <div class="divider-text">Frontline immunization workers are the most important and least visible part of the global health system. They are the last person between a child and a preventable disease. They negotiate, reassure, educate, and persist — in languages, contexts, and community conditions that no classroom training could fully anticipate. The challenge Johns Hopkins CCP brought to White Rice was to give them something that understood their world: not a manual, but a mirror. Scenario-based, culturally grounded, and available in their pocket.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The brief from Johns Hopkins CCP was as technically demanding as any White Rice had received. The training content needed to be simultaneously universal and specific — meaningful to a health worker in Nairobi and to one in Karachi, to one in Cairo and to one in Birmingham. It needed to depict real situations without privileging any single cultural context. It needed to be producible in four languages without losing its emotional or instructional impact in translation. And it needed to work on a phone screen in the field — not just in a training room.</p>
+        <div class="pull-quote">
+          <p>"The hardest design problem is not making something powerful. It is making something powerful that means the same thing to different people in different worlds — and still moves all of them to act."</p>
+        </div>
+        <p>The core tension in the brief was between specificity and universality. Health communication works through recognition — a viewer needs to see themselves or their community in the scenario to engage with it. But a scenario that is too specific to one context alienates every other. White Rice's creative challenge was to build characters, situations, and community dynamics specific enough to feel real, but archetypal enough to travel across continents.</p>
+        <p>Overlaid on the creative challenge was a rigorous instructional one: the animations needed to function as genuine training tools within Johns Hopkins CCP's broader FLW capacity-building programme — not as awareness content, but as practical scenario-based learning that changed how workers showed up in the field.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>White Rice worked closely with Johns Hopkins CCP's global teams — building an understanding of the specific field situations, community dynamics, and communication challenges that FLWs encounter across the programme's four deployment regions. This research informed the scenario design: each episode was built around a real situation type, not an invented one.</p>
+        <p>The animation style was deliberately designed to sit in a culturally neutral register — characters, settings, and visual language that could represent multiple regions simultaneously, without defaulting to any single country's visual vocabulary. Scenarios were structured around decision moments: situations where the FLW's response made a measurable difference to whether a child received a vaccine.</p>
+        <p>The four-language localisation was treated as a design requirement from the beginning — not an afterthought. Scripts were built to carry meaning cleanly across translation. Visual storytelling carried the weight that language-specific nuance could not always sustain across four very different linguistic contexts.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ DESIGN CHALLENGE ══ -->
+<section class="design-band">
+  <div class="design-inner">
+    <div class="design-eyebrow">Creative Design Challenge · Universal Without Being Generic</div>
+    <div class="design-headline">"Make something that belongs to everyone.<br>Without belonging to no one."</div>
+    <p class="design-body">The three creative design principles that guided every episode — from character design and scenario selection to animation style, voiceover direction, and language adaptation.</p>
+    <div class="design-pillars">
+      <div class="design-pillar">
+        <div class="dp-title">Archetypal Characters</div>
+        <div class="dp-body">Characters were designed to represent recognisable human archetypes — the hesitant father, the community gatekeeper, the sceptical grandmother, the exhausted mother — without being anchored to a specific nationality, religion, or ethnicity. Viewers across four continents recognise these people because they know them.</div>
+      </div>
+      <div class="design-pillar">
+        <div class="dp-title">Scenario-First Structure</div>
+        <div class="dp-body">Each episode began with a situation, not a message. The FLW encounters a real-world barrier — misinformation, refusal, access difficulty, cultural resistance — and the episode shows what skilled, compassionate communication looks like in that moment. Learning emerges from narrative, not instruction.</div>
+      </div>
+      <div class="design-pillar">
+        <div class="dp-title">Mobile-Native Design</div>
+        <div class="dp-body">Every visual and pacing decision was made for a phone screen in the field — high-contrast imagery, minimal visual complexity, short episode duration, and a structure that allows a worker to revisit a specific episode before a community visit without watching the entire series again.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6 EPISODES ══ -->
+<section class="series-band">
+  <div class="series-inner">
+    <div class="series-eyebrow">The Animation Series · Six Episodes · Six Scenarios</div>
+    <h2 class="series-heading">Every episode a different door.<br><em>Every door a real situation a frontline worker will face.</em></h2>
+    <div class="series-grid">
+      <div class="episode-card">
+        <div class="ep-num-bg">1</div>
+        <div class="ep-num">Episode 01</div>
+        <div class="ep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="ep-title">The Resistant Household</div>
+        <div class="ep-scenario">Scenario: Vaccine Hesitancy &amp; Refusal</div>
+        <div class="ep-body">A family refuses vaccination — citing misinformation, fear, or religious concern. The episode models how an FLW listens, builds trust, addresses specific concerns without confrontation, and creates the conditions for a different decision.</div>
+      </div>
+      <div class="episode-card">
+        <div class="ep-num-bg">2</div>
+        <div class="ep-num">Episode 02</div>
+        <div class="ep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="ep-title">The Gatekeeper</div>
+        <div class="ep-scenario">Scenario: Community Influencer Barriers</div>
+        <div class="ep-body">A community leader, religious figure, or influential family member is blocking access. The episode explores respectful engagement with gatekeepers — how to bring them into partnership rather than around them, without compromising the vaccination goal.</div>
+      </div>
+      <div class="episode-card">
+        <div class="ep-num-bg">3</div>
+        <div class="ep-num">Episode 03</div>
+        <div class="ep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="ep-title">The Unreachable Village</div>
+        <div class="ep-scenario">Scenario: Geographic &amp; Access Barriers</div>
+        <div class="ep-body">Distance, terrain, and logistical difficulty create barriers to reaching a family or community. The episode shows problem-solving, community mobilisation, and the creative persistence that effective last-mile health delivery requires.</div>
+      </div>
+      <div class="episode-card">
+        <div class="ep-num-bg">4</div>
+        <div class="ep-num">Episode 04</div>
+        <div class="ep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="ep-title">The Misinformation Moment</div>
+        <div class="ep-scenario">Scenario: Social Media &amp; Rumour Dynamics</div>
+        <div class="ep-body">A community is circulating misinformation — spread through social media, peer networks, or traditional rumour channels. The episode equips FLWs to address false information with evidence-based, emotionally intelligent communication strategies.</div>
+      </div>
+      <div class="episode-card">
+        <div class="ep-num-bg">5</div>
+        <div class="ep-num">Episode 05</div>
+        <div class="ep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></div>
+        <div class="ep-title">The Second Visit</div>
+        <div class="ep-scenario">Scenario: Missed Doses &amp; Follow-Through</div>
+        <div class="ep-body">A child missed a scheduled dose and the family is disengaged. The episode addresses how FLWs re-engage without blame — rebuilding the relationship and the family's commitment to completing the immunization schedule.</div>
+      </div>
+      <div class="episode-card">
+        <div class="ep-num-bg">6</div>
+        <div class="ep-num">Episode 06</div>
+        <div class="ep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="ep-title">The Community Champion</div>
+        <div class="ep-scenario">Scenario: Peer Advocacy &amp; Positive Deviance</div>
+        <div class="ep-body">An FLW identifies and activates a community member as a positive deviant — someone whose voice carries more trust than the health system's. The episode models the peer-to-peer approach that turns individual behaviour change into community norm shift.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LANGUAGES ══ -->
+<section class="lang-band">
+  <div class="lang-inner">
+    <div class="lang-left">
+      <div class="lang-eyebrow">Localisation · Same Content, Four Worlds</div>
+      <h2 class="lang-heading">One story.<br><em>Four voices.</em><br>Four communities.</h2>
+      <div class="lang-big">×4</div>
+    </div>
+    <div class="lang-right">
+      <div class="lang-cards">
+        <div class="lang-card">
+          <div class="lc-flag">Primary Language</div>
+          <div class="lc-name">English</div>
+          <div class="lc-body">Master version — for global deployment, Western Europe, and international training facilitation. Scripted as the source language for all localisation.</div>
+        </div>
+        <div class="lang-card">
+          <div class="lc-flag">Africa &amp; Global Reach</div>
+          <div class="lc-name">French</div>
+          <div class="lc-body">Serving Francophone Africa and French-speaking communities in Western Europe — critical for the Sub-Saharan African deployment cohort.</div>
+        </div>
+        <div class="lang-card">
+          <div class="lc-flag">Asia · South &amp; Southeast</div>
+          <div class="lc-name">Urdu / Hindi</div>
+          <div class="lc-body">For South Asian deployment contexts — Pakistan, India, and the South Asian diaspora communities in the Gulf and Western Europe cohorts.</div>
+        </div>
+        <div class="lang-card">
+          <div class="lc-flag">Gulf &amp; MENA Region</div>
+          <div class="lc-name">Arabic</div>
+          <div class="lc-body">For Gulf and Middle Eastern deployment, and Arabic-speaking migrant and diaspora communities across all four deployment regions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DISTRIBUTION ══ -->
+<section class="dist-band">
+  <div class="dist-inner">
+    <div class="dist-left">
+      <div class="dist-eyebrow">Distribution &amp; Deployment · From Classroom to Field</div>
+      <h2 class="dist-heading">The training that fits in <em>a pocket.</em></h2>
+      <p>The animation series was designed not as standalone content but as the experiential core of a larger Johns Hopkins CCP training architecture. It was integrated into formal FLW training programmes — used to introduce scenarios, prompt group discussion, and ground participants in the human reality of their work before moving to technical instruction.</p>
+      <p>Critically, the series was then converted into a mobile-accessible reference guide — allowing workers to revisit specific episodes in the field before a difficult visit, without needing internet access or classroom infrastructure. The content that trained them in a room was available in their hand at the moment they needed it most.</p>
+    </div>
+    <div class="dist-right">
+      <div class="dist-features">
+        <div class="dist-feature">
+          <div class="df-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+          <div class="df-text">
+            <div class="df-label">Mobile-First</div>
+            <div class="df-value">Converted to a hands-on phone-based reference guide — accessible to FLWs without internet, optimised for low-bandwidth and offline viewing</div>
+          </div>
+        </div>
+        <div class="dist-feature">
+          <div class="df-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+          <div class="df-text">
+            <div class="df-label">Global Training Integration</div>
+            <div class="df-value">Embedded within Johns Hopkins CCP's full FLW training package — used as the scenario-based learning core of in-person and remote training sessions</div>
+          </div>
+        </div>
+        <div class="dist-feature">
+          <div class="df-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div class="df-text">
+            <div class="df-label">Global Network Deployment</div>
+            <div class="df-value">250,000 frontline workers across Africa, Asia, Gulf, and Western Europe given access — deployed through UNICEF-aligned and Johns Hopkins CCP global networks</div>
+          </div>
+        </div>
+        <div class="dist-feature">
+          <div class="df-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3AACAC" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="df-text">
+            <div class="df-label">On-Demand Reference</div>
+            <div class="df-value">Workers can revisit individual episodes by scenario type — making the training a live field resource, not a one-time classroom event</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The programme's impact is measured not in views or impressions, but in the 250,000 frontline workers who entered the world's most difficult healthcare environments better equipped — with a clearer understanding of the human situations they would face, and better communication tools for navigating them. Every child vaccinated through those interactions is the programme's ultimate unit of success.</p>
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">250,000</div>
+            <div class="desc">Frontline immunization workers trained and given access to the series — across Africa, Asia, the Gulf, and Western Europe.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">4 Continents</div>
+            <div class="desc">A single creative framework — 6 episodes, 4 languages — that worked across radically different cultural and community contexts simultaneously.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">In Their Hands</div>
+            <div class="desc">Converted to a mobile field reference — the training travelled with the worker, not just into the training room.</div>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem;">Working with Johns Hopkins CCP required White Rice to operate at a scale and rigour we rarely encounter — global stakeholders, global deployment, global ambition. The result was a training tool that was both technically credible enough for Johns Hopkins and humanly compelling enough for a health worker at 6am on a difficult village visit. That balance is what we are most proud of.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>The last mile is<br>not a geography.<br><em>It is a conversation.</em></h3>
+    <p>250,000 frontline workers. Four languages. Four continents. Six situations every one of them will face. Walidain HumQadam gave parents the tools to show up for their children. This gave the health workers who serve those families the same — a way to understand the human being on the other side of the door, before they knock.</p>
+    <div class="tag-pills">
+      <span class="pill">Johns Hopkins CCP</span>
+      <span class="pill">Frontline Worker Training</span>
+      <span class="pill">Animation Series</span>
+      <span class="pill">Global Health</span>
+      <span class="pill">Immunization</span>
+      <span class="pill">Vaccination</span>
+      <span class="pill">250,000 FLWs</span>
+      <span class="pill">4 Languages</span>
+      <span class="pill">Africa</span>
+      <span class="pill">Asia</span>
+      <span class="pill">Gulf</span>
+      <span class="pill">Western Europe</span>
+      <span class="pill">UNICEF</span>
+      <span class="pill">Mobile-First</span>
+      <span class="pill">Scenario-Based Learning</span>
+      <span class="pill">SBC</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

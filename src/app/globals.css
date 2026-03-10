@@ -2377,3 +2377,634 @@ body {
     height: 240px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   CASE STUDY V2 — HTML-matched design
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Page wrapper & theme tokens ──────────────────────────────── */
+.cs-page {
+  --cs-primary: #4A2A5A;
+  --cs-primary-lt: #8A6A9A;
+  --cs-accent: #C4962A;
+  --cs-accent-lt: #E8C05A;
+  --cs-ink: #1A1612;
+  --cs-parchment: #F5F0E8;
+  --cs-sand: #E2D9C8;
+  --cs-muted: #7A7065;
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  background: var(--cs-parchment);
+  color: var(--cs-ink);
+}
+
+/* ─── Hero ──────────────────────────────────────────────────────── */
+.cs-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+  overflow: hidden;
+  background: var(--cs-primary);
+}
+
+.cs-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.22;
+  mix-blend-mode: luminosity;
+}
+
+.cs-hero__overlay {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 65% 55% at 90% 10%, rgba(196,150,42,.4) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 0% 90%, rgba(196,96,42,.25) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 40% at 45% 50%, rgba(74,42,90,.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cs-hero__label {
+  padding: 2rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  position: relative;
+  z-index: 2;
+}
+
+.cs-hero__brand {
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  font-weight: 500;
+}
+
+.cs-hero__brand span {
+  color: var(--cs-accent-lt);
+}
+
+.cs-hero__tag-top {
+  font-size: .68rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  font-weight: 400;
+}
+
+.cs-hero__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 4rem 3.5rem 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cs-hero__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt);
+  margin-bottom: 1.25rem;
+}
+
+.cs-hero__title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  color: #fff;
+  margin-bottom: .75rem;
+}
+
+.cs-hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cs-accent-lt);
+}
+
+.cs-hero__subtitle {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 1.5rem;
+}
+
+.cs-hero__description {
+  max-width: 58ch;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255,255,255,.55);
+}
+
+.cs-hero__meta {
+  padding: 2rem 3.5rem;
+  display: flex;
+  gap: 3.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.08);
+  position: relative;
+  z-index: 2;
+}
+
+.cs-hero__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.cs-hero__meta-label {
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+}
+
+.cs-hero__meta-value {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.8);
+}
+
+.cs-hero__back-wrap {
+  position: absolute;
+  bottom: 5.5rem;
+  right: 3.5rem;
+  z-index: 3;
+}
+
+.cs-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  text-decoration: none;
+  transition: color .25s ease;
+}
+
+.cs-hero__back:hover {
+  color: var(--cs-accent-lt);
+}
+
+/* ─── Role Band ─────────────────────────────────────────────────── */
+.cs-role {
+  background: var(--cs-ink);
+  padding: 4rem 3.5rem;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.cs-role__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.cs-role__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt);
+  margin-bottom: 1rem;
+}
+
+.cs-role__heading {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.cs-role__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt);
+}
+
+.cs-role__body p {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,.52);
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+
+.cs-role__body p:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.cs-role__services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.cs-role__tag {
+  padding: .3rem .85rem;
+  background: rgba(196,150,42,.13);
+  border: 1px solid rgba(196,150,42,.28);
+  border-radius: 2px;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt);
+  font-weight: 500;
+}
+
+/* ─── Outcomes ──────────────────────────────────────────────────── */
+.cs-outcomes {
+  background: var(--cs-primary);
+  padding: 5rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-outcomes::after {
+  content: attr(data-watermark);
+  position: absolute;
+  right: -1rem;
+  bottom: -2rem;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(8rem, 20vw, 22rem);
+  font-weight: 700;
+  color: rgba(255,255,255,.04);
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: -.02em;
+}
+
+.cs-outcomes__header {
+  display: flex;
+  align-items: baseline;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.cs-outcomes__num {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(255,255,255,.35);
+}
+
+.cs-outcomes__title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400;
+  color: #fff;
+}
+
+.cs-outcomes__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  gap: 2rem;
+}
+
+.cs-outcomes__card {
+  border-top: 1px solid rgba(255,255,255,.18);
+  padding-top: 1.5rem;
+}
+
+.cs-outcomes__stat {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: .6rem;
+}
+
+.cs-outcomes__desc {
+  font-size: .82rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.58);
+  font-weight: 300;
+}
+
+/* ─── Sticky Content Section ────────────────────────────────────── */
+.cs-content-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cs-section {
+  padding: 5.5rem 3.5rem;
+  border-bottom: 1px solid var(--cs-sand);
+}
+
+.cs-section:last-child {
+  border-bottom: none;
+}
+
+.cs-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.cs-section__left {
+  position: sticky;
+  top: 2.5rem;
+}
+
+.cs-section__label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.cs-section__num {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--cs-accent);
+}
+
+.cs-section__line {
+  flex: 1;
+  height: 1px;
+  background: var(--cs-sand);
+}
+
+.cs-section__heading {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+
+.cs-section__heading em {
+  font-style: italic;
+  color: var(--cs-accent);
+}
+
+.cs-section__right p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #3A3530;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+
+.cs-section__right p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Pillars (strategy cards in sticky section) ────────────────── */
+.cs-pillars {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.cs-pillar {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.25rem;
+  background: rgba(226,217,200,.4);
+  border-radius: 2px;
+}
+
+.cs-pillar__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--cs-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: .75rem;
+  font-style: italic;
+}
+
+.cs-pillar__title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: .3rem;
+}
+
+.cs-pillar__body {
+  font-size: .85rem;
+  line-height: 1.65;
+  color: var(--cs-muted);
+  font-weight: 300;
+}
+
+/* ─── Campaign / Deliverable tags ───────────────────────────────── */
+.cs-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin: 1.5rem 0;
+}
+
+.cs-tag {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .45rem .9rem;
+  background: var(--cs-sand);
+  border-radius: 2px;
+  font-size: .8rem;
+  color: var(--cs-ink);
+}
+
+.cs-tag::before {
+  content: '\2192';
+  color: var(--cs-accent);
+  font-size: .7rem;
+}
+
+/* ─── Pull Quote ────────────────────────────────────────────────── */
+.cs-quote {
+  margin: 2rem 0;
+  padding: 1.75rem 2rem;
+  border-left: 3px solid var(--cs-accent);
+  background: rgba(196,150,42,.06);
+}
+
+.cs-quote p {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--cs-ink);
+  margin: 0;
+}
+
+/* ─── Impact Grid ───────────────────────────────────────────────── */
+.cs-impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 2rem 0;
+  background: var(--cs-sand);
+}
+
+.cs-impact-grid__cell {
+  background: var(--cs-parchment);
+  padding: 2rem;
+}
+
+.cs-impact-grid__big {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--cs-primary);
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+
+.cs-impact-grid__desc {
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--cs-muted);
+  font-weight: 300;
+}
+
+/* ─── Closing ───────────────────────────────────────────────────── */
+.cs-closing {
+  background: var(--cs-primary);
+  padding: 6rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,150,42,.12) 0%, transparent 70%);
+}
+
+.cs-closing__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cs-closing__heading {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.cs-closing__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt);
+}
+
+.cs-closing__body {
+  font-size: .9rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,.5);
+  font-weight: 300;
+}
+
+.cs-closing__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: 2.5rem;
+  justify-content: center;
+}
+
+.cs-closing__pill {
+  padding: .35rem 1rem;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 2rem;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+
+/* ─── Case Study V2 Responsive ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .cs-hero__label {
+    padding: 1.5rem;
+  }
+
+  .cs-hero__body {
+    padding: 3rem 1.5rem 2rem;
+  }
+
+  .cs-hero__meta {
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .cs-hero__back-wrap {
+    bottom: 4rem;
+    right: 1.5rem;
+  }
+
+  .cs-role {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .cs-role__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .cs-outcomes {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .cs-section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .cs-section__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .cs-section__left {
+    position: static;
+  }
+
+  .cs-impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-closing {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}

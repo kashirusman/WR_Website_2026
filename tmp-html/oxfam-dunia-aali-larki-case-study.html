@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dunia Aali Larki — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:        #1A1012;
+      --parchment:  #F5F0E8;
+      --sand:       #E2D9C8;
+      --muted:      #7A7065;
+      --crimson:    #8A1A2A;
+      --crimson-lt: #C4415A;
+      --crimson-pale:#F5D8DC;
+      --gold:       #C49A1A;
+      --gold-lt:    #E8C85A;
+      --gold-pale:  #FBF2D8;
+      --night:      #12080C;
+      --charcoal:   #1E1218;
+      --scarlet:    #B02030;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--night);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 90% 10%, rgba(138,26,42,.75)  0%, transparent 58%),
+        radial-gradient(ellipse 45% 60% at 0%  90%, rgba(196,154,26,.25) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 45% 50%, rgba(18,8,12,.6)     0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Campaign fist/girl silhouette — abstract protest geometry */
+    .hero-shape {
+      position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      overflow: hidden; pointer-events: none; z-index: 1;
+    }
+    .hero-shape::before {
+      content: '';
+      position: absolute; top: -10%; right: -15%;
+      width: 110%; height: 110%;
+      background:
+        radial-gradient(ellipse 60% 70% at 60% 40%, rgba(138,26,42,.18) 0%, transparent 60%);
+      border-radius: 50%;
+    }
+    /* Urdu watermark text */
+    .hero-urdu {
+      position: absolute; right: -1rem; bottom: -2rem;
+      font-size: clamp(8rem, 22vw, 26rem);
+      font-weight: 700; color: rgba(255,255,255,.04);
+      pointer-events: none; z-index: 1;
+      line-height: 1; letter-spacing: -.02em;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--crimson-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--crimson-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--crimson); }
+    .urdu-title {
+      font-size: clamp(1.5rem, 3vw, 2.5rem); color: rgba(255,255,255,.2);
+      font-weight: 300; margin-bottom: .75rem; direction: rtl;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      animation: fadeUp .7s .05s both;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 7.5vw, 8rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--crimson-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.7rem);
+      font-weight: 300; color: rgba(255,255,255,.42); font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.07); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--crimson-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--crimson-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(138,26,42,.2); border: 1px solid rgba(138,26,42,.4); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--crimson-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--scarlet); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'لڑکی'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(8rem, 22vw, 24rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; line-height: 1; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.22); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.65); font-weight: 300; }
+
+    /* ── SPARK TO MOVEMENT ── */
+    .spark-band { background: var(--charcoal); padding: 5rem 3.5rem; }
+    .spark-inner { max-width: 1200px; margin: 0 auto; }
+    .spark-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .spark-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3.5rem; }
+    .spark-heading em { font-style: italic; color: var(--gold-lt); }
+    .spark-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: center; }
+    .spark-step { padding: 2.5rem 2rem; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); }
+    .spark-arrow { display: flex; align-items: center; justify-content: center; padding: 0 .5rem; }
+    .spark-arrow svg { width: 1.5rem; height: 1.5rem; color: rgba(255,255,255,.2); }
+    .spark-badge { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: .6rem; }
+    .spark-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: .5rem; }
+    .spark-body { font-size: .8rem; line-height: 1.6; color: rgba(255,255,255,.45); font-weight: 300; }
+
+    /* ── DIVIDER ── */
+    .divider-band { background: var(--gold-pale); padding: 3.5rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--crimson); line-height: 1.1; }
+    .divider-text { font-size: .95rem; line-height: 1.8; color: var(--muted); font-weight: 300; max-width: 58ch; border-left: 2px solid var(--crimson); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--crimson); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--crimson); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--crimson); background: rgba(138,26,42,.05); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── SEM TIERS ── */
+    .sem-band { background: var(--crimson); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .sem-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 20% 50%, rgba(0,0,0,.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .sem-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .sem-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: .75rem; }
+    .sem-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .sem-heading em { font-style: italic; color: var(--gold-lt); }
+    .sem-tiers { display: grid; gap: 1.5px; background: rgba(255,255,255,.1); }
+    .sem-tier { display: grid; grid-template-columns: 2.5rem 200px 1fr; gap: 2rem; align-items: center; background: var(--crimson); padding: 2rem 2.5rem; }
+    .sem-tier.top    { background: rgba(0,0,0,.3); }
+    .sem-tier.upper  { background: rgba(0,0,0,.2); }
+    .sem-tier.mid    { background: rgba(0,0,0,.12); }
+    .sem-tier.lower  { background: rgba(0,0,0,.06); }
+    .sem-tier.base   { background: rgba(255,255,255,.04); }
+    .tier-level { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(255,255,255,.2); line-height: 1; }
+    .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #fff; }
+    .tier-label { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: .3rem; }
+    .tier-activities { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .tier-act { padding: .25rem .75rem; background: rgba(255,255,255,.1); border-radius: 2px; font-size: .72rem; color: rgba(255,255,255,.7); }
+
+    /* ── ASSEMBLY BAND ── */
+    .assembly-band { background: var(--night); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .assembly-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 65% 55% at 55% 45%, rgba(196,154,26,.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .assembly-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: center; }
+    .assembly-left { position: relative; z-index: 1; }
+    .assembly-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 1rem; }
+    .assembly-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.1; color: #fff; margin-bottom: 1.5rem; }
+    .assembly-heading em { font-style: italic; color: var(--gold-lt); }
+    .assembly-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 7vw, 6.5rem); font-weight: 300; color: rgba(255,255,255,.08); line-height: 1; }
+    .assembly-right { position: relative; z-index: 1; }
+    .assembly-right p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.52); font-weight: 300; margin-bottom: 1.25rem; }
+    .assembly-features { display: grid; gap: .75rem; margin-top: 1.75rem; }
+    .assembly-feature { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem 1.5rem; background: rgba(196,154,26,.07); border-left: 2px solid var(--gold); }
+    .af-icon { width: 2rem; height: 2rem; border-radius: 50%; background: rgba(196,154,26,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .af-icon svg { width: .85rem; height: .85rem; }
+    .af-text { font-size: .85rem; line-height: 1.65; color: rgba(255,255,255,.55); font-weight: 300; }
+    .af-text strong { color: rgba(255,255,255,.82); font-weight: 500; }
+
+    /* ── AUDIENCES BAND ── */
+    .audiences-band { background: var(--crimson-pale); padding: 5rem 3.5rem; }
+    .audiences-inner { max-width: 1200px; margin: 0 auto; }
+    .audiences-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--crimson); margin-bottom: .75rem; }
+    .audiences-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--ink); margin-bottom: 2.5rem; }
+    .audiences-heading em { font-style: italic; color: var(--crimson); }
+    .audiences-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .audience-card { background: #fff; padding: 1.75rem; border-top: 3px solid var(--crimson); }
+    .audience-icon { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--crimson-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .audience-icon svg { width: 1rem; height: 1rem; }
+    .audience-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; }
+    .audience-body { font-size: .78rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--night); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--crimson); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--night); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(138,26,42,.2) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--crimson-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.45); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .sem-band, .assembly-band, .audiences-band, .spark-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner, .assembly-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .audiences-grid { grid-template-columns: 1fr; }
+      .spark-flow { grid-template-columns: 1fr; }
+      .spark-arrow { display: none; }
+      .sem-tier { grid-template-columns: 1fr; gap: 1rem; }
+      .tier-level { display: none; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--crimson); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-shape"></div>
+  <div class="hero-urdu">دنیا آلی لڑکی</div>
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Girls' Education Movement · Pakistan · 4-Year Advocacy Campaign</div>
+  </div>
+  <div class="hero-body">
+    <div class="urdu-title">دنیا آلی لڑکی</div>
+    <div class="eyebrow">Oxfam Pakistan · 16 Days of Activism · National Movement</div>
+    <h1>
+      The World<br>Against the <em>Girl.</em>
+      <span class="sub-title">Dunia Aali Larki — A Campaign That Became a Movement</span>
+    </h1>
+    <p class="hero-sub">What began as an animated campaign for 16 Days of Activism became Pakistan's most powerful advocacy movement for girls' right to education — earning a $1 million grant, producing Pakistan's first Children's Assembly, and shifting the national conversation for years to come.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Oxfam Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Campaign</span><span class="meta-value">Dunia Aali Larki · دنیا آلی لڑکی</span></div>
+    <div class="meta-item"><span class="meta-label">Scale</span><span class="meta-value">4-Year National Advocacy Campaign</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">Campaign &amp; Movement Design Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">From Campaign Spark to <em>National Movement Architecture</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice designed Dunia Aali Larki from its first frame to its national scale — beginning with the animated campaign film that launched on 16 Days of Activism, and growing through four years of advocacy into a multi-tier movement spanning policymakers, schools, communities, media, and Pakistan's first Children's Assembly. Our role spanned creative strategy, animation production, grassroots mobilisation design, school programme development, policy dialogue facilitation, and digital amplification — all in service of one sustained demand: that girls in Pakistan have the right to learn.</p>
+      <div class="role-services">
+        <span class="role-tag">Campaign Strategy &amp; Creative Direction</span>
+        <span class="role-tag">Animation Production</span>
+        <span class="role-tag">Movement Architecture</span>
+        <span class="role-tag">Policy Dialogue Design</span>
+        <span class="role-tag">Grassroots Mobilisation</span>
+        <span class="role-tag">School Club Programme</span>
+        <span class="role-tag">Children's Assembly Design</span>
+        <span class="role-tag">Mass Media Strategy</span>
+        <span class="role-tag">Digital Amplification</span>
+        <span class="role-tag">Global Conference Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">$1M Grant</div>
+      <div class="outcome-desc">The animated campaign directly led to Oxfam securing a $1 million funding grant to convert the 16-day activation into a 4-year national advocacy programme.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">4 Years</div>
+      <div class="outcome-desc">A 16-day campaign transformed into a 4-year sustained national movement — operating simultaneously at policy, community, school, media, and digital levels.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Pakistan's First</div>
+      <div class="outcome-desc">Pakistan's first Children's Assembly — a national parliamentary-style debate on girls' right to education, held at a convention centre in Islamabad with political figures as moderators.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">36 Million</div>
+      <div class="outcome-desc">Children out of school in Pakistan — the crisis the campaign was built to address — including one of the world's highest concentrations of out-of-school girls.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">A Movement</div>
+      <div class="outcome-desc">The campaign's legacy outlasted the programme itself — translating into other initiatives, strengthening partner organisations, and giving the girls' education sector a unified national voice.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPARK TO MOVEMENT ══ -->
+<section class="spark-band">
+  <div class="spark-inner">
+    <div class="spark-eyebrow">The Arc · From Spark to Sustained Movement</div>
+    <h2 class="spark-heading">One animated film.<br><em>Four years of national change.</em></h2>
+    <div class="spark-flow">
+      <div class="spark-step">
+        <div class="spark-badge">The Spark</div>
+        <div class="spark-title">Animated Campaign Film</div>
+        <div class="spark-body">Launched on November 25th for 16 Days of Activism — a bold, emotionally resonant animated film showing the disparity and compounding challenges a girl faces in Pakistan. Aired on TV and amplified across digital platforms.</div>
+      </div>
+      <div class="spark-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="spark-step">
+        <div class="spark-badge">The Catalyst</div>
+        <div class="spark-title">$1M Grant Secured</div>
+        <div class="spark-body">The campaign's resonance demonstrated to funders that Pakistan was ready for a sustained movement on girls' education. Oxfam secured a $1 million grant to expand from 16 days to a 4-year national advocacy programme.</div>
+      </div>
+      <div class="spark-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="spark-step">
+        <div class="spark-badge">The Movement</div>
+        <div class="spark-title">4-Year National Advocacy</div>
+        <div class="spark-body">A full socio-ecological model campaign — operating simultaneously at policy, community, school, and digital levels, culminating in Pakistan's first Children's Assembly and a lasting shift in the national conversation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">36 million<br>children.<br>No school.</div>
+  <div class="divider-text">Pakistan has one of the world's highest numbers of out-of-school children — 36 million — with girls disproportionately excluded. Behind every statistic is a girl whose family was never told her education was worth the investment, or never asked. Dunia Aali Larki was built on the premise that the conversation had to happen at every level simultaneously — from the parliament to the primary school classroom — and it had to be loud enough that no one could claim they hadn't heard it.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Pakistan's girl-child education crisis is not a secret. It is a well-documented, frequently reported, consistently underfunded emergency. 36 million children are out of school, and girls represent the majority of the excluded — kept home by a combination of poverty, patriarchal norms, distance, safety fears, early marriage, and institutional indifference. The problem is known. The barrier has always been the will to act — at the level of government, community, and family simultaneously.</p>
+        <div class="pull-quote">
+          <p>"You cannot fix with a school what a community has already decided. The campaign had to change the decision before it could change the enrolment numbers."</p>
+        </div>
+        <p>Oxfam needed more than a public awareness campaign. Awareness of the crisis was not lacking — what was lacking was the social permission, political urgency, and grassroots momentum that would translate awareness into action across every tier of the system. Inspired directly by the Nike Girl Effect model, Oxfam and White Rice set out to do for Pakistan's girl-child education movement what that global initiative had done globally: make it feel like a cause that belonged to everyone.</p>
+        <p>The 16 Days of Activism window (November 25 to December 10) provided the launchpad. The question was what to put on it — something with enough emotional power to spark a movement, and enough strategic architecture to sustain one for four years.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>White Rice's strategy was built on three convictions: that storytelling — not statistics — moves people; that a movement needs architecture, not just energy; and that the socio-ecological model is not a theory to cite in a report, it is a design brief for reaching everyone who matters simultaneously.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+            <div>
+              <div class="pillar-title">Animation as the Movement's Voice</div>
+              <div class="pillar-body">The animated film was not simply an ad — it was the campaign's emotional engine. Animation allowed White Rice to show a Pakistani girl's compounding disadvantages with the honesty and universality that live film rarely achieves in this context. It crossed language, class, and media format — airable on national TV and shareable on every digital platform.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+            <div>
+              <div class="pillar-title">Multi-Tier, Simultaneous Activation</div>
+              <div class="pillar-body">The full socio-ecological model — from individual to family to community to enabling environment — was activated in parallel, not sequentially. School clubs ran at the same time as policy dialogues. Rallies happened while the global conference was being planned. Digital amplified everything.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div>
+              <div class="pillar-title">Children as Advocates, Not Beneficiaries</div>
+              <div class="pillar-body">The campaign's most radical design decision was to position children — specifically girls — not as objects of charity or policy concern, but as the campaign's most powerful advocates. School debates, rallies, and ultimately the Children's Assembly gave them the platform, the legitimacy, and the audience they deserved.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+            <div>
+              <div class="pillar-title">Stories from the Ground, Amplified by Digital</div>
+              <div class="pillar-body">The campaign's digital strategy was not a megaphone for messaging — it was a distribution system for real stories. What happened at rallies, in school clubs, in community dialogues was captured and amplified to a national audience that could not attend in person.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ SEM TIERS ══ -->
+<section class="sem-band">
+  <div class="sem-inner">
+    <div class="sem-eyebrow">Socio-Ecological Model · Designed for Every Tier of Influence</div>
+    <h2 class="sem-heading">A movement works when <em>everyone</em> hears it<br>in the language that belongs to them.</h2>
+    <div class="sem-tiers">
+      <div class="sem-tier top">
+        <div class="tier-level">5</div>
+        <div>
+          <div class="tier-label">Enabling Environment</div>
+          <div class="tier-name">Policy &amp; Government</div>
+        </div>
+        <div class="tier-activities">
+          <span class="tier-act">Provincial government dialogues</span>
+          <span class="tier-act">Education reform advocacy</span>
+          <span class="tier-act">Pakistan's first global education conference</span>
+          <span class="tier-act">International speakers on girls' right to education</span>
+          <span class="tier-act">Children's Assembly — political moderators</span>
+        </div>
+      </div>
+      <div class="sem-tier upper">
+        <div class="tier-level">4</div>
+        <div>
+          <div class="tier-label">Institutional</div>
+          <div class="tier-name">Schools &amp; Educational Bodies</div>
+        </div>
+        <div class="tier-activities">
+          <span class="tier-act">School-level debate clubs</span>
+          <span class="tier-act">Structured debate curriculum</span>
+          <span class="tier-act">Teacher and principal engagement</span>
+          <span class="tier-act">NGO and education institution partnerships</span>
+          <span class="tier-act">Children's Assembly selection</span>
+        </div>
+      </div>
+      <div class="sem-tier mid">
+        <div class="tier-level">3</div>
+        <div>
+          <div class="tier-label">Community</div>
+          <div class="tier-name">Local Influencers &amp; Leaders</div>
+        </div>
+        <div class="tier-activities">
+          <span class="tier-act">Community rallying events</span>
+          <span class="tier-act">Local politicians engaged as advocates</span>
+          <span class="tier-act">Religious and community influencers</span>
+          <span class="tier-act">Mass media — highlighting gaps &amp; opportunities</span>
+          <span class="tier-act">Cross-community mobilisation</span>
+        </div>
+      </div>
+      <div class="sem-tier lower">
+        <div class="tier-level">2</div>
+        <div>
+          <div class="tier-label">Family</div>
+          <div class="tier-name">Parents &amp; Caregivers</div>
+        </div>
+        <div class="tier-activities">
+          <span class="tier-act">Parents and children at rallies together</span>
+          <span class="tier-act">Parent-teacher engagement at school clubs</span>
+          <span class="tier-act">Household-level messaging via TV and digital</span>
+          <span class="tier-act">Donor community outreach</span>
+        </div>
+      </div>
+      <div class="sem-tier base">
+        <div class="tier-level">1</div>
+        <div>
+          <div class="tier-label">Individual</div>
+          <div class="tier-name">Girls &amp; Children</div>
+        </div>
+        <div class="tier-activities">
+          <span class="tier-act">Girls as campaign advocates and debaters</span>
+          <span class="tier-act">Children's Assembly participants</span>
+          <span class="tier-act">Digital storytelling by and for girls</span>
+          <span class="tier-act">School club leadership</span>
+          <span class="tier-act">National platform — parliamentary debate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHILDREN'S ASSEMBLY ══ -->
+<section class="assembly-band">
+  <div class="assembly-inner">
+    <div class="assembly-left">
+      <div class="assembly-eyebrow">Campaign Centrepiece · Pakistan's First</div>
+      <h2 class="assembly-heading">The Children's <em>Assembly.</em></h2>
+      <div class="assembly-stat">Pakistan's<br>First.</div>
+    </div>
+    <div class="assembly-right">
+      <p>The Children's Assembly was the campaign's most audacious and most enduring achievement. For the first time in Pakistan's history, children formed their own parliament — a Children's Assembly — and convened at a national convention centre in Islamabad to debate the right of girls to education at a national assembly level.</p>
+      <p>This was not a symbolic exercise. The debates were substantive, the participants were prepared, and the audience included political figures who served as moderators — lending the proceedings genuine institutional weight and sending an unmistakable message: the children of Pakistan are not waiting for adults to solve this for them.</p>
+      <div class="assembly-features">
+        <div class="assembly-feature">
+          <div class="af-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C85A" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div class="af-text"><strong>National Convention Centre, Islamabad</strong> — a deliberate venue choice that gave children the stage their arguments deserved, not a school auditorium</div>
+        </div>
+        <div class="assembly-feature">
+          <div class="af-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C85A" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div class="af-text"><strong>Children's Parliament format</strong> — structured debate with elected child representatives arguing for girls' right to education in front of peers, parents, politicians, and press</div>
+        </div>
+        <div class="assembly-feature">
+          <div class="af-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C85A" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="af-text"><strong>Political figures as moderators</strong> — not keynote speakers, but moderators: listening to children debate, not the other way around</div>
+        </div>
+        <div class="assembly-feature">
+          <div class="af-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8C85A" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div class="af-text"><strong>National media coverage</strong> — the Assembly generated press coverage that no advocacy report or policy brief could match, putting children's voices at the centre of the national education conversation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TARGET AUDIENCES ══ -->
+<section class="audiences-band">
+  <div class="audiences-inner">
+    <div class="audiences-eyebrow">Target Audiences · Everyone Who Shapes a Girl's Future</div>
+    <h2 class="audiences-heading">The campaign had <em>one message</em><br>and eight different audiences to deliver it to.</h2>
+    <div class="audiences-grid">
+      <div class="audience-card">
+        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8A1A2A" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="audience-title">Government &amp; Policymakers</div>
+        <div class="audience-body">Provincial and federal government — targeted through dialogues, the global conference, and the Children's Assembly to drive policy reform on girls' education.</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8A1A2A" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="audience-title">Donors &amp; NGOs</div>
+        <div class="audience-body">International and national funders — shown a credible, scaled movement that justified continued and increased investment in girls' education in Pakistan.</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8A1A2A" stroke-width="1.7"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="audience-title">Educational Institutions</div>
+        <div class="audience-body">Schools and universities — engaged through club programmes and the Children's Assembly to become active programme partners rather than passive beneficiaries.</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8A1A2A" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="audience-title">Parents &amp; Teachers</div>
+        <div class="audience-body">The day-to-day gatekeepers of girls' access to education — reached through school clubs, rallies, community events, and mass media to shift the household-level calculation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Dunia Aali Larki accomplished something that most advocacy campaigns do not: it outlasted itself. The programme formally ended, but the movement it built did not. Other organisations working on girls' education in Pakistan found themselves operating within a changed landscape — one in which their work had a stronger voice, a more receptive public, and a clearer precedent for what advocacy on this subject could look like.</p>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">$1M Grant</div>
+            <div class="desc">A 16-day animated campaign converted into a $1 million, 4-year national advocacy programme — the clearest possible validation of the creative strategy.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Pakistan's First</div>
+            <div class="desc">Children's Assembly — held at the national convention centre in Islamabad, with political figures as moderators and children debating girls' right to education at parliamentary level.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">4 Years</div>
+            <div class="desc">From a single animated film to a multi-tier, multi-year national movement — operating simultaneously at policy, community, school, and digital levels across Pakistan.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">A Legacy</div>
+            <div class="desc">The movement's impact translated into the organisations that followed — strengthening the sector's collective voice and providing a replicable model for issue-led movement building in Pakistan.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">The most significant impact of Dunia Aali Larki was not a number. It was the moment a Pakistani girl stood at a podium in a national convention centre in Islamabad, looked at a panel of politicians, and made the case for her own right to be educated. That moment was designed. And it changed something.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>A 16-day campaign.<br>A four-year movement.<br><em>A girl at a podium.</em></h3>
+    <p>Dunia Aali Larki proved that a single, well-designed creative moment — an animated film that told the truth about a girl's life in Pakistan — can be the beginning of something much larger than a campaign. When the movement is built right, it doesn't end when the funding does. It becomes part of the air the sector breathes.</p>
+    <div class="tag-pills">
+      <span class="pill">Girls' Education</span>
+      <span class="pill">Advocacy Campaign</span>
+      <span class="pill">Dunia Aali Larki</span>
+      <span class="pill">Movement Building</span>
+      <span class="pill">16 Days of Activism</span>
+      <span class="pill">Children's Assembly</span>
+      <span class="pill">Oxfam Pakistan</span>
+      <span class="pill">Animation</span>
+      <span class="pill">Socio-Ecological Model</span>
+      <span class="pill">Policy Advocacy</span>
+      <span class="pill">Grassroots Mobilisation</span>
+      <span class="pill">SDG 4</span>
+      <span class="pill">SDG 5</span>
+      <span class="pill">Pakistan</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

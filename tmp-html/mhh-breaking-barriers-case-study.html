@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breaking Barriers — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:        #1A1612;
+      --parchment:  #F5F0E8;
+      --sand:       #E2D9C8;
+      --muted:      #7A7065;
+      --blush:      #8A3A5A;
+      --blush-lt:   #C47A9A;
+      --blush-pale: #F0D8E4;
+      --plum:       #4A1A3A;
+      --plum-dark:  #2A0A1A;
+      --rose:       #B45A7A;
+      --copper:     #C4722A;
+      --copper-lt:  #E8A86A;
+      --slate:      #3A4A5A;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--plum-dark);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 50% at 90% 12%, rgba(138,58,90,.65) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 55% at 0%  90%, rgba(196,114,42,.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 45% 50%, rgba(42,10,26,.5)   0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Concentric oval — reflects the cyclical nature of menstrual health */
+    .hero-oval {
+      position: absolute;
+      top: 50%; right: -12%;
+      transform: translateY(-50%);
+      width: 52%; aspect-ratio: .8;
+      border-radius: 50%;
+      border: 1px solid rgba(196,122,154,.08);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-oval::before {
+      content: '';
+      position: absolute; inset: 15%;
+      border-radius: 50%;
+      border: 1px solid rgba(196,122,154,.06);
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .brand span { color: var(--blush-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--blush-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--blush); }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--blush-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 300; color: rgba(255,255,255,.42); font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.07); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--blush-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--blush-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(138,58,90,.2); border: 1px solid rgba(138,58,90,.4); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--blush-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--blush); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'MHH'; position: absolute; right: -1rem; bottom: -3rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(8rem, 22vw, 24rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; letter-spacing: -.02em; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.62); font-weight: 300; }
+
+    /* ── JOURNEY BAND ── */
+    .journey-band { background: var(--plum); padding: 4rem 3.5rem; }
+    .journey-inner { max-width: 1200px; margin: 0 auto; }
+    .journey-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 2.5rem; }
+    .journey-flow { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
+    .journey-flow::before { content: ''; position: absolute; top: 1.7rem; left: 10%; right: 10%; height: 1px; background: linear-gradient(to right, rgba(255,255,255,.05), rgba(196,122,154,.4), rgba(255,255,255,.05)); }
+    .journey-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 .75rem; }
+    .journey-dot { width: 3.5rem; height: 3.5rem; border-radius: 50%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; position: relative; z-index: 1; }
+    .journey-dot svg { width: 1.2rem; height: 1.2rem; }
+    .journey-step-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .8rem; color: var(--blush-lt); margin-bottom: .3rem; }
+    .journey-step-title { font-size: .82rem; font-weight: 500; color: #fff; margin-bottom: .3rem; line-height: 1.3; }
+    .journey-step-body { font-size: .72rem; line-height: 1.5; color: rgba(255,255,255,.38); font-weight: 300; }
+
+    /* ── DIVIDER ── */
+    .divider-band { background: var(--sand); padding: 3rem 3.5rem; display: flex; align-items: center; gap: 3rem; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; color: var(--blush); line-height: 1.1; white-space: nowrap; }
+    .divider-text { font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch; border-left: 2px solid var(--blush); padding-left: 2rem; }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--blush); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--blush); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--blush); background: rgba(138,58,90,.06); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── THREE AUDIENCES ── */
+    .audiences-band { background: var(--plum-dark); padding: 5rem 3.5rem; }
+    .audiences-inner { max-width: 1200px; margin: 0 auto; }
+    .audiences-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 2.5rem; }
+    .audiences-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(255,255,255,.06); }
+    .audience-card { background: var(--plum-dark); padding: 2.5rem 2rem; position: relative; overflow: hidden; }
+    .audience-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .audience-card.a1::before { background: var(--copper-lt); }
+    .audience-card.a2::before { background: var(--blush-lt); }
+    .audience-card.a3::before { background: #9ABADA; }
+    .audience-card.a4::before { background: #9AAA7A; }
+    .audience-icon { width: 3rem; height: 3rem; border-radius: 50%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .audience-icon svg { width: 1.2rem; height: 1.2rem; }
+    .audience-role { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .5rem; }
+    .audience-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: .75rem; }
+    .audience-tag { font-size: .7rem; font-style: italic; color: var(--blush-lt); margin-bottom: .75rem; }
+    .audience-body { font-size: .78rem; line-height: 1.65; color: rgba(255,255,255,.42); font-weight: 300; margin-bottom: 1rem; }
+    .audience-incentive { font-size: .72rem; color: rgba(255,255,255,.28); padding-top: .75rem; border-top: 1px solid rgba(255,255,255,.07); }
+    .audience-incentive strong { color: rgba(255,255,255,.5); font-weight: 500; }
+
+    /* ── KAB BAND ── */
+    .kab-band { background: var(--ink); padding: 5rem 3.5rem; }
+    .kab-inner { max-width: 1200px; margin: 0 auto; }
+    .kab-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; }
+    .kab-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; color: #fff; margin-bottom: 3rem; }
+    .kab-heading em { font-style: italic; color: var(--blush-lt); }
+    .kab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,.06); }
+    .kab-card { background: var(--ink); padding: 2.5rem 2rem; }
+    .kab-stage { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--blush-lt); margin-bottom: .5rem; }
+    .kab-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: #fff; margin-bottom: 1rem; line-height: 1; }
+    .kab-channel { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 1rem; }
+    .kab-items { display: flex; flex-direction: column; gap: .5rem; }
+    .kab-item { font-size: .8rem; color: rgba(255,255,255,.45); padding-left: .75rem; position: relative; line-height: 1.5; }
+    .kab-item::before { content: '—'; position: absolute; left: 0; color: rgba(255,255,255,.2); font-size: .65rem; top: .05rem; }
+
+    /* ── VERBATIMS BAND ── */
+    .verbatims-band { background: var(--blush-pale); padding: 5rem 3.5rem; }
+    .verbatims-inner { max-width: 1200px; margin: 0 auto; }
+    .verbatims-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--blush); margin-bottom: .75rem; }
+    .verbatims-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 3rem; }
+    .verbatims-heading em { font-style: italic; color: var(--blush); }
+    .verbatims-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .verbatim-card { background: #fff; padding: 2rem; border-radius: 2px; position: relative; }
+    .verbatim-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; line-height: 1.55; color: var(--ink); margin-bottom: 1rem; }
+    .verbatim-quote::before { content: '"'; font-size: 3rem; color: var(--blush-pale); line-height: 0; vertical-align: -1rem; margin-right: .2rem; }
+    .verbatim-source { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── HYPOTHESIS TABLE ── */
+    .hypo-band { background: var(--parchment); padding: 5rem 3.5rem; }
+    .hypo-inner { max-width: 1200px; margin: 0 auto; }
+    .hypo-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--blush); margin-bottom: .75rem; }
+    .hypo-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--ink); margin-bottom: 2.5rem; }
+    .hypo-heading em { font-style: italic; color: var(--blush); }
+    .hypo-table { display: grid; gap: 2px; background: var(--sand); }
+    .hypo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--sand); }
+    .hypo-cell { background: var(--parchment); padding: 1.5rem 2rem; }
+    .hypo-cell.header { background: var(--plum-dark); }
+    .hypo-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; margin-bottom: .5rem; }
+    .hypo-label.expected { color: rgba(255,255,255,.35); }
+    .hypo-label.reality { color: var(--blush-lt); }
+    .hypo-text { font-size: .88rem; line-height: 1.65; font-weight: 300; }
+    .hypo-text.expected { color: rgba(255,255,255,.65); }
+    .hypo-text.reality { color: var(--ink); }
+    .hypo-tick { display: inline-block; width: 1.1rem; height: 1.1rem; border-radius: 50%; background: rgba(138,58,90,.15); border: 1px solid var(--blush); margin-right: .4rem; vertical-align: -.1rem; text-align: center; font-size: .65rem; line-height: 1.1rem; color: var(--blush); }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--plum); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--blush); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--plum-dark); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(138,58,90,.2) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--blush-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.45); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .journey-band, .audiences-band, .kab-band, .verbatims-band, .hypo-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid, .audiences-grid, .kab-grid, .verbatims-grid { grid-template-columns: 1fr; }
+      .hypo-row { grid-template-columns: 1fr; }
+      .journey-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .journey-flow::before { display: none; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--blush); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-oval"></div>
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Menstrual Health &amp; Hygiene SBC · Punjab &amp; KPK, Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">UNICEF Pakistan · Rajanpur (Punjab) &amp; Battagram (KPK)</div>
+    <h1>
+      Breaking <em>Barriers</em>
+      <span class="sub-title">Advancing Menstrual Health in Pakistan with Social Behaviour Change — Phase II</span>
+    </h1>
+    <p class="hero-sub">A national SBC initiative to dismantle the silence, shame, and misinformation surrounding menstrual health and hygiene in rural Pakistan — designed across three provinces, three target audiences, and the full socio-ecological model, with a 90% communication effectiveness rate and readiness for national rollout.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">UNICEF Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Provinces</span><span class="meta-value">Sindh (Pilot 1) · Punjab · KPK</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">Menstrual Health &amp; Hygiene SBC</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">SBC Strategy, Co-Creation &amp; Toolkit Design Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">SBC Strategy, Co-Creation &amp; <em>National Toolkit Design</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice served as UNICEF's SBC strategy and creative partner across the full programme cycle — from a national study and community co-creation workshop in Sindh, through the design of Pakistan's first MHH SBC Toolkit, to the Phase II scale-up across five villages each in Rajanpur (Punjab) and Battagram (KPK). Every element of the programme — conversation guides, storybooks, training materials, monitoring systems — was designed by White Rice with and for the communities it served.</p>
+      <div class="role-services">
+        <span class="role-tag">National Study &amp; Formative Research</span>
+        <span class="role-tag">Community Co-Creation</span>
+        <span class="role-tag">SBC Toolkit Design</span>
+        <span class="role-tag">KAB Framework Design</span>
+        <span class="role-tag">CRP Training Programme</span>
+        <span class="role-tag">Conversation Flip Books</span>
+        <span class="role-tag">Girls' Storybook</span>
+        <span class="role-tag">Monitoring &amp; Data System</span>
+        <span class="role-tag">Provincial Scale-Up Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">~90%</div>
+      <div class="outcome-desc">Communication toolkit effectiveness rate across all three provincial pilots — validating readiness for nationwide rollout.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">3 Provinces</div>
+      <div class="outcome-desc">Sindh, Punjab, and KPK — three culturally and contextually distinct provinces, one tested and refined SBC toolkit.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">3,000+</div>
+      <div class="outcome-desc">Fathers, mothers, and adolescent girls reached across 10 villages in Rajanpur and Battagram through structured KAB sessions.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Hypotheses Overturned</div>
+      <div class="outcome-desc">Every assumption about male resistance and community reluctance was disproved — fathers emerged as the programme's most engaged and vocal participants.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">National Toolkit</div>
+      <div class="outcome-desc">Pakistan's first MHH SBC Toolkit — ready for national rollout and replicable by any partner organisation across all regions.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROGRAMME JOURNEY ══ -->
+<section class="journey-band">
+  <div class="journey-inner">
+    <div class="journey-label">The Programme Journey · Five Phases</div>
+    <div class="journey-flow">
+      <div class="journey-step">
+        <div class="journey-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#C47A9A" stroke-width="1.6"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <div class="journey-step-num">Phase 1</div>
+        <div class="journey-step-title">Understand</div>
+        <div class="journey-step-body">National study to map root causes of period poverty across Pakistan</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#C47A9A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div class="journey-step-num">Phase 2</div>
+        <div class="journey-step-title">Co-Create</div>
+        <div class="journey-step-body">3-day co-creation workshop in Khairpur, Sindh with community members</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#C47A9A" stroke-width="1.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div class="journey-step-num">Phase 3</div>
+        <div class="journey-step-title">Design</div>
+        <div class="journey-step-body">SBC toolkit &amp; communication materials designed and prototyped iteratively</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#C47A9A" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="journey-step-num">Phase 4</div>
+        <div class="journey-step-title">Implement</div>
+        <div class="journey-step-body">Pilot in Sindh followed by Phase II scale-up in Punjab &amp; KPK</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#C47A9A" stroke-width="1.6"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+        <div class="journey-step-num">Phase 5</div>
+        <div class="journey-step-title">Scale Up</div>
+        <div class="journey-step-body">National toolkit finalised for rollout across Pakistan with partners</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">49%<br>of girls.<br>No knowledge.</div>
+  <div class="divider-text">In Pakistan, nearly half of all girls experience their first period with no prior knowledge of menstruation. 44% lack access to the facilities needed to manage their menstrual health. The resulting stigma, shame, and health risk is not a natural state of affairs — it is the product of silence, and silence can be broken by design.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Menstrual health and hygiene in rural Pakistan is not simply a product access problem. It is a deeply entrenched social norm problem — one shaped by shame, silence, misinformation, and the complete absence of open dialogue between the people who need to have it most: fathers and daughters, mothers and sons, women and their own bodies.</p>
+        <div class="pull-quote">
+          <p>"If I speak to my mother about this, she will kill me." — Adolescent girl, Battagram, KPK</p>
+        </div>
+        <p>White Rice and UNICEF's 2021–2022 national study identified four intersecting root causes: socio-cultural norms and behaviours; product affordability; accessibility barriers; and inadequate WASH infrastructure. Any programme that addressed only one of these would fail. And any programme built around information alone — without addressing the relational and normative context in which that information needed to travel — would reach no one.</p>
+        <p>Phase II added a further layer of complexity: scaling an approach that had worked in Sindh's Khairpur into two entirely new provincial contexts — conservative, patriarchal Rajanpur in Punjab, and the hilly, remote villages of Battagram in KPK. Both had been identified as likely to resist. Both would prove more open than anyone expected.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The strategy was built on three foundational commitments: co-creation with the community before designing anything; a Knowledge-Attitude-Behaviour (KAB) framework that moved participants through a structured arc rather than attempting single-session awareness; and a radical inclusion of fathers as primary programme participants rather than afterthoughts.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+            <div>
+              <div class="pillar-title">Co-Creation First</div>
+              <div class="pillar-body">A 3-day embedded co-creation workshop in Khairpur — with women, girls, mothers, fathers, and community influencers — shaped the entire communication toolkit from the ground up, including multiple rounds of prototyping and real-community testing.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <div>
+              <div class="pillar-title">The KAB Arc</div>
+              <div class="pillar-body">Three staged sessions per audience — Stage 1: Knowledge (large group, open conversation); Stage 2: Attitude (smaller groups, identify barriers); Stage 3: Behaviour + Intention (one-to-one or small group, pledges, action, storytelling from early adopters).</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+            <div>
+              <div class="pillar-title">Fathers as the Enabling Environment</div>
+              <div class="pillar-body">In Pakistan's rural context, the father is the breadwinner and decision-maker. Without his knowledge, empathy, and financial support, no behaviour change in the home is sustainable. Fathers were treated as equal participants — not obstacles to manage.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+            <div>
+              <div class="pillar-title">Storytelling as the Primary Vehicle</div>
+              <div class="pillar-body">The girls' guide was built around Sara and Saba — two fictional characters whose stories provided an emotionally safe entry point for adolescent girls to engage with MHH without the shame of direct instruction or clinical information delivery.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ THREE AUDIENCES ══ -->
+<section class="audiences-band">
+  <div class="audiences-inner">
+    <div class="audiences-label">Target Audiences · Designed for Each Relationship in the Chain</div>
+    <div class="audiences-grid">
+      <div class="audience-card a1">
+        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8A86A" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+        <div class="audience-role">Target 1</div>
+        <div class="audience-name">Father</div>
+        <div class="audience-tag">The Enabler</div>
+        <div class="audience-body">The key decision-maker and breadwinner. His empathy and financial support are prerequisites for any behaviour change at home. Historically excluded from MHH discussions entirely.</div>
+        <div class="audience-incentive"><strong>Incentive framed as:</strong> Long-term family health, religious duty of cleanliness, and the financial logic of prevention over treatment.</div>
+      </div>
+      <div class="audience-card a2">
+        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C47A9A" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="audience-role">Target 2</div>
+        <div class="audience-name">Mother</div>
+        <div class="audience-tag">The Relator</div>
+        <div class="audience-body">The direct caregiver who can empathise and act as a bridge between husband and daughter. But she faces her own shame and relational barriers that needed to be named and supported before she could lead change.</div>
+        <div class="audience-incentive"><strong>Incentive framed as:</strong> Daughter's health, access to products for herself, and ability to give her family what they need.</div>
+      </div>
+      <div class="audience-card a3">
+        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#9ABADA" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div class="audience-role">Target 3</div>
+        <div class="audience-name">Adolescent Girls</div>
+        <div class="audience-tag">The Bridge (Punjab) / Elder Sister (KPK)</div>
+        <div class="audience-body">The primary beneficiary — but also the most silenced. In Punjab, girls would only speak to their mothers; in KPK, elder sisters performed this bridge role. The storybook approach bypassed shame through narrative rather than instruction.</div>
+        <div class="audience-incentive"><strong>Incentive framed as:</strong> Personal health, safety, and the right to ask for what they need.</div>
+      </div>
+      <div class="audience-card a4">
+        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#9AAA7A" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <div class="audience-role">Target 4</div>
+        <div class="audience-name">Community Influencers</div>
+        <div class="audience-tag">The Norm Builder</div>
+        <div class="audience-body">Elders, religious leaders, and local figures whose endorsement signals community permission. In Battagram, a local Molana's positive engagement created immediate credibility and shifted the room's openness within a single session.</div>
+        <div class="audience-incentive"><strong>Incentive framed as:</strong> Recognition and serving the community's health and wellbeing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KAB FRAMEWORK ══ -->
+<section class="kab-band">
+  <div class="kab-inner">
+    <div class="kab-eyebrow">Intervention Framework · Knowledge → Attitude → Behaviour</div>
+    <h2 class="kab-heading">Three stages. Three shifts.<br><em>One complete behaviour change journey.</em></h2>
+    <div class="kab-grid">
+      <div class="kab-card">
+        <div class="kab-stage">Stage 1</div>
+        <div class="kab-name">Knowledge</div>
+        <div class="kab-channel">Channel: Community Influencers · Large Group Sessions</div>
+        <div class="kab-items">
+          <div class="kab-item">Engage local influencers to on-board and gain community support</div>
+          <div class="kab-item">Separate group sessions for mothers, fathers, and girls — using specialised conversation guides for each</div>
+          <div class="kab-item">Open the discussion; create the first safe space for the subject to exist publicly</div>
+          <div class="kab-item">Meetings held in all five villages per province</div>
+        </div>
+      </div>
+      <div class="kab-card">
+        <div class="kab-stage">Stage 2</div>
+        <div class="kab-name">Attitude</div>
+        <div class="kab-channel">Channel: Smaller Groups · Home &amp; School Settings</div>
+        <div class="kab-items">
+          <div class="kab-item">Address individual barriers and challenges in adopting the target behaviour</div>
+          <div class="kab-item">Girls' Guide (Sara &amp; Saba story) initiates open conversation through narrative</div>
+          <div class="kab-item">Build confidence to speak about MHH and demand products</div>
+          <div class="kab-item">Multiple sessions per village; mostly home visits and smaller gatherings</div>
+        </div>
+      </div>
+      <div class="kab-card">
+        <div class="kab-stage">Stage 3</div>
+        <div class="kab-name">Behaviour + Intention</div>
+        <div class="kab-channel">Channel: 1-on-1 Sessions · Community Spaces &amp; Homes</div>
+        <div class="kab-items">
+          <div class="kab-item">Validation and conversion: intention to action</div>
+          <div class="kab-item">Storytelling to probe deeper on behavioural intentions</div>
+          <div class="kab-item">Get pledges and document commitments from participants</div>
+          <div class="kab-item">Capture stories from early adopters for peer-led social proof</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VERBATIMS ══ -->
+<section class="verbatims-band">
+  <div class="verbatims-inner">
+    <div class="verbatims-eyebrow">In Their Own Words</div>
+    <h2 class="verbatims-heading">The conversations that <em>were never supposed to happen.</em></h2>
+    <div class="verbatims-grid">
+      <div class="verbatim-card">
+        <div class="verbatim-quote">I asked my wife what she uses and told her to give money to her aunts who will bring it for her.</div>
+        <div class="verbatim-source">Father · Islampur, Rajanpur · Punjab</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">We need to save ourselves from disease, not embarrassment.</div>
+        <div class="verbatim-source">Father · Chak Talab · Rajanpur, Punjab</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">I brought pads for my wife from the city without any shame or embarrassment.</div>
+        <div class="verbatim-source">Father · Muhammad Pur · Rajanpur, Punjab</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">If we can ask our husbands to bring wheat, oil, and sugar, we should also be able to ask them to bring pads.</div>
+        <div class="verbatim-source">Mother · Battagram, KPK</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">When I spoke to my husband about this, he asked me why I was not ashamed. I said — why should I be ashamed in front of you?</div>
+        <div class="verbatim-source">Mother · Battagram, KPK</div>
+      </div>
+      <div class="verbatim-card">
+        <div class="verbatim-quote">This helped us realise that periods are natural and nothing to hide. We should feel comfortable sharing how we're feeling.</div>
+        <div class="verbatim-source">Adolescent Girl · Rajanpur, Punjab</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HYPOTHESIS TABLE ══ -->
+<section class="hypo-band">
+  <div class="hypo-inner">
+    <div class="hypo-eyebrow">Hypothesis Validation</div>
+    <h2 class="hypo-heading">What we expected to find.<br><em>What the community showed us instead.</em></h2>
+    <div class="hypo-table">
+      <div class="hypo-row">
+        <div class="hypo-cell header"><div class="hypo-label expected">Expected Barrier</div></div>
+        <div class="hypo-cell header"><div class="hypo-label reality">What Actually Happened</div></div>
+      </div>
+      <div class="hypo-row">
+        <div class="hypo-cell"><div class="hypo-text">Men would avoid the subject and show resistance — especially in conservative KPK.</div></div>
+        <div class="hypo-cell"><div class="hypo-text reality"><span class="hypo-tick">✓</span>Fathers were the programme's most engaged and vocal participants. Many said these discussions should have happened years ago.</div></div>
+      </div>
+      <div class="hypo-row">
+        <div class="hypo-cell"><div class="hypo-text">Mothers would be reluctant to discuss the topic in group settings.</div></div>
+        <div class="hypo-cell"><div class="hypo-text reality"><span class="hypo-tick">✓</span>Mothers actively participated, shared experiences, and expressed gratitude that the conversation was finally happening.</div></div>
+      </div>
+      <div class="hypo-row">
+        <div class="hypo-cell"><div class="hypo-text">Girls — especially those at home — would not be permitted to engage separately.</div></div>
+        <div class="hypo-cell"><div class="hypo-text reality"><span class="hypo-tick">✓</span>Girls were permitted and encouraged to participate in their own sessions, including those not in school.</div></div>
+      </div>
+      <div class="hypo-row">
+        <div class="hypo-cell"><div class="hypo-text">Religious leaders and elders would resist and act as strong gatekeepers.</div></div>
+        <div class="hypo-cell"><div class="hypo-text reality"><span class="hypo-tick">✓</span>In Battagram, a local Molana attended, gave positive feedback, and framed MHH through the Islamic emphasis on cleanliness — becoming an unexpected champion.</div></div>
+      </div>
+      <div class="hypo-row">
+        <div class="hypo-cell"><div class="hypo-text">Resistance to adopting pads and strong preference for traditional cloth.</div></div>
+        <div class="hypo-cell"><div class="hypo-text reality"><span class="hypo-tick">✓</span>The preference for cloth was less prevalent than anticipated. The real barrier was price and access — not attitude toward the product itself.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The programme's most significant finding was not a statistic. It was the overturning of every assumption that had made people hesitant to tackle MHH in rural Pakistan in the first place. Fathers spoke. Mothers demanded. Girls asked questions. Religious leaders gave endorsements. The silence broke — and it broke in the most conservative corners of the country.</p>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">~90%</div>
+            <div class="desc">Toolkit communication effectiveness rate across three provincial pilots — providing the evidence base for a confident national rollout.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">3,000+</div>
+            <div class="desc">Fathers, mothers, and adolescent girls reached across Rajanpur and Battagram through structured KAB sessions — with documented attitude and behaviour shifts.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Father–Mother–Daughter</div>
+            <div class="desc">The communication flow between these three relationships — previously nonexistent — was successfully established through the programme. This is the foundational architecture for national change.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">National Toolkit</div>
+            <div class="desc">Pakistan's first MHH SBC Toolkit — tested across Sindh, Punjab, and KPK, with modifications mapped for each regional context — ready for national programme design and partner rollout.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">The path to national impact is now clear. If affordability is addressed — through product subsidies, supply chain improvement, or economic empowerment for women — Pakistan's communities are ready. The programme did not just break a barrier. It proved that the barrier was never as solid as it appeared.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>The silence was not consent.<br>It was <em>design.</em><br>And design can be changed.</h3>
+    <p>Breaking Barriers demonstrated that with the right co-creation process, the right messengers, and the right framework, the most entrenched taboos in the most conservative communities are not as immovable as they appear. Pakistan is ready. The toolkit is ready. What comes next is scale.</p>
+    <div class="tag-pills">
+      <span class="pill">Menstrual Health</span>
+      <span class="pill">Period Poverty</span>
+      <span class="pill">Social Behaviour Change</span>
+      <span class="pill">Co-Creation</span>
+      <span class="pill">KAB Framework</span>
+      <span class="pill">Fathers</span>
+      <span class="pill">Adolescent Girls</span>
+      <span class="pill">Rural Pakistan</span>
+      <span class="pill">Punjab</span>
+      <span class="pill">KPK</span>
+      <span class="pill">UNICEF</span>
+      <span class="pill">SDG 3</span>
+      <span class="pill">SDG 5</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
