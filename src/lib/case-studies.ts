@@ -454,15 +454,70 @@ export const caseStudies: CaseStudyData[] = [
     slug: "unicef-parental-engagement",
     year: "2023 - 2024",
     tags: ["Parental Engagement", "Walidain HumQadam", "SBC", "WhatsApp Learning", "Future Visioning", "Teacher Training", "PTM Redesign", "Co-Creation", "UNICEF Pakistan", "4 Provinces", "Remote Delivery", "SDG 4", "Pakistan"],
+    theme: {
+      primary: "#1A2A6A",
+      primaryLight: "#4A6ACA",
+      accent: "#C49A1A",
+      accentLight: "#E8C84A",
+    },
+    heroImage: "/images/timeline/2023/parenting-hero.jpg",
+    hero: {
+      eyebrow: "UNICEF Pakistan \u00b7 4 Provinces \u00b7 52 Schools",
+      title: "Parents<br><em>Walking</em><br>Alongside.",
+      subtitle: "Walidain HumQadam \u2014 Pakistan\u2019s First Remote SBC Programme for Parental Engagement in Education",
+      description: "A pioneering SBC initiative co-designed with parents, teachers, and communities across Pakistan \u2014 using WhatsApp, vision boards, and peer-to-peer learning to transform parental engagement from a mandatory obligation into a sustained, meaningful practice.",
+      meta: [
+        { label: "Client", value: "UNICEF Pakistan" },
+        { label: "Scale", value: "4 Provinces \u00b7 6 Cities \u00b7 52 Schools" },
+        { label: "Focus", value: "Parental Engagement in Education (SBC)" },
+        { label: "White Rice Role", value: "SBC Design, Co-Creation & Content Lead" },
+      ],
+    },
+    role: {
+      heading: "SBC Design, Research & <em>Full Programme Architecture</em>",
+      body: "White Rice partnered with UNICEF Pakistan to design, co-create, and deliver Walidain HumQadam \u2014 Pakistan\u2019s first remotely-delivered SBC programme specifically targeting parental engagement in education. Our role spanned the entire programme lifecycle: from formative research and co-creation workshops across four provinces, through intervention design using the Behavioural Driver Model and Theory of Change, to content production for five integrated programme touchpoints and a 6.4-million-reach digital campaign.",
+      services: [
+        "Formative Research",
+        "4-Province Co-Creation Workshops",
+        "SBC Theory of Change",
+        "Behavioural Driver Model",
+        "WhatsApp Programme Design",
+        "Vision Board Methodology",
+        "Teacher Training Programme",
+        "PTM Framework Redesign",
+        "P2P Community Sessions",
+        "Digital Campaign (6.4M reach)",
+      ],
+    },
+    outcomes: {
+      cards: [
+        { stat: "13,998", description: "Total parents reached \u2014 through WhatsApp, P2P gatherings, PTMs, digital sharing, and direct teacher outreach across six cities in four provinces." },
+        { stat: "6.4 Million+", description: "Individuals reached through the digital campaign across Facebook, Instagram, YouTube, and TikTok \u2014 generating over 14.7 million impressions." },
+        { stat: "550+ Canvases", description: "Vision canvases created by parents, teachers, and students across 52 schools \u2014 Pakistan\u2019s largest ever visioning exercise in education." },
+        { stat: "250 Teachers", description: "Trained as Champion Teachers across 52 schools in Islamabad, Lahore, Peshawar, Karachi, Quetta, Sujawal, and Multan." },
+        { stat: "4,200+ Community", description: "A sustained WhatsApp community of parents and teachers \u2014 built for long-term engagement beyond the programme\u2019s formal timeline." },
+      ],
+      watermark: "\u0647\u0645\u0642\u062F\u0645",
+    },
+    closing: {
+      heading: "Parents who remember<br>why they hoped<br><em>show up differently.</em>",
+      body: "Walidain HumQadam proved that parental engagement in education is not an infrastructure problem. It is a behaviour change problem \u2014 one that starts with aspiration, is sustained through habit, and is scaled through technology. Pakistan now has a tested blueprint. What it needs next is the national commitment to use it.",
+    },
+    impactCells: [
+      { big: "Pakistan\u2019s First", desc: "Remotely-delivered SBC programme for parental engagement in education \u2014 establishing a tested, validated framework ready for national implementation." },
+      { big: "550+ Vision Boards", desc: "Pakistan\u2019s largest-ever visioning exercise \u2014 transforming the aspiration gap into the motivation engine for the entire programme." },
+      { big: "Cultural Shift", desc: "Fathers from Sujawal and Multan sharing programme content on social media. A Multan father discussing Walidain HumQadam on live television. Behaviour changed publicly, not just privately." },
+      { big: "4,200+ Community", desc: "A lasting WhatsApp community of parents, teachers, and educators \u2014 providing the infrastructure for sustained engagement long after the formal programme concluded." },
+    ],
     challenge: {
-      heading: "The Challenge",
+      heading: "The <em>Challenge</em>",
       body: "Parental engagement in Pakistan's public school system is structurally limited at every tier. Economic pressure means parents prioritise immediate survival over school activities. Low literacy \u2014 particularly among mothers \u2014 creates deep insecurity about their ability to meaningfully contribute to their child's education. Public school teachers managing classrooms of 50+ students have minimal capacity to build parent relationships. And communication between schools and families remains almost entirely paper-based.\n\nFathers in particular are largely absent from the educational lives of their children \u2014 viewing it as the mother's responsibility. And mothers, despite their proximity to children, often lack the confidence, literacy, or mobility to advocate effectively at the school level.\n\nUnderlying all of this is a belief \u2014 reinforced by real economic reality \u2014 that formal education may not reliably lead to better outcomes. Before any behaviour change programme could work, it needed to address this foundational question of value. Walidain HumQadam began not by telling parents what to do, but by helping them remember why they hoped.",
       quote: {
         text: "Parents consider education a fruitless effort \u2014 there are examples in every home where someone who completed their MA or BS is unemployed, so they pay more attention to a shop or other work.",
       },
     },
     strategy: {
-      heading: "The Strategy",
+      heading: "The <em>Strategy</em>",
       intro: "The programme's SBC strategy was built around the Socio-Ecological Model \u2014 addressing parental disengagement at the individual, interpersonal, community, and institutional levels simultaneously. The Behavioural Driver Model framed the programme's design across three intersecting forces: psychology (internal beliefs and self-efficacy), sociology (social norms, peer influence), and environment (tools, platforms, and access).",
       steps: [
         { number: "01", title: "Start with Aspiration, Not Instruction", description: "The programme's entry point was a Future Visioning exercise \u2014 asking parents to imagine their child's life 10 years ahead. Before any knowledge transfer or behaviour nudge, the programme rebuilt parents' emotional investment in their child's education as the foundation for everything else." },
@@ -472,7 +527,7 @@ export const caseStudies: CaseStudyData[] = [
       ],
     },
     work: {
-      heading: "The Intervention",
+      heading: "The <em>Intervention</em>",
       body: "White Rice partnered with UNICEF Pakistan to design, co-create, and deliver Walidain HumQadam \u2014 Pakistan's first remotely-delivered SBC programme specifically targeting parental engagement in education. Our role spanned the entire programme lifecycle: from formative research and co-creation workshops across four provinces, through intervention design using the Behavioural Driver Model and Theory of Change, to content production for five integrated programme touchpoints and a 6.4-million-reach digital campaign.",
       deliverables: [
         "Formative Research",
@@ -488,7 +543,7 @@ export const caseStudies: CaseStudyData[] = [
       ],
     },
     impact: {
-      heading: "The Impact",
+      heading: "The <em>Impact</em>",
       body: "Walidain HumQadam was the first programme of its kind in Pakistan \u2014 a remotely-delivered, WhatsApp-native SBC intervention specifically designed to shift parental engagement in education at scale. The results demonstrated both the viability of the model and its readiness for national rollout.",
       metrics: [
         { value: 13998, suffix: "", label: "Total parents reached \u2014 through WhatsApp, P2P gatherings, PTMs, digital sharing, and direct teacher outreach across six cities in four provinces." },
