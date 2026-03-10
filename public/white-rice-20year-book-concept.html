@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Space Between — White Rice 20-Year Book Concept</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:       #0A0806;
+      --parchment: #F5EFE3;
+      --cream:     #FBF7F0;
+      --sand:      #E8DFD0;
+      --muted:     #8A7A68;
+      --warm:      #C8B89A;
+      --vermillion:#C4401A;
+      --verm-lt:   #E8602A;
+      --verm-pale: #FDF0EA;
+      --gold:      #C4961A;
+      --gold-lt:   #E8B84A;
+      --night:     #06040A;
+      --deep:      #120E08;
+      --charcoal:  #1C1812;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--night); color: var(--parchment); overflow-x: hidden; }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh; position: relative; overflow: hidden;
+      display: grid; grid-template-rows: auto 1fr auto;
+      background: var(--deep);
+    }
+    .cover::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 65% at 4%  38%, rgba(196,64,26,.25) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 55% at 92% 72%, rgba(196,150,26,.1)  0%, transparent 52%),
+        radial-gradient(ellipse 70% 70% at 50% 50%, rgba(18,14,8,.7)     0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover-20 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(10rem, 25vw, 26rem);
+      font-weight: 300; line-height: .85; color: rgba(255,255,255,.04);
+      position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+      pointer-events: none; letter-spacing: -.05em; z-index: 2;
+    }
+    /* Rice grain scatter */
+    .rice-grain {
+      position: absolute; width: 3px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      animation: drift 18s ease-in-out infinite;
+    }
+    @keyframes drift {
+      0%, 100% { transform: translateY(0) rotate(var(--r)); opacity: .04; }
+      50%       { transform: translateY(-12px) rotate(calc(var(--r) + 8deg)); opacity: .09; }
+    }
+    .cover-top {
+      padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.05); position: relative; z-index: 4;
+    }
+    .cover-brand { font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.3); font-weight: 300; }
+    .cover-brand b { color: var(--vermillion); font-weight: 500; }
+    .cover-year { font-family: 'Cormorant Garamond', serif; font-size: .9rem; font-style: italic; color: rgba(255,255,255,.2); }
+    .cover-body {
+      display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+      padding: 0 4rem 3rem; position: relative; z-index: 4;
+    }
+    .cover-pre { font-size: .65rem; letter-spacing: .28em; text-transform: uppercase; color: var(--vermillion); margin-bottom: 1.5rem; animation: fadeUp .8s .1s both; }
+    .cover-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 10vw, 12rem); font-weight: 300; line-height: .88;
+      color: var(--parchment); letter-spacing: -.02em;
+      animation: fadeUp .9s .2s both;
+    }
+    .cover-title em { font-style: italic; color: rgba(255,255,255,.45); }
+    .cover-subtitle {
+      margin-top: 2rem; font-size: clamp(.9rem, 1.4vw, 1.15rem);
+      font-weight: 200; color: rgba(255,255,255,.35); line-height: 1.6; max-width: 42ch;
+      animation: fadeUp .9s .38s both;
+    }
+    .cover-bottom {
+      padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid rgba(255,255,255,.05); position: relative; z-index: 4;
+      animation: fadeUp .9s .55s both;
+    }
+    .cover-note { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.15); }
+    .cover-tag { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .9rem; color: rgba(255,255,255,.2); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+
+    /* ── BRIEF ── */
+    .brief { background: var(--parchment); padding: 6rem 4rem; color: var(--ink); }
+    .brief-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 360px 1fr; gap: 7rem; align-items: start; }
+    .brief-label { font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
+    .brief-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 400; line-height: 1.1; color: var(--ink); }
+    .brief-heading em { font-style: italic; color: var(--vermillion); }
+    .brief-divider { width: 3rem; height: 1px; background: var(--sand); margin: 2rem 0; }
+    .brief-left p { font-size: .88rem; line-height: 1.85; color: var(--muted); font-weight: 300; margin-bottom: 1.25rem; }
+    .brief-right p { font-size: 1.02rem; line-height: 1.9; color: #3A3028; font-weight: 300; margin-bottom: 1.5rem; }
+    .brief-right .lead { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.2vw, 2rem); font-style: italic; line-height: 1.35; color: var(--ink); margin-bottom: 2rem; font-weight: 400; }
+    .brief-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--sand); margin-top: 3rem; }
+    .bc { background: var(--cream); padding: 2rem; }
+    .bc-label { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
+    .bc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: .75rem; }
+    .bc-body { font-size: .8rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+    .bc-old { border-top: 3px solid rgba(0,0,0,.1); }
+    .bc-new { border-top: 3px solid var(--vermillion); }
+
+    /* ── CONCEPT TITLE ── */
+    .concept-title-band { background: var(--charcoal); padding: 8rem 4rem; position: relative; overflow: hidden; }
+    .concept-title-band::before { content: 'THE SPACE BETWEEN'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 9rem); font-weight: 700; color: rgba(255,255,255,.02); white-space: nowrap; pointer-events: none; letter-spacing: .08em; }
+    .concept-inner { max-width: 1300px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .concept-pre { font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; color: var(--vermillion); margin-bottom: 2rem; }
+    .concept-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 10vw, 12rem); font-weight: 300; line-height: .85; color: var(--parchment); letter-spacing: -.025em; }
+    .concept-name em { font-style: italic; color: rgba(255,255,255,.4); }
+    .concept-sub { margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 1.8vw, 1.6rem); font-style: italic; color: rgba(255,255,255,.35); font-weight: 300; }
+    .concept-rationale { margin-top: 4rem; max-width: 65ch; margin-left: auto; margin-right: auto; font-size: .92rem; line-height: 1.9; color: rgba(255,255,255,.38); font-weight: 300; }
+    .concept-vs { display: flex; align-items: center; justify-content: center; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; }
+    .cvs-old { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,.18); text-decoration: line-through; }
+    .cvs-div { width: 3rem; height: 1px; background: rgba(255,255,255,.1); }
+    .cvs-new { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--gold-lt); }
+
+    /* ── PHILOSOPHY ── */
+    .phil-band { background: var(--verm-pale); padding: 6rem 4rem; color: var(--ink); }
+    .phil-inner { max-width: 1300px; margin: 0 auto; }
+    .section-eyebrow { font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; margin-bottom: 1rem; }
+    .ey-verm { color: var(--vermillion); }
+    .ey-muted { color: var(--muted); }
+    .ey-dim { color: rgba(255,255,255,.22); }
+    .section-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; margin-bottom: 3.5rem; line-height: 1.1; }
+    .sh-dark em { font-style: italic; color: var(--vermillion); color: var(--ink); }
+    .sh-dark em { font-style: italic; }
+    .sh-parch em { font-style: italic; color: var(--vermillion); }
+    .sh-parch { color: var(--ink); }
+    .sh-parch em { color: var(--vermillion); }
+    .sh-light em { font-style: italic; color: var(--gold-lt); }
+    .sh-light { color: var(--parchment); }
+    .phil-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--sand); }
+    .phil-card { background: var(--cream); padding: 3rem 2.5rem; }
+    .pc-n { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(196,64,26,.07); line-height: 1; margin-bottom: -.5rem; }
+    .pc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--ink); margin-bottom: .6rem; }
+    .pc-rule { width: 2rem; height: 2px; background: var(--vermillion); margin: 1rem 0; }
+    .pc-body { font-size: .82rem; line-height: 1.75; color: var(--muted); font-weight: 300; }
+
+    /* ── STRUCTURE ── */
+    .struct-band { background: var(--night); padding: 6rem 4rem; }
+    .struct-inner { max-width: 1300px; margin: 0 auto; }
+    .chapters { display: grid; gap: 1.5px; background: rgba(255,255,255,.04); }
+    .chapter { background: var(--night); display: grid; grid-template-columns: 110px 1fr 1fr; }
+    .ch-index { background: rgba(255,255,255,.02); padding: 2.5rem 1.5rem; border-right: 1px solid rgba(255,255,255,.04); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
+    .chi-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(255,255,255,.08); line-height: 1; }
+    .chi-dot { width: .45rem; height: .45rem; border-radius: 50%; }
+    .ch-content { padding: 2.5rem; border-right: 1px solid rgba(255,255,255,.04); }
+    .ch-tag { display: inline-block; padding: .22rem .7rem; border-radius: 2rem; font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 1rem; font-weight: 500; }
+    .ch-content h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 1.8vw, 1.75rem); font-weight: 400; color: var(--parchment); line-height: 1.15; margin-bottom: .5rem; }
+    .ch-content h3 em { font-style: italic; }
+    .ch-sub { font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.2); margin-bottom: 1rem; }
+    .ch-content p { font-size: .8rem; line-height: 1.72; color: rgba(255,255,255,.36); font-weight: 300; }
+    .ch-spreads { padding: 2.5rem; }
+    .sp-label-sm { font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.18); margin-bottom: 1rem; }
+    .spread-list { display: grid; gap: .55rem; }
+    .spread-item { display: flex; gap: .7rem; align-items: flex-start; }
+    .si-dot { width: .28rem; height: .28rem; border-radius: 50%; background: rgba(255,255,255,.12); flex-shrink: 0; margin-top: .55rem; }
+    .si-text { font-size: .73rem; line-height: 1.55; color: rgba(255,255,255,.26); font-weight: 300; }
+    /* chapter accents */
+    .c1 .chi-dot { background: rgba(196,64,26,.4); } .c1 .ch-tag { background: rgba(196,64,26,.15); color: #E8805A; border: 1px solid rgba(196,64,26,.35); }
+    .c2 .chi-dot { background: rgba(196,150,26,.35); } .c2 .ch-tag { background: rgba(196,150,26,.12); color: var(--gold-lt); border: 1px solid rgba(196,150,26,.3); }
+    .c3 .chi-dot { background: rgba(58,138,58,.4); } .c3 .ch-tag { background: rgba(58,138,58,.12); color: #7ACA7A; border: 1px solid rgba(58,138,58,.3); }
+    .c4 .chi-dot { background: rgba(58,110,200,.4); } .c4 .ch-tag { background: rgba(58,110,200,.12); color: #8ABAFF; border: 1px solid rgba(58,110,200,.3); }
+    .c5 .chi-dot { background: rgba(196,64,26,.4); } .c5 .ch-tag { background: rgba(196,64,26,.12); color: #E8805A; border: 1px solid rgba(196,64,26,.3); }
+    .c6 .chi-dot { background: rgba(150,100,50,.4); } .c6 .ch-tag { background: rgba(150,100,50,.12); color: #D4A47A; border: 1px solid rgba(150,100,50,.3); }
+    .c7 .chi-dot { background: rgba(220,180,80,.35); } .c7 .ch-tag { background: rgba(220,180,80,.1); color: var(--gold-lt); border: 1px solid rgba(220,180,80,.25); }
+
+    /* ── SPREAD CONCEPTS ── */
+    .spreads-band { background: var(--parchment); padding: 6rem 4rem; color: var(--ink); }
+    .spreads-inner { max-width: 1300px; margin: 0 auto; }
+    .spread-concepts { display: grid; gap: 2px; background: var(--sand); }
+    .sc-row { display: grid; gap: 2px; }
+    .sc-2 { grid-template-columns: 1fr 1fr; }
+    .sc-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .sc-pane { padding: 3.5rem 3rem; position: relative; overflow: hidden; }
+    .sc-dark  { background: var(--charcoal); }
+    .sc-cream { background: var(--cream); }
+    .sc-verm  { background: var(--vermillion); }
+    .sc-night { background: var(--night); }
+    .sc-warm  { background: #2A1A0E; }
+    .sc-ghost { position: absolute; right: -1rem; bottom: -1.5rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(6rem, 14vw, 14rem); font-weight: 700; line-height: 1; pointer-events: none; direction: rtl; }
+    .sgh-light { color: rgba(255,255,255,.04); }
+    .sgh-dark  { color: rgba(0,0,0,.04); }
+    .sc-num { font-family: 'Cormorant Garamond', serif; font-size: .78rem; font-style: italic; margin-bottom: 1.5rem; }
+    .scn-light { color: rgba(255,255,255,.2); } .scn-dark { color: rgba(0,0,0,.2); } .scn-verm { color: rgba(255,255,255,.5); }
+    .sc-lbl { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 1rem; }
+    .scl-light { color: rgba(255,255,255,.28); } .scl-dark { color: var(--muted); } .scl-verm { color: rgba(255,255,255,.6); }
+    .sc-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.5vw, 2.3rem); font-weight: 300; line-height: 1.1; margin-bottom: 1rem; }
+    .sc-title em { font-style: italic; }
+    .sct-light { color: var(--parchment); } .sct-dark { color: var(--ink); } .sct-verm { color: #fff; }
+    .sc-body { font-size: .8rem; line-height: 1.75; font-weight: 300; }
+    .scb-light { color: rgba(255,255,255,.42); } .scb-dark { color: var(--muted); } .scb-verm { color: rgba(255,255,255,.7); }
+    /* spread mockup */
+    .spread-mock { background: rgba(0,0,0,.08); aspect-ratio: 2 / 1; display: grid; grid-template-columns: 1fr 1fr; margin-top: 1.5rem; overflow: hidden; }
+    .sm-l { background: rgba(0,0,0,.12); display: flex; align-items: center; justify-content: center; }
+    .sm-l span { font-size: .52rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(0,0,0,.2); }
+    .sm-r { background: rgba(0,0,0,.06); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+    .sm-head { font-family: 'Cormorant Garamond', serif; font-size: .9rem; color: rgba(0,0,0,.4); margin-bottom: .4rem; }
+    .sm-body { font-size: .55rem; color: rgba(0,0,0,.2); line-height: 1.5; }
+    .sm-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: rgba(0,0,0,.06); line-height: 1; }
+
+    /* ── DESIGN LANGUAGE ── */
+    .design-band { background: var(--charcoal); padding: 6rem 4rem; }
+    .design-inner { max-width: 1300px; margin: 0 auto; }
+    .dl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,.04); margin-bottom: 4rem; }
+    .dl-card { background: var(--charcoal); padding: 2.5rem 2rem; }
+    .dlc-label { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.2); margin-bottom: 1.25rem; }
+    .dlc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--parchment); margin-bottom: .75rem; }
+    .dlc-body { font-size: .8rem; line-height: 1.72; color: rgba(255,255,255,.36); font-weight: 300; }
+    .palette { display: flex; gap: 1.5px; background: rgba(255,255,255,.04); height: 5rem; margin-bottom: 1.5rem; }
+    .sw { flex: 1; display: flex; align-items: flex-end; padding: .5rem; }
+    .sw span { font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 300; }
+    .sw span.dk { color: rgba(0,0,0,.3); }
+    .type-show { border-top: 1px solid rgba(255,255,255,.05); padding-top: 3rem; }
+    .type-row { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding: 1.75rem 0; border-bottom: 1px solid rgba(255,255,255,.04); align-items: center; }
+    .tr-label { font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.16); font-weight: 300; }
+    .ts-display { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 4rem); font-weight: 300; font-style: italic; color: var(--parchment); line-height: 1; }
+    .ts-serif   { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2vw, 1.7rem); font-weight: 600; color: rgba(255,255,255,.6); line-height: 1.2; }
+    .ts-body    { font-family: 'DM Sans', sans-serif; font-size: .87rem; font-weight: 300; color: rgba(255,255,255,.42); line-height: 1.7; max-width: 50ch; }
+    .ts-label   { font-family: 'DM Sans', sans-serif; font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; font-weight: 400; color: rgba(255,255,255,.28); }
+    .ts-urdu    { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 4rem); color: rgba(255,255,255,.07); direction: rtl; font-weight: 300; line-height: 1; }
+
+    /* ── WHAT'S NEW ── */
+    .new-band { background: var(--verm-pale); padding: 6rem 4rem; color: var(--ink); }
+    .new-inner { max-width: 1300px; margin: 0 auto; }
+    .additions { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--sand); }
+    .addition { background: var(--cream); padding: 2.5rem 2rem; }
+    .add-tag { display: inline-block; padding: .2rem .65rem; background: var(--vermillion); border-radius: 2rem; font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; color: #fff; margin-bottom: 1.25rem; font-weight: 500; }
+    .add-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: .5rem; }
+    .add-body { font-size: .8rem; line-height: 1.72; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--night); padding: 7rem 4rem; position: relative; overflow: hidden; }
+    .closing::before {
+      content: 'بیس سال';
+      position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 18vw, 22rem);
+      font-weight: 300; color: rgba(255,255,255,.025); direction: rtl; line-height: 1;
+      pointer-events: none;
+    }
+    .closing-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
+    .cl-pre { font-size: .62rem; letter-spacing: .28em; text-transform: uppercase; color: var(--vermillion); margin-bottom: 2rem; }
+    .cl-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 7rem); font-weight: 300; line-height: .9; color: var(--parchment); letter-spacing: -.02em; margin-bottom: 2rem; }
+    .cl-heading em { font-style: italic; color: rgba(255,255,255,.3); }
+    .cl-body { font-size: .95rem; line-height: 1.88; color: rgba(255,255,255,.38); font-weight: 300; max-width: 60ch; margin-bottom: 1.5rem; }
+    .deliverables { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 3rem; }
+    .del { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+
+    @media (max-width: 960px) {
+      .cover-top, .cover-body, .cover-bottom, .brief, .concept-title-band, .phil-band, .struct-band, .spreads-band, .design-band, .new-band, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .brief-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .phil-grid, .dl-grid, .additions { grid-template-columns: 1fr; }
+      .chapter { grid-template-columns: 1fr; }
+      .ch-index { display: none; }
+      .sc-2, .sc-3 { grid-template-columns: 1fr; }
+      .spread-mock { grid-template-columns: 1fr; aspect-ratio: auto; }
+      .type-row { grid-template-columns: 1fr; }
+      .tr-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<section class="cover">
+  <div class="cover-20" aria-hidden="true">20</div>
+  <!-- rice grains -->
+  <div class="rice-grain" style="left:8%;top:14%;--r:15deg;animation-delay:0s;" aria-hidden="true"></div>
+  <div class="rice-grain" style="left:18%;top:48%;--r:-22deg;animation-delay:1.4s;" aria-hidden="true"></div>
+  <div class="rice-grain" style="left:28%;top:78%;--r:8deg;animation-delay:3.1s;" aria-hidden="true"></div>
+  <div class="rice-grain" style="left:42%;top:22%;--r:35deg;animation-delay:.8s;" aria-hidden="true"></div>
+  <div class="rice-grain" style="left:55%;top:65%;--r:-12deg;animation-delay:2.2s;" aria-hidden="true"></div>
+  <div class="rice-grain" style="left:68%;top:38%;--r:28deg;animation-delay:4.5s;" aria-hidden="true"></div>
+  <div class="rice-grain" style="left:78%;top:72%;--r:-38deg;animation-delay:1.1s;" aria-hidden="true"></div>
+  <div class="rice-grain" style="left:88%;top:22%;--r:18deg;animation-delay:5.2s;" aria-hidden="true"></div>
+
+  <div class="cover-top">
+    <div class="cover-brand">White Rice <b>Impact</b></div>
+    <div class="cover-year">Twenty-Year Coffee Table Book — Design Concept · 2026</div>
+  </div>
+  <div class="cover-body">
+    <div class="cover-pre">Coffee Table Book Concept · White Rice · 2006–2026</div>
+    <h1 class="cover-title">The Space<br><em>Between.</em></h1>
+    <p class="cover-subtitle">A proposed concept, structure, and design direction for White Rice's 20-year anniversary book — the story of two decades lived in the distance between knowing and doing, between aspiration and habit, between infrastructure and life.</p>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-note">Concept · Structure · Design Language · Spread Direction</div>
+    <div class="cover-tag">From a Chinese restaurant in 2006 to 250 million lives.</div>
+  </div>
+</section>
+
+<!-- ══ THE BRIEF ══ -->
+<section class="brief">
+  <div class="brief-inner">
+    <div class="brief-left">
+      <div class="brief-label">Reading the 15-Year Book First</div>
+      <h2 class="brief-heading">What worked, and what the <em>20-year book</em> must do differently.</h2>
+      <div class="brief-divider"></div>
+      <p>The 15-year coffee table book is a warm, earnest document — a proud institutional record of a company that had every right to celebrate. The photography was genuine, the statistics real, and the commitment to impact unmistakeable. It did exactly what a first-edition book should: establish that White Rice existed, had done remarkable things, and had the numbers to prove it.</p>
+      <p>But the 20-year book arrives in a different moment. White Rice is no longer a promising agency proving itself — it is an established intellectual force in South Asia's development landscape. UNICEF. World Bank. Johns Hopkins CCP. Cannes Lions. The CRICKET Playbook. Programmes touching 250 million lives. That demands a different register entirely.</p>
+      <p>The 20-year book must be something a UNICEF country director leaves on their office table not just to show clients, but because it genuinely moves them every time they open it.</p>
+      <div class="brief-compare">
+        <div class="bc bc-old">
+          <div class="bc-label">15-Year Book · 2021</div>
+          <div class="bc-title">Agency Credibility Document</div>
+          <div class="bc-body">Statistics, process diagrams, photo collages, testimonials. Proves White Rice exists and delivers. A portfolio showcase structured as a celebration.</div>
+        </div>
+        <div class="bc bc-new">
+          <div class="bc-label">20-Year Book · 2026</div>
+          <div class="bc-title">A Work of Visual Journalism</div>
+          <div class="bc-body">A document that earns its place alongside the best SBC thinking in the world. An intellectual and emotional statement that makes people understand behaviour change through White Rice's lens.</div>
+        </div>
+      </div>
+    </div>
+    <div class="brief-right">
+      <p class="lead">"The 15-year book tells people White Rice exists. The 20-year book must make them feel the work — and understand why it matters more than almost anything else being done in this space."</p>
+      <p>The gap between the two books is not five years. It is Cannes Lions. It is the CRICKET Playbook. It is the World Bank's 2,000 villages. It is Walidain HumQadam's 550 vision canvases — Pakistan's largest. It is the Khawaja Sira community hearing their own voices in an animation series for the first time. It is a community health worker with no background in behavioural science picking up a card from a deck and designing an intervention that works.</p>
+      <p>The 20-year book must hold all of that — with the visual sophistication and intellectual confidence the work deserves. Not a report. Not a portfolio. A book that people who have never heard of White Rice will read cover to cover, and finish with a clear understanding of what behaviour change actually is, why it matters, and why White Rice has spent twenty years working in that territory.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONCEPT ══ -->
+<section class="concept-title-band">
+  <div class="concept-inner">
+    <div class="concept-pre">The Central Concept · Book Title</div>
+    <h1 class="concept-name">The Space<br><em>Between.</em></h1>
+    <p class="concept-sub">Twenty Years of Social Behaviour Change · White Rice Impact · 2006–2026</p>
+    <p class="concept-rationale">White Rice has always worked in a specific, under-recognised territory: the distance between what people know and what people do. Between a government building a latrine and a community using it. Between a mother learning about nutrition and a child no longer stunting. Between a girl knowing she has rights and a father believing it. That distance — where knowledge becomes habit, where information becomes life — is exactly where behaviour change happens. And it is exactly where White Rice has worked for twenty years. The book does not tell the story of a company. It tells the story of that space — and the humans who inhabit it.</p>
+    <div class="concept-vs">
+      <div>
+        <div class="cvs-old">"A Journey from Ideas to Impact"</div>
+        <div style="font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.15);margin-top:.4rem;text-align:center;">15-Year Title · 2021</div>
+      </div>
+      <div class="cvs-div"></div>
+      <div>
+        <div class="cvs-new">"The Space Between."</div>
+        <div style="font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.4rem;text-align:center;">20-Year Concept · 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHILOSOPHY ══ -->
+<section class="phil-band">
+  <div class="phil-inner">
+    <div class="section-eyebrow ey-verm">Design Philosophy · Three Principles</div>
+    <h2 class="section-heading sh-parch">Not a portfolio. Not a report. <em>A book.</em></h2>
+    <div class="phil-grid">
+      <div class="phil-card">
+        <div class="pc-n">01</div>
+        <div class="pc-rule"></div>
+        <div class="pc-title">Editorial, Not Institutional</div>
+        <div class="pc-body">The visual language draws from the world's best editorial publishing — Monocle, National Geographic, IDEO Field Guide — not from NGO annual reports or agency credentials decks. Every spread should feel like it was made by a publisher who also cared about development, not a development agency that also hired a designer. Photography is consistently graded, full-bleed. Typography is generous, considered, never crowded. White space is as important as what fills it.</div>
+      </div>
+      <div class="phil-card">
+        <div class="pc-n">02</div>
+        <div class="pc-rule"></div>
+        <div class="pc-title">People Before Projects</div>
+        <div class="pc-body">The 15-year book showed projects. The 20-year book shows people. Not as subjects of intervention, but as protagonists of their own change. The mother in Sindh who attended a story circle and found words for what she already knew. The father in Battagram who discovered he wanted to be more present for his daughter. The frontline worker who, using a deck of cards, designed a behaviour change intervention herself. Every chapter opens with a face, not a logo. Verbatims before statistics. The numbers, when they come, are earned.</div>
+      </div>
+      <div class="phil-card">
+        <div class="pc-n">03</div>
+        <div class="pc-rule"></div>
+        <div class="pc-title">Bilingual by Design</div>
+        <div class="pc-body">Pakistan's languages are treated as design elements, not translations. Urdu and Punjabi script runs as ghost typography behind English headers. Pashto verse becomes visual texture on a Battagram spread. The CRICKET acronym in Urdu letters — ک ر ک ٹ — becomes a typographic hero, the centrepiece of one of the book's most striking spreads. The book looks like it was made in South Asia, for the world — not in London, for South Asia. This is the single most distinctive thing the 20-year book can do that the 15-year book did not.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STRUCTURE ══ -->
+<section class="struct-band">
+  <div class="struct-inner">
+    <div class="section-eyebrow ey-dim">Book Architecture · Seven Chapters</div>
+    <h2 class="section-heading sh-light">Organised by <em>human tension,</em><br>not by project category.</h2>
+    <div class="chapters">
+
+      <div class="chapter c1">
+        <div class="ch-index"><div class="chi-num">I</div><div class="chi-dot"></div></div>
+        <div class="ch-content">
+          <div class="ch-tag">Origin</div>
+          <h3>A Bowl of Rice &amp; <em>a Chinese Restaurant</em></h3>
+          <div class="ch-sub">~20 pages · Narrative · Archive & portrait photography</div>
+          <p>The founding story retold with the depth it has now earned. Two men at a restaurant. A name chosen because white rice is a canvas — it becomes something different with every ingredient. Khawar's vision and legacy, five years deeper into its impact. Raheel's evolution from designer to behaviour scientist. Told as a dual portrait through personal photography, handwritten notes, and archive images. Ends with the question that has driven everything since: "What does it actually take for a person to change?"</p>
+        </div>
+        <div class="ch-spreads">
+          <div class="sp-label-sm">Signature Spreads</div>
+          <div class="spread-list">
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">Full-bleed: Raheel at a whiteboard, back to camera, facing a wall of questions. Opposite: the founding story in a single serif paragraph, 80pt leading, generous margins. Nothing else.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">In Memoriam: Khawar's portrait — full-page, black and white, no caption. Opposite page: his name, the years, and a single quote about transformation. That is all.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">The timeline: 2006–2026 as a single horizontal line across a double-page spread. Milestones as typographic moments, not icons or bubbles.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter c2">
+        <div class="ch-index"><div class="chi-num">II</div><div class="chi-dot"></div></div>
+        <div class="ch-content">
+          <div class="ch-tag">The Theory</div>
+          <h3>Why Knowing Is Never <em>Enough</em></h3>
+          <div class="ch-sub">~16 pages · Infographic · Intellectual framework</div>
+          <p>The intellectual core — a beautifully designed, accessible explanation of why behaviour change is the hardest and most important thing in development. The socio-ecological model, B=MAP, the CRICKET framework, the four-stage process — all rendered as visual art, not slide decks. Inspired by the infographic design of Edward Tufte and the intellectual clarity of the best science communicators: information made beautiful because it respects the reader's intelligence. The chapter that positions White Rice as the intellectual leader it has become.</p>
+        </div>
+        <div class="ch-spreads">
+          <div class="sp-label-sm">Signature Spreads</div>
+          <div class="spread-list">
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">Double-page: The distance between knowledge and behaviour rendered as a topographic map. The terrain is the psychosocial landscape between knowing and doing.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">CRICKET: the four Urdu letters — ک ر ک ٹ — as architectural heroes at 300pt, each letter opening into its English meaning. The most striking intellectual spread in the book.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">B=MAP as a mathematical proof: near-black background, the formula in serif at 200pt. Opposite: what it means in a specific village in Sindh.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter c3">
+        <div class="ch-index"><div class="chi-num">III</div><div class="chi-dot"></div></div>
+        <div class="ch-content">
+          <div class="ch-tag">Twenty Stories</div>
+          <h3>Twenty Years. <em>Twenty Conversations.</em></h3>
+          <div class="ch-sub">~80 pages · Portfolio · Colour-coded by project</div>
+          <p>The book's visual centrepiece — twenty projects, each given a 4-page spread. Not case studies: each is told as a conversation between White Rice and the community. Left page: the challenge, the place, the people, in the most arresting photography possible. Right page: what happened, told with the restraint of good journalism. Each project carries its own dominant colour from the existing case study identity system. The cumulative effect is a colour journey through twenty years of work.</p>
+        </div>
+        <div class="ch-spreads">
+          <div class="sp-label-sm">Signature Spreads</div>
+          <div class="spread-list">
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">Alif Ailaan: A child's hand holding a slate in a dust-filled classroom. Opposite: the words "educational emergency" in Urdu at full-page scale — the phrase White Rice named, that reached the Prime Minister's address.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">Sightsavers/Cannes: The lion trophy, half in shadow, half lit — gold light on community faces. A film award shown through the people it was made for.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">UNFPA Transgender: Community members alongside the animation characters drawn from their real lives. A spread about who gets to see themselves represented.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter c4">
+        <div class="ch-index"><div class="chi-num">IV</div><div class="chi-dot"></div></div>
+        <div class="ch-content">
+          <div class="ch-tag">The Faces</div>
+          <h3>The People Who <em>Changed</em></h3>
+          <div class="ch-sub">~24 pages · Full-bleed portraiture · Verbatims only</div>
+          <p>Sixteen pages of full-bleed portrait photography. No captions. No project names. No statistics. Just faces — the mother, the frontline worker, the father, the girl. Between portraits: a single verbatim in a large serif face, the person's own words about what changed, in Urdu with English translation. This is the most emotionally powerful section. It is the anti-impact-report — it refuses to quantify the humans at the centre of everything. The reader reaches it already convinced, and this chapter stays with them longest.</p>
+        </div>
+        <div class="ch-spreads">
+          <div class="sp-label-sm">Signature Spreads</div>
+          <div class="spread-list">
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">Full-bleed: A Sindhi mother looking directly at camera. No caption. Opposite: a verbatim in Urdu, English beneath at smaller scale, in Cormorant italic. The silence between them is part of the spread.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">The Battagram father: what it felt like the first time he played with his daughter because someone asked him to. One paragraph. One face. One spread.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter c5">
+        <div class="ch-index"><div class="chi-num">V</div><div class="chi-dot"></div></div>
+        <div class="ch-content">
+          <div class="ch-tag">The Numbers</div>
+          <h3>Impact as <em>Typography</em></h3>
+          <div class="ch-sub">~12 pages · Data as visual art · Single stat per spread</div>
+          <p>The impact chapter — but radical in approach. Each number is given a full page or double-page, rendered at a scale that makes it architectural. "34,000,000" fills an entire spread at 400pt, near-black on near-white. Below it, in small DM Sans: "people reached through digital platforms for Clean &amp; Green Punjab alone." Turning from one giant number to the next is visceral. By the end, the reader has a felt sense of scale that statistics in a table could never produce. The chapter is completely silent except for the numbers and one sentence per spread.</p>
+        </div>
+        <div class="ch-spreads">
+          <div class="sp-label-sm">Signature Spreads</div>
+          <div class="spread-list">
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">"11,000" — double-page, vermillion on night-black. Beneath: "Mothers. Story circles. Sindh. The world's largest storytelling exercise ever conducted." Four words. One sentence. That is all.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">"250,000" in ghost grey — beneath: "frontline workers trained globally to give a child a vaccine." Johns Hopkins CCP. Six episodes. One handshake across continents.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter c6">
+        <div class="ch-index"><div class="chi-num">VI</div><div class="chi-dot"></div></div>
+        <div class="ch-content">
+          <div class="ch-tag">The Ecosystem</div>
+          <h3>The Partners Who <em>Believed First</em></h3>
+          <div class="ch-sub">~16 pages · Testimonials · Network map</div>
+          <p>Not an acknowledgements list — a portrait of a network. The chapter opens with a double-page constellation map: every partner, client, and collaborator in the White Rice ecosystem, rendered as nodes of light on a dark ground. Lines of connection. Clusters by geography and theme. Then: six partner testimonials, each given a full spread — the partner's face, their words, the project they are speaking about. The difference between this and the 15-year book's testimonials: here, we show the relationship and the specific moment of transformation it produced.</p>
+        </div>
+        <div class="ch-spreads">
+          <div class="sp-label-sm">Signature Spreads</div>
+          <div class="spread-list">
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">The constellation map: 100+ organisations as light-points on deep space. Drawn from Karachi outward, the map traces 20 years of trust built one project at a time.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">UNICEF spread: the most powerful verbatim offered about the stunting programme — about the story circles, about the scale of what was built in Sindh, about what it means to see science become life.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter c7">
+        <div class="ch-index"><div class="chi-num">VII</div><div class="chi-dot"></div></div>
+        <div class="ch-content">
+          <div class="ch-tag">The Manifesto</div>
+          <h3>The Next Twenty: <em>A Declaration</em></h3>
+          <div class="ch-sub">~12 pages · Essay · Raheel's voice · Direct</div>
+          <p>The closing chapter is not "The Future." It is a manifesto. Raheel's voice, direct and confident. What White Rice has learned about the science of change in twenty years. What it intends to do with that knowledge in the next twenty. Written not as a letter to "Valued Partners" but to the people whose behaviours White Rice is still working to change — the farmers, mothers, girls, frontline workers. The chapter ends with a single sentence, full-page, in a font size that cannot be ignored: the reason White Rice exists.</p>
+        </div>
+        <div class="ch-spreads">
+          <div class="sp-label-sm">Signature Spreads</div>
+          <div class="spread-list">
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">The opener: Raheel's signature — not his headshot — full-page. The manifesto begins on the opposite page in 14pt Cormorant with generous leading. Intimate. No corporate distance.</div></div>
+            <div class="spread-item"><div class="si-dot"></div><div class="si-text">Closing spread: A single question, full double-page, at 120pt — "How many more lives are waiting in the space between?" Then silence. The back cover.</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SIGNATURE SPREADS ══ -->
+<section class="spreads-band">
+  <div class="spreads-inner">
+    <div class="section-eyebrow ey-muted">Visual Design · Signature Spreads</div>
+    <h2 class="section-heading sh-parch">Six spreads that define<br>the look and feel of <em>the book.</em></h2>
+
+    <div class="spread-concepts">
+
+      <!-- Row 1 -->
+      <div class="sc-row sc-2" style="gap:2px;">
+        <div class="sc-pane sc-dark">
+          <div class="sc-ghost sgh-light">بیس</div>
+          <div class="sc-num scn-light">Spread 01 · Chapter I · Opening</div>
+          <div class="sc-lbl scl-light">Origin · The Name · The Dream</div>
+          <h3 class="sc-title sct-light">The Name.<br><em>The Dream.</em><br>The Canvas.</h3>
+          <p class="sc-body scb-light" style="margin-top:1rem;">Left page: full-bleed, near-black, a single grain of rice at absolute centre — hyper-macro photography, the grain filling the frame from edge to edge. No text anywhere on this page. Opposite: the founding paragraph in Cormorant Garamond at 18pt, 180% leading, set at a narrow column width with vast negative space on all sides. The name "White Rice" appears here — in this font, at this size — for the first and only time in the book. The rest of the book proves it.</p>
+        </div>
+        <div class="sc-pane sc-cream">
+          <div class="sc-num scn-dark">Visual Logic · Spread 01</div>
+          <div class="sc-lbl scl-dark">What makes it land</div>
+          <div class="spread-mock">
+            <div class="sm-l"><span>Full-bleed · rice grain · near-black</span></div>
+            <div class="sm-r">
+              <div>
+                <div class="sm-head">Cormorant 18pt · 180% leading</div>
+                <div class="sm-body">The founding paragraph — unhurried, uninterrupted, in generous serif at a scale that demands slow reading...</div>
+              </div>
+              <div class="sm-num">WR</div>
+            </div>
+          </div>
+          <p class="sc-body scb-dark" style="margin-top:1.5rem;">The contrast between the macro photograph and intimate prose creates the book's essential tension: the grandiose made small, the small made consequential. A grain of rice. An idea. Twenty years.</p>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="sc-row sc-3" style="gap:2px;">
+        <div class="sc-pane sc-verm">
+          <div class="sc-ghost sgh-light">ک</div>
+          <div class="sc-num scn-verm">Spread 02 · Chapter II · CRICKET</div>
+          <div class="sc-lbl scl-verm">The Methodology · Left Page</div>
+          <h3 class="sc-title sct-verm" style="font-size:clamp(4rem,9vw,8rem);letter-spacing:-.03em;line-height:.85;">کرکٹ</h3>
+          <p class="sc-body scb-verm" style="margin-top:1.5rem;">The four Urdu letters of CRICKET — rendered at 300pt, white on vermillion. No English. No explanation. The confrontation of a reader who cannot read Urdu with a framework designed for people who live in Urdu is the point. The reader must sit with not knowing — which is the beginning of empathy.</p>
+        </div>
+        <div class="sc-pane sc-dark">
+          <div class="sc-num scn-light">Spread 02 continued · Centre</div>
+          <div class="sc-lbl scl-light">The four steps · CRICKET</div>
+          <h3 class="sc-title sct-light">K · R · K · T</h3>
+          <p class="sc-body scb-light" style="margin-top:1rem;"><strong style="color:rgba(255,255,255,.65);">Kaun</strong> — Who are we designing for?<br><strong style="color:rgba(255,255,255,.65);">Rukawat</strong> — What is stopping them?<br><strong style="color:rgba(255,255,255,.65);">Karta</strong> — How do we change this?<br><strong style="color:rgba(255,255,255,.65);">Test</strong> — Does it work?</p>
+          <p class="sc-body scb-light" style="margin-top:1rem;">The 21 card icons arranged as a physical hand of cards at the base of the page — you can almost reach in and pick one up. The playfulness of the format against the seriousness of the science is the spread's entire argument.</p>
+        </div>
+        <div class="sc-pane sc-cream">
+          <div class="sc-num scn-dark">Design Rationale · Spread 02</div>
+          <div class="sc-lbl scl-dark">Why vermillion · why Urdu first</div>
+          <p class="sc-body scb-dark">The CRICKET Playbook is White Rice's most original intellectual contribution to the SBC field globally. It deserves the most energetic spread in the book — the one that makes someone stop, hold the book up, and call someone over to look.</p>
+          <p class="sc-body scb-dark" style="margin-top:1rem;">A reader who speaks Urdu will feel, perhaps for the first time in a development publication, that their language is the primary one. Every other reader gets a glimpse of what it is to navigate a world in someone else's alphabet. That moment of disorientation — brief, safe, and immediately resolved by the facing page — is the most valuable thing this spread can do.</p>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="sc-row sc-2" style="gap:2px;">
+        <div class="sc-pane sc-night">
+          <div class="sc-ghost sgh-light" style="font-size:clamp(5rem,16vw,18rem);">11,000</div>
+          <div class="sc-num scn-light">Spread 03 · Chapter V · The Numbers</div>
+          <div class="sc-lbl scl-light">Impact · Typographic Data</div>
+          <h3 class="sc-title sct-light" style="font-size:clamp(4rem,10vw,9rem);letter-spacing:-.04em;line-height:.85;margin-bottom:2rem;">11,000</h3>
+          <p class="sc-body scb-light" style="font-size:.75rem;">mothers · story circles · Sindh · the world's largest storytelling exercise ever conducted for behaviour change in nutrition and health · eleven thousand women who found words for what they already knew</p>
+        </div>
+        <div class="sc-pane sc-warm">
+          <div class="sc-num scn-light">Facing Page · The Individual</div>
+          <div class="sc-lbl scl-light">Each one had a name</div>
+          <h3 class="sc-title sct-light">Each one of those<br>11,000 had a name.<br><em>A story. A child.</em></h3>
+          <p class="sc-body scb-light" style="margin-top:1rem;">Full-bleed portrait: one of the eleven thousand. Her face. Her name in Urdu script at the base of the page. Below that, in DM Sans at 9pt: her story in three sentences. The last sentence is what changed. The number and the face together do what neither can do alone — make the scale feel human.</p>
+        </div>
+      </div>
+
+      <!-- Row 4 — Cannes -->
+      <div class="sc-row sc-2" style="gap:2px;">
+        <div class="sc-pane sc-cream">
+          <div class="sc-ghost sgh-dark">کانس</div>
+          <div class="sc-num scn-dark">Spread 04 · Chapter III · Sightsavers</div>
+          <div class="sc-lbl scl-dark">Cannes Lions · Pakistan's first eye health film</div>
+          <h3 class="sc-title sct-dark">Seeing is<br><em>Believing.</em><br>Cannes agreed.</h3>
+          <p class="sc-body scb-dark" style="margin-top:1rem;">This spread is the only place in the book where the Cannes Lion appears — but never as a trophy photograph on a plinth. It appears as a light source, just off-frame, casting gold light on the faces of the community members whose stories became the film. The award is the consequence, not the point. The film came first. The Lion followed.</p>
+          <div class="spread-mock">
+            <div class="sm-l" style="background:rgba(0,0,0,.06);"><span>Film still · Child's eye · Gold light</span></div>
+            <div class="sm-r" style="background:rgba(0,0,0,.04);">
+              <div>
+                <div class="sm-head" style="color:rgba(0,0,0,.4);">100 interviews · 2 stories · 1M views</div>
+                <div class="sm-body" style="color:rgba(0,0,0,.3);">The story of the film. Three sentences. Nothing more — the image carries the rest.</div>
+              </div>
+              <div class="sm-num" style="color:rgba(0,0,0,.06);">🦁</div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-pane sc-dark">
+          <div class="sc-num scn-light">Design Rationale · Spread 04</div>
+          <div class="sc-lbl scl-light">The award spread philosophy</div>
+          <h3 class="sc-title sct-light">Awards appear once.<br><em>Earned by the story,<br>not displayed as trophies.</em></h3>
+          <p class="sc-body scb-light" style="margin-top:1rem;">The 20-year book has Cannes Lions, Australian High Commission awards, PASHA recognition, and more. None of them get a dedicated awards page. They appear within the project spreads that earned them — as a consequence, as a footnote, as a single gold line at the base of the relevant spread. This is the discipline of a book that is confident it does not need to boast.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ DESIGN LANGUAGE ══ -->
+<section class="design-band">
+  <div class="design-inner">
+    <div class="section-eyebrow ey-dim">Design System · The Visual Language</div>
+    <h2 class="section-heading sh-light">A book with a distinct<br><em>identity of its own.</em></h2>
+    <div class="dl-grid">
+      <div class="dl-card">
+        <div class="dlc-label">Photography Direction</div>
+        <div class="dlc-title">Field-First. Full-Bleed. No Stock.</div>
+        <div class="dlc-body">Every photograph from White Rice's field archives or newly commissioned. All photography goes through a consistent colour treatment: warm shadow base (deep amber underlay), clean highlights, slightly desaturated midtones — simultaneously documentary and editorial. No studio photography except for partner portraits. Every full-bleed image bled to the physical edge of the page with no margins. Photography sections are printed on uncoated 170gsm — the warm, textured feel of a field notebook, not a glossy brochure.</div>
+      </div>
+      <div class="dl-card">
+        <div class="dlc-label">Paper & Production</div>
+        <div class="dlc-title">Three Paper Stocks. One Book.</div>
+        <div class="dlc-body">Three stocks act as chapter signals: uncoated 170gsm for field photography sections (Chapters III and IV), art-coated 150gsm for the campaign and creative work (project spreads), slightly tinted 120gsm Munken Lynx for the intellectual and text chapters (I, II, VII). The transition between stocks is the book's physical signal that you are entering a different register. Chapter separators: deep terracotta card inserts, one per chapter, with the chapter title in blind emboss.</div>
+      </div>
+      <div class="dl-card">
+        <div class="dlc-label">Format & Cover</div>
+        <div class="dlc-title">340 × 270mm Landscape. Cloth. Die-Cut.</div>
+        <div class="dlc-body">Landscape format — wider than tall — allows full-bleed photography to breathe horizontally. The format of the great documentary photography books, not the corporate brochure. Cover: cloth-wrapped boards with a die-cut window revealing the first internal page — a community portrait bleeding through the opening. Title foil-stamped in warm gold on the spine only. The front cover is intentionally minimal: cloth texture, a window, and the weight of what is inside.</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:.75rem;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);">Colour Palette · Six Considered Colours</div>
+    <div class="palette">
+      <div class="sw" style="background:#06040A;"><span>Night</span></div>
+      <div class="sw" style="background:#1C1812;"><span>Charcoal</span></div>
+      <div class="sw" style="background:#F5EFE3;"><span class="dk">Parchment</span></div>
+      <div class="sw" style="background:#C4401A;"><span>Vermillion</span></div>
+      <div class="sw" style="background:#C4961A;"><span>Gold</span></div>
+      <div class="sw" style="background:#8A7A68;"><span>Dust</span></div>
+    </div>
+    <p style="font-size:.72rem;line-height:1.72;color:rgba(255,255,255,.24);margin-bottom:3rem;max-width:72ch;">Deliberately reduced from the case study system — the book is a unified editorial object, not a rainbow of project colours. Vermillion (derived from Pakistani lacquerwork and Mughal manuscript borders) replaces the old corporate purple. Gold is used sparingly — never decoratively, always meaningfully. The palette reads as warm, considered, and distinctly South Asian without being decorative.</p>
+
+    <div class="type-show">
+      <div style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:2rem;">Typography System · Cormorant Garamond + DM Sans</div>
+      <div class="type-row">
+        <div class="tr-label">Display · Chapter Titles</div>
+        <div class="ts-display">The Space Between</div>
+      </div>
+      <div class="type-row">
+        <div class="tr-label">Serif · Pull Quotes · Section Heads</div>
+        <div class="ts-serif">A mother in Sindh who found words for what she already knew.</div>
+      </div>
+      <div class="type-row">
+        <div class="tr-label">Body · DM Sans Light 300</div>
+        <div class="ts-body">For behaviour change to happen, it is not enough to inform. It is not enough to inspire. It requires the design of a context in which a new behaviour becomes easier, more rewarding, and more normal than the old one. That is the science. The art is knowing which context to design.</div>
+      </div>
+      <div class="type-row">
+        <div class="tr-label">Label · DM Sans Regular 400</div>
+        <div class="ts-label">Chapter III · Twenty Conversations · Pages 64–144 · Pakistan &amp; Beyond</div>
+      </div>
+      <div class="type-row">
+        <div class="tr-label">Urdu · Ghost / Design Element</div>
+        <div class="ts-urdu">بیس سال کی کہانی</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT'S NEW ══ -->
+<section class="new-band">
+  <div class="new-inner">
+    <div class="section-eyebrow ey-verm">Five Years Added · What the 20-Year Book Can Claim</div>
+    <h2 class="section-heading sh-parch">Since the last book, White Rice earned<br>the right to say something <em>entirely different.</em></h2>
+    <div class="additions">
+      <div class="addition">
+        <div class="add-tag">New · 2023</div>
+        <div class="add-title">Cannes Lions — Health &amp; Wellness Category</div>
+        <div class="add-body">The Sightsavers film. Pakistan's first Cannes Lion in health communication. The 15-year book had six domestic and regional awards. The 20-year book has one international award that changes the level of every conversation with a global partner who picks it up.</div>
+      </div>
+      <div class="addition">
+        <div class="add-tag">New · 2024</div>
+        <div class="add-title">The CRICKET Playbook — Proprietary Methodology</div>
+        <div class="add-body">White Rice's gamified behaviour change design toolkit — trained hundreds of UNICEF practitioners, cascading across Pakistan's provinces through master trainers. The 15-year book had no proprietary methodology to show. The 20-year book has one that is already multiplying itself.</div>
+      </div>
+      <div class="addition">
+        <div class="add-tag">New · 2025</div>
+        <div class="add-title">World Bank PRMAC — 2,000 Villages</div>
+        <div class="add-body">The largest single programme in White Rice's history — SBC strategy for 2,000 Punjab villages, 1,000 Agents of Change, a complete two-year behaviour change rollout plan. A programme at a scale that very few behaviour change organisations anywhere in the world can point to.</div>
+      </div>
+      <div class="addition">
+        <div class="add-tag">New · 2023</div>
+        <div class="add-title">Walidain HumQadam — Pakistan's Largest Vision Canvas Exercise</div>
+        <div class="add-body">550 vision canvases drawn by parents across five cities in a single programme — Pakistan's largest parental visioning exercise. Digital reach of 14.7M impressions. A programme that proved remote SBC delivery at national scale. A first.</div>
+      </div>
+      <div class="addition">
+        <div class="add-tag">Deepened · 2021–2026</div>
+        <div class="add-title">Khawar's Legacy — Five More Years of Proof</div>
+        <div class="add-body">The In Memoriam in the 15-year book was written in grief. The 20-year book writes it in legacy — what Khawar's vision produced in the five years since, what the company has become in his absence, what it means to carry a co-founder's dream and prove it right.</div>
+      </div>
+      <div class="addition">
+        <div class="add-tag">Reframe · 2026</div>
+        <div class="add-title">From South Asian Agency to Global Methodology</div>
+        <div class="add-body">Johns Hopkins CCP (250,000 workers globally, 4 languages, every continent). Spring Accelerator (4 countries). The 15-year book was proudly Pakistani. The 20-year book is Pakistani and global — and that tension is one of its richest themes. The space between origin and reach.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="cl-pre">In Summary · The Concept</div>
+    <h2 class="cl-heading">
+      A book that lives<br>in the same space<br>as the <em>work itself.</em>
+    </h2>
+    <p class="cl-body">The Space Between is not a coffee table book about White Rice. It is a coffee table book about behaviour change — told through twenty years of White Rice's work, the communities they designed with, the partners who believed in them, and the human truth that knowledge alone has never been enough to change what people do. The reader closes the book having understood something essential about why people change — and why that understanding is the most valuable thing a development organisation can hold.</p>
+    <p class="cl-body">For a UNICEF director in Geneva, a World Bank programme manager in Washington, a health minister in Islamabad, or a young designer in Lahore who wants to do work that matters — this book should feel made for them. It is that rare object: a celebration that earns its ambition, not by proving that White Rice is good, but by making the reader understand why the work is necessary.</p>
+    <div class="deliverables">
+      <span class="del">340 × 270mm Landscape</span>
+      <span class="del">~180 Pages</span>
+      <span class="del">Seven Chapters</span>
+      <span class="del">Three Paper Stocks</span>
+      <span class="del">Cloth-Wrapped Cover</span>
+      <span class="del">Die-Cut Window</span>
+      <span class="del">Blind Emboss · Spine</span>
+      <span class="del">Cormorant Garamond + DM Sans</span>
+      <span class="del">Vermillion + Gold + Night</span>
+      <span class="del">Urdu as Design Element</span>
+      <span class="del">Full-Bleed Field Photography</span>
+      <span class="del">Bilingual Verbatims</span>
+      <span class="del">Typographic Impact Data</span>
+      <span class="del">People Before Projects</span>
+      <span class="del">Editorial Not Institutional</span>
+      <span class="del">The Space Between</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

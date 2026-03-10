@@ -23,7 +23,7 @@ export const projects: Project[] = [
     title: "WASH - Film Screenings Punjab",
     client: "UNICEF",
     tag: "WASH",
-    image: "/images/timeline/2023/parenting-screening.jpg",
+    image: "/images/timeline/2023/parenting-session.png",
     description:
       "Community film screenings across Punjab driving awareness and behaviour change around water, sanitation, and hygiene.",
   },
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     title: "Apni Kahani",
     client: "UNFPA Pakistan",
     tag: "HIV Prevention",
-    image: "/images/timeline/2020.png",
+    image: "/images/timeline/2013.png",
     description:
       "A six-part animation drama series built on 90 days of ethnographic co-creation with Pakistan's Khawaja Sira community for HIV prevention.",
   },
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     title: "Clean & Green Punjab",
     client: "Punjab Government & UNICEF",
     tag: "WASH & Environment",
-    image: "/images/timeline/2019.png",
+    image: "/images/Clean & Green Punjab.jpeg",
     description:
       "A province-wide SBC intervention across five critical environmental and hygiene behaviours — reaching 2 million people directly and 34 million through digital platforms.",
   },
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     title: "The Diverse Dastarkhwan",
     client: "FAO Pakistan",
     tag: "Food & Nutrition",
-    image: "/images/timeline/2018.png",
+    image: "/images/FAO Dastarkhwan.png",
     description:
       "A 12-week behaviour change programme shifting food and nutrition practices across three culturally distinct communities in Balochistan — reaching 11,000 families.",
   },
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     title: "Breaking Barriers",
     client: "UNICEF Pakistan",
     tag: "Menstrual Health",
-    image: "/images/timeline/2016.png",
+    image: "/images/UNICEF MHH.jpeg",
     description:
       "A national SBC initiative dismantling silence and shame around menstrual health across three provinces, with a 90% communication effectiveness rate.",
   },
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     title: "Springster",
     client: "Girl Effect / Nike Foundation",
     tag: "Girls' Digital Content",
-    image: "/images/timeline/2013.png",
+    image: "/images/spring.JPG",
     description:
       "100+ co-created stories on a free mobile platform reaching one million girls in Pakistan with trusted content on health, safety, voice, and financial wellbeing.",
   },
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     title: "Spring Accelerator",
     client: "USAID / Proportion Netherlands",
     tag: "Startup Acceleration",
-    image: "/images/timeline/2014.png",
+    image: "/images/Spring Accelerator.jpg",
     description:
       "A four-country accelerator where White Rice led Pakistan's cohort of seven startups through HCD research and user testing for products targeting girls aged 10-19.",
   },
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     title: "Empowering Youth for Work",
     client: "Oxfam Pakistan / IKEA Foundation",
     tag: "Youth Empowerment",
-    image: "/images/timeline/2012.png",
+    image: "/images/timeline/2012-c.jpg",
     description:
       "An 18-month HCD consulting engagement — the longest in White Rice's history — compressing a 5-year programme into a living design laboratory for 10,000+ young entrepreneurs.",
   },
@@ -133,7 +133,7 @@ export const projects: Project[] = [
     title: "When They Can See",
     client: "Sightsavers International",
     tag: "Eye Health Film",
-    image: "/images/timeline/2025/films-hero.jpg",
+    image: "/images/timeline/2025/films-hero.png",
     description:
       "A data-driven short film shaped by 100 interviews, brought to life by Pakistan's finest actors, and winner at Cannes Lions — still screening in schools across Pakistan.",
   },
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     title: "Barosakare",
     client: "ICRC Pakistan",
     tag: "Healthcare Safety",
-    image: "/images/timeline/2011.png",
+    image: "/images/ICRC Barosakare.png",
     description:
       "Pakistan's first national behaviour change campaign addressing violence against healthcare workers — reaching 4 million people through HCD research and multi-channel activation.",
   },
@@ -168,7 +168,7 @@ export const projects: Project[] = [
   },
   {
     slug: "oxfam-dunia-aali-larki",
-    title: "Dunia Aali Larki",
+    title: "Dunia Aur Larki",
     client: "Oxfam Pakistan",
     tag: "Girls' Education",
     image: "/images/timeline/2017.png",
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     title: "Saaf Karachi Meri Zimmedari",
     client: "Tier Fund",
     tag: "Recycling & Waste",
-    image: "/images/timeline/2024/food-safety-hero.jpg",
+    image: "/images/Saaf Karachi.png",
     description:
       "A full-spectrum community behaviour change campaign shifting Karachi's waste practices from household to hub — turning segregation, collection, and recycling into a community movement.",
   },
@@ -189,7 +189,7 @@ export const projects: Project[] = [
     title: "Mumkin - Make It Possible",
     client: "CARE International / Mastercard Foundation",
     tag: "Women Entrepreneurship",
-    image: "/images/timeline/2024/child-stim-village.jpg",
+    image: "/images/CARE Mastercard Mumkin.jpeg",
     description:
       "An HCD research-led campaign connecting Pakistan's women micro-entrepreneurs with digital financial services, skills training, and microfinance — reaching 2 million people.",
   },

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayLab — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --play:      #C4521A;
+      --play-lt:   #E87A48;
+      --play-pale: #FDF1EB;
+      --leaf:      #2A5A1A;
+      --leaf-lt:   #4A8A3A;
+      --ochre:     #C48A1A;
+      --ochre-lt:  #E8B84A;
+      --ink:       #0E0A06;
+      --charcoal:  #1C160E;
+      --parchment: #F5F0E6;
+      --sand:      #E2D9C4;
+      --muted:     #7A7060;
+      --cream:     #FBF7EE;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      position: relative; overflow: hidden;
+      background: var(--charcoal);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 95% 5%,  rgba(196,82,26,.35) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 65% at 0%  95%, rgba(42,90,26,.25)  0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(28,22,14,.6)   0%, transparent 75%);
+      pointer-events: none;
+    }
+    .hero-ring {
+      position: absolute; bottom: -8%; right: -5%;
+      width: 52%; aspect-ratio: 1; border-radius: 50%;
+      border: 1px solid rgba(196,82,26,.08); pointer-events: none; z-index: 1;
+    }
+    .hero-ring::before { content: ''; position: absolute; inset: 10%; border-radius: 50%; border: 1px solid rgba(232,184,74,.06); }
+    .hero-ring::after  { content: ''; position: absolute; inset: 22%; border-radius: 50%; border: 1px solid rgba(196,82,26,.05); }
+    .hero-ghost {
+      position: absolute; right: 3%; top: 50%; transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(8rem, 20vw, 20rem);
+      font-weight: 700; line-height: 1; color: rgba(255,255,255,.025);
+      pointer-events: none; z-index: 1; letter-spacing: -.02em;
+    }
+    .hero-label {
+      padding: 2rem 3.5rem; display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.06); position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.35); font-weight: 300; }
+    .brand span { color: var(--play-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.22); }
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem; position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--play-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem; animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--play); }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--ochre-lt); }
+    h1 .sub-title {
+      display: block; font-size: clamp(1rem, 1.8vw, 1.6rem);
+      font-weight: 300; color: rgba(255,255,255,.4); font-style: italic; margin-top: .6rem;
+    }
+    .hero-sub {
+      margin-top: 2rem; max-width: 58ch;
+      font-size: .98rem; font-weight: 300; line-height: 1.82; color: rgba(255,255,255,.52);
+      animation: fadeUp .8s .38s both;
+    }
+    .hero-meta {
+      padding: 2rem 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.06); position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.24); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.68); font-weight: 300; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ROLE BAND */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--play-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--ochre-lt); }
+    .role-body p { font-size: .9rem; line-height: 1.88; color: rgba(255,255,255,.45); font-weight: 300; margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .role-tag { padding: .3rem .9rem; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.38); }
+
+    /* KEY OUTCOMES */
+    .outcomes { background: var(--play); }
+    .outcomes-header { padding: 3rem 3.5rem 2rem; border-bottom: 1px solid rgba(255,255,255,.15); display: flex; align-items: center; gap: 1.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: rgba(255,255,255,.15); line-height: 1; }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
+    .outcome-card { padding: 2.5rem 2rem; border-right: 1px solid rgba(255,255,255,.12); }
+    .outcome-card:last-child { border-right: none; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 2.5vw, 2.6rem); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: .75rem; }
+    .outcome-desc { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.65); font-weight: 300; }
+
+    /* DIVIDER */
+    .divider-band { background: var(--leaf); padding: 3.5rem; display: flex; gap: 3rem; align-items: center; }
+    .divider-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 300; color: rgba(255,255,255,.6); white-space: nowrap; flex-shrink: 0; }
+    .divider-text { font-size: .9rem; line-height: 1.82; color: rgba(255,255,255,.55); font-weight: 300; border-left: 2px solid rgba(255,255,255,.15); padding-left: 2.5rem; }
+
+    /* CONTENT */
+    .content-wrap { background: var(--parchment); }
+    .section { padding: 5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--sand); line-height: 1; }
+    .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 2.8vw, 2.6rem); font-weight: 300; color: var(--ink); line-height: 1.1; }
+    h2 em { font-style: italic; color: var(--play); }
+    .section-right p { font-size: .92rem; line-height: 1.92; color: #3A3028; font-weight: 300; margin-bottom: 1.4rem; }
+    .pull-quote { border-left: 3px solid var(--play); padding: 1.25rem 1.5rem; margin: 2rem 0; background: var(--play-pale); border-radius: 0 4px 4px 0; }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-style: italic; color: var(--ink); line-height: 1.5; margin: 0; font-weight: 400; }
+    .pull-quote cite { display: block; font-family: 'DM Sans', sans-serif; font-size: .72rem; font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--play); margin-top: .75rem; }
+
+    /* Pillars */
+    .pillars { display: grid; gap: 1.5rem; margin: 2rem 0; }
+    .pillar { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.5rem; background: var(--cream); border-top: 2px solid var(--leaf); }
+    .pillar-icon { width: 2.4rem; height: 2.4rem; background: var(--leaf); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-size: .82rem; font-weight: 500; color: var(--ink); letter-spacing: .04em; margin-bottom: .4rem; text-transform: uppercase; }
+    .pillar-body { font-size: .82rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+
+    /* Phases */
+    .phases { display: grid; gap: 1.5px; background: var(--sand); margin: 2rem 0; }
+    .phase { background: var(--cream); display: grid; grid-template-columns: 72px 1fr; }
+    .ph-num { background: var(--play); display: flex; align-items: center; justify-content: center; }
+    .ph-num span { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: rgba(255,255,255,.55); }
+    .ph-content { padding: 1.25rem 1.5rem; }
+    .ph-title { font-size: .8rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); margin-bottom: .35rem; }
+    .ph-body { font-size: .8rem; line-height: 1.68; color: var(--muted); font-weight: 300; }
+
+    /* Session rhythm */
+    .session-rhythm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--sand); margin: 1.5rem 0 2rem; }
+    .sr-card { background: var(--cream); padding: 1.75rem 1.5rem; }
+    .sr-time { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--play); margin-bottom: .35rem; }
+    .sr-title { font-size: .78rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); margin-bottom: .5rem; }
+    .sr-body { font-size: .78rem; line-height: 1.68; color: var(--muted); font-weight: 300; }
+
+    /* Features grid */
+    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--sand); margin: 1.5rem 0; }
+    .feat-card { background: var(--cream); padding: 1.75rem 1.5rem; }
+    .feat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(196,82,26,.1); line-height: 1; margin-bottom: -.3rem; }
+    .feat-title { font-size: .8rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); margin-bottom: .45rem; }
+    .feat-body { font-size: .79rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+
+    /* SBC band */
+    .sbc-band { background: var(--ink); padding: 5rem 3.5rem; }
+    .sbc-inner { max-width: 1200px; margin: 0 auto; }
+    .sbc-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--play-lt); margin-bottom: 1rem; }
+    .sbc-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: #fff; margin-bottom: 3rem; line-height: 1.15; }
+    .sbc-heading em { font-style: italic; color: var(--ochre-lt); }
+    .sbc-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: rgba(255,255,255,.04); }
+    .sbc-card { background: var(--ink); padding: 2.5rem 2rem; border-top: 2px solid rgba(196,82,26,.4); }
+    .sbc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: #fff; margin-bottom: .6rem; }
+    .sbc-body { font-size: .82rem; line-height: 1.75; color: rgba(255,255,255,.42); font-weight: 300; }
+    .sbc-quote { grid-column: 1 / -1; background: rgba(196,82,26,.1); border-top: 2px solid var(--play); padding: 2.5rem 2rem; }
+    .sbc-q-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2vw, 1.8rem); font-style: italic; color: rgba(255,255,255,.78); line-height: 1.4; margin-bottom: .75rem; }
+    .sbc-q-cite { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--play-lt); }
+
+    /* Impact */
+    .impact-section { background: var(--parchment); padding: 5rem 3.5rem; border-top: 1px solid var(--sand); }
+    .impact-inner { max-width: 1200px; margin: 0 auto; }
+    .impact-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3rem; }
+    .impact-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--ink); }
+    .impact-heading em { font-style: italic; color: var(--play); }
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--sand); margin: 2rem 0; }
+    .impact-cell { background: var(--cream); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--play); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .83rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* Stories */
+    .stories { display: grid; gap: 2px; background: var(--sand); margin: 2rem 0; }
+    .story-card { background: var(--cream); padding: 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; }
+    .story-initial { width: 3.5rem; height: 3.5rem; border-radius: 50%; background: var(--leaf); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .story-initial span { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: rgba(255,255,255,.8); }
+    .story-name { font-size: .78rem; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; color: var(--ink); margin-bottom: .35rem; }
+    .story-text { font-size: .85rem; line-height: 1.75; color: var(--muted); font-weight: 300; }
+    .story-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--ink); margin-top: .6rem; }
+
+    /* Scale band */
+    .scale-band { background: var(--leaf); padding: 5rem 3.5rem; }
+    .scale-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .scale-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: #fff; line-height: 1.1; }
+    .scale-heading em { font-style: italic; color: var(--ochre-lt); }
+    .scale-sub { font-size: .9rem; line-height: 1.82; color: rgba(255,255,255,.5); font-weight: 300; margin-top: 1.25rem; }
+    .scale-items { display: grid; gap: 1.5rem; }
+    .si { border-top: 1px solid rgba(255,255,255,.12); padding-top: 1rem; }
+    .si-title { font-size: .78rem; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.55); margin-bottom: .4rem; }
+    .si-body { font-size: .82rem; line-height: 1.7; color: rgba(255,255,255,.38); font-weight: 300; }
+
+    /* Closing */
+    .closing { background: var(--charcoal); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,82,26,.08) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--ochre-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.4); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.12); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .sbc-band, .scale-band, .impact-section, .role-band, .divider-band, .closing { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .outcomes-grid { grid-template-columns: 1fr 1fr; }
+      .outcome-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .section-inner, .role-inner, .scale-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .features-grid, .sbc-grid, .impact-grid, .session-rhythm { grid-template-columns: 1fr; }
+      .phase { grid-template-columns: 1fr; }
+      .ph-num { display: none; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid rgba(255,255,255,.15); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ring" aria-hidden="true"></div>
+  <div class="hero-ghost" aria-hidden="true">PLAY</div>
+
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — PlayLab · ECD Through Play · Sujawal, Sindh</div>
+  </div>
+
+  <div class="hero-body">
+    <div class="eyebrow">UNICEF Pakistan · Sujawal District, Sindh · 2024–2025</div>
+    <h1>
+      Play<em>Lab</em>
+      <span class="sub-title">Pakistan's First Evidence-Based Parenting PlayLab</span>
+    </h1>
+    <p class="hero-sub">A radical experiment in one district: inviting parents to rediscover play — and in doing so, reimagining who is responsible for a child's earliest years. Eight weeks. Nearly 600 caregivers. One question: if play could transform Sujawal, what could it do across Pakistan?</p>
+  </div>
+
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">UNICEF Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Location</span><span class="meta-value">Sujawal District, Sindh</span></div>
+    <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-value">8-Week Pilot · 2024–2025</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">ECD · Playful Parenting · SBC · Father Engagement</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">Programme Design, SBC Architecture &amp; Community Co-Design</span></div>
+  </div>
+</section>
+
+<!-- ROLE BAND -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">Programme Design, SBC Strategy &amp; <em>Community Co-Design</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice led the full design of Pakistan's first PlayLab for Parents — from the initial concept inspired by BRAC's globally validated model to its contextualisation for Sujawal's specific social norms, literacy levels, and community rhythms. This encompassed SBC strategy, session curriculum design, Play Champion training systems, WhatsApp monitoring architecture, community ritual design including the PlayMela, and the complete documentation required for replication and national scale.</p>
+      <div class="role-services">
+        <span class="role-tag">SBC Programme Design</span>
+        <span class="role-tag">Community Contextualisation</span>
+        <span class="role-tag">Play Champion Training</span>
+        <span class="role-tag">68-Session Curriculum</span>
+        <span class="role-tag">Father Engagement Architecture</span>
+        <span class="role-tag">WhatsApp Monitoring System</span>
+        <span class="role-tag">PlayMela Community Ritual</span>
+        <span class="role-tag">Theory of Change</span>
+        <span class="role-tag">Scale Roadmap</span>
+        <span class="role-tag">Programme Documentation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY OUTCOMES -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">~600</div>
+      <div class="outcome-desc">Caregivers engaged across 68 sessions over 8 weeks — including near-equal participation from mothers and fathers, unprecedented for a structured parenting programme in rural Sindh.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">302 / 296</div>
+      <div class="outcome-desc">Mothers and fathers — near parity in a context where fathers have been historically absent from any parenting programme. A structural design choice that produced a norm-shifting outcome.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">100+</div>
+      <div class="outcome-desc">Handmade toys created by families from mud, cardboard, and bottle caps — proudly displayed at the PlayMela. Everyday objects, permanently reimagined as tools for a child's learning.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Pakistan's 1st</div>
+      <div class="outcome-desc">PlayLab for Parents in the country — adapted from BRAC's international model, grounded in behavioural science, and purpose-designed for low-literacy, low-resource contexts.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Play Corners</div>
+      <div class="outcome-desc">Appeared independently in homes across the community — unprompted and unsubsidised. Children began requesting handmade toys over bought ones. The norm had visibly shifted.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-band">
+  <div class="divider-stat">60 Million</div>
+  <div class="divider-text">Children under the age of eight in Pakistan. If this generation grows up with positive stimulation, imagination, and responsive caregiving, the trajectory of an entire nation could change. The Sujawal PlayLab was not just a pilot — it was proof of what is possible at scale. By age five, a child's brain has already reached 90% of its adult size, forming nearly a million new neural connections every second. Those connections are not built by expensive toys. They are built by the parent who sits on the floor and plays.</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>In Pakistan, play is dismissed — not for children, but for parents. Across communities like Sujawal, where poverty is structural, literacy is low, and social norms run deep, the idea that a parent should sit on the floor and make toys out of mud is not just unfamiliar. It is seen as wasteful, or beneath the dignity of a working father, or simply not something the community does.</p>
+        <p>Yet the science is unambiguous. The first eight years determine cognitive development, emotional health, and educational outcomes for decades to come. Those years are shaped not by classrooms or curricula — they are shaped by responsive caregiving and play. The parent who stops to respond, to build together, to talk through a story — this is who determines a child's developmental trajectory.</p>
+        <div class="pull-quote">
+          <p>"In Sujawal, play was dismissed as 'timepass.' Fathers were absent from caregiving. Toys were seen as luxuries. And mothers were overburdened and unsupported. The challenge was not information. It was norms."</p>
+        </div>
+        <p>Existing ECD programmes in Pakistan were child-facing, not parent-facing. They were lecture-based, literacy-dependent, and targeted mothers in isolation. Fathers — the gatekeepers of social permission in most households — were absent from the conversation entirely. What White Rice was asked to design was something genuinely different: a programme that would make play <em>feel</em> important, not just sound important, in a community where neither the infrastructure nor the social permission for playful caregiving existed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>White Rice drew on BRAC's globally validated PlayLab model — which had demonstrated 5x greater developmental gains for PlayLab children over peers in a two-year Bangladesh study — and systematically redesigned it for Sujawal's specific social, cultural, and literacy context. Four strategic pillars shaped every design decision.</p>
+
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Practice, Not Preaching</div>
+              <div class="pillar-body">Parents do not change through lectures. They change through doing. Every PlayLab session was built around hands-on activity — parents sitting on the floor making toys, telling stories, playing alongside their children. The experience was the message. Abstract language like "constructive play" became vivid memory: building a cardboard tower, racing bottle caps, pretending to cook with mud. One concrete takeaway per session. No jargon.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Social Reinforcement — Make It Public</div>
+              <div class="pillar-body">Private behaviour change is fragile. Social behaviour change is durable. The programme was designed to move play out of individual households and into collectively visible, publicly celebrated spaces. The PlayMela — a village-wide festival where families displayed the toys they had built together — was not an add-on. It was the strategic centrepiece: the moment when private play became a community norm, and mud became a symbol of intelligence.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Fathers In by Design</div>
+              <div class="pillar-body">Father engagement was not an aspiration — it was engineered into the programme's architecture. Separate 6:00 AM sessions fit the rhythms of men who would otherwise use work as a reason to disengage. Peer role models. A psychologically safe space. Light refreshments. The result: 296 fathers alongside 302 mothers — near parity in rural Sindh. Men who had defined themselves as distant providers began waking early to play with their children before work.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Lean, Adaptive, Always Listening</div>
+              <div class="pillar-body">The programme was built to learn in real time. Play Champions reported daily via WhatsApp voice notes, photographs, and Google Forms — creating a live feedback loop that allowed the design team to adapt within 24 hours: extending what resonated, simplifying what confused, adjusting schedules around harvest seasons and village festivals. The programme moved with the rhythms of community life, not against them.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERVENTION -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">04</span><span class="line"></span></div>
+        <h2>The <em>Intervention</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The PlayLab unfolded across six sequential phases — each building on the last, from community trust-building through to a village-wide celebration that anchored the norm change in public life and community memory.</p>
+
+        <div class="phases">
+          <div class="phase">
+            <div class="ph-num"><span>01</span></div>
+            <div class="ph-content">
+              <div class="ph-title">Community Engagement &amp; Setup</div>
+              <div class="ph-body">Trust before anything. Local leaders, parents, and potential Play Champions were consulted from the start. Community spaces were transformed using simple mats, hand-painted posters, and household objects — proving from day one that play requires nothing expensive, only intention and a little floor space.</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="ph-num"><span>02</span></div>
+            <div class="ph-content">
+              <div class="ph-title">Training Play Champions</div>
+              <div class="ph-body">Two local community members were selected and trained as Play Champions — trusted neighbours, not outside experts. Blended training: WhatsApp video modules for concepts, hands-on practicums for skills, and a detailed Urdu Play Champion Guidebook as an ongoing reference. Local leadership, built to outlast any programme cycle.</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="ph-num"><span>03</span></div>
+            <div class="ph-content">
+              <div class="ph-title">68 Sessions Over 8 Weeks</div>
+              <div class="ph-body">Each session followed a three-part rhythm: Welcome &amp; Warm-Up (10 min) to build trust and emotional readiness; Main Activity (35–40 min) of themed, hands-on play using low-cost materials; and a Parent Learning Circle (10 min) for peer reflection and at-home commitments. Groups of 10–12 — small enough for safety, large enough for community.</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="ph-num"><span>04</span></div>
+            <div class="ph-content">
+              <div class="ph-title">Scheduling Around Community Life</div>
+              <div class="ph-body">Mothers met in the afternoons after chores. Fathers met at 6:00 AM before work. Sessions shifted around midday heat, harvest seasons, and village festivals. Home visits by Play Champions ensured parents felt invited rather than obligated. The programme respected village rhythms rather than imposing institutional ones.</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="ph-num"><span>05</span></div>
+            <div class="ph-content">
+              <div class="ph-title">Real-Time Monitoring &amp; Feedback Loops</div>
+              <div class="ph-body">Daily WhatsApp voice notes, photographs, and Google Forms from Play Champions created a live programme-learning stream. Activities were extended, simplified, or replaced within 24 hours based on what participants actually experienced — not what the curriculum assumed they would.</div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="ph-num"><span>06</span></div>
+            <div class="ph-content">
+              <div class="ph-title">The PlayMela — Village-Wide Culminating Festival</div>
+              <div class="ph-body">Families arrived with over 100 handmade toys: bullock carts built under torchlight at 2 AM, cardboard houses with dedicated "ECD Rooms," kitchens made from clay. Neighbours admired. Children ran. Fathers stood beside what they had made with their own hands. Play had moved from a household secret to a community achievement. The norm had been anchored in public life.</div>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top:1.5rem;font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:500;">The Session Rhythm</p>
+        <div class="session-rhythm">
+          <div class="sr-card">
+            <div class="sr-time">10 min</div>
+            <div class="sr-title">Welcome &amp; Warm-Up</div>
+            <div class="sr-body">Songs, introductions, or a light activity. Signal: this is a safe space. For parents who have never been invited to play alongside their children, the first ten minutes are the entire programme.</div>
+          </div>
+          <div class="sr-card">
+            <div class="sr-time">35–40 min</div>
+            <div class="sr-title">Main Activity</div>
+            <div class="sr-body">Themed play — sensory, pretend, constructive, cooperative — using only what families already have. Mud, cloth, bottle caps, cardboard. One developmental takeaway, kept vivid and concrete. No categories. Moments.</div>
+          </div>
+          <div class="sr-card">
+            <div class="sr-time">10 min</div>
+            <div class="sr-title">Parent Learning Circle</div>
+            <div class="sr-body">Peer reflection and a specific at-home commitment for the week. Accountability is horizontal — parent to parent — not expert to audience. The people who shifted first became the peer models who shifted everyone else.</div>
+          </div>
+        </div>
+
+        <div class="pull-quote" style="margin-top:2rem;">
+          <p>"Before, I thought this was only the mother's responsibility. Now I feel I'm part of this journey too."</p>
+          <cite>— Father, Sujawal · PlayLab Participant</cite>
+        </div>
+
+        <p>Six design features made PlayLab structurally distinct from every conventional parenting programme — each one targeting a specific barrier that had made previous interventions fall short.</p>
+
+        <div class="features-grid">
+          <div class="feat-card">
+            <div class="feat-num">01</div>
+            <div class="feat-title">Parents as First Teachers</div>
+            <div class="feat-body">PlayLab did not teach parents about parenting. It gave them the experience of being their child's best teacher — through doing, not through listening. Repeated practice built confidence. Confidence built habit.</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-num">02</div>
+            <div class="feat-title">Norm-Shifting Rituals</div>
+            <div class="feat-body">Public events like the PlayMela turned private play into community achievement. When a father's cardboard house wins first prize, every man in the village sees what engaged fatherhood looks like. Norms shift at the social level, not just the individual one.</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-num">03</div>
+            <div class="feat-title">Father Engagement by Design</div>
+            <div class="feat-body">Early mornings. Peer role models. Male-only safe spaces. Refreshments. These were not accommodations — they were strategic design choices that produced near-equal participation from men in a context where no previous parenting programme had succeeded in bringing them in.</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-num">04</div>
+            <div class="feat-title">Low-Cost, Indigenous Play</div>
+            <div class="feat-body">"Anything can be a toy" was not a slogan. It was the entire curriculum philosophy. When children began buying cardboard at the market to make their own toys instead of asking for bought ones, the programme had made locally-sourced creativity more desirable than consumption.</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-num">05</div>
+            <div class="feat-title">Lean, Adaptive Design</div>
+            <div class="feat-body">One takeaway per session. Daily WhatsApp feedback. Real-time course correction. The programme had a curriculum — but it also had ears. When something wasn't landing, it changed within 24 hours. When something worked, it expanded. This responsiveness is what made families feel heard and keep coming back.</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-num">06</div>
+            <div class="feat-title">Community Transformation as the Goal</div>
+            <div class="feat-body">PlayLab was never just about individual children. The ambition was to shift what a community believes caregiving looks like — restoring dignity to parenting, building intergenerational bonds, and making local creativity a source of pride. When the community owns play, no funding cycle can end it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SBC DIMENSIONS -->
+<section class="sbc-band">
+  <div class="sbc-inner">
+    <div class="sbc-eyebrow">Social &amp; Behaviour Change Architecture</div>
+    <h2 class="sbc-heading">Three things had to shift at once:<br><em>what play means, who plays, and where it happens.</em></h2>
+    <div class="sbc-grid">
+      <div class="sbc-card">
+        <div class="sbc-title">Reframing Play as Work</div>
+        <div class="sbc-body">In Sujawal, play was "timepass." PlayLab had to shift this at the cognitive level — positioning play as "brain-building work" and parents as their child's first and most important teacher. Not through lecture, but through experience. When a father watches his child's face light up as they build a tower together and then the tower falls and the child rebuilds it — he understands neural connections more viscerally than any training session could communicate.</div>
+      </div>
+      <div class="sbc-card">
+        <div class="sbc-title">Making the Shift Social and Visible</div>
+        <div class="sbc-body">Individual behaviour change is fragile when the surrounding norm is unchanged. The PlayMela was designed specifically to make the private public. When Munir the craftsman built a cardboard house with an "ECD Room" as a tribute to the programme, and when that house won first prize in front of the whole village — every parent in Sujawal saw that engaged parenting was something to aspire to, not something to hide.</div>
+      </div>
+      <div class="sbc-card">
+        <div class="sbc-title">Removing the Affordability Barrier</div>
+        <div class="sbc-body">Financial barriers to play were real. But "anything can be a toy" worked because the programme proved it, session after session, with materials that every family already had at home. When children began buying cardboard in the market to make their own toys instead of requesting bought ones, the norm had fully shifted. Local creativity had become more desirable than consumption — a profound reversal in communities where ready-made goods signal aspiration.</div>
+      </div>
+      <div class="sbc-quote">
+        <div class="sbc-q-text">"We used to scold kids for banging pots. Now we realise they were learning."</div>
+        <div class="sbc-q-cite">— Mother, Sujawal · PlayLab Participant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact-section">
+  <div class="impact-inner">
+    <div class="impact-header">
+      <span class="sec-num" style="color:var(--sand);">05</span>
+      <h2 class="impact-heading">The <em>Impact</em></h2>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-cell">
+        <div class="big">68 Sessions</div>
+        <div class="desc">Conducted over 8 weeks — each attended, each adapted in real-time based on daily feedback from Play Champions in the field. The curriculum improved as it was delivered.</div>
+      </div>
+      <div class="impact-cell">
+        <div class="big">~600 Attendances</div>
+        <div class="desc">302 mothers and 296 fathers — near-equal participation in a rural Sindh setting where structured parenting programmes had never previously engaged men in any meaningful way.</div>
+      </div>
+      <div class="impact-cell">
+        <div class="big">100+ Toys</div>
+        <div class="desc">Handmade by families from everyday materials — proudly showcased at the PlayMela. Each one a symbol of a norm that had visibly, permanently shifted in Sujawal.</div>
+      </div>
+      <div class="impact-cell">
+        <div class="big">Play Corners</div>
+        <div class="desc">Appeared in homes across the community — independently, without prompting or subsidy. The programme had ended. The behaviour had not. That is what behaviour change looks like when it works.</div>
+      </div>
+      <div class="impact-cell">
+        <div class="big">Fathers Rising Early</div>
+        <div class="desc">Multiple fathers reported waking before work to play with their children — a new morning ritual that children came to anticipate. One father said his son now waits for him every morning. Waiting. Every morning.</div>
+      </div>
+      <div class="impact-cell">
+        <div class="big">A National Blueprint</div>
+        <div class="desc">The Sujawal pilot is documented and replication-ready — for integration into Lady Health Worker networks, government pre-school systems, and provincial ECD strategies targeting Vision 2030 human capital goals.</div>
+      </div>
+    </div>
+
+    <p style="font-size:.92rem;line-height:1.88;color:#3A3028;font-weight:300;margin:2.5rem 0 .5rem;">The behavioural data only tells part of the story. Three families captured what had actually changed in Sujawal.</p>
+
+    <div class="stories">
+      <div class="story-card">
+        <div class="story-initial"><span>A</span></div>
+        <div>
+          <div class="story-name">Atif — 5 Years Old &amp; His Grandparents</div>
+          <div class="story-text">When the PlayMela was announced, Atif did not want a shop toy. He wanted to make one. With his grandmother and grandfather, by torchlight with no electricity, they built a mud bullock cart — once common in the village, now nearly forgotten. By 2:00 AM it was complete, painted in bright colours. At the PlayMela, Atif declared it better than any toy his father had brought from the city. "Because this one we made."</div>
+          <div class="story-quote">"Mujhe yeh khilona ziada pasand hai kyun ke yeh meri dadi ne banaya hai." — Atif</div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-initial"><span>G</span></div>
+        <div>
+          <div class="story-name">Gulshan Ara — 10 Years Old, Her Mother &amp; Father</div>
+          <div class="story-text">Gulshan arrived at the PlayLab and saw a plane, a swing, a lamp — all made by other children. "If they can imagine these, I can too," she told her mother. Together with her sister and mother, they built a mud house. Her father, who once played for one hour, now plays two — joining pretend games as a nurse, a patient, a student. Before the PlayLab, the family was together but apart. Now, Gulshan says, "they even talk with each other more."</div>
+          <div class="story-quote">"In the PlayLab I learned pretend play, and at home I taught it to Gulshan." — Gulshan's Mother</div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-initial"><span>M</span></div>
+        <div>
+          <div class="story-name">Munir — Craftsman, Father</div>
+          <div class="story-text">Munir's daughter asked him to make something for the PlayMela. He built a miniature cardboard house — courtyard, swings, road, cars — with one detail that set it apart: a dedicated room labelled "ECD," a tribute to the programme that had completely reshaped how he understood fatherhood. The house won first prize. For Munir, it was not a model. It was a declaration that in Sujawal, fathers too invest time, skill, and love in their children's earliest years.</div>
+          <div class="story-quote">"Mein eik karigar hun — mene apni beti ke kehne par yeh ghar banaya, aur isme PlayLab ke liye ECD ke naam se kamra bhi banaya." — Munir</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCALE BAND -->
+<section class="scale-band">
+  <div class="scale-inner">
+    <div>
+      <h2 class="scale-heading">From Sujawal<br>to <em>Pakistan.</em></h2>
+      <p class="scale-sub">PlayLab is not a short-term project. Its low-cost structure — everyday materials, shared community spaces, locally recruited and WhatsApp-trained Play Champions — ensures sessions can continue long after any initial funding cycle. The method itself is the intervention, and the Sujawal pilot has produced a complete replication blueprint ready for embedding into Lady Health Worker systems, government pre-school networks, and provincial ECD strategies contributing to Vision 2030 and 2040 human capital goals.</p>
+      <p class="scale-sub" style="margin-top:1rem;">With 60 million children under eight in Pakistan, this is not a small ambition. It is a national one.</p>
+    </div>
+    <div class="scale-items">
+      <div class="si">
+        <div class="si-title">Play Champions — A New Micro-Cadre</div>
+        <div class="si-body">Locally recruited, WhatsApp-trained, trusted as neighbours. Play Champions are not programme staff — they are community institutions. Institutionalising this cadre across Pakistan is the fastest route to scale.</div>
+      </div>
+      <div class="si">
+        <div class="si-title">Lady Health Worker Integration</div>
+        <div class="si-body">Lady Health Workers visit homes across the country. Embedding PlayLab modules into their existing protocols requires minimal disruption and unlocks Pakistan's most trusted community health network as a delivery mechanism.</div>
+      </div>
+      <div class="si">
+        <div class="si-title">National PlayLab Toolkit</div>
+        <div class="si-body">A story-led, visual, low-literacy-sensitive toolkit in Urdu — designed for flexible local adaptation while ensuring consistent quality across contexts. Ready for provincial rollout.</div>
+      </div>
+      <div class="si">
+        <div class="si-title">SDG Accelerator Platform</div>
+        <div class="si-body">PlayLab spaces are trusted community gatherings. They are natural platforms for community dialogue on SDG 1 (No Poverty), SDG 2 (Zero Hunger), SDG 4 (Quality Education), and SDG 6 (Clean Water) — making PlayLab a grassroots vehicle for Pakistan's broader development commitments.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>If play could transform Sujawal,<br>imagine what it could do <em>across Pakistan.</em></h3>
+    <p>The Sujawal PlayLab proved that even in contexts of poverty and low literacy, families can nurture children who are loved, stimulated, and ready to thrive. With 60 million children under eight in Pakistan, PlayLab is more than a project. It is a scalable, low-cost blueprint for responsive parenting at national scale. White Rice designed the programme. The community made it a movement.</p>
+    <div class="tag-pills">
+      <span class="pill">ECD</span>
+      <span class="pill">Playful Parenting</span>
+      <span class="pill">Father Engagement</span>
+      <span class="pill">SBC Design</span>
+      <span class="pill">UNICEF Pakistan</span>
+      <span class="pill">Sujawal · Sindh</span>
+      <span class="pill">Play Champions</span>
+      <span class="pill">Community Co-Design</span>
+      <span class="pill">WhatsApp Monitoring</span>
+      <span class="pill">PlayMela</span>
+      <span class="pill">Low-Resource Innovation</span>
+      <span class="pill">Scale Readiness</span>
+      <span class="pill">Norm Shifting</span>
+      <span class="pill">Pakistan's First</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -112,6 +112,132 @@ export interface CaseStudyData {
     paragraphs: string[];
     items: { label: string; body: string }[];
   };
+  behaviours?: {
+    label: string;
+    items: { num: string; name: string; sub: string }[];
+  };
+  theoryOfChange?: {
+    label: string;
+    steps: { num: string; title: string; body: string }[];
+  };
+  covidPivot?: {
+    label: string;
+    heading: string;
+    paragraphs: string[];
+    tags: string[];
+  };
+  persona?: {
+    label: string;
+    name: string;
+    body: string;
+  };
+  communities?: {
+    label: string;
+    watermark?: string;
+    cards: { name: string; region: string; description: string; challenge: string }[];
+  };
+  programme?: {
+    eyebrow: string;
+    heading: string;
+    cards: { badge: string; title: string; body: string }[];
+  };
+  garden?: {
+    eyebrow: string;
+    heading: string;
+    stat?: string;
+    paragraphs: string[];
+  };
+  journey?: {
+    label: string;
+    steps: { phase: string; title: string; body: string }[];
+  };
+  audiences?: {
+    label: string;
+    cards: { role: string; name: string; tag: string; body: string; incentive: string; color?: string }[];
+  };
+  kab?: {
+    eyebrow: string;
+    heading: string;
+    cards: { stage: string; name: string; channel: string; items: string[] }[];
+  };
+  hypothesis?: {
+    eyebrow: string;
+    heading: string;
+    rows: { expected: string; reality: string }[];
+  };
+  cocreationMethods?: {
+    eyebrow: string;
+    heading: string;
+    intro?: string;
+    cards: { title: string; body: string }[];
+  };
+  topics?: {
+    eyebrow: string;
+    heading: string;
+    cards: { num: string; name: string; body: string; count: string; color?: string }[];
+  };
+  platform?: {
+    eyebrow: string;
+    heading: string;
+    watermark?: string;
+    paragraphs: string[];
+    features: { bold: string; text: string }[];
+  };
+  diversity?: {
+    eyebrow: string;
+    heading: string;
+    cards: { label: string; title: string; body: string }[];
+  };
+  sbc?: {
+    eyebrow: string;
+    heading: string;
+    cards: { title: string; body: string }[];
+    quote?: { text: string; attribution?: string };
+  };
+  scaleBand?: {
+    heading: string;
+    paragraphs: string[];
+    items: { title: string; body: string }[];
+  };
+  phases?: { num: string; title: string; body: string }[];
+  sessionRhythm?: { time: string; title: string; body: string }[];
+  featuresGrid?: { num: string; title: string; body: string }[];
+  featuresGridIntro?: string;
+  stories?: { initial: string; name: string; text: string; quote: string }[];
+  storiesIntro?: string;
+
+  /* ICRC Barosakare custom bands */
+  twoSides?: {
+    left: { label: string; heading: string; body: string };
+    right: { label: string; heading: string; body: string };
+  };
+  hcdResearch?: {
+    eyebrow: string;
+    heading: string;
+    hospitals: { city: string; abbrev: string; fullName: string; scale: string }[];
+    methods: { name: string; body: string }[];
+  };
+  patientBand?: {
+    eyebrow: string;
+    headline: string;
+    body: string;
+  };
+  strategyProngs?: {
+    eyebrow: string;
+    heading: string;
+    prongs: { num: string; label: string; title: string; body: string; points: string[] }[];
+  };
+  tvAd?: {
+    eyebrow: string;
+    heading: string;
+    paragraphs: string[];
+    arcSteps: { label: string; text: string; color: "steel" | "red" | "amber" }[];
+  };
+  campaignChannels?: {
+    eyebrow: string;
+    heading: string;
+    channels: { name: string; body: string }[];
+  };
 
   /* Existing fields */
   challenge: {
@@ -133,6 +259,7 @@ export interface CaseStudyData {
     heading: string;
     body: string;
     deliverables: string[];
+    quote?: string;
     downloadLink?: {
       label: string;
       url: string;
@@ -722,36 +849,135 @@ export const caseStudies: CaseStudyData[] = [
   /* 6 ─ UNICEF PlayLab */
   {
     slug: "unicef-playlab",
-    year: "2022 - 2024",
-    tags: ["ECD", "Play-Based Learning", "UNICEF"],
+    year: "2024 – 2025",
+    tags: ["ECD", "Playful Parenting", "Father Engagement", "SBC Design", "UNICEF Pakistan", "Sujawal · Sindh", "Play Champions", "Community Co-Design", "WhatsApp Monitoring", "PlayMela", "Low-Resource Innovation", "Scale Readiness", "Norm Shifting", "Pakistan's First"],
+    theme: {
+      primary: "#C4521A",
+      primaryLight: "#E87A48",
+      accent: "#2A5A1A",
+      accentLight: "#4A8A3A",
+    },
+    hero: {
+      eyebrow: "UNICEF Pakistan · Sujawal District, Sindh · 2024–2025",
+      title: "Play<em>Lab</em>",
+      subtitle: "Pakistan's First Evidence-Based Parenting PlayLab",
+      description: "A radical experiment in one district: inviting parents to rediscover play — and in doing so, reimagining who is responsible for a child's earliest years. Eight weeks. Nearly 600 caregivers. One question: if play could transform Sujawal, what could it do across Pakistan?",
+      meta: [
+        { label: "Client", value: "UNICEF Pakistan" },
+        { label: "Location", value: "Sujawal District, Sindh" },
+        { label: "Duration", value: "8-Week Pilot · 2024–2025" },
+        { label: "Focus", value: "ECD · Playful Parenting · SBC · Father Engagement" },
+        { label: "White Rice Role", value: "Programme Design, SBC Architecture & Community Co-Design" },
+      ],
+    },
+    heroVideo: "/videos/playLab.mp4",
+    role: {
+      heading: "Programme Design, SBC Strategy & <em>Community Co-Design</em>",
+      body: "White Rice led the full design of Pakistan's first PlayLab for Parents — from the initial concept inspired by BRAC's globally validated model to its contextualisation for Sujawal's specific social norms, literacy levels, and community rhythms. This encompassed SBC strategy, session curriculum design, Play Champion training systems, WhatsApp monitoring architecture, community ritual design including the PlayMela, and the complete documentation required for replication and national scale.",
+      services: ["SBC Programme Design", "Community Contextualisation", "Play Champion Training", "68-Session Curriculum", "Father Engagement Architecture", "WhatsApp Monitoring System", "PlayMela Community Ritual", "Theory of Change", "Scale Roadmap", "Programme Documentation"],
+    },
+    outcomes: {
+      cards: [
+        { stat: "~600", description: "Caregivers engaged across 68 sessions over 8 weeks — including near-equal participation from mothers and fathers, unprecedented for a structured parenting programme in rural Sindh." },
+        { stat: "302 / 296", description: "Mothers and fathers — near parity in a context where fathers have been historically absent from any parenting programme. A structural design choice that produced a norm-shifting outcome." },
+        { stat: "100+", description: "Handmade toys created by families from mud, cardboard, and bottle caps — proudly displayed at the PlayMela. Everyday objects, permanently reimagined as tools for a child's learning." },
+        { stat: "Pakistan's 1st", description: "PlayLab for Parents in the country — adapted from BRAC's international model, grounded in behavioural science, and purpose-designed for low-literacy, low-resource contexts." },
+        { stat: "Play Corners", description: "Appeared independently in homes across the community — unprompted and unsubsidised. Children began requesting handmade toys over bought ones. The norm had visibly shifted." },
+      ],
+    },
+    divider: {
+      stat: "60 Million",
+      text: "Children under the age of eight in Pakistan. If this generation grows up with positive stimulation, imagination, and responsive caregiving, the trajectory of an entire nation could change. The Sujawal PlayLab was not just a pilot — it was proof of what is possible at scale. By age five, a child's brain has already reached 90% of its adult size, forming nearly a million new neural connections every second. Those connections are not built by expensive toys. They are built by the parent who sits on the floor and plays.",
+    },
+    sbc: {
+      eyebrow: "Social & Behaviour Change Architecture",
+      heading: "Three things had to shift at once:<br><em>what play means, who plays, and where it happens.</em>",
+      cards: [
+        { title: "Reframing Play as Work", body: "In Sujawal, play was \"timepass.\" PlayLab had to shift this at the cognitive level — positioning play as \"brain-building work\" and parents as their child's first and most important teacher. Not through lecture, but through experience. When a father watches his child's face light up as they build a tower together and then the tower falls and the child rebuilds it — he understands neural connections more viscerally than any training session could communicate." },
+        { title: "Making the Shift Social and Visible", body: "Individual behaviour change is fragile when the surrounding norm is unchanged. The PlayMela was designed specifically to make the private public. When Munir the craftsman built a cardboard house with an \"ECD Room\" as a tribute to the programme, and when that house won first prize in front of the whole village — every parent in Sujawal saw that engaged parenting was something to aspire to, not something to hide." },
+        { title: "Removing the Affordability Barrier", body: "Financial barriers to play were real. But \"anything can be a toy\" worked because the programme proved it, session after session, with materials that every family already had at home. When children began buying cardboard in the market to make their own toys instead of requesting bought ones, the norm had fully shifted. Local creativity had become more desirable than consumption — a profound reversal in communities where ready-made goods signal aspiration." },
+      ],
+      quote: { text: "We used to scold kids for banging pots. Now we realise they were learning.", attribution: "— Mother, Sujawal · PlayLab Participant" },
+    },
+    scaleBand: {
+      heading: "From Sujawal<br>to <em>Pakistan.</em>",
+      paragraphs: [
+        "PlayLab is not a short-term project. Its low-cost structure — everyday materials, shared community spaces, locally recruited and WhatsApp-trained Play Champions — ensures sessions can continue long after any initial funding cycle. The method itself is the intervention, and the Sujawal pilot has produced a complete replication blueprint ready for embedding into Lady Health Worker systems, government pre-school networks, and provincial ECD strategies contributing to Vision 2030 and 2040 human capital goals.",
+        "With 60 million children under eight in Pakistan, this is not a small ambition. It is a national one.",
+      ],
+      items: [
+        { title: "Play Champions — A New Micro-Cadre", body: "Locally recruited, WhatsApp-trained, trusted as neighbours. Play Champions are not programme staff — they are community institutions. Institutionalising this cadre across Pakistan is the fastest route to scale." },
+        { title: "Lady Health Worker Integration", body: "Lady Health Workers visit homes across the country. Embedding PlayLab modules into their existing protocols requires minimal disruption and unlocks Pakistan's most trusted community health network as a delivery mechanism." },
+        { title: "National PlayLab Toolkit", body: "A story-led, visual, low-literacy-sensitive toolkit in Urdu — designed for flexible local adaptation while ensuring consistent quality across contexts. Ready for provincial rollout." },
+        { title: "SDG Accelerator Platform", body: "PlayLab spaces are trusted community gatherings. They are natural platforms for community dialogue on SDG 1 (No Poverty), SDG 2 (Zero Hunger), SDG 4 (Quality Education), and SDG 6 (Clean Water) — making PlayLab a grassroots vehicle for Pakistan's broader development commitments." },
+      ],
+    },
+    phases: [
+      { num: "01", title: "Community Engagement & Setup", body: "Trust before anything. Local leaders, parents, and potential Play Champions were consulted from the start. Community spaces were transformed using simple mats, hand-painted posters, and household objects — proving from day one that play requires nothing expensive, only intention and a little floor space." },
+      { num: "02", title: "Training Play Champions", body: "Two local community members were selected and trained as Play Champions — trusted neighbours, not outside experts. Blended training: WhatsApp video modules for concepts, hands-on practicums for skills, and a detailed Urdu Play Champion Guidebook as an ongoing reference. Local leadership, built to outlast any programme cycle." },
+      { num: "03", title: "68 Sessions Over 8 Weeks", body: "Each session followed a three-part rhythm: Welcome & Warm-Up (10 min) to build trust and emotional readiness; Main Activity (35–40 min) of themed, hands-on play using low-cost materials; and a Parent Learning Circle (10 min) for peer reflection and at-home commitments. Groups of 10–12 — small enough for safety, large enough for community." },
+      { num: "04", title: "Scheduling Around Community Life", body: "Mothers met in the afternoons after chores. Fathers met at 6:00 AM before work. Sessions shifted around midday heat, harvest seasons, and village festivals. Home visits by Play Champions ensured parents felt invited rather than obligated. The programme respected village rhythms rather than imposing institutional ones." },
+      { num: "05", title: "Real-Time Monitoring & Feedback Loops", body: "Daily WhatsApp voice notes, photographs, and Google Forms from Play Champions created a live programme-learning stream. Activities were extended, simplified, or replaced within 24 hours based on what participants actually experienced — not what the curriculum assumed they would." },
+      { num: "06", title: "The PlayMela — Village-Wide Culminating Festival", body: "Families arrived with over 100 handmade toys: bullock carts built under torchlight at 2 AM, cardboard houses with dedicated \"ECD Rooms,\" kitchens made from clay. Neighbours admired. Children ran. Fathers stood beside what they had made with their own hands. Play had moved from a household secret to a community achievement. The norm had been anchored in public life." },
+    ],
+    sessionRhythm: [
+      { time: "10 min", title: "Welcome & Warm-Up", body: "Songs, introductions, or a light activity. Signal: this is a safe space. For parents who have never been invited to play alongside their children, the first ten minutes are the entire programme." },
+      { time: "35–40 min", title: "Main Activity", body: "Themed play — sensory, pretend, constructive, cooperative — using only what families already have. Mud, cloth, bottle caps, cardboard. One developmental takeaway, kept vivid and concrete. No categories. Moments." },
+      { time: "10 min", title: "Parent Learning Circle", body: "Peer reflection and a specific at-home commitment for the week. Accountability is horizontal — parent to parent — not expert to audience. The people who shifted first became the peer models who shifted everyone else." },
+    ],
+    featuresGridIntro: "Six design features made PlayLab structurally distinct from every conventional parenting programme — each one targeting a specific barrier that had made previous interventions fall short.",
+    featuresGrid: [
+      { num: "01", title: "Parents as First Teachers", body: "PlayLab did not teach parents about parenting. It gave them the experience of being their child's best teacher — through doing, not through listening. Repeated practice built confidence. Confidence built habit." },
+      { num: "02", title: "Norm-Shifting Rituals", body: "Public events like the PlayMela turned private play into community achievement. When a father's cardboard house wins first prize, every man in the village sees what engaged fatherhood looks like. Norms shift at the social level, not just the individual one." },
+      { num: "03", title: "Father Engagement by Design", body: "Early mornings. Peer role models. Male-only safe spaces. Refreshments. These were not accommodations — they were strategic design choices that produced near-equal participation from men in a context where no previous parenting programme had succeeded in bringing them in." },
+      { num: "04", title: "Low-Cost, Indigenous Play", body: "\"Anything can be a toy\" was not a slogan. It was the entire curriculum philosophy. When children began buying cardboard at the market to make their own toys instead of asking for bought ones, the programme had made locally-sourced creativity more desirable than consumption." },
+      { num: "05", title: "Lean, Adaptive Design", body: "One takeaway per session. Daily WhatsApp feedback. Real-time course correction. The programme had a curriculum — but it also had ears. When something wasn't landing, it changed within 24 hours. When something worked, it expanded. This responsiveness is what made families feel heard and keep coming back." },
+      { num: "06", title: "Community Transformation as the Goal", body: "PlayLab was never just about individual children. The ambition was to shift what a community believes caregiving looks like — restoring dignity to parenting, building intergenerational bonds, and making local creativity a source of pride. When the community owns play, no funding cycle can end it." },
+    ],
+    storiesIntro: "The behavioural data only tells part of the story. Three families captured what had actually changed in Sujawal.",
+    stories: [
+      { initial: "A", name: "Atif — 5 Years Old & His Grandparents", text: "When the PlayMela was announced, Atif did not want a shop toy. He wanted to make one. With his grandmother and grandfather, by torchlight with no electricity, they built a mud bullock cart — once common in the village, now nearly forgotten. By 2:00 AM it was complete, painted in bright colours. At the PlayMela, Atif declared it better than any toy his father had brought from the city.", quote: "\"Mujhe yeh khilona ziada pasand hai kyun ke yeh meri dadi ne banaya hai.\" — Atif" },
+      { initial: "G", name: "Gulshan Ara — 10 Years Old, Her Mother & Father", text: "Gulshan arrived at the PlayLab and saw a plane, a swing, a lamp — all made by other children. \"If they can imagine these, I can too,\" she told her mother. Together with her sister and mother, they built a mud house. Her father, who once played for one hour, now plays two — joining pretend games as a nurse, a patient, a student. Before the PlayLab, the family was together but apart.", quote: "\"In the PlayLab I learned pretend play, and at home I taught it to Gulshan.\" — Gulshan's Mother" },
+      { initial: "M", name: "Munir — Craftsman, Father", text: "Munir's daughter asked him to make something for the PlayMela. He built a miniature cardboard house — courtyard, swings, road, cars — with one detail that set it apart: a dedicated room labelled \"ECD,\" a tribute to the programme that had completely reshaped how he understood fatherhood. The house won first prize.", quote: "\"Mein eik karigar hun — mene apni beti ke kehne par yeh ghar banaya, aur isme PlayLab ke liye ECD ke naam se kamra bhi banaya.\" — Munir" },
+    ],
     challenge: {
       heading: "The Challenge",
-      body: "Millions of Pakistani children lacked access to quality early learning environments. Formal pre-school infrastructure was absent in most rural and peri-urban communities, and existing ECD approaches were too costly and complex to scale.\n\nUNICEF needed a low-cost, community-embedded model that could deliver play-based early learning at national scale.",
+      body: "In Pakistan, play is dismissed — not for children, but for parents. Across communities like Sujawal, where poverty is structural, literacy is low, and social norms run deep, the idea that a parent should sit on the floor and make toys out of mud is not just unfamiliar. It is seen as wasteful, or beneath the dignity of a working father, or simply not something the community does.\n\nYet the science is unambiguous. The first eight years determine cognitive development, emotional health, and educational outcomes for decades to come. Those years are shaped not by classrooms or curricula — they are shaped by responsive caregiving and play. The parent who stops to respond, to build together, to talk through a story — this is who determines a child's developmental trajectory.\n\nExisting ECD programmes in Pakistan were child-facing, not parent-facing. They were lecture-based, literacy-dependent, and targeted mothers in isolation. Fathers — the gatekeepers of social permission in most households — were absent from the conversation entirely. What White Rice was asked to design was something genuinely different: a programme that would make play <em>feel</em> important, not just sound important, in a community where neither the infrastructure nor the social permission for playful caregiving existed.",
+      quote: {
+        text: "In Sujawal, play was dismissed as 'timepass.' Fathers were absent from caregiving. Toys were seen as luxuries. And mothers were overburdened and unsupported. The challenge was not information. It was norms.",
+      },
     },
     strategy: {
-      heading: "Our Approach",
-      intro: "We designed Pakistan's first scalable PlayLab model - a community-owned, play-based early learning space.",
+      heading: "The Strategy",
+      intro: "White Rice drew on BRAC's globally validated PlayLab model — which had demonstrated 5x greater developmental gains for PlayLab children over peers in a two-year Bangladesh study — and systematically redesigned it for Sujawal's specific social, cultural, and literacy context. Four strategic pillars shaped every design decision.",
       steps: [
-        { number: "01", title: "Model Design", description: "Developing a low-cost PlayLab kit with locally sourced, culturally appropriate play materials." },
-        { number: "02", title: "Facilitator Training", description: "Training community members as PlayLab facilitators through an intensive, practice-based curriculum." },
-        { number: "03", title: "Community Embedding", description: "Establishing PlayLabs within existing community spaces - mosques, community centres, homes." },
-        { number: "04", title: "Scale & Systems", description: "Building government and partner pathways for district-wide and provincial PlayLab rollout." },
+        { number: "01", title: "Practice, Not Preaching", description: "Parents do not change through lectures. They change through doing. Every PlayLab session was built around hands-on activity — parents sitting on the floor making toys, telling stories, playing alongside their children. The experience was the message. Abstract language like \"constructive play\" became vivid memory: building a cardboard tower, racing bottle caps, pretending to cook with mud. One concrete takeaway per session. No jargon." },
+        { number: "02", title: "Social Reinforcement — Make It Public", description: "Private behaviour change is fragile. Social behaviour change is durable. The programme was designed to move play out of individual households and into collectively visible, publicly celebrated spaces. The PlayMela — a village-wide festival where families displayed the toys they had built together — was not an add-on. It was the strategic centrepiece: the moment when private play became a community norm, and mud became a symbol of intelligence." },
+        { number: "03", title: "Fathers In by Design", description: "Father engagement was not an aspiration — it was engineered into the programme's architecture. Separate 6:00 AM sessions fit the rhythms of men who would otherwise use work as a reason to disengage. Peer role models. A psychologically safe space. Light refreshments. The result: 296 fathers alongside 302 mothers — near parity in rural Sindh. Men who had defined themselves as distant providers began waking early to play with their children before work." },
+        { number: "04", title: "Lean, Adaptive, Always Listening", description: "The programme was built to learn in real time. Play Champions reported daily via WhatsApp voice notes, photographs, and Google Forms — creating a live feedback loop that allowed the design team to adapt within 24 hours: extending what resonated, simplifying what confused, adjusting schedules around harvest seasons and village festivals. The programme moved with the rhythms of community life, not against them." },
       ],
     },
     work: {
-      heading: "Our Work",
-      body: "We designed, piloted, and scaled Pakistan's first PlayLab network - community-owned early learning spaces that bring structured play-based development to children in the most resource-constrained settings.",
-      deliverables: ["PlayLab design kit and materials list", "Facilitator training curriculum", "Community setup and sustainability guide", "Government scaling strategy document"],
+      heading: "The Intervention",
+      body: "The PlayLab unfolded across six sequential phases — each building on the last, from community trust-building through to a village-wide celebration that anchored the norm change in public life and community memory.",
+      deliverables: ["SBC Programme Design", "Community Contextualisation", "Play Champion Training", "68-Session Curriculum", "Father Engagement Architecture", "WhatsApp Monitoring System", "PlayMela Community Ritual", "Theory of Change", "Scale Roadmap", "Programme Documentation"],
+      quote: "Before, I thought this was only the mother's responsibility. Now I feel I'm part of this journey too.",
     },
+    impactCells: [
+      { big: "68 Sessions", desc: "Conducted over 8 weeks — each attended, each adapted in real-time based on daily feedback from Play Champions in the field. The curriculum improved as it was delivered." },
+      { big: "~600 Attendances", desc: "302 mothers and 296 fathers — near-equal participation in a rural Sindh setting where structured parenting programmes had never previously engaged men in any meaningful way." },
+      { big: "100+ Toys", desc: "Handmade by families from everyday materials — proudly showcased at the PlayMela. Each one a symbol of a norm that had visibly, permanently shifted in Sujawal." },
+      { big: "Play Corners", desc: "Appeared in homes across the community — independently, without prompting or subsidy. The programme had ended. The behaviour had not. That is what behaviour change looks like when it works." },
+      { big: "Fathers Rising Early", desc: "Multiple fathers reported waking before work to play with their children — a new morning ritual that children came to anticipate. One father said his son now waits for him every morning. Waiting. Every morning." },
+      { big: "A National Blueprint", desc: "The Sujawal pilot is documented and replication-ready — for integration into Lady Health Worker networks, government pre-school systems, and provincial ECD strategies targeting Vision 2030 human capital goals." },
+    ],
     impact: {
-      heading: "Impact",
-      metrics: [
-        { value: 5000, suffix: "+", label: "Children Enrolled" },
-        { value: 150, suffix: "+", label: "PlayLabs Established" },
-        { value: 300, suffix: "+", label: "Facilitators Trained" },
-        { value: 3, suffix: "", label: "Provinces Scaled" },
-      ],
-      quote: { text: "PlayLab showed us that world-class early learning doesn't require world-class budgets - it requires world-class design.", attribution: "UNICEF ECD Specialist" },
+      heading: "The Impact",
+      metrics: [],
+    },
+    closing: {
+      heading: "If play could transform Sujawal,<br>imagine what it could do <em>across Pakistan.</em>",
+      body: "The Sujawal PlayLab proved that even in contexts of poverty and low literacy, families can nurture children who are loved, stimulated, and ready to thrive. With 60 million children under eight in Pakistan, PlayLab is more than a project. It is a scalable, low-cost blueprint for responsive parenting at national scale. White Rice designed the programme. The community made it a movement.",
     },
     gallery: {
       heading: "Gallery",
@@ -928,17 +1154,102 @@ export const caseStudies: CaseStudyData[] = [
   /* 8 ─ UNICEF Clean & Green */
   {
     slug: "unicef-clean-green",
-    year: "2019",
+    year: "2019 \u2013 2021",
     tags: ["WASH", "Behaviour Change", "Sanitation", "Open Defecation", "Tree Plantation", "Waste Management", "Digital SBC", "COVID-19 Response", "Punjab Government", "UNICEF", "SDG 3", "SDG 6", "SDG 13"],
+    theme: {
+      primary: "#2A4A35",
+      primaryLight: "#5A8A4A",
+      accent: "#5A8A4A",
+      accentLight: "#8AB87A",
+    },
+    hero: {
+      eyebrow: "Punjab Government & UNICEF \u00b7 Punjab \u00b7 2019\u20132021",
+      title: "Clean & <em>Green</em><span class=\"cs-hero__subtitle-inline\">Punjab Behaviour Change Programme</span>",
+      description: "A province-wide social behaviour change intervention across five critical environmental and hygiene behaviours \u2014 designed to reach 2 million people directly, and 34 million more through digital platforms, including through the height of COVID-19.",
+      meta: [
+        { label: "Partners", value: "Punjab Government & UNICEF" },
+        { label: "Scale", value: "Province-Wide \u00b7 Punjab, Pakistan" },
+        { label: "Focus", value: "WASH \u00b7 Environment \u00b7 Sanitation" },
+        { label: "White Rice Role", value: "SBC Strategy & Programme Design Lead" },
+      ],
+    },
+    heroVideo: "/videos/cg.mp4",
+    role: {
+      heading: "SBC Strategy & <em>Programme Design Lead</em>",
+      body: "White Rice designed and led the social behaviour change architecture for the Punjab government\u2019s Clean & Green programme \u2014 working alongside UNICEF and building on the government\u2019s existing community mobiliser network. Our mandate covered the full design cycle: formative research, SBC strategy, the Mitti 2 behavioural persona framework, FLW training, community activation, digital engagement, and village watch committee formation.",
+      services: [
+        "Design & Formative Research",
+        "SBC Strategy",
+        "Behavioural Persona Design",
+        "FLW Training Programme",
+        "Community Activation",
+        "Digital Media Strategy",
+        "Village Watch Committees",
+        "COVID-19 Digital Pivot",
+      ],
+    },
+    behaviours: {
+      label: "The Five Target Behaviours",
+      items: [
+        { num: "01", name: "Handwashing with Soap", sub: "At critical hygiene moments throughout the day" },
+        { num: "02", name: "End Open Defecation", sub: "Construction and use of latrines at household level" },
+        { num: "03", name: "Safe Drinking Water", sub: "Safe access, treatment, and hygienic storage of water" },
+        { num: "04", name: "Tree Plantation", sub: "Community-led greening and environmental stewardship" },
+        { num: "05", name: "Waste Disposal", sub: "Responsible household and community waste management" },
+      ],
+    },
+    outcomes: {
+      cards: [
+        { stat: "2M+", description: "People directly reached through the programme\u2019s community-level interventions across Punjab." },
+        { stat: "34M+", description: "People engaged through digital platforms \u2014 a figure that grew dramatically when COVID-19 forced a digital pivot." },
+        { stat: "5 Behaviours", description: "Targeted simultaneously across WASH and environment \u2014 the first province-wide multi-behaviour SBC programme of its kind in Punjab." },
+        { stat: "Open Defecation \u2193", description: "Measurable decline in open defecation across Punjab \u2014 with this programme as a core contributing intervention." },
+        { stat: "Latrine Built", description: "Millions of households reported constructing latrines \u2014 even amid the economic constraints of the COVID-19 pandemic." },
+      ],
+      watermark: "PUNJAB",
+    },
+    divider: {
+      stat: "Jugaad",
+      text: "The principle at the heart of the programme\u2019s design. Jugaad \u2014 frugal innovation using what\u2019s already available \u2014 shaped not just the community strategy, but the entire philosophy of how change was expected to happen: from within communities, using local resources, through human agency rather than government provision.",
+    },
+    persona: {
+      label: "Central Behavioural Persona",
+      name: "Mitti 2 \u2014 The Jugaad Innovator",
+      body: "Research insights led White Rice to design around a central persona: Mitti 2 \u2014 a community member with a <em>jugaad</em> mindset. Frugal, resourceful, and solutions-oriented. Someone who knows how to create change with limited resources, who doesn\u2019t wait for the government to solve their problems, and whose agency inspires others. Mitti 2 became the behavioural archetype that the programme\u2019s training, messaging, and community activation were built around \u2014 making aspirational change feel locally achievable.",
+    },
+    theoryOfChange: {
+      label: "Theory of Change \u00b7 Socio-Ecological Model",
+      steps: [
+        { num: "1", title: "Individual", body: "Build knowledge, pride, and a Jugaad sense of agency around the five target behaviours" },
+        { num: "2", title: "Household", body: "Align families around shared environmental and hygiene practices as expressions of household pride" },
+        { num: "3", title: "Community", body: "Village watch committees as custodians \u2014 monitoring, championing, and sustaining the programme from within" },
+        { num: "4", title: "Enabling Environment", body: "Government mobiliser network, digital infrastructure, and local cable media amplifying behaviour norms at scale" },
+      ],
+    },
+    covidPivot: {
+      label: "The COVID-19 Pivot",
+      heading: "When the world locked down, the programme <em>went digital.</em>",
+      paragraphs: [
+        "COVID-19 arrived mid-programme, making in-person community access near-impossible. Rather than pausing, White Rice redesigned the delivery model in real time. Young people within communities were identified and trained as digital access points \u2014 using mobile phones to deliver content, gather insights, and keep communities engaged when facilitators could no longer visit in person.",
+        "This was not a contingency. It became a strategic advantage. The digital layer reached audiences that physical programming never could \u2014 and the 34 million figure reflects the scale of what became possible when digital was treated as a primary channel, not a fallback.",
+      ],
+      tags: [
+        "Youth Digital Ambassadors",
+        "Mobile Phone Content",
+        "Social Media Campaigns",
+        "Local Cable TV",
+        "Community Insight Gathering via Digital",
+      ],
+    },
     challenge: {
-      heading: "The Challenge",
-      body: "Punjab's Clean & Green programme had a clear mandate: shift five critical environmental and hygiene behaviours across one of Pakistan's most populous provinces. But the challenge was not simply scale. It was the deeper problem that every SBC practitioner eventually confronts \u2014 one-time behaviour change is easy. Long-term behaviour change is hard.\n\nThe government had an existing network of community mobilisers \u2014 but they lacked an SBC framework capable of driving durable change. The intervention had to be designed not just for reach, but for sustainability. And then COVID-19 arrived, threatening to make in-person community work impossible at precisely the moment the programme was gaining momentum.",
+      heading: "The <em>Challenge</em>",
+      body: "Punjab\u2019s Clean & Green programme had a clear mandate: shift five critical environmental and hygiene behaviours across one of Pakistan\u2019s most populous provinces. But the challenge was not simply scale. It was the deeper problem that every SBC practitioner eventually confronts \u2014 <em>one-time behaviour change is easy. Long-term behaviour change is hard.</em>\n\nThe government had an existing network of community mobilisers \u2014 but they lacked an SBC framework capable of driving durable change. The intervention had to be designed not just for reach, but for sustainability. And then COVID-19 arrived, threatening to make in-person community work impossible at precisely the moment the programme was gaining momentum.",
       quote: {
-        text: "Getting a community to wash their hands once is a trick. Getting them to wash their hands every day for the rest of their lives \u2014 that requires changing what feels normal.",
+        text: "\u201cGetting a community to wash their hands once is a trick. Getting them to wash their hands every day for the rest of their lives \u2014 that requires changing what feels normal.\u201d",
       },
     },
     strategy: {
-      heading: "The Strategy",
+      heading: "The <em>Strategy</em>",
       intro: "White Rice began with an intensive design research phase \u2014 going far beyond interviews and surveys. The team used immersive observational methods, spending days and nights with beneficiary households to map the full lifecycle of each target behaviour: where it happened, who influenced it, where it broke down, and what would make it stick.",
       steps: [
         {
@@ -964,37 +1275,45 @@ export const caseStudies: CaseStudyData[] = [
       ],
     },
     work: {
-      heading: "The Intervention",
-      body: "The intervention was built on the Punjab government's existing community mobiliser infrastructure \u2014 but transformed it. White Rice trained the mobilisers on a comprehensive SBC methodology grounded in the Mitti 2 persona and the socio-ecological model, equipping them with tools and facilitation skills that the programme had never previously had access to.\n\nVillage watch committees were formed in communities across Punjab \u2014 becoming the custodians of the entire programme. These were not passive beneficiary groups; they were monitors, champions, and accountability mechanisms. Their formation ensured that the programme had a structural home within communities long after any formal intervention activities had concluded.",
+      heading: "The <em>Intervention</em>",
+      body: "The intervention was built on the Punjab government\u2019s existing community mobiliser infrastructure \u2014 but transformed it. White Rice trained the mobilisers on a comprehensive SBC methodology grounded in the Mitti 2 persona and the socio-ecological model, equipping them with tools and facilitation skills that the programme had never previously had access to.\n\nVillage watch committees were formed in communities across Punjab \u2014 becoming the custodians of the entire programme. These were not passive beneficiary groups; they were monitors, champions, and accountability mechanisms. Their formation ensured that the programme had a structural home within communities long after any formal intervention activities had concluded.",
       deliverables: [
-        "Design & Formative Research",
-        "SBC Strategy",
-        "Behavioural Persona Design",
-        "FLW Training Programme",
-        "Community Activation",
-        "Digital Media Strategy",
-        "Village Watch Committees",
-        "COVID-19 Digital Pivot",
         "Group Facilitation Sessions",
         "Home Visits",
         "Behaviour Demonstrations",
         "Community Influencer Mapping",
+        "Village Watch Committees",
         "Local Cable TV",
         "Digital & Social Media",
         "Mobile Phone Content Delivery",
         "Youth Digital Ambassadors",
       ],
+      quote: "\u201cWe didn\u2019t install behaviour change in communities. We activated the capacity for change that was already there \u2014 and then built the structures to keep it alive.\u201d",
     },
     impact: {
-      heading: "The Impact",
-      body: "The programme reached at a scale that few SBC interventions in Pakistan have achieved \u2014 but scale alone was not the measure of success. The programme's most significant impact was behavioural: communities constructed latrines and ended open defecation practices in measurable numbers, even during the economic strain of COVID-19.",
+      heading: "The <em>Impact</em>",
+      body: "The programme reached at a scale that few SBC interventions in Pakistan have achieved \u2014 but scale alone was not the measure of success. The programme\u2019s most significant impact was behavioural: communities constructed latrines and ended open defecation practices in measurable numbers, even during the economic strain of COVID-19.",
       metrics: [
         { value: 2, suffix: " Million", label: "People directly reached through community-level sessions, home visits, and mobiliser engagement across Punjab." },
         { value: 34, suffix: " Million", label: "People engaged through digital platforms \u2014 a number that grew exponentially when the digital pivot was made during COVID-19." },
         { value: 0, suffix: "", prefix: "", label: "Measurable, province-wide decline in open defecation \u2014 with this SBC programme as a core contributing intervention within a broader government strategy." },
         { value: 0, suffix: "", prefix: "", label: "The programme not only survived COVID-19 \u2014 it scaled through it, demonstrating that a well-designed digital layer can sustain community behaviour change programming under the most adverse conditions." },
       ],
-      closingNote: "Clean & Green Punjab proved that with the right behavioural framework, the right community infrastructure, and the right digital strategy \u2014 lasting change is achievable, even at provincial scale, even in a pandemic.",
+      closingNote: "The Clean & Green Punjab programme demonstrated what becomes possible when SBC is designed for sustainability from the outset \u2014 when communities are treated as the engine of change, not the audience for it. The Mitti 2 framework, the village watch committee model, and the digital-first pivot represent replicable design innovations that have direct application to multi-behaviour, large-scale government programming across Pakistan and beyond.",
+      quote: {
+        text: "\u201cWe didn\u2019t install behaviour change in communities. We activated the capacity for change that was already there \u2014 and then built the structures to keep it alive.\u201d",
+        attribution: "",
+      },
+    },
+    impactCells: [
+      { big: "2 Million", desc: "People directly reached through community-level sessions, home visits, and mobiliser engagement across Punjab." },
+      { big: "34 Million", desc: "People engaged through digital platforms \u2014 a number that grew exponentially when the digital pivot was made during COVID-19." },
+      { big: "Open Defecation \u2193", desc: "Measurable, province-wide decline in open defecation \u2014 with this SBC programme as a core contributing intervention within a broader government strategy." },
+      { big: "COVID-Proof", desc: "The programme not only survived COVID-19 \u2014 it scaled through it, demonstrating that a well-designed digital layer can sustain community behaviour change programming under the most adverse conditions." },
+    ],
+    closing: {
+      heading: "One-time change is a trick.<br><em>Lasting</em> change is a design problem.",
+      body: "Clean & Green Punjab proved that with the right behavioural framework, the right community infrastructure, and the right digital strategy \u2014 lasting change is achievable, even at provincial scale, even in a pandemic.",
     },
     gallery: {
       heading: "Gallery",
@@ -1009,44 +1328,161 @@ export const caseStudies: CaseStudyData[] = [
   /* 9 ─ FAO Road Safety / Diverse Dastarkhwan */
   {
     slug: "fao-road-safety",
-    year: "2019 - 2020",
+    year: "2019 \u2013 2020",
     tags: ["Food Diversity", "Nutrition", "Stunting Prevention", "Behaviour Change", "Kitchen Gardens", "Cooking Demonstrations", "Positive Deviance", "Balochistan", "FAO", "SDG 2", "SDG 3", "Pakistan"],
+    theme: {
+      primary: "#2A1A0A",
+      primaryLight: "#7A4A1A",
+      accent: "#4A6A2A",
+      accentLight: "#E8B86A",
+    },
+    hero: {
+      eyebrow: "FAO Pakistan \u00b7 Balochistan \u00b7 Multi-District",
+      title: "The Diverse <em>Dastarkhwan</em><span class=\"cs-hero__subtitle-inline\">Food Diversity & Nutrition Behaviour Change Programme</span>",
+      description: "A 12-week behaviour change programme designed to shift the food and nutrition practices of three culturally distinct communities in Balochistan \u2014 through cooking demonstrations, kitchen gardens, and peer-led change \u2014 reaching 11,000 families and 100,000 people.",
+      meta: [
+        { label: "Client", value: "FAO Pakistan" },
+        { label: "Location", value: "Balochistan \u00b7 Multi-District" },
+        { label: "Focus", value: "Food Diversity \u00b7 Nutrition \u00b7 Stunting Prevention" },
+        { label: "White Rice Role", value: "SBC Strategy & Programme Design Lead" },
+      ],
+    },
+    heroVideo: "/videos/fao.mp4",
+    role: {
+      heading: "SBC Design & <em>Programme Lead</em>",
+      body: "White Rice designed and led the full behaviour change programme for FAO \u2014 from formative research across three culturally distinct community contexts through to the 12-week field facilitator methodology, cooking demonstration sessions, kitchen garden integration, communication tools, and positive deviance peer educator model. A programme designed to work with existing food cultures, not against them.",
+      services: [
+        "Formative Research",
+        "SBC Strategy",
+        "Field Facilitator Training",
+        "12-Week Programme Design",
+        "Cooking Demo Methodology",
+        "Kitchen Garden Integration",
+        "Communication Materials",
+        "Positive Deviance Model",
+      ],
+    },
+    communities: {
+      label: "Three Communities \u00b7 Three Cultural Contexts \u00b7 One Programme",
+      watermark: "\u0628\u0644\u0648\u0686\u0633\u062a\u0627\u0646",
+      cards: [
+        {
+          name: "<em>Baloch</em> Communities",
+          region: "Central Balochistan",
+          description: "Predominantly pastoral communities with strong traditions around meat-centred cuisine, hospitality food customs, and specific seasonal eating patterns deeply tied to cultural identity.",
+          challenge: "Vegetables rarely featured in daily cooking \u2014 integration required without disrupting deeply held food traditions.",
+        },
+        {
+          name: "<em>Pashtun</em> Communities",
+          region: "Northern Balochistan",
+          description: "Communities with distinct culinary traditions, strong gender norms around food preparation, and specific beliefs around nutrition during pregnancy and lactation that shaped feeding practices from the earliest stages.",
+          challenge: "Antenatal and postnatal nutrition practices required culturally sensitive reframing rather than direct replacement.",
+        },
+        {
+          name: "<em>Makrani</em> Communities",
+          region: "Southern Balochistan (Coastal)",
+          description: "Coastal communities with access to a distinct set of local ingredients \u2014 fish, specific grains, coastal produce \u2014 and food preparation practices shaped by geography as much as culture.",
+          challenge: "Existing ingredient diversity underutilised \u2014 the programme worked with what was already available, not what needed to be imported.",
+        },
+      ],
+    },
+    outcomes: {
+      cards: [
+        { stat: "11,000", description: "Families directly reached through the 12-week programme across multiple districts of Balochistan." },
+        { stat: "100,000", description: "People reached within those families \u2014 mothers, fathers, children, grandparents \u2014 through a ripple effect by design." },
+        { stat: "3 Cultures", description: "One programme successfully contextualised for Baloch, Pashtun, and Makrani communities \u2014 culturally distinct, behaviourally aligned." },
+        { stat: "Kitchen Gardens", description: "Community kitchen gardens established to provide free, accessible vegetables \u2014 removing the procurement barrier that would have undermined behaviour change." },
+        { stat: "Scaled", description: "The programme was further scaled across additional districts of Balochistan following successful implementation." },
+      ],
+      watermark: "HARVEST",
+    },
+    divider: {
+      stat: "1 in 2<br>children.<br>Stunted.",
+      text: "Balochistan has a child stunting rate of approximately 50% \u2014 one of the highest in the world. The leading driver is not food scarcity, but food diversity: children are not receiving the range of nutrients their brains and bodies need in the critical window of the first 1,000 days. Families were often protein-rich but vegetable-poor \u2014 and had never been shown how to change that without abandoning the food cultures they held dear.",
+    },
+    programme: {
+      eyebrow: "The Intervention \u00b7 Structured Programme Design",
+      heading: "A <em>12-Week Journey</em> from Knowledge to Kitchen",
+      cards: [
+        {
+          badge: "Weeks 1\u20133 \u00b7 Foundation",
+          title: "Understanding Nutrition in Community Language",
+          body: "Field facilitators conducted household visits to establish trust, understand current practices, and introduce the concept of dietary diversity using locally meaningful language and culturally familiar reference points \u2014 not clinical nutrition terminology.",
+        },
+        {
+          badge: "Weeks 4\u20136 \u00b7 Demonstration",
+          title: "The Community Cooking Demo",
+          body: "The best cooks from within each community were trained to lead live cooking demonstrations every alternate week. Using locally available vegetables alongside familiar ingredients, they created new recipes that felt like natural extensions of existing cuisine \u2014 not foreign impositions.",
+        },
+        {
+          badge: "Weeks 7\u20139 \u00b7 Practice",
+          title: "Women as Recipe Innovators",
+          body: "Mothers were encouraged to experiment \u2014 adapting the new ingredients and methods into their own family recipes. The cooking session became a community space for creativity, sharing, and peer encouragement, with each woman developing personalised versions of the target behaviours.",
+        },
+        {
+          badge: "Weeks 10\u201312 \u00b7 Habit & Scale",
+          title: "Positive Deviants Lead the Way",
+          body: "Women who had most successfully integrated new practices became peer educators \u2014 sharing their stories, demonstrating their recipes, and inspiring their neighbours. The programme ended by building the community infrastructure for change to continue without external facilitation.",
+        },
+      ],
+    },
+    garden: {
+      eyebrow: "Programme Innovation",
+      heading: "The Kitchen Garden \u2014 <em>Removing the Barrier</em> at the Root",
+      stat: "Free. Fresh.<br>From the ground.",
+      paragraphs: [
+        "One of the most significant design insights from the research was deceptively simple: telling families to eat more vegetables is useless if accessing vegetables requires money they don\u2019t have, or a journey they cannot make. The behaviour change programme could not succeed if the enabling environment didn\u2019t exist.",
+        "White Rice designed the kitchen garden as a structural solution \u2014 not an add-on. Every community was supported to establish its own kitchen garden, providing a free, organic, on-demand source of the very vegetables the cooking demonstrations were using. The garden removed the procurement barrier entirely.",
+        "The result was that the behaviour being taught \u2014 integrating vegetables into daily cooking \u2014 was immediately practicable. Mothers didn\u2019t have to wait until the next market trip or budget windfall. They could walk to the garden, pick what they needed, and cook it that evening. The kitchen garden turned an aspiration into an immediate possibility.",
+      ],
+    },
     challenge: {
-      heading: "The Challenge",
-      body: "Balochistan's stunting crisis is rooted in a paradox: these communities are not food insecure in a simple sense. Many families \u2014 particularly in Baloch and Pashtun areas \u2014 have strong food traditions, adequate caloric intake from meat and staples, and deep cultural pride in how they cook and eat. The problem is dietary diversity. Vegetables, legumes, and the micronutrient-rich foods that underpin child brain development and physical growth are largely absent from the daily dastarkhwan.\n\nThe added complexity here was that this was not one community but three \u2014 Baloch, Pashtun, and Makrani \u2014 each with distinct languages, food customs, gender dynamics, and conceptions of what good nutrition looks like. A single standardised programme would have failed all three. The challenge was to design something universal in its behavioural goals but deeply contextual in its delivery.",
+      heading: "The <em>Challenge</em>",
+      body: "Balochistan\u2019s stunting crisis is rooted in a paradox: these communities are not food insecure in a simple sense. Many families \u2014 particularly in Baloch and Pashtun areas \u2014 have strong food traditions, adequate caloric intake from meat and staples, and deep cultural pride in how they cook and eat. The problem is dietary diversity. Vegetables, legumes, and the micronutrient-rich foods that underpin child brain development and physical growth are largely absent from the daily dastarkhwan.\n\nThe added complexity here was that this was not one community but three \u2014 Baloch, Pashtun, and Makrani \u2014 each with distinct languages, food customs, gender dynamics, and conceptions of what good nutrition looks like. A single standardised programme would have failed all three. The challenge was to design something universal in its behavioural goals but deeply contextual in its delivery.",
       quote: {
-        text: "You cannot ask a mother to change how she feeds her family without first understanding why she feeds them the way she does \u2014 and what that food means to her.",
+        text: "\u201cYou cannot ask a mother to change how she feeds her family without first understanding why she feeds them the way she does \u2014 and what that food means to her.\u201d",
       },
     },
     strategy: {
-      heading: "The Strategy",
+      heading: "The <em>Strategy</em>",
       intro: "White Rice began with intensive qualitative research across all three community contexts \u2014 mapping current food practices, cooking rituals, prevailing beliefs about nutrition, and the specific moments in pregnancy, lactation, and early childhood when behaviour change was most possible and most impactful.",
       steps: [
-        { number: "01", title: "Integrate, Don't Replace", description: "Design for addition, not substitution. Show mothers how new ingredients and recipes can sit alongside existing food traditions \u2014 not threaten them." },
-        { number: "02", title: "Work with What's Already There", description: "Identify locally available ingredients \u2014 especially vegetables \u2014 that can be the building blocks of nutritional diversity, without requiring communities to import or purchase unfamiliar foods." },
+        { number: "01", title: "Integrate, Don\u2019t Replace", description: "Design for addition, not substitution. Show mothers how new ingredients and recipes can sit alongside existing food traditions \u2014 not threaten them." },
+        { number: "02", title: "Work with What\u2019s Already There", description: "Identify locally available ingredients \u2014 especially vegetables \u2014 that can be the building blocks of nutritional diversity, without requiring communities to import or purchase unfamiliar foods." },
         { number: "03", title: "Make Behaviour Change Visible and Joyful", description: "Live cooking demonstrations \u2014 not lectures \u2014 as the primary change mechanism. Knowledge changes minds; cooking together changes habits." },
         { number: "04", title: "Peer-Led Change at Every Stage", description: "Identify positive deviants within each community \u2014 women already practicing nutritional diversity \u2014 and position them as the living proof that change is possible here, in this context, by people like us." },
       ],
     },
     work: {
-      heading: "The Intervention",
-      body: "The programme operated simultaneously at the household level \u2014 through field facilitator visits \u2014 and at the community level, through cooking demonstrations that became weekly social events. The combination was deliberate: private coaching for individual behaviour change, and public cooking sessions for social norm reinforcement.\n\nThe cooking demonstrations were the programme's most distinctive feature \u2014 and its most powerful. The best cooks from each community were not just demonstrators; they were co-designers. They adapted the nutritional guidance into recipes that their communities would actually make and enjoy. Vegetables were introduced not as a health intervention, but as ingredients that made the food taste better, stretch further, and nourish more deeply.\n\nCommunication materials were developed specifically for each community context \u2014 using local language, local imagery, and literacy-sensitive visual design. Materials focused particularly on the critical windows of pregnancy and lactation, where maternal nutrition has the most direct impact on child development outcomes. The guidance was framed not as clinical advice but as practical, actionable, culturally resonant knowledge about how to take care of yourself and your child.",
+      heading: "The <em>Intervention</em>",
+      body: "The programme operated simultaneously at the household level \u2014 through field facilitator visits \u2014 and at the community level, through cooking demonstrations that became weekly social events. The combination was deliberate: private coaching for individual behaviour change, and public cooking sessions for social norm reinforcement.\n\nThe cooking demonstrations were the programme\u2019s most distinctive feature \u2014 and its most powerful. The best cooks from each community were not just demonstrators; they were co-designers. They adapted the nutritional guidance into recipes that their communities would actually make and enjoy. Vegetables were introduced not as a health intervention, but as ingredients that made the food taste better, stretch further, and nourish more deeply.\n\nCommunication materials were developed specifically for each community context \u2014 using local language, local imagery, and literacy-sensitive visual design. Materials focused particularly on the critical windows of pregnancy and lactation, where maternal nutrition has the most direct impact on child development outcomes. The guidance was framed not as clinical advice but as practical, actionable, culturally resonant knowledge about how to take care of yourself and your child.",
       deliverables: ["12-Week Field Facilitator Programme", "Household 1-on-1 Visits", "Bi-Weekly Cooking Demonstrations", "Community Kitchen Gardens", "Positive Deviance Peer Educators", "Pregnancy & Lactation Nutrition Guidance", "Illustrated Communication Tools", "Multi-Culture Contextualisation"],
+      quote: "\u201cWhen the best cook in the village says this is how she makes it \u2014 and people taste it and love it \u2014 no amount of health messaging can compete with that moment.\u201d",
     },
     impact: {
-      heading: "The Impact",
-      body: "The programme reached 11,000 families \u2014 100,000 people \u2014 across Balochistan's most culturally complex and geographically challenging communities. The reach figure matters, but the behavioural figure matters more: women who had never cooked with particular vegetables were growing them in community gardens, preparing them in new recipes, and teaching their neighbours to do the same.",
+      heading: "The <em>Impact</em>",
+      body: "The programme reached 11,000 families \u2014 100,000 people \u2014 across Balochistan\u2019s most culturally complex and geographically challenging communities. The reach figure matters, but the behavioural figure matters more: women who had never cooked with particular vegetables were growing them in community gardens, preparing them in new recipes, and teaching their neighbours to do the same.",
       metrics: [
         { value: 11000, suffix: "", label: "Families directly reached through the 12-week programme \u2014 with cooking demonstrations, household visits, and kitchen garden access at the core." },
-        { value: 100000, suffix: "", label: "People reached within target families \u2014 a ripple effect built into the programme's design through peer educators and community cooking sessions." },
+        { value: 100000, suffix: "", label: "People reached within target families \u2014 a ripple effect built into the programme\u2019s design through peer educators and community cooking sessions." },
         { value: 3, suffix: " Cultures", label: "A single behaviour change methodology successfully adapted for Baloch, Pashtun, and Makrani communities \u2014 proving that cultural specificity and programme scale are not mutually exclusive." },
         { value: 1, suffix: " Scaled", label: "The programme was extended to additional districts of Balochistan following successful implementation \u2014 with the model replicable at low cost precisely because it was built on community assets, not external inputs." },
       ],
       quote: {
-        text: "When the best cook in the village says this is how she makes it \u2014 and people taste it and love it \u2014 no amount of health messaging can compete with that moment.",
+        text: "\u201cWhen the best cook in the village says this is how she makes it \u2014 and people taste it and love it \u2014 no amount of health messaging can compete with that moment.\u201d",
         attribution: "",
       },
       closingNote: "The Dastarkhwan programme demonstrated a principle that applies far beyond nutrition: when you design behaviour change around what a community already has \u2014 its cooks, its crops, its social gatherings, its food pride \u2014 the intervention feels less like a programme and more like a community discovering what it was always capable of. That is the most durable form of change there is.",
+    },
+    impactCells: [
+      { big: "11,000", desc: "Families directly reached through the 12-week programme \u2014 with cooking demonstrations, household visits, and kitchen garden access at the core." },
+      { big: "100,000", desc: "People reached within target families \u2014 a ripple effect built into the programme\u2019s design through peer educators and community cooking sessions." },
+      { big: "3 Cultures", desc: "A single behaviour change methodology successfully adapted for Baloch, Pashtun, and Makrani communities \u2014 proving that cultural specificity and programme scale are not mutually exclusive." },
+      { big: "Scaled", desc: "The programme was extended to additional districts of Balochistan following successful implementation \u2014 with the model replicable at low cost precisely because it was built on community assets, not external inputs." },
+    ],
+    closing: {
+      heading: "The change was always<br>on the <em>dastarkhwan.</em><br>It just needed to be seen.",
+      body: "The Diverse Dastarkhwan programme showed that food behaviour change is not about introducing the foreign. It is about revealing the possible \u2014 using what communities already have, celebrating how they already cook, and expanding what they believe belongs on their table.",
     },
     gallery: {
       heading: "Gallery",
@@ -1061,11 +1497,99 @@ export const caseStudies: CaseStudyData[] = [
   /* 10 ─ UNICEF MHH / Breaking Barriers */
   {
     slug: "unicef-mhh",
-    year: "2021 - 2023",
+    year: "2021 – 2023",
     tags: ["Menstrual Health", "Period Poverty", "Social Behaviour Change", "Co-Creation", "KAB Framework", "Fathers", "Adolescent Girls", "Rural Pakistan", "Punjab", "KPK", "UNICEF", "SDG 3", "SDG 5"],
+    theme: {
+      primary: "#2A0A1A",
+      primaryLight: "#4A1A3A",
+      accent: "#8A3A5A",
+      accentLight: "#C47A9A",
+    },
+    hero: {
+      eyebrow: "UNICEF Pakistan · Rajanpur (Punjab) & Battagram (KPK)",
+      title: "Breaking <em>Barriers</em>",
+      subtitle: "Advancing Menstrual Health in Pakistan with Social Behaviour Change — Phase II",
+      description: "A national SBC initiative to dismantle the silence, shame, and misinformation surrounding menstrual health and hygiene in rural Pakistan — designed across three provinces, three target audiences, and the full socio-ecological model, with a 90% communication effectiveness rate and readiness for national rollout.",
+      meta: [
+        { label: "Client", value: "UNICEF Pakistan" },
+        { label: "Provinces", value: "Sindh (Pilot 1) · Punjab · KPK" },
+        { label: "Focus", value: "Menstrual Health & Hygiene SBC" },
+        { label: "White Rice Role", value: "SBC Strategy, Co-Creation & Toolkit Design Lead" },
+      ],
+    },
+    role: {
+      heading: "SBC Strategy, Co-Creation & <em>National Toolkit Design</em>",
+      body: "White Rice served as UNICEF's SBC strategy and creative partner across the full programme cycle — from a national study and community co-creation workshop in Sindh, through the design of Pakistan's first MHH SBC Toolkit, to the Phase II scale-up across five villages each in Rajanpur (Punjab) and Battagram (KPK). Every element of the programme — conversation guides, storybooks, training materials, monitoring systems — was designed by White Rice with and for the communities it served.",
+      services: ["National Study & Formative Research", "Community Co-Creation", "SBC Toolkit Design", "KAB Framework Design", "CRP Training Programme", "Conversation Flip Books", "Girls' Storybook", "Monitoring & Data System", "Provincial Scale-Up Design"],
+    },
+    outcomes: {
+      cards: [
+        { stat: "~90%", description: "Communication toolkit effectiveness rate across all three provincial pilots — validating readiness for nationwide rollout." },
+        { stat: "3 Provinces", description: "Sindh, Punjab, and KPK — three culturally and contextually distinct provinces, one tested and refined SBC toolkit." },
+        { stat: "3,000+", description: "Fathers, mothers, and adolescent girls reached across 10 villages in Rajanpur and Battagram through structured KAB sessions." },
+        { stat: "Hypotheses Overturned", description: "Every assumption about male resistance and community reluctance was disproved — fathers emerged as the programme's most engaged and vocal participants." },
+        { stat: "National Toolkit", description: "Pakistan's first MHH SBC Toolkit — ready for national rollout and replicable by any partner organisation across all regions." },
+      ],
+      watermark: "MHH",
+    },
+    divider: {
+      stat: "49%<br>of girls.<br>No knowledge.",
+      text: "In Pakistan, nearly half of all girls experience their first period with no prior knowledge of menstruation. 44% lack access to the facilities needed to manage their menstrual health. The resulting stigma, shame, and health risk is not a natural state of affairs — it is the product of silence, and silence can be broken by design.",
+    },
+    journey: {
+      label: "The Programme Journey · Five Phases",
+      steps: [
+        { phase: "Phase 1", title: "Understand", body: "National study to map root causes of period poverty across Pakistan" },
+        { phase: "Phase 2", title: "Co-Create", body: "3-day co-creation workshop in Khairpur, Sindh with community members" },
+        { phase: "Phase 3", title: "Design", body: "SBC toolkit & communication materials designed and prototyped iteratively" },
+        { phase: "Phase 4", title: "Implement", body: "Pilot in Sindh followed by Phase II scale-up in Punjab & KPK" },
+        { phase: "Phase 5", title: "Scale Up", body: "National toolkit finalised for rollout across Pakistan with partners" },
+      ],
+    },
+    audiences: {
+      label: "Target Audiences · Designed for Each Relationship in the Chain",
+      cards: [
+        { role: "Target 1", name: "Father", tag: "The Enabler", body: "The key decision-maker and breadwinner. His empathy and financial support are prerequisites for any behaviour change at home. Historically excluded from MHH discussions entirely.", incentive: "Long-term family health, religious duty of cleanliness, and the financial logic of prevention over treatment.", color: "#E8A86A" },
+        { role: "Target 2", name: "Mother", tag: "The Relator", body: "The direct caregiver who can empathise and act as a bridge between husband and daughter. But she faces her own shame and relational barriers that needed to be named and supported before she could lead change.", incentive: "Daughter's health, access to products for herself, and ability to give her family what they need.", color: "#C47A9A" },
+        { role: "Target 3", name: "Adolescent Girls", tag: "The Bridge (Punjab) / Elder Sister (KPK)", body: "The primary beneficiary — but also the most silenced. In Punjab, girls would only speak to their mothers; in KPK, elder sisters performed this bridge role. The storybook approach bypassed shame through narrative rather than instruction.", incentive: "Personal health, safety, and the right to ask for what they need.", color: "#9ABADA" },
+        { role: "Target 4", name: "Community Influencers", tag: "The Norm Builder", body: "Elders, religious leaders, and local figures whose endorsement signals community permission. In Battagram, a local Molana's positive engagement created immediate credibility and shifted the room's openness within a single session.", incentive: "Recognition and serving the community's health and wellbeing.", color: "#9AAA7A" },
+      ],
+    },
+    kab: {
+      eyebrow: "Intervention Framework · Knowledge → Attitude → Behaviour",
+      heading: "Three stages. Three shifts.<br><em>One complete behaviour change journey.</em>",
+      cards: [
+        { stage: "Stage 1", name: "Knowledge", channel: "Channel: Community Influencers · Large Group Sessions", items: ["Engage local influencers to on-board and gain community support", "Separate group sessions for mothers, fathers, and girls — using specialised conversation guides for each", "Open the discussion; create the first safe space for the subject to exist publicly", "Meetings held in all five villages per province"] },
+        { stage: "Stage 2", name: "Attitude", channel: "Channel: Smaller Groups · Home & School Settings", items: ["Address individual barriers and challenges in adopting the target behaviour", "Girls' Guide (Sara & Saba story) initiates open conversation through narrative", "Build confidence to speak about MHH and demand products", "Multiple sessions per village; mostly home visits and smaller gatherings"] },
+        { stage: "Stage 3", name: "Behaviour + Intention", channel: "Channel: 1-on-1 Sessions · Community Spaces & Homes", items: ["Validation and conversion: intention to action", "Storytelling to probe deeper on behavioural intentions", "Get pledges and document commitments from participants", "Capture stories from early adopters for peer-led social proof"] },
+      ],
+    },
+    verbatims: {
+      eyebrow: "In Their Own Words",
+      heading: "The conversations that <em>were never supposed to happen.</em>",
+      cards: [
+        { quote: "I asked my wife what she uses and told her to give money to her aunts who will bring it for her.", source: "Father · Islampur, Rajanpur · Punjab" },
+        { quote: "We need to save ourselves from disease, not embarrassment.", source: "Father · Chak Talab · Rajanpur, Punjab" },
+        { quote: "I brought pads for my wife from the city without any shame or embarrassment.", source: "Father · Muhammad Pur · Rajanpur, Punjab" },
+        { quote: "If we can ask our husbands to bring wheat, oil, and sugar, we should also be able to ask them to bring pads.", source: "Mother · Battagram, KPK" },
+        { quote: "When I spoke to my husband about this, he asked me why I was not ashamed. I said — why should I be ashamed in front of you?", source: "Mother · Battagram, KPK" },
+        { quote: "This helped us realise that periods are natural and nothing to hide. We should feel comfortable sharing how we're feeling.", source: "Adolescent Girl · Rajanpur, Punjab" },
+      ],
+    },
+    hypothesis: {
+      eyebrow: "Hypothesis Validation",
+      heading: "What we expected to find.<br><em>What the community showed us instead.</em>",
+      rows: [
+        { expected: "Men would avoid the subject and show resistance — especially in conservative KPK.", reality: "Fathers were the programme's most engaged and vocal participants. Many said these discussions should have happened years ago." },
+        { expected: "Mothers would be reluctant to discuss the topic in group settings.", reality: "Mothers actively participated, shared experiences, and expressed gratitude that the conversation was finally happening." },
+        { expected: "Girls — especially those at home — would not be permitted to engage separately.", reality: "Girls were permitted and encouraged to participate in their own sessions, including those not in school." },
+        { expected: "Religious leaders and elders would resist and act as strong gatekeepers.", reality: "In Battagram, a local Molana attended, gave positive feedback, and framed MHH through the Islamic emphasis on cleanliness — becoming an unexpected champion." },
+        { expected: "Resistance to adopting pads and strong preference for traditional cloth.", reality: "The preference for cloth was less prevalent than anticipated. The real barrier was price and access — not attitude toward the product itself." },
+      ],
+    },
     challenge: {
       heading: "The Challenge",
-      body: "Menstrual health and hygiene in rural Pakistan is not simply a product access problem. It is a deeply entrenched social norm problem \u2014 one shaped by shame, silence, misinformation, and the complete absence of open dialogue between the people who need to have it most: fathers and daughters, mothers and sons, women and their own bodies.\n\nWhite Rice and UNICEF's 2021\u20132022 national study identified four intersecting root causes: socio-cultural norms and behaviours; product affordability; accessibility barriers; and inadequate WASH infrastructure. Any programme that addressed only one of these would fail. And any programme built around information alone \u2014 without addressing the relational and normative context in which that information needed to travel \u2014 would reach no one.\n\nPhase II added a further layer of complexity: scaling an approach that had worked in Sindh's Khairpur into two entirely new provincial contexts \u2014 conservative, patriarchal Rajanpur in Punjab, and the hilly, remote villages of Battagram in KPK. Both had been identified as likely to resist. Both would prove more open than anyone expected.",
+      body: "Menstrual health and hygiene in rural Pakistan is not simply a product access problem. It is a deeply entrenched social norm problem — one shaped by shame, silence, misinformation, and the complete absence of open dialogue between the people who need to have it most: fathers and daughters, mothers and sons, women and their own bodies.\n\nWhite Rice and UNICEF's 2021–2022 national study identified four intersecting root causes: socio-cultural norms and behaviours; product affordability; accessibility barriers; and inadequate WASH infrastructure. Any programme that addressed only one of these would fail. And any programme built around information alone — without addressing the relational and normative context in which that information needed to travel — would reach no one.\n\nPhase II added a further layer of complexity: scaling an approach that had worked in Sindh's Khairpur into two entirely new provincial contexts — conservative, patriarchal Rajanpur in Punjab, and the hilly, remote villages of Battagram in KPK. Both had been identified as likely to resist. Both would prove more open than anyone expected.",
       quote: {
         text: "If I speak to my mother about this, she will kill me.",
         attribution: "Adolescent girl, Battagram, KPK",
@@ -1075,27 +1599,32 @@ export const caseStudies: CaseStudyData[] = [
       heading: "The Strategy",
       intro: "The strategy was built on three foundational commitments: co-creation with the community before designing anything; a Knowledge-Attitude-Behaviour (KAB) framework that moved participants through a structured arc rather than attempting single-session awareness; and a radical inclusion of fathers as primary programme participants rather than afterthoughts.",
       steps: [
-        { number: "01", title: "Co-Creation First", description: "A 3-day embedded co-creation workshop in Khairpur \u2014 with women, girls, mothers, fathers, and community influencers \u2014 shaped the entire communication toolkit from the ground up, including multiple rounds of prototyping and real-community testing." },
-        { number: "02", title: "The KAB Arc", description: "Three staged sessions per audience \u2014 Stage 1: Knowledge (large group, open conversation); Stage 2: Attitude (smaller groups, identify barriers); Stage 3: Behaviour + Intention (one-to-one or small group, pledges, action, storytelling from early adopters)." },
-        { number: "03", title: "Fathers as the Enabling Environment", description: "In Pakistan's rural context, the father is the breadwinner and decision-maker. Without his knowledge, empathy, and financial support, no behaviour change in the home is sustainable. Fathers were treated as equal participants \u2014 not obstacles to manage." },
-        { number: "04", title: "Storytelling as the Primary Vehicle", description: "The girls' guide was built around Sara and Saba \u2014 two fictional characters whose stories provided an emotionally safe entry point for adolescent girls to engage with MHH without the shame of direct instruction or clinical information delivery." },
+        { number: "01", title: "Co-Creation First", description: "A 3-day embedded co-creation workshop in Khairpur — with women, girls, mothers, fathers, and community influencers — shaped the entire communication toolkit from the ground up, including multiple rounds of prototyping and real-community testing." },
+        { number: "02", title: "The KAB Arc", description: "Three staged sessions per audience — Stage 1: Knowledge (large group, open conversation); Stage 2: Attitude (smaller groups, identify barriers); Stage 3: Behaviour + Intention (one-to-one or small group, pledges, action, storytelling from early adopters)." },
+        { number: "03", title: "Fathers as the Enabling Environment", description: "In Pakistan's rural context, the father is the breadwinner and decision-maker. Without his knowledge, empathy, and financial support, no behaviour change in the home is sustainable. Fathers were treated as equal participants — not obstacles to manage." },
+        { number: "04", title: "Storytelling as the Primary Vehicle", description: "The girls' guide was built around Sara and Saba — two fictional characters whose stories provided an emotionally safe entry point for adolescent girls to engage with MHH without the shame of direct instruction or clinical information delivery." },
       ],
     },
     work: {
       heading: "The Intervention",
-      body: "White Rice served as UNICEF's SBC strategy and creative partner across the full programme cycle \u2014 from a national study and community co-creation workshop in Sindh, through the design of Pakistan's first MHH SBC Toolkit, to the Phase II scale-up across five villages each in Rajanpur (Punjab) and Battagram (KPK). Every element of the programme \u2014 conversation guides, storybooks, training materials, monitoring systems \u2014 was designed by White Rice with and for the communities it served.",
+      body: "White Rice served as UNICEF's SBC strategy and creative partner across the full programme cycle — from a national study and community co-creation workshop in Sindh, through the design of Pakistan's first MHH SBC Toolkit, to the Phase II scale-up across five villages each in Rajanpur (Punjab) and Battagram (KPK). Every element of the programme — conversation guides, storybooks, training materials, monitoring systems — was designed by White Rice with and for the communities it served.",
       deliverables: ["National Study & Formative Research", "Community Co-Creation", "SBC Toolkit Design", "KAB Framework Design", "CRP Training Programme", "Conversation Flip Books", "Girls' Storybook", "Monitoring & Data System", "Provincial Scale-Up Design"],
     },
+    impactCells: [
+      { big: "~90%", desc: "Toolkit communication effectiveness rate across three provincial pilots — providing the evidence base for a confident national rollout." },
+      { big: "3,000+", desc: "Fathers, mothers, and adolescent girls reached across Rajanpur and Battagram through structured KAB sessions — with documented attitude and behaviour shifts." },
+      { big: "Father–Mother–Daughter", desc: "The communication flow between these three relationships — previously nonexistent — was successfully established through the programme. This is the foundational architecture for national change." },
+      { big: "National Toolkit", desc: "Pakistan's first MHH SBC Toolkit — tested across Sindh, Punjab, and KPK, with modifications mapped for each regional context — ready for national programme design and partner rollout." },
+    ],
     impact: {
       heading: "The Impact",
-      body: "The programme's most significant finding was not a statistic. It was the overturning of every assumption that had made people hesitant to tackle MHH in rural Pakistan in the first place. Fathers spoke. Mothers demanded. Girls asked questions. Religious leaders gave endorsements. The silence broke \u2014 and it broke in the most conservative corners of the country.",
-      metrics: [
-        { value: 90, suffix: "%", prefix: "~", label: "Toolkit communication effectiveness rate across three provincial pilots \u2014 providing the evidence base for a confident national rollout." },
-        { value: 3000, suffix: "+", label: "Fathers, mothers, and adolescent girls reached across Rajanpur and Battagram through structured KAB sessions \u2014 with documented attitude and behaviour shifts." },
-        { value: 1, suffix: " Father\u2013Mother\u2013Daughter", label: "The communication flow between these three relationships \u2014 previously nonexistent \u2014 was successfully established through the programme. This is the foundational architecture for national change." },
-        { value: 1, suffix: " National Toolkit", label: "Pakistan's first MHH SBC Toolkit \u2014 tested across Sindh, Punjab, and KPK, with modifications mapped for each regional context \u2014 ready for national programme design and partner rollout." },
-      ],
-      closingNote: "The path to national impact is now clear. If affordability is addressed \u2014 through product subsidies, supply chain improvement, or economic empowerment for women \u2014 Pakistan's communities are ready. The programme did not just break a barrier. It proved that the barrier was never as solid as it appeared.",
+      body: "The programme's most significant finding was not a statistic. It was the overturning of every assumption that had made people hesitant to tackle MHH in rural Pakistan in the first place. Fathers spoke. Mothers demanded. Girls asked questions. Religious leaders gave endorsements. The silence broke — and it broke in the most conservative corners of the country.",
+      metrics: [],
+      closingNote: "The path to national impact is now clear. If affordability is addressed — through product subsidies, supply chain improvement, or economic empowerment for women — Pakistan's communities are ready. The programme did not just break a barrier. It proved that the barrier was never as solid as it appeared.",
+    },
+    closing: {
+      heading: "The silence was not consent.<br>It was <em>design.</em><br>And design can be changed.",
+      body: "Breaking Barriers demonstrated that with the right co-creation process, the right messengers, and the right framework, the most entrenched taboos in the most conservative communities are not as immovable as they appear. Pakistan is ready. The toolkit is ready. What comes next is scale.",
     },
     gallery: {
       heading: "Gallery",
@@ -1110,44 +1639,131 @@ export const caseStudies: CaseStudyData[] = [
   /* 11 ─ Springster / Nike Girls Effect */
   {
     slug: "nike-girls-effect",
-    year: "2013 - 2015",
+    year: "2013 – 2015",
     tags: ["Girls' Empowerment", "Digital Content", "Mobile-First", "Storytelling", "Co-Creation", "Financial Wellbeing", "Voice & Agency", "Adolescent Girls", "Internet.org", "Nike Foundation", "Springster", "SDG 4", "SDG 5", "Pakistan"],
+    theme: {
+      primary: "#C41A7A",
+      primaryLight: "#E85AAA",
+      accent: "#5A1A8A",
+      accentLight: "#9A5ACA",
+    },
+    hero: {
+      eyebrow: "Girl Effect / Springster · National · Mobile-First",
+      title: "A Million <em>Girls</em><br>Given a Voice",
+      subtitle: "Springster — Mobile-First Digital Content for Girls' Empowerment in Pakistan",
+      description: "100+ co-created stories. A free mobile platform. One million girls in Pakistan — many of whom had never had a trusted space to explore the questions that shaped their lives — finally able to access one.",
+      meta: [
+        { label: "Funder", value: "Nike Foundation (Girl Effect)" },
+        { label: "Platform", value: "Internet.org — Free Mobile Access" },
+        { label: "Focus", value: "Girls' Empowerment · Digital Content" },
+        { label: "White Rice Role", value: "Research, Co-Creation & Content Design Lead" },
+      ],
+    },
+    role: {
+      heading: "Human-Centred Design, Co-Creation & <em>Content Lead</em>",
+      body: "White Rice led the full creative and research cycle for Springster Pakistan — from in-school human-centred design research and co-creation sessions with girls across religious and socioeconomic backgrounds, through to the development of over 100 unique mobile-first content stories spanning financial wellbeing, safety, health, voice, and agency. Every story was designed with the girls who would read it.",
+      services: ["Human-Centred Design Research", "In-School Co-Creation Sessions", "Brand & Platform Identity", "100+ Content Stories", "Mobile-First Design", "Visual & Illustrative Design", "Moodboarding & Concept Development", "Multi-Community Contextualisation"],
+    },
+    outcomes: {
+      cards: [
+        { stat: "1 Million+", description: "Girls in Pakistan reached through the Springster platform — many for the first time accessing trusted, culturally relevant content on the issues shaping their lives." },
+        { stat: "100+ Stories", description: "Unique mobile-first content pieces co-created with girls from diverse religious, cultural, and socioeconomic backgrounds across Pakistan." },
+        { stat: "Free Access", description: "Published on Internet.org — meaning any girl, on anyone's phone, with zero mobile data, could access the platform at no cost." },
+        { stat: "4 Topics", description: "Financial wellbeing, voice & agency, safety, and health — covering the most critical and least-discussed dimensions of adolescent girls' lives in Pakistan." },
+        { stat: "Multi-Faith", description: "Content designed with and for both Muslim and Christian girls from diverse regional and socioeconomic backgrounds — one of Pakistan's first explicitly multi-faith digital girl empowerment platforms." },
+      ],
+      watermark: "GIRLS",
+    },
+    divider: {
+      stat: "Zero data.<br>Zero cost.<br>One million girls.",
+      text: "Internet.org gave the platform something no paid app could: the ability to reach girls who had no data, no personal phone, and no money — but who could borrow a phone for five minutes and access content specifically made for them. The zero-cost model was not a technical detail. It was the difference between a platform that reached a million girls and one that reached a few thousand.",
+    },
+    cocreationMethods: {
+      eyebrow: "The Co-Creation Process",
+      heading: "Built <em>by girls.</em><br>For girls.",
+      intro: "The co-creation sessions were held in schools across different communities — bringing together girls from Muslim and Christian backgrounds, from different regional and class contexts, to design the platform alongside White Rice's team. Not as feedback providers, but as authors.",
+      cards: [
+        { title: "Moodboarding & Visual Concept Development", body: "Girls selected visuals, colours, characters, and aesthetics that felt like them — directly shaping the brand identity, illustration style, and visual language of the platform." },
+        { title: "Story & Theme Co-Creation", body: "Girls chose the topics they most needed content on, the characters they wanted to follow, and the situations that felt most true to their real lives. Storylines were shaped by their narratives, not imagined by external writers." },
+        { title: "Live Artwork & Design Collaboration", body: "Girls contributed to illustration concepts and reviewed design elements in session — ensuring that when a character appeared on screen, it looked like someone they could be, not someone they were supposed to aspire to." },
+        { title: "Real-Time Testing & Validation", body: "Draft stories were tested back with communities in session — if the response was wrong, the story was rewritten. Multiple iteration rounds ensured that cultural resonance was verified, not assumed." },
+      ],
+    },
+    topics: {
+      eyebrow: "Content Architecture · What the Platform Covered",
+      heading: "The four topics Pakistani girls <em>most needed</em> — and least had access to.",
+      cards: [
+        { num: "01", name: "Financial Wellbeing", body: "Understanding money, saving, economic independence, and girls' right to financial agency — in a context where financial decisions were rarely made by or for them.", count: "Stories covering <strong>saving, earning, spending, and economic rights</strong>", color: "#E85AAA" },
+        { num: "02", name: "Voice & Agency", body: "How to speak up, participate in decisions, advocate for yourself, and claim a right to be heard — at home, at school, and in the community.", count: "Stories covering <strong>speaking up, confidence, leadership, and participation</strong>", color: "#E8CC5A" },
+        { num: "03", name: "Safety", body: "Personal safety, recognising unsafe situations, knowing what to do and who to tell — content designed to inform without alarming, and to empower without exposing girls to risk.", count: "Stories covering <strong>personal safety, trust, boundaries, and getting help</strong>", color: "#9A5ACA" },
+        { num: "04", name: "Health & Transitions", body: "Teenage body changes, menstrual health, emotional wellbeing, and the questions about growing up that girls were too shy to ask anyone else — addressed honestly, warmly, and without shame.", count: "Stories covering <strong>puberty, menstrual health, mental wellbeing, and self-care</strong>", color: "#6ABADA" },
+      ],
+    },
+    platform: {
+      eyebrow: "The Platform · Internet.org",
+      heading: "No data.<br>No cost.<br><em>No barriers.</em>",
+      watermark: "Free.<br>Always.",
+      paragraphs: [
+        "At the time of the programme, Facebook's Internet.org initiative provided free mobile access to a curated set of platforms — without requiring a data plan. For Pakistani girls, this was transformative. A girl who had no personal phone, no data, and no money could borrow a family member's handset, open Internet.org, and access Springster — for as long as she needed, at zero cost.",
+        "The platform's mobile-first design was not a stylistic choice. It was the fundamental design constraint that shaped every decision: how long a story could be, how much text could appear on screen, how images had to load, and how navigation had to work for someone who might be using the phone quickly, in private, with limited time before it was needed back.",
+      ],
+      features: [
+        { bold: "Zero data required", text: "— accessible on any phone, on any network, including 2G" },
+        { bold: "Culturally resonant visuals", text: "— illustrations co-created with Pakistani girls to reflect who they actually are" },
+        { bold: "Story-led content", text: "— not listicles or fact sheets, but narratives with characters and emotional truth" },
+        { bold: "Designed for sharing", text: "— content that girls could send to friends, making the platform self-spreading within peer networks" },
+      ],
+    },
+    diversity: {
+      eyebrow: "Community Representation · Who Was in the Room",
+      heading: "Pakistan's girls are not one girl.<br><em>The platform was designed to know that.</em>",
+      cards: [
+        { label: "Faith", title: "Muslim & Christian Girls", body: "Co-creation sessions deliberately included both Muslim and Christian girls from Pakistan's urban communities — ensuring that the platform's content and characters reflected the country's religious diversity, not just its majority." },
+        { label: "Background", title: "Diverse Socioeconomic & Regional Contexts", body: "Girls from different regions and class backgrounds — bringing different relationships to education, family, money, and mobility — ensured the content was stress-tested against the real range of girls' lives in Pakistan." },
+        { label: "Setting", title: "School-Based Co-Creation", body: "Sessions were held in schools — a setting that gave girls relative safety, peer support, and a structured creative environment in which to express their actual needs and ideas, rather than what they thought adults wanted to hear." },
+      ],
+    },
     challenge: {
       heading: "The Challenge",
-      body: "Pakistan's adolescent girls face a particular kind of information poverty. The questions that matter most \u2014 about their bodies, their safety, their money, their right to speak \u2014 are precisely the questions that home, school, and community offer the least trustworthy or least available answers to. The topics are too sensitive for open conversation, too personal for the classroom, and too complex for the internet content that does exist to address with cultural nuance.\n\nThe Nike Foundation's global Springster programme had an answer: a mobile-first content platform built specifically for adolescent girls, designed to be their trusted companion on the topics that matter. White Rice's challenge was to bring that platform to life in Pakistan \u2014 in a way that reflected the full diversity of Pakistani girls, not a single imagined composite of who they were supposed to be.\n\nThat meant designing content that could speak authentically to a Muslim girl from Lahore and a Christian girl from Karachi's inner city; to a girl in school and one who had dropped out; to a girl whose mother allowed her to use a phone and one who had to borrow one secretly. The platform had to be genuinely universal \u2014 which meant starting not with assumptions, but with the girls themselves.",
+      body: "Pakistan's adolescent girls face a particular kind of information poverty. The questions that matter most — about their bodies, their safety, their money, their right to speak — are precisely the questions that home, school, and community offer the least trustworthy or least available answers to. The topics are too sensitive for open conversation, too personal for the classroom, and too complex for the internet content that does exist to address with cultural nuance.\n\nThe Nike Foundation's global Springster programme had an answer: a mobile-first content platform built specifically for adolescent girls, designed to be their trusted companion on the topics that matter. White Rice's challenge was to bring that platform to life in Pakistan — in a way that reflected the full diversity of Pakistani girls, not a single imagined composite of who they were supposed to be.\n\nThat meant designing content that could speak authentically to a Muslim girl from Lahore and a Christian girl from Karachi's inner city; to a girl in school and one who had dropped out; to a girl whose mother allowed her to use a phone and one who had to borrow one secretly. The platform had to be genuinely universal — which meant starting not with assumptions, but with the girls themselves.",
       quote: {
-        text: "They don't lack curiosity. They lack a space that feels safe enough to be curious in \u2014 and content that feels like it was actually made for them.",
+        text: "They don't lack curiosity. They lack a space that feels safe enough to be curious in — and content that feels like it was actually made for them.",
       },
     },
     strategy: {
       heading: "The Strategy",
-      intro: "Before a single story was written or a single illustration sketched, White Rice spent significant time in schools and communities \u2014 conducting human-centred design research across diverse populations of girls in Pakistan. The methodology was immersive and participatory: girls were not research subjects, they were co-designers.",
+      intro: "Before a single story was written or a single illustration sketched, White Rice spent significant time in schools and communities — conducting human-centred design research across diverse populations of girls in Pakistan. The methodology was immersive and participatory: girls were not research subjects, they were co-designers.",
       steps: [
-        { number: "01", title: "Girls as Designers, Not Research Subjects", description: "Co-creation sessions in schools gave girls the tools to define what they wanted to see \u2014 through moodboards, visual design, storytelling, theme selection, and artwork \u2014 before White Rice designed anything." },
-        { number: "02", title: "Mobile-First by Design", description: "Every story was conceived for a small screen, short attention span, and potentially borrowed device. Visual appeal, cultural resonance, and brevity were not trade-offs \u2014 they were the design brief." },
-        { number: "03", title: "Storytelling as the Medium, Not Information Delivery", description: "The platform succeeded where information-only content fails because it used narrative \u2014 characters, situations, dilemmas, resolutions \u2014 to carry meaning. Girls didn't read facts. They read stories they recognised." },
-        { number: "04", title: "Diversity as a Non-Negotiable Design Principle", description: "Christian and Muslim girls. Rural and urban. Punjabi, Sindhi, Pakhtun backgrounds. The content was stress-tested across this diversity \u2014 if a story only resonated with one type of girl, it was redesigned." },
+        { number: "01", title: "Girls as Designers, Not Research Subjects", description: "Co-creation sessions in schools gave girls the tools to define what they wanted to see — through moodboards, visual design, storytelling, theme selection, and artwork — before White Rice designed anything." },
+        { number: "02", title: "Mobile-First by Design", description: "Every story was conceived for a small screen, short attention span, and potentially borrowed device. Visual appeal, cultural resonance, and brevity were not trade-offs — they were the design brief." },
+        { number: "03", title: "Storytelling as the Medium, Not Information Delivery", description: "The platform succeeded where information-only content fails because it used narrative — characters, situations, dilemmas, resolutions — to carry meaning. Girls didn't read facts. They read stories they recognised." },
+        { number: "04", title: "Diversity as a Non-Negotiable Design Principle", description: "Christian and Muslim girls. Rural and urban. Punjabi, Sindhi, Pakhtun backgrounds. The content was stress-tested across this diversity — if a story only resonated with one type of girl, it was redesigned." },
       ],
     },
     work: {
       heading: "The Intervention",
-      body: "White Rice led the full creative and research cycle for Springster Pakistan \u2014 from in-school human-centred design research and co-creation sessions with girls across religious and socioeconomic backgrounds, through to the development of over 100 unique mobile-first content stories spanning financial wellbeing, safety, health, voice, and agency. Every story was designed with the girls who would read it.\n\nAt the time of the programme, Facebook's Internet.org initiative provided free mobile access to a curated set of platforms \u2014 without requiring a data plan. For Pakistani girls, this was transformative. A girl who had no personal phone, no data, and no money could borrow a family member's handset, open Internet.org, and access Springster \u2014 for as long as she needed, at zero cost.\n\nThe platform's mobile-first design was not a stylistic choice. It was the fundamental design constraint that shaped every decision: how long a story could be, how much text could appear on screen, how images had to load, and how navigation had to work for someone who might be using the phone quickly, in private, with limited time before it was needed back.",
+      body: "White Rice led the full creative and research cycle for Springster Pakistan — from in-school human-centred design research and co-creation sessions with girls across religious and socioeconomic backgrounds, through to the development of over 100 unique mobile-first content stories spanning financial wellbeing, safety, health, voice, and agency. Every story was designed with the girls who would read it.",
       deliverables: ["Human-Centred Design Research", "In-School Co-Creation Sessions", "Brand & Platform Identity", "100+ Content Stories", "Mobile-First Design", "Visual & Illustrative Design", "Moodboarding & Concept Development", "Multi-Community Contextualisation"],
     },
+    impactCells: [
+      { big: "1 Million+", desc: "Girls in Pakistan reached through the Springster platform — accessing content on financial wellbeing, voice, safety, and health that they had never had trusted access to before." },
+      { big: "100+ Stories", desc: "Unique mobile-first content pieces — each co-designed with Pakistani girls, visually distinct, culturally resonant, and rigorously tested before publication." },
+      { big: "Trusted Space", desc: "The feedback from girls consistently returned to one theme: Springster was a place where they could be curious about the things that actually mattered to them, without shame, judgement, or the risk of a difficult conversation." },
+      { big: "Power of Story", desc: "The programme validated a core White Rice conviction — that entertainment-driven, narrative-first content reaches audiences that information-only approaches cannot. Girls didn't read the platform because they had to. They read it because they wanted to." },
+    ],
     impact: {
       heading: "The Impact",
-      body: "Over one million girls in Pakistan accessed Springster. That number would be remarkable for any digital platform in Pakistan. For one specifically targeting adolescent girls from low-income communities \u2014 on a free, zero-data platform, covering topics that Pakistani society rarely offered them any trusted space to explore \u2014 it was extraordinary.",
-      metrics: [
-        { value: 1000000, suffix: "+", label: "Girls in Pakistan reached through the Springster platform \u2014 accessing content on financial wellbeing, voice, safety, and health that they had never had trusted access to before." },
-        { value: 100, suffix: "+ Stories", label: "Unique mobile-first content pieces \u2014 each co-designed with Pakistani girls, visually distinct, culturally resonant, and rigorously tested before publication." },
-        { value: 1, suffix: " Trusted Space", label: "The feedback from girls consistently returned to one theme: Springster was a place where they could be curious about the things that actually mattered to them, without shame, judgement, or the risk of a difficult conversation." },
-        { value: 1, suffix: " Power of Story", label: "The programme validated a core White Rice conviction \u2014 that entertainment-driven, narrative-first content reaches audiences that information-only approaches cannot. Girls didn't read the platform because they had to. They read it because they wanted to." },
-      ],
+      body: "Over one million girls in Pakistan accessed Springster. That number would be remarkable for any digital platform in Pakistan. For one specifically targeting adolescent girls from low-income communities — on a free, zero-data platform, covering topics that Pakistani society rarely offered them any trusted space to explore — it was extraordinary.",
+      metrics: [],
       quote: {
         text: "Girls who would never have talked to anyone about these topics found something they could read privately, share with a friend, and return to again and again.",
         attribution: "",
       },
-      closingNote: "Springster Pakistan demonstrated what becomes possible when you design digital content with radical fidelity to who the audience actually is \u2014 not who funders imagine them to be, not who they are supposed to become, but who they are right now: curious, capable, and hungry for a space that takes them seriously.",
+      closingNote: "Springster Pakistan demonstrated what becomes possible when you design digital content with radical fidelity to who the audience actually is — not who funders imagine them to be, not who they are supposed to become, but who they are right now: curious, capable, and hungry for a space that takes them seriously.",
+    },
+    closing: {
+      heading: "A million girls.<br>One question each.<br><em>Finally somewhere to ask it.</em>",
+      body: "Springster worked not because it was a platform, but because it was a companion. A trusted voice in a girl's pocket, available at any hour, on any phone, with zero data — covering the things that actually mattered. That is what co-creation makes possible. And that is what a million Pakistani girls found.",
     },
     gallery: {
       heading: "Gallery",
@@ -1425,18 +2041,186 @@ export const caseStudies: CaseStudyData[] = [
   /* 16 ─ ICRC Bharosa / Barosakare */
   {
     slug: "icrc-bharosa",
-    year: "2018 - 2019",
+    year: "2018 \u2013 2019",
     tags: ["ICRC Pakistan", "Barosakare", "Healthcare Violence", "HCD Research", "Visual Ethnography", "Bodystorming", "Journey Mapping", "Experience Design", "JPMC Karachi", "Lady Reading Peshawar", "TV Campaign", "Celebrity Engagement", "SBC", "4M+ Reach", "100+ Hospitals", "Pakistan"],
+
+    /* ── V2 Theme (red / steel from HTML) ── */
+    theme: {
+      primary: "#B01A1A",
+      primaryLight: "#D44A4A",
+      accent: "#3A4A5A",
+      accentLight: "#6A8AAA",
+    },
+
+    /* ── Hero ── */
+    hero: {
+      eyebrow: "ICRC Pakistan \u00b7 Violence Against Healthcare Workers",
+      title: "Trust<br>the <em>Healer.</em><span class=\"cs-hero__subtitle-inline\">Barosakare \u2014 Pakistan\u2019s National Campaign to End Violence Against Healthcare Workers</span>",
+      subtitle: "\u0628\u06BE\u0631\u0648\u0633\u06C1 \u06A9\u0631\u06D2",
+      description: "When a patient\u2019s attendant strikes a doctor, it is rarely a simple act of cruelty. It is the end of a long chain of frustration, confusion, fear, and unmet need. ICRC Pakistan commissioned White Rice to find that chain \u2014 and break it \u2014 through embedded research, experience design, and a national behaviour change campaign that reached over 4 million people.",
+      meta: [
+        { label: "Client", value: "ICRC \u2014 International Committee of the Red Cross, Pakistan" },
+        { label: "Campaign", value: "Barosakare \u00b7 \u0628\u06BE\u0631\u0648\u0633\u06C1 \u06A9\u0631\u06D2" },
+        { label: "Research Sites", value: "JPMC Karachi \u00b7 Lady Reading Hospital Peshawar" },
+        { label: "White Rice Role", value: "HCD Research, Experience Design & Campaign Lead" },
+      ],
+    },
+    heroVideo: "/videos/icrc-bharoskarein.mp4",
+
+    /* ── Role Band ── */
+    role: {
+      heading: "From Embedded Research<br>to a <em>National Movement</em>",
+      body: "ICRC engaged White Rice for one of the most demanding briefs we have received \u2014 not a brief to make a campaign, but a brief to understand a crisis first, and then design the response. Our role spanned the complete arc: embedded HCD field research across two major hospitals, journey mapping and experience design recommendations for the healthcare system, training strategy for healthcare staff, and the full design and execution of Barosakare \u2014 a national multi-channel behaviour change campaign that changed the public conversation around healthcare violence in Pakistan.",
+      services: ["Embedded HCD Research", "Visual Ethnography", "Bodystorming", "Patient Journey Mapping", "Hospital Experience Design", "Healthcare Staff Training Design", "National Campaign Strategy", "TV Ad Production", "Celebrity Engagement", "Radio \u00b7 Outdoor \u00b7 Digital"],
+    },
+
+    /* ── Outcomes (5 cards, matching HTML) ── */
+    outcomes: {
+      cards: [
+        { stat: "4 Million+", description: "People reached through TV, digital media, radio, outdoor, and celebrity engagement \u2014 making Barosakare one of Pakistan\u2019s most visible healthcare safety campaigns." },
+        { stat: "100+ Hospitals", description: "Hospitals across Pakistan influenced by the campaign\u2019s insights, recommendations, and outreach \u2014 extending the initiative well beyond the two research sites." },
+        { stat: "2 Hospitals", description: "JPMC Karachi and Lady Reading Peshawar \u2014 two of Pakistan\u2019s largest public hospitals \u2014 embedded research sites where White Rice teams lived inside the healthcare experience for 2\u20133 days each." },
+        { stat: "2 Strategies", description: "A dual-pronged response: hospital experience design recommendations to reduce friction at the system level, and a national campaign to shift public behaviour at the community level." },
+        { stat: "Barosakare", description: "\u201CTrust the healer.\u201D Pakistan\u2019s first nationally coordinated behaviour change campaign specifically addressing violence against healthcare workers \u2014 grounded in empathy for both sides." },
+      ],
+      watermark: "4M+",
+    },
+
+    /* ── Two Sides Band (custom) ── */
+    twoSides: {
+      left: {
+        label: "The Attendant\u2019s Side",
+        heading: "A family in <em>fear.</em><br>A system that doesn\u2019t explain itself.",
+        body: "A patient is critical. The attendant has been waiting for hours, has received no information, cannot find the right person to ask, and does not understand what is happening. Fear becomes frustration. Frustration becomes confrontation. The healthcare worker at the desk \u2014 often junior, often undertrained for conflict \u2014 becomes the target of a rage that belongs to the system, not to them.",
+      },
+      right: {
+        label: "The Healthcare Worker\u2019s Side",
+        heading: "A professional under <em>impossible</em> pressure.",
+        body: "Understaffed, overstretched, managing dozens of patients and their families with minimal support systems. When violence strikes \u2014 and in Pakistan\u2019s major public hospitals, it strikes regularly \u2014 the consequences ripple outward immediately. Doctors abandon their work. Other patients are neglected. The entire ward suffers because one person\u2019s frustration was never addressed earlier in the chain.",
+      },
+    },
+
+    /* ── HCD Research Band (custom) ── */
+    hcdResearch: {
+      eyebrow: "Human-Centred Design Research \u00b7 Embedded in the Crisis",
+      heading: "To design the solution,<br><em>we had to become part of the problem.</em>",
+      hospitals: [
+        {
+          city: "Karachi \u00b7 Sindh",
+          abbrev: "JPMC",
+          fullName: "Jinnah Postgraduate Medical Centre",
+          scale: "One of Pakistan\u2019s largest public hospitals \u2014 serving hundreds of patients daily across emergency, outpatient, and inpatient wards. High volume, high pressure, high friction. White Rice teams embedded for 2\u20133 days \u2014 observing, shadowing, mapping, and experiencing.",
+        },
+        {
+          city: "Peshawar \u00b7 Khyber Pakhtunkhwa",
+          abbrev: "LRH",
+          fullName: "Lady Reading Hospital",
+          scale: "Pakistan\u2019s oldest and largest hospital in KPK \u2014 serving a population with distinct cultural dynamics, language contexts, and community expectations. A different patient population, different staff pressures, and different patterns of friction \u2014 essential for building a nationally relevant understanding of the crisis.",
+        },
+      ],
+      methods: [
+        { name: "Visual Ethnography", body: "Day-long visual documentation of the hospital environment \u2014 mapping where people wait, where information fails, where friction builds, and where confrontation is most likely to emerge" },
+        { name: "Shadowing", body: "Research team members followed healthcare workers, patients, and attendants through their full hospital experience \u2014 observing interactions, communication failures, and trigger points in real time" },
+        { name: "Heuristic Analysis", body: "Systematic evaluation of the hospital\u2019s communication systems, wayfinding, information design, and service touchpoints against established experience design principles \u2014 identifying systemic gaps" },
+        { name: "Bodystorming", body: "Team members physically enacted the roles of patients and attendants \u2014 moving through registration, waiting areas, consultation, and emergency pathways to feel the system\u2019s friction from the inside" },
+        { name: "Becoming the Patient", body: "The most radical method \u2014 a team member registered as a patient and went through the complete hospital journey. This single experience generated more insight into the attendant\u2019s fear and frustration than any number of interviews could have" },
+      ],
+    },
+
+    /* ── Patient Band (quote highlight — custom) ── */
+    patientBand: {
+      eyebrow: "The Method That Changed Everything",
+      headline: "We sent a researcher into JPMC as a patient. What they experienced in those hours became the emotional foundation of the entire campaign.",
+      body: "The decision to have a White Rice researcher become a patient was not part of the original brief. It emerged from the field \u2014 from the recognition that no amount of observation could substitute for the experience of waiting three hours without information, being turned away from a desk, not knowing if your family member was alive or dying, and having no one in the building whose job it was to help you understand. The TV ad\u2019s emotional power traces directly to that day.",
+    },
+
+    /* ── Strategy Prongs Band (custom) ── */
+    strategyProngs: {
+      eyebrow: "Two-Pronged Strategy \u00b7 System & Society",
+      heading: "Fix the system. <em>Change the culture.</em><br>Both. At the same time.",
+      prongs: [
+        {
+          num: "1",
+          label: "Prong One",
+          title: "Hospital Experience Design & Staff Training",
+          body: "The research revealed that a significant portion of violent incidents are triggered by entirely preventable system failures \u2014 not by bad intentions. White Rice produced a comprehensive set of experience design recommendations and a healthcare staff training framework.",
+          points: [
+            "Patient journey mapping across all friction touchpoints \u2014 waiting, registration, information, consultation, emergency",
+            "Wayfinding and communication system recommendations to reduce attendant confusion and anxiety",
+            "Behavioural nudges and environmental design recommendations at high-friction points",
+            "Healthcare staff training on de-escalation, communication under pressure, and early intervention in rising conflict situations",
+          ],
+        },
+        {
+          num: "2",
+          label: "Prong Two",
+          title: "Barosakare \u2014 National Behaviour Change Campaign",
+          body: "Changing the system reduces friction. But changing behaviour requires a public campaign that reaches people before they arrive at the hospital \u2014 when they are calm enough to think about how they want to act, not in the middle of a crisis.",
+          points: [
+            "Campaign name \u201CBarosakare\u201D \u2014 trust the healer \u2014 repositioning the healthcare worker as a partner, not an obstacle",
+            "TV ad showing the full consequence chain: violence \u2192 disruption \u2192 other patients suffer \u2192 everyone loses",
+            "Empathy-building content showing the healthcare worker\u2019s perspective \u2014 what they see, feel, and carry",
+            "Celebrity engagement amplifying the message across media and digital platforms",
+          ],
+        },
+      ],
+    },
+
+    /* ── TV Ad Band (custom) ── */
+    tvAd: {
+      eyebrow: "The Barosakare TV Ad \u00b7 Two Stories. One Consequence.",
+      heading: "The ad that made<br>Pakistan <em>see both sides.</em>",
+      paragraphs: [
+        "The Barosakare TV ad became the most visible and widely discussed element of the campaign. Its power came from a structural decision that was itself a product of the HCD research: instead of condemning violence, it showed the consequence chain. Not the act \u2014 the aftermath. Not the attacker \u2014 the patient who suffers next.",
+        "The ad ran on two tracks simultaneously: the escalating consequences of violence for the hospital and the patients who depend on it, and an empathetic portrait of what the patient\u2019s attendant was experiencing that led to that moment. Both sides. At the same time. Neither villainised.",
+      ],
+      arcSteps: [
+        { label: "Act One \u00b7 The Attendant\u2019s World", text: "A family member with a critically ill patient \u2014 waiting, fearful, uninformed, exhausted. The audience is placed inside their experience, feeling their frustration build in real time", color: "steel" },
+        { label: "The Break Point", text: "The moment of violence \u2014 shown not as an act of evil but as the inevitable endpoint of a system that never gave the attendant anything else to do with their fear", color: "red" },
+        { label: "The Ripple \u00b7 Consequences Unfold", text: "The camera widens. The disruption spreads. The healthcare worker is injured or distressed. The ward stops. Other patients \u2014 including critically ill patients \u2014 are left unattended. Another family now shares the first attendant\u2019s fear", color: "red" },
+        { label: "The Doctor\u2019s Perspective", text: "A parallel thread showing the healthcare worker\u2019s reality \u2014 not as an indifferent bureaucrat, but as a person carrying an impossible workload with genuine care for every patient they treat", color: "steel" },
+        { label: "Barosakare \u00b7 Trust", text: "The resolution \u2014 not a finger-wagging message but an invitation. Trust them. They are trying. You both want the same thing. Barosakare.", color: "amber" },
+      ],
+    },
+
+    /* ── Campaign Channels Band (custom) ── */
+    campaignChannels: {
+      eyebrow: "Campaign Channels \u00b7 Reaching Pakistan at Every Level",
+      heading: "One message.<br><em>Every medium Pakistan pays attention to.</em>",
+      channels: [
+        { name: "Television", body: "The campaign\u2019s flagship ad \u2014 shown on national and regional TV channels. Pakistan\u2019s widest-reach medium, bringing the consequence narrative into living rooms across the country" },
+        { name: "Digital Media", body: "Social platforms amplifying the campaign\u2019s dual-perspective storytelling \u2014 shareable content that extended the TV ad\u2019s reach and generated organic engagement from the healthcare community" },
+        { name: "Celebrity Engagement", body: "Public figures lending their voice and reach to Barosakare \u2014 expanding the campaign\u2019s credibility and audience beyond ICRC\u2019s direct network into Pakistan\u2019s mainstream public discourse" },
+        { name: "Radio", body: "Reaching Pakistan\u2019s mass audience \u2014 particularly in lower-income communities where public hospital usage is highest. Radio brought Barosakare to the audiences most directly affected by healthcare violence" },
+        { name: "Outdoor", body: "Campaign branding at scale \u2014 placed in and around hospitals, clinics, and high-traffic public areas. Meeting the audience at the exact location where the behaviour change was needed most" },
+      ],
+    },
+
+    /* ── Closing ── */
+    closing: {
+      heading: "The healer cannot heal<br>if they are afraid<br><em>to show up.</em>",
+      body: "Barosakare began with a team member becoming a patient in one of Pakistan\u2019s most overwhelmed hospitals \u2014 and it ended with four million people reconsidering what happens when fear becomes violence in a place that is supposed to save lives. That journey, from embedded research to national movement, is what White Rice was built to make.",
+    },
+
+    /* ── Impact Cells (for grid) ── */
+    impactCells: [
+      { big: "4 Million+", desc: "People reached through TV, digital, celebrity, radio, and outdoor \u2014 creating a national conversation around healthcare violence for the first time." },
+      { big: "100+ Hospitals", desc: "Hospitals across Pakistan influenced by the Barosakare insights, recommendations, and campaign \u2014 extending the programme\u2019s impact well beyond the two research sites." },
+      { big: "System + Society", desc: "The dual-pronged strategy \u2014 experience design for hospitals and behaviour change for the public \u2014 addressed the crisis at both the structural and individual level simultaneously." },
+      { big: "A National First", desc: "Pakistan\u2019s first nationally coordinated, multi-channel behaviour change campaign specifically addressing violence against healthcare workers \u2014 grounded in empathy for everyone in the room." },
+    ],
+
+    /* ── Standard sections (kept for fallback rendering) ── */
     challenge: {
       heading: "The Challenge",
-      body: "When a patient's attendant strikes a doctor, it is rarely a simple act of cruelty. It is the end of a long chain of frustration, confusion, fear, and unmet need. ICRC Pakistan commissioned White Rice to find that chain \u2014 and break it \u2014 through embedded research, experience design, and a national behaviour change campaign that reached over 4 million people.\n\nA patient is critical. The attendant has been waiting for hours, has received no information, cannot find the right person to ask, and does not understand what is happening. Fear becomes frustration. Frustration becomes confrontation. The healthcare worker at the desk \u2014 often junior, often undertrained for conflict \u2014 becomes the target of a rage that belongs to the system, not to them.\n\nUnderstaffed, overstretched, managing dozens of patients and their families with minimal support systems. When violence strikes \u2014 and in Pakistan's major public hospitals, it strikes regularly \u2014 the consequences ripple outward immediately. Doctors abandon their work. Other patients are neglected. The entire ward suffers because one person's frustration was never addressed earlier in the chain.",
+      body: "When a patient\u2019s attendant strikes a doctor, it is rarely a simple act of cruelty. It is the end of a long chain of frustration, confusion, fear, and unmet need. ICRC Pakistan commissioned White Rice to find that chain \u2014 and break it \u2014 through embedded research, experience design, and a national behaviour change campaign that reached over 4 million people.\n\nThe challenge demanded more than another public awareness campaign. The crisis existed at the intersection of two broken experiences: a healthcare system that failed to communicate with or comfort the patient\u2019s family, and an attendant community that had no tools beyond confrontation when fear became unbearable.",
       quote: {
         text: "We sent a researcher into JPMC as a patient. What they experienced in those hours became the emotional foundation of the entire campaign.",
       },
     },
     strategy: {
       heading: "The Strategy",
-      intro: "ICRC engaged White Rice for one of the most demanding briefs we have received \u2014 not a brief to make a campaign, but a brief to understand a crisis first, and then design the response. Our role spanned the complete arc: embedded HCD field research across two major hospitals, journey mapping and experience design recommendations for the healthcare system, training strategy for healthcare staff, and the full design and execution of Barosakare \u2014 a national multi-channel behaviour change campaign that changed the public conversation around healthcare violence in Pakistan.",
+      intro: "The programme demanded a dual-pronged approach \u2014 one aimed at the system, one aimed at the public. Both had to launch simultaneously, because fixing either in isolation would fail.",
       steps: [
         {
           number: "01",
@@ -1452,7 +2236,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "The Work",
-      body: "ICRC engaged White Rice for one of the most demanding briefs we have received \u2014 not a brief to make a campaign, but a brief to understand a crisis first, and then design the response. Our role spanned the complete arc: embedded HCD field research across two major hospitals, journey mapping and experience design recommendations for the healthcare system, training strategy for healthcare staff, and the full design and execution of Barosakare \u2014 a national multi-channel behaviour change campaign that changed the public conversation around healthcare violence in Pakistan.\n\nThe decision to have a White Rice researcher become a patient was not part of the original brief. It emerged from the field \u2014 from the recognition that no amount of observation could substitute for the experience of waiting three hours without information, being turned away from a desk, not knowing if your family member was alive or dying, and having no one in the building whose job it was to help you understand. The TV ad's emotional power traces directly to that day.\n\nThe Barosakare TV ad became the most visible and widely discussed element of the campaign. Its power came from a structural decision that was itself a product of the HCD research: instead of condemning violence, it showed the consequence chain. Not the act \u2014 the aftermath. Not the attacker \u2014 the patient who suffers next.",
+      body: "White Rice\u2019s work spanned the complete arc: from embedded field research to a nationally broadcast TV campaign. Every creative and strategic decision was built directly on what the team observed, experienced, and documented inside Pakistan\u2019s most pressured hospitals.",
       deliverables: [
         "Embedded HCD Research",
         "Visual Ethnography",
@@ -1467,15 +2251,13 @@ export const caseStudies: CaseStudyData[] = [
       ],
     },
     impact: {
-      heading: "The Impact",
-      body: "Barosakare demonstrated that healthcare violence in Pakistan is not an intractable cultural problem \u2014 it is a design and communication problem. When people understand the consequences of their actions, when they feel seen on both sides of the encounter, and when the healthcare system removes the friction points that trigger frustration, the behaviour changes. The campaign's reach proved the demand for this conversation existed and was waiting for a voice.",
+      heading: "The <em>Impact</em>",
+      body: "Barosakare demonstrated that healthcare violence in Pakistan is not an intractable cultural problem \u2014 it is a design and communication problem. When people understand the consequences of their actions, when they feel seen on both sides of the encounter, and when the healthcare system removes the friction points that trigger frustration, the behaviour changes. The campaign\u2019s reach proved the demand for this conversation existed and was waiting for a voice.",
       metrics: [
-        { value: 4, suffix: "Million+", label: "People reached through TV, digital, celebrity, radio, and outdoor \u2014 creating a national conversation around healthcare violence for the first time." },
-        { value: 100, suffix: "+ Hospitals", label: "Hospitals across Pakistan influenced by the Barosakare insights, recommendations, and campaign \u2014 extending the programme's impact well beyond the two research sites." },
-        { value: 0, suffix: "", prefix: "", label: "System + Society \u2014 The dual-pronged strategy \u2014 experience design for hospitals and behaviour change for the public \u2014 addressed the crisis at both the structural and individual level simultaneously." },
-        { value: 0, suffix: "", prefix: "", label: "A National First \u2014 Pakistan's first nationally coordinated, multi-channel behaviour change campaign specifically addressing violence against healthcare workers \u2014 grounded in empathy for everyone in the room." },
+        { value: 4, suffix: "Million+", label: "People reached through TV, digital, celebrity, radio, and outdoor" },
+        { value: 100, suffix: "+ Hospitals", label: "Hospitals across Pakistan influenced by the Barosakare campaign" },
       ],
-      closingNote: "The campaign's TV ad remains the most resonant piece of health communication on this issue ever produced in Pakistan \u2014 because it trusted the audience enough to show them both sides of the story, without deciding for them which side was right.",
+      closingNote: "The campaign\u2019s TV ad remains the most resonant piece of health communication on this issue ever produced in Pakistan \u2014 because it trusted the audience enough to show them both sides of the story, without deciding for them which side was right.",
     },
     gallery: {
       heading: "Gallery",
@@ -1487,11 +2269,11 @@ export const caseStudies: CaseStudyData[] = [
     },
   },
 
-  /* 17 ─ Dunia Aali Larki / Oxfam */
+  /* 17 ─ Dunia Aur Larki / Oxfam */
   {
     slug: "oxfam-dunia-aali-larki",
     year: "2014 - 2018",
-    tags: ["Girls' Education", "Advocacy Campaign", "Dunia Aali Larki", "Movement Building", "16 Days of Activism", "Children's Assembly", "Oxfam Pakistan", "Animation", "Socio-Ecological Model", "Policy Advocacy", "Grassroots Mobilisation", "SDG 4", "SDG 5", "Pakistan"],
+    tags: ["Girls' Education", "Advocacy Campaign", "Dunia Aur Larki", "Movement Building", "16 Days of Activism", "Children's Assembly", "Oxfam Pakistan", "Animation", "Socio-Ecological Model", "Policy Advocacy", "Grassroots Mobilisation", "SDG 4", "SDG 5", "Pakistan"],
     challenge: {
       heading: "The Challenge",
       body: "Pakistan's girl-child education crisis is not a secret. It is a well-documented, frequently reported, consistently underfunded emergency. 36 million children are out of school, and girls represent the majority of the excluded \u2014 kept home by a combination of poverty, patriarchal norms, distance, safety fears, early marriage, and institutional indifference. The problem is known. The barrier has always been the will to act \u2014 at the level of government, community, and family simultaneously.\n\nOxfam needed more than a public awareness campaign. Awareness of the crisis was not lacking \u2014 what was lacking was the social permission, political urgency, and grassroots momentum that would translate awareness into action across every tier of the system. Inspired directly by the Nike Girl Effect model, Oxfam and White Rice set out to do for Pakistan's girl-child education movement what that global initiative had done globally: make it feel like a cause that belonged to everyone.\n\nThe 16 Days of Activism window (November 25 to December 10) provided the launchpad. The question was what to put on it \u2014 something with enough emotional power to spark a movement, and enough strategic architecture to sustain one for four years.",
@@ -1511,7 +2293,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "The Intervention",
-      body: "White Rice designed Dunia Aali Larki from its first frame to its national scale \u2014 beginning with the animated campaign film that launched on 16 Days of Activism, and growing through four years of advocacy into a multi-tier movement spanning policymakers, schools, communities, media, and Pakistan's first Children's Assembly. Our role spanned creative strategy, animation production, grassroots mobilisation design, school programme development, policy dialogue facilitation, and digital amplification \u2014 all in service of one sustained demand: that girls in Pakistan have the right to learn.",
+      body: "White Rice designed Dunia Aur Larki from its first frame to its national scale \u2014 beginning with the animated campaign film that launched on 16 Days of Activism, and growing through four years of advocacy into a multi-tier movement spanning policymakers, schools, communities, media, and Pakistan's first Children's Assembly. Our role spanned creative strategy, animation production, grassroots mobilisation design, school programme development, policy dialogue facilitation, and digital amplification \u2014 all in service of one sustained demand: that girls in Pakistan have the right to learn.",
       deliverables: [
         "Campaign Strategy & Creative Direction",
         "Animation Production",
@@ -1527,19 +2309,19 @@ export const caseStudies: CaseStudyData[] = [
     },
     impact: {
       heading: "The Impact",
-      body: "Dunia Aali Larki accomplished something that most advocacy campaigns do not: it outlasted itself. The programme formally ended, but the movement it built did not. Other organisations working on girls' education in Pakistan found themselves operating within a changed landscape \u2014 one in which their work had a stronger voice, a more receptive public, and a clearer precedent for what advocacy on this subject could look like.",
+      body: "Dunia Aur Larki accomplished something that most advocacy campaigns do not: it outlasted itself. The programme formally ended, but the movement it built did not. Other organisations working on girls' education in Pakistan found themselves operating within a changed landscape \u2014 one in which their work had a stronger voice, a more receptive public, and a clearer precedent for what advocacy on this subject could look like.",
       metrics: [
         { value: 1000000, suffix: "", prefix: "$", label: "A 16-day animated campaign converted into a $1 million, 4-year national advocacy programme \u2014 the clearest possible validation of the creative strategy." },
         { value: 1, suffix: "", label: "Children's Assembly \u2014 held at the national convention centre in Islamabad, with political figures as moderators and children debating girls' right to education at parliamentary level." },
         { value: 4, suffix: "", label: "From a single animated film to a multi-tier, multi-year national movement \u2014 operating simultaneously at policy, community, school, and digital levels across Pakistan." },
         { value: 36000000, suffix: "", label: "Children out of school in Pakistan \u2014 the crisis the campaign was built to address \u2014 including one of the world's highest concentrations of out-of-school girls." },
       ],
-      closingNote: "Dunia Aali Larki proved that a single, well-designed creative moment \u2014 an animated film that told the truth about a girl's life in Pakistan \u2014 can be the beginning of something much larger than a campaign. When the movement is built right, it doesn't end when the funding does. It becomes part of the air the sector breathes.",
+      closingNote: "Dunia Aur Larki proved that a single, well-designed creative moment \u2014 an animated film that told the truth about a girl's life in Pakistan \u2014 can be the beginning of something much larger than a campaign. When the movement is built right, it doesn't end when the funding does. It becomes part of the air the sector breathes.",
     },
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/timeline/2019.png", alt: "Girls participating in the Dunia Aali Larki programme", span: "wide" },
+        { src: "/images/timeline/2019.png", alt: "Girls participating in the Dunia Aur Larki programme", span: "wide" },
         { src: "/images/timeline/2020.png", alt: "Community engagement session with young women", span: "normal" },
         { src: "/images/timeline/2021.png", alt: "Oxfam programme activities in the field", span: "normal" },
       ],
