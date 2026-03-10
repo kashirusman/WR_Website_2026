@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface HeroData {
@@ -23,12 +24,22 @@ interface CaseHeroV2Props {
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
 export default function CaseHeroV2({ hero, year, tags, heroImage, heroVideo }: CaseHeroV2Props) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.play().catch(() => {});
+  }, [heroVideo]);
+
   return (
     <section className="cs-hero">
       {/* Background video layer */}
       {heroVideo && (
         <div className="cs-hero__video">
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
