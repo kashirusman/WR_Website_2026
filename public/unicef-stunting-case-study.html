@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nurturing Change — White Rice Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --clay:      #C4602A;
+      --clay-lt:   #E8845A;
+      --ink:       #1A1612;
+      --parchment: #F5F0E8;
+      --sand:      #E2D9C8;
+      --moss:      #3D5A4C;
+      --muted:     #7A7065;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--ink); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 60% at 85% 20%, rgba(61,90,76,.55) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 50% at 5% 90%,  rgba(196,96,42,.3)  0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* Decorative Urdu-style geometric pattern */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -10%; right: -5%;
+      width: 55%;
+      aspect-ratio: 1;
+      background: radial-gradient(circle at 50% 50%, rgba(61,90,76,.18) 0%, transparent 70%);
+      border: 1px solid rgba(255,255,255,.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-label {
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      position: relative; z-index: 2;
+    }
+    .brand { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.45); font-weight: 300; }
+    .brand span { color: var(--clay-lt); }
+    .tag-top { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+
+    .hero-body {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 3.5rem 2.5rem;
+      position: relative; z-index: 2;
+    }
+    .eyebrow {
+      font-size: .73rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--clay-lt); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp .7s .1s both;
+    }
+    .eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--clay); }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 300; line-height: .92; color: #fff; letter-spacing: -.01em;
+      animation: fadeUp .8s .22s both;
+    }
+    h1 em { font-style: italic; color: var(--clay-lt); }
+    h1 .sub-title {
+      display: block;
+      font-size: clamp(1.1rem, 2vw, 1.8rem);
+      font-weight: 300; color: rgba(255,255,255,.5);
+      font-style: italic; margin-top: .6rem;
+    }
+
+    .hero-sub {
+      margin-top: 2rem; max-width: 56ch;
+      font-size: 1rem; font-weight: 300; line-height: 1.8;
+      color: rgba(255,255,255,.55);
+      animation: fadeUp .8s .38s both;
+    }
+
+    .hero-meta {
+      padding: 2rem 3.5rem;
+      display: flex; gap: 3.5rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.08);
+      position: relative; z-index: 2;
+      animation: fadeUp .8s .5s both;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: .3rem; }
+    .meta-label { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+    .meta-value { font-size: .88rem; color: rgba(255,255,255,.72); font-weight: 300; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── ROLE BAND ── */
+    .role-band { background: var(--ink); padding: 4rem 3.5rem; border-top: 1px solid rgba(255,255,255,.06); }
+    .role-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+    .role-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--clay-lt); margin-bottom: 1rem; }
+    .role-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; line-height: 1.2; color: #fff; }
+    .role-heading em { font-style: italic; color: var(--clay-lt); }
+    .role-body p { font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.52); font-weight: 300; margin-bottom: 1.25rem; }
+    .role-body p:last-of-type { margin-bottom: 1.5rem; }
+    .role-services { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .role-tag { padding: .3rem .85rem; background: rgba(196,96,42,.13); border: 1px solid rgba(196,96,42,.28); border-radius: 2px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--clay-lt); font-weight: 500; }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--moss); padding: 5rem 3.5rem; position: relative; overflow: hidden; }
+    .outcomes::after { content: 'STUNTING'; position: absolute; right: -1rem; bottom: -2rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 13vw, 15rem); font-weight: 700; color: rgba(255,255,255,.05); pointer-events: none; white-space: nowrap; letter-spacing: -.02em; }
+    .outcomes-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3.5rem; }
+    .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.35); }
+    .sec-title-wh { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: #fff; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; }
+    .outcome-card { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; }
+    .outcome-stat { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; line-height: 1; margin-bottom: .6rem; }
+    .outcome-desc { font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.6); font-weight: 300; }
+
+    /* ── DIVIDER BAND ── */
+    .divider-band {
+      background: var(--sand);
+      padding: 3rem 3.5rem;
+      display: flex; align-items: center; gap: 3rem;
+    }
+    .divider-stat {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 300; color: var(--clay); line-height: 1; white-space: nowrap;
+    }
+    .divider-text {
+      font-size: .95rem; line-height: 1.75; color: var(--muted); font-weight: 300; max-width: 60ch;
+      border-left: 2px solid var(--clay); padding-left: 2rem;
+    }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 5.5rem 3.5rem; border-bottom: 1px solid var(--sand); }
+    .section:last-child { border-bottom: none; }
+    .section-inner { display: grid; grid-template-columns: 250px 1fr; gap: 5rem; align-items: start; }
+    .section-left { position: sticky; top: 2.5rem; }
+    .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-label .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--clay); }
+    .section-label .line { flex: 1; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; }
+    h2 em { font-style: italic; color: var(--clay); }
+    .section-right p { font-size: 1rem; line-height: 1.85; color: #3A3530; font-weight: 300; margin-bottom: 1.25rem; }
+    .section-right p:last-child { margin-bottom: 0; }
+    .pull-quote { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 3px solid var(--clay); background: rgba(196,96,42,.05); }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem !important; font-style: italic; line-height: 1.5 !important; color: var(--ink) !important; margin: 0 !important; }
+
+    /* ── PILLARS ── */
+    .pillars { margin-top: 2rem; display: grid; gap: 1.25rem; }
+    .pillar { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem; background: rgba(226,217,200,.4); border-radius: 2px; }
+    .pillar-icon { width: 2.5rem; height: 2.5rem; background: var(--ink); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pillar-icon svg { width: 1.1rem; height: 1.1rem; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem; }
+    .pillar-body { font-size: .85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* ── CAMPAIGN TAGS ── */
+    .c-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0; }
+    .c-tag { display: flex; align-items: center; gap: .4rem; padding: .45rem .9rem; background: var(--sand); border-radius: 2px; font-size: .8rem; color: var(--ink); }
+    .c-tag::before { content: '→'; color: var(--clay); font-size: .7rem; }
+
+    /* ── TOC BAND ── */
+    .toc-band { background: var(--ink); padding: 4rem 3.5rem; }
+    .toc-inner { max-width: 1200px; margin: 0 auto; }
+    .toc-label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 2.5rem; }
+    .toc-flow { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; }
+    .toc-flow::before { content: ''; position: absolute; top: 2rem; left: 12%; right: 12%; height: 1px; background: linear-gradient(to right, rgba(255,255,255,.1), rgba(196,96,42,.4), rgba(255,255,255,.1)); }
+    .toc-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem; }
+    .toc-dot { width: 4rem; height: 4rem; border-radius: 50%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+    .toc-dot svg { width: 1.3rem; height: 1.3rem; }
+    .toc-step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: .4rem; }
+    .toc-step-body { font-size: .75rem; line-height: 1.6; color: rgba(255,255,255,.45); font-weight: 300; }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2rem 0; background: var(--sand); }
+    .impact-cell { background: var(--parchment); padding: 2rem; }
+    .impact-cell .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--clay); line-height: 1; margin-bottom: .5rem; }
+    .impact-cell .desc { font-size: .82rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── CLOSING ── */
+    .closing { background: var(--moss); padding: 6rem 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,96,42,.1) 0%, transparent 70%); }
+    .closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .closing h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1.25rem; }
+    .closing h3 em { font-style: italic; color: var(--clay-lt); }
+    .closing p { font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.5); font-weight: 300; }
+    .tag-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.5rem; justify-content: center; }
+    .pill { padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.15); border-radius: 2rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-label, .hero-body, .hero-meta, .section, .outcomes, .role-band, .toc-band, .divider-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-inner, .role-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section-left { position: static; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .toc-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .toc-flow::before { display: none; }
+      .divider-band { flex-direction: column; gap: 1.5rem; }
+      .divider-text { border-left: none; padding-left: 0; border-top: 2px solid var(--clay); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-label">
+    <div class="brand">White Rice <span>Impact</span></div>
+    <div class="tag-top">Case Study — Nutrition &amp; Behaviour Change · Sindh, Pakistan</div>
+  </div>
+  <div class="hero-body">
+    <div class="eyebrow">UNICEF Pakistan · Sindh · 2014</div>
+    <h1>
+      Nurturing <em>Change</em>
+      <span class="sub-title">Child Stunting Prevention · Sindh, Pakistan</span>
+    </h1>
+    <p class="hero-sub">A community-driven social behaviour change programme designed to shift the nutrition and WASH practices of 100,000 mothers — and keep those behaviours alive long after the intervention ended.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">UNICEF Pakistan</span></div>
+    <div class="meta-item"><span class="meta-label">Location</span><span class="meta-value">Khairpur · Sharafabad · Naushahro Feroze</span></div>
+    <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">Nutrition, WASH &amp; Stunting Prevention</span></div>
+    <div class="meta-item"><span class="meta-label">White Rice Role</span><span class="meta-value">SBC Design &amp; Implementation Lead</span></div>
+  </div>
+</section>
+
+<!-- ══ ROLE BAND ══ -->
+<section class="role-band">
+  <div class="role-inner">
+    <div>
+      <div class="role-eyebrow">Our Role</div>
+      <h2 class="role-heading">SBC Design &amp; <em>Implementation Lead</em></h2>
+    </div>
+    <div class="role-body">
+      <p>White Rice led the full programme cycle — from formative research and SBC strategy through to the design of the Kahani Asani Adehani behaviour change model, frontline worker training, community activation, real-time monitoring, and evaluation. We didn't deliver a campaign — we designed a behaviour change system.</p>
+      <div class="role-services">
+        <span class="role-tag">Formative &amp; Design Research</span>
+        <span class="role-tag">SBC Strategy</span>
+        <span class="role-tag">Behaviour Change Model Design</span>
+        <span class="role-tag">FLW Training</span>
+        <span class="role-tag">Community Activation</span>
+        <span class="role-tag">Real-Time Monitoring</span>
+        <span class="role-tag">MSC Evaluation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEY OUTCOMES ══ -->
+<section class="outcomes">
+  <div class="outcomes-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title-wh">Key Outcomes</h2>
+  </div>
+  <div class="outcomes-grid">
+    <div class="outcome-card">
+      <div class="outcome-stat">90%</div>
+      <div class="outcome-desc">Behaviour adoption rate — mothers practising at least one key behaviour 8 months after the intervention ended.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">26,000</div>
+      <div class="outcome-desc">Mothers directly reached across three districts of Sindh through the programme.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">100,000+</div>
+      <div class="outcome-desc">Total community members influenced, including mothers-in-law, husbands, and extended family networks.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">2,000+</div>
+      <div class="outcome-desc">Frontline workers trained on the bespoke Kahani Asani Adehani model.</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-stat">Govt. Adopted</div>
+      <div class="outcome-desc">The programme model was adopted by the Sindh government into their provincial stunting strategy — and subsequently scaled.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTEXT DIVIDER ══ -->
+<div class="divider-band">
+  <div class="divider-stat">~50%</div>
+  <div class="divider-text">Child stunting rate in Sindh at the time of the programme — one of the highest in the world. The national figure stood at 42%. These were not statistics about distant children. They were the children of the 26,000 mothers this programme was designed to reach.</div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content-wrap">
+
+  <!-- CHALLENGE -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">02</span><span class="line"></span></div>
+        <h2>The <em>Challenge</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Child stunting in Sindh had been chronic for generations. The behaviours driving it — inadequate infant feeding, poor WASH practices, delayed healthcare — were well-documented. What was missing was not information. Mothers were not unaware of nutrition guidance. They were operating within household systems that constrained their ability to act on it.</p>
+        <div class="pull-quote">
+          <p>"Stunting is not merely a nutrition problem. It is a behaviour problem, rooted in social norms, household power dynamics, and the absence of enabling conditions for change."</p>
+        </div>
+        <p>Mothers-in-law made feeding decisions. Husbands controlled household resources. Standard awareness campaigns had already failed. What was needed was an approach that designed for the full ecosystem of influence around the mother — not just the mother herself.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">03</span><span class="line"></span></div>
+        <h2>The <em>Strategy</em></h2>
+      </div>
+      <div class="section-right">
+        <p>The programme began with a significant investment in formative and design research — mapping the behavioural landscape across all three districts before a single session was designed. Research focused on understanding not just <em>what</em> behaviours needed to change, but <em>who</em> influenced them and <em>in what context</em> change was possible.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Design for the Ecosystem, Not Just the Individual</div>
+              <div class="pillar-body">Target the mother-in-law and husband alongside the mother. Without their buy-in, individual behaviour change collapses at the household door.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Make Change Feel Normal and Achievable</div>
+              <div class="pillar-body">Social norming, positive deviance, and demonstration-based learning — not didactic instruction. People adopt behaviours they see modelled by people like them.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="2"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Build a System, Not a Campaign</div>
+              <div class="pillar-body">Trained frontline workers, household visits, community nudges, and peer reinforcement — structured support that outlasts any single intervention event.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ THEORY OF CHANGE ══ -->
+<section class="toc-band">
+  <div class="toc-inner">
+    <div class="toc-label">Theory of Change · Socio-Ecological Model</div>
+    <div class="toc-flow">
+      <div class="toc-step">
+        <div class="toc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#E8845A" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0 1 12 0v1"/></svg></div>
+        <div class="toc-step-title">Individual</div>
+        <div class="toc-step-body">Build knowledge, motivation, and self-efficacy around nutrition and WASH behaviours</div>
+      </div>
+      <div class="toc-step">
+        <div class="toc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#E8845A" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="toc-step-title">Household</div>
+        <div class="toc-step-body">Align mothers-in-law and husbands as active enablers, not barriers, to behaviour change</div>
+      </div>
+      <div class="toc-step">
+        <div class="toc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#E8845A" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="toc-step-title">Community</div>
+        <div class="toc-step-body">Normalise positive behaviours through peer modelling, nudges, and positive deviance</div>
+      </div>
+      <div class="toc-step">
+        <div class="toc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#E8845A" stroke-width="1.6"><path d="M3 3h18v13H3z"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="toc-step-title">Institutions</div>
+        <div class="toc-step-body">Generate evidence and adopt the model at government level for sustainable scale</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- INTERVENTION -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">04</span><span class="line"></span></div>
+        <h2>The <em>Intervention</em></h2>
+      </div>
+      <div class="section-right">
+
+        <p>At the heart of the programme was <strong>Kahani Asani Adehani</strong> — "Story, Ease, Habit" — a bespoke behaviour change model developed by White Rice through contextualisation of international SBC frameworks (BGFOG, BMAP) into a methodology suited to rural Sindh. It operated on three levers: making new behaviours emotionally compelling through <em>narrative</em>, removing barriers through <em>ease</em>, and locking in practice through <em>habit reinforcement</em>.</p>
+
+        <div class="c-tags">
+          <span class="c-tag">Group Sessions (Mothers &amp; Mothers-in-Law)</span>
+          <span class="c-tag">Household Visits by FLWs</span>
+          <span class="c-tag">Emotional Demonstrations (Emo-Demos)</span>
+          <span class="c-tag">Community-Based Nudges</span>
+          <span class="c-tag">Positive Deviance Identification</span>
+          <span class="c-tag">2,000+ FLW Training Programme</span>
+          <span class="c-tag">Real-Time Monitoring</span>
+          <span class="c-tag">12-Week Pilot Rollout</span>
+        </div>
+
+        <p>Group sessions were designed to bring mothers and mothers-in-law into the same room — a deliberate choice that created shared understanding rather than splitting the intervention by generation. Household visits by trained frontline workers addressed barriers where they actually lived: in the home, in real time, without the distance of a clinic or a community hall.</p>
+
+        <div class="pull-quote">
+          <p>"We didn't tell mothers what to do. We created the conditions in which doing it felt possible, normal, and worth the effort."</p>
+        </div>
+
+        <p>Throughout the 12-week pilot, White Rice ran a real-time monitoring system — surfacing implementation challenges as they emerged, not in a retrospective report — allowing continuous course-correction and quality improvement in the field.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-left">
+        <div class="section-label"><span class="num">05</span><span class="line"></span></div>
+        <h2>The <em>Impact</em></h2>
+      </div>
+      <div class="section-right">
+        <p>Eight months after the intervention, White Rice returned with the <strong>Most Significant Change (MSC)</strong> technique — a participatory qualitative evaluation in which 11,000 mothers were convened in story circles to share what had genuinely shifted in their lives. This was one of the largest qualitative follow-up evaluations of its kind conducted in Pakistan.</p>
+
+        <div class="impact-grid">
+          <div class="impact-cell">
+            <div class="big">90%</div>
+            <div class="desc">Of mothers still actively practising at least one target behaviour 8 months after the programme ended — with no active support in place.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">4,500+</div>
+            <div class="desc">Most Significant Change stories collected. Ten selected by mothers themselves, filmed, and deployed as positive deviance content to inspire further change.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">11,000</div>
+            <div class="desc">Mothers engaged in story circles at follow-up — the largest participatory qualitative evaluation of its kind in Pakistan at that time.</div>
+          </div>
+          <div class="impact-cell">
+            <div class="big">Sindh Gov.</div>
+            <div class="desc">The Kahani Asani Adehani model was formally adopted by the Sindh government into their provincial stunting strategy and scaled across additional districts.</div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem;">Government adoption is the programme's most durable measure of success — it signals that the model was not just effective, but replicable and ownable. Delivered over a decade ago, under significant resource constraints, it remains a landmark in evidence-based, community-driven SBC design in Pakistan.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h3>Change that endures isn't delivered.<br>It's <em>designed</em>.</h3>
+    <p>Nurturing Change demonstrated that when the conditions for behaviour change are deliberately engineered — and the whole household ecosystem is engaged — change takes root and stays.</p>
+    <div class="tag-pills">
+      <span class="pill">Stunting Prevention</span>
+      <span class="pill">Social Behaviour Change</span>
+      <span class="pill">Nutrition</span>
+      <span class="pill">WASH</span>
+      <span class="pill">Community Mobilization</span>
+      <span class="pill">Positive Deviance</span>
+      <span class="pill">MSC Evaluation</span>
+      <span class="pill">UNICEF</span>
+      <span class="pill">SDG 2</span>
+      <span class="pill">SDG 3</span>
+      <span class="pill">Pakistan</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
