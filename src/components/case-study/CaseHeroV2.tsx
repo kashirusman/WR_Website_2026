@@ -17,15 +17,29 @@ interface CaseHeroV2Props {
   year: string;
   tags: string[];
   heroImage?: string;
+  heroVideo?: string;
 }
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
-export default function CaseHeroV2({ hero, year, tags, heroImage }: CaseHeroV2Props) {
+export default function CaseHeroV2({ hero, year, tags, heroImage, heroVideo }: CaseHeroV2Props) {
   return (
     <section className="cs-hero">
-      {/* Background image layer */}
-      {heroImage && (
+      {/* Background video layer */}
+      {heroVideo && (
+        <div className="cs-hero__video">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            src={heroVideo}
+          />
+        </div>
+      )}
+
+      {/* Background image layer (hidden if video present) */}
+      {heroImage && !heroVideo && (
         <div className="cs-hero__image">
           <Image
             src={heroImage}

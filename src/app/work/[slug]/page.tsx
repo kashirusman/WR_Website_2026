@@ -12,6 +12,14 @@ import CasePullQuote from "@/components/case-study/CasePullQuote";
 import CaseImpactGrid from "@/components/case-study/CaseImpactGrid";
 import CaseClosing from "@/components/case-study/CaseClosing";
 import NextProject from "@/components/case-study/NextProject";
+import CaseDividerBand from "@/components/case-study/CaseDividerBand";
+import CaseCoCreationBand from "@/components/case-study/CaseCoCreationBand";
+import CaseReframeBand from "@/components/case-study/CaseReframeBand";
+import CaseTouchpointsBand from "@/components/case-study/CaseTouchpointsBand";
+import CaseVerbatimsBand from "@/components/case-study/CaseVerbatimsBand";
+import CaseReachBand from "@/components/case-study/CaseReachBand";
+import CaseEpisodeBand from "@/components/case-study/CaseEpisodeBand";
+import CaseDesignProcessBand from "@/components/case-study/CaseDesignProcessBand";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -54,6 +62,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
       } as React.CSSProperties)
     : undefined;
 
+  // Does this study have custom bands (skips generic Work section)
+  const hasCustomBands = !!(cs.cocreation || cs.touchpoints || cs.reframe || cs.verbatims || cs.reach || cs.episodes || cs.designProcess);
+
   return (
     <>
       {/* Navbar hidden on V2 pages — hero-label acts as nav */}
@@ -61,7 +72,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <main className="cs-page" style={themeStyle}>
         {/* 1. Hero */}
         {cs.hero ? (
-          <CaseHeroV2 hero={cs.hero} year={cs.year} tags={cs.tags} heroImage={cs.heroImage} />
+          <CaseHeroV2 hero={cs.hero} year={cs.year} tags={cs.tags} heroImage={cs.heroImage} heroVideo={cs.heroVideo} />
         ) : null}
 
         {/* 2. Role Band */}
@@ -80,6 +91,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
             watermark={cs.outcomes.watermark}
           />
         )}
+
+        {/* 3b. Divider Band (between Outcomes and Challenge) */}
+        {cs.divider && <CaseDividerBand data={cs.divider} />}
 
         {/* 4. Challenge — sticky sidebar */}
         <CaseStickySection number="02" heading={cs.challenge.heading}>
@@ -107,17 +121,40 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </div>
         </CaseStickySection>
 
-        {/* 6. Work / Intervention — sticky sidebar */}
-        <CaseStickySection number="04" heading={cs.work.heading}>
-          {cs.work.body.split("\n\n").map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-          <div className="cs-tags">
-            {cs.work.deliverables.map((d, i) => (
-              <span key={i} className="cs-tag">{d}</span>
+        {/* 5b. Co-Creation Band */}
+        {cs.cocreation && <CaseCoCreationBand data={cs.cocreation} />}
+
+        {/* 5c. Reframed Challenge Band */}
+        {cs.reframe && <CaseReframeBand data={cs.reframe} />}
+
+        {/* 5d. Touchpoints Band */}
+        {cs.touchpoints && <CaseTouchpointsBand data={cs.touchpoints} />}
+
+        {/* 5e. Verbatims Band */}
+        {cs.verbatims && <CaseVerbatimsBand data={cs.verbatims} />}
+
+        {/* 5f. Reach Band */}
+        {cs.reach && <CaseReachBand data={cs.reach} />}
+
+        {/* 5g. Episode Band */}
+        {cs.episodes && <CaseEpisodeBand data={cs.episodes} />}
+
+        {/* 5h. Design Process Band */}
+        {cs.designProcess && <CaseDesignProcessBand data={cs.designProcess} />}
+
+        {/* 6. Work / Intervention — sticky sidebar (skip if custom bands present) */}
+        {!hasCustomBands && (
+          <CaseStickySection number="04" heading={cs.work.heading}>
+            {cs.work.body.split("\n\n").map((p, i) => (
+              <p key={i}>{p}</p>
             ))}
-          </div>
-        </CaseStickySection>
+            <div className="cs-tags">
+              {cs.work.deliverables.map((d, i) => (
+                <span key={i} className="cs-tag">{d}</span>
+              ))}
+            </div>
+          </CaseStickySection>
+        )}
 
         {/* 7. Impact — sticky sidebar */}
         <CaseStickySection number="05" heading={cs.impact.heading}>

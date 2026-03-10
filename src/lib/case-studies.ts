@@ -53,6 +53,7 @@ export interface CaseStudyData {
   theme?: CaseStudyTheme;
   hero?: HeroData;
   heroImage?: string;
+  heroVideo?: string;
   role?: {
     heading: string;
     body: string;
@@ -99,6 +100,17 @@ export interface CaseStudyData {
     heading: string;
     numbers: { label: string; big: string; sub: string }[];
     platforms?: { name: string; reach: string; impressions: string }[];
+  };
+  episodes?: {
+    eyebrow: string;
+    heading: string;
+    cards: { num: string; tag: string; name: string; description: string }[];
+    note?: string;
+  };
+  designProcess?: {
+    heading: string;
+    paragraphs: string[];
+    items: { label: string; body: string }[];
   };
 
   /* Existing fields */
@@ -494,6 +506,7 @@ export const caseStudies: CaseStudyData[] = [
       accentLight: "#E8C84A",
     },
     heroImage: "/images/timeline/2023/parenting-hero.jpg",
+    heroVideo: "/videos/unicef-peie.mp4",
     hero: {
       eyebrow: "UNICEF Pakistan \u00b7 4 Provinces \u00b7 52 Schools",
       title: "Parents<br><em>Walking</em><br>Alongside.",
@@ -758,15 +771,97 @@ export const caseStudies: CaseStudyData[] = [
     slug: "unfpa-transgender",
     year: "2019 - 2020",
     tags: ["HIV Prevention", "Behaviour Change", "Transgender Community", "Khawaja Sira", "Animation", "Human-Centred Design", "Ethnographic Research", "Peer Education", "Co-Creation", "UNFPA", "SDG 3", "Pakistan"],
+    theme: {
+      primary: "#1A6B6B",
+      primaryLight: "#3A9B9B",
+      accent: "#B84A6A",
+      accentLight: "#D87A9A",
+    },
+    hero: {
+      eyebrow: "UNFPA Pakistan \u00b7 Lahore & Karachi \u00b7 Multi-City",
+      title: "Apni <em>Kahani</em>",
+      subtitle: "HIV Prevention Animation Series for Pakistan\u2019s Transgender Community",
+      description: "A six-part animation drama series, built on 90 days of ethnographic co-creation with Pakistan\u2019s Khawaja Sira community \u2014 designed not to lecture, but to open a conversation that had never been possible before.",
+      meta: [
+        { label: "Client", value: "UNFPA Pakistan" },
+        { label: "Community", value: "Khawaja Sira (Transgender) Community" },
+        { label: "Focus", value: "HIV Prevention & Safe Behaviour Change" },
+        { label: "White Rice Role", value: "Research, Co-Creation & Creative Lead" },
+      ],
+    },
+    role: {
+      heading: "Human-Centred Design & <em>Creative Lead</em>",
+      body: "White Rice led the full design and production cycle \u2014 from 90 days of immersive ethnographic research and co-creation with the Khawaja Sira community, through to scripting, illustration, animation production, voiceover casting, and peer educator facilitation design. Every element of the series was built with the community, not for them.",
+      services: [
+        "Ethnographic Research",
+        "Human-Centred Design",
+        "Community Co-Creation",
+        "Script & Storyline Development",
+        "Animation Production",
+        "Illustration & Visual Design",
+        "Peer Educator Facilitation Guide",
+        "Behaviour Change Strategy",
+      ],
+    },
+    outcomes: {
+      cards: [
+        { stat: "6 Episodes", description: "A complete animation drama series \u2014 Pakistan\u2019s first culturally grounded HIV prevention content for the Khawaja Sira community." },
+        { stat: "90 Days", description: "Of immersive ethnographic research across Lahore and Karachi \u2014 50+ days of direct observation, shadowing, and in-community co-creation." },
+        { stat: "30\u201340 Min", description: "Average peer-facilitated conversation triggered by each 5\u20136 minute episode \u2014 with concrete commitments and action agreements by participants." },
+        { stat: "National Standard", description: "The series became the standard conversation-starter tool for HIV prevention engagement with the Khawaja Sira community across Pakistan." },
+        { stat: "Community Voice", description: "All voiceovers performed by actual Khawaja Sira community members \u2014 creating an authenticity no external production could replicate." },
+      ],
+      watermark: "APNI KAHANI",
+    },
+    divider: {
+      stat: "High<br>Prevalence.<br>Deep<br>Silence.",
+      text: "At the time of this programme, HIV prevalence among Pakistan\u2019s transgender community was critically high \u2014 and safe practice rates were critically low. The barrier was not access to information. It was a combination of deep social taboo, community mistrust of health systems, the shame associated with open discussion, and the absence of any content that felt like it was made for \u2014 and by \u2014 this community.",
+    },
+    episodes: {
+      eyebrow: "The Intervention \u00b7 Six-Part Animation Series",
+      heading: "<em>Apni Kahani</em> \u2014 A Drama in Six Episodes",
+      cards: [
+        { num: "01", tag: "Episode One", name: "Community & Belonging", description: "Establishes the world \u2014 the dera, the guru-chela relationship, the social fabric of community life \u2014 through characters the audience immediately recognise as their own." },
+        { num: "02", tag: "Episode Two", name: "The Myth and the Fear", description: "A character encounters misinformation about HIV transmission. The episode dramatises how myths spread \u2014 and the real cost of leaving them unchallenged." },
+        { num: "03", tag: "Episode Three", name: "The Moment of Choice", description: "A real-life scenario in which a character faces a decision about safe practice \u2014 showing the social pressures, the hesitation, and what support from a peer can change." },
+        { num: "04", tag: "Episode Four", name: "Seeking Help", description: "The journey of accessing screening \u2014 the fear, the stigma, the barriers \u2014 and the relief of a peer who has been through it guiding the way forward." },
+        { num: "05", tag: "Episode Five", name: "What We Don\u2019t Say", description: "A story about silence \u2014 within the community \u2014 and the cost of not talking. Designed to surface the conversations the facilitated session then brings into the open." },
+        { num: "06", tag: "Episode Six", name: "Our Responsibility", description: "A forward-looking close \u2014 showing collective action, peer support, and what a community looks like when it decides to protect itself together." },
+      ],
+      note: "Each episode ran <strong>5\u20136 minutes</strong> and was followed by a <strong>peer educator-facilitated session</strong> using a structured question guide co-designed with the community. What began as a short screening consistently became a <strong>30\u201340 minute conversation</strong> \u2014 with participants identifying specific actions, making personal commitments, and agreeing on collective next steps. The episode was not the intervention. <strong>The conversation it opened was.</strong>",
+    },
+    designProcess: {
+      heading: "Built <em>with</em> the community.<br>Not for them.",
+      paragraphs: [
+        "Every design decision in this programme \u2014 from the storylines to the visual style to the language used \u2014 was validated, iterated, and approved by the Khawaja Sira community through multiple rounds of real-time co-creation and testing.",
+        "This was not a token consultation. It was the design methodology.",
+      ],
+      items: [
+        { label: "Farsi Language Integration", body: "The Khawaja Sira community has its own distinct language \u2014 Farsi. Scripts were developed with community members to ensure authentic use of vocabulary, idiom, and tone that the audience would immediately recognise as their own." },
+        { label: "Community Voiceovers", body: "All character voiceovers were performed by actual Khawaja Sira community members \u2014 not professional voice actors. This single decision transformed the content\u2019s credibility from the first moment of screening." },
+        { label: "Illustrations Co-Created in Community", body: "Visual characters, settings, and design elements were developed iteratively with community input \u2014 ensuring that when members watched the animation, they saw themselves, not a generic approximation." },
+        { label: "Real Stories, Real Scenarios", body: "Storylines were drawn directly from real experiences shared during the research phase \u2014 grounding every episode in situations the community had actually lived, not scenarios imagined by external designers." },
+      ],
+    },
+    closing: {
+      heading: "You cannot change a behaviour<br>you cannot yet <em>talk about.</em>",
+      body: "Apni Kahani created the conditions for a conversation that had never been possible before \u2014 built on three months of deep listening, radical co-creation, and the conviction that a community\u2019s own voice is the most powerful behaviour change tool there is.",
+    },
+    impactCells: [
+      { big: "National Tool", desc: "The series became the standard HIV prevention conversation-starter for the Khawaja Sira community across Pakistan \u2014 adopted and used consistently across all outreach and engagement." },
+      { big: "30\u201340 Min", desc: "Average peer-facilitated conversation per 5\u20136 minute episode \u2014 with community members identifying actions and making personal and collective commitments." },
+      { big: "Trust Built", desc: "By ensuring community members voiced their own characters and co-created every element, the content achieved an immediate authenticity that broke down barriers no external campaign had managed." },
+      { big: "Conversation Opened", desc: "For the first time, community groups across Pakistan had a structured, emotionally safe, peer-led format for talking openly about HIV, safe practice, and screening." },
+    ],
     challenge: {
-      heading: "The Challenge",
+      heading: "The <em>Challenge</em>",
       body: "Pakistan's Khawaja Sira community lives at the intersection of multiple vulnerabilities \u2014 social marginalisation, economic precarity, and a healthcare system that has historically failed to serve them with dignity or cultural competence. HIV prevention programming aimed at this community had repeatedly failed \u2014 not because the information was wrong, but because the approach was fundamentally broken.\n\nExisting materials were generic, clinical, and created entirely without community input. They used neither the community's own language \u2014 Farsi \u2014 nor their cultural references, social dynamics, or the specific scenarios in which unsafe behaviours actually occurred. Myths were widespread. Screening was avoided. Peer conversations on the subject were almost nonexistent.\n\nThe challenge was not a communications problem. It was a trust problem, a representation problem, and a shame problem \u2014 all of which required a fundamentally different design approach.",
       quote: {
         text: "Standard awareness campaigns don't work when the community has never seen themselves represented, has no reason to trust the messenger, and carries a lifetime of shame around the subject being discussed.",
       },
     },
     strategy: {
-      heading: "The Strategy",
+      heading: "The <em>Strategy</em>",
       intro: "Before a single frame was drawn or a line of script written, White Rice spent three months inside the community. The research phase was not a needs assessment \u2014 it was an act of deep listening. The team used immersive human-centred design and ethnographic methods across Lahore and Karachi to understand the community not as a health target group, but as a complex social world with its own culture, language, relationships, and logic.",
       steps: [
         {
@@ -806,7 +901,7 @@ export const caseStudies: CaseStudyData[] = [
       ],
     },
     impact: {
-      heading: "The Impact",
+      heading: "The <em>Impact</em>",
       body: "The most important measure of this programme's success is not reach \u2014 it is what happened in the room. A six-minute episode, shown to a group of Khawaja Sira community members facilitated by a peer they trusted, consistently produced thirty to forty minutes of open, substantive conversation about a subject that had previously been unspeakable in community settings.",
       metrics: [
         { value: 0, suffix: "", prefix: "", label: "The series became the standard HIV prevention conversation-starter for the Khawaja Sira community across Pakistan \u2014 adopted and used consistently across all outreach and engagement." },
