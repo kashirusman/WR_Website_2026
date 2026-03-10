@@ -1,77 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-
-interface Project {
-  id: string;
-  tag: string;
-  title: string;
-  description: string;
-  image: string;
-  alt: string;
-  featured?: boolean;
-}
-
-const projects: Project[] = [
-  {
-    id: "story-gathering",
-    tag: "Nationwide",
-    title: "Largest Story Gathering Exercise",
-    description:
-      "Capturing lived experiences across villages to shape national policy and programme design.",
-    image: "/images/timeline/2024/child-stim-village.jpg",
-    alt: "Camera crew documenting community stories in a rural village",
-    featured: true,
-  },
-  {
-    id: "misali-ma",
-    tag: "Maternal Health",
-    title: "Misali Ma Project",
-    description:
-      "Reaching 11,000 mothers with life-saving health messaging through mobile-first content.",
-    image: "/images/misali-ma/misali-ma01.jpg",
-    alt: "Mothers and children raising hands during a Misali Ma StoryCircle session",
-  },
-  {
-    id: "community-visioning",
-    tag: "Community Engagement",
-    title: "Largest Community Visioning Exercise",
-    description:
-      "750 visioning boards shaping local education priorities across Pakistan.",
-    image: "/images/peie/unicef-peie02.jpg",
-    alt: "Father engaging with children in a learning activity at home",
-  },
-  {
-    id: "award-films",
-    tag: "Film & Storytelling",
-    title: "Award-Winning Films",
-    description:
-      "12 Hours and Noor - driving national discourse on health and education.",
-    image: "/images/timeline/2023/parenting-session.jpg",
-    alt: "Cinematic still from an award-winning behaviour change film broadcast on national television",
-    featured: true,
-  },
-  {
-    id: "playlab",
-    tag: "Early Childhood",
-    title: "Pakistan's First PlayLab",
-    description:
-      "Play-based early learning reaching resource-constrained communities.",
-    image: "/images/play-lab/play-lab09.jpeg",
-    alt: "Children engaged in hands-on clay play at a community PlayLab",
-    featured: true,
-  },
-  {
-    id: "digital-training",
-    tag: "Digital Health",
-    title: "Digital Last Mile Training",
-    description:
-      "Mobile-first training platform for frontline health workers across districts.",
-    image: "/images/digital-training/digital-training02.JPG",
-    alt: "Camera operator filming a digital training session in a classroom",
-  },
-];
+import { projects } from "@/lib/projects";
 
 export default function Work() {
   return (
@@ -94,33 +26,52 @@ export default function Work() {
           </p>
         </ScrollReveal>
 
-        {/* Bento grid */}
-        <div className="work-bento">
+        {/* Project grid */}
+        <div className="work-grid">
           {projects.map((project, i) => (
             <ScrollReveal
-              key={project.id}
-              delay={i * 0.08}
+              key={project.slug}
+              delay={i * 0.05}
               direction="up"
             >
-              <div
-                className={`work-card ${project.featured ? "work-card--featured" : ""}`}
+              <Link
+                href={`/work/${project.slug}`}
+                className="work-card"
               >
                 <div className="work-card__image-wrap">
                   <Image
                     src={project.image}
-                    alt={project.alt}
+                    alt={`${project.client} - ${project.title}`}
                     fill
-                    sizes={project.featured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="work-card__image"
                   />
                   <div className="work-card__overlay" />
                 </div>
+
+                {/* Arrow icon */}
+                <span className="work-card__arrow">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </span>
+
                 <div className="work-card__content">
                   <span className="work-card__tag">{project.tag}</span>
                   <h3 className="work-card__title">{project.title}</h3>
-                  <p className="work-card__desc">{project.description}</p>
+                  <span className="work-card__client">{project.client}</span>
                 </div>
-              </div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

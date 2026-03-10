@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Sarah - White Rice Impact</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --wri-green: #2D6A4F;
+    --wri-light: #95D5B2;
+    --wri-dark: #1B4332;
+    --wri-cream: #F8F6F0;
+    --wri-gold: #E9C46A;
+    --wri-coral: #E76F51;
+    --wri-blue: #264653;
+    --wri-purple: #7B2CBF;
+    --slide-bg: #0A0A0A;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--slide-bg);
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .deck {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 80px;
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .slide.exit {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  /* Slide backgrounds */
+  .slide-hero { background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 50%, #40916C 100%); }
+  .slide-dark { background: #0A0A0A; }
+  .slide-green { background: linear-gradient(135deg, #264653 0%, #2D6A4F 100%); }
+  .slide-warm { background: linear-gradient(135deg, #1B4332 0%, #264653 100%); }
+  .slide-gold { background: linear-gradient(135deg, #264653 0%, #2A2A2A 100%); }
+  .slide-coral { background: linear-gradient(135deg, #E76F51 0%, #E9C46A 100%); color: #1a1a1a; }
+  .slide-purple { background: linear-gradient(135deg, #1B1B2F 0%, #462255 100%); }
+  .slide-finale { background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 40%, #264653 100%); }
+
+  /* Typography */
+  .mega-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .big-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: 24px;
+  }
+
+  .section-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    opacity: 0.6;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.6;
+    opacity: 0.85;
+    max-width: 700px;
+  }
+
+  .highlight { color: var(--wri-light); }
+  .gold { color: var(--wri-gold); }
+  .coral { color: var(--wri-coral); }
+
+  /* Cards Grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .cards-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 28px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover { transform: translateY(-4px); }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    line-height: 1.5;
+  }
+
+  /* Stats Row */
+  .stats-row {
+    display: flex;
+    gap: 50px;
+    margin-top: 40px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+  }
+
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 18px 24px;
+    border-left: 3px solid var(--wri-light);
+  }
+
+  .timeline-time {
+    font-size: 1.1rem;
+    font-weight: 700;
+    min-width: 80px;
+    color: var(--wri-gold);
+  }
+
+  .timeline-text {
+    font-size: 1rem;
+    opacity: 0.85;
+  }
+
+  /* Rule items */
+  .rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+  }
+
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+
+  .rule-number {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--wri-gold);
+    min-width: 32px;
+  }
+
+  .rule-text {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .rule-text strong {
+    color: var(--wri-light);
+  }
+
+  /* Two columns */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 30px;
+  }
+
+  .col-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .col-box h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .col-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .col-box li {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    line-height: 1.4;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .col-box li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--wri-light);
+  }
+
+  /* Cost table */
+  .cost-table {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 24px;
+    border-collapse: collapse;
+  }
+
+  .cost-table th, .cost-table td {
+    padding: 16px 24px;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .cost-table th {
+    font-weight: 600;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cost-table td {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .cost-table .total td {
+    font-weight: 700;
+    font-size: 1.15rem;
+    border-top: 2px solid var(--wri-light);
+    color: var(--wri-light);
+  }
+
+  .cost-note {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* WhatsApp mockup */
+  .wa-mockup {
+    background: #0B141A;
+    border-radius: 20px;
+    padding: 20px;
+    width: 380px;
+    margin-top: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .wa-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 16px;
+  }
+
+  .wa-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--wri-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .wa-name { font-weight: 600; font-size: 0.95rem; }
+
+  .wa-bubble {
+    background: #1F2C33;
+    border-radius: 8px 12px 12px 2px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    max-width: 85%;
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+
+  .wa-bubble.sent {
+    background: #005C4B;
+    border-radius: 12px 8px 2px 12px;
+    margin-left: auto;
+  }
+
+  .wa-time {
+    font-size: 0.65rem;
+    opacity: 0.4;
+    text-align: right;
+    margin-top: 4px;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--wri-light);
+    transition: width 0.4s ease;
+    z-index: 100;
+  }
+
+  /* Slide counter */
+  .slide-counter {
+    position: fixed;
+    bottom: 16px;
+    right: 24px;
+    font-size: 0.8rem;
+    opacity: 0.3;
+    z-index: 100;
+  }
+
+  /* Nav hint */
+  .nav-hint {
+    position: fixed;
+    bottom: 16px;
+    left: 24px;
+    font-size: 0.75rem;
+    opacity: 0.25;
+    z-index: 100;
+  }
+
+  /* Confetti effect for cost slide */
+  .price-big {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--wri-light);
+    line-height: 1;
+  }
+
+  .price-compare {
+    font-size: 1.1rem;
+    opacity: 0.6;
+    margin-top: 8px;
+  }
+
+  /* Animate elements on slide entry */
+  .slide.active .fade-up {
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .slide.active .fade-up-delay {
+    animation: fadeUp 0.6s ease 0.2s forwards;
+    opacity: 0;
+  }
+
+  .slide.active .fade-up-delay2 {
+    animation: fadeUp 0.6s ease 0.4s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Team grid */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 24px;
+  }
+
+  .team-member {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .team-member .emoji {
+    font-size: 2rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .team-member .name {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .team-member .role {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    margin-top: 2px;
+  }
+
+  /* Level comparison */
+  .level-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+  }
+
+  .level-box {
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .level-box.current {
+    background: rgba(45,106,79,0.3);
+    border: 2px solid var(--wri-light);
+  }
+
+  .level-box.future {
+    background: rgba(123,44,191,0.15);
+    border: 2px solid rgba(123,44,191,0.4);
+  }
+
+  .level-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .level-box.current .level-tag { background: var(--wri-green); }
+  .level-box.future .level-tag { background: var(--wri-purple); }
+
+  .level-box h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .level-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .level-box li {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .level-box.current li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--wri-light);
+    font-weight: 700;
+  }
+
+  .level-box.future li::before {
+    content: '\2192';
+    position: absolute;
+    left: 0;
+    color: var(--wri-purple);
+  }
+
+  .align-left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  @media (max-width: 900px) {
+    .mega-title { font-size: 2.8rem; }
+    .big-title { font-size: 2rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .level-cols { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+    .slide { padding: 30px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1: Hero -->
+  <div class="slide slide-hero active" data-slide="0">
+    <div class="section-label fade-up">White Rice Impact</div>
+    <div class="mega-title fade-up">Meet <span class="gold">Sarah</span></div>
+    <div class="subtitle fade-up-delay">Your AI Project Manager. Always on. Never forgets. Keeps the team on track while making everyone's life easier.</div>
+    <div class="stats-row fade-up-delay2">
+      <div class="stat">
+        <div class="stat-number" style="color:var(--wri-gold)">24/7</div>
+        <div class="stat-label">Always Available</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" style="color:var(--wri-light)">10</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" style="color:var(--wri-gold)">6</div>
+        <div class="stat-label">Notion Databases</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: The Journey -->
+  <div class="slide slide-dark" data-slide="1">
+    <div class="section-label fade-up">The Journey</div>
+    <div class="big-title fade-up">How We Built Sarah</div>
+    <div class="subtitle fade-up-delay" style="margin-bottom:20px">Usman spent 3 intense days with an AI engineer to bring Sarah to life. Here's what it took.</div>
+    <div class="cards-grid fade-up-delay2">
+      <div class="card">
+        <span class="card-icon">&#9889;</span>
+        <h3>40+ Hours of Setup</h3>
+        <p>From configuring the VPS server, connecting WhatsApp, wiring Notion databases, to testing every interaction.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#128295;</span>
+        <h3>Challenges We Solved</h3>
+        <p>WhatsApp session management, reconnection loops, API credit exhaustion, voice transcription, process stability.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#128640;</span>
+        <h3>Beta Is Live Now</h3>
+        <p>Sarah is running 24/7 on a dedicated cloud server. Connected to WhatsApp and Notion. Processing voice notes. Ready for you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: What Sarah Does -->
+  <div class="slide slide-green" data-slide="2">
+    <div class="section-label fade-up">Capabilities</div>
+    <div class="big-title fade-up">What Sarah Does <span class="gold">Today</span></div>
+    <div class="cards-grid fade-up-delay">
+      <div class="card">
+        <span class="card-icon">&#128203;</span>
+        <h3>Project Management</h3>
+        <p>Tracks tasks, deadlines, blockers. Nudges gently. Flags risks to Arooj before they become problems.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#129504;</span>
+        <h3>Memory & Context</h3>
+        <p>Remembers every decision, every update, every conversation. Ask "what's the status of X?" and she knows.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#127908;</span>
+        <h3>Voice Messages</h3>
+        <p>Send her a voice note, she transcribes and responds. No typing needed. Just talk like you would to a colleague.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#128221;</span>
+        <h3>Auto-Saves to Notion</h3>
+        <p>Tasks, decisions, meeting notes, leave requests, time logs. All automatically saved. Zero manual data entry.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#128588;</span>
+        <h3>Delegation Support</h3>
+        <p>When Arooj or leadership assigns a task, Sarah tracks it end-to-end. Follow-ups, reminders, quality checks.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#128154;</span>
+        <h3>Emotional Support</h3>
+        <p>Notices stress. Checks in privately. Celebrates wins. Makes you feel seen, not surveilled. She's your buddy.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: How She Talks - WhatsApp Demo -->
+  <div class="slide slide-dark" data-slide="3">
+    <div style="display:flex;gap:60px;align-items:center;width:100%;max-width:1100px;">
+      <div style="flex:1">
+        <div class="section-label fade-up">Communication Style</div>
+        <div class="big-title fade-up">She Texts Like <span class="highlight">a Real Person</span></div>
+        <div class="subtitle fade-up-delay">Short. Warm. Casual. Bilingual. No AI-speak. No corporate jargon. Just a colleague who has your back.</div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;" class="fade-up-delay2">
+          <div style="font-size:0.95rem;opacity:0.7;">&#10003; Max 40 words per message</div>
+          <div style="font-size:0.95rem;opacity:0.7;">&#10003; Roman Urdu when natural</div>
+          <div style="font-size:0.95rem;opacity:0.7;">&#10003; No bullet points or walls of text</div>
+          <div style="font-size:0.95rem;opacity:0.7;">&#10003; Understands voice notes</div>
+          <div style="font-size:0.95rem;opacity:0.7;">&#10003; Remembers context from all chats</div>
+        </div>
+      </div>
+      <div class="wa-mockup fade-up-delay">
+        <div class="wa-header">
+          <div class="wa-avatar">S</div>
+          <div><div class="wa-name">Sarah</div><div style="font-size:0.7rem;opacity:0.4;">online</div></div>
+        </div>
+        <div class="wa-bubble sent">Hey Sarah, PlayLab ka kya status hai?</div>
+        <div class="wa-bubble">Arooj ne kal Mishal ko content review assign kiya tha. Due Thursday hai. Mishal working on it, 60% done.</div>
+        <div class="wa-time">10:32 AM</div>
+        <div class="wa-bubble sent">And the World Bank deliverable?</div>
+        <div class="wa-bubble">Sahar is finalizing the research deck. I reminded her this morning. She said it'll be ready by EOD tomorrow.</div>
+        <div class="wa-time">10:33 AM</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Sarah's Daily Schedule -->
+  <div class="slide slide-warm" data-slide="4">
+    <div class="section-label fade-up">Daily Routine</div>
+    <div class="big-title fade-up">Sarah's <span class="gold">Day</span></div>
+    <div class="timeline fade-up-delay">
+      <div class="timeline-item">
+        <div class="timeline-time">8:30 AM</div>
+        <div class="timeline-text"><strong>Personal morning message</strong> to each team member. Tailored priorities for the day, pending tasks, gentle nudges.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">All Day</div>
+        <div class="timeline-text"><strong>Always available.</strong> Reply anytime. Ask anything about projects, deadlines, team updates. She's listening.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">1:00 PM</div>
+        <div class="timeline-text"><strong>Midday check-in</strong> only if something is overdue or blocked. No unnecessary interruptions.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">5:30 PM</div>
+        <div class="timeline-text"><strong>Daily wrap to Arooj.</strong> Quick summary of what moved, what's stuck, what needs attention tomorrow.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">Fri 4 PM</div>
+        <div class="timeline-text"><strong>Weekly summary</strong> to leadership. High-level progress, wins, risks, and priorities for next week.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Ground Rules -->
+  <div class="slide slide-dark" data-slide="5">
+    <div class="section-label fade-up">Team Guide</div>
+    <div class="big-title fade-up">How to Get the <span class="highlight">Best</span> from Sarah</div>
+    <div class="rules-list fade-up-delay">
+      <div class="rule-item">
+        <div class="rule-number">1</div>
+        <div class="rule-text"><strong>Just text her like a friend.</strong> No special commands. No format needed. "Hey Sarah, what's due this week?" works perfectly.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number">2</div>
+        <div class="rule-text"><strong>In groups, tag her with @.</strong> She reads everything silently but only responds when mentioned. She's always listening, just not interrupting.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number">3</div>
+        <div class="rule-text"><strong>Voice notes work great.</strong> Just record and send. She transcribes and responds. Perfect for quick updates while moving.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number">4</div>
+        <div class="rule-text"><strong>Tell her your updates.</strong> "I finished the deck" or "I'll be on leave Thursday". She saves everything automatically.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number">5</div>
+        <div class="rule-text"><strong>Ask her anything about projects.</strong> Status updates, who's doing what, past decisions, deadlines. She has full context.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Where She Lives -->
+  <div class="slide slide-green" data-slide="6">
+    <div class="section-label fade-up">Integration</div>
+    <div class="big-title fade-up">Sarah's <span class="gold">Ecosystem</span></div>
+    <div class="two-col fade-up-delay">
+      <div class="col-box">
+        <h3 style="color:var(--wri-light)">&#128172; WhatsApp (2 Groups)</h3>
+        <ul>
+          <li>White Rice Team group (full team)</li>
+          <li>WR ECD & WB Team group (project-specific)</li>
+          <li>Private DMs with all 10 team members</li>
+          <li>Voice note transcription enabled</li>
+          <li>Reads all group messages silently</li>
+          <li>Only speaks when @mentioned in groups</li>
+        </ul>
+      </div>
+      <div class="col-box">
+        <h3 style="color:var(--wri-gold)">&#128218; Notion (6 Databases)</h3>
+        <ul>
+          <li><strong>Tasks</strong> - auto-created, tracked, followed up</li>
+          <li><strong>Sarah Memory</strong> - decisions, context, preferences</li>
+          <li><strong>Daily Logs</strong> - end of day summaries</li>
+          <li><strong>Leakage Log</strong> - missed deadlines, stuck tasks</li>
+          <li><strong>Leave Tracker</strong> - WFH, sick days, leave</li>
+          <li><strong>Time Tracker</strong> - work hours per project</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Levels -->
+  <div class="slide slide-dark" data-slide="7">
+    <div class="section-label fade-up">Roadmap</div>
+    <div class="big-title fade-up">Level 1 <span style="opacity:0.3">vs</span> Level 2</div>
+    <div class="level-cols fade-up-delay">
+      <div class="level-box current">
+        <div class="level-tag">Level 1 - Live Now</div>
+        <h3 style="color:var(--wri-light)">Sarah Beta</h3>
+        <ul>
+          <li>WhatsApp messaging (text + voice)</li>
+          <li>Task tracking and follow-ups</li>
+          <li>Auto-save to 6 Notion databases</li>
+          <li>Morning check-ins and daily wraps</li>
+          <li>Group monitoring (2 groups)</li>
+          <li>Leave tracking</li>
+          <li>Time tracking</li>
+          <li>Delegation support for Arooj</li>
+          <li>Weekly summaries to leadership</li>
+          <li>Leakage detection and escalation</li>
+        </ul>
+      </div>
+      <div class="level-box future">
+        <div class="level-tag">Level 2 - Coming Soon</div>
+        <h3 style="color:#C77DFF">Sarah Pro</h3>
+        <ul>
+          <li>Email integration (Gmail/meeting transcripts)</li>
+          <li>Automated leakage alerts via cron</li>
+          <li>Client interaction tracking</li>
+          <li>WhatsApp Business API (no more QR)</li>
+          <li>Voice reply (Sarah speaks back)</li>
+          <li>Financial ops support for Salman</li>
+          <li>Calendar integration</li>
+          <li>Document generation</li>
+          <li>Web search for research tasks</li>
+          <li>Multi-project dashboards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: The Team -->
+  <div class="slide slide-warm" data-slide="8">
+    <div class="section-label fade-up">Your Team</div>
+    <div class="big-title fade-up">Sarah <span class="gold">Knows</span> Everyone</div>
+    <div class="subtitle fade-up-delay" style="margin-bottom:10px">She understands each person's role, communication style, and what they need from her.</div>
+    <div class="team-grid fade-up-delay2">
+      <div class="team-member">
+        <span class="emoji">&#128081;</span>
+        <div class="name">Raheel</div>
+        <div class="role">CEO, Founder</div>
+      </div>
+      <div class="team-member">
+        <span class="emoji">&#129302;</span>
+        <div class="name">Usman</div>
+        <div class="role">COO, AI Chief</div>
+      </div>
+      <div class="team-member">
+        <span class="emoji">&#128176;</span>
+        <div class="name">Salman</div>
+        <div class="role">Head of Ops</div>
+      </div>
+      <div class="team-member">
+        <span class="emoji">&#127775;</span>
+        <div class="name">Azmeh</div>
+        <div class="role">Partner</div>
+      </div>
+      <div class="team-member" style="border:2px solid var(--wri-light);">
+        <span class="emoji">&#128640;</span>
+        <div class="name">Arooj</div>
+        <div class="role">Lead PM</div>
+      </div>
+      <div class="team-member">
+        <span class="emoji">&#127912;</span>
+        <div class="name">Sahar</div>
+        <div class="role">Design Research</div>
+      </div>
+      <div class="team-member">
+        <span class="emoji">&#128736;</span>
+        <div class="name">Waqar</div>
+        <div class="role">Admin</div>
+      </div>
+      <div class="team-member">
+        <span class="emoji">&#127793;</span>
+        <div class="name">Mishal</div>
+        <div class="role">PlayLabs/ECD</div>
+      </div>
+      <div class="team-member">
+        <span class="emoji">&#128196;</span>
+        <div class="name">Zainab</div>
+        <div class="role">Coordinator</div>
+      </div>
+      <div class="team-member">
+        <span class="emoji">&#127912;</span>
+        <div class="name">Unaiza</div>
+        <div class="role">Illustrator</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;font-size:0.95rem;opacity:0.6;" class="fade-up-delay2">Sarah adapts her tone for each person. More strategic with Raheel. More supportive with Mishal. More operational with Arooj.</div>
+  </div>
+
+  <!-- SLIDE 10: Cost -->
+  <div class="slide slide-dark" data-slide="9">
+    <div class="section-label fade-up">Investment</div>
+    <div class="big-title fade-up">What Sarah <span class="gold">Costs</span></div>
+    <table class="cost-table fade-up-delay">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Monthly Cost</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>&#9729; Cloud Server (VPS)</td>
+          <td>$7 - $15</td>
+          <td>Hostinger KVM. Always on.</td>
+        </tr>
+        <tr>
+          <td>&#129504; AI Brain (Claude Sonnet 4)</td>
+          <td>$30 - $50</td>
+          <td>Light usage. Smart token management.</td>
+        </tr>
+        <tr>
+          <td>&#127908; Voice Transcription</td>
+          <td>~$0.30</td>
+          <td>$0.006/min. 100 voice notes = $0.30</td>
+        </tr>
+        <tr>
+          <td>&#128269; Web Search (Serper)</td>
+          <td>Free</td>
+          <td>2,500 searches/month included</td>
+        </tr>
+        <tr>
+          <td>&#128172; WhatsApp</td>
+          <td>Free</td>
+          <td>Uses WhatsApp Web protocol</td>
+        </tr>
+        <tr>
+          <td>&#128218; Notion</td>
+          <td>Free</td>
+          <td>API access included</td>
+        </tr>
+        <tr class="total">
+          <td>Total</td>
+          <td>~$40 - $65/mo</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="cost-note fade-up-delay2">That's less than a cup of chai per day. And unlike a human PM, Sarah never sleeps, never takes leave, and never forgets.</div>
+    <div style="margin-top:20px;background:rgba(45,106,79,0.2);border:1px solid rgba(149,213,178,0.3);border-radius:12px;padding:16px 24px;max-width:800px;" class="fade-up-delay2">
+      <div style="font-size:0.95rem;"><strong style="color:var(--wri-light)">Message more, it won't cost more.</strong> Sarah is optimized. Short conversations cost very little. The team should use her freely without worrying about costs. That's the whole point.</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: What's Next -->
+  <div class="slide slide-purple" data-slide="10">
+    <div class="section-label fade-up">This Week</div>
+    <div class="big-title fade-up">Your <span class="gold">Action Items</span></div>
+    <div class="rules-list fade-up-delay" style="max-width:800px;">
+      <div class="rule-item">
+        <div class="rule-number" style="color:#C77DFF">1</div>
+        <div class="rule-text"><strong>Say hi to Sarah.</strong> Text her privately on WhatsApp. Introduce yourself. She already knows who you are.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number" style="color:#C77DFF">2</div>
+        <div class="rule-text"><strong>Send her a voice note.</strong> Try it out. She'll transcribe it and respond naturally.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number" style="color:#C77DFF">3</div>
+        <div class="rule-text"><strong>Share your updates.</strong> Tell her what you're working on today. She'll remember and follow up.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-number" style="color:#C77DFF">4</div>
+        <div class="rule-text"><strong>Give feedback to Usman.</strong> What feels natural? What doesn't? This is beta. Your input shapes Sarah.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: Finale -->
+  <div class="slide slide-finale" data-slide="11">
+    <div class="mega-title fade-up">Sarah is <span class="gold">Ready</span></div>
+    <div class="subtitle fade-up-delay" style="font-size:1.6rem;max-width:800px;text-align:center;">She never sleeps. She never forgets. She never judges. She's here to make your work life easier.</div>
+    <div style="margin-top:40px;font-size:1.1rem;opacity:0.5;" class="fade-up-delay2">Text her now: <strong style="color:var(--wri-gold);opacity:1;">+92 331 8808793</strong></div>
+    <div style="margin-top:30px;font-size:0.9rem;opacity:0.3;" class="fade-up-delay2">Sarah, your pal &#9996; powered by kashirusman</div>
+  </div>
+
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Slide Counter -->
+<div class="slide-counter" id="slideCounter">1 / 12</div>
+
+<!-- Nav Hint -->
+<div class="nav-hint">&#8592; &#8594; Arrow keys to navigate</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  function goTo(n) {
+    if (n < 0 || n >= total) return;
+    slides[current].classList.remove('active');
+    slides[current].classList.add('exit');
+    setTimeout(() => slides[current - (current !== n ? 0 : 0)].classList.remove('exit'), 500);
+
+    current = n;
+    slides.forEach((s, i) => {
+      s.classList.remove('active', 'exit');
+      if (i === current) s.classList.add('active');
+    });
+
+    document.getElementById('progressBar').style.width = ((current + 1) / total * 100) + '%';
+    document.getElementById('slideCounter').textContent = (current + 1) + ' / ' + total;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'Home') goTo(0);
+    if (e.key === 'End') goTo(total - 1);
+  });
+
+  // Touch support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goTo(current + 1);
+      else goTo(current - 1);
+    }
+  });
+
+  // Click navigation
+  document.addEventListener('click', (e) => {
+    if (e.clientX > window.innerWidth * 0.7) goTo(current + 1);
+    else if (e.clientX < window.innerWidth * 0.3) goTo(current - 1);
+  });
+
+  // Init
+  goTo(0);
+</script>
+
+</body>
+</html>

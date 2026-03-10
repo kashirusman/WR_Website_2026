@@ -44,6 +44,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Content - slides up on hover */}
       <div className="workpage-card__content">
+        <span className="workpage-card__tag">{project.tag}</span>
         <span className="workpage-card__client">{project.client}</span>
         <h3 className="workpage-card__title">{project.title}</h3>
       </div>

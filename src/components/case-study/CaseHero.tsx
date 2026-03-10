@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -26,6 +26,20 @@ export default function CaseHero({ project, caseStudy }: CaseHeroProps) {
   const contentY = useTransform(scrollYProgress, [0, 0.45], ["0px", "60px"]);
 
   const hasVideo = !!caseStudy.video;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  /* Ensure video plays on mobile (iOS/Android sometimes block autoplay) */
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.muted = true;
+    const tryPlay = () => {
+      vid.play().catch(() => {});
+    };
+    tryPlay();
+    document.addEventListener("touchstart", tryPlay, { once: true });
+    return () => document.removeEventListener("touchstart", tryPlay);
+  }, []);
 
   return (
     <section ref={sectionRef} className="case-hero">
@@ -33,6 +47,7 @@ export default function CaseHero({ project, caseStudy }: CaseHeroProps) {
       <motion.div className="case-hero__bg" style={{ y: imageY }}>
         {hasVideo ? (
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop

@@ -2,47 +2,27 @@ export interface Project {
   slug: string;
   title: string;
   client: string;
+  tag: string;
   image: string;
   description: string;
 }
 
 export const projects: Project[] = [
+  /* ─ Kept as-is (no new HTML) ───────────────────────────────── */
   {
     slug: "misali-ma-storycircle",
-    title: "Misali Ma - PVMS StoryCircle",
-    client: "PVMS",
+    title: "Nurturing Change - Stunting Prevention",
+    client: "UNICEF Pakistan",
+    tag: "Stunting Prevention",
     image: "/images/misali-ma/misali-ma03.jpg",
     description:
-      "Community-led story circles empowering mothers with life-saving health messaging through participatory media.",
-  },
-  {
-    slug: "alif-ailaan-education",
-    title: "Education for All",
-    client: "Alif Ailaan",
-    image: "/images/alif-ailaan/alif-ailaan01.jpg",
-    description:
-      "A nationwide advocacy campaign mobilising communities and policymakers to prioritise quality education across Pakistan.",
-  },
-  {
-    slug: "unicef-ecd",
-    title: "Early Childhood Development",
-    client: "UNICEF",
-    image: "/images/timeline/2024/child-stim-learning.jpg",
-    description:
-      "Designing evidence-based ECD interventions that support cognitive, social, and emotional growth in the earliest years.",
-  },
-  {
-    slug: "unicef-parental-engagement",
-    title: "Parental Engagement Project",
-    client: "UNICEF",
-    image: "/images/peie/unicef-peie02.jpg",
-    description:
-      "Strengthening caregiver practices through interactive workshops and mobile-first parenting content.",
+      "A social behaviour change intervention reaching 26,000 mothers across Sindh to reduce child stunting through the Kahani Asani Adehani model.",
   },
   {
     slug: "unicef-wash-film",
     title: "WASH - Film Screenings Punjab",
     client: "UNICEF",
+    tag: "WASH",
     image: "/images/timeline/2023/parenting-screening.jpg",
     description:
       "Community film screenings across Punjab driving awareness and behaviour change around water, sanitation, and hygiene.",
@@ -51,120 +31,166 @@ export const projects: Project[] = [
     slug: "unicef-playlab",
     title: "PlayLab at Scale",
     client: "UNICEF",
+    tag: "Play-Based Learning",
     image: "/images/play-lab/play-lab09.jpeg",
     description:
       "Scaling Pakistan's first play-based early learning model to reach resource-constrained communities nationwide.",
   },
   {
-    slug: "unfpa-transgender",
-    title: "Transgender Animations",
-    client: "UNFPA",
-    image: "/images/timeline/2020.png",
-    description:
-      "Animated storytelling series promoting inclusion, rights awareness, and empathy for transgender communities.",
-  },
-  {
-    slug: "unicef-clean-green",
-    title: "Clean and Green",
-    client: "UNICEF",
-    image: "/images/timeline/2019.png",
-    description:
-      "A behaviour change campaign mobilising communities around cleanliness, waste management, and environmental responsibility.",
-  },
-  {
-    slug: "fao-road-safety",
-    title: "Road Safety Campaign",
-    client: "FAO",
-    image: "/images/timeline/2018.png",
-    description:
-      "Creative communication campaign raising awareness about road safety practices in high-risk rural corridors.",
-  },
-  {
-    slug: "ukaid-tearfund",
-    title: "TearFund",
-    client: "UKAID",
-    image: "/images/timeline/2017.png",
-    description:
-      "Community resilience and disaster preparedness programming through faith-based networks and local leadership.",
-  },
-  {
-    slug: "unicef-mhh",
-    title: "MHH Co-Creation",
-    client: "UNICEF",
-    image: "/images/timeline/2016.png",
-    description:
-      "Co-creating menstrual health and hygiene solutions with adolescent girls and community stakeholders.",
-  },
-  {
-    slug: "nike-girls-effect",
-    title: "Girls Effect",
-    client: "Nike",
-    image: "/images/timeline/2013.png",
-    description:
-      "Empowering adolescent girls through sport, media, and community engagement to drive social change.",
-  },
-  {
-    slug: "spring-program",
-    title: "SPRING Program",
-    client: "SPRING",
-    image: "/images/timeline/2014.png",
-    description:
-      "Strengthening partnerships, results, and innovations in nutrition globally through integrated SBC approaches.",
-  },
-  {
-    slug: "oxfam-ikea-hcd",
-    title: "Human-Centered Design Workshops",
-    client: "Oxfam / IKEA",
-    image: "/images/timeline/2012.png",
-    description:
-      "Facilitating human-centered design workshops to co-create sustainable livelihood solutions with communities.",
-  },
-  {
-    slug: "sightsavers-film",
-    title: "Film National Movement",
-    client: "Sightsavers",
-    image: "/images/timeline/2025/films-hero.jpg",
-    description:
-      "A national film movement driving inclusive visibility and advocacy for people with disabilities.",
-  },
-  {
-    slug: "johns-hopkins-animation",
-    title: "Last Mile Animation Training",
-    client: "Johns Hopkins",
-    image: "/images/digital-training/digital-training01.JPG",
-    description:
-      "Animated training series equipping frontline health workers with last-mile service delivery skills.",
-  },
-  {
-    slug: "icrc-bharosa",
-    title: "Bharosa Karein Campaign",
-    client: "ICRC",
-    image: "/images/timeline/2011.png",
-    description:
-      "A trust-building communication campaign reconnecting conflict-affected communities with humanitarian services.",
-  },
-  {
-    slug: "eu-grasp-food-safety",
-    title: "GRASP - Food Safety Project",
-    client: "European Union",
-    image: "/images/timeline/2024/food-safety-hero.jpg",
-    description:
-      "Behaviour change interventions improving food safety practices across supply chains and local markets.",
-  },
-  {
     slug: "sbc-cricket",
     title: "SBC Cricket - Social Behaviour Change Guide",
     client: "UNICEF",
+    tag: "Sport for Development",
     image: "/images/sbc-cricket/workshop-scoreboard.jpg",
     description:
       "A practical guide leveraging cricket as a platform to apply social and behaviour change communication.",
   },
+
+  /* ─ Updated from HTML files ────────────────────────────────── */
   {
-    slug: "world-bank-ecs",
-    title: "Early Childhood Stimulation",
-    client: "World Bank",
+    slug: "unicef-ecd",
+    title: "The First 8 Years",
+    client: "UNICEF Pakistan",
+    tag: "Early Childhood",
+    image: "/images/timeline/2024/child-stim-learning.jpg",
+    description:
+      "A national SBC programme designed to transform how Pakistan's parents and institutions show up in the first eight years of a child's life — built to reach 20 million families by 2026.",
+  },
+  {
+    slug: "unicef-parental-engagement",
+    title: "Walidain HumQadam",
+    client: "UNICEF Pakistan",
+    tag: "Parental Engagement",
+    image: "/images/peie/unicef-peie02.jpg",
+    description:
+      "A pioneering SBC initiative using WhatsApp, vision boards, and peer-to-peer learning to transform parental engagement across 52 schools in 4 provinces.",
+  },
+  {
+    slug: "unfpa-transgender",
+    title: "Apni Kahani",
+    client: "UNFPA Pakistan",
+    tag: "HIV Prevention",
+    image: "/images/timeline/2020.png",
+    description:
+      "A six-part animation drama series built on 90 days of ethnographic co-creation with Pakistan's Khawaja Sira community for HIV prevention.",
+  },
+  {
+    slug: "unicef-clean-green",
+    title: "Clean & Green Punjab",
+    client: "Punjab Government & UNICEF",
+    tag: "WASH & Environment",
+    image: "/images/timeline/2019.png",
+    description:
+      "A province-wide SBC intervention across five critical environmental and hygiene behaviours — reaching 2 million people directly and 34 million through digital platforms.",
+  },
+  {
+    slug: "fao-road-safety",
+    title: "The Diverse Dastarkhwan",
+    client: "FAO Pakistan",
+    tag: "Food & Nutrition",
+    image: "/images/timeline/2018.png",
+    description:
+      "A 12-week behaviour change programme shifting food and nutrition practices across three culturally distinct communities in Balochistan — reaching 11,000 families.",
+  },
+  {
+    slug: "unicef-mhh",
+    title: "Breaking Barriers",
+    client: "UNICEF Pakistan",
+    tag: "Menstrual Health",
+    image: "/images/timeline/2016.png",
+    description:
+      "A national SBC initiative dismantling silence and shame around menstrual health across three provinces, with a 90% communication effectiveness rate.",
+  },
+  {
+    slug: "nike-girls-effect",
+    title: "Springster",
+    client: "Girl Effect / Nike Foundation",
+    tag: "Girls' Digital Content",
+    image: "/images/timeline/2013.png",
+    description:
+      "100+ co-created stories on a free mobile platform reaching one million girls in Pakistan with trusted content on health, safety, voice, and financial wellbeing.",
+  },
+  {
+    slug: "spring-program",
+    title: "Spring Accelerator",
+    client: "USAID / Proportion Netherlands",
+    tag: "Startup Acceleration",
+    image: "/images/timeline/2014.png",
+    description:
+      "A four-country accelerator where White Rice led Pakistan's cohort of seven startups through HCD research and user testing for products targeting girls aged 10-19.",
+  },
+  {
+    slug: "oxfam-ikea-hcd",
+    title: "Empowering Youth for Work",
+    client: "Oxfam Pakistan / IKEA Foundation",
+    tag: "Youth Empowerment",
+    image: "/images/timeline/2012.png",
+    description:
+      "An 18-month HCD consulting engagement — the longest in White Rice's history — compressing a 5-year programme into a living design laboratory for 10,000+ young entrepreneurs.",
+  },
+  {
+    slug: "sightsavers-film",
+    title: "When They Can See",
+    client: "Sightsavers International",
+    tag: "Eye Health Film",
+    image: "/images/timeline/2025/films-hero.jpg",
+    description:
+      "A data-driven short film shaped by 100 interviews, brought to life by Pakistan's finest actors, and winner at Cannes Lions — still screening in schools across Pakistan.",
+  },
+  {
+    slug: "johns-hopkins-animation",
+    title: "The Last Mile",
+    client: "Johns Hopkins CCP",
+    tag: "Global Health",
+    image: "/images/digital-training/digital-training01.JPG",
+    description:
+      "A globally deployable animation training series for 250,000 frontline immunisation workers across 4 continents in 4 languages.",
+  },
+  {
+    slug: "icrc-bharosa",
+    title: "Barosakare",
+    client: "ICRC Pakistan",
+    tag: "Healthcare Safety",
+    image: "/images/timeline/2011.png",
+    description:
+      "Pakistan's first national behaviour change campaign addressing violence against healthcare workers — reaching 4 million people through HCD research and multi-channel activation.",
+  },
+
+  /* ─ New entries (replacing entries without HTML) ────────────── */
+  {
+    slug: "awaz-programme",
+    title: "Awaz - Give Voice",
+    client: "UK Aid (FCDO) / DAI",
+    tag: "Citizen Accountability",
+    image: "/images/alif-ailaan/alif-ailaan01.jpg",
+    description:
+      "A decade-long programme reaching 15 million people across 13 districts, building Pakistan's first citizen journalism platform and transforming marginalised women into community leaders.",
+  },
+  {
+    slug: "oxfam-dunia-aali-larki",
+    title: "Dunia Aali Larki",
+    client: "Oxfam Pakistan",
+    tag: "Girls' Education",
+    image: "/images/timeline/2017.png",
+    description:
+      "What began as an animated campaign for 16 Days of Activism became Pakistan's most powerful girls' education movement — earning a $1M grant and producing Pakistan's first Children's Assembly.",
+  },
+  {
+    slug: "saaf-karachi-waste",
+    title: "Saaf Karachi Meri Zimmedari",
+    client: "Tier Fund",
+    tag: "Recycling & Waste",
+    image: "/images/timeline/2024/food-safety-hero.jpg",
+    description:
+      "A full-spectrum community behaviour change campaign shifting Karachi's waste practices from household to hub — turning segregation, collection, and recycling into a community movement.",
+  },
+  {
+    slug: "care-mastercard-mumkin",
+    title: "Mumkin - Make It Possible",
+    client: "CARE International / Mastercard Foundation",
+    tag: "Women Entrepreneurship",
     image: "/images/timeline/2024/child-stim-village.jpg",
     description:
-      "Village-level early childhood stimulation programme enhancing caregiver-child interaction in rural communities.",
+      "An HCD research-led campaign connecting Pakistan's women micro-entrepreneurs with digital financial services, skills training, and microfinance — reaching 2 million people.",
   },
 ];
