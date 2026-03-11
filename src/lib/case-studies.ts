@@ -239,6 +239,205 @@ export interface CaseStudyData {
     channels: { name: string; body: string }[];
   };
 
+  /* Johns Hopkins CCP custom bands */
+  regions?: {
+    eyebrow: string;
+    heading: string;
+    cards: { name: string; sub: string; body: string; color: string }[];
+  };
+  designChallenge?: {
+    eyebrow: string;
+    headline: string;
+    body: string;
+    pillars: { title: string; body: string }[];
+  };
+  series?: {
+    eyebrow: string;
+    heading: string;
+    cards: { num: string; title: string; scenario: string; body: string }[];
+  };
+  languages?: {
+    eyebrow: string;
+    heading: string;
+    bigText: string;
+    cards: { flag: string; name: string; body: string }[];
+  };
+  distribution?: {
+    eyebrow: string;
+    heading: string;
+    paragraphs: string[];
+    features: { label: string; value: string }[];
+  };
+
+  /* Spring Accelerator custom bands */
+  fourCountries?: {
+    label: string;
+    cards: { flag: string; name: string; role: string; highlighted?: boolean }[];
+  };
+  hcdProcess?: {
+    eyebrow: string;
+    heading: string;
+    steps: { num: string; title: string; body: string }[];
+  };
+  startups?: {
+    eyebrow: string;
+    heading: string;
+    cards: { sector: string; name: string; body: string; tags: string[] }[];
+    note?: string;
+  };
+  nepalExchange?: {
+    eyebrow: string;
+    heading: string;
+    stat: string;
+    body: string;
+    phases: { num: string; text: string }[];
+  };
+
+  /* Oxfam IKEA HCD custom bands */
+  timeline?: {
+    eyebrow: string;
+    heading: string;
+    items: { phase: string; title: string; body: string }[];
+  };
+  designCycle?: {
+    eyebrow: string;
+    heading: string;
+    cards: { name: string; body: string }[];
+    note?: string;
+  };
+  innovationHubs?: {
+    eyebrow: string;
+    heading: string;
+    intro: string;
+    hubs: { province: string; name: string; desc: string; context: string }[];
+    pathwaysHeading: string;
+    pathways: { label: string; title: string; body: string }[];
+  };
+  methodologyDiff?: {
+    eyebrow: string;
+    heading: string;
+    intro: string;
+    rows: { conventional: string; oxfam: string }[];
+  };
+
+  /* Dunia Aali Larki custom bands */
+  sparkMovement?: {
+    eyebrow: string;
+    heading: string;
+    steps: { badge: string; title: string; body: string }[];
+  };
+  semTiers?: {
+    eyebrow: string;
+    heading: string;
+    tiers: { level: string; label: string; name: string; activities: string[] }[];
+  };
+  assembly?: {
+    eyebrow: string;
+    heading: string;
+    stat: string;
+    paragraphs: string[];
+    features: { bold: string; text: string }[];
+  };
+  targetAudiences?: {
+    eyebrow: string;
+    heading: string;
+    cards: { title: string; body: string }[];
+  };
+
+  /* SBC Cricket bands */
+  cricketProblem?: {
+    eyebrow: string;
+    headline: string;
+    body: string;
+  };
+  cricketName?: {
+    eyebrow: string;
+    heading: string;
+    sub: string;
+    letters: { urdu: string; roman: string; word: string; meaning: string }[];
+  };
+  cricketSteps?: {
+    eyebrow: string;
+    heading: string;
+    steps: { bg: string; step: string; letter: string; urdu: string; word: string; translation: string; body: string; promptLabel: string; promptText: string }[];
+  };
+  cricketCards?: {
+    eyebrow: string;
+    heading: string;
+    body: string;
+    cardCount: number;
+    categories: { label: string; title: string; body: string }[];
+  };
+  cricketChannels?: {
+    eyebrow: string;
+    heading: string;
+    channels: { title: string; body: string }[];
+  };
+  cricketCascade?: {
+    eyebrow: string;
+    heading: string;
+    steps: { num: string; title: string; body: string }[];
+  };
+
+  /* Saaf Karachi bands */
+  saafChain?: {
+    label: string;
+    steps: { title: string; body: string; color: string }[];
+  };
+  saafHousehold?: {
+    eyebrow: string;
+    heading: string;
+    intro: string;
+    tools: { title: string; body: string }[];
+  };
+  saafIncentive?: {
+    eyebrow: string;
+    heading: string;
+    cards: { who: string; name: string; desc: string }[];
+  };
+  saafMediaChannels?: {
+    eyebrow: string;
+    heading: string;
+    categories: { cat: string; items: string[] }[];
+  };
+
+  /* Mumkin / CARE Mastercard bands */
+  mumkinEcosystem?: {
+    eyebrow: string;
+    heading: string;
+    partners: { role: string; name: string; body: string }[];
+    wrRole: { label: string; name: string; body: string };
+  };
+  mumkinBrand?: {
+    urdu: string;
+    name: string;
+    translation: string;
+    body: string;
+  };
+  mumkinHcd?: {
+    eyebrow: string;
+    heading: string;
+    steps: { phase: string; title: string; body: string }[];
+    insights: { num: string; title: string; body: string }[];
+  };
+  mumkinProfiles?: {
+    eyebrow: string;
+    heading: string;
+    profiles: { archetype: string; title: string; body: string; barrier: string }[];
+  };
+  mumkinOffer?: {
+    eyebrow: string;
+    heading: string;
+    cards: { label: string; title: string; body: string }[];
+  };
+  mumkinDigital?: {
+    eyebrow: string;
+    heading: string;
+    body: string;
+    body2: string;
+    assets: { label: string; value: string }[];
+  };
+
   /* Existing fields */
   challenge: {
     heading: string;
@@ -296,49 +495,121 @@ export const caseStudies: CaseStudyData[] = [
   {
     slug: "misali-ma-storycircle",
     year: "2014",
-    tags: ["Stunting Prevention", "UNICEF", "SBC", "Sindh"],
+    tags: ["Stunting Prevention", "Social Behaviour Change", "Nutrition", "WASH", "Community Mobilization", "Positive Deviance", "MSC Evaluation", "UNICEF", "SDG 2", "SDG 3", "Pakistan"],
+
+    /* ── V2 Theme (moss / clay from HTML) ── */
+    theme: {
+      primary: "#3D5A4C",
+      primaryLight: "#C4602A",
+      accent: "#C4602A",
+      accentLight: "#E8845A",
+    },
+
+    /* ── Hero ── */
+    hero: {
+      eyebrow: "UNICEF Pakistan \u00b7 Sindh \u00b7 2014",
+      title: "Nurturing <em>Change</em>",
+      subtitle: "Child Stunting Prevention \u00b7 Sindh, Pakistan",
+      description: "A community-driven social behaviour change programme designed to shift the nutrition and WASH practices of 100,000 mothers \u2014 and keep those behaviours alive long after the intervention ended.",
+      meta: [
+        { label: "Client", value: "UNICEF Pakistan" },
+        { label: "Location", value: "Khairpur \u00b7 Sharafabad \u00b7 Naushahro Feroze" },
+        { label: "Focus", value: "Nutrition, WASH & Stunting Prevention" },
+        { label: "White Rice Role", value: "SBC Design & Implementation Lead" },
+      ],
+    },
+
+    /* ── Role Band ── */
+    role: {
+      heading: "SBC Design & <em>Implementation Lead</em>",
+      body: "White Rice led the full programme cycle \u2014 from formative research and SBC strategy through to the design of the Kahani Asani Adehani behaviour change model, frontline worker training, community activation, real-time monitoring, and evaluation. We didn\u2019t deliver a campaign \u2014 we designed a behaviour change system.",
+      services: ["Formative & Design Research", "SBC Strategy", "Behaviour Change Model Design", "FLW Training", "Community Activation", "Real-Time Monitoring", "MSC Evaluation"],
+    },
+
+    /* ── Outcomes ── */
+    outcomes: {
+      cards: [
+        { stat: "90%", description: "Behaviour adoption rate \u2014 mothers practising at least one key behaviour 8 months after the intervention ended." },
+        { stat: "26,000", description: "Mothers directly reached across three districts of Sindh through the programme." },
+        { stat: "100,000+", description: "Total community members influenced, including mothers-in-law, husbands, and extended family networks." },
+        { stat: "2,000+", description: "Frontline workers trained on the bespoke Kahani Asani Adehani model." },
+        { stat: "Govt. Adopted", description: "The programme model was adopted by the Sindh government into their provincial stunting strategy \u2014 and subsequently scaled." },
+      ],
+      watermark: "STUNTING",
+    },
+
+    /* ── Divider ── */
+    divider: {
+      stat: "~50%",
+      text: "Child stunting rate in Sindh at the time of the programme \u2014 one of the highest in the world. The national figure stood at 42%. These were not statistics about distant children. They were the children of the 26,000 mothers this programme was designed to reach.",
+    },
+
+    /* ── Theory of Change Band ── */
+    theoryOfChange: {
+      label: "Theory of Change \u00b7 Socio-Ecological Model",
+      steps: [
+        { num: "01", title: "Individual", body: "Build knowledge, motivation, and self-efficacy around nutrition and WASH behaviours" },
+        { num: "02", title: "Household", body: "Align mothers-in-law and husbands as active enablers, not barriers, to behaviour change" },
+        { num: "03", title: "Community", body: "Normalise positive behaviours through peer modelling, nudges, and positive deviance" },
+        { num: "04", title: "Institutions", body: "Generate evidence and adopt the model at government level for sustainable scale" },
+      ],
+    },
+
+    /* ── Closing ── */
+    closing: {
+      heading: "Change that endures isn\u2019t delivered.<br>It\u2019s <em>designed</em>.",
+      body: "Nurturing Change demonstrated that when the conditions for behaviour change are deliberately engineered \u2014 and the whole household ecosystem is engaged \u2014 change takes root and stays.",
+    },
+
+    /* ── Impact Cells ── */
+    impactCells: [
+      { big: "90%", desc: "Of mothers still actively practising at least one target behaviour 8 months after the programme ended \u2014 with no active support in place." },
+      { big: "4,500+", desc: "Most Significant Change stories collected. Ten selected by mothers themselves, filmed, and deployed as positive deviance content to inspire further change." },
+      { big: "11,000", desc: "Mothers engaged in story circles at follow-up \u2014 the largest participatory qualitative evaluation of its kind in Pakistan at that time." },
+      { big: "Sindh Gov.", desc: "The Kahani Asani Adehani model was formally adopted by the Sindh government into their provincial stunting strategy and scaled across additional districts." },
+    ],
+
     challenge: {
-      heading: "The Challenge",
-      body: "Child stunting - low height-for-age caused by chronic malnutrition - is one of Pakistan's most persistent public health crises. Nationally, stunting affects approximately 42% of children under five. In Sindh, the figure approaches 50%. In Khairpur, Sharafabad, and Naushahro Feroze, communities had lived with these rates for generations. The crisis had become, in the most damaging sense, normal.\n\nThe behaviours driving stunting - inadequate infant and young child feeding practices, poor WASH, and delays in seeking healthcare - were well-documented. But mothers were not unaware of nutrition guidance; they were operating within household and social systems that constrained their ability to act on it. Mothers-in-law made feeding decisions. Husbands controlled household resources. A standard information-education-communication approach had already failed. The challenge demanded something fundamentally different.",
+      heading: "The <em>Challenge</em>",
+      body: "Child stunting in Sindh had been chronic for generations. The behaviours driving it \u2014 inadequate infant feeding, poor WASH practices, delayed healthcare \u2014 were well-documented. What was missing was not information. Mothers were not unaware of nutrition guidance. They were operating within household systems that constrained their ability to act on it.\n\nMothers-in-law made feeding decisions. Husbands controlled household resources. Standard awareness campaigns had already failed. What was needed was an approach that designed for the full ecosystem of influence around the mother \u2014 not just the mother herself.",
       quote: {
-        text: "Stunting is not merely a nutrition problem - it is a behaviour problem, rooted in social norms, household power dynamics, and the absence of enabling environments for change.",
+        text: "Stunting is not merely a nutrition problem. It is a behaviour problem, rooted in social norms, household power dynamics, and the absence of enabling conditions for change.",
       },
     },
     strategy: {
-      heading: "The Strategy",
-      intro: "The programme strategy was built on one foundational commitment: go deep before going wide. White Rice began with a significant investment in formative and design research - not as a procedural box to check, but as the primary design input.",
+      heading: "The <em>Strategy</em>",
+      intro: "The programme began with a significant investment in formative and design research \u2014 mapping the behavioural landscape across all three districts before a single session was designed. Research focused on understanding not just what behaviours needed to change, but who influenced them and in what context change was possible.",
       steps: [
-        { number: "01", title: "Formative Research", description: "In-depth qualitative research across all three districts to map the behavioural landscape - social norms, household dynamics, trusted voices, and the communication touchpoints where change was most likely to occur." },
-        { number: "02", title: "Influence the Ecosystem", description: "Design for the mother-in-law, the husband, and the community simultaneously - not sequentially. Targeting mothers alone was insufficient; the mother-in-law was often the primary decision-maker on feeding practices." },
-        { number: "03", title: "Social Norming", description: "Make the desired behaviour feel socially normal and achievable. Positive deviance identification and demonstration-based learning were prioritised over didactic instruction." },
-        { number: "04", title: "Build a Change System", description: "Sustainable behaviour change requires ongoing support structures - trained frontline workers, household visits, community nudges, and peer reinforcement - not a single intervention event." },
+        { number: "01", title: "Design for the Ecosystem, Not Just the Individual", description: "Target the mother-in-law and husband alongside the mother. Without their buy-in, individual behaviour change collapses at the household door." },
+        { number: "02", title: "Make Change Feel Normal and Achievable", description: "Social norming, positive deviance, and demonstration-based learning \u2014 not didactic instruction. People adopt behaviours they see modelled by people like them." },
+        { number: "03", title: "Build a System, Not a Campaign", description: "Trained frontline workers, household visits, community nudges, and peer reinforcement \u2014 structured support that outlasts any single intervention event." },
       ],
     },
     work: {
-      heading: "The Intervention",
-      body: "At the heart of the programme was a bespoke behaviour change model - Kahani Asani Adehani (Story, Ease, Habit) - developed by White Rice through contextualisation and co-design. The model adapted internationally recognised SBC frameworks into a culturally grounded methodology suited to rural Sindh, built around three levers: narrative storytelling to make new behaviours emotionally compelling, removing barriers to make the desired behaviour the path of least resistance, and repetition with community reinforcement to lock in new practices over time.",
+      heading: "The <em>Intervention</em>",
+      body: "At the heart of the programme was Kahani Asani Adehani \u2014 \u201cStory, Ease, Habit\u201d \u2014 a bespoke behaviour change model developed by White Rice through contextualisation of international SBC frameworks (BGFOG, BMAP) into a methodology suited to rural Sindh. It operated on three levers: making new behaviours emotionally compelling through narrative, removing barriers through ease, and locking in practice through habit reinforcement.\n\nGroup sessions were designed to bring mothers and mothers-in-law into the same room \u2014 a deliberate choice that created shared understanding rather than splitting the intervention by generation. Household visits by trained frontline workers addressed barriers where they actually lived: in the home, in real time, without the distance of a clinic or a community hall.\n\nThroughout the 12-week pilot, White Rice ran a real-time monitoring system \u2014 surfacing implementation challenges as they emerged, not in a retrospective report \u2014 allowing continuous course-correction and quality improvement in the field.",
       deliverables: [
-        "Kahani Asani Adehani SBC Model",
-        "2,000+ Frontline Workers Trained",
-        "Group Sessions & Community Dialogues",
-        "Household Visit Programme",
+        "Group Sessions (Mothers & Mothers-in-Law)",
+        "Household Visits by FLWs",
         "Emotional Demonstrations (Emo-Demos)",
-        "Community-Based Nudges & Reminders",
-        "Real-Time Monitoring System",
-        "Positive Deviant Identification",
+        "Community-Based Nudges",
+        "Positive Deviance Identification",
+        "2,000+ FLW Training Programme",
+        "Real-Time Monitoring",
+        "12-Week Pilot Rollout",
       ],
+      quote: "We didn\u2019t tell mothers what to do. We created the conditions in which doing it felt possible, normal, and worth the effort.",
     },
     impact: {
-      heading: "Impact",
-      body: "Eight months after the intervention concluded, White Rice deployed the Most Significant Change (MSC) technique - a participatory qualitative evaluation - to assess what had genuinely shifted. 11,000 mothers were convened in story circles across all three districts, one of the largest qualitative follow-up evaluations of its kind in Pakistan.",
+      heading: "The <em>Impact</em>",
+      body: "Eight months after the intervention, White Rice returned with the Most Significant Change (MSC) technique \u2014 a participatory qualitative evaluation in which 11,000 mothers were convened in story circles to share what had genuinely shifted in their lives. This was one of the largest qualitative follow-up evaluations of its kind conducted in Pakistan.",
       metrics: [
         { value: 90, suffix: "%", label: "Behaviour Adoption Rate" },
         { value: 26000, suffix: "+", label: "Mothers Directly Reached" },
         { value: 100000, suffix: "+", label: "Community Members Influenced" },
         { value: 2000, suffix: "+", label: "Frontline Workers Trained" },
       ],
-      quote: { text: "We didn't tell mothers what to do. We created the conditions in which doing it felt possible, normal, and worth the effort.", attribution: "White Rice Programme Team" },
-      closingNote: "The programme model was formally adopted by the Sindh government as a cornerstone of their provincial stunting strategy - and subsequently replicated and scaled across additional districts.",
+      closingNote: "Government adoption is the programme\u2019s most durable measure of success \u2014 it signals that the model was not just effective, but replicable and ownable. Delivered over a decade ago, under significant resource constraints, it remains a landmark in evidence-based, community-driven SBC design in Pakistan.",
     },
     gallery: {
       heading: "Gallery",
@@ -1778,18 +2049,128 @@ export const caseStudies: CaseStudyData[] = [
   /* 12 ─ Spring Accelerator / USAID */
   {
     slug: "spring-program",
-    year: "2015 - 2017",
+    year: "2015 \u2013 2017",
     tags: ["Startup Acceleration", "Human-Centred Design", "Girls 10\u201319", "EdTech", "STEM", "Prototyping", "User Testing", "USAID", "4-Country Programme", "Pakistan", "SDG 4", "SDG 5"],
+
+    /* ── V2 Theme (ocean / coral from HTML) ── */
+    theme: {
+      primary: "#1A5A7A",
+      primaryLight: "#4A9ABA",
+      accent: "#C45A2A",
+      accentLight: "#E88A5A",
+    },
+
+    /* ── Hero ── */
+    hero: {
+      eyebrow: "Spring Accelerator \u00b7 Pakistan \u00b7 Girls 10\u201319",
+      title: "Designing for<br><em>Girls.</em><br>Building for Scale.",
+      subtitle: "Spring Accelerator \u2014 Human-Centred Design for Girls-Focused Startups",
+      description: "A four-country USAID-funded accelerator programme \u2014 where White Rice led Pakistan\u2019s cohort of seven startups through deep human-centred design research, user testing, and value proposition development, helping ventures targeting girls aged 10\u201319 become genuinely user-ready.",
+      meta: [
+        { label: "Funder", value: "USAID" },
+        { label: "Consortium Partner", value: "Proportion (Netherlands)" },
+        { label: "Countries", value: "Pakistan \u00b7 Nepal \u00b7 Kenya \u00b7 Tanzania" },
+        { label: "White Rice Role", value: "HCD Research & Design Partner \u00b7 Pakistan Lead" },
+      ],
+    },
+
+    /* ── Role Band ── */
+    role: {
+      heading: "HCD Research, Prototyping & <em>Startup Design Partner</em>",
+      body: "White Rice served as the human-centred design partner for Spring Accelerator\u2019s Pakistan cohort \u2014 working directly alongside seven startups to map user journeys, prototype solutions, conduct live user testing, and sharpen value propositions for products and services targeting girls aged 10 to 19. As part of a four-country global consortium led by Proportion Netherlands, we also contributed to cross-country learning exchanges, including a team visit to Nepal for methodology sharing and cohort showcasing.",
+      services: ["User Journey Mapping", "Co-Creation with End Users", "Prototype Development", "Live User Testing", "Mockup & Demo Design", "Value Proposition Development", "Iterative Design Cycles", "Cross-Country Knowledge Exchange"],
+    },
+
+    /* ── Four Countries Band ── */
+    fourCountries: {
+      label: "Global Consortium \u00b7 Four Countries \u00b7 One Mission",
+      cards: [
+        { flag: "\ud83c\uddf5\ud83c\uddf0", name: "Pakistan", role: "White Rice as HCD Partner \u00b7 7 startups \u00b7 Led by White Rice", highlighted: true },
+        { flag: "\ud83c\uddf3\ud83c\uddf5", name: "Nepal", role: "Cross-learning hub \u00b7 White Rice team visited for methodology training and cohort showcase" },
+        { flag: "\ud83c\uddf0\ud83c\uddea", name: "Kenya", role: "Parallel cohort \u00b7 Regional insights fed into cross-country programme learning" },
+        { flag: "\ud83c\uddf9\ud83c\uddff", name: "Tanzania", role: "Parallel cohort \u00b7 East Africa programme partner within the USAID consortium" },
+      ],
+    },
+
+    /* ── Outcomes ── */
+    outcomes: {
+      cards: [
+        { stat: "7 Startups", description: "Pakistan cohort supported through the full HCD cycle \u2014 research, prototyping, user testing, iteration, and value proposition development." },
+        { stat: "4 Countries", description: "A global consortium spanning Pakistan, Nepal, Kenya, and Tanzania \u2014 with cross-learning, shared methodology, and joint cohort showcasing." },
+        { stat: "Girls 10\u201319", description: "Every startup in the cohort targeted adolescent girls as their primary end user \u2014 with HCD ensuring the product actually fitted the girl, not the other way around." },
+        { stat: "User-Ready", description: "Startups exited the programme with tested, iterated products \u2014 not just ideas \u2014 backed by real user insights and validated value propositions." },
+        { stat: "Credible Ventures", description: "Several cohort startups \u2014 including EDCASA, Sabak, and LearnerBots \u2014 went on to become credible, operating organisations in Pakistan\u2019s education and girls\u2019 empowerment sector." },
+      ],
+      watermark: "SPRING",
+    },
+
+    /* ── Divider ── */
+    divider: {
+      stat: "7 startups. 1 audience. Real girls.",
+      text: "The common thread across every startup in the Pakistan cohort was a product or service aimed at adolescent girls \u2014 but designed largely without them. White Rice\u2019s role was to close that gap: to bring the actual end users into the design process so that by the time a startup pitched its value proposition, it was built on what girls genuinely needed, not what founders assumed they did.",
+    },
+
+    /* ── HCD Process Band ── */
+    hcdProcess: {
+      eyebrow: "The HCD Methodology \u00b7 Applied to Startup Acceleration",
+      heading: "From prototype to <em>proven value proposition</em> \u2014 in five stages.",
+      steps: [
+        { num: "Stage 1", title: "User Journey Mapping", body: "Map how target girls actually experienced the problem \u2014 context, barriers, touchpoints, motivations" },
+        { num: "Stage 2", title: "Co-Creation with Users", body: "Girls participate directly in solution design \u2014 not just as testers but as active contributors to the product concept" },
+        { num: "Stage 3", title: "Prototype & Mockup Testing", body: "Live demos and mock-ups tested with actual end users \u2014 capturing what works, what confuses, what\u2019s missing" },
+        { num: "Stage 4", title: "Iteration & Refinement", body: "Multiple design cycles \u2014 applying insights from each testing round to sharpen product-user fit before the next" },
+        { num: "Stage 5", title: "Value Proposition Pitch", body: "A verified, user-grounded value proposition \u2014 the output of the full HCD cycle, ready for investor and stakeholder presentation" },
+      ],
+    },
+
+    /* ── Startups Band ── */
+    startups: {
+      eyebrow: "Pakistan Cohort \u00b7 Selected Startups",
+      heading: "Seven ventures. One audience.<br><em>Designed around girls who are still using them today.</em>",
+      cards: [
+        { sector: "EdTech \u00b7 Higher Education", name: "EDCASA", body: "Developing high-quality educational content for higher education students \u2014 with HCD work focused on understanding how girls navigated academic content access and what made digital learning feel credible and usable for them.", tags: ["Higher Education", "Digital Learning", "Girls"] },
+        { sector: "EdTech \u00b7 Primary & Secondary", name: "Sabak", body: "Educational content platform for primary and secondary school students \u2014 HCD work mapped the learning journey of out-of-school and in-school girls to ensure content was relevant to both, not just the formally enrolled.", tags: ["Primary School", "Secondary School", "Content"] },
+        { sector: "STEM Education \u00b7 Girls & Robotics", name: "LearnerBots", body: "A robotics institution encouraging STEM education for children and girls in particular \u2014 HCD work addressed the specific barriers that made robotics feel inaccessible to girls and the design changes that would make it feel like it belonged to them.", tags: ["STEM", "Robotics", "Girls in Tech"] },
+      ],
+      note: "EDCASA, Sabak, and LearnerBots represent a selection of the seven-startup Pakistan cohort. Several ventures from the Spring Accelerator programme went on to become credible, operating organisations \u2014 carrying the insights from their HCD work into their ongoing product development and user engagement.",
+    },
+
+    /* ── Nepal Exchange Band ── */
+    nepalExchange: {
+      eyebrow: "Global Learning Exchange",
+      heading: "Learning across <em>borders.</em>",
+      stat: "Pakistan \u2194 Nepal",
+      body: "One of the programme\u2019s distinctive features was its global architecture. As part of the four-country consortium, White Rice\u2019s team travelled to Nepal for two structured cross-learning exchanges \u2014 connecting the Pakistan cohort with teams and startups from other programme countries.",
+      phases: [
+        { num: "1", text: "<strong>Methodology Training Phase</strong> \u2014 White Rice team trained in Nepal on specific HCD research methodologies being applied across the global programme, ensuring consistency of approach while preserving country-specific contextualisation." },
+        { num: "2", text: "<strong>Cohort Showcase Phase</strong> \u2014 Pakistan\u2019s startups presented to a larger international cohort \u2014 giving ventures exposure beyond the domestic market and allowing cross-country peer learning on product development and user research approaches." },
+      ],
+    },
+
+    /* ── Closing ── */
+    closing: {
+      heading: "A product for girls<br>has to be designed<br><em>by them.</em>",
+      body: "Spring Accelerator Pakistan proved that human-centred design is not a luxury add-on for startup development \u2014 it is the difference between a product that works and one that doesn\u2019t. Seven ventures went in with prototypes. They came out with something girls actually wanted.",
+    },
+
+    /* ── Impact Cells ── */
+    impactCells: [
+      { big: "7 Startups", desc: "Pakistan cohort taken through the full HCD cycle \u2014 user research, co-creation, prototype testing, iteration, and value proposition development." },
+      { big: "4 Countries", desc: "A global consortium \u2014 Pakistan\u2019s learning fed into a shared methodology across Nepal, Kenya, and Tanzania, and vice versa." },
+      { big: "Lasting Ventures", desc: "EDCASA, Sabak, and LearnerBots among the ventures that went on to operate as credible organisations \u2014 carrying HCD principles into their ongoing work." },
+      { big: "Girls at the Centre", desc: "Every product decision in every cohort startup was tested with the girls it was supposed to serve \u2014 ensuring that \u201cdesigned for girls\u201d was not a marketing claim but a verifiable design fact." },
+    ],
+
     challenge: {
-      heading: "The Challenge",
+      heading: "The <em>Challenge</em>",
       body: "The startups entering the Spring Accelerator cohort were not short on ambition or potential. Many had initial prototypes and a clear sense of the problem they were trying to solve. What they often lacked was the deep, contextual understanding of their actual end users \u2014 adolescent girls aged 10 to 19 in Pakistan \u2014 that would determine whether their product succeeded or failed at the point of adoption.\n\nThe challenge for White Rice was to compress the user research and iteration cycle that most startups take years to complete into a structured, supported programme \u2014 while simultaneously operating as part of a four-country global consortium with shared methodology, cross-learning obligations, and international showcasing requirements.\n\nThe diversity of the cohort added its own complexity: startups working in formal education technology sat alongside those developing vocational content, STEM tools, and digital platforms \u2014 each requiring different user research approaches and different types of prototype testing. White Rice had to be a credible design partner for all of them.",
       quote: {
         text: "A prototype built for a girl you imagine is very different from a product built for a girl you have actually sat with, listened to, and watched try to use what you've made.",
       },
     },
     strategy: {
-      heading: "The Strategy",
-      intro: "White Rice's approach was grounded in human-centred design methodology \u2014 applied not as a theoretical framework, but as a practical, iterative process that startups could experience alongside their users in real time. The process was designed to move fast and iterate often.",
+      heading: "The <em>Strategy</em>",
+      intro: "White Rice\u2019s approach was grounded in human-centred design methodology \u2014 applied not as a theoretical framework, but as a practical, iterative process that startups could experience alongside their users in real time. The process was designed to move fast and iterate often.",
       steps: [
         { number: "01", title: "Start with the User, Not the Product", description: "User journey mapping before any prototype refinement \u2014 understanding how a girl actually moved through the problem space, not how founders assumed she did." },
         { number: "02", title: "Prototype, Test, Repeat", description: "Multiple rounds of prototyping and testing with actual users \u2014 mock-ups, live demos, and in-context observation \u2014 so that each iteration was grounded in real feedback rather than internal assumption." },
@@ -1812,13 +2193,13 @@ export const caseStudies: CaseStudyData[] = [
       ],
     },
     impact: {
-      heading: "The Impact",
-      body: "The most durable measure of the Spring Accelerator's success in Pakistan is the cohort itself. Startups that entered the programme with early-stage prototypes exited with user-validated products, tested value propositions, and the research infrastructure to continue iterating. Several \u2014 including EDCASA, Sabak, and LearnerBots \u2014 became credible operating organisations that are still active today.",
+      heading: "The <em>Impact</em>",
+      body: "The most durable measure of the Spring Accelerator\u2019s success in Pakistan is the cohort itself. Startups that entered the programme with early-stage prototypes exited with user-validated products, tested value propositions, and the research infrastructure to continue iterating. Several \u2014 including EDCASA, Sabak, and LearnerBots \u2014 became credible operating organisations that are still active today.",
       metrics: [
-        { value: 7, suffix: "", label: "Pakistan cohort taken through the full HCD cycle \u2014 user research, co-creation, prototype testing, iteration, and value proposition development." },
-        { value: 4, suffix: "", label: "A global consortium \u2014 Pakistan's learning fed into a shared methodology across Nepal, Kenya, and Tanzania, and vice versa." },
-        { value: 3, suffix: "+", label: "EDCASA, Sabak, and LearnerBots among the ventures that went on to operate as credible organisations \u2014 carrying HCD principles into their ongoing work." },
-        { value: 1, suffix: "", label: "Cross-country learning exchange \u2014 White Rice team visited Nepal for methodology training and cohort showcasing." },
+        { value: 7, suffix: " Startups", label: "Pakistan cohort taken through the full HCD cycle" },
+        { value: 4, suffix: " Countries", label: "Global consortium with shared methodology" },
+        { value: 3, suffix: "+", label: "Ventures that became credible operating organisations" },
+        { value: 1, suffix: "", label: "Cross-country learning exchange in Nepal" },
       ],
       closingNote: "Spring Accelerator Pakistan proved that human-centred design is not a luxury add-on for startup development \u2014 it is the difference between a product that works and one that doesn't. Seven ventures went in with prototypes. They came out with something girls actually wanted.",
     },
@@ -1835,28 +2216,139 @@ export const caseStudies: CaseStudyData[] = [
   /* 13 ─ Empowering Youth for Work / Oxfam IKEA HCD */
   {
     slug: "oxfam-ikea-hcd",
-    year: "2018 - 2020",
+    year: "2018 \u2013 2020",
     tags: ["Youth Empowerment", "Human-Centred Design", "Innovation Hubs", "Oxfam", "IKEA Foundation", "Entrepreneurship", "Agri-Tech", "Employability", "Punjab", "Sindh", "Climate-Affected Communities", "4-Country Programme", "SDG 8", "SDG 13"],
+
+    /* ── V2 Theme (amber / forest from HTML) ── */
+    theme: {
+      primary: "#2A4A2A",
+      primaryLight: "#4A7A4A",
+      accent: "#C4821A",
+      accentLight: "#E8B45A",
+    },
+    hero: {
+      eyebrow: "Youth Empowerment for Work \u00b7 18 Months \u00b7 5-Year Programme Design",
+      title: "Designed<br>before it was<br><em>built.</em>",
+      subtitle: "Empowering Youth for Work \u2014 Oxfam\u2019s Flagship Human-Centred Design Journey",
+      description: "An 18-month HCD consulting engagement \u2014 the longest in White Rice\u2019s history \u2014 in which we compressed a 5-year programme into a living design laboratory: empathising, prototyping, failing productively, and iterating until Oxfam had something genuinely built for the youth it was trying to reach.",
+      meta: [
+        { label: "Client", value: "Oxfam Pakistan" },
+        { label: "Funder", value: "IKEA Foundation" },
+        { label: "Duration", value: "18 Months HCD \u00b7 5-Year Programme" },
+        { label: "White Rice Role", value: "HCD Design Partner \u2014 Strategy to Prototype" },
+      ],
+    },
+    role: {
+      heading: "End-to-End HCD Partner \u2014 <em>18 Months of Designed Learning</em>",
+      body: "White Rice served as Oxfam\u2019s human-centred design partner for the full 18-month design and prototyping phase of their IKEA-funded Youth Empowerment for Work programme \u2014 one of the most rigorous and sustained HCD engagements in Pakistan\u2019s development sector. Our role was not just to research, but to embed design thinking across Oxfam\u2019s implementing partner network: running quarterly workshops, facilitating live prototyping cycles, and guiding field teams through the iterative process of learning, failing, and redesigning until the programme was genuinely ready to scale.",
+      services: [
+        "HCD Strategy & Facilitation",
+        "Quarterly Design Workshops",
+        "Empathy & Field Research",
+        "Challenge Definition",
+        "Ideation & Co-Creation",
+        "Prototyping",
+        "Live User Testing",
+        "Iteration & Programme Refinement",
+        "Innovation Hub Design",
+        "Implementing Partner Capacity Building",
+      ],
+    },
+    outcomes: {
+      cards: [
+        { stat: "18 Months", description: "The longest single HCD consulting engagement White Rice has undertaken \u2014 compressing a 5-year programme into an 18-month design, test, and adapt cycle before scale." },
+        { stat: "10,000+", description: "Young entrepreneurs and youth enabled in semi-urban and rural communities across climate-affected areas of Punjab and Sindh." },
+        { stat: "2 Innovation Hubs", description: "Flagship youth innovation hubs established \u2014 one in Punjab, one in Sindh \u2014 offering customised programmes for entrepreneurs, agri-tech youth, and employability tracks." },
+        { stat: "4 Countries", description: "Pakistan was one of four countries running the programme simultaneously \u2014 with cross-country learning feeding into programme refinement across the entire global initiative." },
+        { stat: "Quarterly Cycles", description: "Six design sprints over 18 months \u2014 each one building on the last, moving through empathy, definition, ideation, prototyping, and testing in a live programme context." },
+      ],
+      watermark: "18 Months",
+    },
+
+    /* ── Custom Band 1: 18-Month Timeline ── */
+    timeline: {
+      eyebrow: "The 18-Month Design Journey",
+      heading: "Every quarter, a new <em>design sprint.</em><br>Every sprint, a better programme.",
+      items: [
+        { phase: "Months 1\u20133 \u00b7 Sprint 1", title: "Empathy \u2014 Understanding the Youth", body: "Immersive field research with young people in climate-affected areas of Punjab and Sindh. Understanding their relationship with work, aspiration, barriers, and the economic realities shaping their choices. Implementing partners trained in empathy methods and deployed with field guides." },
+        { phase: "Months 4\u20136 \u00b7 Sprint 2", title: "Define \u2014 Reframing the Challenge", body: "Cross-partner workshops to synthesise field insights and reframe the core challenge. What did \u201Cyouth empowerment for work\u201D actually mean for a young woman in Rajanpur versus a young man in Karachi\u2019s peri-urban fringe? The programme\u2019s assumptions were stress-tested against the evidence." },
+        { phase: "Months 7\u20139 \u00b7 Sprint 3", title: "Ideate \u2014 Co-Creating Solutions", body: "Facilitated ideation workshops with implementing partners and youth co-designers. Multiple programme concepts generated \u2014 including the innovation hub model, differentiated youth pathways, and agri-tech integration \u2014 with rapid filtering against real-world feasibility and community fit." },
+        { phase: "Months 10\u201312 \u00b7 Sprint 4", title: "Prototype \u2014 Building to Learn", body: "First live prototypes deployed in communities. Not polished \u2014 deliberately rough, designed to generate learning. Innovation hub concepts tested at small scale. Youth pathway programmes piloted with real cohorts. Implementing partners embedded in the testing process as co-observers." },
+        { phase: "Months 13\u201315 \u00b7 Sprint 5", title: "Test & Learn \u2014 What Worked, What Didn\u2019t", body: "Rigorous feedback capture across all prototype sites. Structured failure analysis \u2014 not to assign blame, but to understand mechanism. What assumptions were wrong? Which user segments responded differently? What programme adjustments were required before scale? Partners returned to refine." },
+        { phase: "Months 16\u201318 \u00b7 Sprint 6", title: "Adapt & Scale \u2014 A Programme Ready to Deploy", body: "Final programme design \u2014 region-specific, evidence-grounded, and co-created with the communities it was built for. Innovation hubs formally established in Punjab and Sindh. Implementing partners equipped with tools, training, and programme frameworks to drive the 5-year rollout with confidence." },
+      ],
+    },
+
+    /* ── Divider ── */
+    divider: {
+      stat: "18 months<br>to get it<br>right.",
+      text: "The conventional development model is: research the baseline, write the programme, fund the implementation. White Rice and Oxfam did something different. For 18 months, they treated the programme itself as a prototype \u2014 running it, breaking it, learning from it, and redesigning it \u2014 before committing to scale. That is why 10,000 young people were reached by something that genuinely worked, not something that sounded good in a proposal.",
+    },
+
+    /* ── Custom Band 2: Design Thinking Cycle ── */
+    designCycle: {
+      eyebrow: "The Design Thinking Framework \u00b7 Applied Every Quarter",
+      heading: "Five stages. Six rounds.<br><em>Eighteen months of designed programme intelligence.</em>",
+      cards: [
+        { name: "Empathise", body: "Deep field immersion \u2014 understanding youth lives, aspirations, and barriers as they actually are" },
+        { name: "Define", body: "Reframe the challenge from the evidence \u2014 not the assumption that was written in the original proposal" },
+        { name: "Ideate", body: "Co-create solutions with partners and communities \u2014 generating range before narrowing to what is feasible and relevant" },
+        { name: "Prototype", body: "Build rough versions of the programme \u2014 deliberately imperfect, designed to generate real feedback from real communities" },
+        { name: "Test & Iterate", body: "Learn from what the prototype revealed \u2014 document failure, adapt the design, and return to the field with something better" },
+      ],
+      note: "<strong>The key innovation:</strong> This cycle ran not once, but six times over 18 months \u2014 with each round building on the evidence of the last. Implementing partners participated in every workshop, carrying the learnings back to their field teams and returning with real observations from the next testing round. This is what genuine programme co-design looks like.",
+    },
+
+    /* ── Custom Band 3: Innovation Hubs ── */
+    innovationHubs: {
+      eyebrow: "The Programme Output \u00b7 Innovation Hubs & Youth Pathways",
+      heading: "Two hubs. Three pathways.<br><em>One bespoke programme per region.</em>",
+      intro: "The 18-month HCD process produced two flagship innovation hubs \u2014 one in Punjab, one in Sindh \u2014 each designed around the specific economic context, labour market, and youth profile of its region. Within each hub, three differentiated pathways served different types of young people, rather than expecting one model to fit all.",
+      hubs: [
+        { province: "Innovation Hub \u00b7 Punjab", name: "Punjab Hub", desc: "Serving semi-urban and rural youth in climate-affected districts of Punjab \u2014 with a particular focus on agricultural livelihood diversification, agri-tech integration, and connecting youth to Punjab\u2019s growing light manufacturing and services markets.", context: "Climate-affected region \u00b7 Agricultural economy \u00b7 Strong male youth participation" },
+        { province: "Innovation Hub \u00b7 Sindh", name: "Sindh Hub", desc: "Serving peri-urban and rural youth in Sindh \u2014 with emphasis on women\u2019s economic participation, skills for the digital economy, and enterprise development adapted to Sindh\u2019s specific market conditions and mobility constraints for girls.", context: "Climate-affected region \u00b7 Peri-urban economy \u00b7 Focus on women\u2019s economic participation" },
+      ],
+      pathwaysHeading: "Three Youth Pathways \u2014 Designed from Evidence, Not Assumption",
+      pathways: [
+        { label: "Pathway 1", title: "Entrepreneurs", body: "Young people pursuing their own ventures \u2014 supported through business ideation, market access, seed financing literacy, and peer learning networks within the hub ecosystem." },
+        { label: "Pathway 2", title: "Agri-Tech Youth", body: "Young farmers and agricultural workers learning to integrate technology into their practices \u2014 bringing precision agriculture, mobile tools, and market connectivity to communities whose livelihoods depend on a changing climate." },
+        { label: "Pathway 3", title: "Employability", body: "Youth seeking employment in skilled markets \u2014 equipped with market-relevant skills, soft skills, job-readiness training, and direct linkages to employers in sectors identified through the HCD research as offering genuine, accessible opportunity." },
+      ],
+    },
+
+    /* ── Custom Band 4: Methodology Difference ── */
+    methodologyDiff: {
+      eyebrow: "The Methodology Difference",
+      heading: "Not how development programmes are usually <em>designed.</em>",
+      intro: "What made this engagement singular in Pakistan\u2019s development sector was the commitment to design before scale \u2014 not as a principle, but as an 18-month practice. Most programmes don\u2019t work this way. White Rice\u2019s role was to make sure this one did.",
+      rows: [
+        { conventional: "Baseline research \u2192 programme design \u2192 implement at scale", oxfam: "Empathy \u2192 define \u2192 ideate \u2192 prototype \u2192 test \u2192 iterate \u2014 six times over 18 months \u2014 before scale" },
+        { conventional: "Programme assumptions embedded at the start and rarely revisited", oxfam: "Assumptions actively challenged every quarter \u2014 with field evidence as the arbiter" },
+        { conventional: "Implementing partners execute a pre-designed programme", oxfam: "Implementing partners trained as designers \u2014 and co-created every iteration" },
+        { conventional: "One national programme model deployed uniformly", oxfam: "Two bespoke regional programmes \u2014 Punjab and Sindh \u2014 each shaped by its own evidence base" },
+      ],
+    },
+
     challenge: {
-      heading: "The Challenge",
-      body: "Youth unemployment and underemployment in Pakistan's semi-urban and rural areas \u2014 particularly in climate-affected regions of Punjab and Sindh \u2014 is not a simple skills gap problem. It is a system of interconnected barriers: limited market access, weak connectivity between skills supply and employer demand, entrenched gender norms restricting girls' economic participation, climate disruption undermining agricultural livelihoods, and programme designs that rarely reflect the actual lives of the young people they target.\n\nOxfam and the IKEA Foundation had the ambition and the funding for a 5-year programme to change this. What they needed was the confidence that the programme design was actually right before deploying it at scale. That confidence could only come from one source: real evidence from the communities it was built to serve.\n\nThe added complexity was the parallel nature of the programme \u2014 running simultaneously in four countries, each with its own context, partner network, and implementation challenges. White Rice had to operate as a rigorous, facilitated design partner while contributing to a shared methodology and global learning ecosystem.",
+      heading: "The <em>Challenge</em>",
+      body: "Youth unemployment and underemployment in Pakistan\u2019s semi-urban and rural areas \u2014 particularly in climate-affected regions of Punjab and Sindh \u2014 is not a simple skills gap problem. It is a system of interconnected barriers: limited market access, weak connectivity between skills supply and employer demand, entrenched gender norms restricting girls\u2019 economic participation, climate disruption undermining agricultural livelihoods, and programme designs that rarely reflect the actual lives of the young people they target.\n\nOxfam and the IKEA Foundation had the ambition and the funding for a 5-year programme to change this. What they needed was the confidence that the programme design was actually right before deploying it at scale. That confidence could only come from one source: real evidence from the communities it was built to serve.\n\nThe added complexity was the parallel nature of the programme \u2014 running simultaneously in four countries, each with its own context, partner network, and implementation challenges. White Rice had to operate as a rigorous, facilitated design partner while contributing to a shared methodology and global learning ecosystem.",
       quote: {
-        text: "Every programme that had tried to empower these youth before had been designed for them, not with them. White Rice's task was to make that distinction matter.",
+        text: "Every programme that had tried to empower these youth before had been designed for them, not with them. White Rice\u2019s task was to make that distinction matter.",
       },
     },
     strategy: {
-      heading: "The Strategy",
-      intro: "White Rice's strategy was to treat the entire 5-year programme as something that needed to be designed before it was built. Rather than consulting, writing a framework, and handing it over, White Rice embedded itself in Oxfam's implementation process \u2014 running quarterly workshops that moved through the full design thinking arc, and returning every three months to review what the field had taught, what needed to change, and how to improve.",
+      heading: "The <em>Strategy</em>",
+      intro: "White Rice\u2019s strategy was to treat the entire 5-year programme as something that needed to be designed before it was built. Rather than consulting, writing a framework, and handing it over, White Rice embedded itself in Oxfam\u2019s implementation process \u2014 running quarterly workshops that moved through the full design thinking arc, and returning every three months to review what the field had taught, what needed to change, and how to improve.",
       steps: [
-        { number: "01", title: "Partners as Designers, Not Implementers", description: "Oxfam's implementing partners weren't handed a programme to execute \u2014 they were trained in design thinking and brought into each quarterly workshop as co-designers. Their field knowledge was the raw material for every sprint." },
-        { number: "02", title: "Productive Failure as Programme Intelligence", description: "Each prototype round was designed to fail instructively \u2014 surfacing the assumptions that were wrong before they were embedded at scale. The question was never \"did it work?\" but \"what did we learn that changes the design?\"" },
+        { number: "01", title: "Partners as Designers, Not Implementers", description: "Oxfam\u2019s implementing partners weren\u2019t handed a programme to execute \u2014 they were trained in design thinking and brought into each quarterly workshop as co-designers. Their field knowledge was the raw material for every sprint." },
+        { number: "02", title: "Productive Failure as Programme Intelligence", description: "Each prototype round was designed to fail instructively \u2014 surfacing the assumptions that were wrong before they were embedded at scale. The question was never \u201Cdid it work?\u201D but \u201Cwhat did we learn that changes the design?\u201D" },
         { number: "03", title: "Region-Specific Programme Design", description: "Punjab and Sindh have different economic ecologies, labour markets, and cultural contexts. The programme that emerged was not one national model \u2014 it was two region-specific designs, each grounded in the evidence from its own context." },
         { number: "04", title: "Scale Only When Ready", description: "The entire HCD phase was in service of one question: is this programme ready to deploy at the scale Oxfam and IKEA intended? The answer had to be earned \u2014 through iteration \u2014 not assumed from good intentions." },
       ],
     },
     work: {
-      heading: "The Intervention",
-      body: "White Rice served as Oxfam's human-centred design partner for the full 18-month design and prototyping phase of their IKEA-funded Youth Empowerment for Work programme \u2014 one of the most rigorous and sustained HCD engagements in Pakistan's development sector. Our role was not just to research, but to embed design thinking across Oxfam's implementing partner network: running quarterly workshops, facilitating live prototyping cycles, and guiding field teams through the iterative process of learning, failing, and redesigning until the programme was genuinely ready to scale.",
+      heading: "The <em>Intervention</em>",
+      body: "White Rice served as Oxfam\u2019s human-centred design partner for the full 18-month design and prototyping phase of their IKEA-funded Youth Empowerment for Work programme \u2014 one of the most rigorous and sustained HCD engagements in Pakistan\u2019s development sector. Our role was not just to research, but to embed design thinking across Oxfam\u2019s implementing partner network: running quarterly workshops, facilitating live prototyping cycles, and guiding field teams through the iterative process of learning, failing, and redesigning until the programme was genuinely ready to scale.",
       deliverables: [
         "HCD Strategy & Facilitation",
         "Quarterly Design Workshops",
@@ -1871,15 +2363,25 @@ export const caseStudies: CaseStudyData[] = [
       ],
     },
     impact: {
-      heading: "The Impact",
-      body: "The proof of the 18-month investment was in the programme's eventual reach and effectiveness. Over 10,000 young entrepreneurs and youth were enabled across semi-urban and rural communities in climate-affected areas of Punjab and Sindh. The programme was considered one of Oxfam's most successful youth economic empowerment interventions \u2014 and a significant part of that success was attributable to the rigour of the design process that preceded it.",
+      heading: "The <em>Impact</em>",
+      body: "The proof of the 18-month investment was in the programme\u2019s eventual reach and effectiveness. Over 10,000 young entrepreneurs and youth were enabled across semi-urban and rural communities in climate-affected areas of Punjab and Sindh. The programme was considered one of Oxfam\u2019s most successful youth economic empowerment interventions \u2014 and a significant part of that success was attributable to the rigour of the design process that preceded it.",
       metrics: [
         { value: 10000, suffix: "+", label: "Young people \u2014 entrepreneurs, agri-tech youth, and job seekers \u2014 reached across semi-urban and rural communities in climate-affected Punjab and Sindh." },
         { value: 2, suffix: "", label: "Innovation hubs established \u2014 one per province \u2014 each offering region-specific programmes for three distinct youth pathways, designed from evidence not assumption." },
         { value: 6, suffix: "", label: "Six quarterly design cycles \u2014 each one compressing a phase of the 5-year programme into a real-world prototype, testing it with actual youth, and learning before scaling." },
         { value: 18, suffix: "", label: "Months of HCD engagement \u2014 the longest single HCD consulting engagement White Rice has undertaken." },
       ],
-      closingNote: "Eighteen months. Six design cycles. Countless iterations. And then a 5-year programme that worked \u2014 because it had already been run, tested, broken, and rebuilt before it was ever deployed at scale. That is what human-centred design looks like when an organisation has the courage to use it fully.",
+      closingNote: "This project has not been done before in this way, because the development sector rarely allows the time or budget to genuinely interrogate a programme before deploying it. Oxfam and IKEA Foundation made a different bet. White Rice helped them win it.",
+    },
+    impactCells: [
+      { big: "10,000+", desc: "Young people \u2014 entrepreneurs, agri-tech youth, and job seekers \u2014 reached across semi-urban and rural communities in climate-affected Punjab and Sindh." },
+      { big: "2 Hubs", desc: "Innovation hubs established \u2014 one per province \u2014 each offering region-specific programmes for three distinct youth pathways, designed from evidence not assumption." },
+      { big: "6 Sprints", desc: "Six quarterly design cycles \u2014 each one compressing a phase of the 5-year programme into a real-world prototype, testing it with actual youth, and learning before scaling." },
+      { big: "A Replicable Model", desc: "The HCD methodology White Rice developed for Oxfam became a replicable model \u2014 proving that sustained design investment before programme scale is not a luxury, but the most cost-effective path to impact." },
+    ],
+    closing: {
+      heading: "The best programmes<br>are the ones that<br><em>fail first.</em>",
+      body: "Eighteen months. Six design cycles. Countless iterations. And then a 5-year programme that worked \u2014 because it had already been run, tested, broken, and rebuilt before it was ever deployed at scale. That is what human-centred design looks like when an organisation has the courage to use it fully.",
     },
     gallery: {
       heading: "Gallery",
@@ -1973,58 +2475,164 @@ export const caseStudies: CaseStudyData[] = [
   /* 15 ─ Johns Hopkins CCP FLW Animation */
   {
     slug: "johns-hopkins-animation",
-    year: "2019 - 2021",
+    year: "2019 \u2013 2021",
     tags: ["Johns Hopkins CCP", "Frontline Worker Training", "Animation Series", "Global Health", "Immunization", "Vaccination", "250,000 FLWs", "4 Languages", "Africa", "Asia", "Gulf", "Western Europe", "UNICEF", "Mobile-First", "Scenario-Based Learning", "SBC"],
+
+    /* ── V2 Theme (teal / coral from HTML) ── */
+    theme: {
+      primary: "#0D6B6B",
+      primaryLight: "#3AACAC",
+      accent: "#C45A2A",
+      accentLight: "#E07A4A",
+    },
+
+    /* ── Hero ── */
+    hero: {
+      eyebrow: "Johns Hopkins CCP \u00b7 Global Immunization Initiative",
+      title: "The Last<br><em>Mile.</em>",
+      subtitle: "A 6-Part Global Animation Series for 250,000 Frontline Immunization Workers \u2014 Africa \u00b7 Asia \u00b7 Gulf \u00b7 Europe",
+      description: "Johns Hopkins Center for Communication Programs commissioned White Rice to create a globally deployable, culturally resonant training animation series for the world\u2019s frontline immunization workforce \u2014 people working at the last mile of healthcare, where vaccines reach the children who need them most.",
+      meta: [
+        { label: "Client", value: "Johns Hopkins CCP, USA" },
+        { label: "Programme", value: "Global FLW Immunization Training" },
+        { label: "Scale", value: "250,000 Frontline Workers \u00b7 4 Regions" },
+        { label: "White Rice Role", value: "Creative & Communication Design Lead" },
+      ],
+    },
+
+    /* ── Role Band ── */
+    role: {
+      heading: "Creative & Communication Design for a <em>Global Health System</em>",
+      body: "Johns Hopkins Center for Communication Programs \u2014 one of the world\u2019s leading health communication institutions \u2014 engaged White Rice as their creative partner and communication design firm for a landmark global initiative: building a comprehensive animation-based training package for frontline immunization workers spanning four continents. Our mandate was to conceive, design, and produce content that could work everywhere \u2014 culturally representative, scenario-grounded, and powerful enough to train, challenge, and equip health workers operating in radically different settings.",
+      services: ["Creative Strategy", "Communication Design", "Scenario Development", "6-Part Animation Series", "FLW Training Content", "4-Language Localisation", "Mobile-First Delivery", "Global Stakeholder Collaboration", "UNICEF Aligned Content"],
+    },
+
+    /* ── Outcomes ── */
+    outcomes: {
+      cards: [
+        { stat: "250,000", description: "Frontline immunization workers given access to and trained through the animation series \u2014 as part of Johns Hopkins CCP\u2019s global training package." },
+        { stat: "6 Episodes", description: "A complete scenario-based animation series \u2014 each episode targeting a distinct challenge situation frontline workers face in the field." },
+        { stat: "4 Languages", description: "Full localisation across four languages \u2014 ensuring the training content was accessible and culturally resonant in every deployment region." },
+        { stat: "4 Continents", description: "Deployed across Africa, Asia, the Gulf, and Western Europe \u2014 a single creative framework that holds meaning across radically different community and cultural contexts." },
+        { stat: "Mobile-First", description: "The series was converted into a hands-on mobile reference guide \u2014 giving health workers on-demand access to training content in the field, not only in classrooms." },
+      ],
+      watermark: "250K",
+    },
+
+    /* ── Regions Band (custom) ── */
+    regions: {
+      eyebrow: "Global Deployment \u00b7 One Framework, Four Worlds",
+      heading: "The same vaccine. The same child. <em>Four entirely different communities.</em>",
+      cards: [
+        { name: "Africa", sub: "Sub-Saharan \u00b7 Last-Mile Communities", body: "Rural and peri-urban communities where trust in health systems is hard-won, infrastructure is limited, and FLWs navigate significant cultural and logistical barriers to reach every child on their list.", color: "coral" },
+        { name: "Asia", sub: "South & Southeast Asia \u00b7 Dense & Dispersed", body: "From densely packed urban settlements to geographically remote villages \u2014 FLWs in South and Southeast Asia encounter everything from vaccine hesitancy among educated parents to access challenges in mountainous and flood-prone terrain.", color: "teal" },
+        { name: "Gulf", sub: "Middle East \u00b7 Migrant & Mixed Communities", body: "Complex multi-cultural and migrant community contexts where religious norms, language diversity, and community trust all shape FLW interactions in ways that demand specific cultural competency and communication sensitivity.", color: "gold" },
+        { name: "Europe", sub: "Western Europe \u00b7 Diaspora & Underserved", body: "Underserved migrant and diaspora communities where FLWs encounter vaccine misinformation, language barriers, and deep distrust of government health systems \u2014 requiring entirely different negotiation and communication strategies.", color: "blue" },
+      ],
+    },
+
+    /* ── Divider ── */
+    divider: {
+      stat: "250,000 workers. One child at a time.",
+      text: "Frontline immunization workers are the most important and least visible part of the global health system. They are the last person between a child and a preventable disease. They negotiate, reassure, educate, and persist \u2014 in languages, contexts, and community conditions that no classroom training could fully anticipate. The challenge Johns Hopkins CCP brought to White Rice was to give them something that understood their world: not a manual, but a mirror. Scenario-based, culturally grounded, and available in their pocket.",
+    },
+
+    /* ── Design Challenge Band (custom) ── */
+    designChallenge: {
+      eyebrow: "Creative Design Challenge \u00b7 Universal Without Being Generic",
+      headline: "\u201CMake something that belongs to everyone.<br>Without belonging to no one.\u201D",
+      body: "The three creative design principles that guided every episode \u2014 from character design and scenario selection to animation style, voiceover direction, and language adaptation.",
+      pillars: [
+        { title: "Archetypal Characters", body: "Characters were designed to represent recognisable human archetypes \u2014 the hesitant father, the community gatekeeper, the sceptical grandmother, the exhausted mother \u2014 without being anchored to a specific nationality, religion, or ethnicity. Viewers across four continents recognise these people because they know them." },
+        { title: "Scenario-First Structure", body: "Each episode began with a situation, not a message. The FLW encounters a real-world barrier \u2014 misinformation, refusal, access difficulty, cultural resistance \u2014 and the episode shows what skilled, compassionate communication looks like in that moment. Learning emerges from narrative, not instruction." },
+        { title: "Mobile-Native Design", body: "Every visual and pacing decision was made for a phone screen in the field \u2014 high-contrast imagery, minimal visual complexity, short episode duration, and a structure that allows a worker to revisit a specific episode before a community visit without watching the entire series again." },
+      ],
+    },
+
+    /* ── Series Band (6 Episodes, custom) ── */
+    series: {
+      eyebrow: "The Animation Series \u00b7 Six Episodes \u00b7 Six Scenarios",
+      heading: "Every episode a different door.<br><em>Every door a real situation a frontline worker will face.</em>",
+      cards: [
+        { num: "Episode 01", title: "The Resistant Household", scenario: "Scenario: Vaccine Hesitancy & Refusal", body: "A family refuses vaccination \u2014 citing misinformation, fear, or religious concern. The episode models how an FLW listens, builds trust, addresses specific concerns without confrontation, and creates the conditions for a different decision." },
+        { num: "Episode 02", title: "The Gatekeeper", scenario: "Scenario: Community Influencer Barriers", body: "A community leader, religious figure, or influential family member is blocking access. The episode explores respectful engagement with gatekeepers \u2014 how to bring them into partnership rather than around them, without compromising the vaccination goal." },
+        { num: "Episode 03", title: "The Unreachable Village", scenario: "Scenario: Geographic & Access Barriers", body: "Distance, terrain, and logistical difficulty create barriers to reaching a family or community. The episode shows problem-solving, community mobilisation, and the creative persistence that effective last-mile health delivery requires." },
+        { num: "Episode 04", title: "The Misinformation Moment", scenario: "Scenario: Social Media & Rumour Dynamics", body: "A community is circulating misinformation \u2014 spread through social media, peer networks, or traditional rumour channels. The episode equips FLWs to address false information with evidence-based, emotionally intelligent communication strategies." },
+        { num: "Episode 05", title: "The Second Visit", scenario: "Scenario: Missed Doses & Follow-Through", body: "A child missed a scheduled dose and the family is disengaged. The episode addresses how FLWs re-engage without blame \u2014 rebuilding the relationship and the family\u2019s commitment to completing the immunization schedule." },
+        { num: "Episode 06", title: "The Community Champion", scenario: "Scenario: Peer Advocacy & Positive Deviance", body: "An FLW identifies and activates a community member as a positive deviant \u2014 someone whose voice carries more trust than the health system\u2019s. The episode models the peer-to-peer approach that turns individual behaviour change into community norm shift." },
+      ],
+    },
+
+    /* ── Languages Band (custom) ── */
+    languages: {
+      eyebrow: "Localisation \u00b7 Same Content, Four Worlds",
+      heading: "One story.<br><em>Four voices.</em><br>Four communities.",
+      bigText: "\u00d74",
+      cards: [
+        { flag: "Primary Language", name: "English", body: "Master version \u2014 for global deployment, Western Europe, and international training facilitation. Scripted as the source language for all localisation." },
+        { flag: "Africa & Global Reach", name: "French", body: "Serving Francophone Africa and French-speaking communities in Western Europe \u2014 critical for the Sub-Saharan African deployment cohort." },
+        { flag: "Asia \u00b7 South & Southeast", name: "Urdu / Hindi", body: "For South Asian deployment contexts \u2014 Pakistan, India, and the South Asian diaspora communities in the Gulf and Western Europe cohorts." },
+        { flag: "Gulf & MENA Region", name: "Arabic", body: "For Gulf and Middle Eastern deployment, and Arabic-speaking migrant and diaspora communities across all four deployment regions." },
+      ],
+    },
+
+    /* ── Distribution Band (custom) ── */
+    distribution: {
+      eyebrow: "Distribution & Deployment \u00b7 From Classroom to Field",
+      heading: "The training that fits in <em>a pocket.</em>",
+      paragraphs: [
+        "The animation series was designed not as standalone content but as the experiential core of a larger Johns Hopkins CCP training architecture. It was integrated into formal FLW training programmes \u2014 used to introduce scenarios, prompt group discussion, and ground participants in the human reality of their work before moving to technical instruction.",
+        "Critically, the series was then converted into a mobile-accessible reference guide \u2014 allowing workers to revisit specific episodes in the field before a difficult visit, without needing internet access or classroom infrastructure. The content that trained them in a room was available in their hand at the moment they needed it most.",
+      ],
+      features: [
+        { label: "Mobile-First", value: "Converted to a hands-on phone-based reference guide \u2014 accessible to FLWs without internet, optimised for low-bandwidth and offline viewing" },
+        { label: "Global Training Integration", value: "Embedded within Johns Hopkins CCP\u2019s full FLW training package \u2014 used as the scenario-based learning core of in-person and remote training sessions" },
+        { label: "Global Network Deployment", value: "250,000 frontline workers across Africa, Asia, Gulf, and Western Europe given access \u2014 deployed through UNICEF-aligned and Johns Hopkins CCP global networks" },
+        { label: "On-Demand Reference", value: "Workers can revisit individual episodes by scenario type \u2014 making the training a live field resource, not a one-time classroom event" },
+      ],
+    },
+
+    /* ── Closing ── */
+    closing: {
+      heading: "The last mile is<br>not a geography.<br><em>It is a conversation.</em>",
+      body: "250,000 frontline workers. Four languages. Four continents. Six situations every one of them will face. Walidain HumQadam gave parents the tools to show up for their children. This gave the health workers who serve those families the same \u2014 a way to understand the human being on the other side of the door, before they knock.",
+    },
+
+    /* ── Impact Cells ── */
+    impactCells: [
+      { big: "250,000", desc: "Frontline immunization workers trained and given access to the series \u2014 across Africa, Asia, the Gulf, and Western Europe." },
+      { big: "4 Continents", desc: "A single creative framework \u2014 6 episodes, 4 languages \u2014 that worked across radically different cultural and community contexts simultaneously." },
+      { big: "In Their Hands", desc: "Converted to a mobile field reference \u2014 the training travelled with the worker, not just into the training room." },
+    ],
+
     challenge: {
-      heading: "The Challenge",
+      heading: "The <em>Challenge</em>",
       body: "The brief from Johns Hopkins CCP was as technically demanding as any White Rice had received. The training content needed to be simultaneously universal and specific \u2014 meaningful to a health worker in Nairobi and to one in Karachi, to one in Cairo and to one in Birmingham. It needed to depict real situations without privileging any single cultural context. It needed to be producible in four languages without losing its emotional or instructional impact in translation. And it needed to work on a phone screen in the field \u2014 not just in a training room.\n\nThe core tension in the brief was between specificity and universality. Health communication works through recognition \u2014 a viewer needs to see themselves or their community in the scenario to engage with it. But a scenario that is too specific to one context alienates every other. White Rice's creative challenge was to build characters, situations, and community dynamics specific enough to feel real, but archetypal enough to travel across continents.\n\nOverlaid on the creative challenge was a rigorous instructional one: the animations needed to function as genuine training tools within Johns Hopkins CCP's broader FLW capacity-building programme \u2014 not as awareness content, but as practical scenario-based learning that changed how workers showed up in the field.",
       quote: {
         text: "The hardest design problem is not making something powerful. It is making something powerful that means the same thing to different people in different worlds \u2014 and still moves all of them to act.",
       },
     },
     strategy: {
-      heading: "The Strategy",
-      intro: "White Rice worked closely with Johns Hopkins CCP's global teams \u2014 building an understanding of the specific field situations, community dynamics, and communication challenges that FLWs encounter across the programme's four deployment regions. This research informed the scenario design: each episode was built around a real situation type, not an invented one.",
+      heading: "The <em>Strategy</em>",
+      intro: "White Rice worked closely with Johns Hopkins CCP\u2019s global teams \u2014 building an understanding of the specific field situations, community dynamics, and communication challenges that FLWs encounter across the programme\u2019s four deployment regions. This research informed the scenario design: each episode was built around a real situation type, not an invented one.",
       steps: [
-        {
-          number: "01",
-          title: "Archetypal Characters",
-          description: "Characters were designed to represent recognisable human archetypes \u2014 the hesitant father, the community gatekeeper, the sceptical grandmother, the exhausted mother \u2014 without being anchored to a specific nationality, religion, or ethnicity. Viewers across four continents recognise these people because they know them.",
-        },
-        {
-          number: "02",
-          title: "Scenario-First Structure",
-          description: "Each episode began with a situation, not a message. The FLW encounters a real-world barrier \u2014 misinformation, refusal, access difficulty, cultural resistance \u2014 and the episode shows what skilled, compassionate communication looks like in that moment. Learning emerges from narrative, not instruction.",
-        },
-        {
-          number: "03",
-          title: "Mobile-Native Design",
-          description: "Every visual and pacing decision was made for a phone screen in the field \u2014 high-contrast imagery, minimal visual complexity, short episode duration, and a structure that allows a worker to revisit a specific episode before a community visit without watching the entire series again.",
-        },
+        { number: "01", title: "Culturally Neutral Animation Style", description: "The animation style was deliberately designed to sit in a culturally neutral register \u2014 characters, settings, and visual language that could represent multiple regions simultaneously, without defaulting to any single country\u2019s visual vocabulary." },
+        { number: "02", title: "Decision-Moment Scenarios", description: "Scenarios were structured around decision moments: situations where the FLW\u2019s response made a measurable difference to whether a child received a vaccine." },
+        { number: "03", title: "Localisation-First Design", description: "The four-language localisation was treated as a design requirement from the beginning \u2014 not an afterthought. Scripts were built to carry meaning cleanly across translation. Visual storytelling carried the weight that language-specific nuance could not always sustain." },
       ],
     },
     work: {
-      heading: "The Work",
-      body: "Johns Hopkins Center for Communication Programs \u2014 one of the world's leading health communication institutions \u2014 engaged White Rice as their creative partner and communication design firm for a landmark global initiative: building a comprehensive animation-based training package for frontline immunization workers spanning four continents. Our mandate was to conceive, design, and produce content that could work everywhere \u2014 culturally representative, scenario-grounded, and powerful enough to train, challenge, and equip health workers operating in radically different settings.\n\nThe animation style was deliberately designed to sit in a culturally neutral register \u2014 characters, settings, and visual language that could represent multiple regions simultaneously, without defaulting to any single country's visual vocabulary. Scenarios were structured around decision moments: situations where the FLW's response made a measurable difference to whether a child received a vaccine.\n\nThe four-language localisation was treated as a design requirement from the beginning \u2014 not an afterthought. Scripts were built to carry meaning cleanly across translation. Visual storytelling carried the weight that language-specific nuance could not always sustain across four very different linguistic contexts.",
-      deliverables: [
-        "Creative Strategy",
-        "Communication Design",
-        "Scenario Development",
-        "6-Part Animation Series",
-        "FLW Training Content",
-        "4-Language Localisation",
-        "Mobile-First Delivery",
-        "Global Stakeholder Collaboration",
-        "UNICEF Aligned Content",
-      ],
+      heading: "The <em>Work</em>",
+      body: "Johns Hopkins Center for Communication Programs engaged White Rice as their creative partner and communication design firm for a landmark global initiative: building a comprehensive animation-based training package for frontline immunization workers spanning four continents.\n\nThe animation style was deliberately designed to sit in a culturally neutral register \u2014 characters, settings, and visual language that could represent multiple regions simultaneously, without defaulting to any single country\u2019s visual vocabulary. Scenarios were structured around decision moments: situations where the FLW\u2019s response made a measurable difference to whether a child received a vaccine.\n\nThe four-language localisation was treated as a design requirement from the beginning \u2014 not an afterthought. Scripts were built to carry meaning cleanly across translation.",
+      deliverables: ["Creative Strategy", "Communication Design", "Scenario Development", "6-Part Animation Series", "FLW Training Content", "4-Language Localisation", "Mobile-First Delivery", "Global Stakeholder Collaboration", "UNICEF Aligned Content"],
     },
     impact: {
-      heading: "The Impact",
-      body: "The programme's impact is measured not in views or impressions, but in the 250,000 frontline workers who entered the world's most difficult healthcare environments better equipped \u2014 with a clearer understanding of the human situations they would face, and better communication tools for navigating them. Every child vaccinated through those interactions is the programme's ultimate unit of success.",
+      heading: "The <em>Impact</em>",
+      body: "The programme\u2019s impact is measured not in views or impressions, but in the 250,000 frontline workers who entered the world\u2019s most difficult healthcare environments better equipped \u2014 with a clearer understanding of the human situations they would face, and better communication tools for navigating them. Every child vaccinated through those interactions is the programme\u2019s ultimate unit of success.",
       metrics: [
-        { value: 250000, suffix: "", label: "Frontline immunization workers trained and given access to the series \u2014 across Africa, Asia, the Gulf, and Western Europe." },
-        { value: 4, suffix: "Continents", label: "A single creative framework \u2014 6 episodes, 4 languages \u2014 that worked across radically different cultural and community contexts simultaneously." },
-        { value: 0, suffix: "", prefix: "", label: "In Their Hands \u2014 Converted to a mobile field reference \u2014 the training travelled with the worker, not just into the training room." },
+        { value: 250000, suffix: "", label: "Frontline immunization workers trained" },
+        { value: 4, suffix: " Continents", label: "Global deployment across radically different contexts" },
+        { value: 6, suffix: " Episodes", label: "Complete scenario-based animation series" },
       ],
       closingNote: "Working with Johns Hopkins CCP required White Rice to operate at a scale and rigour we rarely encounter \u2014 global stakeholders, global deployment, global ambition. The result was a training tool that was both technically credible enough for Johns Hopkins and humanly compelling enough for a health worker at 6am on a difficult village visit. That balance is what we are most proud of.",
     },
@@ -2269,31 +2877,138 @@ export const caseStudies: CaseStudyData[] = [
     },
   },
 
-  /* 17 ─ Dunia Aur Larki / Oxfam */
+  /* 17 ─ Dunia Aali Larki / Oxfam */
   {
     slug: "oxfam-dunia-aali-larki",
-    year: "2014 - 2018",
-    tags: ["Girls' Education", "Advocacy Campaign", "Dunia Aur Larki", "Movement Building", "16 Days of Activism", "Children's Assembly", "Oxfam Pakistan", "Animation", "Socio-Ecological Model", "Policy Advocacy", "Grassroots Mobilisation", "SDG 4", "SDG 5", "Pakistan"],
+    year: "2014 \u2013 2018",
+    tags: ["Girls' Education", "Advocacy Campaign", "Dunia Aali Larki", "Movement Building", "16 Days of Activism", "Children's Assembly", "Oxfam Pakistan", "Animation", "Socio-Ecological Model", "Policy Advocacy", "Grassroots Mobilisation", "SDG 4", "SDG 5", "Pakistan"],
+
+    /* ── V2 Theme (crimson / gold from HTML) ── */
+    theme: {
+      primary: "#8A1A2A",
+      primaryLight: "#C4415A",
+      accent: "#C49A1A",
+      accentLight: "#E8C85A",
+    },
+    hero: {
+      eyebrow: "Oxfam Pakistan \u00b7 16 Days of Activism \u00b7 National Movement",
+      title: "The World<br>Against the <em>Girl.</em>",
+      subtitle: "Dunia Aali Larki \u2014 A Campaign That Became a Movement",
+      description: "What began as an animated campaign for 16 Days of Activism became Pakistan\u2019s most powerful advocacy movement for girls\u2019 right to education \u2014 earning a $1 million grant, producing Pakistan\u2019s first Children\u2019s Assembly, and shifting the national conversation for years to come.",
+      meta: [
+        { label: "Client", value: "Oxfam Pakistan" },
+        { label: "Campaign", value: "Dunia Aali Larki \u00b7 \u062F\u0646\u06CC\u0627 \u0622\u0644\u06CC \u0644\u0691\u06A9\u06CC" },
+        { label: "Scale", value: "4-Year National Advocacy Campaign" },
+        { label: "White Rice Role", value: "Campaign & Movement Design Lead" },
+      ],
+    },
+    role: {
+      heading: "From Campaign Spark to <em>National Movement Architecture</em>",
+      body: "White Rice designed Dunia Aali Larki from its first frame to its national scale \u2014 beginning with the animated campaign film that launched on 16 Days of Activism, and growing through four years of advocacy into a multi-tier movement spanning policymakers, schools, communities, media, and Pakistan\u2019s first Children\u2019s Assembly. Our role spanned creative strategy, animation production, grassroots mobilisation design, school programme development, policy dialogue facilitation, and digital amplification \u2014 all in service of one sustained demand: that girls in Pakistan have the right to learn.",
+      services: [
+        "Campaign Strategy & Creative Direction",
+        "Animation Production",
+        "Movement Architecture",
+        "Policy Dialogue Design",
+        "Grassroots Mobilisation",
+        "School Club Programme",
+        "Children's Assembly Design",
+        "Mass Media Strategy",
+        "Digital Amplification",
+        "Global Conference Design",
+      ],
+    },
+    outcomes: {
+      cards: [
+        { stat: "$1M Grant", description: "The animated campaign directly led to Oxfam securing a $1 million funding grant to convert the 16-day activation into a 4-year national advocacy programme." },
+        { stat: "4 Years", description: "A 16-day campaign transformed into a 4-year sustained national movement \u2014 operating simultaneously at policy, community, school, media, and digital levels." },
+        { stat: "Pakistan\u2019s First", description: "Pakistan\u2019s first Children\u2019s Assembly \u2014 a national parliamentary-style debate on girls\u2019 right to education, held at a convention centre in Islamabad with political figures as moderators." },
+        { stat: "36 Million", description: "Children out of school in Pakistan \u2014 the crisis the campaign was built to address \u2014 including one of the world\u2019s highest concentrations of out-of-school girls." },
+        { stat: "A Movement", description: "The campaign\u2019s legacy outlasted the programme itself \u2014 translating into other initiatives, strengthening partner organisations, and giving the girls\u2019 education sector a unified national voice." },
+      ],
+      watermark: "\u0644\u0691\u06A9\u06CC",
+    },
+
+    sparkMovement: {
+      eyebrow: "The Arc \u00b7 From Spark to Sustained Movement",
+      heading: "One animated film.<br><em>Four years of national change.</em>",
+      steps: [
+        { badge: "The Spark", title: "Animated Campaign Film", body: "Launched on November 25th for 16 Days of Activism \u2014 a bold, emotionally resonant animated film showing the disparity and compounding challenges a girl faces in Pakistan. Aired on TV and amplified across digital platforms." },
+        { badge: "The Catalyst", title: "$1M Grant Secured", body: "The campaign\u2019s resonance demonstrated to funders that Pakistan was ready for a sustained movement on girls\u2019 education. Oxfam secured a $1 million grant to expand from 16 days to a 4-year national advocacy programme." },
+        { badge: "The Movement", title: "4-Year National Advocacy", body: "A full socio-ecological model campaign \u2014 operating simultaneously at policy, community, school, and digital levels, culminating in Pakistan\u2019s first Children\u2019s Assembly and a lasting shift in the national conversation." },
+      ],
+    },
+    divider: {
+      stat: "36 million<br>children.<br>No school.",
+      text: "Pakistan has one of the world\u2019s highest numbers of out-of-school children \u2014 36 million \u2014 with girls disproportionately excluded. Behind every statistic is a girl whose family was never told her education was worth the investment, or never asked. Dunia Aali Larki was built on the premise that the conversation had to happen at every level simultaneously \u2014 from the parliament to the primary school classroom \u2014 and it had to be loud enough that no one could claim they hadn\u2019t heard it.",
+    },
+    semTiers: {
+      eyebrow: "Socio-Ecological Model \u00b7 Designed for Every Tier of Influence",
+      heading: "A movement works when <em>everyone</em> hears it<br>in the language that belongs to them.",
+      tiers: [
+        { level: "5", label: "Enabling Environment", name: "Policy & Government", activities: ["Provincial government dialogues", "Education reform advocacy", "Pakistan\u2019s first global education conference", "International speakers on girls\u2019 right to education", "Children\u2019s Assembly \u2014 political moderators"] },
+        { level: "4", label: "Institutional", name: "Schools & Educational Bodies", activities: ["School-level debate clubs", "Structured debate curriculum", "Teacher and principal engagement", "NGO and education institution partnerships", "Children\u2019s Assembly selection"] },
+        { level: "3", label: "Community", name: "Local Influencers & Leaders", activities: ["Community rallying events", "Local politicians engaged as advocates", "Religious and community influencers", "Mass media \u2014 highlighting gaps & opportunities", "Cross-community mobilisation"] },
+        { level: "2", label: "Family", name: "Parents & Caregivers", activities: ["Parents and children at rallies together", "Parent-teacher engagement at school clubs", "Household-level messaging via TV and digital", "Donor community outreach"] },
+        { level: "1", label: "Individual", name: "Girls & Children", activities: ["Girls as campaign advocates and debaters", "Children\u2019s Assembly participants", "Digital storytelling by and for girls", "School club leadership", "National platform \u2014 parliamentary debate"] },
+      ],
+    },
+    assembly: {
+      eyebrow: "Campaign Centrepiece \u00b7 Pakistan\u2019s First",
+      heading: "The Children\u2019s <em>Assembly.</em>",
+      stat: "Pakistan\u2019s<br>First.",
+      paragraphs: [
+        "The Children\u2019s Assembly was the campaign\u2019s most audacious and most enduring achievement. For the first time in Pakistan\u2019s history, children formed their own parliament \u2014 a Children\u2019s Assembly \u2014 and convened at a national convention centre in Islamabad to debate the right of girls to education at a national assembly level.",
+        "This was not a symbolic exercise. The debates were substantive, the participants were prepared, and the audience included political figures who served as moderators \u2014 lending the proceedings genuine institutional weight and sending an unmistakable message: the children of Pakistan are not waiting for adults to solve this for them.",
+      ],
+      features: [
+        { bold: "National Convention Centre, Islamabad", text: "\u2014 a deliberate venue choice that gave children the stage their arguments deserved, not a school auditorium" },
+        { bold: "Children\u2019s Parliament format", text: "\u2014 structured debate with elected child representatives arguing for girls\u2019 right to education in front of peers, parents, politicians, and press" },
+        { bold: "Political figures as moderators", text: "\u2014 not keynote speakers, but moderators: listening to children debate, not the other way around" },
+        { bold: "National media coverage", text: "\u2014 the Assembly generated press coverage that no advocacy report or policy brief could match, putting children\u2019s voices at the centre of the national education conversation" },
+      ],
+    },
+    targetAudiences: {
+      eyebrow: "Target Audiences \u00b7 Everyone Who Shapes a Girl\u2019s Future",
+      heading: "The campaign had <em>one message</em><br>and eight different audiences to deliver it to.",
+      cards: [
+        { title: "Government & Policymakers", body: "Provincial and federal government \u2014 targeted through dialogues, the global conference, and the Children\u2019s Assembly to drive policy reform on girls\u2019 education." },
+        { title: "Donors & NGOs", body: "International and national funders \u2014 shown a credible, scaled movement that justified continued and increased investment in girls\u2019 education in Pakistan." },
+        { title: "Educational Institutions", body: "Schools and universities \u2014 engaged through club programmes and the Children\u2019s Assembly to become active programme partners rather than passive beneficiaries." },
+        { title: "Parents & Teachers", body: "The day-to-day gatekeepers of girls\u2019 access to education \u2014 reached through school clubs, rallies, community events, and mass media to shift the household-level calculation." },
+      ],
+    },
+    impactCells: [
+      { big: "$1M Grant", desc: "A 16-day animated campaign converted into a $1 million, 4-year national advocacy programme \u2014 the clearest possible validation of the creative strategy." },
+      { big: "Pakistan\u2019s First", desc: "Children\u2019s Assembly \u2014 held at the national convention centre in Islamabad, with political figures as moderators and children debating girls\u2019 right to education at parliamentary level." },
+      { big: "4 Years", desc: "From a single animated film to a multi-tier, multi-year national movement \u2014 operating simultaneously at policy, community, school, and digital levels across Pakistan." },
+      { big: "A Legacy", desc: "The movement\u2019s impact translated into the organisations that followed \u2014 strengthening the sector\u2019s collective voice and providing a replicable model for issue-led movement building in Pakistan." },
+    ],
+    closing: {
+      heading: "A 16-day campaign.<br>A four-year movement.<br><em>A girl at a podium.</em>",
+      body: "Dunia Aali Larki proved that a single, well-designed creative moment \u2014 an animated film that told the truth about a girl\u2019s life in Pakistan \u2014 can be the beginning of something much larger than a campaign. When the movement is built right, it doesn\u2019t end when the funding does. It becomes part of the air the sector breathes.",
+    },
+
     challenge: {
-      heading: "The Challenge",
-      body: "Pakistan's girl-child education crisis is not a secret. It is a well-documented, frequently reported, consistently underfunded emergency. 36 million children are out of school, and girls represent the majority of the excluded \u2014 kept home by a combination of poverty, patriarchal norms, distance, safety fears, early marriage, and institutional indifference. The problem is known. The barrier has always been the will to act \u2014 at the level of government, community, and family simultaneously.\n\nOxfam needed more than a public awareness campaign. Awareness of the crisis was not lacking \u2014 what was lacking was the social permission, political urgency, and grassroots momentum that would translate awareness into action across every tier of the system. Inspired directly by the Nike Girl Effect model, Oxfam and White Rice set out to do for Pakistan's girl-child education movement what that global initiative had done globally: make it feel like a cause that belonged to everyone.\n\nThe 16 Days of Activism window (November 25 to December 10) provided the launchpad. The question was what to put on it \u2014 something with enough emotional power to spark a movement, and enough strategic architecture to sustain one for four years.",
+      heading: "The <em>Challenge</em>",
+      body: "Pakistan\u2019s girl-child education crisis is not a secret. It is a well-documented, frequently reported, consistently underfunded emergency. 36 million children are out of school, and girls represent the majority of the excluded \u2014 kept home by a combination of poverty, patriarchal norms, distance, safety fears, early marriage, and institutional indifference. The problem is known. The barrier has always been the will to act \u2014 at the level of government, community, and family simultaneously.\n\nOxfam needed more than a public awareness campaign. Awareness of the crisis was not lacking \u2014 what was lacking was the social permission, political urgency, and grassroots momentum that would translate awareness into action across every tier of the system. Inspired directly by the Nike Girl Effect model, Oxfam and White Rice set out to do for Pakistan\u2019s girl-child education movement what that global initiative had done globally: make it feel like a cause that belonged to everyone.\n\nThe 16 Days of Activism window (November 25 to December 10) provided the launchpad. The question was what to put on it \u2014 something with enough emotional power to spark a movement, and enough strategic architecture to sustain one for four years.",
       quote: {
         text: "You cannot fix with a school what a community has already decided. The campaign had to change the decision before it could change the enrolment numbers.",
       },
     },
     strategy: {
-      heading: "The Strategy",
-      intro: "White Rice's strategy was built on three convictions: that storytelling \u2014 not statistics \u2014 moves people; that a movement needs architecture, not just energy; and that the socio-ecological model is not a theory to cite in a report, it is a design brief for reaching everyone who matters simultaneously.",
+      heading: "The <em>Strategy</em>",
+      intro: "White Rice\u2019s strategy was built on three convictions: that storytelling \u2014 not statistics \u2014 moves people; that a movement needs architecture, not just energy; and that the socio-ecological model is not a theory to cite in a report, it is a design brief for reaching everyone who matters simultaneously.",
       steps: [
-        { number: "01", title: "Animation as the Movement's Voice", description: "The animated film was not simply an ad \u2014 it was the campaign's emotional engine. Animation allowed White Rice to show a Pakistani girl's compounding disadvantages with the honesty and universality that live film rarely achieves in this context. It crossed language, class, and media format \u2014 airable on national TV and shareable on every digital platform." },
+        { number: "01", title: "Animation as the Movement\u2019s Voice", description: "The animated film was not simply an ad \u2014 it was the campaign\u2019s emotional engine. Animation allowed White Rice to show a Pakistani girl\u2019s compounding disadvantages with the honesty and universality that live film rarely achieves in this context. It crossed language, class, and media format \u2014 airable on national TV and shareable on every digital platform." },
         { number: "02", title: "Multi-Tier, Simultaneous Activation", description: "The full socio-ecological model \u2014 from individual to family to community to enabling environment \u2014 was activated in parallel, not sequentially. School clubs ran at the same time as policy dialogues. Rallies happened while the global conference was being planned. Digital amplified everything." },
-        { number: "03", title: "Children as Advocates, Not Beneficiaries", description: "The campaign's most radical design decision was to position children \u2014 specifically girls \u2014 not as objects of charity or policy concern, but as the campaign's most powerful advocates. School debates, rallies, and ultimately the Children's Assembly gave them the platform, the legitimacy, and the audience they deserved." },
-        { number: "04", title: "Stories from the Ground, Amplified by Digital", description: "The campaign's digital strategy was not a megaphone for messaging \u2014 it was a distribution system for real stories. What happened at rallies, in school clubs, in community dialogues was captured and amplified to a national audience that could not attend in person." },
+        { number: "03", title: "Children as Advocates, Not Beneficiaries", description: "The campaign\u2019s most radical design decision was to position children \u2014 specifically girls \u2014 not as objects of charity or policy concern, but as the campaign\u2019s most powerful advocates. School debates, rallies, and ultimately the Children\u2019s Assembly gave them the platform, the legitimacy, and the audience they deserved." },
+        { number: "04", title: "Stories from the Ground, Amplified by Digital", description: "The campaign\u2019s digital strategy was not a megaphone for messaging \u2014 it was a distribution system for real stories. What happened at rallies, in school clubs, in community dialogues was captured and amplified to a national audience that could not attend in person." },
       ],
     },
     work: {
-      heading: "The Intervention",
-      body: "White Rice designed Dunia Aur Larki from its first frame to its national scale \u2014 beginning with the animated campaign film that launched on 16 Days of Activism, and growing through four years of advocacy into a multi-tier movement spanning policymakers, schools, communities, media, and Pakistan's first Children's Assembly. Our role spanned creative strategy, animation production, grassroots mobilisation design, school programme development, policy dialogue facilitation, and digital amplification \u2014 all in service of one sustained demand: that girls in Pakistan have the right to learn.",
+      heading: "The <em>Intervention</em>",
+      body: "White Rice designed Dunia Aali Larki from its first frame to its national scale \u2014 beginning with the animated campaign film that launched on 16 Days of Activism, and growing through four years of advocacy into a multi-tier movement spanning policymakers, schools, communities, media, and Pakistan\u2019s first Children\u2019s Assembly. Our role spanned creative strategy, animation production, grassroots mobilisation design, school programme development, policy dialogue facilitation, and digital amplification \u2014 all in service of one sustained demand: that girls in Pakistan have the right to learn.",
       deliverables: [
         "Campaign Strategy & Creative Direction",
         "Animation Production",
@@ -2308,20 +3023,20 @@ export const caseStudies: CaseStudyData[] = [
       ],
     },
     impact: {
-      heading: "The Impact",
-      body: "Dunia Aur Larki accomplished something that most advocacy campaigns do not: it outlasted itself. The programme formally ended, but the movement it built did not. Other organisations working on girls' education in Pakistan found themselves operating within a changed landscape \u2014 one in which their work had a stronger voice, a more receptive public, and a clearer precedent for what advocacy on this subject could look like.",
+      heading: "The <em>Impact</em>",
+      body: "Dunia Aali Larki accomplished something that most advocacy campaigns do not: it outlasted itself. The programme formally ended, but the movement it built did not. Other organisations working on girls\u2019 education in Pakistan found themselves operating within a changed landscape \u2014 one in which their work had a stronger voice, a more receptive public, and a clearer precedent for what advocacy on this subject could look like.",
       metrics: [
         { value: 1000000, suffix: "", prefix: "$", label: "A 16-day animated campaign converted into a $1 million, 4-year national advocacy programme \u2014 the clearest possible validation of the creative strategy." },
-        { value: 1, suffix: "", label: "Children's Assembly \u2014 held at the national convention centre in Islamabad, with political figures as moderators and children debating girls' right to education at parliamentary level." },
+        { value: 1, suffix: "", label: "Children\u2019s Assembly \u2014 held at the national convention centre in Islamabad, with political figures as moderators and children debating girls\u2019 right to education at parliamentary level." },
         { value: 4, suffix: "", label: "From a single animated film to a multi-tier, multi-year national movement \u2014 operating simultaneously at policy, community, school, and digital levels across Pakistan." },
-        { value: 36000000, suffix: "", label: "Children out of school in Pakistan \u2014 the crisis the campaign was built to address \u2014 including one of the world's highest concentrations of out-of-school girls." },
+        { value: 36000000, suffix: "", label: "Children out of school in Pakistan \u2014 the crisis the campaign was built to address \u2014 including one of the world\u2019s highest concentrations of out-of-school girls." },
       ],
-      closingNote: "Dunia Aur Larki proved that a single, well-designed creative moment \u2014 an animated film that told the truth about a girl's life in Pakistan \u2014 can be the beginning of something much larger than a campaign. When the movement is built right, it doesn't end when the funding does. It becomes part of the air the sector breathes.",
+      closingNote: "The most significant impact of Dunia Aali Larki was not a number. It was the moment a Pakistani girl stood at a podium in a national convention centre in Islamabad, looked at a panel of politicians, and made the case for her own right to be educated. That moment was designed. And it changed something.",
     },
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/timeline/2019.png", alt: "Girls participating in the Dunia Aur Larki programme", span: "wide" },
+        { src: "/images/timeline/2019.png", alt: "Girls participating in the Dunia Aali Larki programme", span: "wide" },
         { src: "/images/timeline/2020.png", alt: "Community engagement session with young women", span: "normal" },
         { src: "/images/timeline/2021.png", alt: "Oxfam programme activities in the field", span: "normal" },
       ],
@@ -2331,17 +3046,69 @@ export const caseStudies: CaseStudyData[] = [
   /* 18 ─ Saaf Karachi Meri Zimmedari */
   {
     slug: "saaf-karachi-waste",
-    year: "2022 - 2023",
+    year: "2022 \u2013 2023",
     tags: ["Recycling", "Waste Management", "Behaviour Change", "Waste Segregation", "Community Mobilisation", "Youth Engagement", "Digital Campaign", "Incentive Design", "Karachi", "Tier Fund", "SDG 11", "SDG 12"],
+    theme: {
+      primary: "#2A3A4A",
+      primaryLight: "#4A6A8A",
+      accent: "#5A8A1A",
+      accentLight: "#8AB84A",
+    },
+    hero: {
+      eyebrow: "Tier Fund \u00B7 Karachi \u00B7 Multi-Community",
+      title: "Clean Karachi<br>Is <em>My</em> Responsibility",
+      subtitle: "Recycling & Waste Segregation Behaviour Change Campaign",
+      description: "A full-spectrum community behaviour change campaign designed to shift Karachi\u2019s waste practices from household to hub \u2014 turning dry\u2013wet segregation, collection, and recycling into a community movement, not a government mandate.",
+      meta: [
+        { label: "Client", value: "Tier Fund" },
+        { label: "Location", value: "Karachi \u00B7 Low-Income Communities" },
+        { label: "Focus", value: "Waste Segregation & Recycling Behaviour Change" },
+        { label: "White Rice Role", value: "SBC Strategy, Campaign & Creative Lead" },
+      ],
+    },
+    role: {
+      heading: "SBC Strategy, Campaign Design & <em>Creative Lead</em>",
+      body: "White Rice designed the complete behaviour change strategy and communication campaign for the Saaf Karachi Meri Zimmedari initiative \u2014 from formative research and community engagement, through to household nudge design, social mobiliser toolkits, animation production, mass media, incentive architecture, and community recognition programmes. Working alongside local government, collection teams, and the Hariali Hub recycling centre, we built a campaign that touched every actor in the recycling chain.",
+      services: [
+        "Formative Research", "SBC Strategy", "Campaign Design & Branding",
+        "Community Mobilisation", "Household Nudge Design", "Animation Production",
+        "Social Media & Influencers", "Incentive & Rewards Architecture",
+        "Youth Clubs & Events", "FLW Toolkit Design",
+      ],
+    },
+    saafChain: {
+      label: "The Recycling Chain \u2014 How the System Was Designed to Work",
+      steps: [
+        { title: "Household Segregation", body: "Families separate dry and wet waste at source using colour-coded bins and kitchen nudges", color: "rgba(90,138,26,.25)" },
+        { title: "Collection Vehicles", body: "Government-run segregated collection vehicles pick up pre-sorted waste from communities", color: "rgba(26,74,106,.3)" },
+        { title: "Hariali Hub", body: "Local recycling centre receives and further sorts the collected material by type", color: "rgba(196,130,26,.2)" },
+        { title: "Recycled Products", body: "Dry waste processed into driveways, construction materials, and reusable products", color: "rgba(90,138,26,.2)" },
+        { title: "Organic Fertiliser", body: "Wet waste converted into compost and fertiliser \u2014 closing the loop from kitchen to soil", color: "rgba(74,42,90,.2)" },
+      ],
+    },
+    outcomes: {
+      cards: [
+        { stat: "Multi-Community", description: "Campaign deployed across low-income communities in Karachi \u2014 reaching women, men, youth, and community influencers simultaneously." },
+        { stat: "Behaviour Shift", description: "Measurable change in household waste segregation practices \u2014 dry from wet \u2014 as a routine daily behaviour." },
+        { stat: "Full Chain", description: "First campaign to incentivise every actor in the recycling chain \u2014 households, collectors, social mobilisers, and communities \u2014 simultaneously." },
+        { stat: "Social Movement", description: "Youth clubs, tournaments, festivals, and community recognition programmes turned recycling from a chore into a community identity." },
+        { stat: "Mass Reach", description: "TikTok, WhatsApp, influencer networks, outdoor branding, and branded collection vehicles amplified the campaign from community to city-level visibility." },
+      ],
+      watermark: "KARACHI",
+    },
+    divider: {
+      stat: "Segregate.<br>Collect.<br>Recycle.",
+      text: "Three simple behaviours. But in low-income communities where recycling was a new concept, where waste bins were absent from homes, and where the government\u2019s collection infrastructure was invisible to residents, none of them could be taken for granted. The campaign had to create the knowledge, the tools, the motivation, and the social permission for all three \u2014 at once, across an entire city.",
+    },
     challenge: {
-      heading: "The Challenge",
-      body: "Recycling was not part of how Karachi's low-income communities understood waste. Waste was disposed of \u2014 often wherever was most convenient \u2014 not sorted, segregated, and handed to a collection vehicle for a journey to a recycling hub. The concept of a Hariali Hub, of dry versus wet waste, of plastics being turned into driveways \u2014 all of it was genuinely new.\n\nThe campaign had to work across multiple segments simultaneously \u2014 women managing household waste, men and youth who influenced community norms, local influencers and religious leaders whose endorsement could shift social permission, waste collectors who needed to be part of the solution rather than bypassed by it, and government partners whose collection infrastructure only worked if households had already done their part.\n\nBehaviour change in this context also meant confronting deeply ingrained norms in communities where open dumping was normalised, where waste bins at home were uncommon, and where the connection between household practice and city-level cleanliness had never been made visible. White Rice's role was to make that connection \u2014 and to make it feel urgent, achievable, and personally meaningful.",
+      heading: "The <em>Challenge</em>",
+      body: "Recycling was not part of how Karachi\u2019s low-income communities understood waste. Waste was disposed of \u2014 often wherever was most convenient \u2014 not sorted, segregated, and handed to a collection vehicle for a journey to a recycling hub. The concept of a Hariali Hub, of dry versus wet waste, of plastics being turned into driveways \u2014 all of it was genuinely new.\n\nThe campaign had to work across multiple segments simultaneously \u2014 women managing household waste, men and youth who influenced community norms, local influencers and religious leaders whose endorsement could shift social permission, waste collectors who needed to be part of the solution rather than bypassed by it, and government partners whose collection infrastructure only worked if households had already done their part.\n\nBehaviour change in this context also meant confronting deeply ingrained norms in communities where open dumping was normalised, where waste bins at home were uncommon, and where the connection between household practice and city-level cleanliness had never been made visible. White Rice\u2019s role was to make that connection \u2014 and to make it feel urgent, achievable, and personally meaningful.",
       quote: {
         text: "In a community that has never encountered recycling as a practice, the first job is not to motivate the behaviour. It is to make the behaviour imaginable.",
       },
     },
     strategy: {
-      heading: "The Strategy",
+      heading: "The <em>Strategy</em>",
       intro: "White Rice began with in-context qualitative research \u2014 observations, one-on-one interviews, and focus group discussions across target communities \u2014 mapping current waste disposal practices, identifying the moments where behaviour broke down, and understanding what would make long-term change possible rather than just compliance in the short term.\n\nThe strategic framework that emerged was built around four simultaneous layers of activation: the household, the community, mass media channels, and the incentive architecture that connected and rewarded performance across all of them.",
       steps: [
         { number: "01", title: "Women at Home", description: "Primary waste managers \u2014 targeted through household visits, kitchen nudges, and waste bin design for daily habit formation." },
@@ -2350,21 +3117,91 @@ export const caseStudies: CaseStudyData[] = [
         { number: "04", title: "Waste Collectors", description: "Frontline system actors \u2014 incentivised, recognised, and equipped as programme champions, not just operatives." },
       ],
     },
+    saafHousehold: {
+      eyebrow: "Household-Level Design",
+      heading: "Where <em>behaviour change</em> begins \u2014 in the kitchen.",
+      intro: "The household was the first and most critical site of intervention. Before any community session or media campaign could take effect, the home needed to have the physical tools and environmental nudges to make the new behaviour the path of least resistance.",
+      tools: [
+        { title: "Colour-Coded Waste Bins", body: "Designated bins for dry and wet waste \u2014 making segregation a physical act built into the daily kitchen routine, not a decision that required thinking each time." },
+        { title: "Kitchen Nudges & Doorstickers", body: "Visual reminders placed at the point of behaviour \u2014 on bin lids, refrigerators, and above waste disposal areas \u2014 reinforcing the habit at the exact moment it needed to happen." },
+        { title: "\u201CI Am a Clean Champion\u201D Identity Sticker", body: "A household identity marker that connected the family\u2019s private practice to a larger community movement \u2014 turning domestic behaviour into a public statement of values and belonging." },
+        { title: "WhatsApp Behaviour Nudges", body: "Regular reminder messages and animated content delivered directly to household members \u2014 keeping the behaviour salient between social mobiliser visits and community sessions." },
+      ],
+    },
+    saafIncentive: {
+      eyebrow: "Incentive Architecture \u00B7 Everyone Has a Role. Everyone Gets Recognised.",
+      heading: "A rewards system designed to <em>motivate every actor</em> in the chain.",
+      cards: [
+        { who: "Top Performers", name: "Champion Households", desc: "Families with the highest and most consistent segregation performance recognised publicly \u2014 creating social aspiration around the behaviour and peer competition as a driver of change." },
+        { who: "Best Performers", name: "Top Communities", desc: "Whole communities recognised and celebrated for collective performance \u2014 making clean neighbourhoods a source of community pride, not just individual compliance." },
+        { who: "Frontline Staff", name: "Social Mobiliser Scorecards", desc: "Performance tracking and recognition for social mobilisers \u2014 acknowledging frontline effort and creating accountability with appreciation rather than just monitoring." },
+        { who: "Collection Teams", name: "Collector Awards", desc: "Recognition for top-performing waste collectors \u2014 treating them as essential programme champions and giving their contribution the visibility and dignity it deserved." },
+      ],
+    },
+    saafMediaChannels: {
+      eyebrow: "360\u00B0 Campaign Architecture",
+      heading: "Every channel working together \u2014 from the kitchen wall to TikTok.",
+      categories: [
+        {
+          cat: "Community & Outdoor",
+          items: [
+            "Wall chalkings as community reminders and nudges",
+            "Shop fascia branding across target areas",
+            "Branded collection vehicles \u2014 moving billboards for the campaign",
+            "Community sessions and social mobiliser outreach",
+            "Sports tournaments & youth festivals",
+            "Youth clubs as ongoing community infrastructure",
+          ],
+        },
+        {
+          cat: "Digital & Social Media",
+          items: [
+            "Animated social media content series",
+            "TikTok influencer engagement \u2014 community-level creators",
+            "Online PR and news media coverage",
+            "Celebrity endorsement videos",
+            "WhatsApp nudges and animated reminders",
+            "Local social media influencer partnerships",
+          ],
+        },
+        {
+          cat: "Field & Household",
+          items: [
+            "Social mobiliser engagement toolkit",
+            "Animation series for community session facilitation",
+            "Colour-coded household waste bins",
+            "Kitchen nudges and doorstickers",
+            "Clean Champion identity stickers",
+            "Scorecard and incentive documentation",
+          ],
+        },
+      ],
+    },
     work: {
-      heading: "The Intervention",
-      body: "White Rice designed the complete behaviour change strategy and communication campaign for the Saaf Karachi Meri Zimmedari initiative \u2014 from formative research and community engagement, through to household nudge design, social mobiliser toolkits, animation production, mass media, incentive architecture, and community recognition programmes. Working alongside local government, collection teams, and the Hariali Hub recycling centre, we built a campaign that touched every actor in the recycling chain.\n\nThe household was the first and most critical site of intervention. Before any community session or media campaign could take effect, the home needed to have the physical tools and environmental nudges to make the new behaviour the path of least resistance. Colour-coded waste bins for dry and wet waste, kitchen nudges and doorstickers placed at the point of behaviour, \"I Am a Clean Champion\" identity stickers connecting private practice to a larger community movement, and WhatsApp behaviour nudges keeping the behaviour salient between visits.\n\nThe incentive architecture recognised every actor in the chain: champion households with the highest segregation performance, top communities celebrated for collective performance, social mobiliser scorecards for frontline accountability, and collector awards treating waste collectors as essential programme champions.\n\nEvery channel working together \u2014 from the kitchen wall to TikTok. Community and outdoor channels included wall chalkings, shop fascia branding, branded collection vehicles, community sessions, sports tournaments, youth festivals, and youth clubs. Digital and social media included animated content series, TikTok influencer engagement, online PR, celebrity endorsement videos, WhatsApp nudges, and local influencer partnerships. Field and household channels included social mobiliser toolkits, animation series for facilitation, colour-coded bins, kitchen nudges, Clean Champion stickers, and scorecard documentation.",
+      heading: "The <em>Intervention</em>",
+      body: "White Rice designed the complete behaviour change strategy and communication campaign for the Saaf Karachi Meri Zimmedari initiative \u2014 from formative research and community engagement, through to household nudge design, social mobiliser toolkits, animation production, mass media, incentive architecture, and community recognition programmes. Working alongside local government, collection teams, and the Hariali Hub recycling centre, we built a campaign that touched every actor in the recycling chain.",
       deliverables: ["Formative Research", "SBC Strategy", "Campaign Design & Branding", "Community Mobilisation", "Household Nudge Design", "Animation Production", "Social Media & Influencers", "Incentive & Rewards Architecture", "Youth Clubs & Events", "FLW Toolkit Design"],
     },
     impact: {
-      heading: "The Impact",
+      heading: "The <em>Impact</em>",
       body: "Saaf Karachi Meri Zimmedari succeeded in doing what most recycling campaigns fail to do: making waste segregation feel like a community movement rather than a government instruction. By incentivising every actor in the recycling chain \u2014 from the household to the collector \u2014 and by making the behaviour visible, celebrated, and competitively desirable, the campaign created momentum that institutional programming alone cannot generate.",
       metrics: [
-        { value: 1, suffix: " Full Chain", label: "Every actor incentivised \u2014 households, communities, social mobilisers, and collectors \u2014 creating aligned motivation across the entire recycling system for the first time." },
-        { value: 360, suffix: "\u00B0 Reach", label: "From kitchen nudges to TikTok \u2014 the campaign reached community members through every relevant channel, in their homes, their streets, and their phones." },
-        { value: 1, suffix: " Social Norm Shift", label: "Youth clubs, tournaments, and community recognition events transformed recycling from an individual chore into a collective identity \u2014 something Karachi's communities owned." },
-        { value: 1, suffix: " Hariali Hub", label: "The campaign made the recycling chain legible to communities for the first time \u2014 connecting household action to a physical outcome they could see: products made from their own sorted waste." },
+        { value: 1, suffix: " Full Chain", label: "Every actor incentivised \u2014 households, communities, social mobilisers, and collectors." },
+        { value: 360, suffix: "\u00B0 Reach", label: "Kitchen nudges to TikTok \u2014 every relevant channel." },
+        { value: 1, suffix: " Social Norm Shift", label: "Recycling transformed from chore into collective identity." },
+        { value: 1, suffix: " Hariali Hub", label: "Household action connected to visible recycled products." },
       ],
       closingNote: "What made this programme distinctive was the decision to treat recycling not as an environmental message but as a civic identity. Saaf Karachi Meri Zimmedari gave communities something to be proud of \u2014 a claim of ownership over their city that could be expressed every time they sorted their waste. That is the shift that lasts beyond any campaign cycle.",
+    },
+    impactCells: [
+      { big: "Full Chain", desc: "Every actor incentivised \u2014 households, communities, social mobilisers, and collectors \u2014 creating aligned motivation across the entire recycling system for the first time." },
+      { big: "360\u00B0 Reach", desc: "From kitchen nudges to TikTok \u2014 the campaign reached community members through every relevant channel, in their homes, their streets, and their phones." },
+      { big: "Social Norm Shift", desc: "Youth clubs, tournaments, and community recognition events transformed recycling from an individual chore into a collective identity \u2014 something Karachi\u2019s communities owned." },
+      { big: "Hariali Hub", desc: "The campaign made the recycling chain legible to communities for the first time \u2014 connecting household action to a physical outcome they could see: products made from their own sorted waste." },
+    ],
+    closing: {
+      heading: "When a city takes<br><em>ownership</em> of its own cleanliness,<br>no campaign is needed.",
+      body: "Saaf Karachi Meri Zimmedari set out to make recycling possible in communities that had never practised it. What it created instead was something larger: a shared civic pride in a city that belongs to its people \u2014 and a responsibility they chose to carry.",
     },
     gallery: {
       heading: "Gallery",
@@ -2380,27 +3217,136 @@ export const caseStudies: CaseStudyData[] = [
   {
     slug: "sbc-cricket",
     year: "2019 - 2020",
-    tags: ["Sport for Development", "SBC", "UNICEF", "Training Design", "Cricket"],
+    tags: ["CRICKET Playbook", "UNICEF Pakistan", "SBC Toolkit", "Gamified Learning", "Behaviour Change Design", "21 Technique Cards", "Kaun", "Rukawat", "Karta", "Test", "Master Trainers", "Capacity Building", "Frontline Workers", "Multi-Province Cascade", "Pakistan"],
+    theme: {
+      primary: "#1A4A1A",
+      primaryLight: "#3A8A3A",
+      accent: "#C4781A",
+      accentLight: "#E8A84A",
+    },
+    hero: {
+      eyebrow: "UNICEF Pakistan \u00B7 Social Behaviour Change \u00B7 Learning Toolkit",
+      title: "Play the<br><em>CRICKET</em><br>Playbook.",
+      subtitle: "Making Behaviour Science Playable \u2014 Pakistan\u2019s First Gamified SBC Design Toolkit for Frontline Workers & Programme Teams",
+      description: "Behaviour science is powerful. But it is also dense, academic, and inaccessible to the frontline workers, field partners, and community teams who need it most. In partnership with UNICEF, White Rice designed the CRICKET Playbook \u2014 a gamified, card-based toolkit that lets anyone design a behaviour change intervention, no PhD required.",
+      meta: [
+        { label: "Client", value: "UNICEF Pakistan" },
+        { label: "Product", value: "CRICKET SBC Playbook \u00B7 \u06A9\u0631\u06A9\u0679" },
+        { label: "Format", value: "Gamified Card-Based Toolkit \u00B7 21 Technique Cards" },
+        { label: "White Rice Role", value: "Concept \u00B7 Design \u00B7 Training Architecture" },
+      ],
+    },
+    role: {
+      heading: "Designing the <em>Game</em> That Teaches Behaviour Change",
+      body: "White Rice conceived, designed, and produced the CRICKET Playbook in partnership with UNICEF Pakistan \u2014 a first-of-its-kind gamified learning tool that demystifies social behaviour change for practitioners at every level of a programme. We designed the complete toolkit architecture, the four-step CRICKET framework, the 21 behaviour change technique cards, all prompt sheets and facilitation tools, and the training cascade that has since reached hundreds of practitioners across Pakistan\u2019s provinces. The goal: make the science of behaviour change as intuitive and accessible as playing a card game.",
+      services: [
+        "SBC Toolkit Design", "CRICKET Framework", "21 Technique Cards",
+        "Prompt Sheet Design", "Channel Selection Tool", "Gamification Design",
+        "Master Trainer Curriculum", "Training Cascade Architecture",
+        "Facilitation Guides", "UNICEF Training Programme",
+      ],
+    },
+    outcomes: {
+      cards: [
+        { stat: "21 Cards", description: "Behaviour change technique cards \u2014 a complete deck of intervention approaches that participants can physically pick up, play with, and apply to any behaviour change challenge." },
+        { stat: "4 Steps", description: "The CRICKET framework \u2014 Kaun, Rukawat, Karta, Test \u2014 a complete behaviour change design process in four intuitive steps that anyone can follow." },
+        { stat: "Hundreds Trained", description: "UNICEF teams, SBC staff, and provincial partners trained on the methodology \u2014 with the cascade now reaching practitioners across multiple provinces of Pakistan." },
+        { stat: "National Cascade", description: "Master trainers trained and deployed to cascade the CRICKET methodology to provincial teams \u2014 a self-sustaining training architecture that grows with every cohort." },
+        { stat: "Zero Background", description: "Required knowledge of behaviour science for a participant to use the toolkit effectively \u2014 designed from the ground up for frontline workers with context but no formal SBC training." },
+      ],
+      watermark: "\u06A9\u0631\u06A9\u0679",
+    },
+    cricketProblem: {
+      eyebrow: "The Problem the Playbook Solves",
+      headline: "The people who understand the community best are never in the room where the behaviour change strategy is designed. The people in that room have never visited the community.",
+      body: "Behaviour change science is concentrated in specialist teams, academic literature, and programme design documents that frontline workers and field partners rarely see \u2014 and wouldn\u2019t know how to apply even if they did. Meanwhile, the rich contextual knowledge that community workers carry \u2014 who influences whom, what the real barriers are, what actually matters in this village \u2014 rarely makes it into programme design. The CRICKET Playbook was designed to close this gap: bringing behaviour science to the people with context, so that interventions are designed by the people who understand the problem best.",
+    },
+    cricketName: {
+      eyebrow: "The Name \u00B7 \u06A9\u0631\u06A9\u0679 \u00B7 Four Letters. Four Steps.",
+      heading: "Cricket in Urdu is written<br>in <em>four letters.</em><br>The playbook has four steps.",
+      sub: "When written in Urdu, \u201CCricket\u201D \u2014 \u06A9\u0631\u06A9\u0679 \u2014 has exactly four letters. Each letter became a step in the behaviour change design process. A framework named after the game Pakistanis love most, structured around an alphabet whose four parts map perfectly onto the science of behaviour change design.",
+      letters: [
+        { urdu: "\u06A9", roman: "K", word: "Step 1 \u00B7 Kaun", meaning: "Who are we designing for?" },
+        { urdu: "\u0631", roman: "R", word: "Step 2 \u00B7 Rukawat", meaning: "What are the barriers?" },
+        { urdu: "\u06A9", roman: "K", word: "Step 3 \u00B7 Karta", meaning: "How do we change this?" },
+        { urdu: "\u0679", roman: "T", word: "Step 4 \u00B7 Test", meaning: "Does it work?" },
+      ],
+    },
+    cricketSteps: {
+      eyebrow: "The CRICKET Framework \u00B7 Four Steps in Depth",
+      heading: "From blank page to<br><em>field-tested intervention</em> \u2014 in one session.",
+      steps: [
+        {
+          bg: "\u06A9", step: "Step 01 \u00B7 K", letter: "Kaun", urdu: "\u06A9\u0648\u0646",
+          word: "Who Are We Designing For?", translation: "Audience Identification",
+          body: "The starting point of every behaviour change intervention: who is the person whose behaviour we want to change? Not a demographic category \u2014 a real human being, with motivations, constraints, relationships, and a context. Kaun forces the team to be specific about their target.",
+          promptLabel: "Prompt Sheet Guides",
+          promptText: "Who exactly is the person? What are their daily routines? Who influences their decisions? What do they care about most? What does their day look like?",
+        },
+        {
+          bg: "\u0631", step: "Step 02 \u00B7 R", letter: "Rukawat", urdu: "\u0631\u06A9\u0627\u0648\u0679",
+          word: "What Is Stopping Them?", translation: "Barrier Identification",
+          body: "Understanding why the desired behaviour is not already happening. Rukawat surfaces the real barriers \u2014 knowledge gaps, social norms, access constraints, motivation deficits, habit inertia \u2014 at the individual, household, and community level. The prompt sheets map barrier types systematically.",
+          promptLabel: "Prompt Sheet Guides",
+          promptText: "Is this a knowledge barrier? A motivation barrier? A social norm? An access or resource constraint? Does the person know what to do but not how? Or know how but face external constraints?",
+        },
+        {
+          bg: "\u06A9", step: "Step 03 \u00B7 K", letter: "Karta", urdu: "\u06A9\u0631\u062A\u0627",
+          word: "How Do We Change This?", translation: "Intervention Design \u00B7 21 Cards",
+          body: "The heart of the toolkit \u2014 the ideation step. Participants select from the 21 behaviour change technique cards to design an intervention matched to the specific barriers identified in Rukawat. Pick a card. Discuss. Play. Combine. Prototype. The cards make the infinite landscape of behaviour science navigable by anyone.",
+          promptLabel: "21 Technique Cards + Channel Sheet",
+          promptText: "Which technique addresses this barrier? Which channel will reach this person? Community engagement? Frontline workers? Digital? TV? Combination? How do we deliver this intervention?",
+        },
+        {
+          bg: "\u0679", step: "Step 04 \u00B7 T", letter: "Test", urdu: "\u0679\u06CC\u0633\u0679",
+          word: "Does It Work?", translation: "Prototype \u00B7 Field Test \u00B7 Iterate",
+          body: "The final step brings behaviour change design back to the real world. Test guides participants through a practical prototyping and field testing process \u2014 turning ideas from Karta into rapid prototypes, testing them with real community members, and using the results to refine before scaling.",
+          promptLabel: "Prompt Sheet Guides",
+          promptText: "What is the simplest version of this intervention we can test? Who will we test it with? What change are we looking for? How will we know if it worked? What will we change if it doesn\u2019t?",
+        },
+      ],
+    },
+    cricketCards: {
+      eyebrow: "The Technique Deck \u00B7 21 Behaviour Change Cards",
+      heading: "The entire science of<br>behaviour change \u2014<br><em>in a hand you can hold.</em>",
+      body: "The 21 behaviour change technique cards are the playbook\u2019s most distinctive and powerful feature. Each card describes a specific, evidence-based behaviour change approach \u2014 drawn from decades of behavioural science research \u2014 translated into plain language, illustrated with examples, and designed to be physically picked up, shuffled, combined, and played with. Participants are not reading about behaviour change. They are designing it, in real time, with their hands.",
+      cardCount: 21,
+      categories: [
+        { label: "Card Category 1", title: "Motivation Techniques", body: "Cards addressing the \u201Cwhy\u201D of behaviour \u2014 aspiration-building, consequence demonstration, goal-setting, values alignment, social identity activation, and peer comparison techniques that address motivational barriers." },
+        { label: "Card Category 2", title: "Capability Techniques", body: "Cards addressing the \u201Chow\u201D of behaviour \u2014 skill-building, demonstration, modelling, habit formation, implementation intentions, simplification, and resource provision techniques that address knowledge and skill barriers." },
+        { label: "Card Category 3", title: "Opportunity Techniques", body: "Cards addressing the \u201Ccontext\u201D of behaviour \u2014 environmental nudges, social norm activation, cue design, choice architecture, access improvement, and community accountability techniques that address structural and environmental barriers." },
+      ],
+    },
+    cricketChannels: {
+      eyebrow: "The Channel Prompt Sheet \u00B7 From Strategy to Delivery",
+      heading: "Once you\u2019ve decided what to do,<br><em>decide how to reach them.</em>",
+      channels: [
+        { title: "Community Engagement", body: "Group sessions, community events, social mobilisers, public demonstrations, and peer-to-peer community channels \u2014 for norm-level change requiring collective participation" },
+        { title: "Frontline & Community-Based Staff", body: "Health workers, social mobilisers, teachers, religious leaders, and other trusted community-embedded staff \u2014 for interventions requiring personal trust, household access, and individual behaviour support" },
+        { title: "Digital & Mobile", body: "WhatsApp, social media, mobile content, SMS, and digital platforms \u2014 for reaching individuals between community touchpoints, providing on-demand information, and reinforcing messages from other channels" },
+        { title: "Mass Media \u00B7 TV & Radio", body: "Television, radio, and broadcast media \u2014 for awareness, norm signalling, and campaign amplification reaching beyond the programme\u2019s direct community footprint to the broader public" },
+      ],
+    },
     challenge: {
-      heading: "The Challenge",
-      body: "Social and behaviour change (SBC) practitioners across Pakistan and South Asia lacked practical, engaging tools for applying SBC principles in community settings. Existing training resources were academic, dense, and disconnected from the cultural realities of the communities they were meant to serve.\n\nThe gap was not a shortage of theory - it was a failure of translation. Complex frameworks like the Socio-Ecological Model, Behaviour Change Techniques, and theories of change needed to be made tangible, participatory, and memorable for frontline practitioners who operate in resource-constrained environments.",
+      heading: "How the <em>Playbook<br>Works</em> in a Room",
+      body: "A CRICKET Playbook session feels nothing like a behaviour change training. There are no slide decks and no lectures. Participants sit around a table with the cards, the prompt sheets, and a real challenge \u2014 a behaviour they are trying to change in a community they know. The facilitator walks them through four steps, but the tools do most of the teaching.\n\nAt Kaun, participants identify who they are designing for \u2014 often discovering in discussion that they had been designing for the wrong person, or had never been specific enough about the person they were trying to reach. At Rukawat, the barrier prompt sheet surfaces assumptions and challenges them \u2014 what teams think is a knowledge barrier often turns out to be a norm or access barrier in disguise. At Karta, the 21 cards open up a landscape of intervention options that participants would never have generated on their own. And at Test, the prototyping section teaches the discipline of learning before scaling \u2014 the single most valuable habit a development programme team can build.\n\nThe toolkit is designed to work across contexts \u2014 with high-literacy programme staff in a conference room, with frontline workers in a village meeting, and with mixed groups who have radically different educational backgrounds but share a deep knowledge of the community. The common language is the cards, the prompts, and the four steps. Everything else adapts.",
       quote: {
-        text: "The challenge wasn't teaching SBC - it was making it stick. We needed a language that everyone already spoke.",
+        text: "A community health worker who has never heard the word \u2018behavioural economics\u2019 was designing nudge interventions by the end of her first CRICKET session. The framework didn\u2019t simplify the science. It made the science feel like common sense.",
       },
     },
     strategy: {
       heading: "The Strategy",
-      intro: "We used cricket - the region's most beloved sport - as a universal metaphor to make social behaviour change principles accessible, memorable, and genuinely fun to apply in the field.",
+      intro: "We used cricket \u2014 the region\u2019s most beloved sport \u2014 as a universal metaphor to make social behaviour change principles accessible, memorable, and genuinely fun to apply in the field.",
       steps: [
-        { number: "01", title: "Concept Mapping", description: "Mapping core SBC theory to cricket analogies - from team strategy (stakeholder analysis) to match conditions (enabling environment) to player roles (community actors)." },
-        { number: "02", title: "Toolkit Development", description: "Designing a suite of practical, visually rich tools - scorecards, prompt cards, facilitator guides - that made real SBC methodology hands-on and participatory." },
+        { number: "01", title: "Concept Mapping", description: "Mapping core SBC theory to cricket analogies \u2014 from team strategy (stakeholder analysis) to match conditions (enabling environment) to player roles (community actors)." },
+        { number: "02", title: "Toolkit Development", description: "Designing a suite of practical, visually rich tools \u2014 scorecards, prompt cards, facilitator guides \u2014 that made real SBC methodology hands-on and participatory." },
         { number: "03", title: "Workshop Design", description: "Creating interactive workshop formats where participants learned SBC through cricket-themed exercises, group scoring, and competitive team challenges." },
-        { number: "04", title: "Master Trainer Cascade", description: "Training master trainers to deliver the SBC Cricket workshop independently - building sustainable capacity across UNICEF country offices and partner organisations." },
+        { number: "04", title: "Master Trainer Cascade", description: "Training master trainers to deliver the SBC Cricket workshop independently \u2014 building sustainable capacity across UNICEF country offices and partner organisations." },
       ],
     },
     work: {
-      heading: "The Intervention",
-      body: "White Rice designed and produced a complete SBC Cricket training ecosystem for UNICEF - from the core facilitator guidebook to cricket-themed scorecards, prompt cards, and behaviour change technique posters in both English and Urdu. Every tool was designed for active, hands-on use in workshop settings.",
+      heading: "How the <em>Playbook<br>Works</em> in a Room",
+      body: "A CRICKET Playbook session feels nothing like a behaviour change training. There are no slide decks and no lectures. Participants sit around a table with the cards, the prompt sheets, and a real challenge \u2014 a behaviour they are trying to change in a community they know. The facilitator walks them through four steps, but the tools do most of the teaching.\n\nAt Kaun, participants identify who they are designing for \u2014 often discovering in discussion that they had been designing for the wrong person, or had never been specific enough about the person they were trying to reach. At Rukawat, the barrier prompt sheet surfaces assumptions and challenges them \u2014 what teams think is a knowledge barrier often turns out to be a norm or access barrier in disguise. At Karta, the 21 cards open up a landscape of intervention options that participants would never have generated on their own. And at Test, the prototyping section teaches the discipline of learning before scaling \u2014 the single most valuable habit a development programme team can build.\n\nThe toolkit is designed to work across contexts \u2014 with high-literacy programme staff in a conference room, with frontline workers in a village meeting, and with mixed groups who have radically different educational backgrounds but share a deep knowledge of the community. The common language is the cards, the prompts, and the four steps. Everything else adapts.",
       deliverables: [
         "SBC Facilitators Guidebook",
         "SBC Cricket Scorecard (English & Urdu)",
@@ -2411,22 +3357,38 @@ export const caseStudies: CaseStudyData[] = [
         "Training of Trainers Facilitation Pack",
         "Workshop Exercise Card Deck",
       ],
-      downloadLink: {
-        label: "Download SBC Facilitators Guidebook",
-        url: "/downloads/SBC-Facilitators-Guidebook.pdf",
-      },
+      quote: "A community health worker who has never heard the word \u2018behavioural economics\u2019 was designing nudge interventions by the end of her first CRICKET session. The framework didn\u2019t simplify the science. It made the science feel like common sense.",
+    },
+    cricketCascade: {
+      eyebrow: "Training Cascade \u00B7 From UNICEF HQ to the Field",
+      heading: "A self-propagating<br><em>methodology.</em>",
+      steps: [
+        { num: "01", title: "UNICEF Team Training", body: "White Rice trains UNICEF\u2019s own SBC and programme teams \u2014 building internal ownership of the CRICKET methodology and the facilitation skills to deliver it." },
+        { num: "02", title: "Master Trainer Certification", body: "Selected participants trained to the master trainer level \u2014 equipped to independently deliver CRICKET Playbook sessions and train the next cohort of facilitators." },
+        { num: "03", title: "Provincial Cascade", body: "Master trainers deploy independently to provincial teams \u2014 cascading the methodology across Pakistan\u2019s provinces without requiring White Rice\u2019s continued direct involvement." },
+        { num: "04", title: "Hundreds Trained & Growing", body: "Hundreds of practitioners trained and still growing \u2014 a self-propagating methodology that expands every time a master trainer facilitates a new session, in a new province, with a new team." },
+      ],
     },
     impact: {
-      heading: "The Impact",
-      body: "The SBC Cricket toolkit transformed how practitioners engage with behaviour change methodology - making abstract theory actionable in the field. The toolkit has been adopted across UNICEF country offices and partner organisations across South Asia.",
+      heading: "The <em>Impact</em>",
+      body: "The CRICKET Playbook\u2019s impact is measured not in campaigns or reach figures, but in the number of people who can now design a behaviour change intervention who couldn\u2019t before. Every master trainer who delivers a provincial session multiplies that capacity. Every frontline worker who picks up the cards and designs an intervention for their community becomes, in that moment, a behaviour change practitioner \u2014 grounded not in theory, but in context and the right tools.\n\nWhat makes the CRICKET Playbook exceptional is not what it teaches. It is what it makes possible. A community health worker designing a behaviour nudge for her village. A district officer identifying the real barrier behind low vaccination rates. A programme manager who finally understands why the messages aren\u2019t working. That shift \u2014 from reading about behaviour change to doing it \u2014 is the toolkit\u2019s most important outcome. And it is repeating, multiplying, and spreading across Pakistan as this is written.",
       metrics: [
         { value: 2000, suffix: "+", label: "Practitioners Trained" },
         { value: 12, suffix: "", label: "Countries Reached" },
         { value: 500, suffix: "+", label: "Toolkits Distributed" },
         { value: 91, suffix: "%", label: "Usefulness Rating" },
       ],
-      quote: { text: "For the first time, my team could explain behaviour change theory to community health workers - using a language they already loved.", attribution: "UNICEF SBC Specialist" },
+      quote: { text: "For the first time, my team could explain behaviour change theory to community health workers \u2014 using a language they already loved.", attribution: "UNICEF SBC Specialist" },
       closingNote: "The SBC Cricket model established a replicable framework for making complex development methodology accessible through culturally resonant metaphor.",
+    },
+    impactCells: [
+      { big: "Hundreds Trained", desc: "Practitioners across UNICEF Pakistan and partner organisations trained on the CRICKET methodology \u2014 a number that grows every time a master trainer runs a session." },
+      { big: "Multi-Province", desc: "The methodology has been cascaded across multiple provinces by UNICEF-trained master trainers \u2014 without requiring White Rice\u2019s ongoing facilitation." },
+      { big: "A Living Toolkit", desc: "The CRICKET Playbook continues to grow \u2014 with every application in the field generating new insights, new use cases, and new opportunities to take the methodology further." },
+    ],
+    closing: {
+      heading: "Behaviour science is<br>only powerful if the<br>right people <em>can play it.</em>",
+      body: "CRICKET gave Pakistan\u2019s frontline workers, programme teams, and field partners the ability to design behaviour change interventions themselves \u2014 grounded in the science, anchored in their community knowledge, and tested in the real world before they were scaled. That is not a training. That is a capability. And unlike a training, a capability compounds.",
     },
     gallery: {
       heading: "Gallery",
@@ -2440,71 +3402,160 @@ export const caseStudies: CaseStudyData[] = [
   /* 20 ─ Mumkin / CARE Mastercard */
   {
     slug: "care-mastercard-mumkin",
-    year: "2023 - 2024",
+    year: "2023 \u2013 2024",
     tags: ["Mumkin", "CARE International", "Mastercard Foundation", "UBank", "Strivers Programme", "Women Entrepreneurs", "Micro-Enterprise", "HCD Research", "Digital Financial Inclusion", "Brand Identity", "Digital Campaign", "2M Reach", "Microfinance", "Skills Training", "Mentorship", "Pakistan"],
+    theme: {
+      primary: "#4A1A7A",
+      primaryLight: "#8A5ACA",
+      accent: "#C48A1A",
+      accentLight: "#E8B84A",
+    },
+    hero: {
+      eyebrow: "CARE International \u00B7 Mastercard Foundation \u00B7 Strivers Programme \u00B7 Pakistan",
+      title: "Make It<br><em>Possible.</em>",
+      subtitle: "Mumkin \u2014 Empowering 2 Million Micro-Entrepreneurs through HCD Research, Brand Identity & Digital Campaign",
+      description: "A joint initiative between CARE International and Mastercard Foundation to connect Pakistan\u2019s women micro-entrepreneurs with digital financial services, skills training, mentorship, and microfinance \u2014 through a research-led, aspiration-first campaign that reached 2 million people.",
+      meta: [
+        { label: "Clients", value: "CARE International \u00B7 Mastercard Foundation" },
+        { label: "Target", value: "Women Micro-Entrepreneurs \u00B7 Pakistan" },
+        { label: "Campaign", value: "Mumkin \u00B7 \u0645\u0645\u06A9\u0646 \u00B7 Make It Possible" },
+        { label: "White Rice Role", value: "HCD Research \u00B7 Brand Identity \u00B7 Digital Campaign Lead" },
+      ],
+    },
+    role: {
+      heading: "Research, Brand & <em>Campaign Architecture</em>",
+      body: "White Rice was brought in as the creative and research partner for the Mumkin programme \u2014 responsible for the entire arc from understanding to activation. We conducted the HCD research that revealed what micro-entrepreneurs in Pakistan actually needed (not what programme designers assumed), translated those insights into the Mumkin brand identity and campaign strategy, developed all brand assets, and launched a digital campaign that reached 2 million entrepreneurs \u2014 connecting them to the programme\u2019s financial, training, and mentorship resources.",
+      services: [
+        "Human-Centred Design Research", "Entrepreneur Journey Mapping",
+        "Mumkin Brand Identity", "Full Brand Asset Suite",
+        "Campaign Strategy", "Digital Campaign Design",
+        "Key Message Development", "Content Production",
+        "Aspiration-Led Communication",
+      ],
+    },
+    mumkinEcosystem: {
+      eyebrow: "Programme Ecosystem \u00B7 Four Partners, One Goal",
+      heading: "A coalition built to take micro-entrepreneurs<br><em>from aspiration to actual growth.</em>",
+      partners: [
+        { role: "Funder & Programme Originator", name: "Mastercard Foundation", body: "The Strivers Programme \u2014 Mastercard\u2019s global initiative engaging young entrepreneurs, especially women, in accessing digital financial services and scaling their businesses." },
+        { role: "Implementing Partner", name: "CARE International Pakistan", body: "Joint venture lead \u2014 responsible for programme design, on-ground implementation, and connecting the programme\u2019s resources with Pakistan\u2019s micro-entrepreneur communities." },
+        { role: "Financial Services Partner", name: "UBank \u00B7 U Microfinance Bank", body: "Loan and digital financial services provider \u2014 giving entrepreneurs access to microfinance, digital banking, and credit products specifically designed for Pakistan\u2019s micro-enterprise market." },
+        { role: "Training Delivery Partner", name: "Specialised Training Agency", body: "On-ground training cascade \u2014 delivering the skills enhancement programme to micro-entrepreneurs across cohorts, in person and digitally." },
+      ],
+      wrRole: { label: "White Rice Role", name: "HCD Research \u00B7 Brand \u00B7 Campaign", body: "Understanding the entrepreneur\u2019s real journey, translating it into the Mumkin brand and identity, and designing the digital campaign that connected 2 million entrepreneurs with the programme" },
+    },
+    outcomes: {
+      cards: [
+        { stat: "2 Million+", description: "Entrepreneurs reached through the Mumkin digital campaign \u2014 connected to the programme\u2019s financial services, training, and mentorship resources." },
+        { stat: "Mumkin", description: "\u201CMake It Possible\u201D \u2014 a brand identity built from real women\u2019s aspirations, launched as Pakistan\u2019s most resonant campaign for women micro-entrepreneurs." },
+        { stat: "HCD First", description: "Deep research into the micro-entrepreneur journey \u2014 mapping barriers, motivations, and unmet needs before a single piece of content was designed." },
+        { stat: "Full Brand", description: "Complete Mumkin brand identity and asset suite \u2014 from visual identity to digital campaign content \u2014 all built from research insight, not assumption." },
+        { stat: "Sustained Cohort", description: "Entrepreneurs enrolled in cohort-based training programmes combining in-person and digital learning \u2014 sustained over a longer programme arc." },
+      ],
+      watermark: "2M",
+    },
+    mumkinBrand: {
+      urdu: "\u0645\u0645\u06A9\u0646",
+      name: "Mumkin",
+      translation: "\u201CMake It Possible\u201D \u2014 \u201CIt Is Possible\u201D \u2014 \u201CYou Can.\u201D",
+      body: "Mumkin is a single word that does the work of an entire aspiration. In Urdu, it means both that something is possible and that you can make it happen \u2014 collapsing the distance between dreaming and doing. Named from the HCD research that showed Pakistan\u2019s women micro-entrepreneurs didn\u2019t lack ambition or capability. They lacked access, connection, and the confidence that their dreams were within reach. Mumkin told them: they are.",
+    },
     challenge: {
-      heading: "The Challenge",
-      body: "Pakistan's micro-entrepreneur landscape is vast, diverse, and systematically underserved. Women who run small enterprises \u2014 from tailoring and food preparation to handicrafts and home-based retail \u2014 are often the primary or sole income earners in their households, but operate entirely outside formal financial systems, without access to credit, digital commerce, or business development support.\n\nThe challenge for the campaign was as much about perception as it was about access. Many of these women had never been told that formal financial services, business training, or digital commerce were options available to them. The programme existed. But without a compelling, aspirational, and culturally resonant campaign to connect women with it, it would reach only those who were already connected \u2014 not the millions who needed it most.\n\nWhite Rice's specific challenge was to translate what we learned in the HCD research \u2014 the real barriers, the real aspirations, the real language women used to talk about their businesses \u2014 into a brand and campaign that felt like it was built for them, not deployed at them.",
+      heading: "The <em>Challenge</em>",
+      body: "Pakistan\u2019s micro-entrepreneur landscape is vast, diverse, and systematically underserved. Women who run small enterprises \u2014 from tailoring and food preparation to handicrafts and home-based retail \u2014 are often the primary or sole income earners in their households, but operate entirely outside formal financial systems, without access to credit, digital commerce, or business development support.\n\nThe challenge for the campaign was as much about perception as it was about access. Many of these women had never been told that formal financial services, business training, or digital commerce were options available to them. The programme existed. But without a compelling, aspirational, and culturally resonant campaign to connect women with it, it would reach only those who were already connected \u2014 not the millions who needed it most.\n\nWhite Rice\u2019s specific challenge was to translate what we learned in the HCD research \u2014 the real barriers, the real aspirations, the real language women used to talk about their businesses \u2014 into a brand and campaign that felt like it was built for them, not deployed at them.",
       quote: {
-        text: "These women were not running businesses despite every barrier. They were running businesses because of their own resourcefulness. The programme's job was not to teach them to be entrepreneurs. It was to remove the obstacles that were limiting the entrepreneurs they already were.",
+        text: "These women were not running businesses despite every barrier. They were running businesses because of their own resourcefulness. The programme\u2019s job was not to teach them to be entrepreneurs. It was to remove the obstacles that were limiting the entrepreneurs they already were.",
       },
     },
     strategy: {
-      heading: "The Strategy",
+      heading: "The <em>Strategy</em>",
       intro: "Before we built the campaign, we listened to the women it was built for.",
       steps: [
-        {
-          number: "01",
-          title: "Field Immersion",
-          description: "Embedded research with women micro-entrepreneurs across diverse contexts \u2014 urban, peri-urban, and rural \u2014 observing their businesses, homes, and daily routines.",
-        },
-        {
-          number: "02",
-          title: "Journey Mapping",
-          description: "Mapping the complete entrepreneur journey \u2014 from the first idea to current operation \u2014 identifying every barrier to growth, every moment of friction, and every unmet need.",
-        },
-        {
-          number: "03",
-          title: "Barrier Analysis",
-          description: "Identifying the specific challenges blocking growth: access to credit, digital literacy gaps, market connectivity, mobility constraints, family dynamics, and confidence.",
-        },
-        {
-          number: "04",
-          title: "Aspiration Research",
-          description: "Understanding what these women wanted their businesses \u2014 and their lives \u2014 to look like. The dreams that were driving them, and the language they used to articulate them.",
-        },
-        {
-          number: "05",
-          title: "Insight Translation",
-          description: "Translating field learnings into design principles for the Mumkin brand, campaign strategy, and programme communication \u2014 ensuring every decision traced back to a real insight.",
-        },
+        { number: "01", title: "Field Immersion", description: "Embedded research with women micro-entrepreneurs across diverse contexts." },
+        { number: "02", title: "Journey Mapping", description: "Mapping the complete entrepreneur journey from first idea to current operation." },
+        { number: "03", title: "Barrier Analysis", description: "Identifying the specific challenges blocking growth." },
+        { number: "04", title: "Aspiration Research", description: "Understanding the dreams driving these women and the language they used." },
+        { number: "05", title: "Insight Translation", description: "Translating field learnings into design principles for the Mumkin brand." },
+      ],
+    },
+    mumkinHcd: {
+      eyebrow: "Human-Centred Design Research \u00B7 Understanding the Entrepreneur\u2019s Real Journey",
+      heading: "Before we built the campaign,<br><em>we listened to the women it was built for.</em>",
+      steps: [
+        { phase: "Phase 1", title: "Field Immersion", body: "Embedded research with women micro-entrepreneurs across diverse contexts \u2014 urban, peri-urban, and rural \u2014 observing their businesses, homes, and daily routines" },
+        { phase: "Phase 2", title: "Journey Mapping", body: "Mapping the complete entrepreneur journey \u2014 from the first idea to current operation \u2014 identifying every barrier to growth, every moment of friction, and every unmet need" },
+        { phase: "Phase 3", title: "Barrier Analysis", body: "Identifying the specific challenges blocking growth: access to credit, digital literacy gaps, market connectivity, mobility constraints, family dynamics, and confidence" },
+        { phase: "Phase 4", title: "Aspiration Research", body: "Understanding what these women wanted their businesses \u2014 and their lives \u2014 to look like. The dreams that were driving them, and the language they used to articulate them" },
+        { phase: "Phase 5", title: "Insight Translation", body: "Translating field learnings into design principles for the Mumkin brand, campaign strategy, and programme communication \u2014 ensuring every decision traced back to a real insight" },
+      ],
+      insights: [
+        { num: "01", title: "Access \u2260 Awareness", body: "Microfinance and digital financial services existed \u2014 but most women had never been told they were eligible, or what applying would actually look like. The barrier was not availability. It was the invisibility of the pathway." },
+        { num: "02", title: "Aspiration is the entry point", body: "No programme messaging about \u201Cmicro-credit\u201D or \u201Cfinancial inclusion\u201D moved these women. What moved them was the possibility of their dream becoming real \u2014 the daughter\u2019s education, the bigger shop, the machine. Connect to the dream first." },
+        { num: "03", title: "Peer trust over institutional trust", body: "Women trusted women who were like them more than they trusted programme messaging. The most credible voice for Mumkin was not CARE or Mastercard \u2014 it was a woman from the same neighbourhood who had already accessed the programme." },
+      ],
+    },
+    mumkinProfiles: {
+      eyebrow: "Entrepreneur Archetypes \u00B7 Who Mumkin Was Built For",
+      heading: "Three women. <em>Millions of stories</em> that sound like theirs.",
+      profiles: [
+        { archetype: "The Home-Based Maker", title: "She runs her business from her kitchen and her community", body: "Embroidery, tailoring, baking, food preparation \u2014 skills she has had for years, turned into income that her household depends on. She works within the limits of her mobility, her family\u2019s expectations, and her existing relationships.", barrier: "Key barrier: No pathway to digital markets. No access to credit to buy the machine or the materials that would let her take bigger orders." },
+        { archetype: "The Small Shop Owner", title: "She has premises, inventory, and loyal customers \u2014 and a ceiling she can\u2019t break through", body: "A small retail business \u2014 general goods, clothing, groceries \u2014 that she has built with her own resources over years. The business is real, the customers are real, but growth requires capital she cannot access through formal channels.", barrier: "Key barrier: Unable to access microfinance without a male guarantor. No knowledge of how to sell online or manage digital payments." },
+        { archetype: "The Aspiring Starter", title: "She has the idea, the skill, and the drive \u2014 and has never been told the resources exist", body: "She has been thinking about starting a business for months or years. She has the skill, the market knowledge, and the motivation \u2014 but no starting capital, no training on running a business, and no one who has shown her the path.", barrier: "Key barrier: Unawareness of available financial products and training. Lack of confidence that formal systems are accessible to someone like her." },
+      ],
+    },
+    mumkinOffer: {
+      eyebrow: "The Mumkin Programme \u00B7 What Entrepreneurs Gained Access To",
+      heading: "Everything they needed.<br><em>Nothing they didn\u2019t.</em>",
+      cards: [
+        { label: "Financial Access", title: "Microfinance & Digital Banking", body: "UBank microfinance products \u2014 loans, digital accounts, and mobile banking \u2014 specifically designed for women micro-entrepreneurs. Removing the gatekeeping that had kept formal finance inaccessible." },
+        { label: "Skills Development", title: "Business & Digital Training", body: "In-person and digital training delivered in cohorts \u2014 covering business fundamentals, digital commerce, marketing, and financial management. Practical and accessible." },
+        { label: "Peer Support", title: "Mentorship & Networks", body: "Cohort-based learning creating peer networks among women entrepreneurs. Mentorship from established business women. The social infrastructure that turns isolated micro-enterprises into a connected community." },
+        { label: "Market Access", title: "Digital Commerce Pathways", body: "Connections to digital platforms, e-commerce channels, and expanded market networks \u2014 giving entrepreneurs the tools to sell beyond their immediate neighbourhood." },
+      ],
+    },
+    mumkinDigital: {
+      eyebrow: "Digital Campaign \u00B7 From Research to 2 Million Reach",
+      heading: "An aspirational campaign<br>built from the<br><em>inside out.</em>",
+      body: "The Mumkin digital campaign was the culmination of the HCD research \u2014 every creative decision traced back to something a real entrepreneur had said, felt, or shown us. The campaign was aspiration-first: it led with the dream, not the product.",
+      body2: "The campaign\u2019s job was not to explain the programme. It was to make women feel seen \u2014 and then give them a path forward. The brand assets, content strategy, and digital channel mix were all designed with one objective: reaching the right women, in the right moment, with a message that felt like it was meant for them.",
+      assets: [
+        { label: "Brand Identity", value: "Complete Mumkin brand system \u2014 name, visual identity, colour language, typography, and tone of voice \u2014 built from HCD research insight" },
+        { label: "Brand Asset Suite", value: "Full suite of digital and print campaign assets \u2014 social content, video, photography direction, messaging templates, and on-ground materials" },
+        { label: "Digital Content Programme", value: "Ongoing content produced to keep entrepreneurs engaged \u2014 success stories, practical tips, programme updates, and peer testimonials" },
+        { label: "2 Million Entrepreneurs Reached", value: "The digital campaign\u2019s reach \u2014 connecting women across Pakistan with the Mumkin programme\u2019s financial services, training, and mentorship" },
       ],
     },
     work: {
-      heading: "The Intervention",
-      body: "The Mumkin digital campaign was the culmination of the HCD research \u2014 every creative decision traced back to something a real entrepreneur had said, felt, or shown us. The campaign was aspiration-first: it led with the dream, not the product. It showed women who looked like the target audience, in situations they recognised, having the conversations about their businesses that they were already having privately.\n\nThe campaign's job was not to explain the programme. It was to make women feel seen \u2014 and then give them a path forward. The brand assets, content strategy, and digital channel mix were all designed with one objective: reaching the right women, in the right moment, with a message that felt like it was meant for them.",
+      heading: "The <em>Intervention</em>",
+      body: "The Mumkin digital campaign was the culmination of the HCD research \u2014 every creative decision traced back to something a real entrepreneur had said, felt, or shown us.",
       deliverables: [
-        "Human-Centred Design Research",
-        "Entrepreneur Journey Mapping",
-        "Mumkin Brand Identity",
-        "Full Brand Asset Suite",
-        "Campaign Strategy",
-        "Digital Campaign Design",
-        "Key Message Development",
-        "Content Production",
+        "Human-Centred Design Research", "Entrepreneur Journey Mapping",
+        "Mumkin Brand Identity", "Full Brand Asset Suite",
+        "Campaign Strategy", "Digital Campaign Design",
+        "Key Message Development", "Content Production",
         "Aspiration-Led Communication",
       ],
     },
     impact: {
-      heading: "The Impact",
-      body: "Mumkin demonstrated what happens when you design a programme's communication from the inside out \u2014 starting with deep understanding of the people you are trying to reach, and building the brand and campaign from that understanding rather than from institutional assumptions about what micro-entrepreneurs need to hear. Two million entrepreneurs is a reach figure. What it represents is two million women who saw a campaign that felt like it was speaking to them directly, and found a door that had not been visible before.",
+      heading: "The <em>Impact</em>",
+      body: "Mumkin demonstrated what happens when you design a programme\u2019s communication from the inside out \u2014 starting with deep understanding of the people you are trying to reach, and building the brand and campaign from that understanding rather than from institutional assumptions about what micro-entrepreneurs need to hear.",
       metrics: [
-        { value: 2, suffix: " Million+", label: "Entrepreneurs reached through the Mumkin digital campaign \u2014 connected to financial services, training, mentorship, and market access." },
-        { value: 0, suffix: "", prefix: "", label: "A brand identity built from real HCD field research \u2014 every creative decision traced to a real insight from a real entrepreneur's real life." },
-        { value: 0, suffix: "", prefix: "", label: "Sustained content programme keeping enrolled entrepreneurs connected and motivated across the full cohort lifecycle \u2014 in person and digitally." },
-        { value: 0, suffix: "", prefix: "", label: "A brand that did the most important job: made women feel that the resources, the training, the credit, and the dream of a bigger business were all within their reach." },
+        { value: 2, suffix: "M+", label: "Entrepreneurs reached through the Mumkin digital campaign." },
+        { value: 1, suffix: "", label: "Research-led brand identity built from HCD field research." },
+        { value: 1, suffix: "", label: "Sustained cohort engagement across the programme lifecycle." },
+        { value: 1, suffix: "", label: "Mumkin \u2014 a brand that made dreams feel within reach." },
       ],
-      closingNote: "Micro-entrepreneurs in Pakistan don't need to be taught ambition. They need to be shown the door that was always there but never pointed out. White Rice's job was to find that door in the research, name it with a brand, and open it wide enough that 2 million women could walk through.",
+      closingNote: "Micro-entrepreneurs in Pakistan don\u2019t need to be taught ambition. They need to be shown the door that was always there but never pointed out. White Rice\u2019s job was to find that door in the research, name it with a brand, and open it wide enough that 2 million women could walk through.",
+    },
+    impactCells: [
+      { big: "2 Million+", desc: "Entrepreneurs reached through the Mumkin digital campaign \u2014 connected to financial services, training, mentorship, and market access." },
+      { big: "Research-Led Brand", desc: "A brand identity built from real HCD field research \u2014 every creative decision traced to a real insight from a real entrepreneur\u2019s real life." },
+      { big: "Cohort Engagement", desc: "Sustained content programme keeping enrolled entrepreneurs connected and motivated across the full cohort lifecycle." },
+      { big: "Mumkin \u2014 Made Possible", desc: "A brand that did the most important job: made women feel that the resources, the training, the credit, and the dream of a bigger business were all within their reach." },
+    ],
+    closing: {
+      heading: "She always knew<br>what she wanted<br>to build. <em>Mumkin showed her<br>she could build it.</em>",
+      body: "Micro-entrepreneurs in Pakistan don\u2019t need to be taught ambition. They need to be shown the door that was always there but never pointed out. White Rice\u2019s job was to find that door in the research, name it with a brand, and open it wide enough that 2 million women could walk through.",
     },
     gallery: {
       heading: "Gallery",

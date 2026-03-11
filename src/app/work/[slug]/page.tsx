@@ -43,6 +43,39 @@ import CasePatientBand from "@/components/case-study/CasePatientBand";
 import CaseStrategyProngsBand from "@/components/case-study/CaseStrategyProngsBand";
 import CaseTvAdBand from "@/components/case-study/CaseTvAdBand";
 import CaseChannelsBand from "@/components/case-study/CaseChannelsBand";
+import CaseRegionsBand from "@/components/case-study/CaseRegionsBand";
+import CaseDesignChallengeBand from "@/components/case-study/CaseDesignChallengeBand";
+import CaseSeriesBand from "@/components/case-study/CaseSeriesBand";
+import CaseLanguagesBand from "@/components/case-study/CaseLanguagesBand";
+import CaseDistributionBand from "@/components/case-study/CaseDistributionBand";
+import CaseFourCountriesBand from "@/components/case-study/CaseFourCountriesBand";
+import CaseHcdProcessBand from "@/components/case-study/CaseHcdProcessBand";
+import CaseStartupsBand from "@/components/case-study/CaseStartupsBand";
+import CaseNepalExchangeBand from "@/components/case-study/CaseNepalExchangeBand";
+import CaseTimelineBand from "@/components/case-study/CaseTimelineBand";
+import CaseDesignCycleBand from "@/components/case-study/CaseDesignCycleBand";
+import CaseInnovationHubsBand from "@/components/case-study/CaseInnovationHubsBand";
+import CaseMethodologyDiffBand from "@/components/case-study/CaseMethodologyDiffBand";
+import CaseSparkMovementBand from "@/components/case-study/CaseSparkMovementBand";
+import CaseSemTiersBand from "@/components/case-study/CaseSemTiersBand";
+import CaseAssemblyBand from "@/components/case-study/CaseAssemblyBand";
+import CaseTargetAudiencesBand from "@/components/case-study/CaseTargetAudiencesBand";
+import CaseCricketProblemBand from "@/components/case-study/CaseCricketProblemBand";
+import CaseCricketNameBand from "@/components/case-study/CaseCricketNameBand";
+import CaseCricketStepsBand from "@/components/case-study/CaseCricketStepsBand";
+import CaseCricketCardsBand from "@/components/case-study/CaseCricketCardsBand";
+import CaseCricketChannelsBand from "@/components/case-study/CaseCricketChannelsBand";
+import CaseCricketCascadeBand from "@/components/case-study/CaseCricketCascadeBand";
+import CaseSaafChainBand from "@/components/case-study/CaseSaafChainBand";
+import CaseSaafHouseholdBand from "@/components/case-study/CaseSaafHouseholdBand";
+import CaseSaafIncentiveBand from "@/components/case-study/CaseSaafIncentiveBand";
+import CaseSaafMediaChannelsBand from "@/components/case-study/CaseSaafMediaChannelsBand";
+import CaseMumkinEcosystemBand from "@/components/case-study/CaseMumkinEcosystemBand";
+import CaseMumkinBrandBand from "@/components/case-study/CaseMumkinBrandBand";
+import CaseMumkinHcdBand from "@/components/case-study/CaseMumkinHcdBand";
+import CaseMumkinProfilesBand from "@/components/case-study/CaseMumkinProfilesBand";
+import CaseMumkinOfferBand from "@/components/case-study/CaseMumkinOfferBand";
+import CaseMumkinDigitalBand from "@/components/case-study/CaseMumkinDigitalBand";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -86,10 +119,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
     : undefined;
 
   // These custom bands REPLACE the Work/Intervention section entirely
-  const skipWorkSection = !!(cs.cocreation || cs.touchpoints || cs.reframe || cs.verbatims || cs.reach || cs.episodes || cs.designProcess || cs.journey || cs.audiences || cs.kab || cs.hypothesis || cs.cocreationMethods || cs.topics || cs.platform || cs.diversity || cs.twoSides);
+  const skipWorkSection = !!(cs.cocreation || cs.touchpoints || cs.reframe || cs.verbatims || cs.reach || cs.episodes || cs.designProcess || cs.journey || cs.audiences || cs.kab || cs.hypothesis || cs.cocreationMethods || cs.topics || cs.platform || cs.diversity || cs.twoSides || cs.regions || cs.fourCountries || cs.timeline || cs.sparkMovement || cs.saafHousehold || cs.mumkinHcd);
 
-  // ICRC: custom bands replace Challenge + Strategy sections too
-  const skipChallengeStrategy = !!(cs.twoSides);
+  // ICRC / SBC Cricket: custom bands replace Challenge + Strategy sections
+  const skipChallengeStrategy = !!(cs.twoSides || cs.cricketProblem);
+
+  // Mumkin: custom HCD band replaces Strategy (but Challenge remains)
+  const skipStrategy = !!(cs.mumkinEcosystem);
 
   return (
     <>
@@ -116,6 +152,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
         {/* 2c. Communities Band */}
         {cs.communities && <CaseCommunitiesBand data={cs.communities} />}
 
+        {/* Saaf Karachi: Recycling Chain Band */}
+        {cs.saafChain && <CaseSaafChainBand data={cs.saafChain} />}
+
+        {/* Mumkin: Ecosystem Band */}
+        {cs.mumkinEcosystem && <CaseMumkinEcosystemBand data={cs.mumkinEcosystem} />}
+
         {/* 3. Key Outcomes */}
         {cs.outcomes && (
           <CaseOutcomes
@@ -126,6 +168,75 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
         {/* 3b. Divider Band (between Outcomes and Challenge) */}
         {cs.divider && <CaseDividerBand data={cs.divider} />}
+
+        {/* Mumkin: Brand Band */}
+        {cs.mumkinBrand && <CaseMumkinBrandBand data={cs.mumkinBrand} />}
+
+        {/* Spring: Four Countries Band */}
+        {cs.fourCountries && <CaseFourCountriesBand data={cs.fourCountries} />}
+
+        {/* Johns Hopkins: Regions Band */}
+        {cs.regions && <CaseRegionsBand data={cs.regions} />}
+
+        {/* Johns Hopkins: Design Challenge Band */}
+        {cs.designChallenge && <CaseDesignChallengeBand data={cs.designChallenge} />}
+
+        {/* Johns Hopkins: Series Band (6 Episodes) */}
+        {cs.series && <CaseSeriesBand data={cs.series} />}
+
+        {/* Johns Hopkins: Languages Band */}
+        {cs.languages && <CaseLanguagesBand data={cs.languages} />}
+
+        {/* Johns Hopkins: Distribution Band */}
+        {cs.distribution && <CaseDistributionBand data={cs.distribution} />}
+
+        {/* Spring: HCD Process Band */}
+        {cs.hcdProcess && <CaseHcdProcessBand data={cs.hcdProcess} />}
+
+        {/* Spring: Startups Band */}
+        {cs.startups && <CaseStartupsBand data={cs.startups} />}
+
+        {/* Spring: Nepal Exchange Band */}
+        {cs.nepalExchange && <CaseNepalExchangeBand data={cs.nepalExchange} />}
+
+        {/* Oxfam IKEA: 18-Month Timeline Band */}
+        {cs.timeline && <CaseTimelineBand data={cs.timeline} />}
+
+        {/* Oxfam IKEA: Design Thinking Cycle Band */}
+        {cs.designCycle && <CaseDesignCycleBand data={cs.designCycle} />}
+
+        {/* Oxfam IKEA: Innovation Hubs Band */}
+        {cs.innovationHubs && <CaseInnovationHubsBand data={cs.innovationHubs} />}
+
+        {/* Oxfam IKEA: Methodology Difference Band */}
+        {cs.methodologyDiff && <CaseMethodologyDiffBand data={cs.methodologyDiff} />}
+
+        {/* Dunia Aali Larki: Spark to Movement Band */}
+        {cs.sparkMovement && <CaseSparkMovementBand data={cs.sparkMovement} />}
+
+        {/* Dunia Aali Larki: SEM Tiers Band */}
+        {cs.semTiers && <CaseSemTiersBand data={cs.semTiers} />}
+
+        {/* Dunia Aali Larki: Assembly Band */}
+        {cs.assembly && <CaseAssemblyBand data={cs.assembly} />}
+
+        {/* Dunia Aali Larki: Target Audiences Band */}
+        {cs.targetAudiences && <CaseTargetAudiencesBand data={cs.targetAudiences} />}
+
+        {/* SBC Cricket: Problem Band */}
+        {cs.cricketProblem && <CaseCricketProblemBand data={cs.cricketProblem} />}
+
+        {/* SBC Cricket: Name Band (CRICKET letters) */}
+        {cs.cricketName && <CaseCricketNameBand data={cs.cricketName} />}
+
+        {/* SBC Cricket: Steps Band (4 Steps Deep) */}
+        {cs.cricketSteps && <CaseCricketStepsBand data={cs.cricketSteps} />}
+
+        {/* SBC Cricket: 21 Cards Band */}
+        {cs.cricketCards && <CaseCricketCardsBand data={cs.cricketCards} />}
+
+        {/* SBC Cricket: Channels Band */}
+        {cs.cricketChannels && <CaseCricketChannelsBand data={cs.cricketChannels} />}
 
         {/* ICRC: Two Sides Band (replaces Challenge) */}
         {cs.twoSides && <CaseTwoSidesBand data={cs.twoSides} />}
@@ -157,8 +268,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </CaseStickySection>
         )}
 
-        {/* 5. Strategy — sticky sidebar (skip for ICRC) */}
-        {!skipChallengeStrategy && (
+        {/* 5. Strategy — sticky sidebar (skip for ICRC / Mumkin) */}
+        {!skipChallengeStrategy && !skipStrategy && (
           <CaseStickySection number="03" heading={cs.strategy.heading}>
             <p>{cs.strategy.intro}</p>
             <div className="cs-pillars">
@@ -230,6 +341,27 @@ export default async function CaseStudyPage({ params }: PageProps) {
         {/* 5j. Garden Band */}
         {cs.garden && <CaseGardenBand data={cs.garden} />}
 
+        {/* Mumkin: HCD Research Band */}
+        {cs.mumkinHcd && <CaseMumkinHcdBand data={cs.mumkinHcd} />}
+
+        {/* Mumkin: Entrepreneur Profiles Band */}
+        {cs.mumkinProfiles && <CaseMumkinProfilesBand data={cs.mumkinProfiles} />}
+
+        {/* Mumkin: Programme Offer Band */}
+        {cs.mumkinOffer && <CaseMumkinOfferBand data={cs.mumkinOffer} />}
+
+        {/* Mumkin: Digital Campaign Band */}
+        {cs.mumkinDigital && <CaseMumkinDigitalBand data={cs.mumkinDigital} />}
+
+        {/* Saaf Karachi: Household Tools Band */}
+        {cs.saafHousehold && <CaseSaafHouseholdBand data={cs.saafHousehold} />}
+
+        {/* Saaf Karachi: Incentive Architecture Band */}
+        {cs.saafIncentive && <CaseSaafIncentiveBand data={cs.saafIncentive} />}
+
+        {/* Saaf Karachi: Media Channels Band */}
+        {cs.saafMediaChannels && <CaseSaafMediaChannelsBand data={cs.saafMediaChannels} />}
+
         {/* 6. Work / Intervention — sticky sidebar (skip when custom bands replace it) */}
         {!skipWorkSection && (
           <CaseStickySection number="04" heading={cs.work.heading}>
@@ -294,6 +426,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
             )}
           </CaseStickySection>
         )}
+
+        {/* SBC Cricket: Cascade Band (between Work and Impact) */}
+        {cs.cricketCascade && <CaseCricketCascadeBand data={cs.cricketCascade} />}
 
         {/* 6a. SBC Band (PlayLab — between Work and Impact) */}
         {cs.sbc && <CaseSbcBand data={cs.sbc} />}

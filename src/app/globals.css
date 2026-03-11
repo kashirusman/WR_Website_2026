@@ -2988,7 +2988,8 @@ body {
 .cs-hero__title em {
   font-style: italic;
   font-weight: 300;
-  color: var(--cs-accent-lt);
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,.3);
 }
 
 .cs-hero__subtitle {
@@ -5293,6 +5294,7 @@ body {
   font-size: 0.9rem;
   color: #7A7065;
   line-height: 1.7;
+  grid-column: 1 / -1;
 }
 
 /* ── Session Rhythm (Intervention sub-section) ──────────────────── */
@@ -5958,4 +5960,2654 @@ body {
 @media (max-width: 600px) {
   .cs-hcd__methods { grid-template-columns: 1fr; }
   .cs-channels__grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Johns Hopkins CCP — Custom Band Styles
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Regions Band ── */
+.cs-regions {
+  background: #0A1A1A;
+  padding: 5rem 3.5rem;
+}
+.cs-regions__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-regions__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-regions__heading {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+.cs-regions__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #3AACAC);
+}
+.cs-regions__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.05);
+}
+.cs-regions__card {
+  background: #0A1A1A;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.cs-regions__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+.cs-regions__card--coral::before { background: linear-gradient(90deg, #C45A2A, #E07A4A); }
+.cs-regions__card--teal::before { background: linear-gradient(90deg, #0D6B6B, #3AACAC); }
+.cs-regions__card--gold::before { background: linear-gradient(90deg, #C4881A, #E8C84A); }
+.cs-regions__card--blue::before { background: linear-gradient(90deg, #3A4A6A, #6A8ACC); }
+.cs-regions__icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+.cs-regions__card--coral .cs-regions__icon {
+  background: rgba(196,90,42,.12);
+  border: 1px solid rgba(196,90,42,.3);
+  color: #E07A4A;
+}
+.cs-regions__card--teal .cs-regions__icon {
+  background: rgba(13,107,107,.18);
+  border: 1px solid rgba(58,172,172,.3);
+  color: #3AACAC;
+}
+.cs-regions__card--gold .cs-regions__icon {
+  background: rgba(196,136,26,.12);
+  border: 1px solid rgba(196,136,26,.3);
+  color: #E8C84A;
+}
+.cs-regions__card--blue .cs-regions__icon {
+  background: rgba(58,74,106,.18);
+  border: 1px solid rgba(106,138,204,.3);
+  color: #6A8ACC;
+}
+.cs-regions__icon svg { width: 1.2rem; height: 1.2rem; }
+.cs-regions__name {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .3rem;
+}
+.cs-regions__sub {
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: .75rem;
+}
+.cs-regions__body {
+  font-size: .8rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.42);
+  font-weight: 300;
+}
+
+/* ── Design Challenge Band ── */
+.cs-design-challenge {
+  background: var(--cs-accent-lt, #C45A2A);
+  padding: 5rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.cs-design-challenge::before {
+  content: '\201C';
+  position: absolute;
+  right: -2rem;
+  top: -3rem;
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(14rem, 32vw, 40rem);
+  color: rgba(255,255,255,.07);
+  line-height: 1;
+  pointer-events: none;
+}
+.cs-design-challenge__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.cs-design-challenge__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 1rem;
+}
+.cs-design-challenge__headline {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.3;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.cs-design-challenge__body {
+  font-size: .95rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,.62);
+  font-weight: 300;
+  max-width: 60ch;
+}
+.cs-design-challenge__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.cs-design-challenge__pillar {
+  padding: 1.5rem;
+  background: rgba(255,255,255,.1);
+  border-top: 2px solid rgba(255,255,255,.2);
+}
+.cs-design-challenge__pillar-title {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .4rem;
+}
+.cs-design-challenge__pillar-body {
+  font-size: .78rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.55);
+  font-weight: 300;
+}
+
+/* ── Series Band (6 Episodes) ── */
+.cs-series {
+  background: #101A22;
+  padding: 5.5rem 3.5rem;
+}
+.cs-series__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-series__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-series__heading {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 3.5rem;
+}
+.cs-series__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #3AACAC);
+}
+.cs-series__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.05);
+}
+.cs-series__card {
+  background: #101A22;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: background .3s ease;
+}
+.cs-series__card:hover { background: #172230; }
+.cs-series__card-bg {
+  position: absolute;
+  right: 1rem;
+  bottom: .5rem;
+  font-family: var(--font-cormorant), serif;
+  font-size: 7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.03);
+  line-height: 1;
+  pointer-events: none;
+}
+.cs-series__card-num {
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #3AACAC);
+  margin-bottom: .6rem;
+}
+.cs-series__card-title {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .5rem;
+  line-height: 1.2;
+}
+.cs-series__card-scenario {
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: .75rem;
+}
+.cs-series__card-body {
+  font-size: .8rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.42);
+  font-weight: 300;
+}
+
+/* ── Languages Band ── */
+.cs-languages {
+  background: var(--cs-primary, #0D6B6B);
+  padding: 4rem 3.5rem;
+}
+.cs-languages__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5rem;
+  align-items: center;
+}
+.cs-languages__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  margin-bottom: .75rem;
+}
+.cs-languages__heading {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.15;
+}
+.cs-languages__heading em {
+  font-style: italic;
+  color: rgba(255,255,255,.65);
+}
+.cs-languages__big {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(5rem, 10vw, 9rem);
+  font-weight: 300;
+  color: rgba(255,255,255,.1);
+  line-height: 1;
+}
+.cs-languages__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.1);
+}
+.cs-languages__card {
+  background: var(--cs-primary, #0D6B6B);
+  padding: 2rem 1.75rem;
+}
+.cs-languages__flag {
+  font-size: .65rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+  margin-bottom: .5rem;
+}
+.cs-languages__name {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: .35rem;
+}
+.cs-languages__card-body {
+  font-size: .78rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,.45);
+  font-weight: 300;
+}
+
+/* ── Distribution Band ── */
+.cs-distribution {
+  background: #080C10;
+  padding: 5rem 3.5rem;
+}
+.cs-distribution__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.cs-distribution__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-distribution__heading {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.cs-distribution__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #3AACAC);
+}
+.cs-distribution__body {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,.48);
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+.cs-distribution__features {
+  display: grid;
+  gap: 1.25rem;
+}
+.cs-distribution__feature {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255,255,255,.04);
+  border-left: 2px solid rgba(58,172,172,.4);
+}
+.cs-distribution__feature-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(13,107,107,.2);
+  border: 1px solid rgba(58,172,172,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cs-accent-lt, #3AACAC);
+}
+.cs-distribution__feature-icon svg { width: .9rem; height: .9rem; }
+.cs-distribution__feature-label {
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .3rem;
+}
+.cs-distribution__feature-value {
+  font-size: .88rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,.68);
+  font-weight: 300;
+}
+
+/* ── Johns Hopkins Responsive ── */
+@media (max-width: 900px) {
+  .cs-regions { padding: 3rem 1.5rem; }
+  .cs-regions__grid { grid-template-columns: repeat(2, 1fr); }
+  .cs-design-challenge { padding: 3rem 1.5rem; }
+  .cs-design-challenge__pillars { grid-template-columns: 1fr; }
+  .cs-series { padding: 3rem 1.5rem; }
+  .cs-series__grid { grid-template-columns: 1fr; }
+  .cs-languages { padding: 3rem 1.5rem; }
+  .cs-languages__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .cs-distribution { padding: 3rem 1.5rem; }
+  .cs-distribution__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media (max-width: 600px) {
+  .cs-regions__grid { grid-template-columns: 1fr; }
+  .cs-languages__cards { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Spring Accelerator — Custom Band Styles
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Four Countries Band ── */
+.cs-countries {
+  background: var(--cs-primary, #1A5A7A);
+  padding: 4rem 3.5rem;
+}
+.cs-countries__inner { max-width: 1200px; margin: 0 auto; }
+.cs-countries__label {
+  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.4); margin-bottom: 2.5rem;
+}
+.cs-countries__row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px; background: rgba(255,255,255,.1);
+}
+.cs-countries__card {
+  background: var(--cs-primary, #1A5A7A);
+  padding: 2rem; text-align: center;
+}
+.cs-countries__card--hl {
+  background: rgba(255,255,255,.08);
+}
+.cs-countries__card--hl .cs-countries__name { color: #E8C05A; }
+.cs-countries__flag { font-size: 2.2rem; margin-bottom: .75rem; display: block; }
+.cs-countries__name {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.3rem; font-weight: 600; color: #fff; margin-bottom: .4rem;
+}
+.cs-countries__role {
+  font-size: .72rem; line-height: 1.5; color: rgba(255,255,255,.5); font-weight: 300;
+}
+
+/* ── HCD Process Band ── */
+.cs-hcd-process {
+  background: #0A1A2A;
+  padding: 5rem 3.5rem;
+}
+.cs-hcd-process__inner { max-width: 1200px; margin: 0 auto; }
+.cs-hcd-process__eyebrow {
+  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); margin-bottom: .75rem;
+}
+.cs-hcd-process__heading {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 300; color: #fff; margin-bottom: 3rem;
+}
+.cs-hcd-process__heading em { font-style: italic; color: var(--cs-primary-lt, #4A9ABA); }
+.cs-hcd-process__flow {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  position: relative;
+}
+.cs-hcd-process__line {
+  position: absolute; top: 1.7rem; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(74,154,186,.5), transparent);
+}
+.cs-hcd-process__step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 .75rem;
+}
+.cs-hcd-process__dot {
+  width: 3.5rem; height: 3.5rem; border-radius: 50%;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem; position: relative; z-index: 1;
+  font-family: var(--font-cormorant), serif; font-style: italic;
+  font-size: .9rem; color: var(--cs-primary-lt, #4A9ABA);
+}
+.cs-hcd-process__step-num {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic; font-size: .78rem;
+  color: var(--cs-primary-lt, #4A9ABA); margin-bottom: .3rem;
+}
+.cs-hcd-process__step-title {
+  font-size: .82rem; font-weight: 500; color: #fff;
+  margin-bottom: .3rem; line-height: 1.3;
+}
+.cs-hcd-process__step-body {
+  font-size: .72rem; line-height: 1.5;
+  color: rgba(255,255,255,.38); font-weight: 300;
+}
+
+/* ── Startups Band ── */
+.cs-startups {
+  background: #D0EAF5;
+  padding: 5rem 3.5rem;
+}
+.cs-startups__inner { max-width: 1200px; margin: 0 auto; }
+.cs-startups__eyebrow {
+  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--cs-primary, #1A5A7A); margin-bottom: .75rem;
+}
+.cs-startups__heading {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300; color: #1A1612; margin-bottom: 2.5rem;
+}
+.cs-startups__heading em { font-style: italic; color: var(--cs-primary, #1A5A7A); }
+.cs-startups__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.cs-startups__card {
+  background: #fff; padding: 2rem; border-radius: 2px;
+  border-top: 3px solid var(--cs-primary, #1A5A7A);
+}
+.cs-startups__sector {
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--cs-primary, #1A5A7A); margin-bottom: .6rem;
+}
+.cs-startups__name {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.5rem; font-weight: 600; color: #1A1612; margin-bottom: .6rem;
+}
+.cs-startups__body {
+  font-size: .85rem; line-height: 1.7; color: #7A7065; font-weight: 300;
+}
+.cs-startups__tags {
+  display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem;
+}
+.cs-startups__tag {
+  padding: .2rem .65rem; background: #D0EAF5; border-radius: 2px;
+  font-size: .68rem; color: var(--cs-primary, #1A5A7A);
+}
+.cs-startups__note {
+  margin-top: 2rem; padding: 1.5rem 2rem;
+  background: rgba(26,90,122,.08); border-left: 3px solid var(--cs-primary, #1A5A7A);
+}
+.cs-startups__note p {
+  font-size: .9rem; line-height: 1.75; color: #7A7065;
+  font-weight: 300; font-style: italic;
+}
+
+/* ── Nepal Exchange Band ── */
+.cs-nepal {
+  background: #2A3A4A;
+  padding: 4rem 3.5rem;
+}
+.cs-nepal__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.8fr;
+  gap: 5rem; align-items: center;
+}
+.cs-nepal__eyebrow {
+  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); margin-bottom: 1rem;
+}
+.cs-nepal__heading {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 300; line-height: 1.2; color: #fff;
+}
+.cs-nepal__heading em { font-style: italic; color: var(--cs-primary-lt, #4A9ABA); }
+.cs-nepal__stat {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 300; color: rgba(255,255,255,.1);
+  line-height: 1; margin-top: 1.5rem;
+}
+.cs-nepal__body {
+  font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.52);
+  font-weight: 300; margin-bottom: 1.25rem;
+}
+.cs-nepal__phases { display: grid; gap: 1rem; margin-top: 1.5rem; }
+.cs-nepal__phase {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1rem 1.25rem; background: rgba(255,255,255,.04);
+  border-left: 2px solid var(--cs-primary-lt, #4A9ABA);
+}
+.cs-nepal__phase-num {
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.2rem; font-style: italic;
+  color: var(--cs-primary-lt, #4A9ABA); min-width: 1.5rem;
+}
+.cs-nepal__phase-text {
+  font-size: .82rem; line-height: 1.6;
+  color: rgba(255,255,255,.5); font-weight: 300;
+}
+.cs-nepal__phase-text strong {
+  color: rgba(255,255,255,.78); font-weight: 500;
+}
+
+/* ── Spring Responsive ── */
+@media (max-width: 900px) {
+  .cs-countries { padding: 3rem 1.5rem; }
+  .cs-countries__row { grid-template-columns: repeat(2, 1fr); }
+  .cs-hcd-process { padding: 3rem 1.5rem; }
+  .cs-hcd-process__flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .cs-hcd-process__line { display: none; }
+  .cs-startups { padding: 3rem 1.5rem; }
+  .cs-startups__grid { grid-template-columns: 1fr; }
+  .cs-nepal { padding: 3rem 1.5rem; }
+  .cs-nepal__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media (max-width: 600px) {
+  .cs-countries__row { grid-template-columns: 1fr; }
+  .cs-hcd-process__flow { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Oxfam IKEA HCD — Custom Bands
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 18-Month Timeline Band ── */
+.cs-timeline {
+  background: var(--cs-primary, #2A4A2A);
+  padding: 5rem 2.5rem;
+  color: #F5F0E8;
+}
+.cs-timeline__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cs-timeline__eyebrow {
+  font-family: var(--font-dm), sans-serif;
+  font-size: .85rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8B45A);
+  margin-bottom: 1rem;
+}
+.cs-timeline__heading {
+  font-family: var(--font-cg), serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+.cs-timeline__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8B45A);
+}
+.cs-timeline__track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.cs-timeline__line {
+  display: none; /* line only shown on wide screens as decorative */
+}
+.cs-timeline__item {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--cs-accent, #C4821A);
+}
+.cs-timeline__dot {
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--cs-accent, #C4821A);
+}
+.cs-timeline__phase {
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8B45A);
+  margin-bottom: .4rem;
+}
+.cs-timeline__title {
+  font-family: var(--font-cg), serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+.cs-timeline__body {
+  font-size: .88rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.78);
+}
+
+/* ── Design Cycle Band ── */
+.cs-cycle {
+  background: #0F1A0F;
+  padding: 5rem 2.5rem;
+  color: #F5F0E8;
+}
+.cs-cycle__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cs-cycle__eyebrow {
+  font-family: var(--font-dm), sans-serif;
+  font-size: .85rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8B45A);
+  margin-bottom: 1rem;
+}
+.cs-cycle__heading {
+  font-family: var(--font-cg), serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+.cs-cycle__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8B45A);
+}
+.cs-cycle__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.cs-cycle__card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.cs-cycle__num {
+  font-family: var(--font-cg), serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--cs-accent-lt, #E8B45A);
+  margin-bottom: .5rem;
+}
+.cs-cycle__name {
+  font-family: var(--font-cg), serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+.cs-cycle__body {
+  font-size: .82rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.72);
+}
+.cs-cycle__note {
+  background: rgba(196,130,26,.12);
+  border-left: 3px solid var(--cs-accent, #C4821A);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  font-size: .9rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.85);
+}
+.cs-cycle__note strong {
+  color: var(--cs-accent-lt, #E8B45A);
+}
+
+/* ── Innovation Hubs Band ── */
+.cs-hubs {
+  background: var(--cs-primary, #2A4A2A);
+  padding: 5rem 2.5rem;
+  color: #F5F0E8;
+}
+.cs-hubs__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cs-hubs__eyebrow {
+  font-family: var(--font-dm), sans-serif;
+  font-size: .85rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8B45A);
+  margin-bottom: 1rem;
+}
+.cs-hubs__heading {
+  font-family: var(--font-cg), serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+  color: #fff;
+}
+.cs-hubs__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8B45A);
+}
+.cs-hubs__intro {
+  font-size: .95rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,.82);
+  margin-bottom: 2.5rem;
+  max-width: 800px;
+}
+.cs-hubs__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.cs-hubs__card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  padding: 2rem;
+}
+.cs-hubs__province {
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8B45A);
+  margin-bottom: .5rem;
+}
+.cs-hubs__name {
+  font-family: var(--font-cg), serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .75rem;
+}
+.cs-hubs__desc {
+  font-size: .88rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.78);
+  margin-bottom: 1rem;
+}
+.cs-hubs__context {
+  font-size: .78rem;
+  color: var(--cs-accent-lt, #E8B45A);
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: .75rem;
+}
+.cs-hubs__pathways-heading {
+  font-family: var(--font-cg), serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.cs-hubs__pathways {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.cs-hubs__pathway {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.cs-hubs__pw-label {
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cs-accent, #C4821A);
+  margin-bottom: .35rem;
+}
+.cs-hubs__pw-title {
+  font-family: var(--font-cg), serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+.cs-hubs__pw-body {
+  font-size: .85rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.75);
+}
+
+/* ── Methodology Difference Band ── */
+.cs-diff {
+  background: #F5F0E8;
+  padding: 5rem 2.5rem;
+  color: #1A1612;
+}
+.cs-diff__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+.cs-diff__left {
+  position: sticky;
+  top: 6rem;
+}
+.cs-diff__eyebrow {
+  font-family: var(--font-dm), sans-serif;
+  font-size: .85rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--cs-accent, #C4821A);
+  margin-bottom: 1rem;
+}
+.cs-diff__heading {
+  font-family: var(--font-cg), serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  color: #1A1612;
+}
+.cs-diff__heading em {
+  font-style: italic;
+  color: var(--cs-accent, #C4821A);
+}
+.cs-diff__intro {
+  font-size: .92rem;
+  line-height: 1.75;
+  color: #5A3A1A;
+  margin-bottom: 2rem;
+}
+.cs-diff__table {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.cs-diff__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+}
+.cs-diff__row--header {
+  margin-bottom: .25rem;
+}
+.cs-diff__cell {
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.cs-diff__cell--conv {
+  background: rgba(138,58,26,.08);
+  color: #5A3A1A;
+}
+.cs-diff__cell--ox {
+  background: rgba(42,74,42,.1);
+  color: #2A4A2A;
+}
+.cs-diff__label {
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.cs-diff__label--conv {
+  color: #8A3A1A;
+}
+.cs-diff__label--ox {
+  color: var(--cs-primary, #2A4A2A);
+}
+
+/* ── Oxfam IKEA Responsive ── */
+@media (max-width: 900px) {
+  .cs-timeline { padding: 3rem 1.5rem; }
+  .cs-timeline__track { grid-template-columns: repeat(2, 1fr); }
+  .cs-cycle { padding: 3rem 1.5rem; }
+  .cs-cycle__grid { grid-template-columns: repeat(3, 1fr); }
+  .cs-hubs { padding: 3rem 1.5rem; }
+  .cs-hubs__grid { grid-template-columns: 1fr; }
+  .cs-hubs__pathways { grid-template-columns: 1fr; }
+  .cs-diff { padding: 3rem 1.5rem; }
+  .cs-diff__inner { grid-template-columns: 1fr; gap: 2rem; }
+  .cs-diff__left { position: static; }
+  .cs-diff__row { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .cs-timeline__track { grid-template-columns: 1fr; }
+  .cs-cycle__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) {
+  .cs-cycle__grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Dunia Aali Larki — Custom Bands
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Spark to Movement Band ── */
+.cs-spark {
+  background: #1E1218;
+  padding: 5rem 2.5rem;
+  color: #F5F0E8;
+}
+.cs-spark__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cs-spark__eyebrow {
+  font-family: var(--font-dm), sans-serif;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: .75rem;
+}
+.cs-spark__heading {
+  font-family: var(--font-cg), serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.25;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+.cs-spark__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8C85A);
+}
+.cs-spark__flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+.cs-spark__step-wrap {
+  display: contents;
+}
+.cs-spark__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 .5rem;
+  color: rgba(255,255,255,.2);
+}
+.cs-spark__arrow svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.cs-spark__step {
+  padding: 2rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+}
+.cs-spark__badge {
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8C85A);
+  margin-bottom: .6rem;
+}
+.cs-spark__title {
+  font-family: var(--font-cg), serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+.cs-spark__body {
+  font-size: .82rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.5);
+  font-weight: 300;
+}
+
+/* ── SEM Tiers Band ── */
+.cs-sem {
+  background: var(--cs-primary, #8A1A2A);
+  padding: 5rem 2.5rem;
+  color: #F5F0E8;
+  position: relative;
+  overflow: hidden;
+}
+.cs-sem::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 20% 50%, rgba(0,0,0,.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cs-sem__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.cs-sem__eyebrow {
+  font-family: var(--font-dm), sans-serif;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-bottom: .75rem;
+}
+.cs-sem__heading {
+  font-family: var(--font-cg), serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.25;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+.cs-sem__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8C85A);
+}
+.cs-sem__tiers {
+  display: grid;
+  gap: 1.5px;
+  background: rgba(255,255,255,.1);
+}
+.cs-sem__tier {
+  display: grid;
+  grid-template-columns: 2.5rem 200px 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 2.5rem;
+}
+.cs-sem__tier--top   { background: rgba(0,0,0,.3); }
+.cs-sem__tier--upper { background: rgba(0,0,0,.2); }
+.cs-sem__tier--mid   { background: rgba(0,0,0,.12); }
+.cs-sem__tier--lower { background: rgba(0,0,0,.06); }
+.cs-sem__tier--base  { background: rgba(255,255,255,.04); }
+.cs-sem__level {
+  font-family: var(--font-cg), serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.2);
+  line-height: 1;
+}
+.cs-sem__label {
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-bottom: .3rem;
+}
+.cs-sem__name {
+  font-family: var(--font-cg), serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+.cs-sem__activities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.cs-sem__act {
+  padding: .25rem .75rem;
+  background: rgba(255,255,255,.1);
+  border-radius: 2px;
+  font-size: .72rem;
+  color: rgba(255,255,255,.7);
+}
+
+/* ── Assembly Band ── */
+.cs-assembly {
+  background: #12080C;
+  padding: 5rem 2.5rem;
+  color: #F5F0E8;
+  position: relative;
+  overflow: hidden;
+}
+.cs-assembly::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 65% 55% at 55% 45%, rgba(196,154,26,.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cs-assembly__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.cs-assembly__eyebrow {
+  font-family: var(--font-dm), sans-serif;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8C85A);
+  margin-bottom: 1rem;
+}
+.cs-assembly__heading {
+  font-family: var(--font-cg), serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.cs-assembly__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8C85A);
+}
+.cs-assembly__stat {
+  font-family: var(--font-cg), serif;
+  font-size: clamp(4rem, 7vw, 6.5rem);
+  font-weight: 300;
+  color: rgba(255,255,255,.08);
+  line-height: 1;
+}
+.cs-assembly__right p {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,.52);
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+.cs-assembly__features {
+  display: grid;
+  gap: .75rem;
+  margin-top: 1.75rem;
+}
+.cs-assembly__feature {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  background: rgba(196,154,26,.07);
+  border-left: 2px solid var(--cs-accent, #C49A1A);
+}
+.cs-assembly__feature p {
+  font-size: .85rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.55);
+  font-weight: 300;
+  margin: 0;
+}
+.cs-assembly__feature strong {
+  color: rgba(255,255,255,.82);
+  font-weight: 500;
+}
+
+/* ── Target Audiences Band ── */
+.cs-audiences {
+  background: #F5D8DC;
+  padding: 5rem 2.5rem;
+  color: #1A1012;
+}
+.cs-audiences__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cs-audiences__eyebrow {
+  font-family: var(--font-dm), sans-serif;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cs-primary, #8A1A2A);
+  margin-bottom: .75rem;
+}
+.cs-audiences__heading {
+  font-family: var(--font-cg), serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.25;
+  color: #1A1012;
+  margin-bottom: 2.5rem;
+}
+.cs-audiences__heading em {
+  font-style: italic;
+  color: var(--cs-primary, #8A1A2A);
+}
+.cs-audiences__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.cs-audiences__card {
+  background: #fff;
+  padding: 1.75rem;
+  border-top: 3px solid var(--cs-primary, #8A1A2A);
+}
+.cs-audiences__title {
+  font-family: var(--font-cg), serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1A1012;
+  margin-bottom: .5rem;
+}
+.cs-audiences__body {
+  font-size: .82rem;
+  line-height: 1.65;
+  color: #7A7065;
+  font-weight: 300;
+}
+
+/* ── Dunia Aali Larki Responsive ── */
+@media (max-width: 900px) {
+  .cs-spark { padding: 3rem 1.5rem; }
+  .cs-spark__flow { grid-template-columns: 1fr; gap: 0; }
+  .cs-spark__arrow { display: none; }
+  .cs-sem { padding: 3rem 1.5rem; }
+  .cs-sem__tier { grid-template-columns: 1fr; gap: 1rem; }
+  .cs-sem__level { display: none; }
+  .cs-assembly { padding: 3rem 1.5rem; }
+  .cs-assembly__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .cs-audiences { padding: 3rem 1.5rem; }
+  .cs-audiences__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .cs-audiences__grid { grid-template-columns: 1fr; }
+}
+
+/* ═══ SBC CRICKET — Problem Band ═══ */
+.cs-crk-problem {
+  background: var(--cs-primary, #1A4A1A);
+  padding: 5.5rem 3.5rem;
+}
+.cs-crk-problem__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.cs-crk-problem__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 1.5rem;
+}
+.cs-crk-problem__headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 2rem;
+}
+.cs-crk-problem__body {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,.55);
+  font-weight: 300;
+  max-width: 65ch;
+}
+
+/* ═══ SBC CRICKET — Name Band ═══ */
+.cs-crk-name {
+  background: #040806;
+  padding: 5.5rem 3.5rem;
+}
+.cs-crk-name__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-crk-name__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-crk-name__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.cs-crk-name__heading em {
+  font-style: italic;
+  color: var(--cs-accent, #C4781A);
+}
+.cs-crk-name__sub {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,.45);
+  font-weight: 300;
+  max-width: 60ch;
+  margin-bottom: 3.5rem;
+}
+.cs-crk-name__letters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.06);
+}
+.cs-crk-name__letter {
+  background: #040806;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.cs-crk-name__letter--1 { border-bottom: 2px solid var(--cs-primary, #1A4A1A); }
+.cs-crk-name__letter--2 { border-bottom: 2px solid var(--cs-accent, #C4781A); }
+.cs-crk-name__letter--3 { border-bottom: 2px solid var(--cs-primary, #1A4A1A); }
+.cs-crk-name__letter--4 { border-bottom: 2px solid var(--cs-accent, #C4781A); }
+.cs-crk-name__urdu {
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: rgba(255,255,255,.12);
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+.cs-crk-name__roman {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+.cs-crk-name__word {
+  font-family: var(--font-heading);
+  font-size: .9rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.65);
+  margin-bottom: .25rem;
+}
+.cs-crk-name__meaning {
+  font-size: .75rem;
+  color: rgba(255,255,255,.35);
+  font-weight: 300;
+}
+
+/* ═══ SBC CRICKET — Steps Band ═══ */
+.cs-crk-steps {
+  background: #0A120A;
+  padding: 5.5rem 3.5rem;
+}
+.cs-crk-steps__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-crk-steps__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-crk-steps__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 3rem;
+}
+.cs-crk-steps__heading em {
+  font-style: italic;
+  color: var(--cs-accent, #C4781A);
+}
+.cs-crk-steps__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.06);
+}
+.cs-crk-steps__card {
+  background: #0A120A;
+  padding: 2.5rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+.cs-crk-steps__bg {
+  position: absolute;
+  right: .5rem;
+  top: -.5rem;
+  font-size: 8rem;
+  color: rgba(255,255,255,.03);
+  line-height: 1;
+  pointer-events: none;
+}
+.cs-crk-steps__step {
+  font-size: .6rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--cs-accent, #C4781A);
+  margin-bottom: .75rem;
+}
+.cs-crk-steps__letter {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .15rem;
+}
+.cs-crk-steps__urdu {
+  font-size: .85rem;
+  color: rgba(255,255,255,.22);
+  margin-bottom: .65rem;
+}
+.cs-crk-steps__word {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .3rem;
+}
+.cs-crk-steps__translation {
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: .85rem;
+}
+.cs-crk-steps__body {
+  font-size: .8rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.42);
+  font-weight: 300;
+}
+.cs-crk-steps__prompt {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: rgba(255,255,255,.04);
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+.cs-crk-steps__prompt-label {
+  font-size: .58rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  margin-bottom: .35rem;
+}
+.cs-crk-steps__prompt-text {
+  font-size: .75rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,.38);
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* ═══ SBC CRICKET — 21 Cards Band ═══ */
+.cs-crk-cards {
+  background: var(--cs-accent, #C4781A);
+  padding: 5.5rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.cs-crk-cards::after {
+  content: '21';
+  position: absolute;
+  right: -1rem;
+  bottom: -2rem;
+  font-family: var(--font-heading);
+  font-size: clamp(12rem, 28vw, 32rem);
+  font-weight: 700;
+  color: rgba(255,255,255,.06);
+  pointer-events: none;
+  line-height: 1;
+}
+.cs-crk-cards__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.cs-crk-cards__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.48);
+  margin-bottom: .75rem;
+}
+.cs-crk-cards__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.cs-crk-cards__heading em {
+  font-style: italic;
+  color: rgba(255,255,255,.65);
+}
+.cs-crk-cards__body {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,.6);
+  font-weight: 300;
+  max-width: 55ch;
+  margin-bottom: 3.5rem;
+}
+.cs-crk-cards__deck {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.cs-crk-cards__mini {
+  width: 4.5rem;
+  height: 6rem;
+  border-radius: .5rem;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  transition: transform .2s, background .2s;
+  cursor: default;
+}
+.cs-crk-cards__mini:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: rgba(255,255,255,.15);
+}
+.cs-crk-cards__num {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+}
+.cs-crk-cards__dot {
+  width: .35rem;
+  height: .35rem;
+  border-radius: 50%;
+}
+.cs-crk-cards__dot--green { background: var(--cs-primary-lt, #3A8A3A); }
+.cs-crk-cards__dot--amber { background: rgba(255,255,255,.5); }
+.cs-crk-cards__cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.1);
+}
+.cs-crk-cards__cat {
+  background: var(--cs-accent, #C4781A);
+  padding: 1.75rem 1.5rem;
+}
+.cs-crk-cards__cat-label {
+  font-size: .6rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-bottom: .4rem;
+}
+.cs-crk-cards__cat-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .35rem;
+}
+.cs-crk-cards__cat-body {
+  font-size: .75rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.48);
+  font-weight: 300;
+}
+
+/* ═══ SBC CRICKET — Channels Band ═══ */
+.cs-crk-channels {
+  background: #0E1C0E;
+  padding: 5.5rem 3.5rem;
+}
+.cs-crk-channels__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-crk-channels__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-crk-channels__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+.cs-crk-channels__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8A84A);
+}
+.cs-crk-channels__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.05);
+}
+.cs-crk-channels__card {
+  background: #0E1C0E;
+  padding: 2rem 1.75rem;
+}
+.cs-crk-channels__icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(58,138,58,.12);
+  border: 1px solid rgba(58,138,58,.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--cs-primary-lt, #3A8A3A);
+}
+.cs-crk-channels__icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.cs-crk-channels__title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .4rem;
+}
+.cs-crk-channels__body {
+  font-size: .78rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.42);
+  font-weight: 300;
+}
+
+/* ═══ SBC CRICKET — Cascade Band ═══ */
+.cs-crk-cascade {
+  background: var(--cs-primary, #1A4A1A);
+  background: rgba(208,234,208,.25);
+  padding: 5rem 3.5rem;
+}
+.cs-crk-cascade__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-crk-cascade__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cs-primary, #1A4A1A);
+  margin-bottom: .75rem;
+}
+.cs-crk-cascade__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  color: var(--cs-ink, #080A06);
+  margin-bottom: 3rem;
+}
+.cs-crk-cascade__heading em {
+  font-style: italic;
+  color: var(--cs-primary, #1A4A1A);
+}
+.cs-crk-cascade__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: #D2C9B8;
+}
+.cs-crk-cascade__step {
+  background: #FDFAF5;
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+.cs-crk-cascade__step::after {
+  content: '\2192';
+  position: absolute;
+  right: -.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #7A7065;
+  z-index: 1;
+}
+.cs-crk-cascade__step:last-child::after { display: none; }
+.cs-crk-cascade__num {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  font-weight: 300;
+  color: rgba(0,0,0,.04);
+  line-height: 1;
+  margin-bottom: -.75rem;
+}
+.cs-crk-cascade__title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--cs-ink, #080A06);
+  margin-bottom: .4rem;
+}
+.cs-crk-cascade__body {
+  font-size: .8rem;
+  line-height: 1.65;
+  color: #7A7065;
+  font-weight: 300;
+}
+
+/* ═══ SBC CRICKET — Responsive ═══ */
+@media (max-width: 900px) {
+  .cs-crk-problem,
+  .cs-crk-name,
+  .cs-crk-steps,
+  .cs-crk-cards,
+  .cs-crk-channels,
+  .cs-crk-cascade { padding: 3.5rem 1.5rem; }
+  .cs-crk-name__letters,
+  .cs-crk-steps__cards,
+  .cs-crk-channels__grid,
+  .cs-crk-cascade__steps,
+  .cs-crk-cards__cats { grid-template-columns: 1fr 1fr; }
+  .cs-crk-cascade__step::after { display: none; }
+}
+@media (max-width: 600px) {
+  .cs-crk-name__letters,
+  .cs-crk-steps__cards,
+  .cs-crk-channels__grid,
+  .cs-crk-cascade__steps,
+  .cs-crk-cards__cats { grid-template-columns: 1fr; }
+  .cs-crk-cards__mini { width: 3.5rem; height: 4.5rem; }
+  .cs-crk-cards__num { font-size: 1rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SAAF KARACHI CUSTOM BANDS
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Recycling Chain Band ── */
+.cs-saaf-chain {
+  background: var(--cs-primary, #2A3A4A);
+  padding: 4rem 3.5rem;
+}
+.cs-saaf-chain__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-saaf-chain__label {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 2.5rem;
+}
+.cs-saaf-chain__flow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: start;
+  gap: 0;
+}
+.cs-saaf-chain__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 .75rem;
+  position: relative;
+}
+.cs-saaf-chain__step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -.5rem;
+  top: 1.7rem;
+  color: rgba(255,255,255,.2);
+  font-size: 1rem;
+}
+.cs-saaf-chain__dot {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.cs-saaf-chain__num {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: .8rem;
+  font-weight: 600;
+  color: #fff;
+}
+.cs-saaf-chain__title {
+  font-size: .82rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: .3rem;
+  line-height: 1.3;
+}
+.cs-saaf-chain__body {
+  font-size: .72rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,.38);
+  font-weight: 300;
+}
+
+/* ── Household Tools Band ── */
+.cs-saaf-hh {
+  background: var(--cs-accent-lt, #D8EAB8);
+  padding: 5rem 3.5rem;
+}
+.cs-saaf-hh__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 5rem;
+  align-items: start;
+}
+.cs-saaf-hh__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cs-accent, #5A8A1A);
+  margin-bottom: 1rem;
+}
+.cs-saaf-hh__heading {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--cs-primary, #1A1612);
+  margin-bottom: 1.25rem;
+}
+.cs-saaf-hh__heading em {
+  font-style: italic;
+  color: var(--cs-accent, #5A8A1A);
+}
+.cs-saaf-hh__intro {
+  font-size: .95rem;
+  line-height: 1.8;
+  color: #7A7065;
+  font-weight: 300;
+}
+.cs-saaf-hh__tools {
+  display: grid;
+  gap: 1rem;
+}
+.cs-saaf-hh__tool {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: #fff;
+  border-left: 3px solid var(--cs-accent, #5A8A1A);
+}
+.cs-saaf-hh__icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--cs-accent, #5A8A1A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: .1rem;
+}
+.cs-saaf-hh__icon-num {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: .7rem;
+  font-weight: 700;
+  color: #fff;
+}
+.cs-saaf-hh__tool-title {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A1612;
+  margin-bottom: .3rem;
+}
+.cs-saaf-hh__tool-body {
+  font-size: .8rem;
+  line-height: 1.6;
+  color: #7A7065;
+  font-weight: 300;
+}
+
+/* ── Incentive Architecture Band ── */
+.cs-saaf-incentive {
+  background: #141E28;
+  padding: 5rem 3.5rem;
+}
+.cs-saaf-incentive__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-saaf-incentive__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: .75rem;
+}
+.cs-saaf-incentive__heading {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+.cs-saaf-incentive__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #8AB84A);
+}
+.cs-saaf-incentive__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.06);
+}
+.cs-saaf-incentive__card {
+  background: #141E28;
+  padding: 2rem 1.75rem;
+}
+.cs-saaf-incentive__who {
+  font-size: .65rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #8AB84A);
+  margin-bottom: .6rem;
+}
+.cs-saaf-incentive__name {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .6rem;
+}
+.cs-saaf-incentive__desc {
+  font-size: .78rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.4);
+  font-weight: 300;
+}
+
+/* ── Media Channels Band ── */
+.cs-saaf-channels {
+  background: var(--cs-primary, #2A3A4A);
+  padding: 4.5rem 3.5rem;
+}
+.cs-saaf-channels__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-saaf-channels__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: .75rem;
+}
+.cs-saaf-channels__heading {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 2.5rem;
+}
+.cs-saaf-channels__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.cs-saaf-channels__card {
+  padding: 1.5rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 2px;
+}
+.cs-saaf-channels__cat {
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8B84A);
+  margin-bottom: .75rem;
+}
+.cs-saaf-channels__list {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.cs-saaf-channels__item {
+  font-size: .8rem;
+  color: rgba(255,255,255,.5);
+  padding-left: .75rem;
+  position: relative;
+}
+.cs-saaf-channels__item::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgba(255,255,255,.2);
+  font-size: .65rem;
+}
+
+/* ── Saaf Karachi Responsive ── */
+@media (max-width: 900px) {
+  .cs-saaf-chain,
+  .cs-saaf-hh,
+  .cs-saaf-incentive,
+  .cs-saaf-channels { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .cs-saaf-hh__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .cs-saaf-incentive__grid,
+  .cs-saaf-channels__grid { grid-template-columns: 1fr 1fr; }
+  .cs-saaf-chain__flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .cs-saaf-chain__step::after { display: none; }
+}
+@media (max-width: 600px) {
+  .cs-saaf-incentive__grid,
+  .cs-saaf-channels__grid,
+  .cs-saaf-chain__flow { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MUMKIN / CARE MASTERCARD CUSTOM BANDS
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Ecosystem Band ── */
+.cs-mum-eco {
+  background: #1A1228;
+  padding: 5rem 3.5rem;
+}
+.cs-mum-eco__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-mum-eco__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-mum-eco__heading {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+.cs-mum-eco__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8B84A);
+}
+.cs-mum-eco__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.06);
+}
+.cs-mum-eco__card {
+  background: #1A1228;
+  padding: 2.5rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+.cs-mum-eco__card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.cs-mum-eco__card--1::before { background: linear-gradient(90deg, #EB001B, #F79E1B); }
+.cs-mum-eco__card--2::before { background: linear-gradient(90deg, #C4501A, #E87A4A); }
+.cs-mum-eco__card--3::before { background: linear-gradient(90deg, #1A4A7A, #4A8ACA); }
+.cs-mum-eco__card--4::before { background: linear-gradient(90deg, #4A1A7A, #8A5ACA); }
+.cs-mum-eco__role {
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: .6rem;
+}
+.cs-mum-eco__name {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .5rem;
+  line-height: 1.2;
+}
+.cs-mum-eco__body {
+  font-size: .78rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.42);
+  font-weight: 300;
+}
+.cs-mum-eco__wr-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.cs-mum-eco__wr {
+  background: rgba(196,138,26,.12);
+  border: 1px solid rgba(196,138,26,.3);
+  padding: 2rem 3rem;
+  text-align: center;
+  max-width: 350px;
+}
+.cs-mum-eco__wr-label {
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8B84A);
+  margin-bottom: .5rem;
+}
+.cs-mum-eco__wr-name {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .4rem;
+}
+.cs-mum-eco__wr-body {
+  font-size: .78rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.45);
+  font-weight: 300;
+}
+
+/* ── Mumkin Brand Band ── */
+.cs-mum-brand {
+  background: var(--cs-accent, #C48A1A);
+  padding: 5rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.cs-mum-brand::before {
+  content: '\0645\0645\06A9\0646';
+  position: absolute;
+  right: -2rem; top: -1rem;
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(10rem, 25vw, 28rem);
+  font-weight: 700;
+  color: rgba(255,255,255,.07);
+  pointer-events: none;
+  line-height: 1;
+  direction: rtl;
+}
+.cs-mum-brand__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.cs-mum-brand__urdu {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  color: rgba(255,255,255,.35);
+  direction: rtl;
+  margin-bottom: .5rem;
+}
+.cs-mum-brand__name {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(4rem, 9vw, 8rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin-bottom: 1rem;
+}
+.cs-mum-brand__translation {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.65);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+.cs-mum-brand__body {
+  font-size: .95rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,.62);
+  font-weight: 300;
+  max-width: 55ch;
+  margin: 0 auto;
+}
+
+/* ── HCD Research Band ── */
+.cs-mum-hcd {
+  background: #0E0A18;
+  padding: 5.5rem 3.5rem;
+}
+.cs-mum-hcd__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-mum-hcd__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-mum-hcd__heading {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+.cs-mum-hcd__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8B84A);
+}
+.cs-mum-hcd__journey {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  position: relative;
+}
+.cs-mum-hcd__journey::before {
+  content: '';
+  position: absolute;
+  top: .75rem;
+  left: 2.5rem; right: 2.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(196,138,26,.3) 0%, rgba(196,138,26,.6) 50%, rgba(196,138,26,.3) 100%);
+}
+.cs-mum-hcd__step {
+  padding: 0 1.25rem 2.5rem;
+}
+.cs-mum-hcd__dot {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--cs-accent, #C48A1A);
+  background: #0E0A18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.cs-mum-hcd__dot::before {
+  content: '';
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--cs-accent-lt, #E8B84A);
+}
+.cs-mum-hcd__phase {
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cs-accent-lt, #E8B84A);
+  margin-bottom: .4rem;
+}
+.cs-mum-hcd__step-title {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .4rem;
+}
+.cs-mum-hcd__step-body {
+  font-size: .75rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.4);
+  font-weight: 300;
+}
+.cs-mum-hcd__insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.05);
+  margin-top: 3rem;
+}
+.cs-mum-hcd__insight {
+  background: #0E0A18;
+  padding: 2rem 1.75rem;
+}
+.cs-mum-hcd__ins-num {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.07);
+  line-height: 1;
+  margin-bottom: -.5rem;
+}
+.cs-mum-hcd__ins-title {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .4rem;
+}
+.cs-mum-hcd__ins-body {
+  font-size: .8rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.42);
+  font-weight: 300;
+}
+
+/* ── Entrepreneur Profiles Band ── */
+.cs-mum-profiles {
+  background: var(--cs-accent-lt, #E0D4F5);
+  padding: 5rem 3.5rem;
+}
+.cs-mum-profiles__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-mum-profiles__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cs-primary, #4A1A7A);
+  margin-bottom: .75rem;
+}
+.cs-mum-profiles__heading {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  color: #0A0812;
+  margin-bottom: 3rem;
+}
+.cs-mum-profiles__heading em {
+  font-style: italic;
+  color: var(--cs-primary, #4A1A7A);
+}
+.cs-mum-profiles__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: #E2D9C8;
+}
+.cs-mum-profiles__card {
+  background: #FDFAF5;
+  padding: 2.5rem 2rem;
+  border-top: 3px solid var(--cs-primary, #4A1A7A);
+}
+.cs-mum-profiles__archetype {
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--cs-primary, #4A1A7A);
+  margin-bottom: .5rem;
+}
+.cs-mum-profiles__title {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0A0812;
+  margin-bottom: .6rem;
+}
+.cs-mum-profiles__body {
+  font-size: .85rem;
+  line-height: 1.7;
+  color: #7A7065;
+  font-weight: 300;
+}
+.cs-mum-profiles__barrier {
+  margin-top: 1rem;
+  padding: .75rem 1rem;
+  background: rgba(74,26,122,.06);
+  border-left: 2px solid rgba(74,26,122,.3);
+  font-size: .78rem;
+  line-height: 1.5;
+  color: #7A7065;
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* ── Programme Offer Band ── */
+.cs-mum-offer {
+  background: #06040E;
+  padding: 5.5rem 3.5rem;
+}
+.cs-mum-offer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cs-mum-offer__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-mum-offer__heading {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+.cs-mum-offer__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8B84A);
+}
+.cs-mum-offer__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.05);
+}
+.cs-mum-offer__card {
+  background: #06040E;
+  padding: 2.5rem 1.75rem;
+}
+.cs-mum-offer__icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+.cs-mum-offer__icon--1 { background: rgba(196,138,26,.12); border: 1px solid rgba(196,138,26,.3); }
+.cs-mum-offer__icon--2 { background: rgba(74,26,122,.15); border: 1px solid rgba(138,90,202,.3); }
+.cs-mum-offer__icon--3 { background: rgba(26,74,122,.15); border: 1px solid rgba(74,138,202,.3); }
+.cs-mum-offer__icon--4 { background: rgba(196,80,26,.12); border: 1px solid rgba(232,122,74,.3); }
+.cs-mum-offer__icon-num {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: .7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.5);
+}
+.cs-mum-offer__label {
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: .4rem;
+}
+.cs-mum-offer__title {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+.cs-mum-offer__body {
+  font-size: .78rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,.42);
+  font-weight: 300;
+}
+
+/* ── Digital Campaign Band ── */
+.cs-mum-digital {
+  background: #1A1228;
+  padding: 5.5rem 3.5rem;
+}
+.cs-mum-digital__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+.cs-mum-digital__eyebrow {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .75rem;
+}
+.cs-mum-digital__heading {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.cs-mum-digital__heading em {
+  font-style: italic;
+  color: var(--cs-accent-lt, #E8B84A);
+}
+.cs-mum-digital__body {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,.48);
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+.cs-mum-digital__assets {
+  display: grid;
+  gap: 1.25rem;
+}
+.cs-mum-digital__asset {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: rgba(255,255,255,.04);
+  border-left: 2px solid rgba(196,138,26,.4);
+}
+.cs-mum-digital__asset-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(196,138,26,.12);
+  border: 1px solid rgba(196,138,26,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cs-mum-digital__asset-num {
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-size: .65rem;
+  font-weight: 700;
+  color: var(--cs-accent-lt, #E8B84A);
+}
+.cs-mum-digital__asset-label {
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: .3rem;
+}
+.cs-mum-digital__asset-value {
+  font-size: .88rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.65);
+  font-weight: 300;
+}
+
+/* ── Mumkin Responsive ── */
+@media (max-width: 900px) {
+  .cs-mum-eco,
+  .cs-mum-brand,
+  .cs-mum-hcd,
+  .cs-mum-profiles,
+  .cs-mum-offer,
+  .cs-mum-digital { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .cs-mum-eco__grid,
+  .cs-mum-profiles__grid,
+  .cs-mum-offer__grid,
+  .cs-mum-hcd__insights { grid-template-columns: 1fr; }
+  .cs-mum-hcd__journey { grid-template-columns: 1fr; }
+  .cs-mum-hcd__journey::before { display: none; }
+  .cs-mum-digital__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media (max-width: 600px) {
+  .cs-mum-eco__grid,
+  .cs-mum-profiles__grid,
+  .cs-mum-offer__grid { grid-template-columns: 1fr; }
 }
