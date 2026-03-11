@@ -7,14 +7,15 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { label: "20-Year Journey", href: "/20-years-journey" },
   { label: "Work", href: "/work" },
-  { label: "Services", href: "#services" },
-  { label: "Get in Touch", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Get in Touch", href: "/#contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ variant = "default" }: { variant?: "default" | "dark" }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+  const isDark = variant === "dark" || scrolled;
 
   useEffect(() => {
     const unsub = scrollY.on("change", (v) => setScrolled(v > 60));
@@ -27,10 +28,12 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 overflow-x-hidden transition-all duration-500",
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.06)]"
-          : "bg-transparent"
+          : variant === "dark"
+            ? "bg-white/80 backdrop-blur-sm"
+            : "bg-transparent"
       )}
     >
       <div className="container-wide relative flex h-16 items-center justify-between md:h-20">
@@ -39,7 +42,7 @@ export default function Navbar() {
           <span
             className={cn(
               "font-bold text-lg tracking-tight transition-colors",
-              scrolled ? "text-[#0C0C0B]" : "text-white"
+              isDark ? "text-[#0C0C0B]" : "text-white"
             )}
           >
             White Rice
@@ -47,7 +50,7 @@ export default function Navbar() {
           <span
             className={cn(
               "text-xs font-semibold px-2 py-0.5 rounded transition-colors",
-              scrolled
+              isDark
                 ? "bg-[#C9922A] text-white"
                 : "bg-white/20 text-white border border-white/30"
             )}
@@ -64,7 +67,7 @@ export default function Navbar() {
               href={link.href}
               className={cn(
                 "text-sm font-medium transition-colors",
-                scrolled
+                isDark
                   ? "text-[#4A4A46] hover:text-[#0C0C0B]"
                   : "text-white/80 hover:text-white"
               )}
@@ -80,7 +83,7 @@ export default function Navbar() {
           aria-label="Toggle menu"
           className={cn(
             "md:hidden flex flex-col gap-1.5 p-2",
-            scrolled ? "text-[#0C0C0B]" : "text-white"
+            isDark ? "text-[#0C0C0B]" : "text-white"
           )}
         >
           <motion.span
@@ -117,7 +120,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             onClick={() => setMenuOpen(false)}
             className="mt-2 text-center px-5 py-3 bg-[#C9922A] text-white rounded-full font-semibold text-sm"
           >

@@ -9,7 +9,7 @@ import { projects } from "@/lib/projects";
 export default function WorkPage() {
   return (
     <>
-      <Navbar />
+      <Navbar variant="dark" />
 
       {/* ── Hero header ── */}
       <section className="workpage-hero">

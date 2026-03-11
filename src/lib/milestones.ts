@@ -195,7 +195,7 @@ export const chapters: Chapter[] = [
       },
       {
         year: 2025,
-        image: "/images/timeline/2025/films-hero.jpg",
+        image: "/images/timeline/2025/films-hero.png",
         title: "Films for Change",
         caption:
           "Storytelling platform using films and documentaries to drive behaviour change across climate, health, and gender",

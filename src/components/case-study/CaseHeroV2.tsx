@@ -66,11 +66,8 @@ export default function CaseHeroV2({ hero, year, tags, heroImage, heroVideo }: C
       {/* Decorative overlay gradient */}
       <div className="cs-hero__overlay" />
 
-      {/* Top bar */}
+      {/* Tag bar */}
       <div className="cs-hero__label">
-        <div className="cs-hero__brand">
-          White Rice <span>Impact</span>
-        </div>
         <div className="cs-hero__tag-top">
           {tags.slice(0, 3).join(" \u00B7 ")}
         </div>

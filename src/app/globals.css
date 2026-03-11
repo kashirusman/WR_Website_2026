@@ -452,6 +452,20 @@ body {
   margin-bottom: 60px;
 }
 
+@media (max-width: 768px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
 .metric {
   text-align: center;
 }
@@ -459,6 +473,18 @@ body {
 .metric-number {
   font-size: 64px;
   font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .metric-number {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .metric-number {
+    font-size: 36px;
+  }
 }
 
 .metric-label {
@@ -850,7 +876,7 @@ body {
 }
 
 .contact-title {
-  font-size: 56px;
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
   line-height: 1.1;
   margin: 16px auto 24px auto;
   max-width: 700px;
@@ -871,8 +897,19 @@ body {
 .contact-buttons {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 80px;
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 80px 16px;
+  }
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .primary-btn {
@@ -1537,7 +1574,7 @@ body {
 .jv2-origin {
   position: relative;
   background: #0A0A08;
-  padding: clamp(80px, 12vw, 160px) 24px;
+  padding: clamp(60px, 8vw, 100px) 24px clamp(40px, 4vw, 60px);
   overflow: hidden;
 }
 .jv2-origin__inner {
@@ -1607,7 +1644,7 @@ body {
 /* ── ERA DIVIDER (full-viewport chapter card) ── */
 .jv2-era {
   position: relative;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1655,7 +1692,8 @@ body {
 /* ── CHAPTER HERO IMAGE ── */
 .jv2-chero {
   position: relative;
-  height: 70vh;
+  height: 50vh;
+  max-height: 500px;
   overflow: hidden;
 }
 .jv2-chero__bg {
@@ -1665,15 +1703,17 @@ body {
 .jv2-chero__img {
   object-fit: cover;
   object-position: center 40%;
+  filter: blur(0.5px);
+  image-rendering: auto;
 }
 .jv2-chero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(10,10,8,0.5) 0%,
-    transparent 40%,
-    transparent 60%,
+    rgba(10,10,8,0.55) 0%,
+    rgba(10,10,8,0.2) 40%,
+    rgba(10,10,8,0.2) 60%,
     rgba(10,10,8,0.7) 100%
   );
 }
@@ -1883,7 +1923,7 @@ body {
   .jv2-stats__item { flex: 1 1 40%; }
   .jv2-era__years { font-size: clamp(3rem, 14vw, 6rem); }
   .jv2-thread-track { left: 12px; }
-  .jv2-chero { height: 50vh; }
+  .jv2-chero { height: 40vh; max-height: 350px; }
 }
 
 /* ─── Work page (/work) ──────────────────────────────────────────── */
@@ -2033,6 +2073,16 @@ body {
   border-radius: 20px;
   margin-bottom: 12px;
   backdrop-filter: blur(4px);
+}
+
+.workpage-card__tag {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
 }
 
 .workpage-card__title {
@@ -2886,12 +2936,13 @@ body {
 
 /* ─── Hero ──────────────────────────────────────────────────────── */
 .cs-hero {
-  min-height: 100vh;
+  min-height: 85vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   position: relative;
   overflow: hidden;
   background: var(--cs-primary);
+  padding-top: 80px; /* space for fixed navbar */
 }
 
 .cs-hero__image {
@@ -2929,7 +2980,7 @@ body {
 }
 
 .cs-hero__label {
-  padding: 2rem 3.5rem;
+  padding: 0.75rem 3.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

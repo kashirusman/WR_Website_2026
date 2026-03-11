@@ -129,8 +129,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   return (
     <>
-      {/* Navbar hidden on V2 pages — hero-label acts as nav */}
-      {!cs.theme && <Navbar />}
+      <Navbar />
       <main className="cs-page" style={themeStyle}>
         {/* 1. Hero */}
         {cs.hero ? (
