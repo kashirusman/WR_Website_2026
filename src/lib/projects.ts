@@ -162,7 +162,7 @@ export const projects: Project[] = [
     title: "Awaz - Give Voice",
     client: "UK Aid (FCDO) / DAI",
     tag: "Citizen Accountability",
-    image: "/images/alif-ailaan/alif-ailaan01.jpg",
+    image: "/images/alif-ailaan-new/1229896_561951533868607_1711988521_n.jpg",
     description:
       "A decade-long programme reaching 15 million people across 13 districts, building Pakistan's first citizen journalism platform and transforming marginalised women into community leaders.",
   },

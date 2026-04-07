@@ -76,6 +76,7 @@ import CaseMumkinHcdBand from "@/components/case-study/CaseMumkinHcdBand";
 import CaseMumkinProfilesBand from "@/components/case-study/CaseMumkinProfilesBand";
 import CaseMumkinOfferBand from "@/components/case-study/CaseMumkinOfferBand";
 import CaseMumkinDigitalBand from "@/components/case-study/CaseMumkinDigitalBand";
+import CasePhotoBand from "@/components/case-study/CasePhotoBand";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -167,6 +168,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
         {/* 3b. Divider Band (between Outcomes and Challenge) */}
         {cs.divider && <CaseDividerBand data={cs.divider} />}
+
+        {/* Photo Band 1 — after Outcomes */}
+        {cs.photoBand1 && <CasePhotoBand images={cs.photoBand1} />}
 
         {/* Mumkin: Brand Band */}
         {cs.mumkinBrand && <CaseMumkinBrandBand data={cs.mumkinBrand} />}
@@ -267,6 +271,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </CaseStickySection>
         )}
 
+        {/* Photo Band 2 — after Challenge */}
+        {cs.photoBand2 && <CasePhotoBand images={cs.photoBand2} />}
+
         {/* 5. Strategy — sticky sidebar (skip for ICRC / Mumkin) */}
         {!skipChallengeStrategy && !skipStrategy && (
           <CaseStickySection number="03" heading={cs.strategy.heading}>
@@ -285,6 +292,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
             {cs.persona && <CasePersonaCard data={cs.persona} />}
           </CaseStickySection>
         )}
+
+        {/* Photo Band 3 — after Strategy */}
+        {cs.photoBand3 && <CasePhotoBand images={cs.photoBand3} />}
 
         {/* 5a-i. Theory of Change Band */}
         {cs.theoryOfChange && <CaseTheoryOfChangeBand data={cs.theoryOfChange} />}
@@ -425,6 +435,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
             )}
           </CaseStickySection>
         )}
+
+        {/* Photo Band 4 — after Work */}
+        {cs.photoBand4 && <CasePhotoBand images={cs.photoBand4} />}
 
         {/* SBC Cricket: Cascade Band (between Work and Impact) */}
         {cs.cricketCascade && <CaseCricketCascadeBand data={cs.cricketCascade} />}

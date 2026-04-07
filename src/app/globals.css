@@ -2592,6 +2592,76 @@ body {
   text-align: left;
 }
 
+/* ─── Case Photo Band ───────────────────────────────────────────── */
+.cs-photo-band {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.cs-photo-band--single {
+  grid-template-columns: 1fr;
+}
+
+.cs-photo-band--duo {
+  grid-template-columns: 1fr 1fr;
+}
+
+.cs-photo-band--trio {
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.cs-photo-band--trio > :first-child {
+  grid-row: span 2;
+}
+
+.cs-photo-band__item {
+  position: relative;
+  width: 100%;
+  padding-bottom: 66%;
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: #F0EDE6;
+}
+
+.cs-photo-band--single .cs-photo-band__item {
+  padding-bottom: 45%;
+}
+
+.cs-photo-band--trio > :first-child .cs-photo-band__item {
+  padding-bottom: 132%;
+}
+
+.cs-photo-band__item img {
+  transition: transform 0.5s ease;
+}
+
+.cs-photo-band__item:hover img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 640px) {
+  .cs-photo-band--duo,
+  .cs-photo-band--trio {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-photo-band--trio > :first-child {
+    grid-row: span 1;
+  }
+
+  .cs-photo-band--trio > :first-child .cs-photo-band__item {
+    padding-bottom: 66%;
+  }
+
+  .cs-photo-band__item {
+    padding-bottom: 66%;
+  }
+}
+
 /* ─── Case Gallery ───────────────────────────────────────────────── */
 .case-gallery {
   background-color: #FFFFFF;

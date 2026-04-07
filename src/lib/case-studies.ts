@@ -438,6 +438,12 @@ export interface CaseStudyData {
     assets: { label: string; value: string }[];
   };
 
+  /* Photo bands — inline image breaks between text sections */
+  photoBand1?: { src: string; alt: string }[];  // after Outcomes
+  photoBand2?: { src: string; alt: string }[];  // after Challenge
+  photoBand3?: { src: string; alt: string }[];  // after Strategy
+  photoBand4?: { src: string; alt: string }[];  // after Work
+
   /* Existing fields */
   challenge: {
     heading: string;
@@ -510,7 +516,7 @@ export const caseStudies: CaseStudyData[] = [
       eyebrow: "UNICEF Pakistan \u00b7 Sindh \u00b7 2014",
       title: "Nurturing <em>Change</em>",
       subtitle: "Child Stunting Prevention \u00b7 Sindh, Pakistan",
-      description: "A community-driven social behaviour change programme designed to shift the nutrition and WASH practices of 100,000 mothers \u2014 and keep those behaviours alive long after the intervention ended.",
+      description: "A community-driven behaviour change programme that shifted nutrition and WASH practices among 100,000 mothers, and kept those behaviours alive long after the intervention ended.",
       meta: [
         { label: "Client", value: "UNICEF Pakistan" },
         { label: "Location", value: "Khairpur \u00b7 Sharafabad \u00b7 Naushahro Feroze" },
@@ -522,18 +528,18 @@ export const caseStudies: CaseStudyData[] = [
     /* ── Role Band ── */
     role: {
       heading: "SBC Design & <em>Implementation Lead</em>",
-      body: "White Rice led the full programme cycle \u2014 from formative research and SBC strategy through to the design of the Kahani Asani Adehani behaviour change model, frontline worker training, community activation, real-time monitoring, and evaluation. We didn\u2019t deliver a campaign \u2014 we designed a behaviour change system.",
+      body: "White Rice led the full programme cycle: formative research, SBC strategy, the design of the Kahani Asani Adehani behaviour change model, frontline worker training, community activation, real-time monitoring, and evaluation. We didn\u2019t deliver a campaign. We designed a behaviour change system.",
       services: ["Formative & Design Research", "SBC Strategy", "Behaviour Change Model Design", "FLW Training", "Community Activation", "Real-Time Monitoring", "MSC Evaluation"],
     },
 
     /* ── Outcomes ── */
     outcomes: {
       cards: [
-        { stat: "90%", description: "Behaviour adoption rate \u2014 mothers practising at least one key behaviour 8 months after the intervention ended." },
-        { stat: "26,000", description: "Mothers directly reached across three districts of Sindh through the programme." },
+        { stat: "90%", description: "Behaviour adoption rate. Mothers still practising at least one key behaviour 8 months after the intervention ended." },
+        { stat: "26,000", description: "Mothers directly reached across three districts of Sindh." },
         { stat: "100,000+", description: "Total community members influenced, including mothers-in-law, husbands, and extended family networks." },
-        { stat: "2,000+", description: "Frontline workers trained on the bespoke Kahani Asani Adehani model." },
-        { stat: "Govt. Adopted", description: "The programme model was adopted by the Sindh government into their provincial stunting strategy \u2014 and subsequently scaled." },
+        { stat: "2,000+", description: "Frontline workers trained on the Kahani Asani Adehani model." },
+        { stat: "Govt. Adopted", description: "The Sindh government adopted the programme model into their provincial stunting strategy and scaled it further." },
       ],
       watermark: "STUNTING",
     },
@@ -541,7 +547,7 @@ export const caseStudies: CaseStudyData[] = [
     /* ── Divider ── */
     divider: {
       stat: "~50%",
-      text: "Child stunting rate in Sindh at the time of the programme \u2014 one of the highest in the world. The national figure stood at 42%. These were not statistics about distant children. They were the children of the 26,000 mothers this programme was designed to reach.",
+      text: "Child stunting rate in Sindh at the time of the programme, one of the highest in the world. The national figure stood at 42%. These weren\u2019t statistics about distant children. They were the children of the 26,000 mothers this programme set out to reach.",
     },
 
     /* ── Theory of Change Band ── */
@@ -549,7 +555,7 @@ export const caseStudies: CaseStudyData[] = [
       label: "Theory of Change \u00b7 Socio-Ecological Model",
       steps: [
         { num: "01", title: "Individual", body: "Build knowledge, motivation, and self-efficacy around nutrition and WASH behaviours" },
-        { num: "02", title: "Household", body: "Align mothers-in-law and husbands as active enablers, not barriers, to behaviour change" },
+        { num: "02", title: "Household", body: "Bring mothers-in-law and husbands in as active enablers of behaviour change, not barriers to it" },
         { num: "03", title: "Community", body: "Normalise positive behaviours through peer modelling, nudges, and positive deviance" },
         { num: "04", title: "Institutions", body: "Generate evidence and adopt the model at government level for sustainable scale" },
       ],
@@ -558,36 +564,54 @@ export const caseStudies: CaseStudyData[] = [
     /* ── Closing ── */
     closing: {
       heading: "Change that endures isn\u2019t delivered.<br>It\u2019s <em>designed</em>.",
-      body: "Nurturing Change demonstrated that when the conditions for behaviour change are deliberately engineered \u2014 and the whole household ecosystem is engaged \u2014 change takes root and stays.",
+      body: "Nurturing Change showed that when you design for the whole household, and build the right conditions around people, change takes root and stays.",
     },
 
     /* ── Impact Cells ── */
     impactCells: [
-      { big: "90%", desc: "Of mothers still actively practising at least one target behaviour 8 months after the programme ended \u2014 with no active support in place." },
-      { big: "4,500+", desc: "Most Significant Change stories collected. Ten selected by mothers themselves, filmed, and deployed as positive deviance content to inspire further change." },
-      { big: "11,000", desc: "Mothers engaged in story circles at follow-up \u2014 the largest participatory qualitative evaluation of its kind in Pakistan at that time." },
+      { big: "90%", desc: "Of mothers still actively practising at least one target behaviour 8 months after the programme ended, with no active support in place." },
+      { big: "4,500+", desc: "Most Significant Change stories collected. Ten were selected by mothers themselves, filmed, and used as positive deviance content to inspire further change." },
+      { big: "11,000", desc: "Mothers engaged in story circles at follow-up. The largest participatory qualitative evaluation of its kind in Pakistan at that time." },
       { big: "Sindh Gov.", desc: "The Kahani Asani Adehani model was formally adopted by the Sindh government into their provincial stunting strategy and scaled across additional districts." },
     ],
 
+    photoBand1: [
+      { src: "/images/unicef-misaali-maa/_MG_8381.jpg", alt: "Frontline worker demonstrating nutrition practices to mothers in a village courtyard" },
+      { src: "/images/unicef-misaali-maa/thumb_IMG_8058_1024.jpg", alt: "Mother-in-law and daughter-in-law together at a community health session" },
+    ],
+    photoBand2: [
+      { src: "/images/unicef-misaali-maa/_MG_8820.jpg", alt: "Children playing outside during a Misaali Maa community gathering in rural Sindh" },
+      { src: "/images/unicef-misaali-maa/IMG_6034.JPG", alt: "Close-up of programme materials used during a story circle session" },
+      { src: "/images/unicef-misaali-maa/_MG_9025-copy.jpg", alt: "Mothers listening during a group behaviour change session" },
+    ],
+    photoBand3: [
+      { src: "/images/unicef-misaali-maa/thumb_IMG_8135_1024.jpg", alt: "Candid moment of a mother and child during a household visit in Sindh" },
+      { src: "/images/unicef-misaali-maa/_MG_8698.jpg", alt: "Frontline health workers reviewing session plans before a community visit" },
+    ],
+    photoBand4: [
+      { src: "/images/unicef-misaali-maa/20180125_133005.jpg", alt: "Women gathered for a stunting prevention awareness session in Khairpur district" },
+      { src: "/images/unicef-misaali-maa/_MG_8394.jpg", alt: "Portrait of a frontline worker from the Nurturing Change programme" },
+      { src: "/images/unicef-misaali-maa/thumb_IMG_8444_1024.jpg", alt: "Mothers practising infant feeding techniques during a group demonstration" },
+    ],
     challenge: {
       heading: "The <em>Challenge</em>",
-      body: "Child stunting in Sindh had been chronic for generations. The behaviours driving it \u2014 inadequate infant feeding, poor WASH practices, delayed healthcare \u2014 were well-documented. What was missing was not information. Mothers were not unaware of nutrition guidance. They were operating within household systems that constrained their ability to act on it.\n\nMothers-in-law made feeding decisions. Husbands controlled household resources. Standard awareness campaigns had already failed. What was needed was an approach that designed for the full ecosystem of influence around the mother \u2014 not just the mother herself.",
+      body: "Child stunting in Sindh had been chronic for generations. The behaviours driving it were well-documented: inadequate infant feeding, poor WASH practices, delayed healthcare. But the problem wasn\u2019t information. Mothers knew the nutrition guidance. They were operating within household systems that stopped them from acting on it.\n\nMothers-in-law made feeding decisions. Husbands controlled household resources. Standard awareness campaigns had already failed. The programme needed to design for the full ecosystem of influence around the mother, not just the mother herself.",
       quote: {
-        text: "Stunting is not merely a nutrition problem. It is a behaviour problem, rooted in social norms, household power dynamics, and the absence of enabling conditions for change.",
+        text: "Stunting is not just a nutrition problem. It\u2019s a behaviour problem, rooted in social norms, household power dynamics, and the absence of conditions that make change possible.",
       },
     },
     strategy: {
       heading: "The <em>Strategy</em>",
-      intro: "The programme began with a significant investment in formative and design research \u2014 mapping the behavioural landscape across all three districts before a single session was designed. Research focused on understanding not just what behaviours needed to change, but who influenced them and in what context change was possible.",
+      intro: "The programme began with a deep investment in formative and design research, mapping the behavioural landscape across all three districts before a single session was designed. The focus: not just what behaviours needed to change, but who influenced them and where change was actually possible.",
       steps: [
         { number: "01", title: "Design for the Ecosystem, Not Just the Individual", description: "Target the mother-in-law and husband alongside the mother. Without their buy-in, individual behaviour change collapses at the household door." },
-        { number: "02", title: "Make Change Feel Normal and Achievable", description: "Social norming, positive deviance, and demonstration-based learning \u2014 not didactic instruction. People adopt behaviours they see modelled by people like them." },
-        { number: "03", title: "Build a System, Not a Campaign", description: "Trained frontline workers, household visits, community nudges, and peer reinforcement \u2014 structured support that outlasts any single intervention event." },
+        { number: "02", title: "Make Change Feel Normal and Achievable", description: "Social norming, positive deviance, and demonstration-based learning instead of lectures. People adopt behaviours they see modelled by people like them." },
+        { number: "03", title: "Build a System, Not a Campaign", description: "Trained frontline workers, household visits, community nudges, and peer reinforcement. Structured support that outlasts any single intervention event." },
       ],
     },
     work: {
       heading: "The <em>Intervention</em>",
-      body: "At the heart of the programme was Kahani Asani Adehani \u2014 \u201cStory, Ease, Habit\u201d \u2014 a bespoke behaviour change model developed by White Rice through contextualisation of international SBC frameworks (BGFOG, BMAP) into a methodology suited to rural Sindh. It operated on three levers: making new behaviours emotionally compelling through narrative, removing barriers through ease, and locking in practice through habit reinforcement.\n\nGroup sessions were designed to bring mothers and mothers-in-law into the same room \u2014 a deliberate choice that created shared understanding rather than splitting the intervention by generation. Household visits by trained frontline workers addressed barriers where they actually lived: in the home, in real time, without the distance of a clinic or a community hall.\n\nThroughout the 12-week pilot, White Rice ran a real-time monitoring system \u2014 surfacing implementation challenges as they emerged, not in a retrospective report \u2014 allowing continuous course-correction and quality improvement in the field.",
+      body: "At the heart of the programme was Kahani Asani Adehani \u2014 \u201cStory, Ease, Habit\u201d \u2014 a behaviour change model White Rice developed by contextualising international SBC frameworks (BGFOG, BMAP) for rural Sindh. It worked on three levers: making new behaviours emotionally compelling through narrative, removing barriers through ease, and locking in practice through habit reinforcement.\n\nGroup sessions brought mothers and mothers-in-law into the same room. That was a deliberate choice: shared understanding instead of splitting the intervention by generation. Household visits by trained frontline workers addressed barriers where they actually lived, in the home, in real time, without the distance of a clinic or a community hall.\n\nThroughout the 12-week pilot, White Rice ran a real-time monitoring system that surfaced implementation challenges as they emerged. Not in a retrospective report. In the field, allowing continuous course-correction and quality improvement.",
       deliverables: [
         "Group Sessions (Mothers & Mothers-in-Law)",
         "Household Visits by FLWs",
@@ -602,24 +626,27 @@ export const caseStudies: CaseStudyData[] = [
     },
     impact: {
       heading: "The <em>Impact</em>",
-      body: "Eight months after the intervention, White Rice returned with the Most Significant Change (MSC) technique \u2014 a participatory qualitative evaluation in which 11,000 mothers were convened in story circles to share what had genuinely shifted in their lives. This was one of the largest qualitative follow-up evaluations of its kind conducted in Pakistan.",
+      body: "Eight months after the intervention, White Rice returned with the Most Significant Change (MSC) technique, a participatory qualitative evaluation in which 11,000 mothers were convened in story circles to share what had genuinely shifted in their lives. It was one of the largest qualitative follow-up evaluations of its kind conducted in Pakistan.",
       metrics: [
         { value: 90, suffix: "%", label: "Behaviour Adoption Rate" },
         { value: 26000, suffix: "+", label: "Mothers Directly Reached" },
         { value: 100000, suffix: "+", label: "Community Members Influenced" },
         { value: 2000, suffix: "+", label: "Frontline Workers Trained" },
       ],
-      closingNote: "Government adoption is the programme\u2019s most durable measure of success \u2014 it signals that the model was not just effective, but replicable and ownable. Delivered over a decade ago, under significant resource constraints, it remains a landmark in evidence-based, community-driven SBC design in Pakistan.",
+      closingNote: "Government adoption is the programme\u2019s most durable measure of success. It signals the model was not just effective, but replicable and ownable. Delivered over a decade ago under significant resource constraints, it remains a landmark in evidence-based, community-driven SBC design in Pakistan.",
     },
+    heroImage: "/images/unicef-misaali-maa/_MG_8795.jpg",
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/misali-ma/misali-ma01.jpg", alt: "Mothers and children raising hands during a community session in Sindh", span: "wide" },
-        { src: "/images/misali-ma/misali-ma02.jpg", alt: "Mother holding her child - portrait from the stunting prevention programme", span: "normal" },
-        { src: "/images/misali-ma/misali-ma03.jpg", alt: "Outdoor community gathering with programme banner and discussion materials", span: "normal" },
-        { src: "/images/misali-ma/misali-ma04.jpg", alt: "Toddler smiling on a colourful traditional rug during a community session", span: "wide" },
-        { src: "/images/misali-ma/misali-ma05.jpg", alt: "Women using Kahani Asani Adehani materials during a facilitated discussion", span: "normal" },
-        { src: "/images/misali-ma/misali-ma06.jpg", alt: "Frontline health worker engaging with a mother during a household visit", span: "normal" },
+        { src: "/images/unicef-misaali-maa/_MG_8177.jpg", alt: "Frontline worker leading a session with mothers and children in Sindh", span: "wide" },
+        { src: "/images/unicef-misaali-maa/_MG_0101.jpg", alt: "Mother smiling with her child after a community health session", span: "normal" },
+        { src: "/images/unicef-misaali-maa/_MG_0068.jpg", alt: "Child laughing on a colourful traditional rug during a gathering", span: "normal" },
+        { src: "/images/unicef-misaali-maa/_MG_8524.jpg", alt: "Women reviewing programme materials during a household visit", span: "wide" },
+        { src: "/images/unicef-misaali-maa/_MG_8234.jpg", alt: "Mothers practising handwashing with children during a demonstration", span: "normal" },
+        { src: "/images/unicef-misaali-maa/_MG_9290.jpg", alt: "Mothers and children walking through a village lane in Sindh", span: "normal" },
+        { src: "/images/unicef-misaali-maa/_MG_8795.jpg", alt: "Outdoor community session with Misaali Maa programme banner", span: "wide" },
+        { src: "/images/unicef-misaali-maa/_MG_9374.jpg", alt: "Portrait of a mother from the stunting prevention programme", span: "normal" },
       ],
     },
   },
@@ -629,7 +656,7 @@ export const caseStudies: CaseStudyData[] = [
     slug: "awaz-programme",
     year: "2010 - 2021",
     tags: ["Awaz Programme", "UK Aid \u00B7 FCDO", "DAI", "Citizen Accountability", "Women's Leadership", "Religious Minorities", "Community Mobilisation", "iReporter", "Citizen Journalism", "13 Districts", "Punjab", "KPK", "15M+ Reach", "10 Years", "Grassroots Movement", "SBC", "Pakistan"],
-    heroImage: "/images/alif-ailaan/alif-ailaan01.jpg",
+    heroImage: "/images/alif-ailaan-new/1229896_561951533868607_1711988521_n.jpg",
     theme: {
       primary: "#1A4A2A",
       primaryLight: "#3A8A5A",
@@ -650,7 +677,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     role: {
       heading: "Creative Partner in a <em>Decade-Long Movement</em>",
-      body: "White Rice joined the Awaz programme at its inception as the creative and communication lead \u2014 designing the behaviour change strategy, developing key messages for different audiences and platforms, producing the community mobilisation toolkit, and creating all programme content across its multiple phases. From community-level grassroots tools to the Awaz iReporter citizen journalism platform, our work has been the creative backbone of a programme that is still running today, still reaching communities, and still amplifying voices that were previously unheard.",
+      body: "White Rice joined the Awaz programme at its inception as creative and communication lead. We designed the behaviour change strategy, developed key messages for different audiences and platforms, produced the community mobilisation toolkit, and created all programme content across its multiple phases. From grassroots community tools to the Awaz iReporter citizen journalism platform, our work has been the creative backbone of a programme that is still running today, still reaching communities, and still amplifying voices that were previously unheard.",
       services: [
         "SBC Campaign Strategy",
         "Behaviour Change Design",
@@ -667,33 +694,51 @@ export const caseStudies: CaseStudyData[] = [
     },
     outcomes: {
       cards: [
-        { stat: "15 Million+", description: "People reached through the Awaz programme\u2019s communication movement \u2014 across 13 districts in Punjab and KPK." },
-        { stat: "13 Districts", description: "Programme coverage across Punjab and Khyber Pakhtunkhwa \u2014 two of Pakistan\u2019s most populous and politically significant provinces." },
-        { stat: "10+ Years", description: "Awaz has continued for over a decade across multiple phases \u2014 with White Rice as the creative and communication partner from the very first phase to today." },
-        { stat: "Women Leaders", description: "Women from marginalised communities secured seats in local government union councils and joined political parties \u2014 becoming authentic voices for their communities." },
-        { stat: "iReporter", description: "Pakistan\u2019s first community-based citizen journalism platform \u2014 training community members to document local challenges on mobile phones and escalate them to government and media." },
+        { stat: "15 Million+", description: "People reached through the Awaz programme\u2019s communication movement across 13 districts in Punjab and KPK." },
+        { stat: "13 Districts", description: "Programme coverage across Punjab and Khyber Pakhtunkhwa, two of Pakistan\u2019s most populous and politically significant provinces." },
+        { stat: "10+ Years", description: "Awaz has continued for over a decade across multiple phases. White Rice has been the creative and communication partner from the very first phase to today." },
+        { stat: "Women Leaders", description: "Women from marginalised communities secured seats in local government union councils and joined political parties, becoming authentic voices for their communities." },
+        { stat: "iReporter", description: "Pakistan\u2019s first community-based citizen journalism platform. Community members trained to document local challenges on mobile phones and escalate them to government and media." },
       ],
       watermark: "15M",
     },
     closing: {
       heading: "A voice without<br>a channel is<br><em>just a whisper.</em>",
-      body: "Awaz gave Pakistan\u2019s most marginalised communities a channel. White Rice built the content, the tools, the platforms, and the strategy that made that channel resonate \u2014 for 10 years, across 13 districts, 15 million people, and every woman who found out she had more to say than anyone had ever let her say before.",
+      body: "Awaz gave Pakistan\u2019s most marginalised communities a channel. White Rice built the content, the tools, the platforms, and the strategy that made it resonate. For 10 years, across 13 districts, 15 million people, and every woman who found out she had more to say than anyone had ever let her say before.",
     },
     impactCells: [
       { big: "15 Million+", desc: "People reached through the Awaz communication movement across 13 districts in Punjab and KPK." },
-      { big: "10+ Years", desc: "Multiple phases of continuous programming \u2014 still active, still reaching communities, still creating impact at the grassroots level." },
-      { big: "Citizens with a Voice", desc: "The iReporter platform created Pakistan\u2019s first structured citizen journalism system connecting community documentation to government action and media amplification." },
+      { big: "10+ Years", desc: "Multiple phases of continuous programming. Still active, still reaching communities, still creating impact at the grassroots level." },
+      { big: "Citizens with a Voice", desc: "The iReporter platform created Pakistan\u2019s first structured citizen journalism system, connecting community documentation to government action and media amplification." },
+    ],
+    photoBand1: [
+      { src: "/images/alif-ailaan-new/1174523_563222837074810_1296829616_n.jpg", alt: "Community members gathered at a citizens' accountability meeting in Punjab" },
+      { src: "/images/alif-ailaan-new/1185268_562583227138771_1833201522_n.jpg", alt: "Women leaders speaking at a local governance engagement event" },
+    ],
+    photoBand2: [
+      { src: "/images/alif-ailaan-new/1017432_639131816150578_700025924_n.jpg", alt: "Large crowd at a community mobilisation rally for citizen rights" },
+      { src: "/images/alif-ailaan-new/1233330_562758870454540_1459927174_n.jpg", alt: "Youth volunteers distributing campaign materials in a rural district" },
+      { src: "/images/alif-ailaan-new/1452332_594356000628160_1700686819_n.jpg", alt: "Young participant signing a pledge during a community journalism training" },
+    ],
+    photoBand3: [
+      { src: "/images/alif-ailaan-new/386811_506550672742027_760970272_n.jpg", alt: "Children and community workers during a school outreach visit" },
+      { src: "/images/alif-ailaan-new/7855_561951813868579_474208845_n.jpg", alt: "Participants at a citizen reporting workshop in Khyber Pakhtunkhwa" },
+    ],
+    photoBand4: [
+      { src: "/images/alif-ailaan-new/1235076_568603413203419_1623623434_n.jpg", alt: "Campaign vehicles driving through towns during the Awaz outreach programme" },
+      { src: "/images/alif-ailaan-new/1233330_562758870454540_1459927174_n.jpg", alt: "Community mobilisation session with Awaz programme banners and materials" },
+      { src: "/images/alif-ailaan-new/1238181_562582980472129_1315392017_n.jpg", alt: "Frontline workers and community volunteers at a field engagement event" },
     ],
     challenge: {
       heading: "The <em>Challenge</em>",
-      body: "Pakistan's marginalised communities \u2014 particularly women and religious minority groups \u2014 face a compounding set of exclusions. They are under-represented in local government, absent from political decision-making, unconnected to media, and without formal channels to raise the community challenges they live with daily. Their issues \u2014 broken schools, absent waste collection, non-functional health facilities, unsafe public spaces \u2014 are known to them and invisible to everyone with the power to act.\n\nFor women specifically, the barriers are layered: social norms restrict mobility and public participation; low literacy limits access to written information; and a deep cultural belief that politics and public life are not spaces that belong to them. Changing this required not just information \u2014 it required a sustained behaviour change programme that built confidence, demonstrated possibility, and created visible proof that ordinary women from ordinary communities could become leaders.\n\nThe programme needed a creative partner who could operate across all of this simultaneously \u2014 designing grassroots tools for frontline workers, producing content that documented the movement's own progress, and building platforms that connected community voices to the decision-makers and media who could act on them.",
+      body: "Pakistan's marginalised communities, particularly women and religious minority groups, face a compounding set of exclusions. They are under-represented in local government, absent from political decision-making, unconnected to media, and without formal channels to raise the challenges they live with daily. Broken schools, absent waste collection, non-functional health facilities, unsafe public spaces. Known to them. Invisible to everyone with the power to act.\n\nFor women, the barriers are layered. Social norms restrict mobility and public participation. Low literacy limits access to written information. A deep cultural belief holds that politics and public life are not spaces that belong to them. Changing this required more than information. It required a sustained behaviour change programme that built confidence, demonstrated possibility, and created visible proof that ordinary women from ordinary communities could become leaders.\n\nThe programme needed a creative partner who could work across all of this at once: designing grassroots tools for frontline workers, producing content that documented the movement's own progress, and building platforms that connected community voices to the decision-makers and media who could act on them.",
       quote: {
-        text: "These communities were not voiceless. They had never been given a channel that reached the right ears. Awaz was about building that channel \u2014 and the confidence to use it.",
+        text: "These communities were not voiceless. They had never been given a channel that reached the right ears. Awaz was about building that channel, and the confidence to use it.",
       },
     },
     strategy: {
       heading: "The <em>Strategy</em>",
-      intro: "White Rice's strategy for Awaz was built on a principle that runs through all our best work: communities are not audiences to be reached \u2014 they are agents to be activated. The creative and communication work was not designed to tell communities what to think or do. It was designed to show them what they were already capable of, and to give them the tools to act on it.",
+      intro: "White Rice's strategy for Awaz was built on a principle that runs through all our best work: communities are not audiences to be reached. They are agents to be activated. The creative and communication work wasn\u2019t designed to tell communities what to think or do. It was designed to show them what they were already capable of, and give them the tools to act on it.",
       steps: [
         {
           number: "01",
@@ -703,23 +748,23 @@ export const caseStudies: CaseStudyData[] = [
         {
           number: "02",
           title: "Documentaries & Animation",
-          description: "Documentary films capturing the Awaz process and success stories \u2014 showing communities their own transformation as evidence of what is possible. A step-by-step animation series explaining the bigger movement to communities in accessible, visual terms \u2014 the programme's own story, told back to the people making it.",
+          description: "Documentary films capturing the Awaz process and success stories, showing communities their own transformation as evidence of what is possible. A step-by-step animation series explained the bigger movement in accessible, visual terms: the programme's own story, told back to the people making it.",
         },
         {
           number: "03",
           title: "Awaz iReporter Platform",
-          description: "Pakistan's first community-based mobile citizen reporting platform \u2014 trained community members to document local challenges on smartphones, submitted to a central hub, escalated to local politicians, government officials, and media. Broken schools. Missing waste collection. Non-functional facilities. Citizens became the journalists of their own lived experience.",
+          description: "Pakistan's first community-based mobile citizen reporting platform. Community members were trained to document local challenges on smartphones, submit to a central hub, and escalate to local politicians, government officials, and media. Broken schools. Missing waste collection. Non-functional facilities. Citizens became the journalists of their own lived experience.",
         },
         {
           number: "04",
           title: "Resource & Campaign Materials",
-          description: "Campaign strategy and key messages designed for multiple audiences, platforms, and contexts. Resource gates for community workers. Communication materials connecting the programme's grassroots work to national and provincial media \u2014 ensuring local stories reached the audiences who could create systemic change.",
+          description: "Campaign strategy and key messages designed for multiple audiences, platforms, and contexts. Resource materials for community workers. Communication pieces connecting the programme's grassroots work to national and provincial media, ensuring local stories reached the audiences who could create systemic change.",
         },
       ],
     },
     work: {
       heading: "The <em>Work</em>",
-      body: "White Rice joined the Awaz programme at its inception as the creative and communication lead \u2014 designing the behaviour change strategy, developing key messages for different audiences and platforms, producing the community mobilisation toolkit, and creating all programme content across its multiple phases. From community-level grassroots tools to the Awaz iReporter citizen journalism platform, our work has been the creative backbone of a programme that is still running today, still reaching communities, and still amplifying voices that were previously unheard.\n\nThe strategy operated across four simultaneous registers: grassroots capacity-building through the community mobilisation toolkit; programme documentation through documentaries and animation; platform creation through the Awaz iReporter citizen journalism system; and media and advocacy linkage to ensure community voices reached the platforms that could create change.\n\nKey messages were designed for different audiences, different platforms, and different stages of the behaviour change journey \u2014 from initial awareness and attitudinal shift, through confidence-building and skill development, to action, leadership, and sustained civic participation. Every piece of content, at every level, was designed to move someone one step further along that journey.",
+      body: "White Rice joined the Awaz programme at its inception as creative and communication lead. We designed the behaviour change strategy, developed key messages for different audiences and platforms, produced the community mobilisation toolkit, and created all programme content across its multiple phases. From grassroots community tools to the Awaz iReporter citizen journalism platform, our work has been the creative backbone of a programme that is still running.\n\nThe strategy operated across four registers at once: grassroots capacity-building through the community mobilisation toolkit; programme documentation through documentaries and animation; platform creation through the Awaz iReporter citizen journalism system; and media and advocacy linkage to ensure community voices reached the platforms that could create change.\n\nKey messages were designed for different audiences, different platforms, and different stages of the behaviour change journey. From initial awareness and attitudinal shift, through confidence-building and skill development, to action, leadership, and sustained civic participation. Every piece of content was designed to move someone one step further along that journey.",
       deliverables: [
         "SBC Campaign Strategy",
         "Behaviour Change Design",
@@ -736,20 +781,24 @@ export const caseStudies: CaseStudyData[] = [
     },
     impact: {
       heading: "The <em>Impact</em>",
-      body: "The most significant measure of Awaz's success is that it is still running. In development programming, a 10-year multi-phase programme is not a measure of spending \u2014 it is a measure of proof. Funders continue to invest, implementing partners continue to operate, and communities continue to participate because the evidence of change is visible and continuing. White Rice has been part of every phase of that evidence.",
+      body: "The most significant measure of Awaz's success is that it is still running. In development programming, a 10-year multi-phase programme is not a measure of spending. It is a measure of proof. Funders continue to invest, implementing partners continue to operate, and communities continue to participate because the evidence of change is visible and continuing. White Rice has been part of every phase.",
       metrics: [
         { value: 15, suffix: "Million+", label: "People reached through the Awaz communication movement across 13 districts in Punjab and KPK." },
-        { value: 10, suffix: "+ Years", label: "Multiple phases of continuous programming \u2014 still active, still reaching communities, still creating impact at the grassroots level." },
-        { value: 0, suffix: "", prefix: "", label: "Citizens with a Voice \u2014 The iReporter platform created Pakistan's first structured citizen journalism system connecting community documentation to government action and media amplification." },
+        { value: 10, suffix: "+ Years", label: "Multiple phases of continuous programming. Still active, still reaching communities, still creating grassroots impact." },
+        { value: 0, suffix: "", prefix: "", label: "Citizens with a Voice: The iReporter platform created Pakistan's first structured citizen journalism system, connecting community documentation to government action and media amplification." },
       ],
       closingNote: "The impact of Awaz cannot be captured in a single number. It lives in the woman who stood up in a union council meeting for the first time. In the school that was repaired because a community member filmed its broken roof and sent it to the right person. In the religious minority family that found out they had rights they had never been told about. These are the outcomes that don't appear in logframes. They are the ones that matter most.",
     },
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/alif-ailaan/alif-ailaan01.jpg", alt: "Community mobilisation session under the Awaz programme", span: "wide" },
-        { src: "/images/timeline/2017.png", alt: "Awaz programme documentation and field activities", span: "normal" },
-        { src: "/images/timeline/2018.png", alt: "Citizen journalism training and iReporter platform deployment", span: "normal" },
+        { src: "/images/alif-ailaan-new/1229896_561951533868607_1711988521_n.jpg", alt: "Large community gathering for the education campaign", span: "wide" },
+        { src: "/images/alif-ailaan-new/386811_506550672742027_760970272_n.jpg", alt: "School children rallying for education rights", span: "normal" },
+        { src: "/images/alif-ailaan-new/1452332_594356000628160_1700686819_n.jpg", alt: "Young student signing a pledge for education", span: "normal" },
+        { src: "/images/alif-ailaan-new/1235076_568603413203419_1623623434_n.jpg", alt: "Campaign vehicles during the Alif Ailaan outreach drive", span: "wide" },
+        { src: "/images/alif-ailaan-new/1233330_562758870454540_1459927174_n.jpg", alt: "Community mobilisation event with programme materials", span: "normal" },
+        { src: "/images/alif-ailaan-new/1238181_562582980472129_1315392017_n.jpg", alt: "Volunteers and community members at a field engagement session", span: "normal" },
+        { src: "/images/alif-ailaan-new/7855_561951813868579_474208845_n.jpg", alt: "Community participants during an awareness event", span: "wide" },
       ],
     },
   },
@@ -770,7 +819,7 @@ export const caseStudies: CaseStudyData[] = [
       eyebrow: "UNICEF Pakistan \u00b7 National \u00b7 Multi-Year",
       title: "The <em>First</em> 8 Years",
       subtitle: "National ECD & Positive Parenting Programme",
-      description: "A national social behaviour change programme designed to transform how Pakistan\u2019s parents, caregivers, and institutions show up in the first eight years of a child\u2019s life \u2014 built to reach 20 million families by the end of 2026.",
+      description: "A national behaviour change programme transforming how Pakistan\u2019s parents, caregivers, and institutions show up in the first eight years of a child\u2019s life. Built to reach 20 million families by the end of 2026.",
       meta: [
         { label: "Client", value: "UNICEF Pakistan" },
         { label: "Scale", value: "National \u00b7 All Provinces" },
@@ -780,7 +829,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     role: {
       heading: "National SBC Architecture & <em>Creative Lead</em>",
-      body: "White Rice led the design of a comprehensive, multi-year national behaviour change programme for UNICEF \u2014 covering everything from co-creation research and SBC strategy to national policy inputs, flagship creative productions, digital FLW training, community play labs, and household-level coaching toolkits. A programme designed at every layer of the socio-ecological model, with the ambition to reach 20 million families.",
+      body: "White Rice led the design of a comprehensive, multi-year national behaviour change programme for UNICEF. It covered co-creation research, SBC strategy, national policy inputs, flagship creative productions, digital FLW training, community play labs, and household-level coaching toolkits. The programme works across every layer of the socio-ecological model, with the ambition to reach 20 million families.",
       services: [
         "Formative & Co-Creation Research",
         "National SBC Strategy",
@@ -796,49 +845,49 @@ export const caseStudies: CaseStudyData[] = [
     },
     outcomes: {
       cards: [
-        { stat: "20M", description: "Families targeted by end of 2026 \u2014 through a national programme now adopted and being scaled across Pakistan." },
-        { stat: "1,000", description: "Frontline workers trained remotely via a 12-week digital learning programme \u2014 the first of its kind in Pakistan\u2019s ECD sector." },
-        { stat: "National Policy", description: "Programme insights directly shaped the National ECD Policy and Framework \u2014 moving the work from intervention to institution." },
-        { stat: "Pakistan\u2019s 1st", description: "Feature film on parenting and fatherhood \u2014 launched on Geo Network on International Father\u2019s Day, reaching millions." },
-        { stat: "10+ ClayLabs", description: "Community play labs scaled across the country \u2014 embedding play and stimulation as a routine in homes and communities." },
+        { stat: "20M", description: "Families targeted by end of 2026 through a national programme now adopted and being scaled across Pakistan." },
+        { stat: "1,000", description: "Frontline workers trained remotely via a 12-week digital learning programme, the first of its kind in Pakistan\u2019s ECD sector." },
+        { stat: "National Policy", description: "Programme insights directly shaped the National ECD Policy and Framework, moving the work from intervention to institution." },
+        { stat: "Pakistan\u2019s 1st", description: "Feature film on parenting and fatherhood. Launched on Geo Network on International Father\u2019s Day, reaching millions." },
+        { stat: "10+ ClayLabs", description: "Community play labs scaled across the country, embedding play and stimulation as a routine in homes and communities." },
       ],
       watermark: "ECD",
     },
     closing: {
       heading: "The first eight years shape<br>the next <em>eighty.</em>",
-      body: "The First 8 Years programme is proof that a behaviour change system \u2014 when designed at every layer, co-created with communities, and built to be owned by government \u2014 can reach the scale that Pakistan\u2019s children deserve.",
+      body: "The First 8 Years programme is proof that when a behaviour change system is co-created with communities, designed across every layer, and built for government ownership, it can reach the scale Pakistan\u2019s children deserve.",
     },
     impactCells: [
-      { big: "20 Million", desc: "Families targeted by end of 2026 through the nationally adopted programme \u2014 built on the SBC architecture White Rice designed." },
-      { big: "National Policy", desc: "Programme insights embedded directly into the National ECD Policy and Framework \u2014 moving the work from pilot to permanent." },
-      { big: "10+ ClayLabs", desc: "Scaling from a single pilot to community play labs across the country \u2014 with play and stimulation becoming a practised household routine." },
-      { big: "62M+ Reach", desc: "The fatherhood film launched on Geo Network\u2019s digital platform \u2014 the highest-subscribed media platform in Asia \u2014 on International Father\u2019s Day." },
+      { big: "20 Million", desc: "Families targeted by end of 2026 through the nationally adopted programme, built on the SBC architecture White Rice designed." },
+      { big: "National Policy", desc: "Programme insights embedded directly into the National ECD Policy and Framework. From pilot to permanent." },
+      { big: "10+ ClayLabs", desc: "Scaling from a single pilot to community play labs across the country. Play and stimulation becoming a practised household routine." },
+      { big: "62M+ Reach", desc: "The fatherhood film launched on Geo Network\u2019s digital platform, the highest-subscribed media platform in Asia, on International Father\u2019s Day." },
     ],
     challenge: {
       heading: "The <em>Challenge</em>",
-      body: "Pakistan's ECD crisis is not a knowledge gap \u2014 it is a behaviour gap. The research is clear: the first eight years of a child's life determine cognitive development, emotional health, and educational outcomes for decades to come. Yet the behaviours that shape those years \u2014 responsive caregiving, play and stimulation, reading together, engaging fathers \u2014 remain profoundly absent in millions of Pakistani households.\n\nExisting ECD programmes were fragmented, inconsistent across provinces, and unable to scale. They targeted mothers in isolation, excluded fathers entirely, and relied on frontline workers who had received little meaningful training. The challenge White Rice was asked to solve was not small: design a national behaviour change system \u2014 grounded in evidence, co-created with communities, and capable of reaching millions \u2014 that could eventually be owned and operated by government.",
+      body: "Pakistan's ECD crisis is not a knowledge gap. It\u2019s a behaviour gap. The research is clear: the first eight years of a child's life determine cognitive development, emotional health, and educational outcomes for decades. Yet the behaviours that shape those years \u2014 responsive caregiving, play and stimulation, reading together, engaging fathers \u2014 remain profoundly absent in millions of Pakistani households.\n\nExisting ECD programmes were fragmented, inconsistent across provinces, and unable to scale. They targeted mothers in isolation, excluded fathers entirely, and relied on frontline workers with little meaningful training. The challenge: design a national behaviour change system, grounded in evidence, co-created with communities, and capable of reaching millions, that could eventually be owned and operated by government.",
       quote: {
-        text: "Parents in Pakistan are not indifferent to their children's development. They simply have never been shown what it looks like \u2014 or been given the tools, the permission, and the social support to do it.",
+        text: "Parents in Pakistan are not indifferent to their children's development. They\u2019ve simply never been shown what it looks like, or given the tools, the permission, and the social support to do it.",
       },
     },
     strategy: {
       heading: "The <em>Strategy</em>",
-      intro: "Before a single session was designed, White Rice led a massive co-creation exercise across all provinces \u2014 bringing together government stakeholders, frontline workers, community members, mothers, and fathers to audit what existed, identify gaps, and co-design what a comprehensive national programme could look like. This was not consultation. It was design partnership.",
+      intro: "Before a single session was designed, White Rice led a large-scale co-creation exercise across all provinces, bringing together government stakeholders, frontline workers, community members, mothers, and fathers. The goal: audit what existed, identify gaps, and co-design what a comprehensive national programme could look like. This was not consultation. It was design partnership.",
       steps: [
         {
           number: "01",
           title: "Co-Creation Across All Provinces",
-          description: "Research that brought all stakeholders to the table \u2014 not to validate a pre-designed solution, but to build one together from lived experience and community insight.",
+          description: "Research that brought all stakeholders to the table. Not to validate a pre-designed solution, but to build one together from lived experience and community insight.",
         },
         {
           number: "02",
           title: "Design for the Full Socio-Ecological System",
-          description: "Intervene simultaneously at every layer \u2014 policy, community, household, and individual \u2014 so that change at one level is reinforced, not undermined, by the others.",
+          description: "Intervene at every layer simultaneously: policy, community, household, and individual. Change at one level is reinforced by the others, not undermined.",
         },
         {
           number: "03",
           title: "Built to Be Owned, Not Just Delivered",
-          description: "Every design decision was made with government adoption in mind \u2014 so that the programme could eventually be taken over by the state and scaled independently of any external partner.",
+          description: "Every design decision was made with government adoption in mind, so the programme could eventually be taken over by the state and scaled independently of any external partner.",
         },
         {
           number: "04",
@@ -849,7 +898,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     work: {
       heading: "The <em>Intervention</em>",
-      body: "The programme produced a series of groundbreaking firsts for Pakistan \u2014 flagship interventions that created new cultural space for conversations about ECD and fatherhood at national scale, while simultaneously building the community and household infrastructure for durable behaviour change.\n\nAt the community level, film screenings became an unexpected catalyst. Showing the fatherhood film in community settings \u2014 mosques, schools, community halls \u2014 created a neutral, emotionally engaging platform for conversations that communities had never had publicly before. Influencer engagement brought local leaders, religious figures, and respected community members into the movement as champions rather than bystanders.\n\nThe ClayLab \u2014 White Rice's community play lab concept \u2014 was perhaps the programme's most distinctive innovation. Parents arrived weekly for an 8\u201312 week structured programme in which every session introduced a different form of play: creative, imaginative, structured, musical, storytelling, object-based. Fathers had their own dedicated sessions. Mothers-in-law and grandparents were eventually brought in. The design principle was simple but radical: parents had to experience play themselves before they could take it home to their children.\n\nFor frontline workers, White Rice developed Pakistan's first digital remote learning programme for ECD last-mile workers \u2014 a 12-week, bite-sized daily learning journey that took 1,000 workers from foundational ECD concepts through to programme delivery skills, entirely via mobile phone. Designed for low-connectivity, low-literacy contexts, it demonstrated that professional development for remote field workers does not have to wait for in-person training.",
+      body: "The programme produced a series of firsts for Pakistan. Flagship interventions that created new cultural space for conversations about ECD and fatherhood at national scale, while building the community and household infrastructure for lasting behaviour change.\n\nAt the community level, film screenings became an unexpected catalyst. Showing the fatherhood film in mosques, schools, and community halls created a neutral, emotionally engaging platform for conversations communities had never had publicly before. Influencer engagement brought local leaders, religious figures, and respected community members into the movement as champions, not bystanders.\n\nThe ClayLab, White Rice's community play lab concept, was perhaps the programme's most distinctive innovation. Parents arrived weekly for an 8\u201312 week structured programme where every session introduced a different form of play: creative, imaginative, structured, musical, storytelling, object-based. Fathers had their own sessions. Mothers-in-law and grandparents were eventually brought in. The design principle was simple but radical: parents had to experience play themselves before they could take it home to their children.\n\nFor frontline workers, White Rice developed Pakistan's first digital remote learning programme for ECD last-mile workers. A 12-week, bite-sized daily learning journey that took 1,000 workers from foundational ECD concepts through to programme delivery skills, entirely via mobile phone. Designed for low-connectivity, low-literacy contexts, it proved that professional development for remote field workers doesn\u2019t have to wait for in-person training.",
       deliverables: [
         "Formative & Co-Creation Research",
         "National SBC Strategy",
@@ -873,14 +922,14 @@ export const caseStudies: CaseStudyData[] = [
     },
     impact: {
       heading: "The <em>Impact</em>",
-      body: "The programme's most significant measure of success is not a number \u2014 it is adoption. A national behaviour change programme, designed by White Rice, is now being scaled by the Pakistani government across the country. That is the definition of a programme built to last.",
+      body: "The programme's most significant measure of success is not a number. It\u2019s adoption. A national behaviour change programme, designed by White Rice, is now being scaled by the Pakistani government across the country. That is what a programme built to last looks like.",
       metrics: [
-        { value: 20, suffix: " Million", label: "Families targeted by end of 2026 through the nationally adopted programme \u2014 built on the SBC architecture White Rice designed." },
-        { value: 0, suffix: "", prefix: "", label: "Programme insights embedded directly into the National ECD Policy and Framework \u2014 moving the work from pilot to permanent." },
-        { value: 10, suffix: "+ ClayLabs", label: "Scaling from a single pilot to community play labs across the country \u2014 with play and stimulation becoming a practised household routine." },
-        { value: 62, suffix: "M+ Reach", label: "The fatherhood film launched on Geo Network's digital platform \u2014 the highest-subscribed media platform in Asia \u2014 on International Father's Day." },
+        { value: 20, suffix: " Million", label: "Families targeted by end of 2026 through the nationally adopted programme, built on the SBC architecture White Rice designed." },
+        { value: 0, suffix: "", prefix: "", label: "Programme insights embedded directly into the National ECD Policy and Framework. From pilot to permanent." },
+        { value: 10, suffix: "+ ClayLabs", label: "Scaling from a single pilot to community play labs across the country. Play and stimulation becoming a practised household routine." },
+        { value: 62, suffix: "M+ Reach", label: "The fatherhood film launched on Geo Network's digital platform, the highest-subscribed media platform in Asia, on International Father's Day." },
       ],
-      closingNote: "The First 8 Years programme is proof that a behaviour change system \u2014 when designed at every layer, co-created with communities, and built to be owned by government \u2014 can reach the scale that Pakistan's children deserve.",
+      closingNote: "The First 8 Years programme is proof that when a behaviour change system is co-created with communities, designed across every layer, and built for government ownership, it can reach the scale Pakistan's children deserve.",
     },
     gallery: {
       heading: "Gallery",
@@ -909,7 +958,7 @@ export const caseStudies: CaseStudyData[] = [
       eyebrow: "UNICEF Pakistan \u00b7 4 Provinces \u00b7 52 Schools",
       title: "Parents<br><em>Walking</em><br>Alongside.",
       subtitle: "Walidain HumQadam \u2014 Pakistan\u2019s First Remote SBC Programme for Parental Engagement in Education",
-      description: "A pioneering SBC initiative co-designed with parents, teachers, and communities across Pakistan \u2014 using WhatsApp, vision boards, and peer-to-peer learning to transform parental engagement from a mandatory obligation into a sustained, meaningful practice.",
+      description: "A pioneering SBC initiative co-designed with parents, teachers, and communities across Pakistan. Using WhatsApp, vision boards, and peer-to-peer learning to transform parental engagement from a mandatory obligation into a sustained, meaningful practice.",
       meta: [
         { label: "Client", value: "UNICEF Pakistan" },
         { label: "Scale", value: "4 Provinces \u00b7 6 Cities \u00b7 52 Schools" },
@@ -919,7 +968,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     role: {
       heading: "SBC Design, Research & <em>Full Programme Architecture</em>",
-      body: "White Rice partnered with UNICEF Pakistan to design, co-create, and deliver Walidain HumQadam \u2014 Pakistan\u2019s first remotely-delivered SBC programme specifically targeting parental engagement in education. Our role spanned the entire programme lifecycle: from formative research and co-creation workshops across four provinces, through intervention design using the Behavioural Driver Model and Theory of Change, to content production for five integrated programme touchpoints and a 6.4-million-reach digital campaign.",
+      body: "White Rice partnered with UNICEF Pakistan to design, co-create, and deliver Walidain HumQadam, Pakistan\u2019s first remotely-delivered SBC programme targeting parental engagement in education. Our role spanned the full programme lifecycle: formative research and co-creation workshops across four provinces, intervention design using the Behavioural Driver Model and Theory of Change, content production for five integrated touchpoints, and a 6.4-million-reach digital campaign.",
       services: [
         "Formative Research",
         "4-Province Co-Creation Workshops",
@@ -935,39 +984,39 @@ export const caseStudies: CaseStudyData[] = [
     },
     outcomes: {
       cards: [
-        { stat: "13,998", description: "Total parents reached \u2014 through WhatsApp, P2P gatherings, PTMs, digital sharing, and direct teacher outreach across six cities in four provinces." },
-        { stat: "6.4 Million+", description: "Individuals reached through the digital campaign across Facebook, Instagram, YouTube, and TikTok \u2014 generating over 14.7 million impressions." },
-        { stat: "550+ Canvases", description: "Vision canvases created by parents, teachers, and students across 52 schools \u2014 Pakistan\u2019s largest ever visioning exercise in education." },
+        { stat: "13,998", description: "Total parents reached through WhatsApp, P2P gatherings, PTMs, digital sharing, and direct teacher outreach across six cities in four provinces." },
+        { stat: "6.4 Million+", description: "Individuals reached through the digital campaign across Facebook, Instagram, YouTube, and TikTok, generating over 14.7 million impressions." },
+        { stat: "550+ Canvases", description: "Vision canvases created by parents, teachers, and students across 52 schools. Pakistan\u2019s largest ever visioning exercise in education." },
         { stat: "250 Teachers", description: "Trained as Champion Teachers across 52 schools in Islamabad, Lahore, Peshawar, Karachi, Quetta, Sujawal, and Multan." },
-        { stat: "4,200+ Community", description: "A sustained WhatsApp community of parents and teachers \u2014 built for long-term engagement beyond the programme\u2019s formal timeline." },
+        { stat: "4,200+ Community", description: "A sustained WhatsApp community of parents and teachers, built for long-term engagement beyond the programme\u2019s formal timeline." },
       ],
       watermark: "\u0647\u0645\u0642\u062F\u0645",
     },
     closing: {
       heading: "Parents who remember<br>why they hoped<br><em>show up differently.</em>",
-      body: "Walidain HumQadam proved that parental engagement in education is not an infrastructure problem. It is a behaviour change problem \u2014 one that starts with aspiration, is sustained through habit, and is scaled through technology. Pakistan now has a tested blueprint. What it needs next is the national commitment to use it.",
+      body: "Walidain HumQadam proved that parental engagement in education is not an infrastructure problem. It\u2019s a behaviour change problem. One that starts with aspiration, is sustained through habit, and scales through technology. Pakistan now has a tested blueprint. What it needs next is the national commitment to use it.",
     },
     impactCells: [
-      { big: "Pakistan\u2019s First", desc: "Remotely-delivered SBC programme for parental engagement in education \u2014 establishing a tested, validated framework ready for national implementation." },
-      { big: "550+ Vision Boards", desc: "Pakistan\u2019s largest-ever visioning exercise \u2014 transforming the aspiration gap into the motivation engine for the entire programme." },
+      { big: "Pakistan\u2019s First", desc: "Remotely-delivered SBC programme for parental engagement in education. A tested, validated framework ready for national implementation." },
+      { big: "550+ Vision Boards", desc: "Pakistan\u2019s largest-ever visioning exercise. The aspiration gap became the motivation engine for the entire programme." },
       { big: "Cultural Shift", desc: "Fathers from Sujawal and Multan sharing programme content on social media. A Multan father discussing Walidain HumQadam on live television. Behaviour changed publicly, not just privately." },
-      { big: "4,200+ Community", desc: "A lasting WhatsApp community of parents, teachers, and educators \u2014 providing the infrastructure for sustained engagement long after the formal programme concluded." },
+      { big: "4,200+ Community", desc: "A lasting WhatsApp community of parents, teachers, and educators, providing the infrastructure for sustained engagement long after the formal programme concluded." },
       { big: "AI-Integrated", desc: "First government-school SBC programme in Pakistan to integrate ChatGPT and Khan Academy as accessible learning tools within a WhatsApp-native delivery model." },
-      { big: "Scale-Ready", desc: "A 4-week WhatsApp programme, refined through six cities and four provinces, that is fully validated and ready for national deployment across thousands of schools." },
+      { big: "Scale-Ready", desc: "A 4-week WhatsApp programme, refined through six cities and four provinces. Fully validated and ready for national deployment across thousands of schools." },
     ],
     divider: {
       stat: "58% of<br>10-year-olds<br>can\u2019t read.",
-      text: "Pakistan faces a dual crisis \u2014 25.3 million children out of school, and a learning poverty rate where 58% of 10-year-olds cannot read or comprehend simple texts. Fewer than 30% of parents actively engage with teachers or participate in school activities. The evidence is clear: limited parental involvement is one of the most critical yet least-addressed factors in Pakistan\u2019s education emergency. Walidain HumQadam was designed to change that \u2014 not through mandate, but through behaviour change.",
+      text: "Pakistan faces a dual crisis: 25.3 million children out of school, and a learning poverty rate where 58% of 10-year-olds cannot read or comprehend simple texts. Fewer than 30% of parents actively engage with teachers or participate in school activities. Limited parental involvement is one of the most critical yet least-addressed factors in Pakistan\u2019s education emergency. Walidain HumQadam was designed to change that. Not through mandate, but through behaviour change.",
     },
     cocreation: {
       eyebrow: "Co-Creation Process \u00b7 Designed With, Not For",
       heading: "Four provinces. Four workshops.<br><em>One programme shaped entirely by the communities it would serve.</em>",
       workshopSteps: [
-        { num: "Step 1", name: "Visioning", body: "Participants imagined a transformative future 10 years ahead \u2014 setting aspirational tone and emotional investment before any problem-solving" },
-        { num: "Step 2", name: "Challenge Framing", body: "Stakeholders articulated barriers from their own perspectives \u2014 building empathy and identifying root causes of parental disengagement" },
-        { num: "Step 3", name: "Persona Mapping", body: "Participants created profiles of average Pakistani parents \u2014 exploring challenges, opportunities, and aspirations to deepen empathy with the target audience" },
-        { num: "Step 4", name: "Ideation & Prototyping", body: "Creative solution generation followed by detailed implementation plans \u2014 translating ideas into actionable, community-tested blueprints" },
-        { num: "Step 5", name: "Pre-Mortem", body: "Participants critically evaluated proposed solutions \u2014 identifying potential failure points before implementation to build robustness and sustainability" },
+        { num: "Step 1", name: "Visioning", body: "Participants imagined a transformative future 10 years ahead, setting aspirational tone and emotional investment before any problem-solving" },
+        { num: "Step 2", name: "Challenge Framing", body: "Stakeholders articulated barriers from their own perspectives, building empathy and identifying root causes of parental disengagement" },
+        { num: "Step 3", name: "Persona Mapping", body: "Participants created profiles of average Pakistani parents, exploring challenges, opportunities, and aspirations to deepen empathy with the target audience" },
+        { num: "Step 4", name: "Ideation & Prototyping", body: "Creative solution generation followed by detailed implementation plans, translating ideas into actionable, community-tested blueprints" },
+        { num: "Step 5", name: "Pre-Mortem", body: "Participants critically evaluated proposed solutions, identifying potential failure points before implementation to build robustness and sustainability" },
       ],
       provinceCards: [
         { name: "Sindh", city: "Karachi", stat: "32", breakdown: "4 students \u00b7 9 teachers \u00b7 5 parents \u00b7 14 influencers" },
@@ -978,23 +1027,23 @@ export const caseStudies: CaseStudyData[] = [
     },
     reframe: {
       eyebrow: "The Reframed Challenge Statement \u00b7 Emerging from Co-Creation",
-      challenge: "\u201CHow might we reimagine parental engagement as a dynamic force for realising future aspirations and collective dreams \u2014 by empowering parents, students, and teachers to co-create personalised learning journeys?\u201D",
-      note: "The original challenge \u2014 \u201Chow might we improve parental engagement at home and school?\u201D \u2014 was transformed through co-creation into something more meaningful: a question not about compliance, but about shared ambition. This reframing became the north star for every intervention design decision that followed.",
+      challenge: "\u201CHow might we reimagine parental engagement as a dynamic force for realising future aspirations and collective dreams, by empowering parents, students, and teachers to co-create personalised learning journeys?\u201D",
+      note: "The original challenge, \u201Chow might we improve parental engagement at home and school?\u201D, was transformed through co-creation into something more meaningful. Not a question about compliance, but about shared ambition. This reframing became the north star for every intervention design decision that followed.",
     },
     touchpoints: {
       eyebrow: "Programme Intervention Design \u00b7 Five Integrated Touchpoints",
       heading: "Every touchpoint designed to <em>build on the last.</em>",
       cards: [
         { num: "01", title: "Teacher Training & Orientation", body: "Full-day activity-based training sessions introduced programme objectives, built teacher confidence, and positioned educators as Champion Teachers central to the programme\u2019s success.", scale: "<strong>250 teachers</strong> \u00b7 52 schools \u00b7 4 provinces", color: "#4A6ACA" },
-        { num: "02", title: "Future Visioning", body: "Pakistan\u2019s largest-ever visioning exercise \u2014 parents, teachers, and students co-created 550+ vision canvases representing 10-year aspirations for their child\u2019s future, building intrinsic motivation before any instructional content.", scale: "<strong>500+ parents</strong> \u00b7 <strong>550+ vision canvases</strong>", color: "#E8C84A" },
-        { num: "03", title: "WhatsApp Remote Learning", body: "A 30-day habit challenge delivered via WhatsApp \u2014 separate programmes for parents and teachers. Bite-sized microlearning, gamification, polls, voice notes, and 50+ role model videos. Built on COM-B, EAST, and behavioural nudge science. Integrated with ChatGPT and Khan Academy.", scale: "<strong>4,200+ community</strong> \u00b7 35% high-performing parents", color: "#5AAA8A" },
-        { num: "04", title: "Peer-to-Peer Gatherings", body: "Community-based P2P sessions gave parents a safe space to connect, share experiences, and learn from one another \u2014 reinforcing programme behaviours through peer normalisation and collective accountability.", scale: "<strong>3,080 parents</strong> reached through P2P gatherings", color: "#CA6A4A" },
-        { num: "05", title: "Redesigned PTMs", body: "Parent-Teacher Meetings were transformed from formal reporting events into collaborative partnership sessions \u2014 with structured agendas, student reflection templates, collaborative action plans, and post-PTM follow-up protocols.", scale: "<strong>4,457 parents</strong> reached through PTMs", color: "#9A6ACA" },
+        { num: "02", title: "Future Visioning", body: "Pakistan\u2019s largest-ever visioning exercise. Parents, teachers, and students co-created 550+ vision canvases representing 10-year aspirations for their child\u2019s future, building intrinsic motivation before any instructional content.", scale: "<strong>500+ parents</strong> \u00b7 <strong>550+ vision canvases</strong>", color: "#E8C84A" },
+        { num: "03", title: "WhatsApp Remote Learning", body: "A 30-day habit challenge delivered via WhatsApp, with separate programmes for parents and teachers. Bite-sized microlearning, gamification, polls, voice notes, and 50+ role model videos. Built on COM-B, EAST, and behavioural nudge science. Integrated with ChatGPT and Khan Academy.", scale: "<strong>4,200+ community</strong> \u00b7 35% high-performing parents", color: "#5AAA8A" },
+        { num: "04", title: "Peer-to-Peer Gatherings", body: "Community-based P2P sessions gave parents a safe space to connect, share experiences, and learn from one another, reinforcing programme behaviours through peer normalisation and collective accountability.", scale: "<strong>3,080 parents</strong> reached through P2P gatherings", color: "#CA6A4A" },
+        { num: "05", title: "Redesigned PTMs", body: "Parent-Teacher Meetings were transformed from formal reporting events into collaborative partnership sessions, with structured agendas, student reflection templates, collaborative action plans, and post-PTM follow-up protocols.", scale: "<strong>4,457 parents</strong> reached through PTMs", color: "#9A6ACA" },
       ],
     },
     verbatims: {
       eyebrow: "In Their Own Words",
-      heading: "Parents and teachers who <em>changed their minds</em> \u2014 and then changed their habits.",
+      heading: "Parents and teachers who <em>changed their minds</em>, and then changed their habits.",
       cards: [
         { quote: "As soon as I see the vision board, I remember to ask the children what they learned today. That\u2019s why we pasted it on the wall \u2014 so we remember to give our child time every day.", source: "Parent \u00b7 Visioning Exercise" },
         { quote: "We realised the importance of bridging the gap between parents, teachers, and students. Working together as a united triangle improves children\u2019s performance and ensures they feel supported.", source: "Teacher \u00b7 Training Session \u00b7 Lahore" },
@@ -1009,9 +1058,9 @@ export const caseStudies: CaseStudyData[] = [
       heading: "From 500 parents to <em>14 million impressions.</em>",
       numbers: [
         { label: "Total Parents Reached", big: "13,998", sub: "Across P2P, PTM, WhatsApp, digital forwarding, and direct teacher outreach" },
-        { label: "Teachers Trained", big: "250", sub: "Across 52 schools in 6 cities and 4 provinces \u2014 as Champion Teachers" },
+        { label: "Teachers Trained", big: "250", sub: "Across 52 schools in 6 cities and 4 provinces, trained as Champion Teachers" },
         { label: "Digital Reach", big: "6.4M+", sub: "Individuals reached across Facebook, Instagram, YouTube, and TikTok" },
-        { label: "Digital Impressions", big: "14.7M+", sub: "Total campaign impressions \u2014 with a Balochistan role model story aired on national television" },
+        { label: "Digital Impressions", big: "14.7M+", sub: "Total campaign impressions, including a Balochistan role model story aired on national television" },
       ],
       platforms: [
         { name: "Facebook & Instagram", reach: "5,377,689 reach", impressions: "11,908,859 impressions" },
@@ -1021,24 +1070,24 @@ export const caseStudies: CaseStudyData[] = [
     },
     challenge: {
       heading: "The <em>Challenge</em>",
-      body: "Parental engagement in Pakistan's public school system is structurally limited at every tier. Economic pressure means parents prioritise immediate survival over school activities. Low literacy \u2014 particularly among mothers \u2014 creates deep insecurity about their ability to meaningfully contribute to their child's education. Public school teachers managing classrooms of 50+ students have minimal capacity to build parent relationships. And communication between schools and families remains almost entirely paper-based.\n\nFathers in particular are largely absent from the educational lives of their children \u2014 viewing it as the mother's responsibility. And mothers, despite their proximity to children, often lack the confidence, literacy, or mobility to advocate effectively at the school level.\n\nUnderlying all of this is a belief \u2014 reinforced by real economic reality \u2014 that formal education may not reliably lead to better outcomes. Before any behaviour change programme could work, it needed to address this foundational question of value. Walidain HumQadam began not by telling parents what to do, but by helping them remember why they hoped.",
+      body: "Parental engagement in Pakistan's public school system is structurally limited at every tier. Economic pressure means parents prioritise immediate survival over school activities. Low literacy, particularly among mothers, creates deep insecurity about their ability to contribute to their child's education. Teachers managing classrooms of 50+ students have minimal capacity to build parent relationships. And communication between schools and families remains almost entirely paper-based.\n\nFathers are largely absent from the educational lives of their children, viewing it as the mother's responsibility. Mothers, despite their proximity to children, often lack the confidence, literacy, or mobility to advocate effectively at the school level.\n\nUnderlying all of this is a belief, reinforced by real economic reality, that formal education may not reliably lead to better outcomes. Before any behaviour change programme could work, it needed to address this foundational question of value. Walidain HumQadam began not by telling parents what to do, but by helping them remember why they hoped.",
       quote: {
         text: "Parents consider education a fruitless effort \u2014 there are examples in every home where someone who completed their MA or BS is unemployed, so they pay more attention to a shop or other work.",
       },
     },
     strategy: {
       heading: "The <em>Strategy</em>",
-      intro: "The programme's SBC strategy was built around the Socio-Ecological Model \u2014 addressing parental disengagement at the individual, interpersonal, community, and institutional levels simultaneously. The Behavioural Driver Model framed the programme's design across three intersecting forces: psychology (internal beliefs and self-efficacy), sociology (social norms, peer influence), and environment (tools, platforms, and access).",
+      intro: "The programme's SBC strategy was built around the Socio-Ecological Model, addressing parental disengagement at the individual, interpersonal, community, and institutional levels simultaneously. The Behavioural Driver Model framed the design across three intersecting forces: psychology (internal beliefs and self-efficacy), sociology (social norms, peer influence), and environment (tools, platforms, and access).",
       steps: [
-        { number: "01", title: "Start with Aspiration, Not Instruction", description: "The programme's entry point was a Future Visioning exercise \u2014 asking parents to imagine their child's life 10 years ahead. Before any knowledge transfer or behaviour nudge, the programme rebuilt parents' emotional investment in their child's education as the foundation for everything else." },
-        { number: "02", title: "WhatsApp as the Programme's Backbone", description: "WhatsApp \u2014 already deeply embedded in Pakistani daily life \u2014 became the delivery platform for a 30-day habit challenge: bite-sized microlearning, gamification, peer discussion, voice notes, polls, and role model stories. Accessible anywhere, any time, on any phone." },
-        { number: "03", title: "Teachers as Programme Champions", description: "Teachers were not implementers of someone else's design \u2014 they were trained as Champion Teachers, equipped with practical tools, confidence, and a new understanding of their role as bridges between school and home. The PTM was redesigned from a reporting exercise into a genuine collaborative partnership session." },
-        { number: "04", title: "Peer-to-Peer as the Sustaining Force", description: "P2P gatherings built communities of parents who could learn from each other \u2014 sharing experiences, normalising engagement, and creating the social permission for fathers to become involved in ways that Pakistani norms had historically not expected of them." },
+        { number: "01", title: "Start with Aspiration, Not Instruction", description: "The programme's entry point was a Future Visioning exercise, asking parents to imagine their child's life 10 years ahead. Before any knowledge transfer or behaviour nudge, the programme rebuilt parents' emotional investment in their child's education as the foundation for everything else." },
+        { number: "02", title: "WhatsApp as the Programme's Backbone", description: "WhatsApp, already deeply embedded in Pakistani daily life, became the delivery platform for a 30-day habit challenge: bite-sized microlearning, gamification, peer discussion, voice notes, polls, and role model stories. Accessible anywhere, any time, on any phone." },
+        { number: "03", title: "Teachers as Programme Champions", description: "Teachers weren\u2019t implementers of someone else\u2019s design. They were trained as Champion Teachers, equipped with practical tools, confidence, and a new understanding of their role as bridges between school and home. The PTM was redesigned from a reporting exercise into a genuine collaborative partnership session." },
+        { number: "04", title: "Peer-to-Peer as the Sustaining Force", description: "P2P gatherings built communities of parents who could learn from each other. Sharing experiences, normalising engagement, and creating the social permission for fathers to become involved in ways that Pakistani norms had historically not expected of them." },
       ],
     },
     work: {
       heading: "The <em>Intervention</em>",
-      body: "White Rice partnered with UNICEF Pakistan to design, co-create, and deliver Walidain HumQadam \u2014 Pakistan's first remotely-delivered SBC programme specifically targeting parental engagement in education. Our role spanned the entire programme lifecycle: from formative research and co-creation workshops across four provinces, through intervention design using the Behavioural Driver Model and Theory of Change, to content production for five integrated programme touchpoints and a 6.4-million-reach digital campaign.",
+      body: "White Rice partnered with UNICEF Pakistan to design, co-create, and deliver Walidain HumQadam, Pakistan's first remotely-delivered SBC programme targeting parental engagement in education. Our role covered the full lifecycle: formative research and co-creation workshops across four provinces, intervention design using the Behavioural Driver Model and Theory of Change, content production for five integrated touchpoints, and a 6.4-million-reach digital campaign.",
       deliverables: [
         "Formative Research",
         "4-Province Co-Creation Workshops",
@@ -1054,15 +1103,15 @@ export const caseStudies: CaseStudyData[] = [
     },
     impact: {
       heading: "The <em>Impact</em>",
-      body: "Walidain HumQadam was the first programme of its kind in Pakistan \u2014 a remotely-delivered, WhatsApp-native SBC intervention specifically designed to shift parental engagement in education at scale. The results demonstrated both the viability of the model and its readiness for national rollout.",
+      body: "Walidain HumQadam was the first programme of its kind in Pakistan: a remotely-delivered, WhatsApp-native SBC intervention designed to shift parental engagement in education at scale. The results demonstrated both the viability of the model and its readiness for national rollout.",
       metrics: [
-        { value: 13998, suffix: "", label: "Total parents reached \u2014 through WhatsApp, P2P gatherings, PTMs, digital sharing, and direct teacher outreach across six cities in four provinces." },
-        { value: 6400000, suffix: "+", label: "Individuals reached through the digital campaign across Facebook, Instagram, YouTube, and TikTok \u2014 generating over 14.7 million impressions." },
-        { value: 550, suffix: "+", label: "Vision canvases created by parents, teachers, and students across 52 schools \u2014 Pakistan's largest ever visioning exercise in education." },
+        { value: 13998, suffix: "", label: "Total parents reached through WhatsApp, P2P gatherings, PTMs, digital sharing, and direct teacher outreach across six cities in four provinces." },
+        { value: 6400000, suffix: "+", label: "Individuals reached through the digital campaign across Facebook, Instagram, YouTube, and TikTok, generating over 14.7 million impressions." },
+        { value: 550, suffix: "+", label: "Vision canvases created by parents, teachers, and students across 52 schools. Pakistan's largest ever visioning exercise in education." },
         { value: 250, suffix: "", label: "Trained as Champion Teachers across 52 schools in Islamabad, Lahore, Peshawar, Karachi, Quetta, Sujawal, and Multan." },
-        { value: 4200, suffix: "+", label: "A sustained WhatsApp community of parents and teachers \u2014 built for long-term engagement beyond the programme's formal timeline." },
+        { value: 4200, suffix: "+", label: "A sustained WhatsApp community of parents and teachers, built for long-term engagement beyond the programme's formal timeline." },
       ],
-      closingNote: "Walidain HumQadam proved that parental engagement in education is not an infrastructure problem. It is a behaviour change problem \u2014 one that starts with aspiration, is sustained through habit, and is scaled through technology. Pakistan now has a tested blueprint. What it needs next is the national commitment to use it.",
+      closingNote: "Walidain HumQadam proved that parental engagement in education is not an infrastructure problem. It\u2019s a behaviour change problem. One that starts with aspiration, is sustained through habit, and scales through technology. Pakistan now has a tested blueprint. What it needs next is the national commitment to use it.",
     },
     gallery: {
       heading: "Gallery",
@@ -1081,11 +1130,11 @@ export const caseStudies: CaseStudyData[] = [
     tags: ["WASH", "Film", "Punjab", "UNICEF"],
     challenge: {
       heading: "The Challenge",
-      body: "Water, sanitation, and hygiene practices in rural Punjab communities remained stubbornly resistant to change despite years of conventional messaging. Open defecation, unsafe water handling, and poor handwashing practices contributed to preventable childhood illness.\n\nUNICEF needed an approach that could break through information fatigue and create genuine emotional engagement with WASH behaviours.",
+      body: "Water, sanitation, and hygiene practices in rural Punjab communities had resisted change despite years of conventional messaging. Open defecation, unsafe water handling, and poor handwashing continued to drive preventable childhood illness.\n\nUNICEF needed an approach that could cut through information fatigue and create genuine emotional engagement with WASH behaviours.",
     },
     strategy: {
       heading: "Our Approach",
-      intro: "We used the power of cinema-quality storytelling to create emotional resonance around WASH behaviours.",
+      intro: "Cinema-quality storytelling to create emotional resonance around WASH behaviours.",
       steps: [
         { number: "01", title: "Narrative Research", description: "Identifying community stories, cultural triggers, and emotional drivers for WASH behaviour change." },
         { number: "02", title: "Film Production", description: "Producing cinema-quality short films featuring local communities and relatable characters." },
@@ -1512,6 +1561,24 @@ export const caseStudies: CaseStudyData[] = [
         "Community Insight Gathering via Digital",
       ],
     },
+    photoBand1: [
+      { src: "/images/unicef-cg/DSC03536.JPG", alt: "Community mobiliser speaking with villagers about hygiene practices in rural Punjab" },
+      { src: "/images/unicef-cg/IMG_1611.JPG", alt: "Children washing hands at a newly installed handwashing station" },
+    ],
+    photoBand2: [
+      { src: "/images/unicef-cg/IMG_2376.JPG", alt: "Wall painting promoting Clean & Green sanitation messages in a village" },
+      { src: "/images/unicef-cg/DSC03757.JPG", alt: "Field team conducting household-level behaviour change session" },
+      { src: "/images/unicef-cg/IMG_1721.JPG", alt: "Women and children participating in a tree plantation activity" },
+    ],
+    photoBand3: [
+      { src: "/images/unicef-cg/IMG_9806.JPG", alt: "Community members painting environmental hygiene messages on a boundary wall" },
+      { src: "/images/unicef-cg/DSC03971.jpg", alt: "Mobiliser reviewing waste management practices with a household in Punjab" },
+    ],
+    photoBand4: [
+      { src: "/images/unicef-cg/IMG_1625.JPG", alt: "Children gathered around a Clean & Green demonstration in a village school" },
+      { src: "/images/unicef-cg/IMG_2012.JPG", alt: "Village watch committee members walking through a community during a monitoring visit" },
+      { src: "/images/unicef-cg/18.jpg", alt: "Young digital ambassador recording content on a mobile phone during the COVID-19 pivot" },
+    ],
     challenge: {
       heading: "The <em>Challenge</em>",
       body: "Punjab\u2019s Clean & Green programme had a clear mandate: shift five critical environmental and hygiene behaviours across one of Pakistan\u2019s most populous provinces. But the challenge was not simply scale. It was the deeper problem that every SBC practitioner eventually confronts \u2014 <em>one-time behaviour change is easy. Long-term behaviour change is hard.</em>\n\nThe government had an existing network of community mobilisers \u2014 but they lacked an SBC framework capable of driving durable change. The intervention had to be designed not just for reach, but for sustainability. And then COVID-19 arrived, threatening to make in-person community work impossible at precisely the moment the programme was gaining momentum.",
@@ -1589,9 +1656,14 @@ export const caseStudies: CaseStudyData[] = [
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/pakkay-dost/pd01.jpg", alt: "Clean Green Punjab campaign mascot Pakkay Dost", span: "wide" },
-        { src: "/images/pakkay-dost/pd02.jpg", alt: "Community cleanup drive under the Clean Green initiative", span: "normal" },
-        { src: "/images/pakkay-dost/pd03.jpg", alt: "Children engaging with WASH education materials", span: "normal" },
+        { src: "/images/unicef-cg/IMG_2045.JPG", alt: "Children running through a village carrying Clean & Green campaign flags", span: "wide" },
+        { src: "/images/unicef-cg/DSC03667.jpg", alt: "Community mobilisers using phones for digital data collection in rural Punjab", span: "normal" },
+        { src: "/images/unicef-cg/IMG_9771.JPG", alt: "Painting a Clean & Green stencil on a village wall", span: "normal" },
+        { src: "/images/unicef-cg/IMG_2326.JPG", alt: "Women and children practising handwashing during a community session", span: "wide" },
+        { src: "/images/unicef-cg/DSC03510.JPG", alt: "Field team reviewing programme materials with community members", span: "normal" },
+        { src: "/images/unicef-cg/IMG_1667.JPG", alt: "Researcher speaking with a woman in a rural household", span: "normal" },
+        { src: "/images/unicef-cg/IMG_1903.JPG", alt: "Community engagement during the Clean & Green programme", span: "wide" },
+        { src: "/images/unicef-cg/IMG_2184.JPG", alt: "Village watch committee members at a programme event", span: "normal" },
       ],
     },
   },
@@ -1921,8 +1993,8 @@ export const caseStudies: CaseStudyData[] = [
     hero: {
       eyebrow: "Girl Effect / Springster · National · Mobile-First",
       title: "A Million <em>Girls</em><br>Given a Voice",
-      subtitle: "Springster — Mobile-First Digital Content for Girls' Empowerment in Pakistan",
-      description: "100+ co-created stories. A free mobile platform. One million girls in Pakistan — many of whom had never had a trusted space to explore the questions that shaped their lives — finally able to access one.",
+      subtitle: "Springster: Mobile-First Digital Content for Girls' Empowerment in Pakistan",
+      description: "100+ co-created stories. A free mobile platform. One million girls in Pakistan, many of whom had never had a trusted space to explore the questions shaping their lives, finally able to access one.",
       meta: [
         { label: "Funder", value: "Nike Foundation (Girl Effect)" },
         { label: "Platform", value: "Internet.org — Free Mobile Access" },
@@ -1932,22 +2004,22 @@ export const caseStudies: CaseStudyData[] = [
     },
     role: {
       heading: "Human-Centred Design, Co-Creation & <em>Content Lead</em>",
-      body: "White Rice led the full creative and research cycle for Springster Pakistan — from in-school human-centred design research and co-creation sessions with girls across religious and socioeconomic backgrounds, through to the development of over 100 unique mobile-first content stories spanning financial wellbeing, safety, health, voice, and agency. Every story was designed with the girls who would read it.",
+      body: "White Rice led the full creative and research cycle for Springster Pakistan. That meant in-school human-centred design research and co-creation sessions with girls across religious and socioeconomic backgrounds, followed by the development of over 100 unique mobile-first content stories spanning financial wellbeing, safety, health, voice, and agency. Every story was designed with the girls who would read it.",
       services: ["Human-Centred Design Research", "In-School Co-Creation Sessions", "Brand & Platform Identity", "100+ Content Stories", "Mobile-First Design", "Visual & Illustrative Design", "Moodboarding & Concept Development", "Multi-Community Contextualisation"],
     },
     outcomes: {
       cards: [
-        { stat: "1 Million+", description: "Girls in Pakistan reached through the Springster platform — many for the first time accessing trusted, culturally relevant content on the issues shaping their lives." },
+        { stat: "1 Million+", description: "Girls in Pakistan reached through the Springster platform. For many, this was their first access to trusted, culturally relevant content on the issues shaping their lives." },
         { stat: "100+ Stories", description: "Unique mobile-first content pieces co-created with girls from diverse religious, cultural, and socioeconomic backgrounds across Pakistan." },
-        { stat: "Free Access", description: "Published on Internet.org — meaning any girl, on anyone's phone, with zero mobile data, could access the platform at no cost." },
-        { stat: "4 Topics", description: "Financial wellbeing, voice & agency, safety, and health — covering the most critical and least-discussed dimensions of adolescent girls' lives in Pakistan." },
-        { stat: "Multi-Faith", description: "Content designed with and for both Muslim and Christian girls from diverse regional and socioeconomic backgrounds — one of Pakistan's first explicitly multi-faith digital girl empowerment platforms." },
+        { stat: "Free Access", description: "Published on Internet.org. Any girl, on anyone's phone, with zero mobile data, could access the platform at no cost." },
+        { stat: "4 Topics", description: "Financial wellbeing, voice & agency, safety, and health. The most critical and least-discussed dimensions of adolescent girls' lives in Pakistan." },
+        { stat: "Multi-Faith", description: "Content designed with and for both Muslim and Christian girls from diverse regional and socioeconomic backgrounds. One of Pakistan's first explicitly multi-faith digital girl empowerment platforms." },
       ],
       watermark: "GIRLS",
     },
     divider: {
       stat: "Zero data.<br>Zero cost.<br>One million girls.",
-      text: "Internet.org gave the platform something no paid app could: the ability to reach girls who had no data, no personal phone, and no money — but who could borrow a phone for five minutes and access content specifically made for them. The zero-cost model was not a technical detail. It was the difference between a platform that reached a million girls and one that reached a few thousand.",
+      text: "Internet.org gave the platform something no paid app could: the ability to reach girls who had no data, no personal phone, and no money, but who could borrow a phone for five minutes and access content made specifically for them. The zero-cost model wasn't a technical detail. It was the difference between reaching a million girls and reaching a few thousand.",
     },
     cocreationMethods: {
       eyebrow: "The Co-Creation Process",
@@ -1994,6 +2066,24 @@ export const caseStudies: CaseStudyData[] = [
         { label: "Setting", title: "School-Based Co-Creation", body: "Sessions were held in schools — a setting that gave girls relative safety, peer support, and a structured creative environment in which to express their actual needs and ideas, rather than what they thought adults wanted to hear." },
       ],
     },
+    photoBand1: [
+      { src: "/images/nike-girl-effect/IMG_2189.JPG", alt: "Girls sketching character ideas during a Springster content co-creation workshop" },
+      { src: "/images/nike-girl-effect/IMG_3059.JPG", alt: "Facilitator and girls reviewing story concepts pinned to a classroom board" },
+    ],
+    photoBand2: [
+      { src: "/images/nike-girl-effect/IMG_2687.JPG", alt: "Wide view of a co-creation session with girls seated in a circle" },
+      { src: "/images/nike-girl-effect/IMG_2743.JPG", alt: "Girl presenting her illustration to the group during a design workshop" },
+      { src: "/images/nike-girl-effect/IMG_1936.JPG", alt: "Girls collaborating on moodboards for Springster platform content" },
+    ],
+    photoBand3: [
+      { src: "/images/nike-girl-effect/IMG_2114.JPG", alt: "Close-up of a girl smiling while working on creative materials" },
+      { src: "/images/nike-girl-effect/IMG_3074.JPG", alt: "Design team member reviewing artwork produced by girls in the session" },
+    ],
+    photoBand4: [
+      { src: "/images/nike-girl-effect/IMG_2707.JPG", alt: "Group of girls engaged in a lively discussion about platform features" },
+      { src: "/images/nike-girl-effect/IMG_2889.JPG", alt: "Co-creation participants sharing personal stories for content development" },
+      { src: "/images/nike-girl-effect/IMG_3059.JPG", alt: "Wide shot of a school-based Springster design session in progress" },
+    ],
     challenge: {
       heading: "The Challenge",
       body: "Pakistan's adolescent girls face a particular kind of information poverty. The questions that matter most — about their bodies, their safety, their money, their right to speak — are precisely the questions that home, school, and community offer the least trustworthy or least available answers to. The topics are too sensitive for open conversation, too personal for the classroom, and too complex for the internet content that does exist to address with cultural nuance.\n\nThe Nike Foundation's global Springster programme had an answer: a mobile-first content platform built specifically for adolescent girls, designed to be their trusted companion on the topics that matter. White Rice's challenge was to bring that platform to life in Pakistan — in a way that reflected the full diversity of Pakistani girls, not a single imagined composite of who they were supposed to be.\n\nThat meant designing content that could speak authentically to a Muslim girl from Lahore and a Christian girl from Karachi's inner city; to a girl in school and one who had dropped out; to a girl whose mother allowed her to use a phone and one who had to borrow one secretly. The platform had to be genuinely universal — which meant starting not with assumptions, but with the girls themselves.",
@@ -2036,12 +2126,17 @@ export const caseStudies: CaseStudyData[] = [
       heading: "A million girls.<br>One question each.<br><em>Finally somewhere to ask it.</em>",
       body: "Springster worked not because it was a platform, but because it was a companion. A trusted voice in a girl's pocket, available at any hour, on any phone, with zero data — covering the things that actually mattered. That is what co-creation makes possible. And that is what a million Pakistani girls found.",
     },
+    heroImage: "/images/nike-girl-effect/IMG_2114.JPG",
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/nike/nike01.jpg", alt: "Girls engaging with Springster digital content", span: "wide" },
-        { src: "/images/nike/nike02.jpg", alt: "Interactive storytelling session", span: "normal" },
-        { src: "/images/nike/nike03.jpg", alt: "Community event for girls empowerment", span: "normal" },
+        { src: "/images/nike-girl-effect/IMG_2687.JPG", alt: "Facilitator presenting to girls during a co-creation session", span: "wide" },
+        { src: "/images/nike-girl-effect/IMG_2114.JPG", alt: "Girl smiling during a creative workshop activity", span: "normal" },
+        { src: "/images/nike-girl-effect/IMG_2743.JPG", alt: "Girl drawing a character on a whiteboard during content design", span: "normal" },
+        { src: "/images/nike-girl-effect/IMG_3074.JPG", alt: "Facilitator reviewing girls' artwork and story concepts", span: "wide" },
+        { src: "/images/nike-girl-effect/IMG_2707.JPG", alt: "Girls participating in a group moodboarding session", span: "normal" },
+        { src: "/images/nike-girl-effect/IMG_2889.JPG", alt: "Co-creation session with girls and the design team", span: "normal" },
+        { src: "/images/nike-girl-effect/IMG_1936.JPG", alt: "Girls sharing ideas during an in-school Springster session", span: "wide" },
       ],
     },
   },
@@ -2329,6 +2424,24 @@ export const caseStudies: CaseStudyData[] = [
       ],
     },
 
+    photoBand1: [
+      { src: "/images/oxfam-hcd/DSC_2498-copy.jpg", alt: "Participants mapping user journeys on a large paper sheet during a design workshop" },
+      { src: "/images/oxfam-hcd/DSC_2807-copy.jpg", alt: "Facilitator guiding a group through a brainstorming exercise with sticky notes" },
+    ],
+    photoBand2: [
+      { src: "/images/oxfam-hcd/DSC_2823-copy.jpg", alt: "Youth participants presenting prototype ideas to the wider group" },
+      { src: "/images/oxfam-hcd/DSC_2824-copy.jpg", alt: "Close-up of hands arranging design thinking cards on a workshop table" },
+      { src: "/images/oxfam-hcd/DSC_4224.JPG", alt: "Full room of implementing partners during a quarterly design sprint" },
+    ],
+    photoBand3: [
+      { src: "/images/oxfam-hcd/DSC_9218.JPG", alt: "Workshop facilitator sketching a programme framework on a whiteboard" },
+      { src: "/images/oxfam-hcd/ASH_0113.jpg", alt: "Team-building warm-up activity at the start of a design workshop day" },
+    ],
+    photoBand4: [
+      { src: "/images/oxfam-hcd/DSC_2440-copy.jpg", alt: "Partners reviewing empathy research findings pinned to an insights wall" },
+      { src: "/images/oxfam-hcd/DSC_2564-copy.jpg", alt: "Women participants writing challenge statements during an ideation session" },
+      { src: "/images/oxfam-hcd/DSC_2624-copy.jpg", alt: "Group discussion during a co-creation round at the Oxfam design workshop" },
+    ],
     challenge: {
       heading: "The <em>Challenge</em>",
       body: "Youth unemployment and underemployment in Pakistan\u2019s semi-urban and rural areas \u2014 particularly in climate-affected regions of Punjab and Sindh \u2014 is not a simple skills gap problem. It is a system of interconnected barriers: limited market access, weak connectivity between skills supply and employer demand, entrenched gender norms restricting girls\u2019 economic participation, climate disruption undermining agricultural livelihoods, and programme designs that rarely reflect the actual lives of the young people they target.\n\nOxfam and the IKEA Foundation had the ambition and the funding for a 5-year programme to change this. What they needed was the confidence that the programme design was actually right before deploying it at scale. That confidence could only come from one source: real evidence from the communities it was built to serve.\n\nThe added complexity was the parallel nature of the programme \u2014 running simultaneously in four countries, each with its own context, partner network, and implementation challenges. White Rice had to operate as a rigorous, facilitated design partner while contributing to a shared methodology and global learning ecosystem.",
@@ -2383,12 +2496,17 @@ export const caseStudies: CaseStudyData[] = [
       heading: "The best programmes<br>are the ones that<br><em>fail first.</em>",
       body: "Eighteen months. Six design cycles. Countless iterations. And then a 5-year programme that worked \u2014 because it had already been run, tested, broken, and rebuilt before it was ever deployed at scale. That is what human-centred design looks like when an organisation has the courage to use it fully.",
     },
+    heroImage: "/images/oxfam-hcd/ASH_0113.jpg",
     gallery: {
       heading: "Gallery",
       images: [
-        { src: "/images/oxfam-ikea/oxfam-ikea01.jpg", alt: "Youth participants in the HCD empowerment programme", span: "wide" },
-        { src: "/images/oxfam-ikea/oxfam-ikea02.jpg", alt: "Human-centred design workshop with young participants", span: "normal" },
-        { src: "/images/oxfam-ikea/oxfam-ikea03.jpg", alt: "Community session for youth economic empowerment", span: "normal" },
+        { src: "/images/oxfam-hcd/ASH_0113.jpg", alt: "Design workshop participants in a team-building exercise", span: "wide" },
+        { src: "/images/oxfam-hcd/DSC_2440-copy.jpg", alt: "Facilitators working through design frameworks on a whiteboard", span: "normal" },
+        { src: "/images/oxfam-hcd/DSC_2564-copy.jpg", alt: "Women reviewing sticky notes on an insights wall", span: "normal" },
+        { src: "/images/oxfam-hcd/DSC_4224.JPG", alt: "Youth and facilitators in a group discussion during a design sprint", span: "wide" },
+        { src: "/images/oxfam-hcd/DSC_2799-copy.jpg", alt: "Participants brainstorming on paper during a co-creation session", span: "normal" },
+        { src: "/images/oxfam-hcd/DSC_9218.JPG", alt: "Facilitator leading a workshop session with implementing partners", span: "normal" },
+        { src: "/images/oxfam-hcd/DSC_2624-copy.jpg", alt: "Group ideation during the quarterly design workshop", span: "wide" },
       ],
     },
   },
