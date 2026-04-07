@@ -106,7 +106,7 @@ export const projects: Project[] = [
     title: "Springster",
     client: "Girl Effect / Nike Foundation",
     tag: "Girls' Digital Content",
-    image: "/images/timeline/2017.png",
+    image: "/images/nike-girl-effect/IMG_2114.JPG",
     description:
       "100+ co-created stories on a free mobile platform reaching one million girls in Pakistan with trusted content on health, safety, voice, and financial wellbeing.",
   },

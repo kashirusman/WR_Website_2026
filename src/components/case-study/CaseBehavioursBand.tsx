@@ -6,6 +6,7 @@ export interface BehaviourItem {
   num: string;
   name: string;
   sub: string;
+  icon?: string;
 }
 
 export interface BehavioursData {
@@ -41,6 +42,7 @@ export default function CaseBehavioursBand({ data }: CaseBehavioursBandProps) {
         >
           {data.items.map((item, i) => (
             <div key={i} className="cs-behaviours__item">
+              {item.icon && <div className="cs-behaviours__icon">{item.icon}</div>}
               <div className="cs-behaviours__num">{item.num}</div>
               <div className="cs-behaviours__name">{item.name}</div>
               <div className="cs-behaviours__sub">{item.sub}</div>

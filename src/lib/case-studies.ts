@@ -666,7 +666,7 @@ export const caseStudies: CaseStudyData[] = [
     hero: {
       eyebrow: "UK Aid \u00b7 DAI \u00b7 Aawaz Programme \u00b7 Punjab & KPK",
       title: "Give<br>Them a<br><em>Voice.</em>",
-      subtitle: "Awaz \u2014 10 Years of Citizen Accountability, Women\u2019s Leadership & Grassroots Movement Building in Pakistan",
+      subtitle: "Awaz: 10 Years of Citizen Accountability, Women\u2019s Leadership & Grassroots Movement Building in Pakistan",
       description: "A UK Aid-funded programme running for over a decade. 13 districts. 15 million people reached. Hundreds of women who went from being marginalised to becoming members of local government, political parties, and community leadership structures. White Rice has been the creative and communication partner since the very beginning.",
       meta: [
         { label: "Funder", value: "UK Aid (FCDO)" },
@@ -1485,7 +1485,7 @@ export const caseStudies: CaseStudyData[] = [
     hero: {
       eyebrow: "Punjab Government & UNICEF \u00b7 Punjab \u00b7 2019\u20132021",
       title: "Clean & <em>Green</em><span class=\"cs-hero__subtitle-inline\">Punjab Behaviour Change Programme</span>",
-      description: "A province-wide social behaviour change intervention across five critical environmental and hygiene behaviours \u2014 designed to reach 2 million people directly, and 34 million more through digital platforms, including through the height of COVID-19.",
+      description: "A province-wide social behaviour change intervention across five critical environmental and hygiene behaviours, designed to reach 2 million people directly and 34 million more through digital platforms, including through the height of COVID-19.",
       meta: [
         { label: "Partners", value: "Punjab Government & UNICEF" },
         { label: "Scale", value: "Province-Wide \u00b7 Punjab, Pakistan" },
@@ -1496,7 +1496,7 @@ export const caseStudies: CaseStudyData[] = [
     heroVideo: "/videos/cg.mp4",
     role: {
       heading: "SBC Strategy & <em>Programme Design Lead</em>",
-      body: "White Rice designed and led the social behaviour change architecture for the Punjab government\u2019s Clean & Green programme \u2014 working alongside UNICEF and building on the government\u2019s existing community mobiliser network. Our mandate covered the full design cycle: formative research, SBC strategy, the Mitti 2 behavioural persona framework, FLW training, community activation, digital engagement, and village watch committee formation.",
+      body: "White Rice designed and led the social behaviour change architecture for the Punjab government\u2019s Clean & Green programme, working alongside UNICEF and building on the government\u2019s existing community mobiliser network. Our mandate covered the full design cycle: formative research, SBC strategy, the Mitti 2 behavioural persona framework, FLW training, community activation, digital engagement, and village watch committee formation.",
       services: [
         "Design & Formative Research",
         "SBC Strategy",
@@ -1511,38 +1511,38 @@ export const caseStudies: CaseStudyData[] = [
     behaviours: {
       label: "The Five Target Behaviours",
       items: [
-        { num: "01", name: "Handwashing with Soap", sub: "At critical hygiene moments throughout the day" },
-        { num: "02", name: "End Open Defecation", sub: "Construction and use of latrines at household level" },
-        { num: "03", name: "Safe Drinking Water", sub: "Safe access, treatment, and hygienic storage of water" },
-        { num: "04", name: "Tree Plantation", sub: "Community-led greening and environmental stewardship" },
-        { num: "05", name: "Waste Disposal", sub: "Responsible household and community waste management" },
+        { num: "01", icon: "\ud83e\uddc4", name: "Handwashing with Soap", sub: "At critical hygiene moments throughout the day" },
+        { num: "02", icon: "\ud83d\udebd", name: "End Open Defecation", sub: "Construction and use of latrines at household level" },
+        { num: "03", icon: "\ud83d\udca7", name: "Safe Drinking Water", sub: "Safe access, treatment, and hygienic storage of water" },
+        { num: "04", icon: "\ud83c\udf33", name: "Tree Plantation", sub: "Community-led greening and environmental stewardship" },
+        { num: "05", icon: "\u267b\ufe0f", name: "Waste Disposal", sub: "Responsible household and community waste management" },
       ],
     },
     outcomes: {
       cards: [
         { stat: "2M+", description: "People directly reached through the programme\u2019s community-level interventions across Punjab." },
-        { stat: "34M+", description: "People engaged through digital platforms \u2014 a figure that grew dramatically when COVID-19 forced a digital pivot." },
-        { stat: "5 Behaviours", description: "Targeted simultaneously across WASH and environment \u2014 the first province-wide multi-behaviour SBC programme of its kind in Punjab." },
-        { stat: "Open Defecation \u2193", description: "Measurable decline in open defecation across Punjab \u2014 with this programme as a core contributing intervention." },
-        { stat: "Latrine Built", description: "Millions of households reported constructing latrines \u2014 even amid the economic constraints of the COVID-19 pandemic." },
+        { stat: "34M+", description: "People engaged through digital platforms. This figure grew dramatically when COVID-19 forced a digital pivot." },
+        { stat: "5 Behaviours", description: "Targeted simultaneously across WASH and environment. The first province-wide multi-behaviour SBC programme of its kind in Punjab." },
+        { stat: "Open Defecation \u2193", description: "Measurable decline in open defecation across Punjab, with this programme as a core contributing intervention." },
+        { stat: "Latrine Built", description: "Millions of households reported constructing latrines, even amid the economic constraints of the COVID-19 pandemic." },
       ],
       watermark: "PUNJAB",
     },
     divider: {
       stat: "Jugaad",
-      text: "The principle at the heart of the programme\u2019s design. Jugaad \u2014 frugal innovation using what\u2019s already available \u2014 shaped not just the community strategy, but the entire philosophy of how change was expected to happen: from within communities, using local resources, through human agency rather than government provision.",
+      text: "The principle at the heart of the programme\u2019s design. Jugaad, frugal innovation using what\u2019s already available, shaped not just the community strategy but the entire philosophy of how change was expected to happen: from within communities, using local resources, through human agency rather than government provision.",
     },
     persona: {
       label: "Central Behavioural Persona",
-      name: "Mitti 2 \u2014 The Jugaad Innovator",
-      body: "Research insights led White Rice to design around a central persona: Mitti 2 \u2014 a community member with a <em>jugaad</em> mindset. Frugal, resourceful, and solutions-oriented. Someone who knows how to create change with limited resources, who doesn\u2019t wait for the government to solve their problems, and whose agency inspires others. Mitti 2 became the behavioural archetype that the programme\u2019s training, messaging, and community activation were built around \u2014 making aspirational change feel locally achievable.",
+      name: "Mitti 2: The Jugaad Innovator",
+      body: "Research insights led White Rice to design around a central persona: Mitti 2, a community member with a <em>jugaad</em> mindset. Frugal, resourceful, and solutions-oriented. Someone who knows how to create change with limited resources, who doesn\u2019t wait for the government to solve their problems, and whose agency inspires others. Mitti 2 became the behavioural archetype that the programme\u2019s training, messaging, and community activation were built around, making aspirational change feel locally achievable.",
     },
     theoryOfChange: {
       label: "Theory of Change \u00b7 Socio-Ecological Model",
       steps: [
         { num: "1", title: "Individual", body: "Build knowledge, pride, and a Jugaad sense of agency around the five target behaviours" },
         { num: "2", title: "Household", body: "Align families around shared environmental and hygiene practices as expressions of household pride" },
-        { num: "3", title: "Community", body: "Village watch committees as custodians \u2014 monitoring, championing, and sustaining the programme from within" },
+        { num: "3", title: "Community", body: "Village watch committees as custodians: monitoring, championing, and sustaining the programme from within" },
         { num: "4", title: "Enabling Environment", body: "Government mobiliser network, digital infrastructure, and local cable media amplifying behaviour norms at scale" },
       ],
     },
@@ -1550,8 +1550,8 @@ export const caseStudies: CaseStudyData[] = [
       label: "The COVID-19 Pivot",
       heading: "When the world locked down, the programme <em>went digital.</em>",
       paragraphs: [
-        "COVID-19 arrived mid-programme, making in-person community access near-impossible. Rather than pausing, White Rice redesigned the delivery model in real time. Young people within communities were identified and trained as digital access points \u2014 using mobile phones to deliver content, gather insights, and keep communities engaged when facilitators could no longer visit in person.",
-        "This was not a contingency. It became a strategic advantage. The digital layer reached audiences that physical programming never could \u2014 and the 34 million figure reflects the scale of what became possible when digital was treated as a primary channel, not a fallback.",
+        "COVID-19 arrived mid-programme, making in-person community access near-impossible. Rather than pausing, White Rice redesigned the delivery model in real time. Young people within communities were identified and trained as digital access points, using mobile phones to deliver content, gather insights, and keep communities engaged when facilitators could no longer visit in person.",
+        "This was not a contingency. It became a strategic advantage. The digital layer reached audiences that physical programming never could, and the 34 million figure reflects the scale of what became possible when digital was treated as a primary channel, not a fallback.",
       ],
       tags: [
         "Youth Digital Ambassadors",
@@ -1581,19 +1581,19 @@ export const caseStudies: CaseStudyData[] = [
     ],
     challenge: {
       heading: "The <em>Challenge</em>",
-      body: "Punjab\u2019s Clean & Green programme had a clear mandate: shift five critical environmental and hygiene behaviours across one of Pakistan\u2019s most populous provinces. But the challenge was not simply scale. It was the deeper problem that every SBC practitioner eventually confronts \u2014 <em>one-time behaviour change is easy. Long-term behaviour change is hard.</em>\n\nThe government had an existing network of community mobilisers \u2014 but they lacked an SBC framework capable of driving durable change. The intervention had to be designed not just for reach, but for sustainability. And then COVID-19 arrived, threatening to make in-person community work impossible at precisely the moment the programme was gaining momentum.",
+      body: "Punjab\u2019s Clean & Green programme had a clear mandate: shift five critical environmental and hygiene behaviours across one of Pakistan\u2019s most populous provinces. But the challenge was not simply scale. It was the deeper problem that every SBC practitioner eventually confronts: <em>one-time behaviour change is easy. Long-term behaviour change is hard.</em>\n\nThe government had an existing network of community mobilisers, but they lacked an SBC framework capable of driving durable change. The intervention had to be designed not just for reach, but for sustainability. And then COVID-19 arrived, threatening to make in-person community work impossible at precisely the moment the programme was gaining momentum.",
       quote: {
-        text: "\u201cGetting a community to wash their hands once is a trick. Getting them to wash their hands every day for the rest of their lives \u2014 that requires changing what feels normal.\u201d",
+        text: "\u201cGetting a community to wash their hands once is a trick. Getting them to wash their hands every day for the rest of their lives. That requires changing what feels normal.\u201d",
       },
     },
     strategy: {
       heading: "The <em>Strategy</em>",
-      intro: "White Rice began with an intensive design research phase \u2014 going far beyond interviews and surveys. The team used immersive observational methods, spending days and nights with beneficiary households to map the full lifecycle of each target behaviour: where it happened, who influenced it, where it broke down, and what would make it stick.",
+      intro: "White Rice began with an intensive design research phase, going far beyond interviews and surveys. The team used immersive observational methods, spending days and nights with beneficiary households to map the full lifecycle of each target behaviour: where it happened, who influenced it, where it broke down, and what would make it stick.",
       steps: [
         {
           number: "01",
           title: "Immersive Design Research",
-          description: "Observational, co-habitation, and visual documentation methods \u2014 understanding behaviour in the actual context in which it needs to occur, not in a focus group.",
+          description: "Observational, co-habitation, and visual documentation methods. Understanding behaviour in the actual context in which it needs to occur, not in a focus group.",
         },
         {
           number: "02",
@@ -1603,18 +1603,18 @@ export const caseStudies: CaseStudyData[] = [
         {
           number: "03",
           title: "Community as the Engine",
-          description: "Leverage the power of communities to drive change from within \u2014 using local, indigenous methods and human agency rather than external provision.",
+          description: "Leverage the power of communities to drive change from within, using local, indigenous methods and human agency rather than external provision.",
         },
         {
           number: "04",
           title: "Digital as a Core Channel",
-          description: "Integrate digital and mobile tools from the outset \u2014 not as a backup, but as a primary engagement layer that could reach deep into communities even when physical access was constrained.",
+          description: "Integrate digital and mobile tools from the outset. Not as a backup, but as a primary engagement layer that could reach deep into communities even when physical access was constrained.",
         },
       ],
     },
     work: {
       heading: "The <em>Intervention</em>",
-      body: "The intervention was built on the Punjab government\u2019s existing community mobiliser infrastructure \u2014 but transformed it. White Rice trained the mobilisers on a comprehensive SBC methodology grounded in the Mitti 2 persona and the socio-ecological model, equipping them with tools and facilitation skills that the programme had never previously had access to.\n\nVillage watch committees were formed in communities across Punjab \u2014 becoming the custodians of the entire programme. These were not passive beneficiary groups; they were monitors, champions, and accountability mechanisms. Their formation ensured that the programme had a structural home within communities long after any formal intervention activities had concluded.",
+      body: "The intervention was built on the Punjab government\u2019s existing community mobiliser infrastructure, but transformed it. White Rice trained the mobilisers on a comprehensive SBC methodology grounded in the Mitti 2 persona and the socio-ecological model, equipping them with tools and facilitation skills that the programme had never previously had access to.\n\nVillage watch committees were formed in communities across Punjab, becoming the custodians of the entire programme. These were not passive beneficiary groups; they were monitors, champions, and accountability mechanisms. Their formation ensured that the programme had a structural home within communities long after any formal intervention activities had concluded.",
       deliverables: [
         "Group Facilitation Sessions",
         "Home Visits",
@@ -1626,32 +1626,32 @@ export const caseStudies: CaseStudyData[] = [
         "Mobile Phone Content Delivery",
         "Youth Digital Ambassadors",
       ],
-      quote: "\u201cWe didn\u2019t install behaviour change in communities. We activated the capacity for change that was already there \u2014 and then built the structures to keep it alive.\u201d",
+      quote: "\u201cWe didn\u2019t install behaviour change in communities. We activated the capacity for change that was already there, and then built the structures to keep it alive.\u201d",
     },
     impact: {
       heading: "The <em>Impact</em>",
-      body: "The programme reached at a scale that few SBC interventions in Pakistan have achieved \u2014 but scale alone was not the measure of success. The programme\u2019s most significant impact was behavioural: communities constructed latrines and ended open defecation practices in measurable numbers, even during the economic strain of COVID-19.",
+      body: "The programme reached at a scale that few SBC interventions in Pakistan have achieved, but scale alone was not the measure of success. The programme\u2019s most significant impact was behavioural: communities constructed latrines and ended open defecation practices in measurable numbers, even during the economic strain of COVID-19.",
       metrics: [
         { value: 2, suffix: " Million", label: "People directly reached through community-level sessions, home visits, and mobiliser engagement across Punjab." },
-        { value: 34, suffix: " Million", label: "People engaged through digital platforms \u2014 a number that grew exponentially when the digital pivot was made during COVID-19." },
-        { value: 0, suffix: "", prefix: "", label: "Measurable, province-wide decline in open defecation \u2014 with this SBC programme as a core contributing intervention within a broader government strategy." },
-        { value: 0, suffix: "", prefix: "", label: "The programme not only survived COVID-19 \u2014 it scaled through it, demonstrating that a well-designed digital layer can sustain community behaviour change programming under the most adverse conditions." },
+        { value: 34, suffix: " Million", label: "People engaged through digital platforms. A number that grew exponentially when the digital pivot was made during COVID-19." },
+        { value: 0, suffix: "", prefix: "", label: "Measurable, province-wide decline in open defecation, with this SBC programme as a core contributing intervention within a broader government strategy." },
+        { value: 0, suffix: "", prefix: "", label: "The programme not only survived COVID-19. It scaled through it, demonstrating that a well-designed digital layer can sustain community behaviour change programming under the most adverse conditions." },
       ],
-      closingNote: "The Clean & Green Punjab programme demonstrated what becomes possible when SBC is designed for sustainability from the outset \u2014 when communities are treated as the engine of change, not the audience for it. The Mitti 2 framework, the village watch committee model, and the digital-first pivot represent replicable design innovations that have direct application to multi-behaviour, large-scale government programming across Pakistan and beyond.",
+      closingNote: "The Clean & Green Punjab programme demonstrated what becomes possible when SBC is designed for sustainability from the outset, when communities are treated as the engine of change, not the audience for it. The Mitti 2 framework, the village watch committee model, and the digital-first pivot represent replicable design innovations that have direct application to multi-behaviour, large-scale government programming across Pakistan and beyond.",
       quote: {
-        text: "\u201cWe didn\u2019t install behaviour change in communities. We activated the capacity for change that was already there \u2014 and then built the structures to keep it alive.\u201d",
+        text: "\u201cWe didn\u2019t install behaviour change in communities. We activated the capacity for change that was already there, and then built the structures to keep it alive.\u201d",
         attribution: "",
       },
     },
     impactCells: [
       { big: "2 Million", desc: "People directly reached through community-level sessions, home visits, and mobiliser engagement across Punjab." },
-      { big: "34 Million", desc: "People engaged through digital platforms \u2014 a number that grew exponentially when the digital pivot was made during COVID-19." },
-      { big: "Open Defecation \u2193", desc: "Measurable, province-wide decline in open defecation \u2014 with this SBC programme as a core contributing intervention within a broader government strategy." },
-      { big: "COVID-Proof", desc: "The programme not only survived COVID-19 \u2014 it scaled through it, demonstrating that a well-designed digital layer can sustain community behaviour change programming under the most adverse conditions." },
+      { big: "34 Million", desc: "People engaged through digital platforms. A number that grew exponentially when the digital pivot was made during COVID-19." },
+      { big: "Open Defecation \u2193", desc: "Measurable, province-wide decline in open defecation, with this SBC programme as a core contributing intervention within a broader government strategy." },
+      { big: "COVID-Proof", desc: "The programme not only survived COVID-19. It scaled through it, demonstrating that a well-designed digital layer can sustain community behaviour change programming under the most adverse conditions." },
     ],
     closing: {
       heading: "One-time change is a trick.<br><em>Lasting</em> change is a design problem.",
-      body: "Clean & Green Punjab proved that with the right behavioural framework, the right community infrastructure, and the right digital strategy \u2014 lasting change is achievable, even at provincial scale, even in a pandemic.",
+      body: "Clean & Green Punjab proved that with the right behavioural framework, the right community infrastructure, and the right digital strategy, lasting change is achievable, even at provincial scale, even in a pandemic.",
     },
     gallery: {
       heading: "Gallery",
@@ -1997,7 +1997,7 @@ export const caseStudies: CaseStudyData[] = [
       description: "100+ co-created stories. A free mobile platform. One million girls in Pakistan, many of whom had never had a trusted space to explore the questions shaping their lives, finally able to access one.",
       meta: [
         { label: "Funder", value: "Nike Foundation (Girl Effect)" },
-        { label: "Platform", value: "Internet.org — Free Mobile Access" },
+        { label: "Platform", value: "Internet.org, Free Mobile Access" },
         { label: "Focus", value: "Girls' Empowerment · Digital Content" },
         { label: "White Rice Role", value: "Research, Co-Creation & Content Design Lead" },
       ],
@@ -2024,22 +2024,22 @@ export const caseStudies: CaseStudyData[] = [
     cocreationMethods: {
       eyebrow: "The Co-Creation Process",
       heading: "Built <em>by girls.</em><br>For girls.",
-      intro: "The co-creation sessions were held in schools across different communities — bringing together girls from Muslim and Christian backgrounds, from different regional and class contexts, to design the platform alongside White Rice's team. Not as feedback providers, but as authors.",
+      intro: "The co-creation sessions were held in schools across different communities, bringing together girls from Muslim and Christian backgrounds, from different regional and class contexts, to design the platform alongside White Rice's team. Not as feedback providers, but as authors.",
       cards: [
-        { title: "Moodboarding & Visual Concept Development", body: "Girls selected visuals, colours, characters, and aesthetics that felt like them — directly shaping the brand identity, illustration style, and visual language of the platform." },
+        { title: "Moodboarding & Visual Concept Development", body: "Girls selected visuals, colours, characters, and aesthetics that felt like them, directly shaping the brand identity, illustration style, and visual language of the platform." },
         { title: "Story & Theme Co-Creation", body: "Girls chose the topics they most needed content on, the characters they wanted to follow, and the situations that felt most true to their real lives. Storylines were shaped by their narratives, not imagined by external writers." },
-        { title: "Live Artwork & Design Collaboration", body: "Girls contributed to illustration concepts and reviewed design elements in session — ensuring that when a character appeared on screen, it looked like someone they could be, not someone they were supposed to aspire to." },
-        { title: "Real-Time Testing & Validation", body: "Draft stories were tested back with communities in session — if the response was wrong, the story was rewritten. Multiple iteration rounds ensured that cultural resonance was verified, not assumed." },
+        { title: "Live Artwork & Design Collaboration", body: "Girls contributed to illustration concepts and reviewed design elements in session, ensuring that when a character appeared on screen, it looked like someone they could be, not someone they were supposed to aspire to." },
+        { title: "Real-Time Testing & Validation", body: "Draft stories were tested back with communities in session. If the response was wrong, the story was rewritten. Multiple iteration rounds ensured that cultural resonance was verified, not assumed." },
       ],
     },
     topics: {
       eyebrow: "Content Architecture · What the Platform Covered",
-      heading: "The four topics Pakistani girls <em>most needed</em> — and least had access to.",
+      heading: "The four topics Pakistani girls <em>most needed</em>, and least had access to.",
       cards: [
-        { num: "01", name: "Financial Wellbeing", body: "Understanding money, saving, economic independence, and girls' right to financial agency — in a context where financial decisions were rarely made by or for them.", count: "Stories covering <strong>saving, earning, spending, and economic rights</strong>", color: "#E85AAA" },
-        { num: "02", name: "Voice & Agency", body: "How to speak up, participate in decisions, advocate for yourself, and claim a right to be heard — at home, at school, and in the community.", count: "Stories covering <strong>speaking up, confidence, leadership, and participation</strong>", color: "#E8CC5A" },
-        { num: "03", name: "Safety", body: "Personal safety, recognising unsafe situations, knowing what to do and who to tell — content designed to inform without alarming, and to empower without exposing girls to risk.", count: "Stories covering <strong>personal safety, trust, boundaries, and getting help</strong>", color: "#9A5ACA" },
-        { num: "04", name: "Health & Transitions", body: "Teenage body changes, menstrual health, emotional wellbeing, and the questions about growing up that girls were too shy to ask anyone else — addressed honestly, warmly, and without shame.", count: "Stories covering <strong>puberty, menstrual health, mental wellbeing, and self-care</strong>", color: "#6ABADA" },
+        { num: "01", name: "Financial Wellbeing", body: "Understanding money, saving, economic independence, and girls' right to financial agency, in a context where financial decisions were rarely made by or for them.", count: "Stories covering <strong>saving, earning, spending, and economic rights</strong>", color: "#E85AAA" },
+        { num: "02", name: "Voice & Agency", body: "How to speak up, participate in decisions, advocate for yourself, and claim a right to be heard. At home, at school, and in the community.", count: "Stories covering <strong>speaking up, confidence, leadership, and participation</strong>", color: "#E8CC5A" },
+        { num: "03", name: "Safety", body: "Personal safety, recognising unsafe situations, knowing what to do and who to tell. Content designed to inform without alarming, and to empower without exposing girls to risk.", count: "Stories covering <strong>personal safety, trust, boundaries, and getting help</strong>", color: "#9A5ACA" },
+        { num: "04", name: "Health & Transitions", body: "Teenage body changes, menstrual health, emotional wellbeing, and the questions about growing up that girls were too shy to ask anyone else. Addressed honestly, warmly, and without shame.", count: "Stories covering <strong>puberty, menstrual health, mental wellbeing, and self-care</strong>", color: "#6ABADA" },
       ],
     },
     platform: {
@@ -2047,23 +2047,23 @@ export const caseStudies: CaseStudyData[] = [
       heading: "No data.<br>No cost.<br><em>No barriers.</em>",
       watermark: "Free.<br>Always.",
       paragraphs: [
-        "At the time of the programme, Facebook's Internet.org initiative provided free mobile access to a curated set of platforms — without requiring a data plan. For Pakistani girls, this was transformative. A girl who had no personal phone, no data, and no money could borrow a family member's handset, open Internet.org, and access Springster — for as long as she needed, at zero cost.",
+        "At the time of the programme, Facebook's Internet.org initiative provided free mobile access to a curated set of platforms, without requiring a data plan. For Pakistani girls, this was transformative. A girl who had no personal phone, no data, and no money could borrow a family member's handset, open Internet.org, and access Springster for as long as she needed, at zero cost.",
         "The platform's mobile-first design was not a stylistic choice. It was the fundamental design constraint that shaped every decision: how long a story could be, how much text could appear on screen, how images had to load, and how navigation had to work for someone who might be using the phone quickly, in private, with limited time before it was needed back.",
       ],
       features: [
-        { bold: "Zero data required", text: "— accessible on any phone, on any network, including 2G" },
-        { bold: "Culturally resonant visuals", text: "— illustrations co-created with Pakistani girls to reflect who they actually are" },
-        { bold: "Story-led content", text: "— not listicles or fact sheets, but narratives with characters and emotional truth" },
-        { bold: "Designed for sharing", text: "— content that girls could send to friends, making the platform self-spreading within peer networks" },
+        { bold: "Zero data required", text: ": accessible on any phone, on any network, including 2G" },
+        { bold: "Culturally resonant visuals", text: ": illustrations co-created with Pakistani girls to reflect who they actually are" },
+        { bold: "Story-led content", text: ": not listicles or fact sheets, but narratives with characters and emotional truth" },
+        { bold: "Designed for sharing", text: ": content that girls could send to friends, making the platform self-spreading within peer networks" },
       ],
     },
     diversity: {
       eyebrow: "Community Representation · Who Was in the Room",
       heading: "Pakistan's girls are not one girl.<br><em>The platform was designed to know that.</em>",
       cards: [
-        { label: "Faith", title: "Muslim & Christian Girls", body: "Co-creation sessions deliberately included both Muslim and Christian girls from Pakistan's urban communities — ensuring that the platform's content and characters reflected the country's religious diversity, not just its majority." },
-        { label: "Background", title: "Diverse Socioeconomic & Regional Contexts", body: "Girls from different regions and class backgrounds — bringing different relationships to education, family, money, and mobility — ensured the content was stress-tested against the real range of girls' lives in Pakistan." },
-        { label: "Setting", title: "School-Based Co-Creation", body: "Sessions were held in schools — a setting that gave girls relative safety, peer support, and a structured creative environment in which to express their actual needs and ideas, rather than what they thought adults wanted to hear." },
+        { label: "Faith", title: "Muslim & Christian Girls", body: "Co-creation sessions deliberately included both Muslim and Christian girls from Pakistan's urban communities, ensuring that the platform's content and characters reflected the country's religious diversity, not just its majority." },
+        { label: "Background", title: "Diverse Socioeconomic & Regional Contexts", body: "Girls from different regions and class backgrounds, bringing different relationships to education, family, money, and mobility, ensured the content was stress-tested against the real range of girls' lives in Pakistan." },
+        { label: "Setting", title: "School-Based Co-Creation", body: "Sessions were held in schools, a setting that gave girls relative safety, peer support, and a structured creative environment in which to express their actual needs and ideas, rather than what they thought adults wanted to hear." },
       ],
     },
     photoBand1: [
@@ -2086,45 +2086,45 @@ export const caseStudies: CaseStudyData[] = [
     ],
     challenge: {
       heading: "The Challenge",
-      body: "Pakistan's adolescent girls face a particular kind of information poverty. The questions that matter most — about their bodies, their safety, their money, their right to speak — are precisely the questions that home, school, and community offer the least trustworthy or least available answers to. The topics are too sensitive for open conversation, too personal for the classroom, and too complex for the internet content that does exist to address with cultural nuance.\n\nThe Nike Foundation's global Springster programme had an answer: a mobile-first content platform built specifically for adolescent girls, designed to be their trusted companion on the topics that matter. White Rice's challenge was to bring that platform to life in Pakistan — in a way that reflected the full diversity of Pakistani girls, not a single imagined composite of who they were supposed to be.\n\nThat meant designing content that could speak authentically to a Muslim girl from Lahore and a Christian girl from Karachi's inner city; to a girl in school and one who had dropped out; to a girl whose mother allowed her to use a phone and one who had to borrow one secretly. The platform had to be genuinely universal — which meant starting not with assumptions, but with the girls themselves.",
+      body: "Pakistan's adolescent girls face a particular kind of information poverty. The questions that matter most, about their bodies, their safety, their money, their right to speak, are precisely the questions that home, school, and community offer the least trustworthy or least available answers to. The topics are too sensitive for open conversation, too personal for the classroom, and too complex for the internet content that does exist to address with cultural nuance.\n\nThe Nike Foundation's global Springster programme had an answer: a mobile-first content platform built specifically for adolescent girls, designed to be their trusted companion on the topics that matter. White Rice's challenge was to bring that platform to life in Pakistan, in a way that reflected the full diversity of Pakistani girls, not a single imagined composite of who they were supposed to be.\n\nThat meant designing content that could speak authentically to a Muslim girl from Lahore and a Christian girl from Karachi's inner city; to a girl in school and one who had dropped out; to a girl whose mother allowed her to use a phone and one who had to borrow one secretly. The platform had to be genuinely universal, which meant starting not with assumptions, but with the girls themselves.",
       quote: {
-        text: "They don't lack curiosity. They lack a space that feels safe enough to be curious in — and content that feels like it was actually made for them.",
+        text: "They don't lack curiosity. They lack a space that feels safe enough to be curious in, and content that feels like it was actually made for them.",
       },
     },
     strategy: {
       heading: "The Strategy",
-      intro: "Before a single story was written or a single illustration sketched, White Rice spent significant time in schools and communities — conducting human-centred design research across diverse populations of girls in Pakistan. The methodology was immersive and participatory: girls were not research subjects, they were co-designers.",
+      intro: "Before a single story was written or a single illustration sketched, White Rice spent significant time in schools and communities, conducting human-centred design research across diverse populations of girls in Pakistan. The methodology was immersive and participatory: girls were not research subjects, they were co-designers.",
       steps: [
-        { number: "01", title: "Girls as Designers, Not Research Subjects", description: "Co-creation sessions in schools gave girls the tools to define what they wanted to see — through moodboards, visual design, storytelling, theme selection, and artwork — before White Rice designed anything." },
-        { number: "02", title: "Mobile-First by Design", description: "Every story was conceived for a small screen, short attention span, and potentially borrowed device. Visual appeal, cultural resonance, and brevity were not trade-offs — they were the design brief." },
-        { number: "03", title: "Storytelling as the Medium, Not Information Delivery", description: "The platform succeeded where information-only content fails because it used narrative — characters, situations, dilemmas, resolutions — to carry meaning. Girls didn't read facts. They read stories they recognised." },
-        { number: "04", title: "Diversity as a Non-Negotiable Design Principle", description: "Christian and Muslim girls. Rural and urban. Punjabi, Sindhi, Pakhtun backgrounds. The content was stress-tested across this diversity — if a story only resonated with one type of girl, it was redesigned." },
+        { number: "01", title: "Girls as Designers, Not Research Subjects", description: "Co-creation sessions in schools gave girls the tools to define what they wanted to see, through moodboards, visual design, storytelling, theme selection, and artwork, before White Rice designed anything." },
+        { number: "02", title: "Mobile-First by Design", description: "Every story was conceived for a small screen, short attention span, and potentially borrowed device. Visual appeal, cultural resonance, and brevity were not trade-offs. They were the design brief." },
+        { number: "03", title: "Storytelling as the Medium, Not Information Delivery", description: "The platform succeeded where information-only content fails because it used narrative: characters, situations, dilemmas, resolutions. That is what carried meaning. Girls didn't read facts. They read stories they recognised." },
+        { number: "04", title: "Diversity as a Non-Negotiable Design Principle", description: "Christian and Muslim girls. Rural and urban. Punjabi, Sindhi, Pakhtun backgrounds. The content was stress-tested across this diversity. If a story only resonated with one type of girl, it was redesigned." },
       ],
     },
     work: {
       heading: "The Intervention",
-      body: "White Rice led the full creative and research cycle for Springster Pakistan — from in-school human-centred design research and co-creation sessions with girls across religious and socioeconomic backgrounds, through to the development of over 100 unique mobile-first content stories spanning financial wellbeing, safety, health, voice, and agency. Every story was designed with the girls who would read it.",
+      body: "White Rice led the full creative and research cycle for Springster Pakistan, from in-school human-centred design research and co-creation sessions with girls across religious and socioeconomic backgrounds, through to the development of over 100 unique mobile-first content stories spanning financial wellbeing, safety, health, voice, and agency. Every story was designed with the girls who would read it.",
       deliverables: ["Human-Centred Design Research", "In-School Co-Creation Sessions", "Brand & Platform Identity", "100+ Content Stories", "Mobile-First Design", "Visual & Illustrative Design", "Moodboarding & Concept Development", "Multi-Community Contextualisation"],
     },
     impactCells: [
-      { big: "1 Million+", desc: "Girls in Pakistan reached through the Springster platform — accessing content on financial wellbeing, voice, safety, and health that they had never had trusted access to before." },
-      { big: "100+ Stories", desc: "Unique mobile-first content pieces — each co-designed with Pakistani girls, visually distinct, culturally resonant, and rigorously tested before publication." },
+      { big: "1 Million+", desc: "Girls in Pakistan reached through the Springster platform, accessing content on financial wellbeing, voice, safety, and health that they had never had trusted access to before." },
+      { big: "100+ Stories", desc: "Unique mobile-first content pieces, each co-designed with Pakistani girls, visually distinct, culturally resonant, and rigorously tested before publication." },
       { big: "Trusted Space", desc: "The feedback from girls consistently returned to one theme: Springster was a place where they could be curious about the things that actually mattered to them, without shame, judgement, or the risk of a difficult conversation." },
-      { big: "Power of Story", desc: "The programme validated a core White Rice conviction — that entertainment-driven, narrative-first content reaches audiences that information-only approaches cannot. Girls didn't read the platform because they had to. They read it because they wanted to." },
+      { big: "Power of Story", desc: "The programme validated a core White Rice conviction: that entertainment-driven, narrative-first content reaches audiences that information-only approaches cannot. Girls didn't read the platform because they had to. They read it because they wanted to." },
     ],
     impact: {
       heading: "The Impact",
-      body: "Over one million girls in Pakistan accessed Springster. That number would be remarkable for any digital platform in Pakistan. For one specifically targeting adolescent girls from low-income communities — on a free, zero-data platform, covering topics that Pakistani society rarely offered them any trusted space to explore — it was extraordinary.",
+      body: "Over one million girls in Pakistan accessed Springster. That number would be remarkable for any digital platform in Pakistan. For one specifically targeting adolescent girls from low-income communities, on a free, zero-data platform, covering topics that Pakistani society rarely offered them any trusted space to explore, it was extraordinary.",
       metrics: [],
       quote: {
         text: "Girls who would never have talked to anyone about these topics found something they could read privately, share with a friend, and return to again and again.",
         attribution: "",
       },
-      closingNote: "Springster Pakistan demonstrated what becomes possible when you design digital content with radical fidelity to who the audience actually is — not who funders imagine them to be, not who they are supposed to become, but who they are right now: curious, capable, and hungry for a space that takes them seriously.",
+      closingNote: "Springster Pakistan demonstrated what becomes possible when you design digital content with radical fidelity to who the audience actually is. Not who funders imagine them to be, not who they are supposed to become, but who they are right now: curious, capable, and hungry for a space that takes them seriously.",
     },
     closing: {
       heading: "A million girls.<br>One question each.<br><em>Finally somewhere to ask it.</em>",
-      body: "Springster worked not because it was a platform, but because it was a companion. A trusted voice in a girl's pocket, available at any hour, on any phone, with zero data — covering the things that actually mattered. That is what co-creation makes possible. And that is what a million Pakistani girls found.",
+      body: "Springster worked not because it was a platform, but because it was a companion. A trusted voice in a girl's pocket, available at any hour, on any phone, with zero data, covering the things that actually mattered. That is what co-creation makes possible. And that is what a million Pakistani girls found.",
     },
     heroImage: "/images/nike-girl-effect/IMG_2114.JPG",
     gallery: {
@@ -2324,18 +2324,18 @@ export const caseStudies: CaseStudyData[] = [
     hero: {
       eyebrow: "Youth Empowerment for Work \u00b7 18 Months \u00b7 5-Year Programme Design",
       title: "Designed<br>before it was<br><em>built.</em>",
-      subtitle: "Empowering Youth for Work \u2014 Oxfam\u2019s Flagship Human-Centred Design Journey",
-      description: "An 18-month HCD consulting engagement \u2014 the longest in White Rice\u2019s history \u2014 in which we compressed a 5-year programme into a living design laboratory: empathising, prototyping, failing productively, and iterating until Oxfam had something genuinely built for the youth it was trying to reach.",
+      subtitle: "Empowering Youth for Work: Oxfam\u2019s Flagship Human-Centred Design Journey",
+      description: "An 18-month HCD consulting engagement, the longest in White Rice\u2019s history, in which we compressed a 5-year programme into a living design laboratory: empathising, prototyping, failing productively, and iterating until Oxfam had something genuinely built for the youth it was trying to reach.",
       meta: [
         { label: "Client", value: "Oxfam Pakistan" },
         { label: "Funder", value: "IKEA Foundation" },
         { label: "Duration", value: "18 Months HCD \u00b7 5-Year Programme" },
-        { label: "White Rice Role", value: "HCD Design Partner \u2014 Strategy to Prototype" },
+        { label: "White Rice Role", value: "HCD Design Partner: Strategy to Prototype" },
       ],
     },
     role: {
-      heading: "End-to-End HCD Partner \u2014 <em>18 Months of Designed Learning</em>",
-      body: "White Rice served as Oxfam\u2019s human-centred design partner for the full 18-month design and prototyping phase of their IKEA-funded Youth Empowerment for Work programme \u2014 one of the most rigorous and sustained HCD engagements in Pakistan\u2019s development sector. Our role was not just to research, but to embed design thinking across Oxfam\u2019s implementing partner network: running quarterly workshops, facilitating live prototyping cycles, and guiding field teams through the iterative process of learning, failing, and redesigning until the programme was genuinely ready to scale.",
+      heading: "End-to-End HCD Partner: <em>18 Months of Designed Learning</em>",
+      body: "White Rice served as Oxfam\u2019s human-centred design partner for the full 18-month design and prototyping phase of their IKEA-funded Youth Empowerment for Work programme, one of the most rigorous and sustained HCD engagements in Pakistan\u2019s development sector. Our role was not just to research, but to embed design thinking across Oxfam\u2019s implementing partner network: running quarterly workshops, facilitating live prototyping cycles, and guiding field teams through the iterative process of learning, failing, and redesigning until the programme was genuinely ready to scale.",
       services: [
         "HCD Strategy & Facilitation",
         "Quarterly Design Workshops",
@@ -2351,11 +2351,11 @@ export const caseStudies: CaseStudyData[] = [
     },
     outcomes: {
       cards: [
-        { stat: "18 Months", description: "The longest single HCD consulting engagement White Rice has undertaken \u2014 compressing a 5-year programme into an 18-month design, test, and adapt cycle before scale." },
+        { stat: "18 Months", description: "The longest single HCD consulting engagement White Rice has undertaken, compressing a 5-year programme into an 18-month design, test, and adapt cycle before scale." },
         { stat: "10,000+", description: "Young entrepreneurs and youth enabled in semi-urban and rural communities across climate-affected areas of Punjab and Sindh." },
-        { stat: "2 Innovation Hubs", description: "Flagship youth innovation hubs established \u2014 one in Punjab, one in Sindh \u2014 offering customised programmes for entrepreneurs, agri-tech youth, and employability tracks." },
-        { stat: "4 Countries", description: "Pakistan was one of four countries running the programme simultaneously \u2014 with cross-country learning feeding into programme refinement across the entire global initiative." },
-        { stat: "Quarterly Cycles", description: "Six design sprints over 18 months \u2014 each one building on the last, moving through empathy, definition, ideation, prototyping, and testing in a live programme context." },
+        { stat: "2 Innovation Hubs", description: "Flagship youth innovation hubs established, one in Punjab, one in Sindh, offering customised programmes for entrepreneurs, agri-tech youth, and employability tracks." },
+        { stat: "4 Countries", description: "Pakistan was one of four countries running the programme simultaneously, with cross-country learning feeding into programme refinement across the entire global initiative." },
+        { stat: "Quarterly Cycles", description: "Six design sprints over 18 months, each one building on the last, moving through empathy, definition, ideation, prototyping, and testing in a live programme context." },
       ],
       watermark: "18 Months",
     },
@@ -2365,19 +2365,19 @@ export const caseStudies: CaseStudyData[] = [
       eyebrow: "The 18-Month Design Journey",
       heading: "Every quarter, a new <em>design sprint.</em><br>Every sprint, a better programme.",
       items: [
-        { phase: "Months 1\u20133 \u00b7 Sprint 1", title: "Empathy \u2014 Understanding the Youth", body: "Immersive field research with young people in climate-affected areas of Punjab and Sindh. Understanding their relationship with work, aspiration, barriers, and the economic realities shaping their choices. Implementing partners trained in empathy methods and deployed with field guides." },
-        { phase: "Months 4\u20136 \u00b7 Sprint 2", title: "Define \u2014 Reframing the Challenge", body: "Cross-partner workshops to synthesise field insights and reframe the core challenge. What did \u201Cyouth empowerment for work\u201D actually mean for a young woman in Rajanpur versus a young man in Karachi\u2019s peri-urban fringe? The programme\u2019s assumptions were stress-tested against the evidence." },
-        { phase: "Months 7\u20139 \u00b7 Sprint 3", title: "Ideate \u2014 Co-Creating Solutions", body: "Facilitated ideation workshops with implementing partners and youth co-designers. Multiple programme concepts generated \u2014 including the innovation hub model, differentiated youth pathways, and agri-tech integration \u2014 with rapid filtering against real-world feasibility and community fit." },
-        { phase: "Months 10\u201312 \u00b7 Sprint 4", title: "Prototype \u2014 Building to Learn", body: "First live prototypes deployed in communities. Not polished \u2014 deliberately rough, designed to generate learning. Innovation hub concepts tested at small scale. Youth pathway programmes piloted with real cohorts. Implementing partners embedded in the testing process as co-observers." },
-        { phase: "Months 13\u201315 \u00b7 Sprint 5", title: "Test & Learn \u2014 What Worked, What Didn\u2019t", body: "Rigorous feedback capture across all prototype sites. Structured failure analysis \u2014 not to assign blame, but to understand mechanism. What assumptions were wrong? Which user segments responded differently? What programme adjustments were required before scale? Partners returned to refine." },
-        { phase: "Months 16\u201318 \u00b7 Sprint 6", title: "Adapt & Scale \u2014 A Programme Ready to Deploy", body: "Final programme design \u2014 region-specific, evidence-grounded, and co-created with the communities it was built for. Innovation hubs formally established in Punjab and Sindh. Implementing partners equipped with tools, training, and programme frameworks to drive the 5-year rollout with confidence." },
+        { phase: "Months 1\u20133 \u00b7 Sprint 1", title: "Empathy: Understanding the Youth", body: "Immersive field research with young people in climate-affected areas of Punjab and Sindh. Understanding their relationship with work, aspiration, barriers, and the economic realities shaping their choices. Implementing partners trained in empathy methods and deployed with field guides." },
+        { phase: "Months 4\u20136 \u00b7 Sprint 2", title: "Define: Reframing the Challenge", body: "Cross-partner workshops to synthesise field insights and reframe the core challenge. What did \u201Cyouth empowerment for work\u201D actually mean for a young woman in Rajanpur versus a young man in Karachi\u2019s peri-urban fringe? The programme\u2019s assumptions were stress-tested against the evidence." },
+        { phase: "Months 7\u20139 \u00b7 Sprint 3", title: "Ideate: Co-Creating Solutions", body: "Facilitated ideation workshops with implementing partners and youth co-designers. Multiple programme concepts generated, including the innovation hub model, differentiated youth pathways, and agri-tech integration, with rapid filtering against real-world feasibility and community fit." },
+        { phase: "Months 10\u201312 \u00b7 Sprint 4", title: "Prototype: Building to Learn", body: "First live prototypes deployed in communities. Not polished. Deliberately rough, designed to generate learning. Innovation hub concepts tested at small scale. Youth pathway programmes piloted with real cohorts. Implementing partners embedded in the testing process as co-observers." },
+        { phase: "Months 13\u201315 \u00b7 Sprint 5", title: "Test & Learn: What Worked, What Didn\u2019t", body: "Rigorous feedback capture across all prototype sites. Structured failure analysis, not to assign blame, but to understand mechanism. What assumptions were wrong? Which user segments responded differently? What programme adjustments were required before scale? Partners returned to refine." },
+        { phase: "Months 16\u201318 \u00b7 Sprint 6", title: "Adapt & Scale: A Programme Ready to Deploy", body: "Final programme design, region-specific, evidence-grounded, and co-created with the communities it was built for. Innovation hubs formally established in Punjab and Sindh. Implementing partners equipped with tools, training, and programme frameworks to drive the 5-year rollout with confidence." },
       ],
     },
 
     /* ── Divider ── */
     divider: {
       stat: "18 months<br>to get it<br>right.",
-      text: "The conventional development model is: research the baseline, write the programme, fund the implementation. White Rice and Oxfam did something different. For 18 months, they treated the programme itself as a prototype \u2014 running it, breaking it, learning from it, and redesigning it \u2014 before committing to scale. That is why 10,000 young people were reached by something that genuinely worked, not something that sounded good in a proposal.",
+      text: "The conventional development model is: research the baseline, write the programme, fund the implementation. White Rice and Oxfam did something different. For 18 months, they treated the programme itself as a prototype: running it, breaking it, learning from it, and redesigning it. All before committing to scale. That is why 10,000 young people were reached by something that genuinely worked, not something that sounded good in a proposal.",
     },
 
     /* ── Custom Band 2: Design Thinking Cycle ── */
@@ -2385,29 +2385,29 @@ export const caseStudies: CaseStudyData[] = [
       eyebrow: "The Design Thinking Framework \u00b7 Applied Every Quarter",
       heading: "Five stages. Six rounds.<br><em>Eighteen months of designed programme intelligence.</em>",
       cards: [
-        { name: "Empathise", body: "Deep field immersion \u2014 understanding youth lives, aspirations, and barriers as they actually are" },
-        { name: "Define", body: "Reframe the challenge from the evidence \u2014 not the assumption that was written in the original proposal" },
-        { name: "Ideate", body: "Co-create solutions with partners and communities \u2014 generating range before narrowing to what is feasible and relevant" },
-        { name: "Prototype", body: "Build rough versions of the programme \u2014 deliberately imperfect, designed to generate real feedback from real communities" },
-        { name: "Test & Iterate", body: "Learn from what the prototype revealed \u2014 document failure, adapt the design, and return to the field with something better" },
+        { name: "Empathise", body: "Deep field immersion: understanding youth lives, aspirations, and barriers as they actually are" },
+        { name: "Define", body: "Reframe the challenge from the evidence, not the assumption that was written in the original proposal" },
+        { name: "Ideate", body: "Co-create solutions with partners and communities, generating range before narrowing to what is feasible and relevant" },
+        { name: "Prototype", body: "Build rough versions of the programme, deliberately imperfect, designed to generate real feedback from real communities" },
+        { name: "Test & Iterate", body: "Learn from what the prototype revealed. Document failure, adapt the design, and return to the field with something better" },
       ],
-      note: "<strong>The key innovation:</strong> This cycle ran not once, but six times over 18 months \u2014 with each round building on the evidence of the last. Implementing partners participated in every workshop, carrying the learnings back to their field teams and returning with real observations from the next testing round. This is what genuine programme co-design looks like.",
+      note: "<strong>The key innovation:</strong> This cycle ran not once, but six times over 18 months, with each round building on the evidence of the last. Implementing partners participated in every workshop, carrying the learnings back to their field teams and returning with real observations from the next testing round. This is what genuine programme co-design looks like.",
     },
 
     /* ── Custom Band 3: Innovation Hubs ── */
     innovationHubs: {
       eyebrow: "The Programme Output \u00b7 Innovation Hubs & Youth Pathways",
       heading: "Two hubs. Three pathways.<br><em>One bespoke programme per region.</em>",
-      intro: "The 18-month HCD process produced two flagship innovation hubs \u2014 one in Punjab, one in Sindh \u2014 each designed around the specific economic context, labour market, and youth profile of its region. Within each hub, three differentiated pathways served different types of young people, rather than expecting one model to fit all.",
+      intro: "The 18-month HCD process produced two flagship innovation hubs, one in Punjab, one in Sindh, each designed around the specific economic context, labour market, and youth profile of its region. Within each hub, three differentiated pathways served different types of young people, rather than expecting one model to fit all.",
       hubs: [
-        { province: "Innovation Hub \u00b7 Punjab", name: "Punjab Hub", desc: "Serving semi-urban and rural youth in climate-affected districts of Punjab \u2014 with a particular focus on agricultural livelihood diversification, agri-tech integration, and connecting youth to Punjab\u2019s growing light manufacturing and services markets.", context: "Climate-affected region \u00b7 Agricultural economy \u00b7 Strong male youth participation" },
-        { province: "Innovation Hub \u00b7 Sindh", name: "Sindh Hub", desc: "Serving peri-urban and rural youth in Sindh \u2014 with emphasis on women\u2019s economic participation, skills for the digital economy, and enterprise development adapted to Sindh\u2019s specific market conditions and mobility constraints for girls.", context: "Climate-affected region \u00b7 Peri-urban economy \u00b7 Focus on women\u2019s economic participation" },
+        { province: "Innovation Hub \u00b7 Punjab", name: "Punjab Hub", desc: "Serving semi-urban and rural youth in climate-affected districts of Punjab, with a particular focus on agricultural livelihood diversification, agri-tech integration, and connecting youth to Punjab\u2019s growing light manufacturing and services markets.", context: "Climate-affected region \u00b7 Agricultural economy \u00b7 Strong male youth participation" },
+        { province: "Innovation Hub \u00b7 Sindh", name: "Sindh Hub", desc: "Serving peri-urban and rural youth in Sindh, with emphasis on women\u2019s economic participation, skills for the digital economy, and enterprise development adapted to Sindh\u2019s specific market conditions and mobility constraints for girls.", context: "Climate-affected region \u00b7 Peri-urban economy \u00b7 Focus on women\u2019s economic participation" },
       ],
-      pathwaysHeading: "Three Youth Pathways \u2014 Designed from Evidence, Not Assumption",
+      pathwaysHeading: "Three Youth Pathways: Designed from Evidence, Not Assumption",
       pathways: [
-        { label: "Pathway 1", title: "Entrepreneurs", body: "Young people pursuing their own ventures \u2014 supported through business ideation, market access, seed financing literacy, and peer learning networks within the hub ecosystem." },
-        { label: "Pathway 2", title: "Agri-Tech Youth", body: "Young farmers and agricultural workers learning to integrate technology into their practices \u2014 bringing precision agriculture, mobile tools, and market connectivity to communities whose livelihoods depend on a changing climate." },
-        { label: "Pathway 3", title: "Employability", body: "Youth seeking employment in skilled markets \u2014 equipped with market-relevant skills, soft skills, job-readiness training, and direct linkages to employers in sectors identified through the HCD research as offering genuine, accessible opportunity." },
+        { label: "Pathway 1", title: "Entrepreneurs", body: "Young people pursuing their own ventures, supported through business ideation, market access, seed financing literacy, and peer learning networks within the hub ecosystem." },
+        { label: "Pathway 2", title: "Agri-Tech Youth", body: "Young farmers and agricultural workers learning to integrate technology into their practices, bringing precision agriculture, mobile tools, and market connectivity to communities whose livelihoods depend on a changing climate." },
+        { label: "Pathway 3", title: "Employability", body: "Youth seeking employment in skilled markets, equipped with market-relevant skills, soft skills, job-readiness training, and direct linkages to employers in sectors identified through the HCD research as offering genuine, accessible opportunity." },
       ],
     },
 
@@ -2415,12 +2415,12 @@ export const caseStudies: CaseStudyData[] = [
     methodologyDiff: {
       eyebrow: "The Methodology Difference",
       heading: "Not how development programmes are usually <em>designed.</em>",
-      intro: "What made this engagement singular in Pakistan\u2019s development sector was the commitment to design before scale \u2014 not as a principle, but as an 18-month practice. Most programmes don\u2019t work this way. White Rice\u2019s role was to make sure this one did.",
+      intro: "What made this engagement singular in Pakistan\u2019s development sector was the commitment to design before scale, not as a principle, but as an 18-month practice. Most programmes don\u2019t work this way. White Rice\u2019s role was to make sure this one did.",
       rows: [
-        { conventional: "Baseline research \u2192 programme design \u2192 implement at scale", oxfam: "Empathy \u2192 define \u2192 ideate \u2192 prototype \u2192 test \u2192 iterate \u2014 six times over 18 months \u2014 before scale" },
-        { conventional: "Programme assumptions embedded at the start and rarely revisited", oxfam: "Assumptions actively challenged every quarter \u2014 with field evidence as the arbiter" },
-        { conventional: "Implementing partners execute a pre-designed programme", oxfam: "Implementing partners trained as designers \u2014 and co-created every iteration" },
-        { conventional: "One national programme model deployed uniformly", oxfam: "Two bespoke regional programmes \u2014 Punjab and Sindh \u2014 each shaped by its own evidence base" },
+        { conventional: "Baseline research \u2192 programme design \u2192 implement at scale", oxfam: "Empathy \u2192 define \u2192 ideate \u2192 prototype \u2192 test \u2192 iterate, six times over 18 months, before scale" },
+        { conventional: "Programme assumptions embedded at the start and rarely revisited", oxfam: "Assumptions actively challenged every quarter, with field evidence as the arbiter" },
+        { conventional: "Implementing partners execute a pre-designed programme", oxfam: "Implementing partners trained as designers, and co-created every iteration" },
+        { conventional: "One national programme model deployed uniformly", oxfam: "Two bespoke regional programmes, Punjab and Sindh, each shaped by its own evidence base" },
       ],
     },
 
@@ -2444,24 +2444,24 @@ export const caseStudies: CaseStudyData[] = [
     ],
     challenge: {
       heading: "The <em>Challenge</em>",
-      body: "Youth unemployment and underemployment in Pakistan\u2019s semi-urban and rural areas \u2014 particularly in climate-affected regions of Punjab and Sindh \u2014 is not a simple skills gap problem. It is a system of interconnected barriers: limited market access, weak connectivity between skills supply and employer demand, entrenched gender norms restricting girls\u2019 economic participation, climate disruption undermining agricultural livelihoods, and programme designs that rarely reflect the actual lives of the young people they target.\n\nOxfam and the IKEA Foundation had the ambition and the funding for a 5-year programme to change this. What they needed was the confidence that the programme design was actually right before deploying it at scale. That confidence could only come from one source: real evidence from the communities it was built to serve.\n\nThe added complexity was the parallel nature of the programme \u2014 running simultaneously in four countries, each with its own context, partner network, and implementation challenges. White Rice had to operate as a rigorous, facilitated design partner while contributing to a shared methodology and global learning ecosystem.",
+      body: "Youth unemployment and underemployment in Pakistan\u2019s semi-urban and rural areas, particularly in climate-affected regions of Punjab and Sindh, is not a simple skills gap problem. It is a system of interconnected barriers: limited market access, weak connectivity between skills supply and employer demand, entrenched gender norms restricting girls\u2019 economic participation, climate disruption undermining agricultural livelihoods, and programme designs that rarely reflect the actual lives of the young people they target.\n\nOxfam and the IKEA Foundation had the ambition and the funding for a 5-year programme to change this. What they needed was the confidence that the programme design was actually right before deploying it at scale. That confidence could only come from one source: real evidence from the communities it was built to serve.\n\nThe added complexity was the parallel nature of the programme, running simultaneously in four countries, each with its own context, partner network, and implementation challenges. White Rice had to operate as a rigorous, facilitated design partner while contributing to a shared methodology and global learning ecosystem.",
       quote: {
         text: "Every programme that had tried to empower these youth before had been designed for them, not with them. White Rice\u2019s task was to make that distinction matter.",
       },
     },
     strategy: {
       heading: "The <em>Strategy</em>",
-      intro: "White Rice\u2019s strategy was to treat the entire 5-year programme as something that needed to be designed before it was built. Rather than consulting, writing a framework, and handing it over, White Rice embedded itself in Oxfam\u2019s implementation process \u2014 running quarterly workshops that moved through the full design thinking arc, and returning every three months to review what the field had taught, what needed to change, and how to improve.",
+      intro: "White Rice\u2019s strategy was to treat the entire 5-year programme as something that needed to be designed before it was built. Rather than consulting, writing a framework, and handing it over, White Rice embedded itself in Oxfam\u2019s implementation process, running quarterly workshops that moved through the full design thinking arc, and returning every three months to review what the field had taught, what needed to change, and how to improve.",
       steps: [
-        { number: "01", title: "Partners as Designers, Not Implementers", description: "Oxfam\u2019s implementing partners weren\u2019t handed a programme to execute \u2014 they were trained in design thinking and brought into each quarterly workshop as co-designers. Their field knowledge was the raw material for every sprint." },
-        { number: "02", title: "Productive Failure as Programme Intelligence", description: "Each prototype round was designed to fail instructively \u2014 surfacing the assumptions that were wrong before they were embedded at scale. The question was never \u201Cdid it work?\u201D but \u201Cwhat did we learn that changes the design?\u201D" },
-        { number: "03", title: "Region-Specific Programme Design", description: "Punjab and Sindh have different economic ecologies, labour markets, and cultural contexts. The programme that emerged was not one national model \u2014 it was two region-specific designs, each grounded in the evidence from its own context." },
-        { number: "04", title: "Scale Only When Ready", description: "The entire HCD phase was in service of one question: is this programme ready to deploy at the scale Oxfam and IKEA intended? The answer had to be earned \u2014 through iteration \u2014 not assumed from good intentions." },
+        { number: "01", title: "Partners as Designers, Not Implementers", description: "Oxfam\u2019s implementing partners weren\u2019t handed a programme to execute. They were trained in design thinking and brought into each quarterly workshop as co-designers. Their field knowledge was the raw material for every sprint." },
+        { number: "02", title: "Productive Failure as Programme Intelligence", description: "Each prototype round was designed to fail instructively, surfacing the assumptions that were wrong before they were embedded at scale. The question was never \u201Cdid it work?\u201D but \u201Cwhat did we learn that changes the design?\u201D" },
+        { number: "03", title: "Region-Specific Programme Design", description: "Punjab and Sindh have different economic ecologies, labour markets, and cultural contexts. The programme that emerged was not one national model. It was two region-specific designs, each grounded in the evidence from its own context." },
+        { number: "04", title: "Scale Only When Ready", description: "The entire HCD phase was in service of one question: is this programme ready to deploy at the scale Oxfam and IKEA intended? The answer had to be earned through iteration, not assumed from good intentions." },
       ],
     },
     work: {
       heading: "The <em>Intervention</em>",
-      body: "White Rice served as Oxfam\u2019s human-centred design partner for the full 18-month design and prototyping phase of their IKEA-funded Youth Empowerment for Work programme \u2014 one of the most rigorous and sustained HCD engagements in Pakistan\u2019s development sector. Our role was not just to research, but to embed design thinking across Oxfam\u2019s implementing partner network: running quarterly workshops, facilitating live prototyping cycles, and guiding field teams through the iterative process of learning, failing, and redesigning until the programme was genuinely ready to scale.",
+      body: "White Rice served as Oxfam\u2019s human-centred design partner for the full 18-month design and prototyping phase of their IKEA-funded Youth Empowerment for Work programme, one of the most rigorous and sustained HCD engagements in Pakistan\u2019s development sector. Our role was not just to research, but to embed design thinking across Oxfam\u2019s implementing partner network: running quarterly workshops, facilitating live prototyping cycles, and guiding field teams through the iterative process of learning, failing, and redesigning until the programme was genuinely ready to scale.",
       deliverables: [
         "HCD Strategy & Facilitation",
         "Quarterly Design Workshops",
@@ -2477,24 +2477,24 @@ export const caseStudies: CaseStudyData[] = [
     },
     impact: {
       heading: "The <em>Impact</em>",
-      body: "The proof of the 18-month investment was in the programme\u2019s eventual reach and effectiveness. Over 10,000 young entrepreneurs and youth were enabled across semi-urban and rural communities in climate-affected areas of Punjab and Sindh. The programme was considered one of Oxfam\u2019s most successful youth economic empowerment interventions \u2014 and a significant part of that success was attributable to the rigour of the design process that preceded it.",
+      body: "The proof of the 18-month investment was in the programme\u2019s eventual reach and effectiveness. Over 10,000 young entrepreneurs and youth were enabled across semi-urban and rural communities in climate-affected areas of Punjab and Sindh. The programme was considered one of Oxfam\u2019s most successful youth economic empowerment interventions, and a significant part of that success was attributable to the rigour of the design process that preceded it.",
       metrics: [
-        { value: 10000, suffix: "+", label: "Young people \u2014 entrepreneurs, agri-tech youth, and job seekers \u2014 reached across semi-urban and rural communities in climate-affected Punjab and Sindh." },
-        { value: 2, suffix: "", label: "Innovation hubs established \u2014 one per province \u2014 each offering region-specific programmes for three distinct youth pathways, designed from evidence not assumption." },
-        { value: 6, suffix: "", label: "Six quarterly design cycles \u2014 each one compressing a phase of the 5-year programme into a real-world prototype, testing it with actual youth, and learning before scaling." },
-        { value: 18, suffix: "", label: "Months of HCD engagement \u2014 the longest single HCD consulting engagement White Rice has undertaken." },
+        { value: 10000, suffix: "+", label: "Young people: entrepreneurs, agri-tech youth, and job seekers. Reached across semi-urban and rural communities in climate-affected Punjab and Sindh." },
+        { value: 2, suffix: "", label: "Innovation hubs established, one per province, each offering region-specific programmes for three distinct youth pathways, designed from evidence not assumption." },
+        { value: 6, suffix: "", label: "Six quarterly design cycles, each one compressing a phase of the 5-year programme into a real-world prototype, testing it with actual youth, and learning before scaling." },
+        { value: 18, suffix: "", label: "Months of HCD engagement, the longest single HCD consulting engagement White Rice has undertaken." },
       ],
       closingNote: "This project has not been done before in this way, because the development sector rarely allows the time or budget to genuinely interrogate a programme before deploying it. Oxfam and IKEA Foundation made a different bet. White Rice helped them win it.",
     },
     impactCells: [
-      { big: "10,000+", desc: "Young people \u2014 entrepreneurs, agri-tech youth, and job seekers \u2014 reached across semi-urban and rural communities in climate-affected Punjab and Sindh." },
-      { big: "2 Hubs", desc: "Innovation hubs established \u2014 one per province \u2014 each offering region-specific programmes for three distinct youth pathways, designed from evidence not assumption." },
-      { big: "6 Sprints", desc: "Six quarterly design cycles \u2014 each one compressing a phase of the 5-year programme into a real-world prototype, testing it with actual youth, and learning before scaling." },
-      { big: "A Replicable Model", desc: "The HCD methodology White Rice developed for Oxfam became a replicable model \u2014 proving that sustained design investment before programme scale is not a luxury, but the most cost-effective path to impact." },
+      { big: "10,000+", desc: "Young people: entrepreneurs, agri-tech youth, and job seekers. Reached across semi-urban and rural communities in climate-affected Punjab and Sindh." },
+      { big: "2 Hubs", desc: "Innovation hubs established, one per province, each offering region-specific programmes for three distinct youth pathways, designed from evidence not assumption." },
+      { big: "6 Sprints", desc: "Six quarterly design cycles, each one compressing a phase of the 5-year programme into a real-world prototype, testing it with actual youth, and learning before scaling." },
+      { big: "A Replicable Model", desc: "The HCD methodology White Rice developed for Oxfam became a replicable model, proving that sustained design investment before programme scale is not a luxury, but the most cost-effective path to impact." },
     ],
     closing: {
       heading: "The best programmes<br>are the ones that<br><em>fail first.</em>",
-      body: "Eighteen months. Six design cycles. Countless iterations. And then a 5-year programme that worked \u2014 because it had already been run, tested, broken, and rebuilt before it was ever deployed at scale. That is what human-centred design looks like when an organisation has the courage to use it fully.",
+      body: "Eighteen months. Six design cycles. Countless iterations. And then a 5-year programme that worked, because it had already been run, tested, broken, and rebuilt before it was ever deployed at scale. That is what human-centred design looks like when an organisation has the courage to use it fully.",
     },
     heroImage: "/images/oxfam-hcd/ASH_0113.jpg",
     gallery: {
