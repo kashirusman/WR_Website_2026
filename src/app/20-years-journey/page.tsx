@@ -3,8 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import JourneyHero from "@/components/sections/JourneyHero";
 import OriginStory from "@/components/sections/OriginStory";
-// import JourneyTimeline from "@/components/sections/JourneyTimeline"; // old vertical timeline
-import TimelineHorizontal from "@/components/TimelineHorizontal";
+import JourneyTimeline from "@/components/sections/JourneyTimeline";
 import NextDecade from "@/components/sections/NextDecade";
 import CTA from "@/components/sections/CTA";
 
@@ -21,7 +20,7 @@ export default function TwentyYearJourneyPage() {
       <main>
         <JourneyHero />
         <OriginStory />
-        <TimelineHorizontal />
+        <JourneyTimeline />
         <NextDecade />
         <CTA />
       </main>
