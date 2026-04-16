@@ -112,12 +112,15 @@ function YearBreak({ year }: { year: number }) {
 function EntryTextImage({
   entry,
   reversed,
+  priority,
 }: {
   entry: TimelineEntry;
   reversed?: boolean;
+  priority?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-8% 0px" });
+  const objPos = entry.focalPoint ?? "center";
 
   return (
     <div
@@ -154,10 +157,13 @@ function EntryTextImage({
       >
         <Image
           src={entry.image}
-          alt={entry.title}
+          alt={entry.imageAlt ?? entry.title}
           fill
-          sizes="(max-width: 768px) 100vw, 58vw"
+          sizes="(max-width: 768px) 100vw, 60vw"
+          quality={90}
+          priority={priority}
           className="object-cover"
+          style={{ objectPosition: objPos }}
         />
       </motion.div>
     </div>
@@ -165,7 +171,7 @@ function EntryTextImage({
 }
 
 /* ── Entry: full-bleed hero with text overlay ─────────────────────── */
-function EntryHero({ entry }: { entry: TimelineEntry }) {
+function EntryHero({ entry, priority }: { entry: TimelineEntry; priority?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-5% 0px" });
   const { scrollYProgress } = useScroll({
@@ -173,6 +179,7 @@ function EntryHero({ entry }: { entry: TimelineEntry }) {
     offset: ["start end", "end start"],
   });
   const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const objPos = entry.focalPoint ?? "center";
 
   return (
     <div ref={ref} className="sqtl-hero">
@@ -180,10 +187,13 @@ function EntryHero({ entry }: { entry: TimelineEntry }) {
         <motion.div className="sqtl-hero__par" style={{ y: imgY }}>
           <Image
             src={entry.image}
-            alt={entry.title}
+            alt={entry.imageAlt ?? entry.title}
             fill
             sizes="100vw"
+            quality={90}
+            priority={priority}
             className="object-cover"
+            style={{ objectPosition: objPos }}
           />
         </motion.div>
         <div className="sqtl-hero__ov" />
@@ -213,6 +223,7 @@ function EntryHero({ entry }: { entry: TimelineEntry }) {
 function EntryBigStat({ entry }: { entry: TimelineEntry }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const objPos = entry.focalPoint ?? "center";
 
   return (
     <div ref={ref} className="sqtl-bigstat">
@@ -222,8 +233,9 @@ function EntryBigStat({ entry }: { entry: TimelineEntry }) {
           alt=""
           fill
           sizes="100vw"
+          quality={90}
           className="object-cover"
-          style={{ filter: "brightness(0.2) blur(6px)" }}
+          style={{ filter: "brightness(0.2) blur(6px)", objectPosition: objPos }}
         />
         <div className="sqtl-bigstat__ov" />
       </div>
@@ -265,18 +277,18 @@ function EntryBigStat({ entry }: { entry: TimelineEntry }) {
 }
 
 /* ── Entry router ─────────────────────────────────────────────────── */
-function Entry({ entry }: { entry: TimelineEntry }) {
+function Entry({ entry, priority }: { entry: TimelineEntry; priority?: boolean }) {
   switch (entry.layout) {
     case "big-number":
       return <EntryBigStat entry={entry} />;
     case "text-image":
-      return <EntryTextImage entry={entry} />;
+      return <EntryTextImage entry={entry} priority={priority} />;
     case "image-text":
-      return <EntryTextImage entry={entry} reversed />;
+      return <EntryTextImage entry={entry} reversed priority={priority} />;
     case "hero-bg":
     case "full-image":
     default:
-      return <EntryHero entry={entry} />;
+      return <EntryHero entry={entry} priority={priority} />;
   }
 }
 
@@ -299,6 +311,8 @@ function ProgressLine() {
 }
 
 /* ── Main export ─────────────────────────────────────────────────── */
+const PRIORITY_IDS = new Set(timelineEntries.slice(0, 3).map((e) => e.id));
+
 export default function JourneyTimeline() {
   const yearGroups = groupByYear(timelineEntries);
 
@@ -309,7 +323,7 @@ export default function JourneyTimeline() {
         <div key={year} className="sqtl-year-group">
           <YearBreak year={year} />
           {entries.map((e) => (
-            <Entry key={e.id} entry={e} />
+            <Entry key={e.id} entry={e} priority={PRIORITY_IDS.has(e.id)} />
           ))}
         </div>
       ))}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, DM_Sans, Cormorant_Garamond } from "next/font/google";
+import { Inter, DM_Sans, Cormorant_Garamond, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,6 +21,14 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   display: "swap",
   weight: ["300", "400", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+  weight: ["400", "700"],
   style: ["normal", "italic"],
 });
 
@@ -52,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${dmSans.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${inter.variable} ${dmSans.variable} ${cormorant.variable} ${playfair.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

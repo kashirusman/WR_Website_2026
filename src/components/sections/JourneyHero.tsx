@@ -2,49 +2,9 @@
 
 import { useRef, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { impactStats } from "@/lib/milestones";
 
-const ease = [0.21, 0.47, 0.32, 0.98] as const;
-
-/* ── Loader ──────────────────────────────────────────────────────── */
-function JourneyLoader() {
-  const [count, setCount] = useState(0);
-  const [hiding, setHiding] = useState(false);
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    const duration = 1800;
-    const t0 = performance.now();
-    let raf: number;
-    const tick = (now: number) => {
-      const progress = Math.min((now - t0) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 2.5);
-      setCount(Math.round(eased * 100));
-      if (progress < 1) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        setTimeout(() => {
-          setHiding(true);
-          setTimeout(() => setDone(true), 700);
-        }, 300);
-      }
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  if (done) return null;
-
-  return (
-    <div className={`jv2-loader${hiding ? " jv2-loader--hide" : ""}`} aria-hidden="true">
-      <p className="jv2-loader__num">{count}</p>
-      <p className="jv2-loader__lbl">LOADING</p>
-    </div>
-  );
-}
-
-/* ── CountUp ─────────────────────────────────────────────────────── */
+/* ── CountUp (stats bar) ─────────────────────────────────────────── */
 function CountUp({ value, duration = 2200 }: { value: string; duration?: number }) {
   return (
     <span
@@ -79,19 +39,18 @@ function CountUp({ value, duration = 2200 }: { value: string; duration?: number 
   );
 }
 
-/* ── Trail image sources ─────────────────────────────────────────── */
+/* ── Trail image sources (half-size) ─────────────────────────────── */
 const TRAIL_IMAGES = [
-  { src: "/images/timeline/2006.png",   w: 110, h: 74 },
-  { src: "/images/timeline/2012.png",   w: 130, h: 87 },
-  { src: "/images/timeline/2017.png",   w: 90,  h: 60 },
-  { src: "/images/timeline/2009.png",   w: 75,  h: 50 },
-  { src: "/images/timeline/2019.png",   w: 140, h: 94 },
-  { src: "/images/timeline/2020.png",   w: 105, h: 70 },
-  { src: "/images/timeline/2016-b.png", w: 80,  h: 54 },
-  { src: "/images/timeline/2011.png",   w: 95,  h: 64 },
+  { src: "/images/timeline/2006.png",   w: 110, h: 74  },
+  { src: "/images/timeline/2012.png",   w: 130, h: 87  },
+  { src: "/images/timeline/2017.png",   w: 90,  h: 60  },
+  { src: "/images/timeline/2009.png",   w: 75,  h: 50  },
+  { src: "/images/timeline/2019.png",   w: 140, h: 94  },
+  { src: "/images/timeline/2020.png",   w: 105, h: 70  },
+  { src: "/images/timeline/2016-b.png", w: 80,  h: 54  },
+  { src: "/images/timeline/2011.png",   w: 95,  h: 64  },
 ] as const;
 
-/* ── Trail item type ─────────────────────────────────────────────── */
 interface TrailItem {
   id: number;
   src: string;
@@ -106,40 +65,93 @@ let uid = 0;
 
 /* ── Main export ─────────────────────────────────────────────────── */
 export default function JourneyHero() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [trail, setTrail] = useState<TrailItem[]>([]);
-  const lastPos = useRef({ x: -999, y: -999 });
-  const imgIdx = useRef(0);
+  const loaderRef   = useRef<HTMLDivElement>(null);
+  const counterRef  = useRef<HTMLSpanElement>(null);
+  const sectionRef  = useRef<HTMLDivElement>(null);
 
+  // "revealed" drives CSS classes on hero content
+  const [revealed,   setRevealed]   = useState(false);
+  const [loaderDone, setLoaderDone] = useState(false);
+  const [trailReady, setTrailReady] = useState(false);
+  const [trail,      setTrail]      = useState<TrailItem[]>([]);
+
+  const lastPos = useRef({ x: -999, y: -999 });
+  const imgIdx  = useRef(0);
+
+  /* ── Loader sequence (rAF-based, not GSAP — works in any tab state) ── */
+  useEffect(() => {
+    const loader  = loaderRef.current;
+    const counter = counterRef.current;
+    if (!loader || !counter) return;
+
+    const SCRAMBLE_MS = 2000; // scramble for 2 s
+    const RESOLVE_MS  = 400;  // resolve to 100 over 0.4 s
+    const HOLD_MS     = 350;  // hold at 100
+    const FADE_MS     = 650;  // loader fade-out
+
+    /* Stage 1: scramble — setInterval fires even in background tabs */
+    const t0 = Date.now();
+    const scramble = setInterval(() => {
+      counter.textContent = String(Math.floor(Math.random() * 890) + 10);
+    }, 60);
+
+    /* Stage 2: resolve to 100 */
+    const resolveTimer = setTimeout(() => {
+      clearInterval(scramble);
+      const t1 = Date.now();
+      const resolve = setInterval(() => {
+        const rp = Math.min((Date.now() - t1) / RESOLVE_MS, 1);
+        counter.textContent = String(Math.round(rp * 100));
+        if (rp >= 1) {
+          clearInterval(resolve);
+          counter.textContent = "100";
+
+          /* Stage 3: hold then fade */
+          setTimeout(() => {
+            loader.style.transition = `opacity ${FADE_MS}ms cubic-bezier(0.4,0,0.2,1)`;
+            loader.style.opacity    = "0";
+            loader.style.pointerEvents = "none";
+
+            setTimeout(() => {
+              setLoaderDone(true);
+              setRevealed(true);
+              setTimeout(() => setTrailReady(true), 1200);
+            }, FADE_MS);
+          }, HOLD_MS);
+        }
+      }, 16);
+    }, SCRAMBLE_MS);
+
+    return () => {
+      clearInterval(scramble);
+      clearTimeout(resolveTimer);
+    };
+  }, []);
+
+  /* ── Cursor trail ── */
   const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (!trailReady) return;
     const section = sectionRef.current;
     if (!section) return;
 
     const rect = section.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-
     const dx = x - lastPos.current.x;
     const dy = y - lastPos.current.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
 
-    // Only spawn a new image after cursor has moved 90px
-    if (dist < 90) return;
+    if (Math.sqrt(dx * dx + dy * dy) < 90) return;
 
     lastPos.current = { x, y };
-    const img = TRAIL_IMAGES[imgIdx.current % TRAIL_IMAGES.length];
+    const img    = TRAIL_IMAGES[imgIdx.current % TRAIL_IMAGES.length];
     imgIdx.current++;
 
-    const id = ++uid;
-    const rotate = (Math.random() - 0.5) * 12; // ±6° tilt
+    const id     = ++uid;
+    const rotate = (Math.random() - 0.5) * 12;
 
     setTrail((t) => [...t.slice(-6), { id, src: img.src, w: img.w, h: img.h, x, y, rotate }]);
-
-    // Remove after animation completes
-    setTimeout(() => {
-      setTrail((t) => t.filter((item) => item.id !== id));
-    }, 1800);
-  }, []);
+    setTimeout(() => setTrail((t) => t.filter((item) => item.id !== id)), 1800);
+  }, [trailReady]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -150,9 +162,17 @@ export default function JourneyHero() {
 
   return (
     <>
-      <JourneyLoader />
+      {/* ── Loader overlay ── */}
+      {!loaderDone && (
+        <div ref={loaderRef} className="jv2-loader" aria-hidden="true">
+          <span ref={counterRef} className="jv2-loader__num">0</span>
+          <p className="jv2-loader__lbl">LOADING</p>
+        </div>
+      )}
 
+      {/* ── Hero section ── */}
       <section ref={sectionRef} className="jv2-hero">
+
         {/* Cursor trail images */}
         <div className="jv2-hero__imgs" aria-hidden="true">
           {trail.map((item) => (
@@ -161,9 +181,9 @@ export default function JourneyHero() {
               className="jv2-trail-item"
               style={{
                 position: "absolute",
-                left: item.x - item.w / 2,
-                top: item.y - item.h / 2,
-                width: item.w,
+                left:   item.x - item.w / 2,
+                top:    item.y - item.h / 2,
+                width:  item.w,
                 height: item.h,
                 ["--r" as string]: `${item.rotate}deg`,
                 pointerEvents: "none",
@@ -181,56 +201,33 @@ export default function JourneyHero() {
           ))}
         </div>
 
-        {/* Brand lockup — z-index 3 */}
+        {/* Brand lockup */}
         <div className="jv2-hero__center">
-          <motion.h1
-            className="jv2-hero__brand"
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.9, ease }}
-          >
+          <h1 className={`jv2-hero__brand${revealed ? " jv2-hero__brand--in" : ""}`}>
             <span className="jv2-hero__brand-wh">White Rice</span>
             <em className="jv2-hero__brand-ri">20</em>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            className="jv2-hero__tagline"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.8, ease }}
-          >
+          <p className={`jv2-hero__tagline${revealed ? " jv2-hero__tagline--in" : ""}`}>
             Celebrating <em>Twenty Years</em> of Changing Behaviour
-          </motion.p>
+          </p>
         </div>
 
         {/* Scroll cue */}
-        <motion.div
-          className="jv2-hero__cue"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 1 }}
-        >
+        <div className={`jv2-hero__cue${revealed ? " jv2-hero__cue--in" : ""}`}>
           <span>SCROLL TO EXPLORE</span>
           <span className="jv2-hero__cue-arrow">↓</span>
-        </motion.div>
+        </div>
+
       </section>
 
-      {/* Impact stats bar */}
+      {/* ── Impact stats bar ── */}
       <div className="jv2-bar">
         {impactStats.map((s, i) => (
-          <motion.div
-            key={s.label}
-            className="jv2-bar__stat"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.12, duration: 0.6, ease }}
-          >
-            <div className="jv2-bar__val">
-              <CountUp value={s.value} />
-            </div>
+          <div key={s.label} className="jv2-bar__stat" style={{ animationDelay: `${i * 0.12}s` }}>
+            <div className="jv2-bar__val"><CountUp value={s.value} /></div>
             <div className="jv2-bar__lbl">{s.label}</div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </>

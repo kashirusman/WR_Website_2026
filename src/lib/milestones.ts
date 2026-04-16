@@ -25,6 +25,8 @@ export interface TimelineEntry {
   subtitle?: string;
   description: string;
   image: string;
+  imageAlt?: string;
+  focalPoint?: "center" | "top" | "bottom" | "left" | "right";
   stat?: { value: string; label: string };
   highlight?: boolean;
 }
@@ -63,6 +65,7 @@ export const timelineEntries: TimelineEntry[] = [
     description:
       "A Gold award-winning animated film on visual impairment and disability stigma. One of Pakistan's earliest examples of using film as a tool for behaviour change.",
     image: "/images/timeline/2007.png",
+    focalPoint: "top",
     highlight: true,
   },
   /* ── 2008 ── */
@@ -85,7 +88,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "schools impacted",
     subtitle: "First chapter closes with",
     description: "Gamified learning reaches classrooms across Pakistan.",
-    image: "/images/timeline/2009.png",
+    image: "/images/timeline/2009.jpg",
     stat: { value: "100+", label: "Schools Impacted" },
     highlight: true,
   },
@@ -98,7 +101,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "New Studio, New Ambitions",
     description:
       "White Rice expanded into a full-service creative studio. Design Thinking and Human-Centered Design became the operating system for everything that followed.",
-    image: "/images/timeline/2010.png",
+    image: "/images/timeline/2010.jpg",
   },
   /* ── 2011 ── */
   {
@@ -109,7 +112,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "We Can - 600K Changemakers",
     description:
       "A movement of 600,000 people fighting violence against women and girls. One of Pakistan's largest citizen-driven advocacy campaigns, powered by grassroots storytelling.",
-    image: "/images/timeline/2011.png",
+    image: "/images/timeline/2011.jpg",
     highlight: true,
   },
   {
@@ -119,7 +122,7 @@ export const timelineEntries: TimelineEntry[] = [
     category: "IMPACT",
     title: "changemakers mobilized",
     description: "A movement that proved behaviour change could scale through community power.",
-    image: "/images/timeline/2011-b.png",
+    image: "/images/timeline/2011-b.jpg",
     stat: { value: "600K", label: "Changemakers" },
     highlight: true,
   },
@@ -133,7 +136,8 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "Pakistan's Largest Education Campaign",
     description:
       "100,000 children re-enrolled in schools. The campaign reached 10 million citizens and fundamentally shifted the national conversation on education.",
-    image: "/images/timeline/2012.png",
+    image: "/images/timeline/2012.jpg",
+    focalPoint: "top",
     highlight: true,
   },
   /* ── 2013 ── */
@@ -145,7 +149,8 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Relax - Pakistan's First Mental Health App",
     description:
       "Reaching 10,000 teenagers, this was Pakistan's first digital mental health intervention. A pioneering step in using technology for wellbeing at scale.",
-    image: "/images/timeline/2013.png",
+    image: "/images/timeline/2013.jpg",
+    focalPoint: "top",
   },
   /* ── 2014 ── */
   {
@@ -155,7 +160,7 @@ export const timelineEntries: TimelineEntry[] = [
     category: "IMPACT",
     title: "raised for Oxfam",
     description: "A benchmark in fundraising through behaviour-centred design and storytelling.",
-    image: "/images/timeline/2014.png",
+    image: "/images/timeline/2014.jpg",
     stat: { value: "$1M", label: "Raised for Oxfam" },
     highlight: true,
   },
@@ -168,7 +173,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Australian High Commission Award",
     description:
       "International recognition for White Rice's contribution to social impact through design. The world started paying attention.",
-    image: "/images/timeline/2015.png",
+    image: "/images/timeline/2015.jpg",
   },
   /* ── 2016 ── */
   {
@@ -180,7 +185,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "27,000+ Workers Trained",
     description:
       "Training videos designed for frontline health workers addressing community resistance to polio vaccination. Behavioural science meets public health at national scale.",
-    image: "/images/timeline/2016-b.png",
+    image: "/images/timeline/2016-b.jpg",
     highlight: true,
   },
   /* ── 2017 ── */
@@ -192,7 +197,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Girl Effect - 1 Million Girls",
     description:
       "In partnership with Nike Foundation, over 100 life-skills stories were accessed by more than 1 million girls across Pakistan. Storytelling as empowerment.",
-    image: "/images/timeline/2017.png",
+    image: "/images/timeline/2017.jpg",
     highlight: true,
   },
   {
@@ -215,7 +220,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Misaali Maa - 11,000 Mothers' Voices",
     description:
       "The world's largest storytelling exercise captured the voices of 11,000 mothers. Their stories became the foundation for a nationwide maternal health campaign.",
-    image: "/images/timeline/2018.png",
+    image: "/images/timeline/2018.jpg",
   },
   /* ── 2019 ── */
   {
@@ -227,7 +232,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "30 Million+ Digital Reach",
     description:
       "The largest WASH behaviour change initiative in Pakistan's history. Five target behaviours, 36 districts, and a digital reach of over 30 million people.",
-    image: "/images/timeline/2019.png",
+    image: "/images/timeline/2019.jpg",
     highlight: true,
   },
   /* ── 2020 ── */
@@ -240,7 +245,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "50 Million+ People Reached",
     description:
       "When the pandemic struck, White Rice mobilized to deliver life-saving information across Pakistan. Behaviour change campaigns reached over 50 million people with safety and health messaging.",
-    image: "/images/timeline/2020.png",
+    image: "/images/timeline/2020.jpg",
     highlight: true,
   },
   {
@@ -251,7 +256,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Ehsaas Emergency Cash Program",
     description:
       "Supporting the government's largest emergency cash distribution. Communication design that helped 10.7 million families access critical financial support during the crisis.",
-    image: "/images/timeline/2020-b.png",
+    image: "/images/timeline/2020-b.jpg",
   },
   {
     id: "reach-50m",
@@ -260,7 +265,7 @@ export const timelineEntries: TimelineEntry[] = [
     category: "IMPACT",
     title: "people reached during COVID-19",
     description: "Life-saving behaviour change messaging at unprecedented national scale.",
-    image: "/images/timeline/2020.png",
+    image: "/images/timeline/2020.jpg",
     stat: { value: "50M+", label: "People Reached" },
     highlight: true,
   },
@@ -273,7 +278,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "VR & AI Initiatives",
     description:
       "Pakistan's first VR film series on water and sanitation, paired with AI-driven impact programs. Technology-powered behaviour change entered a new era.",
-    image: "/images/timeline/2021.png",
+    image: "/images/timeline/2021.jpg",
   },
   /* ── 2022 ── */
   {
@@ -307,7 +312,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Parental Engagement for ECD",
     description:
       "A UNICEF behaviourally designed parenting program strengthening child stimulation and responsive caregiving. Shifting how families interact with their children.",
-    image: "/images/timeline/2023/parenting-hero.jpg",
+    image: "/images/timeline/2023/parenting-hero.png",
   },
   /* ── 2024 ── */
   {
@@ -341,7 +346,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "Storytelling as Systems Change",
     description:
       "A new storytelling platform using films and documentaries to drive behaviour change across climate, health, and gender. Twenty years of learning, distilled into moving images.",
-    image: "/images/timeline/2025/films-hero.png",
+    image: "/images/timeline/2025/films-hero.jpg",
     highlight: true,
   },
   /* ── 2026 ── */
