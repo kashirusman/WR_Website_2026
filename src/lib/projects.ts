@@ -14,7 +14,7 @@ export const projects: Project[] = [
     title: "Nurturing Change - Stunting Prevention",
     client: "UNICEF Pakistan",
     tag: "Stunting Prevention",
-    image: "/images/misali-ma/misali-ma03.jpg",
+    image: "/images/unicef-misaali-maa/_MG_8795.jpg",
     description:
       "A social behaviour change intervention reaching 26,000 mothers across Sindh to reduce child stunting through the Kahani Asani Adehani model.",
   },
@@ -23,7 +23,7 @@ export const projects: Project[] = [
     title: "WASH - Film Screenings Punjab",
     client: "UNICEF",
     tag: "WASH",
-    image: "/images/timeline/2023/parenting-session.png",
+    image: "/images/unicef-wash-film/celebrity-film.jpg",
     description:
       "Community film screenings across Punjab driving awareness and behaviour change around water, sanitation, and hygiene.",
   },
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     title: "PlayLab at Scale",
     client: "UNICEF",
     tag: "Play-Based Learning",
-    image: "/images/play-lab/play-lab09.jpeg",
+    image: "/images/play-lab/play-lab02.jpeg",
     description:
       "Scaling Pakistan's first play-based early learning model to reach resource-constrained communities nationwide.",
   },
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     title: "SBC Cricket - Social Behaviour Change Guide",
     client: "UNICEF",
     tag: "Sport for Development",
-    image: "/images/sbc-cricket/workshop-scoreboard.jpg",
+    image: "/images/sbc-cricket/cricket-snapshot.jpg",
     description:
       "A practical guide leveraging cricket as a platform to apply social and behaviour change communication.",
   },
@@ -52,16 +52,16 @@ export const projects: Project[] = [
     title: "The First 8 Years",
     client: "UNICEF Pakistan",
     tag: "Early Childhood",
-    image: "/images/timeline/2024/child-stim-learning.jpg",
+    image: "/images/timeline/2024/child-stim-hero.jpg",
     description:
-      "A national SBC programme designed to transform how Pakistan's parents and institutions show up in the first eight years of a child's life — built to reach 20 million families by 2026.",
+      "A national SBC programme designed to transform how Pakistan's parents and institutions show up in the first eight years of a child's life, built to reach 20 million families by 2026.",
   },
   {
     slug: "unicef-parental-engagement",
     title: "Walidain HumQadam",
     client: "UNICEF Pakistan",
     tag: "Parental Engagement",
-    image: "/images/peie/unicef-peie02.jpg",
+    image: "/images/peie/unicef-peie04.jpg",
     description:
       "A pioneering SBC initiative using WhatsApp, vision boards, and peer-to-peer learning to transform parental engagement across 52 schools in 4 provinces.",
   },
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     title: "Apni Kahani",
     client: "UNFPA Pakistan",
     tag: "HIV Prevention",
-    image: "/images/timeline/2013.png",
+    image: "/images/timeline/2013.jpg",
     description:
       "A six-part animation drama series built on 90 days of ethnographic co-creation with Pakistan's Khawaja Sira community for HIV prevention.",
   },
@@ -79,9 +79,9 @@ export const projects: Project[] = [
     title: "Clean & Green Punjab",
     client: "Punjab Government & UNICEF",
     tag: "WASH & Environment",
-    image: "/images/Clean & Green Punjab.jpeg",
+    image: "/images/unicef-cg/DSC03510.JPG",
     description:
-      "A province-wide SBC intervention across five critical environmental and hygiene behaviours — reaching 2 million people directly and 34 million through digital platforms.",
+      "A province-wide SBC intervention across five critical environmental and hygiene behaviours, reaching 2 million people directly and 34 million through digital platforms.",
   },
   {
     slug: "fao-road-safety",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     tag: "Food & Nutrition",
     image: "/images/FAO Dastarkhwan.png",
     description:
-      "A 12-week behaviour change programme shifting food and nutrition practices across three culturally distinct communities in Balochistan — reaching 11,000 families.",
+      "A 12-week behaviour change programme shifting food and nutrition practices across three culturally distinct communities in Balochistan, reaching 11,000 families.",
   },
   {
     slug: "unicef-mhh",
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     title: "Springster",
     client: "Girl Effect / Nike Foundation",
     tag: "Girls' Digital Content",
-    image: "/images/nike-girl-effect/IMG_2114.JPG",
+    image: "/images/nike-girl-effect/IMG_2687.JPG",
     description:
       "100+ co-created stories on a free mobile platform reaching one million girls in Pakistan with trusted content on health, safety, voice, and financial wellbeing.",
   },
@@ -124,25 +124,25 @@ export const projects: Project[] = [
     title: "Empowering Youth for Work",
     client: "Oxfam Pakistan / IKEA Foundation",
     tag: "Youth Empowerment",
-    image: "/images/timeline/2012-c.jpg",
+    image: "/images/oxfam-hcd/DSC_2440-copy.jpg",
     description:
-      "An 18-month HCD consulting engagement — the longest in White Rice's history — compressing a 5-year programme into a living design laboratory for 10,000+ young entrepreneurs.",
+      "An 18-month HCD consulting engagement, the longest in White Rice's history, compressing a 5-year programme into a living design laboratory for 10,000+ young entrepreneurs.",
   },
   {
     slug: "sightsavers-film",
     title: "When They Can See",
     client: "Sightsavers International",
     tag: "Eye Health Film",
-    image: "/images/timeline/2025/films-hero.png",
+    image: "/images/sightsavers/noor-poster.jpg",
     description:
-      "A data-driven short film shaped by 100 interviews, brought to life by Pakistan's finest actors, and winner at Cannes Lions — still screening in schools across Pakistan.",
+      "A data-driven short film shaped by 100 interviews, brought to life by Pakistan's finest actors, and winner at Cannes Lions, still screening in schools across Pakistan.",
   },
   {
     slug: "johns-hopkins-animation",
     title: "The Last Mile",
     client: "Johns Hopkins CCP",
     tag: "Global Health",
-    image: "/images/digital-training/digital-training01.JPG",
+    image: "/images/LastMile.png",
     description:
       "A globally deployable animation training series for 250,000 frontline immunisation workers across 4 continents in 4 languages.",
   },
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     tag: "Healthcare Safety",
     image: "/images/ICRC Barosakare.png",
     description:
-      "Pakistan's first national behaviour change campaign addressing violence against healthcare workers — reaching 4 million people through HCD research and multi-channel activation.",
+      "Pakistan's first national behaviour change campaign addressing violence against healthcare workers, reaching 4 million people through HCD research and multi-channel activation.",
   },
 
   /* ─ New entries (replacing entries without HTML) ────────────── */
@@ -162,7 +162,7 @@ export const projects: Project[] = [
     title: "Awaz - Give Voice",
     client: "UK Aid (FCDO) / DAI",
     tag: "Citizen Accountability",
-    image: "/images/alif-ailaan-new/1229896_561951533868607_1711988521_n.jpg",
+    image: "/images/alif-ailaan/alif-ailaan01.jpg",
     description:
       "A decade-long programme reaching 15 million people across 13 districts, building Pakistan's first citizen journalism platform and transforming marginalised women into community leaders.",
   },
@@ -171,18 +171,18 @@ export const projects: Project[] = [
     title: "Dunia Aur Larki",
     client: "Oxfam Pakistan",
     tag: "Girls' Education",
-    image: "/images/timeline/2017.png",
+    image: "/images/timeline/15x/2010/2010-foto2.jpg",
     description:
-      "What began as an animated campaign for 16 Days of Activism became Pakistan's most powerful girls' education movement — earning a $1M grant and producing Pakistan's first Children's Assembly.",
+      "What began as an animated campaign for 16 Days of Activism became Pakistan's most powerful girls' education movement, earning a $1M grant and producing Pakistan's first Children's Assembly.",
   },
   {
     slug: "saaf-karachi-waste",
     title: "Saaf Karachi Meri Zimmedari",
     client: "Tier Fund",
     tag: "Recycling & Waste",
-    image: "/images/Saaf Karachi.png",
+    image: "/images/tearFund/tearFund.png",
     description:
-      "A full-spectrum community behaviour change campaign shifting Karachi's waste practices from household to hub — turning segregation, collection, and recycling into a community movement.",
+      "A full-spectrum community behaviour change campaign shifting Karachi's waste practices from household to hub, turning segregation, collection, and recycling into a community movement.",
   },
   {
     slug: "care-mastercard-mumkin",
@@ -191,6 +191,6 @@ export const projects: Project[] = [
     tag: "Women Entrepreneurship",
     image: "/images/CARE Mastercard Mumkin.jpeg",
     description:
-      "An HCD research-led campaign connecting Pakistan's women micro-entrepreneurs with digital financial services, skills training, and microfinance — reaching 2 million people.",
+      "An HCD research-led campaign connecting Pakistan's women micro-entrepreneurs with digital financial services, skills training, and microfinance, reaching 2 million people.",
   },
 ];

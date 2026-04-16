@@ -53,7 +53,7 @@ export default function OriginStory() {
         >
           In 2006, a small team in Islamabad set out to answer that question.
           What started as an experiment in gamified learning and animated films
-          grew into a movement — reaching millions of people across Pakistan
+          grew into a movement, reaching millions of people across Pakistan
           and beyond. This is the story of that journey, told in five chapters.
         </motion.p>
       </motion.div>

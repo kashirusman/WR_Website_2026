@@ -25,7 +25,7 @@ export interface YearPanel {
 export const yearPanels: YearPanel[] = [
   {
     year: 2006,
-    headline: "BHAID — Gamified Learning",
+    headline: "BHAID, Gamified Learning",
     line1: "Pakistan's first gamified multimedia learning program deployed across 100+ schools.",
     line2: "A bold experiment asking whether design could drive real social change.",
     image: "/images/timeline/2006.png",
@@ -65,7 +65,7 @@ export const yearPanels: YearPanel[] = [
   },
   {
     year: 2011,
-    headline: "We Can — 600K Changemakers",
+    headline: "We Can, 600K Changemakers",
     line1: "A movement of 600,000 people fighting violence against women and girls.",
     line2: "Pakistan's largest citizen-driven advocacy campaign.",
     image: "/images/timeline/2011.png",
@@ -73,7 +73,7 @@ export const yearPanels: YearPanel[] = [
   },
   {
     year: 2012,
-    headline: "Alif Ailaan — Education Revolution",
+    headline: "Alif Ailaan, Education Revolution",
     line1: "100,000 children re-enrolled in schools. 10 million citizens reached.",
     line2: "Pakistan's largest education campaign shifted the national conversation.",
     image: "/images/timeline/2012.png",
@@ -81,7 +81,7 @@ export const yearPanels: YearPanel[] = [
   },
   {
     year: 2013,
-    headline: "Relax — First Mental Health App",
+    headline: "Relax, First Mental Health App",
     line1: "Pakistan's first digital mental health intervention reaching 10,000 teenagers.",
     line2: "A pioneering step in using technology for wellbeing at scale.",
     image: "/images/timeline/2013.png",
@@ -113,7 +113,7 @@ export const yearPanels: YearPanel[] = [
   },
   {
     year: 2017,
-    headline: "Girl Effect — 1 Million Girls",
+    headline: "Girl Effect, 1 Million Girls",
     line1: "Nike Foundation partnership: 100+ life-skills stories accessed by 1M+ girls.",
     line2: "Storytelling as empowerment across Pakistan.",
     image: "/images/timeline/2017.png",
@@ -121,7 +121,7 @@ export const yearPanels: YearPanel[] = [
   },
   {
     year: 2018,
-    headline: "Misaali Maa — 11,000 Voices",
+    headline: "Misaali Maa, 11,000 Voices",
     line1: "World's largest storytelling exercise captured 11,000 mothers' voices.",
     line2: "Foundation for a nationwide maternal health campaign.",
     image: "/images/timeline/2018.png",
@@ -147,7 +147,7 @@ export const yearPanels: YearPanel[] = [
     year: 2021,
     headline: "VR & AI Initiatives",
     line1: "Pakistan's first VR film series on water and sanitation.",
-    line2: "AI-driven impact programs — a new era of tech-powered behaviour change.",
+    line2: "AI-driven impact programs, a new era of tech-powered behaviour change.",
     image: "/images/timeline/2021.png",
     projects: 530,
   },
@@ -155,7 +155,7 @@ export const yearPanels: YearPanel[] = [
     year: 2022,
     headline: "UNICEF Community PlayLabs",
     line1: "Community play spaces promoting early childhood development across Sindh.",
-    line2: "Behaviour change through play — mothers and children learning together.",
+    line2: "Behaviour change through play, mothers and children learning together.",
     image: "/images/timeline/2022/playlabs-hero.jpg",
     projects: 580,
   },
@@ -179,7 +179,7 @@ export const yearPanels: YearPanel[] = [
     year: 2025,
     headline: "Films for Change",
     line1: "Storytelling platform using films to drive behaviour change across sectors.",
-    line2: "Climate, health, and gender — twenty years distilled into film.",
+    line2: "Climate, health, and gender, twenty years distilled into film.",
     image: "/images/timeline/2025/films-hero.png",
     projects: 700,
   },
@@ -327,7 +327,7 @@ export default function TimelineHorizontal() {
       <div className="htl-sticky">
         <CustomCursor />
 
-        {/* Large year — pinned left */}
+        {/* Large year, pinned left */}
         <div className="htl-year-label">
           <AnimatePresence mode="popLayout">
             <motion.span
@@ -343,7 +343,7 @@ export default function TimelineHorizontal() {
           </AnimatePresence>
         </div>
 
-        {/* Counter — top right */}
+        {/* Counter, top right */}
         <div className="htl-counter">
           <motion.span
             className="htl-counter__value"
@@ -385,7 +385,7 @@ export default function TimelineHorizontal() {
           ))}
         </motion.div>
 
-        {/* Progress bar — bottom */}
+        {/* Progress bar, bottom */}
         <div className="htl-progress">
           <motion.div
             className="htl-progress__fill"

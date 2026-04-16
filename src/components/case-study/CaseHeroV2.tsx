@@ -58,7 +58,7 @@ export default function CaseHeroV2({ hero, year, tags, heroImage, heroVideo }: C
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: "cover", objectPosition: "center 30%" }}
+            style={{ objectFit: "cover", objectPosition: "center top" }}
           />
         </div>
       )}

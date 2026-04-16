@@ -2014,6 +2014,9 @@ body {
 /* ── Year group container ── */
 .sqtl-year-group {
   position: relative;
+  background: #0c0c0b;
+  isolation: isolate;
+  z-index: 0;
 }
 
 /* ═══════════════════════════════════════════
@@ -2134,11 +2137,18 @@ body {
 .sqtl-hero__ov {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.6) 0%,
-    rgba(0,0,0,0.0) 50%
-  );
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.4) 50%,
+      rgba(0,0,0,0.0) 70%
+    ),
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.6) 0%,
+      rgba(0,0,0,0.0) 50%
+    );
   z-index: 1;
 }
 .sqtl-hero__body {
@@ -3314,6 +3324,23 @@ body {
   transform: scale(1.04);
 }
 
+/* Infographic / contain variant — no crop, full image visible */
+.cs-photo-band__item--contain {
+  padding-bottom: 0 !important;
+  height: auto;
+  aspect-ratio: auto;
+}
+.cs-photo-band__item--contain img {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  transform: none !important;
+}
+.cs-photo-band__item--contain:hover img {
+  transform: none !important;
+}
+
 @media (max-width: 900px) {
   .cs-photo-band {
     padding: 48px 20px;
@@ -3725,6 +3752,7 @@ body {
   inset: 0;
   z-index: 1;
   background:
+    linear-gradient(to bottom, rgba(0,0,0,.35) 0%, rgba(0,0,0,.0) 30%, rgba(0,0,0,.0) 60%, rgba(0,0,0,.5) 100%),
     radial-gradient(ellipse 65% 55% at 90% 10%, rgba(196,150,42,.4) 0%, transparent 65%),
     radial-gradient(ellipse 50% 60% at 0% 90%, rgba(196,96,42,.25) 0%, transparent 60%),
     radial-gradient(ellipse 35% 40% at 45% 50%, rgba(74,42,90,.5) 0%, transparent 70%);
@@ -6596,6 +6624,128 @@ body {
   background: var(--cs-primary, #B01A1A);
   flex-shrink: 0;
   margin-top: 6px;
+}
+
+/* ── FILM POSTER BAND ───────────────────────────────────────────── */
+.cs-film-poster {
+  background: #0C0C0B;
+  color: #F5F0E8;
+  padding: clamp(4rem, 7vw, 8rem) clamp(2rem, 5vw, 6rem);
+}
+.cs-film-poster__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: clamp(2.5rem, 5vw, 6rem);
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .cs-film-poster__inner {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+}
+.cs-film-poster__img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+}
+.cs-film-poster__award {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(201,146,42,0.12);
+  border: 1px solid rgba(201,146,42,0.35);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.cs-film-poster__award-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.cs-film-poster__award-body {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(201,146,42,0.8);
+  margin-bottom: 0.25rem;
+}
+.cs-film-poster__award-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #C9922A;
+  line-height: 1.2;
+}
+.cs-film-poster__award-cat {
+  font-size: 0.8rem;
+  color: rgba(245,240,232,0.55);
+  margin-top: 0.2rem;
+}
+.cs-film-poster__title {
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.05;
+  color: #F5F0E8;
+  margin-bottom: 0.6rem;
+}
+.cs-film-poster__title-urdu {
+  font-family: var(--font-cormorant);
+  color: rgba(201,146,42,0.9);
+}
+.cs-film-poster__tagline {
+  font-size: 1rem;
+  color: rgba(245,240,232,0.55);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+.cs-film-poster__credits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 2.5rem;
+  border-top: 1px solid rgba(245,240,232,0.1);
+  padding-top: 1.5rem;
+}
+.cs-film-poster__credit-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+.cs-film-poster__credit-row dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.35);
+}
+.cs-film-poster__credit-row dd {
+  font-size: 0.92rem;
+  color: rgba(245,240,232,0.85);
+  line-height: 1.4;
+}
+.cs-film-poster__cta {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(201,146,42,0.5);
+  color: #C9922A;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.25s, color 0.25s;
+}
+.cs-film-poster__cta:hover {
+  background: rgba(201,146,42,0.15);
+  color: #F0D080;
 }
 
 /* ── TV AD BAND ─────────────────────────────────────────────────── */
