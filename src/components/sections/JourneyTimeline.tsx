@@ -13,24 +13,29 @@ import type { TimelineEntry } from "@/lib/milestones";
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
+/* ── Group entries by year ────────────────────────────────────────── */
+function groupByYear(entries: TimelineEntry[]) {
+  const map = new Map<number, TimelineEntry[]>();
+  for (const e of entries) {
+    if (!map.has(e.year)) map.set(e.year, []);
+    map.get(e.year)!.push(e);
+  }
+  return Array.from(map.entries()).sort(([a], [b]) => a - b);
+}
+
 /* ── CountUp ─────────────────────────────────────────────────────── */
 function CountUp({ value }: { value: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const hasRun = useRef(false);
-  const displayRef = useRef(value);
-
-  // Use a simple approach: render value, animate on mount
   return (
     <span
       ref={(el) => {
         if (!el) return;
         const m = value.match(/^(\$?)(\d+(?:\.\d+)?)(.*)/);
-        if (!m || hasRun.current) return;
-
+        if (!m) return;
+        let hasRun = false;
         const obs = new IntersectionObserver(
           ([e]) => {
-            if (e.isIntersecting && !hasRun.current) {
-              hasRun.current = true;
+            if (e.isIntersecting && !hasRun) {
+              hasRun = true;
               const [, prefix, numStr, suffix] = m;
               const num = parseFloat(numStr);
               const t0 = performance.now();
@@ -57,262 +62,238 @@ function CountUp({ value }: { value: string }) {
   );
 }
 
-/* ── Category badge ──────────────────────────────────────────────── */
-function CategoryBadge({ category }: { category: TimelineEntry["category"] }) {
-  return <span className="tl-badge">{category}</span>;
-}
-
-/* ── Year marker ─────────────────────────────────────────────────── */
-function YearMarker({ year, month }: { year: number; month?: string }) {
+/* ── Date label "■ MONTH YEAR · CATEGORY" ───────────────────────── */
+function DateLabel({
+  year,
+  month,
+  category,
+}: {
+  year: number;
+  month?: string;
+  category: TimelineEntry["category"];
+}) {
   return (
-    <div className="tl-year-marker">
-      <div className="tl-year-marker__dot" />
-      <span className="tl-year-marker__text">
-        {month ? `${month} ` : ""}{year}
+    <div className="sqtl-date">
+      <span className="sqtl-date__dot" />
+      <span className="sqtl-date__text">
+        {month ? `${month} ` : ""}
+        {year}
       </span>
+      <span className="sqtl-date__sep">·</span>
+      <span className="sqtl-date__cat">{category}</span>
     </div>
   );
 }
 
-/* ── Layout: Hero Background ─────────────────────────────────────── */
-function HeroBgEntry({ entry }: { entry: TimelineEntry }) {
+/* ── Year Break — full-screen black with giant year number ────────── */
+function YearBreak({ year }: { year: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["18%", "-18%"]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.8, 1],
+    [0, 1, 1, 0]
+  );
 
   return (
-    <div ref={ref} className="tl-entry tl-entry--hero-bg">
-      <YearMarker year={entry.year} month={entry.month} />
-      <div className="tl-hero-bg">
-        <motion.div className="tl-hero-bg__img-wrap" style={{ y }}>
-          <Image
-            src={entry.image}
-            alt={entry.title}
-            fill
-            sizes="100vw"
-            style={{ objectFit: "cover" }}
-          />
-        </motion.div>
-        <div className="tl-hero-bg__overlay" />
-        <motion.div
-          className="tl-hero-bg__content"
-          initial={{ opacity: 0, y: 60 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, ease }}
-        >
-          <CategoryBadge category={entry.category} />
-          {entry.subtitle && (
-            <motion.p
-              className="tl-hero-bg__subtitle"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.15, duration: 0.7, ease }}
-            >
-              {entry.subtitle}
-            </motion.p>
-          )}
-          <motion.h2
-            className="tl-hero-bg__title"
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.9, ease }}
-          >
-            {entry.title}
-          </motion.h2>
-          <motion.p
-            className="tl-hero-bg__desc"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.7, ease }}
-          >
-            {entry.description}
-          </motion.p>
-        </motion.div>
-      </div>
+    <div ref={ref} className="sqtl-year-break">
+      <motion.span className="sqtl-year-break__num" style={{ y, opacity }}>
+        {year}
+      </motion.span>
     </div>
   );
 }
 
-/* ── Layout: Big Number ──────────────────────────────────────────── */
-function BigNumberEntry({ entry }: { entry: TimelineEntry }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
-
-  return (
-    <div ref={ref} className="tl-entry tl-entry--big-number">
-      <YearMarker year={entry.year} month={entry.month} />
-      <div className="tl-big-number">
-        <div className="tl-big-number__bg">
-          <Image
-            src={entry.image}
-            alt={entry.title}
-            fill
-            sizes="100vw"
-            style={{ objectFit: "cover" }}
-          />
-          <div className="tl-big-number__bg-overlay" />
-        </div>
-        <motion.div
-          className="tl-big-number__content"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, ease }}
-        >
-          <CategoryBadge category={entry.category} />
-          {entry.subtitle && (
-            <p className="tl-big-number__subtitle">{entry.subtitle}</p>
-          )}
-          <motion.div
-            className="tl-big-number__value"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.2, duration: 1, ease }}
-          >
-            {entry.stat ? <CountUp value={entry.stat.value} /> : entry.title}
-          </motion.div>
-          <motion.p
-            className="tl-big-number__label"
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.5, duration: 0.7, ease }}
-          >
-            {entry.title}
-          </motion.p>
-          <motion.p
-            className="tl-big-number__desc"
-            initial={{ opacity: 0, y: 12 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.7, duration: 0.7, ease }}
-          >
-            {entry.description}
-          </motion.p>
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
-/* ── Layout: Text + Image (text left, image right or vice versa) ─ */
-function TextImageEntry({
+/* ── Entry: text left + image right (or reversed) ────────────────── */
+function EntryTextImage({
   entry,
   reversed,
+  priority,
 }: {
   entry: TimelineEntry;
   reversed?: boolean;
+  priority?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "-8% 0px" });
+  const objPos = entry.focalPoint ?? "center";
 
   return (
     <div
       ref={ref}
-      className={`tl-entry tl-entry--text-image ${reversed ? "tl-entry--reversed" : ""}`}
+      className={`sqtl-split ${reversed ? "sqtl-split--rev" : ""}`}
     >
-      <YearMarker year={entry.year} month={entry.month} />
-      <div className="tl-text-image">
-        <motion.div
-          className="tl-text-image__text"
-          initial={{ opacity: 0, x: reversed ? 40 : -40 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, ease }}
-        >
-          <CategoryBadge category={entry.category} />
-          <h3 className="tl-text-image__title">{entry.title}</h3>
-          <p className="tl-text-image__desc">{entry.description}</p>
-          {entry.stat && (
-            <div className="tl-text-image__stat">
-              <span className="tl-text-image__stat-val">
-                {entry.stat.value}
-              </span>
-              <span className="tl-text-image__stat-lbl">
-                {entry.stat.label}
-              </span>
-            </div>
-          )}
-        </motion.div>
-        <motion.div
-          className="tl-text-image__media"
-          initial={{ opacity: 0, x: reversed ? -40 : 40 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ delay: 0.15, duration: 0.8, ease }}
-        >
-          <Image
-            src={entry.image}
-            alt={entry.title}
-            width={700}
-            height={480}
-            className="tl-text-image__img"
-          />
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
-/* ── Layout: Full-width cinematic image ──────────────────────────── */
-function FullImageEntry({ entry }: { entry: TimelineEntry }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-
-  return (
-    <div ref={ref} className="tl-entry tl-entry--full-image">
-      <YearMarker year={entry.year} month={entry.month} />
       <motion.div
-        className="tl-full-image"
-        initial={{ opacity: 0, y: 40 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.9, ease }}
+        className="sqtl-split__text"
+        initial={{ opacity: 0, x: reversed ? 32 : -32 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.75, ease }}
       >
-        <div className="tl-full-image__wrap">
-          <motion.div className="tl-full-image__inner" style={{ y }}>
-            <Image
-              src={entry.image}
-              alt={entry.title}
-              fill
-              sizes="100vw"
-              style={{ objectFit: "cover" }}
-            />
-          </motion.div>
-        </div>
-        <div className="tl-full-image__caption">
-          <CategoryBadge category={entry.category} />
-          <h3>{entry.title}</h3>
-          <p>{entry.description}</p>
-        </div>
+        <DateLabel
+          year={entry.year}
+          month={entry.month}
+          category={entry.category}
+        />
+        <h2 className="sqtl-split__title">{entry.title}</h2>
+        <p className="sqtl-split__desc">{entry.description}</p>
+        {entry.stat && (
+          <div className="sqtl-split__stat">
+            <span className="sqtl-split__stat-val">
+              <CountUp value={entry.stat.value} />
+            </span>
+            <span className="sqtl-split__stat-lbl">{entry.stat.label}</span>
+          </div>
+        )}
+      </motion.div>
+      <motion.div
+        className="sqtl-split__img"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ delay: 0.12, duration: 0.9 }}
+      >
+        <Image
+          src={entry.image}
+          alt={entry.imageAlt ?? entry.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 60vw"
+          quality={90}
+          priority={priority}
+          className="object-cover"
+          style={{ objectPosition: objPos }}
+        />
       </motion.div>
     </div>
   );
 }
 
-/* ── Entry router ────────────────────────────────────────────────── */
-function TimelineEntryComponent({ entry }: { entry: TimelineEntry }) {
+/* ── Entry: full-bleed hero with text overlay ─────────────────────── */
+function EntryHero({ entry, priority }: { entry: TimelineEntry; priority?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-5% 0px" });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const objPos = entry.focalPoint ?? "center";
+
+  return (
+    <div ref={ref} className="sqtl-hero">
+      <div className="sqtl-hero__bg">
+        <motion.div className="sqtl-hero__par" style={{ y: imgY }}>
+          <Image
+            src={entry.image}
+            alt={entry.imageAlt ?? entry.title}
+            fill
+            sizes="100vw"
+            quality={90}
+            priority={priority}
+            className="object-cover"
+            style={{ objectPosition: objPos }}
+          />
+        </motion.div>
+        <div className="sqtl-hero__ov" />
+      </div>
+      <motion.div
+        className="sqtl-hero__body"
+        initial={{ opacity: 0, y: 56 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 1, ease }}
+      >
+        <DateLabel
+          year={entry.year}
+          month={entry.month}
+          category={entry.category}
+        />
+        {entry.subtitle && (
+          <p className="sqtl-hero__sub">{entry.subtitle}</p>
+        )}
+        <h2 className="sqtl-hero__title">{entry.title}</h2>
+        <p className="sqtl-hero__desc">{entry.description}</p>
+      </motion.div>
+    </div>
+  );
+}
+
+/* ── Entry: centered big stat / number ───────────────────────────── */
+function EntryBigStat({ entry }: { entry: TimelineEntry }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const objPos = entry.focalPoint ?? "center";
+
+  return (
+    <div ref={ref} className="sqtl-bigstat">
+      <div className="sqtl-bigstat__bg">
+        <Image
+          src={entry.image}
+          alt=""
+          fill
+          sizes="100vw"
+          quality={90}
+          className="object-cover"
+          style={{ filter: "brightness(0.2) blur(6px)", objectPosition: objPos }}
+        />
+        <div className="sqtl-bigstat__ov" />
+      </div>
+      <div className="sqtl-bigstat__body">
+        <DateLabel
+          year={entry.year}
+          month={entry.month}
+          category={entry.category}
+        />
+        {entry.stat && (
+          <motion.p
+            className="sqtl-bigstat__val"
+            initial={{ opacity: 0, scale: 0.82 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.85, ease }}
+          >
+            <CountUp value={entry.stat.value} />
+          </motion.p>
+        )}
+        <motion.p
+          className="sqtl-bigstat__label"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.3, duration: 0.7, ease }}
+        >
+          {entry.title}
+        </motion.p>
+        <motion.p
+          className="sqtl-bigstat__desc"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.55, duration: 0.7 }}
+        >
+          {entry.description}
+        </motion.p>
+      </div>
+    </div>
+  );
+}
+
+/* ── Entry router ─────────────────────────────────────────────────── */
+function Entry({ entry, priority }: { entry: TimelineEntry; priority?: boolean }) {
   switch (entry.layout) {
-    case "hero-bg":
-      return <HeroBgEntry entry={entry} />;
     case "big-number":
-      return <BigNumberEntry entry={entry} />;
+      return <EntryBigStat entry={entry} />;
     case "text-image":
-      return <TextImageEntry entry={entry} />;
+      return <EntryTextImage entry={entry} priority={priority} />;
     case "image-text":
-      return <TextImageEntry entry={entry} reversed />;
+      return <EntryTextImage entry={entry} reversed priority={priority} />;
+    case "hero-bg":
     case "full-image":
-      return <FullImageEntry entry={entry} />;
     default:
-      return <HeroBgEntry entry={entry} />;
+      return <EntryHero entry={entry} priority={priority} />;
   }
 }
 
-/* ── Vertical timeline line ──────────────────────────────────────── */
-function TimelineLine() {
+/* ── Left progress line ───────────────────────────────────────────── */
+function ProgressLine() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -321,19 +302,30 @@ function TimelineLine() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <div ref={ref} className="tl-line-track">
-      <motion.div className="tl-line" style={{ scaleY }} />
+    <div ref={ref} className="sqtl-pline-wrap">
+      <div className="sqtl-pline-track">
+        <motion.div className="sqtl-pline" style={{ scaleY }} />
+      </div>
     </div>
   );
 }
 
 /* ── Main export ─────────────────────────────────────────────────── */
+const PRIORITY_IDS = new Set(timelineEntries.slice(0, 3).map((e) => e.id));
+
 export default function JourneyTimeline() {
+  const yearGroups = groupByYear(timelineEntries);
+
   return (
-    <section className="tl-timeline">
-      <TimelineLine />
-      {timelineEntries.map((entry) => (
-        <TimelineEntryComponent key={entry.id} entry={entry} />
+    <section className="sqtl-wrap">
+      <ProgressLine />
+      {yearGroups.map(([year, entries]) => (
+        <div key={year} className="sqtl-year-group">
+          <YearBreak year={year} />
+          {entries.map((e) => (
+            <Entry key={e.id} entry={e} priority={PRIORITY_IDS.has(e.id)} />
+          ))}
+        </div>
       ))}
     </section>
   );

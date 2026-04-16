@@ -56,7 +56,7 @@ export default function NextDecade() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6, duration: 0.8, ease }}
         >
-          Twenty years of evidence have taught us one thing — behaviour change
+          Twenty years of evidence have taught us one thing: behaviour change
           at scale is possible when you combine science with storytelling. The
           next chapter is about taking that further. AI-powered nudge systems,
           immersive experiences, real-time behavioural data, and

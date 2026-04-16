@@ -77,6 +77,7 @@ import CaseMumkinProfilesBand from "@/components/case-study/CaseMumkinProfilesBa
 import CaseMumkinOfferBand from "@/components/case-study/CaseMumkinOfferBand";
 import CaseMumkinDigitalBand from "@/components/case-study/CaseMumkinDigitalBand";
 import CasePhotoBand from "@/components/case-study/CasePhotoBand";
+import CaseFilmPosterBand from "@/components/case-study/CaseFilmPosterBand";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -438,6 +439,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
         {/* Photo Band 4 — after Work */}
         {cs.photoBand4 && <CasePhotoBand images={cs.photoBand4} />}
+
+        {/* Film Poster Band — award-winning films (Sightsavers Noor, etc.) */}
+        {cs.filmPoster && <CaseFilmPosterBand data={cs.filmPoster} />}
 
         {/* SBC Cricket: Cascade Band (between Work and Impact) */}
         {cs.cricketCascade && <CaseCricketCascadeBand data={cs.cricketCascade} />}

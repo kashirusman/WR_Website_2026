@@ -6,7 +6,7 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000,
-      "cwd": "/Users/mac/Documents/WhiteRice2026/WR- 20 years/WR_Website 2026"
+      "autoPort": true
     }
   ]
 }
