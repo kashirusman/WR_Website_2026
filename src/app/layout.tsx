@@ -61,7 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${dmSans.variable} ${cormorant.variable} ${playfair.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased" suppressHydrationWarning>{children}</body>
     </html>
   );
 }
