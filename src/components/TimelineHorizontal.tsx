@@ -1,15 +1,16 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import {
   motion,
   useScroll,
   useTransform,
-  useMotionValueEvent,
+  useInView,
   useMotionValue,
   useSpring,
   AnimatePresence,
+  MotionValue,
 } from "framer-motion";
 
 /* ── Data: one panel per year ─────────────────────────────────────── */
@@ -193,58 +194,258 @@ export const yearPanels: YearPanel[] = [
   },
 ];
 
-const PANEL_COUNT = yearPanels.length;
-const ease = [0.21, 0.47, 0.32, 0.98] as const;
+/* ── Floating hero thumbnails — positions and images ─────────────── */
+const heroThumbs = [
+  { src: "/images/timeline/2006.png", x: "8%", y: "12%", w: 140, h: 95, delay: 0 },
+  { src: "/images/timeline/2009.png", x: "78%", y: "8%", w: 120, h: 80, delay: 0.15 },
+  { src: "/images/timeline/2012.png", x: "4%", y: "65%", w: 130, h: 88, delay: 0.3 },
+  { src: "/images/timeline/2017.png", x: "82%", y: "58%", w: 125, h: 85, delay: 0.1 },
+  { src: "/images/timeline/2020.png", x: "18%", y: "38%", w: 110, h: 75, delay: 0.25 },
+  { src: "/images/timeline/2011.png", x: "72%", y: "34%", w: 115, h: 78, delay: 0.05 },
+  { src: "/images/timeline/2018.png", x: "50%", y: "72%", w: 135, h: 90, delay: 0.2 },
+  { src: "/images/timeline/2015.png", x: "35%", y: "5%", w: 105, h: 72, delay: 0.35 },
+];
 
-/* ── Custom cursor ────────────────────────────────────────────────── */
-function CustomCursor() {
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springX = useSpring(cursorX, { stiffness: 300, damping: 28 });
-  const springY = useSpring(cursorY, { stiffness: 300, damping: 28 });
-  const [hovered, setHovered] = useState(false);
+/* ── Month names for display ─────────────────────────────────────── */
+const yearMonths: Record<number, string> = {
+  2006: "January",
+  2007: "March",
+  2008: "June",
+  2009: "September",
+  2010: "February",
+  2011: "April",
+  2012: "August",
+  2013: "May",
+  2014: "November",
+  2015: "July",
+  2016: "October",
+  2017: "January",
+  2018: "March",
+  2019: "June",
+  2020: "March",
+  2021: "September",
+  2022: "February",
+  2023: "April",
+  2024: "January",
+  2025: "July",
+  2026: "January",
+};
 
-  useEffect(() => {
-    const move = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
-    const over = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest(".htl-panel__media, a, button")) setHovered(true);
-    };
-    const out = () => setHovered(false);
+/* ── Layout type per entry for visual variety ────────────────────── */
+type LayoutType = "full-image" | "text-left" | "big-number" | "big-text";
 
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mouseover", over);
-    window.addEventListener("mouseout", out);
-    return () => {
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseover", over);
-      window.removeEventListener("mouseout", out);
-    };
-  }, [cursorX, cursorY]);
+function getLayoutType(index: number): LayoutType {
+  const cycle: LayoutType[] = ["full-image", "text-left", "big-number", "full-image", "big-text", "text-left"];
+  return cycle[index % cycle.length];
+}
+
+/* ── Floating Hero Thumbnail ─────────────────────────────────────── */
+function FloatingThumb({
+  src,
+  x,
+  y,
+  w,
+  h,
+  delay,
+  scrollYProgress,
+}: {
+  src: string;
+  x: string;
+  y: string;
+  w: number;
+  h: number;
+  delay: number;
+  scrollYProgress: MotionValue<number>;
+}) {
+  const yOffset = useTransform(scrollYProgress, [0, 0.3], [0, -120]);
+  const opacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  const springY = useSpring(yOffset, { stiffness: 80, damping: 20 });
 
   return (
-    <>
-      <motion.div
-        className="htl-cursor"
-        style={{ x: springX, y: springY }}
-        animate={{ scale: hovered ? 2.5 : 1, opacity: hovered ? 0.6 : 0.35 }}
-        transition={{ duration: 0.25 }}
+    <motion.div
+      className="sqtl-hero__thumb"
+      style={{
+        position: "absolute",
+        left: x,
+        top: y,
+        width: w,
+        height: h,
+        y: springY,
+        opacity,
+        zIndex: 1,
+      }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 0.7, scale: 1 }}
+      transition={{ duration: 1.2, delay: 0.5 + delay, ease: "easeOut" }}
+    >
+      <Image
+        src={src}
+        alt=""
+        fill
+        sizes={`${w}px`}
+        style={{ objectFit: "cover", borderRadius: 4 }}
       />
-      <motion.div
-        className="htl-cursor-dot"
-        style={{ x: cursorX, y: cursorY }}
-      />
-    </>
+    </motion.div>
   );
 }
 
-/* ── Main component ───────────────────────────────────────────────── */
+/* ── Timeline Entry ──────────────────────────────────────────────── */
+function TimelineEntry({ panel, index }: { panel: YearPanel; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
+  const layout = getLayoutType(index);
+  const month = yearMonths[panel.year] || "January";
+
+  return (
+    <motion.div
+      ref={ref}
+      className={`sqtl-entry sqtl-entry--${layout}`}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+    >
+      {/* Background image */}
+      <div className="sqtl-entry__bg">
+        <motion.div
+          className="sqtl-entry__bg-inner"
+          initial={{ scale: 1.1 }}
+          animate={isInView ? { scale: 1 } : { scale: 1.1 }}
+          transition={{ duration: 1.6, ease: "easeOut" }}
+        >
+          <Image
+            src={panel.image}
+            alt={panel.headline}
+            fill
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+            priority={index < 2}
+          />
+        </motion.div>
+        <div className="sqtl-entry__bg-overlay" />
+      </div>
+
+      {/* Content */}
+      <div className={`sqtl-entry__content sqtl-entry__content--${layout}`}>
+        {layout === "big-number" && (
+          <motion.div
+            className="sqtl-entry__big-number"
+            initial={{ opacity: 0, y: 60 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {panel.projects}+
+          </motion.div>
+        )}
+
+        {layout === "big-text" && (
+          <motion.div
+            className="sqtl-entry__big-text"
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            {panel.headline}
+          </motion.div>
+        )}
+
+        <motion.div
+          className="sqtl-entry__date"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          {month} {panel.year}
+        </motion.div>
+
+        {layout !== "big-text" && (
+          <motion.h2
+            className="sqtl-entry__title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.25 }}
+          >
+            {panel.headline}
+          </motion.h2>
+        )}
+
+        <motion.p
+          className="sqtl-entry__desc"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.4 }}
+        >
+          {panel.line1}
+        </motion.p>
+
+        <motion.p
+          className="sqtl-entry__desc sqtl-entry__desc--secondary"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.55 }}
+        >
+          {panel.line2}
+        </motion.p>
+
+        {layout === "big-number" && (
+          <motion.span
+            className="sqtl-entry__counter-label"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            Projects Delivered
+          </motion.span>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+/* ── List View Toggle Item ───────────────────────────────────────── */
+function ListViewItem({
+  panel,
+  index,
+  onClose,
+}: {
+  panel: YearPanel;
+  index: number;
+  onClose: () => void;
+}) {
+  const month = yearMonths[panel.year] || "January";
+
+  return (
+    <motion.div
+      className="sqtl-list__item"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.3, delay: index * 0.03 }}
+    >
+      <div className="sqtl-list__item-date">
+        {month} {panel.year}
+      </div>
+      <div className="sqtl-list__item-content">
+        <h3 className="sqtl-list__item-title">{panel.headline}</h3>
+        <p className="sqtl-list__item-desc">{panel.line1}</p>
+      </div>
+      <div className="sqtl-list__item-thumb">
+        <Image
+          src={panel.image}
+          alt={panel.headline}
+          width={120}
+          height={80}
+          style={{ objectFit: "cover", borderRadius: 2 }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+/* ── Main Component ──────────────────────────────────────────────── */
 export default function TimelineHorizontal() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const [listView, setListView] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -255,151 +456,163 @@ export default function TimelineHorizontal() {
   }, []);
 
   const { scrollYProgress } = useScroll({ target: containerRef });
-
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", `-${(PANEL_COUNT - 1) * 100}%`]
-  );
-
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = Math.round(v * (PANEL_COUNT - 1));
-    setActiveIndex(Math.min(Math.max(idx, 0), PANEL_COUNT - 1));
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
   });
 
-  const currentProjects = yearPanels[activeIndex]?.projects ?? 0;
+  const progressWidth = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
-  const scrollToIndex = useCallback((idx: number) => {
-    if (!containerRef.current) return;
-    const clamped = Math.max(0, Math.min(idx, PANEL_COUNT - 1));
-    const containerTop = containerRef.current.offsetTop;
-    const containerHeight = containerRef.current.offsetHeight - window.innerHeight;
-    const targetScroll = containerTop + (clamped / (PANEL_COUNT - 1)) * containerHeight;
-    window.scrollTo({ top: targetScroll, behavior: "smooth" });
-  }, []);
+  const handleScrollPrompt = () => {
+    if (heroRef.current) {
+      const heroBottom = heroRef.current.offsetTop + heroRef.current.offsetHeight;
+      window.scrollTo({ top: heroBottom, behavior: "smooth" });
+    }
+  };
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-        e.preventDefault();
-        scrollToIndex(activeIndex + 1);
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-        e.preventDefault();
-        scrollToIndex(activeIndex - 1);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [activeIndex, scrollToIndex]);
-
-  /* ── Mobile fallback ── */
-  if (isMobile) {
+  /* ── List View ── */
+  if (listView) {
     return (
-      <section className="htl-mobile">
-        {yearPanels.map((panel) => (
-          <div key={panel.year} className="htl-mobile__panel">
-            <div className="htl-mobile__year">{panel.year}</div>
-            <div className="htl-mobile__img-wrap">
-              <Image
-                src={panel.image}
-                alt={panel.headline}
-                width={600}
-                height={400}
-                className="htl-mobile__img"
+      <section className="sqtl-list">
+        <div className="sqtl-list__header">
+          <h1 className="sqtl-list__title">Timeline</h1>
+          <button
+            className="sqtl-list__toggle"
+            onClick={() => setListView(false)}
+          >
+            TIMELINE VIEW
+          </button>
+        </div>
+        <div className="sqtl-list__grid">
+          <AnimatePresence>
+            {yearPanels.map((panel, i) => (
+              <ListViewItem
+                key={panel.year}
+                panel={panel}
+                index={i}
+                onClose={() => setListView(false)}
               />
-            </div>
-            <h3 className="htl-mobile__headline">{panel.headline}</h3>
-            <p className="htl-mobile__line">{panel.line1}</p>
-            <p className="htl-mobile__line htl-mobile__line--dim">{panel.line2}</p>
-          </div>
-        ))}
+            ))}
+          </AnimatePresence>
+        </div>
       </section>
     );
   }
 
-  /* ── Desktop ── */
+  /* ── Main Timeline ── */
   return (
-    <section
-      ref={containerRef}
-      className="htl-container"
-      style={{ height: `${PANEL_COUNT * 100}vh` }}
-    >
-      <div className="htl-sticky">
-        <CustomCursor />
+    <section ref={containerRef} className="sqtl">
+      {/* ── LIST VIEW toggle — top right ── */}
+      <motion.button
+        className="sqtl-toggle"
+        onClick={() => setListView(true)}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
+      >
+        LIST VIEW
+      </motion.button>
 
-        {/* Large year — pinned left */}
-        <div className="htl-year-label">
-          <AnimatePresence mode="popLayout">
-            <motion.span
-              key={activeIndex}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.4, ease }}
-              className="htl-year-label__text"
-            >
-              {yearPanels[activeIndex]?.year}
-            </motion.span>
-          </AnimatePresence>
-        </div>
-
-        {/* Counter — top right */}
-        <div className="htl-counter">
-          <motion.span
-            className="htl-counter__value"
-            key={currentProjects}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {currentProjects}+
-          </motion.span>
-          <span className="htl-counter__label">Projects Delivered</span>
-        </div>
-
-        {/* Horizontal track */}
-        <motion.div className="htl-track" style={{ x }}>
-          {yearPanels.map((panel, i) => (
-            <div
-              key={panel.year}
-              className={`htl-panel ${i === activeIndex ? "htl-panel--active" : ""}`}
-            >
-              <div className="htl-panel__content">
-                <span className="htl-panel__year-sm">{panel.year}</span>
-                <h2 className="htl-panel__headline">{panel.headline}</h2>
-                <p className="htl-panel__line">{panel.line1}</p>
-                <p className="htl-panel__line htl-panel__line--dim">{panel.line2}</p>
-              </div>
-              <div className="htl-panel__media">
-                <Image
-                  src={panel.image}
-                  alt={panel.headline}
-                  fill
-                  sizes="50vw"
-                  style={{ objectFit: "cover" }}
-                  priority={i < 2}
-                />
-                <div className="htl-panel__media-overlay" />
-              </div>
-            </div>
+      {/* ── HERO SECTION ── */}
+      <div ref={heroRef} className="sqtl-hero">
+        {/* Floating thumbnail images */}
+        <div className="sqtl-hero__thumbs">
+          {heroThumbs.map((t, i) => (
+            <FloatingThumb
+              key={i}
+              src={t.src}
+              x={isMobile ? `${10 + i * 10}%` : t.x}
+              y={isMobile ? `${8 + i * 10}%` : t.y}
+              w={isMobile ? 80 : t.w}
+              h={isMobile ? 55 : t.h}
+              delay={t.delay}
+              scrollYProgress={heroScrollProgress}
+            />
           ))}
-        </motion.div>
-
-        {/* Progress bar — bottom */}
-        <div className="htl-progress">
-          <motion.div
-            className="htl-progress__fill"
-            style={{ scaleX: scrollYProgress }}
-          />
-          <div className="htl-progress__labels">
-            <span>2006</span>
-            <span>2026</span>
-          </div>
         </div>
 
-        {/* Scroll hint */}
-        <div className="htl-nav-hint">
-          <span>Scroll or use ← → arrow keys</span>
+        {/* Main hero typography */}
+        <div className="sqtl-hero__center">
+          <motion.div
+            className="sqtl-hero__brand"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          >
+            <span className="sqtl-hero__brand-wh">WHITE</span>
+            <span className="sqtl-hero__brand-ri">RICE</span>
+          </motion.div>
+
+          <motion.div
+            className="sqtl-hero__number"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+          >
+            20
+          </motion.div>
+
+          <motion.p
+            className="sqtl-hero__tagline"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+          >
+            CELEBRATING <em>TWENTY YEARS</em> OF IMPACT
+          </motion.p>
+        </div>
+
+        {/* Scroll prompt */}
+        <motion.button
+          className="sqtl-hero__scroll"
+          onClick={handleScrollPrompt}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
+        >
+          <span className="sqtl-hero__scroll-text">SCROLL TO EXPLORE</span>
+          <motion.span
+            className="sqtl-hero__scroll-arrow"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          >
+            &#8595;
+          </motion.span>
+        </motion.button>
+      </div>
+
+      {/* ── TIMELINE ENTRIES ── */}
+      <div className="sqtl-entries">
+        {yearPanels.map((panel, i) => (
+          <TimelineEntry key={panel.year} panel={panel} index={i} />
+        ))}
+      </div>
+
+      {/* ── CLOSING SECTION ── */}
+      <div className="sqtl-closing">
+        <motion.div
+          className="sqtl-closing__inner"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-20%" }}
+          transition={{ duration: 1 }}
+        >
+          <span className="sqtl-closing__number">720+</span>
+          <span className="sqtl-closing__label">
+            Projects Delivered Across <em>20 Years</em>
+          </span>
+        </motion.div>
+      </div>
+
+      {/* ── PROGRESS BAR — fixed bottom ── */}
+      <div className="sqtl-progress">
+        <motion.div
+          className="sqtl-progress__fill"
+          style={{ scaleX: progressWidth, transformOrigin: "left" }}
+        />
+        <div className="sqtl-progress__labels">
+          <span>2006</span>
+          <span>2026</span>
         </div>
       </div>
     </section>
