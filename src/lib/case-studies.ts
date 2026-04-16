@@ -499,7 +499,7 @@ export interface CaseStudyData {
     closingNote?: string;
   };
 
-  gallery: {
+  gallery?: {
     heading: string;
     images: GalleryImage[];
   };
