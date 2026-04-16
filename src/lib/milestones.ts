@@ -78,7 +78,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "BHAID — Comic Book Series",
     description:
       "Alongside the digital program, a print comic book series brought BHAID's life-skills curriculum to classrooms without computer access — ensuring no school was left behind.",
-    image: "/images/timeline/15x/2006/2006-foto2.png",
+    image: "/images/timeline/15x/2006/2006-foto2.jpg",
     imageAlt: "BHAID comic book series",
   },
 
@@ -96,7 +96,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "Gold Award — Chinh India Kids Film Festival",
     description:
       "An award-winning animated short film addressing stigma around visual impairment and disabilities. Voted by children themselves at the Chinh India Kids Film Festival — one of Pakistan's earliest examples of film as a behaviour change tool.",
-    image: "/images/timeline/15x/2007/2007-foto1.png",
+    image: "/images/timeline/15x/2007/2007-foto1.jpg",
     imageAlt: "Abdullah's Story animated film scenes",
     stat: { value: "🏆 Gold", label: "Chinh India Kids Film Festival 2009" },
     highlight: true,
@@ -167,7 +167,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Asia's Top 100 Entrepreneurs Under 30",
     description:
       "White Rice CEO Raheel Waqar was selected by FYSE Paragon as one of Asia's top 100 entrepreneurs under 30 — placing White Rice on the regional map as a social innovation leader.",
-    image: "/images/timeline/15x/2009/2009-foto2.png",
+    image: "/images/timeline/15x/2009/2009-foto2.jpg",
     imageAlt: "Recognition award milestone",
     stat: { value: "Top 100", label: "Asia Entrepreneurs Under 30 — FYSE Paragon" },
     highlight: true,
@@ -180,7 +180,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Food Security Campaign (Oxfam)",
     description:
       "A two-year Oxfam campaign supporting farmers' livelihoods and community collaboration on food security — combining field research, visual storytelling, and community mobilisation.",
-    image: "/images/timeline/15x/2009/2009-foto2.png",
+    image: "/images/timeline/15x/2009/2009-foto2.jpg",
     imageAlt: "Oxfam food security farmers campaign",
   },
   {
@@ -191,7 +191,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Life Skills Storybook for Girls",
     description:
       "A life skills storybook for girls distributed to schools across Punjab to counter the disruption caused by recent floods — reaching over 400 schools with critical learning materials.",
-    image: "/images/timeline/15x/2009/2009-foto3.png",
+    image: "/images/timeline/15x/2009/2009-foto3.jpg",
     imageAlt: "Life skills storybook for girls Punjab schools",
     stat: { value: "400+", label: "Schools Impacted" },
   },
@@ -211,7 +211,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "$1,000,000 Raised for Girls' Rights",
     description:
       "A nationwide campaign on girls' rights and violence against women and girls for Oxfam — which grew into a multi-year movement raising over $1 million for Oxfam's four-year programme.",
-    image: "/images/timeline/15x/2010/2010-foto1.png",
+    image: "/images/timeline/15x/2010/2010-foto1.jpg",
     imageAlt: "16 Days of Activism campaign VAWG",
     stat: { value: "$1,000,000", label: "Raised for Oxfam Campaign" },
     highlight: true,
@@ -224,7 +224,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Dunya Aur Larki — The Girl vs World",
     description:
       "A campaign that led directly to Pakistan's first children's assembly on girls' access to education — amplifying young voices in national policy conversations.",
-    image: "/images/timeline/15x/2010/2010-foto2.png",
+    image: "/images/timeline/15x/2010/2010-foto2.jpg",
     imageAlt: "Dunya Aur Larki girls education campaign",
   },
   {
@@ -254,7 +254,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "We Can — Pakistan's Largest VAWG Campaign",
     description:
       "A movement united against violence against women and girls — one of Pakistan's largest citizen-driven advocacy campaigns, powered by community storytelling and grassroots mobilisation.",
-    image: "/images/timeline/15x/2011/2011-foto2.png",
+    image: "/images/timeline/15x/2011/2011-foto2.jpg",
     imageAlt: "We Can campaign changemakers",
     stat: { value: "600,000", label: "Changemakers Mobilised" },
     highlight: true,
@@ -267,7 +267,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "HIV Prevention Strategy",
     description:
       "A behaviour change communication strategy for injecting drug users — combining empathy-led design with evidence-based messaging to reduce transmission and reduce stigma.",
-    image: "/images/timeline/15x/2011/2011-foto2.png",
+    image: "/images/timeline/15x/2011/2011-foto2.jpg",
     imageAlt: "HIV prevention behaviour change programme",
   },
   {
@@ -278,7 +278,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "HIV Prevention — Community Outreach",
     description:
       "Field-level community outreach materials extended the HIV prevention strategy into communities — bridging clinical guidance with grassroots communication.",
-    image: "/images/timeline/15x/2011/2011-foto3.png",
+    image: "/images/timeline/15x/2011/2011-foto3.jpg",
     imageAlt: "HIV prevention community outreach materials",
   },
   {
@@ -289,7 +289,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Sightsavers — Most Innovative Campaign",
     description:
       "A five-year awareness and advocacy campaign for the visually impaired and diabetic persons — recognised by Standard Chartered Bank Malaysia as the most innovative communication campaign of the year.",
-    image: "/images/timeline/15x/2011/2011-foto1.png",
+    image: "/images/timeline/15x/2011/2011-foto1.jpg",
     imageAlt: "Sightsavers campaign visually impaired",
     stat: { value: "🏆 Award", label: "Most Innovative — Standard Chartered Bank Malaysia" },
   },
@@ -309,7 +309,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "Pakistan's Largest Education Transformation",
     description:
       "A five-year campaign that directly engaged 12,000+ politicians and decision-makers on education reform — and helped bring 100,000 out-of-school children back into classrooms.",
-    image: "/images/timeline/15x/2012/2012-logo.png",
+    image: "/images/timeline/15x/2012/2012-logo.jpg",
     imageAlt: "Alif Ailaan education campaign logo",
     stat: { value: "100,000", label: "Kids Re-enrolled in Schools" },
     highlight: true,
@@ -322,7 +322,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Awaaz — Citizen Accountability (DFID)",
     description:
       "A five-year DFID-funded programme on inclusiveness and citizen accountability — reaching 10 million citizens across 4,500 villages and transforming how communities engage with governance.",
-    image: "/images/timeline/15x/2012/2012-foto1.png",
+    image: "/images/timeline/15x/2012/2012-foto1.jpg",
     imageAlt: "Awaaz citizen accountability programme",
     stat: { value: "10,000,000", label: "Citizens Reached · 4,500 Villages" },
   },
@@ -341,7 +341,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "HIV/AIDS Behaviour Change — Transgender Community",
     description:
       "An animation series for transgender communities on HIV prevention — marking White Rice's first integration of Design Thinking and Human-Centered Design into practice.",
-    image: "/images/timeline/15x/2013/2013-foto1.png",
+    image: "/images/timeline/15x/2013/2013-foto1.jpg",
     imageAlt: "HIV AIDS behaviour change animation transgender community",
   },
   {
@@ -352,7 +352,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "HIV/AIDS — Animation Series",
     description:
       "The animation series delivered sensitive health messages with empathy and cultural nuance — reaching communities where traditional outreach had previously failed.",
-    image: "/images/timeline/15x/2013/2013-foto2.png",
+    image: "/images/timeline/15x/2013/2013-foto2.jpg",
     imageAlt: "HIV AIDS animation series stills",
   },
   {
@@ -363,7 +363,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Aflatoun Wins PASHA ICT Award",
     description:
       "The Aflatoun e-learning series received the PASHA ICT Award for best e-learning application — validating White Rice's model of education through storytelling, five years after its creation.",
-    image: "/images/timeline/15x/2013/2013-foto3.png",
+    image: "/images/timeline/15x/2013/2013-foto3.jpg",
     imageAlt: "PASHA ICT Award Aflatoun e-learning",
     stat: { value: "🏆 Award", label: "PASHA ICT — Best E-Learning Application" },
     highlight: true,
@@ -383,7 +383,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Everyone Campaign (Save the Children)",
     description:
       "A national media campaign for Save the Children focused on infant mortality and newborn deaths — using emotional storytelling to shift public attention toward Pakistan's most vulnerable children.",
-    image: "/images/timeline/15x/2014/2014-foto1.png",
+    image: "/images/timeline/15x/2014/2014-foto1.jpg",
     imageAlt: "Everyone Campaign Save the Children infant mortality",
   },
   {
@@ -394,7 +394,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Awaaz I-Reporter Series",
     description:
       "A TV series training community members to document and report on the issues affecting their own lives — building a culture of active citizenship through participatory journalism.",
-    image: "/images/timeline/15x/2014/2014-foto2.png",
+    image: "/images/timeline/15x/2014/2014-foto2.jpg",
     imageAlt: "Awaaz I-Reporter TV series active citizenship",
     stat: { value: "1,200", label: "Community Trainers Supported" },
   },
@@ -414,7 +414,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "Business Leadership Excellence",
     description:
       "International recognition for White Rice's contribution to social impact through design. The world started paying attention to what was happening in a studio in Islamabad.",
-    image: "/images/timeline/15x/2015/2015-ausAward.png",
+    image: "/images/timeline/15x/2015/2015-ausAward.jpg",
     imageAlt: "Australian High Commission Business Leadership Award",
     highlight: true,
   },
@@ -426,7 +426,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "USIP Peace Toolkit",
     description:
       "Action research engaging children and mothers on social conflict dynamics — producing a peace-building toolkit grounded in community voices and Human-Centered Design methodology.",
-    image: "/images/timeline/15x/2015/2015-foto1.png",
+    image: "/images/timeline/15x/2015/2015-foto1.jpg",
     imageAlt: "USIP Peace Toolkit community engagement research",
   },
 
@@ -445,7 +445,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "27,000+ Health Workers Trained",
     description:
       "An animation series and training videos for frontline health workers addressing community resistance to polio vaccination — behavioural science applied to one of Pakistan's most critical public health challenges.",
-    image: "/images/timeline/15x/2016/2016-foto3.png",
+    image: "/images/timeline/15x/2016/2016-foto3.jpg",
     imageAlt: "Polio frontline worker training animation campaign",
     stat: { value: "27,000+", label: "People Trained" },
     highlight: true,
@@ -458,7 +458,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Polio Campaign — Field Training",
     description:
       "Field-level training workshops equipped frontline workers with the communication tools to engage resistant communities — combining print, animation, and in-person facilitation.",
-    image: "/images/timeline/15x/2016/2016-foto1.png",
+    image: "/images/timeline/15x/2016/2016-foto1.jpg",
     imageAlt: "Polio campaign field training workers",
   },
   {
@@ -469,7 +469,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Polio Campaign — Community Engagement",
     description:
       "Context-specific messaging addressed the unique concerns of each community — WaterAid's five-year WASH strategy also launched this year, laying the foundation for Clean & Green Pakistan.",
-    image: "/images/timeline/15x/2016/2016-foto2.png",
+    image: "/images/timeline/15x/2016/2016-foto2.jpg",
     imageAlt: "Polio campaign community engagement WaterAid",
   },
   {
@@ -480,7 +480,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "IKEA Foundation / Oxfam HCD Project",
     description:
       "Pakistan's first extensive Human-Centered Design-enabled impact project — design consulting for young farmers and entrepreneurs, reaching 10,000 youth across rural communities.",
-    image: "/images/timeline/15x/2016/2016-foto4.png",
+    image: "/images/timeline/15x/2016/2016-foto4.jpg",
     imageAlt: "IKEA Oxfam HCD youth farmers entrepreneurs",
     stat: { value: "10,000", label: "Youth Reached" },
   },
@@ -499,7 +499,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "Nike Foundation · 1,000,000 Girls Reached",
     description:
       "In partnership with Nike Foundation's Girl Effect, over 100 life-skills stories delivered through mobile — accessed by more than 1 million girls across Pakistan. Storytelling as empowerment.",
-    image: "/images/timeline/15x/2017/2017-foto1.png",
+    image: "/images/timeline/15x/2017/2017-foto1.jpg",
     imageAlt: "Girl Effect mobile life skills stories Pakistan",
     stat: { value: "1,000,000", label: "Girls Reached in Pakistan" },
     highlight: true,
@@ -512,7 +512,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "UNICEF Child Stunting Programme",
     description:
       "A two-year behaviour change programme in Sindh targeting child stunting — reaching 100,000 mothers with evidence-based nutrition and caregiving messaging through community storytelling.",
-    image: "/images/timeline/15x/2017/2017-foto2.png",
+    image: "/images/timeline/15x/2017/2017-foto2.jpg",
     imageAlt: "UNICEF child stunting prevention Sindh mothers",
     stat: { value: "100,000", label: "Mothers Reached" },
   },
@@ -532,7 +532,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "11,000 Mothers' Voices",
     description:
       "White Rice conducted the world's largest storytelling exercise with mothers — 11,000 voices shaping a national maternal health campaign from the ground up. Community as the author.",
-    image: "/images/timeline/15x/2018/2018-foto1.png",
+    image: "/images/timeline/15x/2018/2018-foto1.jpg",
     imageAlt: "Storytelling exercise with 11000 mothers",
     stat: { value: "11,000", label: "Mothers' Voices Captured" },
     highlight: true,
@@ -545,7 +545,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "USAID SPRING Accelerator",
     description:
       "A four-country Human-Centered Design research programme for adolescent girls' nutrition products — White Rice's first multi-country HCD engagement spanning Pakistan, Bangladesh, Ethiopia and Tanzania.",
-    image: "/images/timeline/15x/2018/2018-foto2.png",
+    image: "/images/timeline/15x/2018/2018-foto2.jpg",
     imageAlt: "USAID SPRING accelerator adolescent girls nutrition",
   },
   {
@@ -556,7 +556,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "UNICEF — Empowering the Last Mile",
     description:
       "Animated and interactive content built for over 250,000 frontline health workers globally — boosting their confidence and competence to address vaccine hesitancy in hard-to-reach communities.",
-    image: "/images/timeline/15x/2018/2018-foto3.png",
+    image: "/images/timeline/15x/2018/2018-foto3.jpg",
     imageAlt: "UNICEF immunisation last mile frontline workers",
     stat: { value: "250,000+", label: "Frontline Workers Empowered" },
   },
@@ -576,7 +576,7 @@ export const timelineEntries: TimelineEntry[] = [
     subtitle: "Punjab's Largest WASH Campaign · 30M+ Reached",
     description:
       "The largest WASH behaviour change initiative in Pakistan's history — five target behaviours, 36 districts, 2 million people reached directly, and over 30 million on digital media.",
-    image: "/images/timeline/15x/2019/2019-foto1.png",
+    image: "/images/timeline/15x/2019/2019-foto1.jpg",
     imageAlt: "Clean and Green Punjab WASH campaign",
     stat: { value: "30M+", label: "Digital Reach" },
     highlight: true,
@@ -589,7 +589,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Bharosa Karain (ICRC)",
     description:
       "A behaviour change campaign for ICRC reducing violence against healthcare staff — part of ICRC's global initiative 'A Matter of Life and Death', protecting medical personnel in conflict zones.",
-    image: "/images/timeline/15x/2019/2019-foto2.png",
+    image: "/images/timeline/15x/2019/2019-foto2.jpg",
     imageAlt: "Bharosa Karain ICRC healthcare workers safety",
   },
   {
@@ -600,7 +600,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Inclusive Hiring Design Sprint",
     description:
       "A design sprint reimagining private sector hiring practices, followed by a Grassroots Innovators programme connecting local entrepreneurs with new economic opportunities.",
-    image: "/images/timeline/15x/2019/2019-foto3.png",
+    image: "/images/timeline/15x/2019/2019-foto3.jpg",
     imageAlt: "Inclusive hiring design sprint private sector",
   },
 
@@ -632,7 +632,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Ehsaas Emergency Cash Programme",
     description:
       "Supporting the government's largest emergency cash distribution using digital platforms — communication design that helped 10.7 million families access critical financial support during the crisis.",
-    image: "/images/timeline/15x/2020/2020-foto1.png",
+    image: "/images/timeline/15x/2020/2020-foto1.jpg",
     imageAlt: "Ehsaas cash emergency programme families",
     stat: { value: "10,700,000", label: "People Reached" },
   },
@@ -644,7 +644,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "FAO — Dietary Habits, Balochistan",
     description:
       "A ground-breaking behaviour change initiative by FAO aimed to change dietary habits and increase food diversity for families in Balochistan — addressing hidden hunger through culturally resonant storytelling.",
-    image: "/images/timeline/15x/2020/2020-foto2.png",
+    image: "/images/timeline/15x/2020/2020-foto2.jpg",
     imageAlt: "FAO dietary habits food diversity Balochistan",
   },
 
@@ -661,7 +661,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "UNDP — Glacier Lake Outburst Floods",
     description:
       "A behaviour-driven prevention and protection campaign for UNDP in Northern Pakistan — helping communities understand and respond to the growing threat of glacial lake outburst floods.",
-    image: "/images/timeline/15x/2021/2021-foto1.png",
+    image: "/images/timeline/15x/2021/2021-foto1.jpg",
     imageAlt: "UNDP GLOF glacier lake campaign Northern Pakistan",
   },
   {
@@ -672,7 +672,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: "Pakistan's First VR Film Series",
     description:
       "A pioneering VR film series highlighting water and sanitation challenges across Pakistan — combining immersive storytelling with AI-driven impact to open a new frontier in behaviour change.",
-    image: "/images/timeline/15x/2021/2021-foto2.png",
+    image: "/images/timeline/15x/2021/2021-foto2.jpg",
     imageAlt: "VR film series water sanitation Pakistan first",
     highlight: true,
   },
