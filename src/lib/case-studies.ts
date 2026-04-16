@@ -447,6 +447,7 @@ export interface CaseStudyData {
   /* Film poster band, for award-winning films (e.g. Sightsavers Noor) */
   filmPoster?: {
     image: string;
+    video?: string;
     title: string;
     titleUrdu?: string;
     tagline?: string;
