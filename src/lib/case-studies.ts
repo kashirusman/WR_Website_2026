@@ -114,7 +114,7 @@ export interface CaseStudyData {
   };
   behaviours?: {
     label: string;
-    items: { num: string; name: string; sub: string }[];
+    items: { num: string; name: string; sub: string; icon?: string }[];
   };
   theoryOfChange?: {
     label: string;
